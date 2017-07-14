@@ -15,7 +15,6 @@ import { connect, Provider as ReduxProvider } from 'react-redux';
 import Bundle from '../core/Bundle';
 
 /* eslint-disable */
-import loadRegister from 'bundle-loader?lazy!../pages/register/Register';
 import loadNotFound from 'bundle-loader?lazy!../pages/notFound/NotFound';
 /* eslint-enable */
 
@@ -23,9 +22,6 @@ import LayoutComponent from '../components/Layout/Layout';
 import LoginComponent from '../pages/login/Login';
 
 
-// import { auth } from '../config';
-
-const RegisterBundle = Bundle.generateBundle(loadRegister);
 const NotFoundBundle = Bundle.generateBundle(loadNotFound);
 
 
@@ -49,7 +45,7 @@ const ContextType = {
 // };
 
 
-const PrivateRoute = ({ component, isAuthenticated, ...rest }) => ( //eslint-disable-line
+const PrivateRoute = ({ component, isAuthenticated, ...rest }) => ( // eslint-disable-line
   <Route
     {...rest} render={props => (
     isAuthenticated ? (
@@ -58,7 +54,7 @@ const PrivateRoute = ({ component, isAuthenticated, ...rest }) => ( //eslint-dis
       <Redirect
         to={{
           pathname: '/login',
-          state: { from: props.location }, //eslint-disable-line
+          state: { from: props.location }, // eslint-disable-line
         }}
       />
     )
@@ -96,7 +92,6 @@ class App extends React.PureComponent {
         <Route path="/" exact render={() => <Redirect to="/app" />} />
         <PrivateRoute isAuthenticated={this.props.isAuthenticated} path="/app" component={LayoutComponent} />
         <Route path="/login" exact component={LoginComponent} />
-        <Route path="/register" exact component={RegisterBundle} />
         <Route component={NotFoundBundle} />
       </Switch>
     );

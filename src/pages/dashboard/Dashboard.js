@@ -1,25 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { Button, ButtonGroup, ButtonToolbar, DropdownButton, MenuItem, ProgressBar,
   Alert, Row, Col, ListGroup, Badge, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import Widget from '../../components/Widget';
-import { fetchPosts } from '../../actions/posts';
 
 import s from './Dashboard.scss';
 
 class Dashboard extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    posts: PropTypes.array, //eslint-disable-line
-    isFetching: PropTypes.bool.isRequired,
-  };
-
-  static defaultProps = {
-    posts: [],
   };
 
   constructor(props) {
@@ -31,10 +21,6 @@ class Dashboard extends React.Component {
       alert3Visible: true,
       alert4Visible: true,
     };
-  }
-
-  componentWillMount() {
-    this.props.dispatch(fetchPosts());
   }
 
   render() {
@@ -125,40 +111,6 @@ class Dashboard extends React.Component {
         </Row>
         <Row>
           <Col sm={6}>
-            <Widget
-              title={
-                <div>
-                  <div className="pull-right mt-n-xs">
-                    <a className="td-underline fs-sm">Options</a>
-                  </div>
-                  <h5 className="mt-0 mb-0">Recent posts <Badge bsStyle="success" className="ml-xs">5</Badge></h5>
-                  <p className="fs-sm mb-0 text-muted">posts, that have been published recently</p>
-                </div>
-            }
-            >
-              <table className="table table-sm table-no-border mb-0">
-                <tbody>
-                  {this.props.posts && this.props.posts.map(post => (
-                    <tr key={post.id}>
-                      <td>{new Date(post.updatedAt).toLocaleString() }</td>
-                      <td><Link to="/app/posts">{post.title}</Link></td>
-                    </tr>
-                ))}
-                  {this.props.posts && !this.props.posts.length &&
-                  <tr>
-                    <td colSpan="100">No posts yet</td>
-                  </tr>
-                }
-                  {this.props.isFetching &&
-                  <tr>
-                    <td colSpan="100">Loading...</td>
-                  </tr>
-                }
-                </tbody>
-              </table>
-            </Widget>
-          </Col>
-          <Col sm={6}>
             <ListGroup>
               <Link to="/app" className="list-group-item"><Glyphicon glyph="phone" className="mr-xs opacity-70" /> Incoming calls <Badge bsStyle="danger">3</Badge></Link>
               <Link to="/app" className="list-group-item"><Glyphicon glyph="bell" className="mr-xs opacity-70" /> Notifications <Badge bsStyle="warning">6</Badge></Link>
@@ -204,11 +156,4 @@ class Dashboard extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    isFetching: state.posts.isFetching,
-    posts: state.posts.posts,
-  };
-}
-
-export default connect(mapStateToProps)(withStyles(s)(Dashboard));
+export default (withStyles(s)(Dashboard));

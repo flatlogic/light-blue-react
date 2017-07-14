@@ -10,6 +10,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { Navbar, MenuItem, Nav, NavDropdown, NavItem, Glyphicon, Badge } from 'react-bootstrap';
 import { logoutUser } from '../../actions/user';
@@ -18,16 +19,13 @@ import s from './Header.scss';
 
 class Header extends React.Component {
   static propTypes = {
-    sidebarToggle: PropTypes.func,
+    sidebarToggle: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
-  };
-
-  static defaultProps = {
-    sidebarToggle: () => {},
   };
 
   constructor(props) {
     super(props);
+
     this.doLogout = this.doLogout.bind(this);
   }
 
@@ -67,9 +65,9 @@ class Header extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    init: state.runtime.initialNow,
-  };
+function mapStateToProps() {
+  return {};
 }
-export default connect(mapStateToProps)(withStyles(s)(Header));
+
+export default withRouter(connect(mapStateToProps)(withStyles(s)(Header)));
+

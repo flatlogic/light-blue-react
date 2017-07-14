@@ -12,23 +12,17 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt';
-import expressGraphQL from 'express-graphql';
 import jwt from 'jsonwebtoken';
 import React from 'react';
+import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router';
 import ReactDOM from 'react-dom/server';
 import PrettyError from 'pretty-error';
-import { Provider } from 'react-redux';
 import App from './components/App';
 import Html from './components/Html';
 import { ErrorPageWithoutStyle } from './pages/error/ErrorPage';
-import errorPageStyle from './pages/error/ErrorPage.scss';
 import createFetch from './createFetch';
-import passport from './passport';
-import models from './data/models';
-import schema from './data/schema';
 import configureStore from './store/configureStore';
-import { setRuntimeVariable } from './actions/runtime';
 import { receiveLogin, receiveLogout } from './actions/user';
 import config from './config';
 import assets from './assets.json'; // eslint-disable-line import/no-unresolved
@@ -71,8 +65,6 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   }
 });
 
-app.use(passport.initialize());
-
 if (__DEV__) {
   app.enable('trust proxy');
 }
@@ -82,7 +74,7 @@ app.post('/login', (req, res) => {
   let user = false;
   const login = req.body.login;
   const password = req.body.password;
-  if (login === 'user' && password === 'password') {
+  if (login && password) {
     user = { user, login };
   }
 
@@ -96,19 +88,6 @@ app.post('/login', (req, res) => {
   }
 });
 
-//
-// Register API middleware
-// -----------------------------------------------------------------------------
-// require jwt authentication
-app.use('/graphql', expressJwt({
-  secret: config.auth.jwt.secret,
-  getToken: req => req.cookies.id_token,
-}), expressGraphQL(req => ({
-  schema,
-  graphiql: __DEV__,
-  rootValue: { request: req },
-  pretty: __DEV__,
-})));
 
 //
 // Register server-side rendering middleware
@@ -139,10 +118,10 @@ app.get('*', async (req, res, next) => {
       store.dispatch(receiveLogout());
     }
 
-    store.dispatch(setRuntimeVariable({
-      name: 'initialNow',
-      value: Date.now(),
-    }));
+    // store.dispatch(setRuntimeVariable({
+    //   name: 'initialNow',
+    //   value: Date.now(),
+    // }));
 
     // Global (context) variables that can be easily accessed from any React component
     // https://facebook.github.io/react/docs/context.html
@@ -159,7 +138,7 @@ app.get('*', async (req, res, next) => {
       storeSubscription: null,
     };
 
-      // eslint-disable-next-line no-underscore-dangle
+    // eslint-disable-next-line no-underscore-dangle
     css.add(theme._getCss());
 
     const data = {
@@ -187,17 +166,17 @@ app.get('*', async (req, res, next) => {
           <App store={store} />
         </Provider>
       </StaticRouter>,
-      );
+    );
 
     data.styles = [
-        { id: 'css', cssText: [...css].join('') },
+      { id: 'css', cssText: [...css].join('') },
     ];
 
     data.children = html;
 
     const markup = ReactDOM.renderToString(
       <Html {...data} />,
-      );
+    );
 
     res.status(200);
     res.send(`<!doctype html>${markup}`);
@@ -219,7 +198,6 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
     <Html
       title="Internal Server Error"
       description={err.message}
-      styles={[{ id: 'css', cssText: errorPageStyle._getCss() }]} // eslint-disable-line no-underscore-dangle
     >
       {ReactDOM.renderToString(<ErrorPageWithoutStyle error={err} />)}
     </Html>,
@@ -231,8 +209,8 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 //
 // Launch the server
 // -----------------------------------------------------------------------------
-models.sync().catch(err => console.error(err.stack)).then(() => {
-  app.listen(config.port, () => {
-    console.info(`The server is running at http://localhost:${config.port}/`);
-  });
+// models.sync().catch(err => console.error(err.stack)).then(() => {
+app.listen(config.port, () => {
+  console.info(`The server is running at http://localhost:${config.port}/`);
 });
+// });

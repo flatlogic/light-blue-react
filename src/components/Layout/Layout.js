@@ -13,25 +13,16 @@ import { Switch, Route, withRouter } from 'react-router';
 
 // an example of react-router code-splitting
 /* eslint-disable */
-import loadPosts from 'bundle-loader?lazy!../../pages/posts/Posts';
-import loadPrivacy from 'bundle-loader?lazy!../../pages/privacy/Privacy';
-import loadProfile from 'bundle-loader?lazy!../../pages/profile/Profile';
 import loadNotFound from 'bundle-loader?lazy!../../pages/notFound/NotFound';
 /* eslint-enable */
 
 import s from './Layout.scss';
 import Header from '../Header';
 import Footer from '../Footer';
-import Bundle from '../../core/Bundle';
 import Sidebar from '../Sidebar';
 
 // Dashboard component is loaded directly as an example of server side rendering
 import Dashboard from '../../pages/dashboard/Dashboard';
-
-const PostsBundle = Bundle.generateBundle(loadPosts);
-const PrivacyBundle = Bundle.generateBundle(loadPrivacy);
-const ProfileBundle = Bundle.generateBundle(loadProfile);
-const NotFoundBundle = Bundle.generateBundle(loadNotFound);
 
 class Layout extends React.Component {
 
@@ -52,10 +43,6 @@ class Layout extends React.Component {
           <main className={s.content}>
             <Switch>
               <Route path="/app" exact component={Dashboard} />
-              <Route path="/app/posts" component={PostsBundle} />
-              <Route path="/app/profile" exact component={ProfileBundle} />
-              <Route path="/app/privacy" exact component={PrivacyBundle} />
-              <Route component={NotFoundBundle} />
             </Switch>
           </main>
           <Footer />
