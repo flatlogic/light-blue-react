@@ -21,7 +21,7 @@ $enable-shadows:            false !default;
 $font-size-root: 16px;
 $font-family-base: 'Nunito', 'HelveticaNeue-Light', sans-serif;
 
-$text-color:                     #555;
+$text-color:                     #f8f8f8;
 $link-color:                     #337ab7;
 
 $brand-primary:         #3754a5 !default; // #337ab7
@@ -102,8 +102,10 @@ $breadcrumb-bg: transparent;
 
 $badge-font-weight: 600;
 
-$widget-bg: #fff;
-$widget-title-color: #444;
+$widget-bg-common: #333;
+$widget-bg: rgba($widget-bg-common, 0.4);
+$widget-color: $text-color;
+$widget-title-color: $text-color;
 
 $btn-inverse-color: #fff;
 $btn-inverse-bg: $sidebar-bg-color;
