@@ -1,9 +1,46 @@
+@mixin background-radial-gradient($figure, $type, $position_x, $position_y, $color_1, $color_2) {
+  //there is a built-in compass radial-gradient function, but it does not provide enough compatibility, so need to imitate it
+  //it also has an option $experimental-support-for-svg which should generate correct svg for IE, but it works incorrect, so
+  //fixing it
+  //issue id - https://github.com/chriseppstein/compass/issues/1225
+  background-color: $color_1;
+  //final w3c
+  background-image:
+    radial-gradient(
+      $type $figure at $position_x $position_y,
+      $color_1,
+      $color_2
+    );
+  //webkit-specific
+  background-image:
+    -webkit-radial-gradient(
+      $position_x $position_y,
+      $type $figure,
+      $color_1,
+      $color_2
+    );
+
+  //moz-specific
+  background-image:
+    -moz-radial-gradient(
+      $position_x $position_y,
+      $type $figure,
+      $color_1,
+      $color_2
+    );
+}
+
 html {
   font-weight: 100;
 }
 
 body {
   overflow-x: hidden;
+
+  @include background-radial-gradient (
+    ellipse, farthest-side, 10%, 0,
+    $bg-gradient-color-1 20%, $bg-gradient-color-2
+  );
 }
 
 html,
