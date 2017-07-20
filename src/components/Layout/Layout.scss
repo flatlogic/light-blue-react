@@ -14,3 +14,13 @@
   min-height: 100%;
   padding: #{$navbar-height + $content-padding-vertical} $content-padding-horizontal ($content-padding-vertical + 20px);
 }
+
+.logo {
+  box-sizing: content-box;
+  position: absolute;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  left: 65px;
+  top: 17px;
+  z-index: 1;
+}

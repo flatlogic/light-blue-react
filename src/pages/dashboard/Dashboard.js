@@ -4,7 +4,7 @@ import { Row, Col } from 'reactstrap';
 
 import Widget from '../../components/Widget';
 import s from './Dashboard.scss';
-import logo from '../../../../flaming-octo-nemesis/src/images/react-logo.png';
+import logo from '../../images/react-logo.png';
 
 
 class Dashboard extends React.Component {
