@@ -90,10 +90,11 @@ $content-padding-vertical: 40px;
 $navbar-height:      50px;
 $navbar-border-radius: 0;
 $sidebar-width-open: 160px;
-$sidebar-transition-time: 0.3s !default;
 
-$sidebar-bg-color: #50585a;
-$sidebar-color: #fff;
+$sidebar-bg-color: #242424 !default;
+$sidebar-color:          #fff;
+$sidebar-item-active-bg: rgba(#000, 0.07);
+$sidebar-item-sub-active-bg: darken($sidebar-item-active-bg, 15%);
 
 $navbar-margin-bottom: -$navbar-height;
 $breadcrumb-separator: '>';

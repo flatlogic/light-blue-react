@@ -1,40 +1,81 @@
 @import '../../styles/app';
 
 .root {
+  position: absolute;
   width: $sidebar-width-open;
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background-color: $sidebar-bg-color;
+  margin: 80px 0 0 20px;
+  padding: 10px 0;
   color: $sidebar-color;
-}
-
-.logo {
-  margin: 0 0 17px;
-  height: $navbar-height;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-
-  a {
-    text-decoration: none;
-    color: #fff;
-  }
 }
 
 .nav {
   padding: 10px 0;
   overflow-y: auto;
+  font-size: 16px;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 10px;
-  background-color: #5a6365;
+.navTitle {
+  margin: 35px 0 5px 11px;
+  font-size: 14px;
+  transition: opacity 0.3s ease-in-out;
+
+  @media (min-width: 992px) {
+    opacity: 1;
+  }
+}
+
+.actionLink {
+  color: #aaa;
+  float: right;
+  margin-right: 15px;
+  margin-top: -1px;
+}
+
+.labelName {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.glyphiconSm {
+  font-size: 9px;
+}
+
+.sidebarLabels {
+  list-style-type: none;
   font-size: 13px;
+  padding: 11px;
+  padding-right: 15px;
+
+  > li + li {
+    margin-top: 7px;
+  }
+
+  li > a {
+    color: #eee;
+    text-decoration: none;
+    font-weight: normal;
+
+    > i {
+      font-size: 11px;
+      vertical-align: 1px;
+      transition: margin-left 0.3s ease-in-out;
+    }
+  }
+}
+
+.sidebarAlerts {
+  font-size: 13px;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.sidebarAlert {
+  background: transparent;
+  margin-bottom: 0;
+  padding: 0.5rem 11px;
+  padding-right: 15px;
+}
+
+.sidebarProgress {
+  background: lighten($sidebar-bg-color, 10%);
 }

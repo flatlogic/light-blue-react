@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Route } from 'react-router';
 
 import s from './LinksGroup.scss';
@@ -14,6 +14,7 @@ class LinksGroup extends Component {
     childrenLinks: PropTypes.array,
     iconName: PropTypes.string.isRequired,
     className: PropTypes.string,
+    badge: PropTypes.string,
   };
   /* eslint-enable */
 
@@ -34,13 +35,14 @@ class LinksGroup extends Component {
   render() {
     if (!this.props.childrenLinks) {
       return (
-        <li />
-        // <li className={[s.headerLink, this.props.className].join(' ')}>
-        //   <NavLink to={this.props.headerLink} activeClassName={s.headerLinkActive} exact>
-        //     <i className={`glyphicon ${this.props.iconName}`} />
-        //     {this.props.header}
-        //   </NavLink>
-        // </li>
+        <li className={[s.headerLink, this.props.className].join(' ')}>
+          <NavLink to={this.props.headerLink} activeClassName={s.headerLinkActive} exact>
+            <span className={s.icon}>
+              <i className={`fa ${this.props.iconName}`} />
+            </span>
+            {this.props.header}
+          </NavLink>
+        </li>
       );
     }
     /* eslint-disable */
@@ -56,27 +58,8 @@ class LinksGroup extends Component {
                 onClick={() => this.setState({ isOpen: !this.state.isOpen })}
               >
                 <i className={`glyphicon ${this.props.iconName}`} />
-
                 {this.props.header}
-
-                <b className={['caret', s.caret].join(' ')} />
               </a>
-              {/* eslint-enable */}
-              {/* <Panel className={s.panel} collapsible expanded={expanded}>*/}
-              {/* <ul>*/}
-              {/* {this.props.childrenLinks && this.props.childrenLinks.map(child => (*/}
-              {/* <li key={child.name}>*/}
-              {/* <NavLink*/}
-              {/* to={child.link} exact*/}
-              {/* onClick={() => this.setState({ isOpen: false })}*/}
-              {/* activeClassName={s.headerLinkActive}*/}
-              {/* >*/}
-              {/* {child.name}*/}
-              {/* </NavLink>*/}
-              {/* </li>*/}
-              {/* ))}*/}
-              {/* </ul>*/}
-              {/* </Panel>*/}
             </li>
           );
         }}
