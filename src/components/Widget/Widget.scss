@@ -21,8 +21,12 @@
 
 .title {
   margin-top: 0;
-  //margin-bottom: $line-height-computed/2;
   color: $widget-title-color;
 
   @include clearfix();
+
+  h4 {
+    font-weight: 300;
+    font-size: 1.5rem;
+  }
 }

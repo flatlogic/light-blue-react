@@ -21,10 +21,19 @@ $enable-shadows:            false !default;
 $font-size-root: 0.8rem;
 $font-family-base: 'Open Sans', sans-serif;
 
-$font-size-base:          0.8rem !default;
+$font-size-base:          0.8rem;
+$font-size-mini:          $font-size-base * 0.75;
+
+$line-height-base:        1.428571429 !default; // 20/14
+$line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
 $text-color:                     #f8f8f8;
 $link-color:                     #337ab7;
+
+$text-muted: darken($text-color, 15%);
+
+$font-weight-thin: 300;
+$font-weight-base: $font-weight-thin;
 
 $brand-primary:         #3754a5 !default; // #337ab7
 $brand-success:         #05c1a1 !default;
@@ -86,10 +95,6 @@ $screen-lg-min: 1200px; /* Large screen / wide desktop */
 //== Components
 //
 
-$content-padding-horizontal: 30px;
-$content-padding-vertical: 40px;
-
-$navbar-height:      50px;
 $navbar-border-radius: 0;
 $sidebar-width-open: 160px;
 
@@ -97,7 +102,6 @@ $sidebar-bg-color: #242424 !default;
 $sidebar-color:          #fff;
 $sidebar-item-active-bg: rgba(#000, 0.07);
 
-$navbar-margin-bottom: -$navbar-height;
 $breadcrumb-separator: '>';
 $breadcrumb-padding-horizontal: 0;
 $breadcrumb-bg: transparent;

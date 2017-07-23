@@ -4,3 +4,9 @@ h3 { font-size: $font-size-base * 1.75; } // ~24px
 h4 { font-size: $font-size-base * 1.25; } // ~18px
 h5 { font-size: $font-size-base; }
 h6 { font-size: $font-size-base * 0.85; } // ~12px
+
+@media (min-width: 768px) {
+  .lead {
+    font-size: 16px;
+  }
+}
