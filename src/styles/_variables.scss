@@ -21,6 +21,8 @@ $enable-shadows:            false !default;
 $font-size-root: 0.8rem;
 $font-family-base: 'Open Sans', sans-serif;
 
+$font-size-base:          0.8rem !default;
+
 $text-color:                     #f8f8f8;
 $link-color:                     #337ab7;
 
@@ -94,7 +96,6 @@ $sidebar-width-open: 160px;
 $sidebar-bg-color: #242424 !default;
 $sidebar-color:          #fff;
 $sidebar-item-active-bg: rgba(#000, 0.07);
-$sidebar-item-sub-active-bg: darken($sidebar-item-active-bg, 15%);
 
 $navbar-margin-bottom: -$navbar-height;
 $breadcrumb-separator: '>';
@@ -116,9 +117,13 @@ $input-height-small: 30px;
 
 // ===== Colors =====
 
+$white: #fff;
+$white-dark: #f8f8f8;
 $primary-gray: gray;
 
 $bg-gradient-color-1: #154265;
 $bg-gradient-color-2: #7392c2;
 
 $text-transparent: rgba(#333, 0.5);
+
+$tabs-widget-active-item-hover-bg: rgba(darken($widget-bg-common, 10%), 0.4);

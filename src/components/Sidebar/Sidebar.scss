@@ -3,25 +3,19 @@
 .root {
   position: absolute;
   width: $sidebar-width-open;
-  margin: 80px 0 0 20px;
+  margin: 80px 0 0 25px;
   padding: 10px 0;
   color: $sidebar-color;
 }
 
 .nav {
-  padding: 10px 0;
+  padding: 0;
+  margin: 0;
   overflow-y: auto;
-  font-size: 16px;
 }
 
 .navTitle {
-  margin: 35px 0 5px 11px;
-  font-size: 14px;
-  transition: opacity 0.3s ease-in-out;
-
-  @media (min-width: 992px) {
-    opacity: 1;
-  }
+  margin: 35px 0 5px 20px;
 }
 
 .actionLink {
@@ -33,7 +27,6 @@
 
 .labelName {
   opacity: 1;
-  transition: opacity 0.3s ease-in-out;
 }
 
 .glyphiconSm {
@@ -42,9 +35,8 @@
 
 .sidebarLabels {
   list-style-type: none;
-  font-size: 13px;
-  padding: 11px;
-  padding-right: 15px;
+  padding: 10px 20px;
+  margin: 0;
 
   > li + li {
     margin-top: 7px;
@@ -54,28 +46,29 @@
     color: #eee;
     text-decoration: none;
     font-weight: normal;
+    padding: 0;
 
     > i {
       font-size: 11px;
       vertical-align: 1px;
-      transition: margin-left 0.3s ease-in-out;
+      margin-left: 4px;
+      margin-right: 8px;
     }
   }
 }
 
 .sidebarAlerts {
-  font-size: 13px;
-  transition: opacity 0.3s ease-in-out;
   opacity: 1;
 }
 
 .sidebarAlert {
   background: transparent;
   margin-bottom: 0;
-  padding: 0.5rem 11px;
-  padding-right: 15px;
+  padding: 0.5rem 12px 0.5rem 20px;
+  font-size: 0.8rem;
 }
 
 .sidebarProgress {
   background: lighten($sidebar-bg-color, 10%);
+  margin-bottom: 0;
 }

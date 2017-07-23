@@ -3,18 +3,14 @@
 .headerLink {
   a {
     display: block;
+    position: relative;
+    padding: 10px 20px;
     color: $sidebar-color;
     text-decoration: none;
     cursor: pointer;
-  }
 
-  > a {
-    position: relative;
-    padding-left: 50px;
-    line-height: 35px;
-
-    a:hover,
-    a:focus {
+    &:hover,
+    &:focus {
       background: $sidebar-item-active-bg;
     }
 
@@ -24,14 +20,12 @@
   }
 
   .icon {
-    display: block;
-    position: absolute;
-    top: 3px;
-    left: 11px;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    text-align: center;
+    width: 16px;
+    margin-right: 8px;
+    float: left;
+    line-height: 20px;
+    font-size: 14px;
+    text-align: right;
 
     i {
       color: rgba(170, 170, 170, 0.7);

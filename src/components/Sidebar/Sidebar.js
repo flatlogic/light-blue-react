@@ -21,13 +21,13 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <nav className={s.root}>
+      <nav className={`${s.root} sidebar`}>
         <ul className={s.nav}>
           <LinksGroup header="Dashboard" headerLink="/app" iconName="fa-home" />
           <LinksGroup header="Another Page" headerLink="/app/another" iconName="fa-tree" />
         </ul>
         <h5 className={s.navTitle}>
-          LABELS
+          Labels
           <a className={s.actionLink}>
             <i className={`${s.glyphiconSm} glyphicon glyphicon-plus float-right`} />
           </a>
@@ -53,7 +53,7 @@ class Sidebar extends React.Component {
           </NavItem>
         </ul>
         <h5 className={s.navTitle}>
-          PROJECTS
+          Projects
         </h5>
         <div className={s.sidebarAlerts}>
           {this.props.alertsList.map(alert => // eslint-disable-line
