@@ -51,4 +51,32 @@
 
 .dropdownNavIcon {
   color: $text-transparent;
+  padding: 0;
+  font-size: 1.2rem;
+  outline: 0;
+  background: none;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 36px;
+  text-shadow: none;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.image {
+  float: left;
+  width: 40px;
+  margin-top: 7px;
+}
+
+.imageAccount {
+  width: 50px;
+  margin-right: 5px;
+}
+
+.dropdownMenu {
+  background: $header-dropdown-bg;
+  color: $white;
 }

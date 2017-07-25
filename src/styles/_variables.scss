@@ -95,7 +95,6 @@ $screen-lg-min: 1200px; /* Large screen / wide desktop */
 //== Components
 //
 
-$navbar-border-radius: 0;
 $sidebar-width-open: 160px;
 
 $sidebar-bg-color: #242424 !default;
@@ -113,6 +112,8 @@ $widget-bg: rgba($widget-bg-common, 0.4);
 $widget-color: $text-color;
 $widget-title-color: $text-color;
 
+$header-dropdown-bg: rgba($widget-bg-common, 0.85);
+
 $btn-inverse-color: #fff;
 $btn-inverse-bg: $sidebar-bg-color;
 $btn-inverse-border: #414749;
@@ -129,5 +130,8 @@ $bg-gradient-color-1: #154265;
 $bg-gradient-color-2: #7392c2;
 
 $text-transparent: rgba(#333, 0.5);
+$bg-addition: rgba($widget-bg-common, 0.3);
 
 $tabs-widget-active-item-hover-bg: rgba(darken($widget-bg-common, 10%), 0.4);
+
+$header-dropdown-item-hover: #4e91ce;

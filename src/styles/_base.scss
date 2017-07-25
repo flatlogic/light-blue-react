@@ -14,3 +14,15 @@
   }
 }
 
+.navbar {
+  .dropdown-menu {
+    .dropdown-item {
+      color: $white;
+
+      &:hover {
+        background-color: $header-dropdown-item-hover;
+        cursor: pointer;
+      }
+    }
+  }
+}

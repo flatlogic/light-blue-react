@@ -16,16 +16,18 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Badge,
 } from 'reactstrap';
 import { logoutUser } from '../../actions/user';
 
 import i1 from '../../images/1.png';
+import i2 from '../../images/2.png';
+import i3 from '../../images/3.png';
 
 import s from './Header.scss';
 
 class Header extends React.Component {
   static propTypes = {
-    // sidebarToggle: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
   };
 
@@ -85,7 +87,7 @@ class Header extends React.Component {
       <Navbar className={s.navbar}>
         <Nav>
           <UncontrolledAlert className={s.alert}>
-            <i className="fa fa-info-circle mr-xs" /> Check out Light Blue <a id="notification-link">settings</a> on
+            <i className="fa fa-info-circle mr-xs" /> Check out Light Blue <a>settings</a> on
             the right!
           </UncontrolledAlert>
           <InputGroup size="sm" className={`${s.navbarForm} hidden-sm-down`}>
@@ -97,9 +99,9 @@ class Header extends React.Component {
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-globe`} />
               </DropdownToggle>
-              <DropdownMenu right className="super-colors">
+              <DropdownMenu className={s.dropdownMenu} right>
                 <DropdownItem>
-                  <img src={i1} alt="" />
+                  <img className={s.image} src={i1} alt="" />
                   <div className="details">
                     <div className="sender">Jane Hew</div>
                     <div className="text">
@@ -108,7 +110,7 @@ class Header extends React.Component {
                   </div>
                 </DropdownItem>
                 <DropdownItem>
-                  <img src={i1} alt="" />
+                  <img className={s.image} src={i2} alt="" />
                   <div className="details">
                     <div className="sender">Jane Hew</div>
                     <div className="text">
@@ -117,7 +119,7 @@ class Header extends React.Component {
                   </div>
                 </DropdownItem>
                 <DropdownItem>
-                  <img src={i1} alt="" />
+                  <img className={s.image} src={i3} alt="" />
                   <div className="details">
                     <div className="sender">Jane Hew</div>
                     <div className="text">
@@ -136,32 +138,45 @@ class Header extends React.Component {
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-globe`} />
               </DropdownToggle>
-              <DropdownMenu right className="super-colors">
+              <DropdownMenu right className={s.dropdownMenu}>
                 <DropdownItem>
-                  <img src={i1} alt="" />
+                  <div className="picture">
+                    <Badge color="danger"><i className="fa fa-bell-o" /></Badge>
+                  </div>
                   <div className="details">
-                    <div className="sender">Jane Hew</div>
-                    <div className="text">
-                      Hey, John! How is it going? ...
-                    </div>
+                    Check out this awesome ticket
                   </div>
                 </DropdownItem>
                 <DropdownItem>
-                  <img src={i1} alt="" />
+                  <div className="picture">
+                    <Badge color="warning"><i className="fa fa-bell-o" /></Badge>
+                  </div>
                   <div className="details">
-                    <div className="sender">Jane Hew</div>
-                    <div className="text">
-                      Hey, John! How is it going? ...
-                    </div>
+                    What is the best way to get ...
                   </div>
                 </DropdownItem>
                 <DropdownItem>
-                  <img src={i1} alt="" />
+                  <div className="picture">
+                    <Badge color="success"><i className="fa fa-bell-o" /></Badge>
+                  </div>
                   <div className="details">
-                    <div className="sender">Jane Hew</div>
-                    <div className="text">
-                      Hey, John! How is it going? ...
-                    </div>
+                    This is just a simple notification
+                  </div>
+                </DropdownItem>
+                <DropdownItem>
+                  <div className="picture">
+                    <Badge color="info"><i className="fa fa-bell-o" /></Badge>
+                  </div>
+                  <div className="details">
+                    12 new orders has arrived today
+                  </div>
+                </DropdownItem>
+                <DropdownItem>
+                  <div className="picture">
+                    <Badge color="danger"><i className="fa fa-bell-o" /></Badge>
+                  </div>
+                  <div className="details">
+                    One more thing that just happened
                   </div>
                 </DropdownItem>
                 <DropdownItem>
@@ -176,82 +191,48 @@ class Header extends React.Component {
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-cog`} />
               </DropdownToggle>
-              <DropdownMenu right className="super-colors">
-                <DropdownItem>
-                  <img src={i1} alt="" />
-                  <div className="details">
-                    <div className="sender">Jane Hew</div>
-                    <div className="text">
-                      Hey, John! How is it going? ...
-                    </div>
+              <DropdownMenu right className={s.dropdownMenu}>
+                <section className="settings-content">
+                  <div className="setting clearfix">
+                    <div>Sidebar on the</div>
+                    {/* nRight = sidebar == 'right'*/}
+                    <button type="button" className="btn btn-sm btn-secondary">Left</button>
+                    <button type="button" className="btn btn-sm btn-secondary">Right</button>
                   </div>
-                </DropdownItem>
-                <DropdownItem>
-                  <img src={i1} alt="" />
-                  <div className="details">
-                    <div className="sender">Jane Hew</div>
-                    <div className="text">
-                      Hey, John! How is it going? ...
-                    </div>
+                  <div className="setting clearfix">
+                    <div>Sidebar</div>
+                    {/* nRight = sidebar == 'right'*/}
+                    <button type="button" className="btn btn-sm btn-secondary">Left</button>
+                    <button type="button" className="btn btn-sm btn-secondary">Right</button>
                   </div>
-                </DropdownItem>
-                <DropdownItem>
-                  <img src={i1} alt="" />
-                  <div className="details">
-                    <div className="sender">Jane Hew</div>
-                    <div className="text">
-                      Hey, John! How is it going? ...
-                    </div>
-                  </div>
-                </DropdownItem>
-                <DropdownItem>
-                  <a>
-                    See all messages <i className="fa fa-arrow-right" />
-                  </a>
-                </DropdownItem>
+                </section>
               </DropdownMenu>
             </NavDropdown>
             <NavDropdown isOpen={this.state.accountOpen} toggle={this.toggleAccountDropdown} className="hidden-sm-down">
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-user`} />
               </DropdownToggle>
-              <DropdownMenu right className="super-colors">
+              <DropdownMenu right className={s.dropdownMenu}>
+                <section>
+                  <img src={i2} alt="" className={s.imageAccount} />
+                  Philip Daineka
+                </section>
                 <DropdownItem>
-                  <img src={i1} alt="" />
-                  <div className="details">
-                    <div className="sender">Jane Hew</div>
-                    <div className="text">
-                      Hey, John! How is it going? ...
-                    </div>
-                  </div>
+                  <i className="fa fa-user" />
+                  Profile
                 </DropdownItem>
                 <DropdownItem>
-                  <img src={i1} alt="" />
-                  <div className="details">
-                    <div className="sender">Jane Hew</div>
-                    <div className="text">
-                      Hey, John! How is it going? ...
-                    </div>
-                  </div>
+                  <i className="fa fa-calendar" />
+                  Calendar
                 </DropdownItem>
                 <DropdownItem>
-                  <img src={i1} alt="" />
-                  <div className="details">
-                    <div className="sender">Jane Hew</div>
-                    <div className="text">
-                      Hey, John! How is it going? ...
-                    </div>
-                  </div>
-                </DropdownItem>
-                <DropdownItem>
-                  <a>
-                    See all messages <i className="fa fa-arrow-right" />
-                  </a>
+                  <i className="fa fa-inbox" />
+                  Inbox
                 </DropdownItem>
               </DropdownMenu>
             </NavDropdown>
             <NavItem>
-              <NavLink>
+              <NavLink onClick={this.doLogout}>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-off`} />
               </NavLink>
             </NavItem>
