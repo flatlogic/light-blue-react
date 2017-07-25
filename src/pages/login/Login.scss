@@ -1,15 +1,57 @@
 @import '../../styles/app';
 
 .root {
-  //padding-top: 25vh;
+  left: 0;
+  top: 50%;
+  margin-top: -192.5px;
+  position: absolute;
+  width: 100%;
 }
 
 .widget {
   max-width: 360px;
   margin: 0 auto;
-  padding: 30px !important;
 
   :global .form-control {
     font-size: 14px;
   }
 }
+
+.navbarForm {
+  padding: 6px 0;
+  width: auto;
+
+  .inputAddon {
+    border: none;
+    background-color: #fff;
+    transition: background-color ease-in-out 0.15s;
+  }
+
+  input {
+    font-size: 13px;
+    border: none;
+    padding: 0.6rem 0.85rem 0.6rem 0;
+  }
+}
+
+.formActions {
+  margin: 0 -20px;
+  padding: 20px 15px 0;
+  background: $bg-addition;
+}
+
+.footer {
+  margin: 0 -20px -20px -20px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  overflow: hidden;
+  position: static;
+
+  .facebookLogin {
+    height: 30px;
+    background: #0275d8;
+    text-align: center;
+    padding-top: 10px;
+  }
+}
+

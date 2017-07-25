@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
+import { Row, Col, Container, Alert, InputGroup, InputGroupAddon, Input, Label } from 'reactstrap';
 
-// import Widget from '../../components/Widget';
-// import Footer from '../../components/Footer';
 import s from './Login.scss'; // eslint-disable-line
 import { loginUser } from '../../actions/user';
+import Widget from '../../components/Widget';
 
 class Login extends React.Component {
 
@@ -15,7 +15,7 @@ class Login extends React.Component {
     dispatch: PropTypes.func.isRequired,
     location: PropTypes.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
-    // errorMessage: PropTypes.isRequired,
+    errorMessage: PropTypes.isRequired,
     // isFetching: PropTypes.bool.isRequired,
   };
 
@@ -56,7 +56,54 @@ class Login extends React.Component {
     }
 
     return (
-      <div>Login</div>
+      <div className={s.root}>
+        <Container>
+          <Row>
+            <Col
+              sm={{ size: 10, offset: 1 }}
+              md={{ size: 6, offset: 3 }}
+              xl={{ size: 4, offset: 4 }}
+            >
+              <Widget className={`${s.widget}`}>
+                <header className="text-xs-center">
+                  <h4>Login to your account</h4>
+                </header>
+                <form className="mt" onSubmit={this.doLogin}>
+                  {
+                    this.props.errorMessage && ( // eslint-disable-line
+                      <Alert className="alert-sm" bsStyle="danger">
+                        {this.props.errorMessage}
+                      </Alert>
+                    )
+                  }
+                  <Label for="email">Email</Label>
+                  <InputGroup className={s.navbarForm}>
+                    <InputGroupAddon className={s.inputAddon}><i className="fa fa-user" /></InputGroupAddon>
+                    <Input id="email" value={this.state.login} onChange={this.changeLogin} type="text" required placeholder="Your Email" />
+                  </InputGroup>
+                  <Label for="password">Password</Label>
+                  <InputGroup className={s.navbarForm}>
+                    <InputGroupAddon className={s.inputAddon}><i className="fa fa-lock" /></InputGroupAddon>
+                    <Input type="password" id="password" placeholder="Your Password" />
+                  </InputGroup>
+                  <div className={s.formActions}>
+                    <button type="submit" className="btn btn-block btn-danger">
+                      <span className="small-circle"><i className="fa fa-caret-right" /></span>
+                      <small>Sign In</small>
+                    </button>
+                    <a className="forgot">Forgot Username or Password?</a>
+                  </div>
+                </form>
+                <footer className={s.footer}>
+                  <div className={s.facebookLogin}>
+                    <a><span><i className="fa fa-facebook-square fa-lg" /> LogIn with Facebook</span></a>
+                  </div>
+                </footer>
+              </Widget>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     );
   }
 }
