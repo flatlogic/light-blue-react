@@ -16,7 +16,6 @@ class Login extends React.Component {
     location: PropTypes.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     errorMessage: PropTypes.isRequired,
-    // isFetching: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -84,7 +83,7 @@ class Login extends React.Component {
                   <Label for="password">Password</Label>
                   <InputGroup className={s.navbarForm}>
                     <InputGroupAddon className={s.inputAddon}><i className="fa fa-lock" /></InputGroupAddon>
-                    <Input type="password" id="password" placeholder="Your Password" />
+                    <Input type="password" id="password" value={this.state.password} onChange={this.changePassword} placeholder="Your Password" />
                   </InputGroup>
                   <div className={s.formActions}>
                     <button type="submit" className="btn btn-block btn-danger">
