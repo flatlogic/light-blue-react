@@ -13,6 +13,7 @@ class Sidebar extends React.Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    openSidebar: PropTypes.bool.isRequired,
   };
 
   dismissAlert(id) {
@@ -21,7 +22,8 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <nav className={`${s.root} sidebar`}>
+      /* eslint-disable */
+      <nav className={[s.root, 'sidebar', this.props.openSidebar ? s.show : ''].join(' ')}>
         <ul className={s.nav}>
           <LinksGroup header="Dashboard" headerLink="/app" iconName="fa-home" />
           <LinksGroup header="Another Page" headerLink="/app/another" iconName="fa-tree" />

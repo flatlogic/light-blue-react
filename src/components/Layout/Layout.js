@@ -19,16 +19,30 @@ const AnotherBundle = Bundle.generateBundle(loadAnother);
 
 class Layout extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    this.togleSidebar = this.togleSidebar.bind(this);
+
+    this.state = {
+      openSidebar: false,
+    };
+  }
+
+  togleSidebar() {
+    this.setState({ openSidebar: !this.state.openSidebar });
+  }
+
   render() {
     return (
       <div className={s.root}>
         <div className={s.logo}>
           <h4><a>Light <strong>Blue</strong></a></h4>
         </div>
-        <Sidebar />
+        <Sidebar openSidebar={this.state.openSidebar} />
         <div className={s.wrap}>
-          <Header />
-          <main className={s.content}>
+          <Header togleSidebar={this.togleSidebar} />
+          <main className={[s.content, this.state.openSidebar ? s.openSidebar : ''].join(' ')}>
             <Switch>
               <Route path="/app" exact component={Dashboard} />
               <Route path="/app/another" exact component={AnotherBundle} />

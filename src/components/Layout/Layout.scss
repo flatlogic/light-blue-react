@@ -8,11 +8,22 @@
   min-height: 100%;
   position: relative;
   margin-left: 185px;
+
+  @media (max-width: 767px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.openSidebar {
+  margin-top: 100px;
 }
 
 .content {
   min-height: 100%;
   padding: 25px 2.5641%;
+
+  @include transition(margin-top 0.35s ease, opacity 0.2s);
 }
 
 .logo {
@@ -23,4 +34,13 @@
   left: 65px;
   top: 17px;
   z-index: 1;
+
+  @media (max-width: 767px) {
+    display: block;
+    left: 1.6% !important;
+    right: auto !important;
+    padding-right: 5px;
+    width: 40px;
+    top: 4px;
+  }
 }

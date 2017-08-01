@@ -29,6 +29,7 @@ import s from './Header.scss';
 class Header extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    togleSidebar: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -95,7 +96,7 @@ class Header extends React.Component {
             <Input id="search-input" placeholder="Search..." />
           </InputGroup>
           <Nav>
-            <NavDropdown isOpen={this.state.messagesOpen} toggle={this.toggleMessagesDropdown} className="hidden-sm-down">
+            <NavDropdown isOpen={this.state.messagesOpen} toggle={this.toggleMessagesDropdown}>
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-globe`} />
               </DropdownToggle>
@@ -134,7 +135,7 @@ class Header extends React.Component {
                 </DropdownItem>
               </DropdownMenu>
             </NavDropdown>
-            <NavDropdown isOpen={this.state.supportOpen} toggle={this.toggleSupportDropdown} className="hidden-sm-down">
+            <NavDropdown isOpen={this.state.supportOpen} toggle={this.toggleSupportDropdown}>
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-globe`} />
               </DropdownToggle>
@@ -231,9 +232,14 @@ class Header extends React.Component {
                 </DropdownItem>
               </DropdownMenu>
             </NavDropdown>
-            <NavItem>
+            <NavItem className="hidden-sm-down">
               <NavLink onClick={this.doLogout}>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-off`} />
+              </NavLink>
+            </NavItem>
+            <NavItem className="hidden-md-up">
+              <NavLink onClick={this.props.togleSidebar}>
+                <i className={`${s.dropdownNavIcon} fa fa-bars`} />
               </NavLink>
             </NavItem>
           </Nav>
