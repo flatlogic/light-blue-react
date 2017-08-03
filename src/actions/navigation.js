@@ -1,10 +1,8 @@
-/* eslint-disable import/prefer-default-export */
+import { HIDE_SIDEBAR, OPEN_SIDEBAR, MUVE_SIDEBAR } from '../constants';
 
-import { TOGGLE_SIDEBAR, OPEN_SIDEBAR, CLOSE_SIDEBAR } from '../constants';
-
-export function toggleSidebar() {
+export function hideSidebar() {
   return {
-    type: TOGGLE_SIDEBAR,
+    type: HIDE_SIDEBAR,
   };
 }
 
@@ -14,8 +12,8 @@ export function openSidebar() {
   };
 }
 
-export function closeSidebar() {
+export function moveSidebar() {
   return {
-    type: CLOSE_SIDEBAR,
+    type: MUVE_SIDEBAR,
   };
 }

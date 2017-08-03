@@ -14,6 +14,7 @@ class Sidebar extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     openSidebar: PropTypes.bool.isRequired,
+    sidebarRight: PropTypes.bool.isRequired,
   };
 
   dismissAlert(id) {
@@ -23,7 +24,7 @@ class Sidebar extends React.Component {
   render() {
     return (
       /* eslint-disable */
-      <nav className={[s.root, 'sidebar', this.props.openSidebar ? s.show : ''].join(' ')}>
+      <nav className={[s.root, this.props.sidebarHidden ? s.hide:'', 'sidebar', this.props.openSidebar ? s.show : '', this.props.sidebarRight ? s.sidebarRight : ''].join(' ')}>
         <ul className={s.nav}>
           <LinksGroup header="Dashboard" headerLink="/app" iconName="fa-home" />
           <LinksGroup header="Another Page" headerLink="/app/another" iconName="fa-tree" />
@@ -78,10 +79,11 @@ class Sidebar extends React.Component {
   }
 }
 
-
 function mapStateToProps(store) {
   return {
     alertsList: store.alerts.alertsList,
+    sidebarHidden: store.navigation.sidebarHidden,
+    sidebarRight: store.navigation.sidebarRight,
   };
 }
 

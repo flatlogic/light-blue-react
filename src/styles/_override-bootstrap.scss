@@ -10,3 +10,21 @@ h6 { font-size: $font-size-base * 0.85; } // ~12px
     font-size: 16px;
   }
 }
+
+button {
+  font-family: $font-family-base;
+}
+
+.label,
+.badge {
+  display: inline-block;
+  padding: 2px 4px;
+  line-height: 14px; // ensure proper line-height if floated
+  text-shadow: none;
+  font-weight: $font-weight-semi-bold;
+  font-size: $font-size-mini;
+}
+
+.badge {
+  padding: 2px 9px;
+}

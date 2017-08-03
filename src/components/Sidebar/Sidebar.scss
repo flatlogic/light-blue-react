@@ -23,6 +23,15 @@
     width: 90%;
     padding: 0;
   }
+
+  &.hide {
+    display: none;
+  }
+
+  &.sidebarRight {
+    right: 0;
+    margin: 80px 25px 0 0;
+  }
 }
 
 .nav {

@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router';
 
 // an example of react-router code-splitting
@@ -19,6 +21,11 @@ const AnotherBundle = Bundle.generateBundle(loadAnother);
 
 class Layout extends React.Component {
 
+  static propTypes = {
+    sidebarHidden: PropTypes.bool.isRequired,
+    sidebarRight: PropTypes.bool.isRequired,
+  };
+
   constructor(props) {
     super(props);
 
@@ -36,11 +43,11 @@ class Layout extends React.Component {
   render() {
     return (
       <div className={s.root}>
-        <div className={s.logo}>
+        <div className={[s.logo, this.props.sidebarRight ? s.logoRight : ''].join(' ')}>
           <h4><a>Light <strong>Blue</strong></a></h4>
         </div>
         <Sidebar openSidebar={this.state.openSidebar} />
-        <div className={s.wrap}>
+        <div className={[s.wrap, this.props.sidebarHidden ? s.sidebarHidden : '', this.props.sidebarRight ? s.sidebarRight : ''].join(' ')}>
           <Header togleSidebar={this.togleSidebar} />
           <main className={[s.content, this.state.openSidebar ? s.openSidebar : ''].join(' ')}>
             <Switch>
@@ -54,4 +61,12 @@ class Layout extends React.Component {
   }
 }
 
-export default withRouter(withStyles(s)(Layout));
+function mapStateToProps(store) {
+  return {
+    sidebarHidden: store.navigation.sidebarHidden,
+    sidebarRight: store.navigation.sidebarRight,
+  };
+}
+
+export default withRouter(connect(mapStateToProps)(withStyles(s)(Layout)));
+

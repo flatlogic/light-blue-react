@@ -19,6 +19,7 @@ import {
   Badge,
 } from 'reactstrap';
 import { logoutUser } from '../../actions/user';
+import { hideSidebar, moveSidebar } from '../../actions/navigation';
 
 import i1 from '../../images/1.png';
 import i2 from '../../images/2.png';
@@ -30,6 +31,7 @@ class Header extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     togleSidebar: PropTypes.func.isRequired,
+    // sidebarHidden: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -41,6 +43,8 @@ class Header extends React.Component {
     this.toggleSupportDropdown = this.toggleSupportDropdown.bind(this);
     this.toggleSettingsDropdown = this.toggleSettingsDropdown.bind(this);
     this.toggleAccountDropdown = this.toggleAccountDropdown.bind(this);
+    this.toggleHide = this.toggleHide.bind(this);
+    this.toggleMove = this.toggleMove.bind(this);
 
     this.state = {
       visible: true,
@@ -83,6 +87,16 @@ class Header extends React.Component {
     });
   }
 
+  toggleHide() {
+    // if (action === this.props.sidebarHidden) {
+    this.props.dispatch(hideSidebar());
+    // }
+  }
+
+  toggleMove() {
+    this.props.dispatch(moveSidebar());
+  }
+
   render() {
     return (
       <Navbar className={s.navbar}>
@@ -100,31 +114,31 @@ class Header extends React.Component {
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-globe`} />
               </DropdownToggle>
-              <DropdownMenu className={s.dropdownMenu} right>
+              <DropdownMenu className={`${s.dropdownMenu} ${s.messages}`} right>
                 <DropdownItem>
                   <img className={s.image} src={i1} alt="" />
-                  <div className="details">
-                    <div className="sender">Jane Hew</div>
-                    <div className="text">
+                  <div className={s.details}>
+                    <div>Jane Hew</div>
+                    <div className={s.text}>
                       Hey, John! How is it going? ...
                     </div>
                   </div>
                 </DropdownItem>
                 <DropdownItem>
                   <img className={s.image} src={i2} alt="" />
-                  <div className="details">
-                    <div className="sender">Jane Hew</div>
-                    <div className="text">
-                      Hey, John! How is it going? ...
+                  <div className={s.details}>
+                    <div>Alies Rumiancaŭ</div>
+                    <div className={s.text}>
+                      I will definitely buy this template
                     </div>
                   </div>
                 </DropdownItem>
                 <DropdownItem>
                   <img className={s.image} src={i3} alt="" />
-                  <div className="details">
-                    <div className="sender">Jane Hew</div>
-                    <div className="text">
-                      Hey, John! How is it going? ...
+                  <div className={s.details}>
+                    <div>Michał Rumiancaŭ</div>
+                    <div className={s.text}>
+                      Is it really Lore ipsum? Lore ...
                     </div>
                   </div>
                 </DropdownItem>
@@ -139,50 +153,50 @@ class Header extends React.Component {
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-globe`} />
               </DropdownToggle>
-              <DropdownMenu right className={s.dropdownMenu}>
+              <DropdownMenu right className={`${s.dropdownMenu} ${s.support}`}>
                 <DropdownItem>
                   <div className="picture">
                     <Badge color="danger"><i className="fa fa-bell-o" /></Badge>
                   </div>
-                  <div className="details">
+                  <div className={s.details}>
                     Check out this awesome ticket
                   </div>
                 </DropdownItem>
                 <DropdownItem>
                   <div className="picture">
-                    <Badge color="warning"><i className="fa fa-bell-o" /></Badge>
+                    <Badge color="warning"><i className="fa fa-question-circle" /></Badge>
                   </div>
-                  <div className="details">
+                  <div className={s.details}>
                     What is the best way to get ...
                   </div>
                 </DropdownItem>
                 <DropdownItem>
                   <div className="picture">
-                    <Badge color="success"><i className="fa fa-bell-o" /></Badge>
+                    <Badge color="success"><i className="fa fa-info-circle" /></Badge>
                   </div>
-                  <div className="details">
+                  <div className={s.details}>
                     This is just a simple notification
                   </div>
                 </DropdownItem>
                 <DropdownItem>
                   <div className="picture">
-                    <Badge color="info"><i className="fa fa-bell-o" /></Badge>
+                    <Badge color="info"><i className="fa fa-plus" /></Badge>
                   </div>
-                  <div className="details">
+                  <div className={s.details}>
                     12 new orders has arrived today
                   </div>
                 </DropdownItem>
                 <DropdownItem>
                   <div className="picture">
-                    <Badge color="danger"><i className="fa fa-bell-o" /></Badge>
+                    <Badge color="danger"><i className="fa fa-tag" /></Badge>
                   </div>
-                  <div className="details">
+                  <div className={s.details}>
                     One more thing that just happened
                   </div>
                 </DropdownItem>
                 <DropdownItem>
                   <a>
-                    See all messages <i className="fa fa-arrow-right" />
+                    See all tickets <i className="fa fa-arrow-right" />
                   </a>
                 </DropdownItem>
               </DropdownMenu>
@@ -192,19 +206,17 @@ class Header extends React.Component {
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-cog`} />
               </DropdownToggle>
-              <DropdownMenu right className={s.dropdownMenu}>
+              <DropdownMenu className={s.dropdownMenu}>
                 <section className="settings-content">
                   <div className="setting clearfix">
                     <div>Sidebar on the</div>
-                    {/* nRight = sidebar == 'right'*/}
-                    <button type="button" className="btn btn-sm btn-secondary">Left</button>
-                    <button type="button" className="btn btn-sm btn-secondary">Right</button>
+                    <button type="button" onClick={this.toggleMove} className="btn btn-sm btn-secondary">Left</button>
+                    <button type="button" onClick={this.toggleMove} className="btn btn-sm btn-secondary">Right</button>
                   </div>
                   <div className="setting clearfix">
                     <div>Sidebar</div>
-                    {/* nRight = sidebar == 'right'*/}
-                    <button type="button" className="btn btn-sm btn-secondary">Left</button>
-                    <button type="button" className="btn btn-sm btn-secondary">Right</button>
+                    <button type="button" onClick={this.toggleHide} className="btn btn-sm btn-secondary">Show</button>
+                    <button type="button" onClick={this.toggleHide} className="btn btn-sm btn-secondary">Hide</button>
                   </div>
                 </section>
               </DropdownMenu>
@@ -213,7 +225,7 @@ class Header extends React.Component {
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-user`} />
               </DropdownToggle>
-              <DropdownMenu right className={s.dropdownMenu}>
+              <DropdownMenu right className={`${s.dropdownMenu} ${s.account}`}>
                 <section>
                   <img src={i2} alt="" className={s.imageAccount} />
                   Philip Daineka
@@ -249,8 +261,10 @@ class Header extends React.Component {
   }
 }
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(store) {
+  return {
+    sidebarHidden: store.navigation.sidebarHidden,
+  };
 }
 
 export default withRouter(connect(mapStateToProps)(withStyles(s)(Header)));

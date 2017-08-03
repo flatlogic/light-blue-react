@@ -30,14 +30,25 @@
 
   .inputAddon {
     border: none;
-    background-color: #fff;
+    background-color: transparentize($text-transparent, 0.1);
     transition: background-color ease-in-out 0.15s;
   }
 
   input {
     font-size: 13px;
+    color: $widget-color;
+    background-color: transparentize($text-transparent, 0.1);
     border: none;
     padding: 0.6rem 0.85rem 0.6rem 0;
+    width: 200px;
+    transition: width 0s ease-out 0.5s;
+    min-height: 30px !important;
+
+    &:focus {
+      width: 240px;
+
+      @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075));
+    }
   }
 }
 
@@ -79,4 +90,62 @@
 .dropdownMenu {
   background: $header-dropdown-bg;
   color: $white;
+}
+
+.messages {
+  button {
+    display: flex;
+    height: 60px;
+    font-weight: $font-weight-base;
+
+    &:last-child {
+      height: 25px;
+      justify-content: center;
+    }
+  }
+
+  .details {
+    margin-left: 10px;
+    margin-top: 7px;
+
+    .text {
+      font-size: 0.75rem;
+      color: #ddd;
+    }
+  }
+}
+
+.support {
+  button {
+    display: flex;
+    padding: 5px 10px;
+    font-weight: $font-weight-base;
+    font-size: 0.75rem;
+
+    &:last-child {
+      justify-content: center;
+    }
+
+    .details {
+      margin-left: 3px;
+    }
+  }
+}
+
+.account {
+  width: 180px;
+
+  section {
+    padding: 5px 10px;
+    font-weight: normal;
+  }
+
+  button {
+    padding: 7px 10px;
+    font-weight: $font-weight-thin;
+
+    i {
+      margin-right: 3px;
+    }
+  }
 }

@@ -13,6 +13,16 @@
     margin-left: 0;
     margin-right: 0;
   }
+
+  &.sidebarHidden {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &.sidebarRight {
+    margin-left: 0;
+    margin-right: 185px;
+  }
 }
 
 .openSidebar {
@@ -42,5 +52,10 @@
     padding-right: 5px;
     width: 40px;
     top: 4px;
+  }
+
+  &.logoRight {
+    right: 67px;
+    left: auto;
   }
 }
