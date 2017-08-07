@@ -10,3 +10,16 @@ h6 { font-size: $font-size-base * 0.85; } // ~12px
     font-size: 16px;
   }
 }
+
+.btn {
+  &:focus,
+  .focus {
+    box-shadow: none;
+  }
+}
+
+.form-control {
+  &::placeholder {
+    font-weight: $font-weight-base;
+  }
+}

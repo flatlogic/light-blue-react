@@ -26,3 +26,46 @@
     }
   }
 }
+
+@mixin background-radial-gradient($figure, $type, $position_x, $position_y, $color_1, $color_2) {
+  //there is a built-in compass radial-gradient function, but it does not provide enough compatibility, so need to imitate it
+  //it also has an option $experimental-support-for-svg which should generate correct svg for IE, but it works incorrect, so
+  //fixing it
+  //issue id - https://github.com/chriseppstein/compass/issues/1225
+  background-color: $color_1;
+  //final w3c
+  background-image:
+    radial-gradient(
+        $type $figure at $position_x $position_y,
+        $color_1,
+        $color_2
+    );
+  //webkit-specific
+  background-image:
+    -webkit-radial-gradient(
+        $position_x $position_y,
+        $type $figure,
+        $color_1,
+        $color_2
+    );
+
+  //moz-specific
+  background-image:
+    -moz-radial-gradient(
+        $position_x $position_y,
+        $type $figure,
+        $color_1,
+        $color_2
+    );
+}
+
+// Placeholder text
+@mixin placeholder($color: $input-color-placeholder) {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  &:-ms-input-placeholder { color: $color; } // Internet Explorer 10+
+  &::-webkit-input-placeholder  { color: $color; } // Safari and Chrome
+}

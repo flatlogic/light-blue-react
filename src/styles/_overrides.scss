@@ -69,6 +69,30 @@
   @include button-variant($btn-inverse-color, $btn-inverse-bg, $btn-inverse-border);
 }
 
+.btn-transparent{
+  background: transparentize($text-transparent, .2);
+  color: $widget-title-color;
+  text-shadow: none;
+  @include box-shadow(none);
+
+  &:hover{
+    background: $text-transparent;
+    color: $widget-title-color;
+  }
+
+  &.active{
+    color: $widget-title-color;
+    background: rgba($widget-bg-common, .55);
+    &:hover{
+      background: rgba($widget-bg-common, .55);
+    }
+  }
+
+  .caret{
+    border-top-color: $widget-title-color;
+  }
+}
+
 .alert {
   font-size: $font-size-sm;
 
