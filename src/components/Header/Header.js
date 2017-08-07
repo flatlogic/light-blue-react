@@ -196,13 +196,13 @@ class Header extends React.Component {
                 <section className="settings-content">
                   <div className="setting clearfix">
                     <div>Sidebar on the</div>
-                    {/* nRight = sidebar == 'right'*/}
+                    { /* nRight = sidebar == 'right' */ }
                     <button type="button" className="btn btn-sm btn-secondary">Left</button>
                     <button type="button" className="btn btn-sm btn-secondary">Right</button>
                   </div>
                   <div className="setting clearfix">
                     <div>Sidebar</div>
-                    {/* nRight = sidebar == 'right'*/}
+                    { /* nRight = sidebar == 'right' */ }
                     <button type="button" className="btn btn-sm btn-secondary">Left</button>
                     <button type="button" className="btn btn-sm btn-secondary">Right</button>
                   </div>
