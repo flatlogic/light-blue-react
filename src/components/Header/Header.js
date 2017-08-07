@@ -88,7 +88,7 @@ class Header extends React.Component {
       <Navbar className={s.navbar}>
         <Nav>
           <UncontrolledAlert className={s.alert}>
-            <i className="fa fa-info-circle mr-xs" /> Check out Light Blue <a>settings</a> on
+            <i className="fa fa-info-circle mr-1" /> Check out Light Blue <a>settings</a> on
             the right!
           </UncontrolledAlert>
           <InputGroup size="sm" className={`${s.navbarForm} hidden-sm-down`}>
@@ -98,7 +98,7 @@ class Header extends React.Component {
           <Nav>
             <NavDropdown isOpen={this.state.messagesOpen} toggle={this.toggleMessagesDropdown}>
               <DropdownToggle nav>
-                <i className={`${s.dropdownNavIcon} glyphicon glyphicon-globe`} />
+                <i className={`${s.dropdownNavIcon} glyphicon glyphicon-comments`} />
               </DropdownToggle>
               <DropdownMenu className={s.dropdownMenu} right>
                 <DropdownItem>

@@ -43,7 +43,7 @@
   color: #aaa;
   float: right;
   margin-right: 15px;
-  margin-top: -1px;
+  margin-top: 1px;
 }
 
 .labelName {
@@ -58,13 +58,13 @@
   list-style-type: none;
   padding: 10px 20px;
   margin: 0;
+  color: rgba(255, 255, 255, 0.8);
 
   > li + li {
-    margin-top: 7px;
+    margin-top: .5rem;
   }
 
   li > a {
-    color: #eee;
     text-decoration: none;
     font-weight: normal;
     padding: 0;
@@ -75,6 +75,10 @@
       margin-left: 4px;
       margin-right: 8px;
     }
+  }
+
+  li:hover {
+    color: #fff;
   }
 
   @media (max-width: 767px) {
@@ -88,6 +92,14 @@
   @media (max-width: 767px) {
     display: none;
   }
+
+  :global(.alert .close) {
+    font-size: 14px;
+    outline: none;
+    opacity: 1;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: none;
+  }
 }
 
 .sidebarAlert {
@@ -98,6 +110,6 @@
 }
 
 .sidebarProgress {
-  background: lighten($sidebar-bg-color, 10%);
+  background: rgba(0, 0, 0, 0.15);
   margin-bottom: 0;
 }

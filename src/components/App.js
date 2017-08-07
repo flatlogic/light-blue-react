@@ -27,14 +27,6 @@ const ContextType = {
   ...ReduxProvider.childContextTypes,
 };
 
-// let isAuthenticated = function() {
-//   let t = jwt.verify(cookie.load('id_token'), auth.jwt.secret);
-//
-//   console.log(t);
-//
-//   return true;
-// };
-
 
 const PrivateRoute = ({ component, isAuthenticated, ...rest }) => ( // eslint-disable-line
   <Route
