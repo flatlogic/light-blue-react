@@ -6,14 +6,14 @@ import { connect, Provider as ReduxProvider } from 'react-redux';
 import Bundle from '../core/Bundle';
 
 /* eslint-disable */
-import loadNotFound from 'bundle-loader?lazy!../pages/notFound/NotFound';
+import loadErrorPage from 'bundle-loader?lazy!../pages/error/ErrorPage';
 /* eslint-enable */
 
 import LayoutComponent from '../components/Layout/Layout';
 import LoginComponent from '../pages/login/Login';
 
 
-const NotFoundBundle = Bundle.generateBundle(loadNotFound);
+const ErrorPageBundle = Bundle.generateBundle(loadErrorPage);
 
 
 const ContextType = {
@@ -57,6 +57,7 @@ class App extends React.PureComponent {
 
   static propTypes = {
     context: PropTypes.shape(ContextType),
+    store: PropTypes.any, // eslint-disable-line
     isAuthenticated: PropTypes.bool.isRequired,
   };
 
@@ -83,7 +84,7 @@ class App extends React.PureComponent {
         <Route path="/" exact render={() => <Redirect to="/app" />} />
         <PrivateRoute isAuthenticated={this.props.isAuthenticated} path="/app" component={LayoutComponent} />
         <Route path="/login" exact component={LoginComponent} />
-        <Route component={NotFoundBundle} />
+        <Route component={ErrorPageBundle} />
       </Switch>
     );
   }

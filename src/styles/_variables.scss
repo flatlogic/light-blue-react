@@ -1,12 +1,3 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 $glyphicons-halflings-include-bonus: false !default;
 $glyphicons-halflings-class-prefix: glyphicon !default;
 
@@ -27,20 +18,20 @@ $font-size-mini:          $font-size-base * 0.75;
 $line-height-base:        1.428571429 !default; // 20/14
 $line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
-$text-color:                     #f8f8f8;
-$link-color:                     #337ab7;
-
-$text-muted: darken($text-color, 15%);
-
 $font-weight-thin: 300;
 $font-weight-semi-bold: 600;
 $font-weight-base: $font-weight-thin;
 
-$brand-primary:         #3754a5 !default; // #337ab7
+$brand-primary:         #4e91ce !default; // #337ab7
 $brand-success:         #05c1a1 !default;
-$brand-info:            #5d80f9 !default;
+$brand-info:            #4ab0ce !default;
 $brand-warning:         #f7be1e !default;
 $brand-danger:          #f45c43 !default;
+
+$text-color:                     #f8f8f8;
+$link-color:                     saturate(lighten($brand-primary, 25%), 50%);
+
+$text-muted: darken($text-color, 15%);
 
 $state-success-text:             $brand-success !default;
 $state-success-bg:               lighten($brand-success, 70%) !default;
@@ -115,9 +106,15 @@ $widget-title-color: $text-color;
 
 $header-dropdown-bg: rgba($widget-bg-common, 0.85);
 
-$btn-inverse-color: #fff;
-$btn-inverse-bg: $sidebar-bg-color;
-$btn-inverse-border: #414749;
+$btn-font-weight: 300;
+
+$btn-inverse-color: #555;
+$btn-inverse-bg: rgba(#fff,0.9);
+$btn-inverse-border: rgba(#000,0.2);
+
+$btn-inverse-color: #555;
+$btn-inverse-bg: rgba(#fff,0.9);
+$btn-inverse-border: rgba(#000,0.2);
 
 $input-height-small: 30px;
 
@@ -126,6 +123,7 @@ $input-height-small: 30px;
 $white: #fff;
 $white-dark: #f8f8f8;
 $primary-gray: gray;
+$gray-light: lighten(#000, 60%);
 
 $bg-gradient-color-1: #154265;
 $bg-gradient-color-2: #7392c2;

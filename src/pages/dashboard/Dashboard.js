@@ -4,7 +4,7 @@ import { Row, Col } from 'reactstrap';
 
 import Widget from '../../components/Widget';
 import s from './Dashboard.scss';
-import logo from '../../images/react-logo.png';
+import logo from '../../images/react.svg';
 
 
 class Dashboard extends React.Component {
@@ -16,9 +16,9 @@ class Dashboard extends React.Component {
           <Col md={6}>
             <Widget title={<h4>Example <span className="fw-semi-bold">Widget</span></h4>}>
               <div>
-                <img className="pull-left mr-3" src={logo} alt="React" width="100" />
+                <img className="pull-left mt-1 mr-2" src={logo} alt="React" width="80" />
                 <p className="lead">You are looking at a completely new version of Sing App built
-                  with brand <strong>React JS</strong></p>
+                  with <strong>React JS</strong></p>
                 <p className="fs-mini">Made by <a href="http://flatlogic.com" target="_blank" rel="noopener noreferrer">Flatlogic</a>.</p>
               </div>
             </Widget>

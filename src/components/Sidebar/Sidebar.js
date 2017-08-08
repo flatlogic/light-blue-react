@@ -38,19 +38,19 @@ class Sidebar extends React.Component {
         <ul className={s.sidebarLabels}>
           <NavItem>
             <NavLink>
-              <i className="fa fa-circle text-warning mr-2" />
+              <i className="fa fa-circle text-warning" />
               <span className={s.labelName}>My Recent</span>
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink>
-              <i className="fa fa-circle text-gray mr-2" />
+              <i className="fa fa-circle text-gray" />
               <span className={s.labelName}>Starred</span>
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink>
-              <i className="fa fa-circle text-danger mr-2" />
+              <i className="fa fa-circle text-danger" />
               <span className={s.labelName}>Background</span>
             </NavLink>
           </NavItem>

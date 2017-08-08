@@ -1,4 +1,3 @@
-
 export const SET_RUNTIME_VARIABLE = 'SET_RUNTIME_VARIABLE';
 
 export const HIDE_SIDEBAR = 'HIDE_SIDEBAR';
