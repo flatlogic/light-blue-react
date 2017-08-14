@@ -103,18 +103,19 @@ $widget-bg-common: #333;
 $widget-bg: rgba($widget-bg-common, 0.4);
 $widget-color: $text-color;
 $widget-title-color: $text-color;
+$bg-addition: rgba($widget-bg-common, 0.3);
 
 $header-dropdown-bg: rgba($widget-bg-common, 0.85);
 
 $btn-font-weight: 300;
 
 $btn-inverse-color: #555;
-$btn-inverse-bg: rgba(#fff,0.9);
-$btn-inverse-border: rgba(#000,0.2);
+$btn-inverse-bg: rgba(#fff, 0.9);
+$btn-inverse-border: rgba(#000, 0.2);
 
 $btn-inverse-color: #555;
-$btn-inverse-bg: rgba(#fff,0.9);
-$btn-inverse-border: rgba(#000,0.2);
+$btn-inverse-bg: rgba(#fff, 0.9);
+$btn-inverse-border: rgba(#000, 0.2);
 
 $input-height-small: 30px;
 
