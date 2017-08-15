@@ -22,8 +22,8 @@ module.exports = {
   },
 
   defaultMeta: {
-    title: 'React Dashboard',
-    description: 'React Dashboard Starter project based on react-router 4, redux, graphql, bootstrap',
+    title: 'Light Blue v3.9.0 built with React by Flatlogic',
+    description: 'Light Blue v3.9.0 built with React, Redux and React Router by Flatlogic',
   },
 
   // Authentication

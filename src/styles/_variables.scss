@@ -23,10 +23,10 @@ $font-weight-semi-bold: 600;
 $font-weight-base: $font-weight-thin;
 
 $brand-primary:         #4e91ce !default; // #337ab7
-$brand-success:         #05c1a1 !default;
+$brand-success:         #3ecd74 !default;
 $brand-info:            #4ab0ce !default;
-$brand-warning:         #f7be1e !default;
-$brand-danger:          #f45c43 !default;
+$brand-warning:         #f2c34d !default;
+$brand-danger:          #f25118 !default;
 
 $text-color:                     #f8f8f8;
 $link-color:                     saturate(lighten($brand-primary, 25%), 50%);
@@ -135,3 +135,9 @@ $bg-addition: rgba($widget-bg-common, 0.3);
 $tabs-widget-active-item-hover-bg: rgba(darken($widget-bg-common, 10%), 0.4);
 
 $header-dropdown-item-hover: #4e91ce;
+
+$input-transparent-color: $text-color;
+$input-transparent-placeholder-color: rgba(#eee, .76);
+
+$input-group-addon-bg:           $bg-addition;
+$input-group-addon-border-color: transparent;

@@ -59,12 +59,12 @@ button {
   }
 }
 
-.btn-danger {
-  background-color: #f25118;
-}
-
 .form-control {
   &::placeholder {
     font-weight: $font-weight-base;
   }
+}
+
+.input-group-addon {
+  color: $text-muted;
 }
