@@ -46,9 +46,8 @@
 }
 
 .formActions {
-  margin: 0 -20px;
-  padding: 20px 15px 0;
-  background: $bg-addition;
+  margin: 0 (-$widget-padding-horizontal);
+   padding: 20px 15px 0 15px;
 
   .smallCircle {
     display: inline-block;
@@ -56,7 +55,6 @@
     height: 20px;
     line-height: 20px;
     border-radius: 50%;
-    margin-right: 3px;
     background: rgba(0, 0, 0, 0.2);
   }
 
@@ -69,17 +67,24 @@
 }
 
 .footer {
-  margin: 0 -20px -20px -20px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  overflow: hidden;
-  position: static;
+  margin: 0 (-$widget-padding-horizontal);
+    border-bottom-left-radius: $border-radius-base;
+    border-bottom-right-radius: $border-radius-base;
+    overflow: hidden;
+    position: static;
 
   .facebookLogin {
     height: 30px;
-    background: #0275d8;
+    background: $blue;
     text-align: center;
     padding-top: 10px;
+
+    :global a {
+      color: $white;
+      display: block;
+      text-shadow: none;
+      text-decoration: none;
+    }
   }
 }
 

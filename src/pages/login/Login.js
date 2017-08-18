@@ -57,7 +57,7 @@ class Login extends React.Component {
     return (
       <div className={s.root}>
         <Widget className={`${s.widget}`}>
-          <header className="text-xs-center">
+          <header className="text-center">
             <h4>Login to your account</h4>
           </header>
           <Form className="mt" onSubmit={this.doLogin}>
@@ -96,7 +96,7 @@ class Login extends React.Component {
           </Form>
           <footer className={s.footer}>
             <div className={s.facebookLogin}>
-              <a><span><i className="fa fa-facebook-square fa-lg" /> LogIn with Facebook</span></a>
+              <a><i className="fa fa-facebook-square fa-lg" /> LogIn with Facebook</a>
             </div>
           </footer>
         </Widget>

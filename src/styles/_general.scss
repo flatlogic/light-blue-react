@@ -5,7 +5,6 @@ html {
 body {
   overflow-x: hidden;
   color: $text-color;
-  font-size: $font-size-root;
 
   @include background-radial-gradient (
     ellipse, farthest-side, 10%, 0,
@@ -56,4 +55,59 @@ optgroup,
 select,
 textarea {
   font-family: $font-family-base;
+}
+
+input[type=search], input.search {
+  //padding-left: 26px;
+  //background-color: $input-bg;
+  //background:url(assets/img/search.png) 5px 6px no-repeat $input-bg;
+  //
+  //&.input-transparent {
+  //  border: none;
+  //  color: $widget-color;
+  //  background: url(assets/img/search-white.png) 5px 5px no-repeat $widget-bg;
+  //  @include placeholder(rgba(#eee, .76));
+  //}
+}
+
+ul ul,
+ol ul{
+  list-style: none;
+}
+
+ul, ol{
+  list-style: none;
+  padding: 0;
+}
+
+//setting default iframe behaviour to border box
+//so it behaves normally within .control-row
+iframe{
+  @include box-sizing(border-box);
+}
+
+//opera is buggy? no chrome is buggy! really strange fix
+fieldset{
+  width: 100%;
+  //Thanks to johan@holmweb.se for that fix
+  min-width: 0;
+}
+
+form{
+  margin-bottom: 0;
+}
+
+.btn{
+  @include transition(background-color .2s);
+  font-family: $font-family-sans-serif;
+}
+
+.form-control{
+  font-family: $font-family-sans-serif;
+}
+
+svg {
+  height: 100%;
+  width: 100%;
+  display: block;
 }

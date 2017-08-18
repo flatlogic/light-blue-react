@@ -9,8 +9,9 @@
 @import '../../node_modules/font-awesome/scss/font-awesome';
 @import 'mixins';
 @import 'base';
-@import 'overrides';
+@import 'override-libs';
 @import 'override-bootstrap';
+@import 'override-custom-libs';
 @import 'general';
 @import 'utils';
 

@@ -1,0 +1,539 @@
+/**
+ * override custom libs styles. This files is not required for core sing functionality and may be removed
+ */
+
+
+
+/**
+ * nvd3
+ */
+.nvtooltip {
+  padding: $padding-small-vertical $padding-small-horizontal;
+  font-family: $font-family-base;
+  font-size: $font-size-small;
+  text-align: center;
+
+  p{
+    margin: 0;
+    padding: 0;
+  }
+}
+
+svg text,
+.nvd3 text{
+  font: $font-weight-base $font-size-small $font-family-base;
+  fill: $text-color;
+
+  .widget &{
+    fill: $widget-color;
+  }
+}
+
+svg .title {
+  font: $font-weight-bold $font-size-base $font-family-base;
+}
+
+.nvd3.nv-noData {
+  font-size: $font-size-large;
+  font-weight: $font-weight-bold;
+}
+
+.nvd3 .nv-axis path.domain {
+  stroke-opacity: 0;
+}
+
+.nv-controlsWrap{
+  .nv-legend-symbol{
+    fill: #666 !important;
+    stroke: #666 !important;
+  }
+}
+
+.nvd3 .nv-legend .disabled circle {
+  fill-opacity: 0;
+}
+
+.nvd3 .nv-axis line{
+  stroke: #000;
+  stroke-opacity: .1;
+}
+
+.nvtooltip h3{
+  background-color: transparent;
+  border: none;
+  color: inherit;
+}
+
+.stat-widget header .nvd3.nv-multibar .nv-group{
+  fill-opacity: 1 !important;
+}
+
+.nvd3.nv-stackedarea path.nv-area {
+  fill-opacity: .8;
+}
+
+.nvd3.nv-stackedarea path.nv-area.hover {
+  fill-opacity: .95;
+}
+
+.nvd3 .nv-axis path.domain{
+  display: none;
+}
+
+.nvtooltip{
+  padding: 5px;
+  position: absolute;
+  background-color: rgba($widget-bg-common, .6);
+  color: $widget-color;
+  border: none;
+  z-index: 10000;
+
+  font-family: inherit;
+
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  -moz-border-radius: 0;
+  border-radius: 0;
+
+  transition: none;
+  -moz-transition: none;
+  -webkit-transition: none;
+}
+
+.nvtooltip {
+  h3, h4{
+    margin: 0;
+    padding: 0;
+    font-size: $font-size-base;
+    text-align: center;
+  }
+}
+
+.nvd3 .nv-axis line.zero{
+  display: none;
+}
+
+/*!
+ * Bootstrap-select
+ */
+.bootstrap-select .btn:focus{
+  outline: 0 !important;
+}
+
+/**
+ * Switchery
+ */
+
+.switchery{
+  background-color: transparent !important;
+}
+
+/**
+ * Datetimepicker for Bootstrap v3
+ */
+.bootstrap-datetimepicker-widget
+{
+  border-radius: $border-radius-base;
+  color: $gray;
+  td,
+  th
+  {
+    border-radius: $border-radius-base;
+  }
+
+  td
+  {
+    &.day:hover,
+    &.hour:hover,
+    &.minute:hover,
+    &.second:hover
+    {
+      background: $gray-lighter;
+    }
+
+    &.old,
+    &.new
+    {
+      color: $gray-light;
+    }
+
+    &.active,
+    &.active:hover
+    {
+      background-color: $btn-primary-bg;
+      text-shadow: none;
+    }
+
+    &.disabled,
+    &.disabled:hover
+    {
+      color: $gray-light;
+    }
+
+    span
+    {
+      border-radius: $border-radius-base;
+
+      &:hover
+      {
+        background: $gray-lighter;
+      }
+
+      &.active
+      {
+        background-color: $btn-primary-bg;
+      }
+
+      &.old
+      {
+        color: $gray-light;
+      }
+
+      &.disabled,
+      &.disabled:hover
+      {
+        color: $gray-light;
+      }
+    }
+  }
+  th
+  {
+    &.next,
+    &.prev
+    {
+      font-size: $font-size-base * 1.5;
+    }
+    &.disabled,
+    &.disabled:hover
+    {
+      color: $gray-light;
+    }
+  }
+  thead tr:first-child th
+  {
+    &:hover
+    {
+      background: $gray-lighter;
+    }
+  }
+
+  .btn:not(.btn-primary){
+    color: darken($link-color, 20%);
+
+    &:hover{
+      @include box-shadow(none);
+    }
+  }
+}
+
+/**
+ * Bootstrap slider. converted from less files
+ */
+
+$slider-line-height: 8px;
+$slider-handle-size: 26px;
+
+.slider {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  &.slider-horizontal {
+    width: 210px;
+    height: $slider-line-height;
+    .slider-track {
+      height: $slider-line-height/2;
+      width: 100%;
+      margin-top: -$slider-line-height/4;
+      top: 50%;
+      left: 0;
+    }
+    .slider-selection {
+      height: 100%;
+      top: 0;
+      bottom: 0;
+    }
+    .slider-handle {
+      margin-left: -$slider-handle-size/2;
+      margin-top: -$slider-handle-size*3/8;
+      &.triangle {
+        border-width: 0 $slider-line-height/2 $slider-line-height/2 $slider-line-height/2;
+        width: 0;
+        height: 0;
+        border-bottom-color: #0480be;
+        margin-top: 0;
+      }
+    }
+
+    .tooltip.top{
+      top: -30px;
+    }
+  }
+  &.slider-vertical {
+    height: 210px;
+    width: $slider-line-height;
+    .slider-track {
+      width: $slider-line-height/2;
+      height: 100%;
+      margin-left: -$slider-line-height/4;
+      left: 50%;
+      top: 0;
+    }
+    .slider-selection {
+      width: 100%;
+      left: 0;
+      top: 0;
+      bottom: 0;
+    }
+    .slider-handle {
+      margin-left: -$slider-handle-size*3/8;
+      margin-top: -$slider-handle-size/2;
+      &.triangle {
+        border-width: $slider-line-height/2 0 $slider-line-height/2 $slider-line-height/2;
+        width: 1px;
+        height: 1px;
+        border-left-color: #0480be;
+        margin-left: 0;
+      }
+    }
+  }
+  &.slider-disabled {
+    .slider-handle {
+      @include gradient-vertical(#dfdfdf, #bebebe);
+    }
+    .slider-track {
+      @include gradient-vertical(#e5e5e5, #e9e9e9);
+      cursor: not-allowed;
+    }
+  }
+  input {
+    display: none;
+  }
+  .tooltip-inner {
+    white-space: nowrap;
+  }
+}
+.slider-track {
+  position: absolute;
+  cursor: pointer;
+  @include gradient-vertical(rgba(0,0,0,.15), rgba(0,0,0,.1));
+
+  @include box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
+  border-radius: $border-radius-base;
+}
+.slider-selection {
+  position: absolute;
+  background-color: $brand-primary;
+  @include box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+  //@include box-sizing(border-box);
+  border-radius: $border-radius-base;
+
+  .slider-danger &{
+    background-color: $brand-danger;
+  }
+  .slider-success &{
+    background-color: $brand-success;
+  }
+  .slider-warning &{
+    background-color: $brand-warning;
+  }
+  .slider-info &{
+    background-color: $brand-info;
+  }
+  .slider-inverse &{
+    background-color: $widget-color;
+  }
+}
+.slider-handle {
+  position: absolute;
+  width: $slider-handle-size;
+  height: $slider-handle-size;
+  background-color: $white;
+  @include box-shadow(inset 0 1px 0 rgba(255,255,255,.2), 0 1px 3px rgba(0,0,0,.5));
+  border: 0px solid transparent;
+
+  &:focus{
+    outline: 0;
+  }
+
+  &.round {
+    border-radius: 50%;
+  }
+  &.triangle {
+    background: transparent none;
+  }
+}
+
+/**
+ * Rickshaw
+ */
+
+.rickshaw_graph .detail .x_label {
+  color: $gray;
+}
+
+/***********************/
+/*    Full Calendar    */
+/***********************/
+
+.fc-grid th{
+  text-transform: uppercase;
+}
+
+.fc-event {
+  padding: 2px 3px;
+  border: none;
+  font-weight: $font-weight-normal;
+  background-color: $gray-semi-lighter;
+  color: $text-color;
+}
+
+.fc-unthemed .fc-today{
+  background-color: rgba(#fff1b8, .35);
+}
+
+a.fc-event{
+  height: auto;
+  line-height: 20px;
+}
+
+.fc-event, .fc-event:hover, .ui-widget .fc-event{
+  color: $gray;
+}
+
+.fc-unthemed th,
+.fc-unthemed td,
+.fc-unthemed hr,
+.fc-unthemed thead,
+.fc-unthemed tbody,
+.fc-unthemed .fc-row,
+.fc-unthemed .fc-popover{
+  border-color: $calendar-border;
+}
+
+/***********************************/
+/**           Backgrid            **/
+/***********************************/
+
+.table-editable{
+
+  th > a{
+    color: $text-color;
+    cursor: pointer;
+  }
+
+  .sort-caret {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-left: 0.3em;
+    border: 0;
+    content: "";
+    font: 15px FontAwesome;
+  }
+
+  .ascending .sort-caret {
+    &:before{
+      content: "\f0d8";
+    }
+  }
+
+  .descending .sort-caret {
+    &:before{
+      content: "\f0d7";
+    }
+  }
+
+  + .backgrid-paginator > ul{
+    font-weight: $font-weight-normal;
+    display: inline-block;
+    padding-left: 0;
+    margin: $line-height-computed 0;
+    border-radius: $border-radius-base;
+
+    > li {
+      display: inline; // Remove list-style and block-level defaults
+      > a,
+      > span {
+        position: relative;
+        float: left; // Collapse white-space
+        line-height: $line-height-base;
+        text-decoration: none;
+        color: $pagination-color;
+        background-color: $pagination-bg;
+        border: 1px solid $pagination-border;
+        border-radius: $border-radius-base;
+        margin: 0 2px;
+
+        > .fa-lg{
+          position: relative;
+          top: -1px;
+        }
+      }
+      &:first-child {
+        > a,
+        > span {
+          margin-left: 0;
+        }
+      }
+    }
+
+    > li > a,
+    > li > span {
+      &:hover,
+      &:focus {
+        color: $pagination-hover-color;
+        background-color: $pagination-hover-bg;
+        border-color: $pagination-hover-border;
+      }
+    }
+
+    > .active > a,
+    > .active > span {
+      &,
+      &:hover,
+      &:focus {
+        z-index: 2;
+        color: $pagination-active-color;
+        background-color: $pagination-active-bg;
+        border-color: $pagination-active-border;
+        cursor: default;
+      }
+    }
+
+    > .disabled {
+      > span,
+      > span:hover,
+      > span:focus,
+      > a,
+      > a:hover,
+      > a:focus {
+        color: $pagination-disabled-color;
+        background-color: $pagination-disabled-bg;
+        border-color: $pagination-disabled-border;
+        cursor: not-allowed;
+      }
+    }
+
+    @include pagination-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-base, $border-radius-sm);
+  }
+}
+
+
+/***********************************/
+/**           Rickshaw            **/
+/***********************************/
+
+.rickshaw_legend{
+  background-color: $widget-bg;
+  color: $widget-header-color;
+}
+
+/***********************************/
+/**           Glyphicon           **/
+/***********************************/
+
+.glyphicon-comment:before {
+  content:"\E111";
+}

@@ -45,7 +45,7 @@ class ErrorPage extends React.Component {
             </Row>
           </main>
           <footer className={s.pageFooter}>
-            2017 &copy; Light Blue. Admin Dashboard Template.
+            2014-2017 &copy; Light Blue. Admin Dashboard Template.
           </footer>
         </Container>
       </div>

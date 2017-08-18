@@ -1,24 +1,155 @@
 
 @import '../../styles/app';
 
-.widget {
-  display: block;
-  position: relative;
-  margin-bottom: 30px;
-  padding: 15px 20px;
+.widget{
+  border-radius: $border-radius-base;
+  @include box-sizing(content-box);
+  padding: $widget-padding;
   color: $widget-color;
   background: $widget-bg;
-  border-radius: 3px;
+  margin-bottom: $widget-mb;
+  position: relative;
+
+  //widget sizes
+  &.normal{
+    height: 220px;
+  }
+
+  &.large{
+    height: 315px;
+
+    .body{
+      height: 280px;
+    }
+  }
+
+  &.xlarge{
+    height: 415px;
+
+    .body{
+      height: 380px;
+    }
+  }
+
+  &.tiny{
+    height: 188px;
+  }
+
+  &.tiny-x2{
+    height: 426px;
+  }
+
+  &.transparent{
+    background: transparent;
+    @include box-shadow(none);
+  }
+
+  & > header{
+    position: relative;
+    background: none;
+    color: $widget-header-color;
+
+    + .widget-body{
+      margin-top: $widget-padding-vertical;
+    }
+
+    h1,h2,h3,h4,h5{
+      margin: 0;
+      line-height: 20px;
+      font-weight: 600;
+      color: inherit;
+
+      small{
+        text-transform: lowercase;
+        color: $widget-header-smalls-color;
+      }
+    }
+  }
+
+  .body{
+    margin-top: 10px;
+  }
+
+  & > footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 15px 0 0;
+  }
+
+  .actions{
+    position: absolute;
+    right: 0;
+    top: 0;
+    a{
+      text-decoration: none;
+    }
+  }
+
+  .widget-table-overflow{
+    margin: 0 (-$widget-padding-horizontal) (-$widget-padding-vertical);
+    border-bottom-left-radius: $border-radius-base;
+    border-bottom-right-radius: $border-radius-base;
+
+    .table > thead > tr > th,
+    .table > thead > tr > td,
+    .table > tbody > tr > th,
+    .table > tbody > tr > td,
+    .table > tfoot > tr > th,
+    .table > tfoot > tr > td {
+      &:first-child {
+        padding-left: $widget-padding-horizontal;
+      }
+
+      &:last-child {
+        padding-right: $widget-padding-horizontal;
+      }
+    }
+  }
+}
+
+.widget-controls{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  font-size: $font-size-small;
+  word-spacing: 1px;
+
+  &.left{
+    left: 0;
+    right: auto;
+  }
+
+  > a, > span{
+    padding: 1px 4px;
+    border-radius: 4px;
+    color: $widget-controls-color;
+    @include transition(color .15s ease-in-out);
+
+    > .fa{
+      vertical-align: middle;
+    }
+
+    > .glyphicon{
+      vertical-align: -1px;
+    }
+  }
+
+  > a:hover{
+    color: $widget-controls-hover-color;
+  }
+
+  .fa-refresh{
+    position: relative;
+    top: -1px;
+  }
 }
 
 .title {
   margin-top: 0;
-  color: $widget-title-color;
+  color: $widget-header-color;
 
   @include clearfix();
-
-  h4 {
-    font-weight: 300;
-    font-size: 1.5rem;
-  }
 }
