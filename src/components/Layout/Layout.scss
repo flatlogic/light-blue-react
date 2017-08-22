@@ -14,14 +14,14 @@
     margin-right: 0;
   }
 
-  &.sidebarHidden {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  &.sidebarRight {
+  .sidebarRight & {
     margin-left: 0;
     margin-right: 185px;
+  }
+
+  .sidebarHidden & {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -54,9 +54,13 @@
     top: 4px;
   }
 
-  &.logoRight {
+  .sidebarRight & {
     right: 67px;
     left: auto;
+  }
+
+  .sidebarHidden & {
+    display: none;
   }
 
   a {

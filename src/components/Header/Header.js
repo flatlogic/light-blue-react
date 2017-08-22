@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import {
   Navbar,
@@ -31,7 +32,8 @@ class Header extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     togleSidebar: PropTypes.func.isRequired,
-    // sidebarHidden: PropTypes.bool.isRequired,
+    sidebarRight: PropTypes.bool.isRequired,
+    sidebarHidden: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -51,6 +53,8 @@ class Header extends React.Component {
       messagesOpen: false,
       supportOpen: false,
       settingsOpen: false,
+      mSelected: 0,
+      hSelected: 0,
     };
   }
 
@@ -87,14 +91,26 @@ class Header extends React.Component {
     });
   }
 
-  toggleHide() {
-    // if (action === this.props.sidebarHidden) {
-    this.props.dispatch(hideSidebar());
-    // }
+  toggleHide(selected) {
+    this.setState({ hSelected: selected });
+
+    if ((selected === 1 && this.props.sidebarHidden) ||
+      (selected === 2 && !this.props.sidebarHidden)) {
+      this.props.dispatch(hideSidebar());
+    }
   }
 
-  toggleMove() {
-    this.props.dispatch(moveSidebar());
+  toggleMove(selected) {
+    this.setState({ mSelected: selected });
+
+    if ((selected === 1 && this.props.sidebarRight) ||
+      (selected === 2 && !this.props.sidebarRight)) {
+      this.props.dispatch(moveSidebar());
+    }
+  }
+
+  focusInput() {
+
   }
 
   render() {
@@ -105,11 +121,11 @@ class Header extends React.Component {
             <i className="fa fa-info-circle mr-1" /> Check out Light Blue <a>settings</a> on
             the right!
           </UncontrolledAlert>
-          <InputGroup size="sm" className={`${s.navbarForm} hidden-sm-down`}>
+          <InputGroup size="sm" className={`${s.navbarForm} hidden-sm-down`} onClick={this.focusInput()}>
             <InputGroupAddon className={s.inputAddon}><i className="fa fa-search" /></InputGroupAddon>
-            <Input id="search-input" placeholder="Search..." />
+            <Input id="search-input" placeholder="Search..." className="input-transparent" />
           </InputGroup>
-          <Nav>
+          <Nav className={s.nav}>
             <NavDropdown isOpen={this.state.messagesOpen} toggle={this.toggleMessagesDropdown}>
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-comments`} />
@@ -152,6 +168,7 @@ class Header extends React.Component {
             <NavDropdown isOpen={this.state.supportOpen} toggle={this.toggleSupportDropdown}>
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-globe`} />
+                <span className={s.count}>8</span>
               </DropdownToggle>
               <DropdownMenu right className={`${s.dropdownMenu} ${s.support}`}>
                 <DropdownItem>
@@ -206,17 +223,17 @@ class Header extends React.Component {
               <DropdownToggle nav>
                 <i className={`${s.dropdownNavIcon} glyphicon glyphicon-cog`} />
               </DropdownToggle>
-              <DropdownMenu className={s.dropdownMenu}>
+              <DropdownMenu className={`${s.dropdownMenu} ${s.settings}`}>
                 <section className="settings-content">
                   <div className="setting clearfix">
                     <div>Sidebar on the</div>
-                    <button type="button" onClick={this.toggleMove} className="btn btn-sm btn-secondary">Left</button>
-                    <button type="button" onClick={this.toggleMove} className="btn btn-sm btn-secondary">Right</button>
+                    <button type="button" onClick={() => this.toggleMove(1)} className={`btn btn-sm btn-secondary ${this.state.mSelected === 1 ? 'active' : ''}`}>Left</button>
+                    <button type="button" onClick={() => this.toggleMove(2)} className={`btn btn-sm btn-secondary ${this.state.mSelected === 2 ? 'active' : ''}`}>Right</button>
                   </div>
                   <div className="setting clearfix">
                     <div>Sidebar</div>
-                    <button type="button" onClick={this.toggleHide} className="btn btn-sm btn-secondary">Show</button>
-                    <button type="button" onClick={this.toggleHide} className="btn btn-sm btn-secondary">Hide</button>
+                    <button type="button" onClick={() => this.toggleHide(1)} className={`btn btn-sm btn-secondary ${this.state.hSelected === 1 ? 'active' : ''}`}>Show</button>
+                    <button type="button" onClick={() => this.toggleHide(2)} className={`btn btn-sm btn-secondary ${this.state.hSelected === 2 ? 'active' : ''}`}>Hide</button>
                   </div>
                 </section>
               </DropdownMenu>
@@ -231,16 +248,22 @@ class Header extends React.Component {
                   Philip Daineka
                 </section>
                 <DropdownItem>
-                  <i className="fa fa-user" />
-                  Profile
+                  <NavLink href="/profile">
+                    <i className="fa fa-user" />
+                    Profile
+                  </NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  <i className="fa fa-calendar" />
-                  Calendar
+                  <NavLink href="/calendar">
+                    <i className="fa fa-calendar" />
+                      Calendar
+                  </NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  <i className="fa fa-inbox" />
-                  Inbox
+                  <NavLink href="/inbox">
+                    <i className="fa fa-inbox" />
+                      Inbox
+                  </NavLink>
                 </DropdownItem>
               </DropdownMenu>
             </NavDropdown>
@@ -264,6 +287,7 @@ class Header extends React.Component {
 function mapStateToProps(store) {
   return {
     sidebarHidden: store.navigation.sidebarHidden,
+    sidebarRight: store.navigation.sidebarRight,
   };
 }
 

@@ -53,3 +53,30 @@
   background-color: $bg-addition;
   @include clearfix(); // Adding clearfix to allow for .pull-right button containers
 }
+
+.navbar .nav > li a:focus > i,
+.navbar .nav > li > a:hover > i,
+.navbar .nav > li > a.active > i,
+.navbar .nav > li > a.active:hover > i,
+.navbar .nav > li > a.active:focus > i {
+  color: $white;
+}
+
+.navbar .dropdown > .dropdown-menu {
+  &:after {
+    content: '';
+    display: inline-block;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid $popover-bg;
+    position: absolute;
+    top: -6px;
+    left: 10px;
+  }
+}
+
+.btn-sm{
+  line-height: 1.5;
+  font-size: 12px;
+  padding: 0 7px;
+}
