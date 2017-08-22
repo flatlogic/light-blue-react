@@ -17,8 +17,10 @@ class Dashboard extends React.Component {
             <Widget title={<h4>Example <span className="fw-semi-bold">Widget</span></h4>}>
               <div>
                 <img className="pull-left mt-1 mr-2" src={logo} alt="React" width="80" />
-                <p className="lead">You are looking at a completely new version of Sing App built
-                  with <strong>React JS</strong> using Redux, React Router and Server Side Rendering!</p>
+                <p className="lead">
+                  You are looking at a completely new version of Sing App built with
+                  <strong>React JS</strong> using Redux, React Router and Server Side Rendering!
+                </p>
                 <p className="fs-mini">Made by <a href="https://flatlogic.com" target="_blank" rel="noopener noreferrer">Flatlogic</a>.</p>
               </div>
             </Widget>

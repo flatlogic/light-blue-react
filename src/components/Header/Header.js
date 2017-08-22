@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import {
   Navbar,
@@ -109,10 +108,6 @@ class Header extends React.Component {
     }
   }
 
-  focusInput() {
-
-  }
-
   render() {
     return (
       <Navbar className={s.navbar}>
@@ -121,7 +116,7 @@ class Header extends React.Component {
             <i className="fa fa-info-circle mr-1" /> Check out Light Blue <a>settings</a> on
             the right!
           </UncontrolledAlert>
-          <InputGroup size="sm" className={`${s.navbarForm} hidden-sm-down`} onClick={this.focusInput()}>
+          <InputGroup size="sm" className={`${s.navbarForm} hidden-sm-down`}>
             <InputGroupAddon className={s.inputAddon}><i className="fa fa-search" /></InputGroupAddon>
             <Input id="search-input" placeholder="Search..." className="input-transparent" />
           </InputGroup>

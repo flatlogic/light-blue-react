@@ -71,19 +71,15 @@ class Login extends React.Component {
             <FormGroup>
               <Label className={s.label} for="email">Email</Label>
               <InputGroup className={`${s.navbarForm} input-group-lg`}>
-                <InputGroupAddon className={s.inputAddon}><i className="fa fa-user" /></InputGroupAddon>
-                <Input id="email" className="input-lg input-transparent" value={this.state.login}
-                       onChange={this.changeLogin} type="text" required placeholder="Your Email" />
+                <InputGroupAddon><i className="fa fa-user" /></InputGroupAddon>
+                <Input id="email" className="input-lg input-transparent" value={this.state.login} onChange={this.changeLogin} type="text" required placeholder="Your Email" />
               </InputGroup>
             </FormGroup>
             <FormGroup>
               <Label className={s.label} for="password">Password</Label>
               <InputGroup className={`${s.navbarForm} input-group-lg`}>
-                <InputGroupAddon className={s.inputAddon}><i className="fa fa-lock" /></InputGroupAddon>
-                <Input type="password"  className="input-lg input-transparent"
-                       id="password" value={this.state.password} onChange={this.changePassword}
-                       placeholder="Your Password"
-                />
+                <InputGroupAddon><i className="fa fa-lock" /></InputGroupAddon>
+                <Input type="password" className="input-lg input-transparent" id="password" value={this.state.password} onChange={this.changePassword} placeholder="Your Password" />
               </InputGroup>
             </FormGroup>
             <div className={s.formActions}>

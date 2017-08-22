@@ -54,5 +54,6 @@ module.exports = {
       'react/prefer-stateless-function': 'off',
 
       "linebreak-style": 0,
+      'css-modules/no-unused-class': 'off'
     },
   };
