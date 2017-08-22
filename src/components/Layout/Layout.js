@@ -49,7 +49,7 @@ class Layout extends React.Component {
         <Sidebar openSidebar={this.state.openSidebar} />
         <div className={s.wrap}>
           <Header togleSidebar={this.togleSidebar} />
-          <main className={s.content}>
+          <main className={[s.content, this.state.openSidebar ? s.openSidebar : ''].join(' ')}>
             <Switch>
               <Route path="/app" exact component={Dashboard} />
               <Route path="/app/another" exact component={AnotherBundle} />
