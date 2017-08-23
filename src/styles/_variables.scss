@@ -67,7 +67,7 @@ $font-family-sans-serif:  "Open Sans", sans-serif !default;
 
 $font-size-base:          0.8rem !default;
 $font-size-large:         $font-size-base * 1.25 !default;
-$font-size-larger:        $font-size-base + 1;
+$font-size-larger:        $font-size-base + 0.1rem;
 $font-size-small:         0.75rem !default;
 $font-size-mini:          $font-size-base * 0.75 !default;
 $font-size-index:         $font-size-base * 0.7 !default;
@@ -126,7 +126,6 @@ $page-title-color: $white;
 $header-link-color: $text-transparent;
 $header-notification-count: rgba($widget-bg-common, .55);
 
-$header-search-query-bg-image: url(assets/img/search-white.png);
 $header-search-query-placeholder-color: rgba(#eee, .76);
 
 $header-dropdown-primary-color:          $widget-header-color;
