@@ -8,6 +8,7 @@
     color: $sidebar-color;
     text-decoration: none;
     cursor: pointer;
+    border-radius: $border-radius;
 
     &:hover,
     &:focus {

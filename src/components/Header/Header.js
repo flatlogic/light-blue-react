@@ -114,11 +114,10 @@ class Header extends React.Component {
   render() {
     return (
       <Navbar>
-        <NavbarToggler right onClick={this.toggle} />
-        <NavbarBrand href="/">
+        <NavbarBrand className={s.logo} href="/">
           Light <strong>Blue</strong>
         </NavbarBrand>
-        <Nav className="ml-auto" navbar>
+        <Nav className="ml-auto">
           <NavItem>
             <NavLink href="/components/">Components</NavLink>
           </NavItem>

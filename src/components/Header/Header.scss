@@ -4,6 +4,32 @@
 /**          HEADER               **/
 /**********************************/
 
+.logo {
+  position: absolute;
+  @media (min-height: 940px) {
+    position: fixed;
+  }
+  left: 56px;
+  top: 17px;
+  z-index: 1;
+  font-size: 16px;
+  font-weight: normal;
+  color: $white;
+
+  &:hover,
+  &:focus {
+    color: $white;
+  }
+
+  @media (max-width: breakpoint-max(sm)) {
+    left: auto;
+
+    strong {
+      display: block;
+    }
+  }
+}
+
 .navbar{
   min-height: 40px;
   border: none;

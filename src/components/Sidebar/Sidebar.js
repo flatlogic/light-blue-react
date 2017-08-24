@@ -37,19 +37,19 @@ class Sidebar extends React.Component {
         </h5>
         <ul className={s.sidebarLabels}>
           <NavItem>
-            <NavLink>
+            <NavLink href="#">
               <i className="fa fa-circle text-warning" />
               <span className={s.labelName}>My Recent</span>
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>
+            <NavLink href="#">
               <i className="fa fa-circle text-gray" />
               <span className={s.labelName}>Starred</span>
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>
+            <NavLink href="#">
               <i className="fa fa-circle text-danger" />
               <span className={s.labelName}>Background</span>
             </NavLink>
