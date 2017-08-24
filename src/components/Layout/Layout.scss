@@ -6,64 +6,17 @@
 
 .wrap {
   min-height: 100%;
-  position: relative;
-  margin-left: 185px;
+  display: flex;
 
-  @media (max-width: 767px) {
-    margin-left: 0;
-    margin-right: 0;
+  @media (max-width: breakpoint-max('sm')) {
+    flex-direction: column;
   }
-
-  .sidebarRight & {
-    margin-left: 0;
-    margin-right: 185px;
-  }
-
-  .sidebarHidden & {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-.openSidebar {
-  margin-top: 100px;
 }
 
 .content {
   min-height: 100%;
   padding: 25px 2.5641%;
+  flex: 1;
 
-  @include transition(margin-top 0.35s ease, opacity 0.2s);
-}
-
-.logo {
-  box-sizing: content-box;
-  position: absolute;
-  margin-top: 9px;
-  margin-bottom: 9px;
-  left: 65px;
-  top: 17px;
-  z-index: 1;
-
-  @media (max-width: 767px) {
-    display: block;
-    left: 1.6% !important;
-    right: auto !important;
-    padding-right: 5px;
-    width: 40px;
-    top: 4px;
-  }
-
-  .sidebarRight & {
-    right: 67px;
-    left: auto;
-  }
-
-  .sidebarHidden & {
-    display: none;
-  }
-
-  a {
-    font-weight: normal;
-  }
+  @include transition(opacity 0.2s);
 }

@@ -27,6 +27,17 @@
   }
 }
 
+.page-title{
+  color: $page-title-color;
+  font-weight: 300;
+  line-height: 1;
+  margin: 11px 0 $line-height-computed;
+
+  small{
+    color: rgba($page-title-color, .7);
+  }
+}
+
 .form-control{
   &.input-transparent{
     border: none;

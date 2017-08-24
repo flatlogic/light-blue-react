@@ -48,7 +48,7 @@ h4 small { font-size: $font-size-base; }
 .text-success        { color: $brand-success; }
 .text-info           { color: $brand-info; }
 
-@media (min-width: 768px) {
+@media (min-width: breakpoint-min('sm')) {
   .lead {
     font-size: 16px;
   }

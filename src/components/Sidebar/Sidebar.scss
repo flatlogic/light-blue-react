@@ -1,36 +1,16 @@
 @import '../../styles/app';
 
 .root {
-  position: absolute;
-  width: $sidebar-width-open;
-  margin: 80px 0 0 25px;
+  height: 0;
+  overflow: hidden;
+  margin: 0 0 0 ($grid-gutter-width-base/2);
   padding: 10px 0;
   color: $sidebar-color;
 
-  &:not(.show) {
-    @media (max-width: 767px) {
-      overflow: hidden;
-      height: 0;
-    }
-  }
-
-  @media (max-width: 767px) {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 90px 5%;
-    width: 90%;
-    padding: 0;
-  }
-
-  &.hide {
-    display: none;
-  }
-
-  &.sidebarRight {
-    right: 0;
-    margin: 80px 25px 0 0;
+  @media (min-width: breakpoint-min('md')) {
+    width: $sidebar-width-open;
+    height: auto;
+    overflow: auto;
   }
 }
 
@@ -43,7 +23,7 @@
 .navTitle {
   margin: 35px 0 5px 20px;
 
-  @media (max-width: 767px) {
+  @media (max-width: breakpoint-max('sm')) {
     display: none;
   }
 }
@@ -90,7 +70,7 @@
     color: #fff;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: breakpoint-max('sm')) {
     display: none;
   }
 }
@@ -98,7 +78,7 @@
 .sidebarAlerts {
   opacity: 1;
 
-  @media (max-width: 767px) {
+  @media (max-width: breakpoint-max('sm')) {
     display: none;
   }
 
