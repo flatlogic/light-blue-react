@@ -490,7 +490,7 @@ button.dropdown-toggle{
     &,
     &:hover,
     &:focus {
-      background-color: $nav-link-hover-bg;
+      background-color: $gray-200;
       border-color: transparent;
     }
   }
@@ -801,35 +801,35 @@ button.dropdown-toggle{
 }
 
 .badge-default {
-  @include badge-variant($badge-default-bg);
+  @include badge-variant($gray-400);
 }
 
 .badge-primary {
-  @include badge-variant($badge-primary-bg);
+  @include badge-variant(theme-color("primary"));
 }
 
 .badge-success {
-  @include badge-variant($badge-success-bg);
+  @include badge-variant(theme-color("success"));
 }
 
 .badge-info {
-  @include badge-variant($badge-info-bg);
+  @include badge-variant(theme-color("info"));
 }
 
 .badge-warning {
-  @include badge-variant($badge-warning-bg);
+  @include badge-variant(theme-color("warning"));
 }
 
 .badge-danger {
-  @include badge-variant($badge-danger-bg);
+  @include badge-variant(theme-color("danger"));
 }
 
 .badge-important{
-  @include badge-variant($badge-danger-bg);
+  @include badge-variant(theme-color("danger"));
 }
 
 .badge-inverse{
-  @include badge-variant($badge-default-bg);
+  @include badge-variant($gray-400);
 }
 
 .help-block{

@@ -162,7 +162,7 @@ svg .title {
     &.active,
     &.active:hover
     {
-      background-color: $btn-primary-bg;
+      background-color: theme-color("primary");
       text-shadow: none;
     }
 
@@ -183,7 +183,7 @@ svg .title {
 
       &.active
       {
-        background-color: $btn-primary-bg;
+        background-color: theme-color("primary");
       }
 
       &.old
