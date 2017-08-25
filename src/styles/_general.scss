@@ -1,5 +1,5 @@
 html {
-  font-weight: 100;
+  font-size: $font-size-initial;
 }
 
 body {
@@ -13,14 +13,13 @@ body {
 }
 
 html,
-body,
-.app {
+body {
   height: 100%;
 }
 
 a {
   cursor: pointer;
-  transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 th {

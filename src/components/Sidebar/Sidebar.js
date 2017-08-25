@@ -29,12 +29,12 @@ class Sidebar extends React.Component {
           <LinksGroup header="Dashboard" headerLink="/app" iconName="fa-home" />
           <LinksGroup header="Another Page" headerLink="/app/another" iconName="fa-tree" />
         </ul>
-        <h5 className={s.navTitle}>
+        <h6 className={s.navTitle}>
           Labels
           <a className={s.actionLink}>
             <i className={`${s.glyphiconSm} glyphicon glyphicon-plus float-right`} />
           </a>
-        </h5>
+        </h6>
         <ul className={s.sidebarLabels}>
           <NavItem>
             <NavLink href="#">
@@ -55,9 +55,9 @@ class Sidebar extends React.Component {
             </NavLink>
           </NavItem>
         </ul>
-        <h5 className={s.navTitle}>
+        <h6 className={s.navTitle}>
           Projects
-        </h5>
+        </h6>
         <div className={s.sidebarAlerts}>
           {this.props.alertsList.map(alert => // eslint-disable-line
             <Alert

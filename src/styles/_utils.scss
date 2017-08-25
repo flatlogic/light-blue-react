@@ -117,7 +117,7 @@ $i: 0;
   margin: 0;
 }
 
-$margin-vertical-variants: (xlg: 40px, lg: $line-height-computed*3/2, md: $line-height-computed, sm: $line-height-computed/2, xs: $line-height-computed/4, 0: 0);
+$margin-vertical-variants: (xlg: 40px, lg: $spacer*3/2, md: $spacer, sm: $spacer/2, xs: $spacer/4, 0: 0);
 $margin-horizontal-variants: (lg: 20px, md: 15px, sm: 10px, xs: 5px, 0: 0);
 
 @include property-variants('.mt', 'margin-top', $margin-vertical-variants);
@@ -255,11 +255,7 @@ $z-index-variants: (more: 1, less: -1);
 }
 
 .fs-sm{
-  font-size: $font-size-small;
-}
-
-.fs-larger{
-  font-size: $font-size-larger;
+  font-size: $font-size-sm;
 }
 
 .btlr{

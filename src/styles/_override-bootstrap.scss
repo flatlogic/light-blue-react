@@ -26,16 +26,9 @@ blockquote{
   }
   p{
     font-size: inherit;
-    margin-bottom: $line-height-computed / 2;
+    margin-bottom: ($line-height-base * $font-size-base) / 2;
   }
 }
-
-h1 { font-size: $font-size-base * 2.75; } // ~38px
-h2 { font-size: $font-size-base * 2.25; } // ~32px
-h3 { font-size: $font-size-base * 1.75; } // ~24px
-h4 { font-size: $font-size-base * 1.25; } // ~18px
-h5 { font-size: $font-size-base; }
-h6 { font-size: $font-size-base * 0.85; } // ~12px
 
 h1 small { font-size: $font-size-base * 1.75; } // ~24px
 h2 small { font-size: $font-size-base * 1.25; } // ~18px
@@ -83,11 +76,6 @@ textarea {
   font-weight: $font-weight-base;
 }
 
-legend small{
-  color: $text-muted;
-  font-size: $font-size-larger;
-}
-
 .form-control{
   @include transition(border linear .2s, box-shadow linear .2s);
 
@@ -105,56 +93,6 @@ input[type="checkbox"]:focus {
 
 .input-group-btn > .btn{
   z-index: 2;
-}
-
-/*adding .btn-group here because selectpicker's select become .btn-group
-  need some more vertical space*/
-.btn-group,
-input,
-select,
-textarea,
-.uneditable-input,
-.input-prepend,
-.input-append {
-  + .help-block {
-    margin-top: $line-height-computed / 4;
-  }
-}
-
-.help-block {
-  margin-top: 0;
-  font-size: $font-size-small - 1;
-  color: $text-muted;
-}
-
-.search-query, .navbar-form .search-query{
-  border-radius: $border-radius-base;
-  line-height: $line-height-computed;
-}
-
-.form-horizontal{
-  input,
-  select,
-  textarea,
-  .uneditable-input,
-  .input-prepend,
-  .input-append {
-    + .help-block {
-      margin-top: $line-height-computed / 4;
-    }
-  }
-}
-
-.form-group{
-  margin-bottom: $line-height-computed;
-}
-
-.form-horizontal.form-label-left {
-  @include media-breakpoint-up(sm) {
-    .control-label {
-      text-align: left;
-    }
-  }
 }
 
 /***************************/
@@ -358,8 +296,8 @@ button.dropdown-toggle{
 
 .btn-toolbar {
   font-size: 0; // Hack to remove whitespace that results from using inline-block
-  margin-top: $line-height-base / 2;
-  margin-bottom: $line-height-base / 2;
+  margin-top: $spacer / 2;
+  margin-bottom: $spacer / 2;
   > .btn + .btn,
   > .btn-group + .btn,
   > .btn + .btn-group {
@@ -482,32 +420,6 @@ button.dropdown-toggle{
 /***************************/
 /*          Navs           */
 /***************************/
-
-.nav {
-  margin-bottom: 0;
-
-  .open > a {
-    &,
-    &:hover,
-    &:focus {
-      background-color: $gray-200;
-      border-color: transparent;
-    }
-  }
-}
-
-.nav > li > a{
-  @include transition(background-color .2s);
-}
-
-.nav > li > a:hover,
-.nav > li > a:focus,
-.nav .open > a,
-.nav .open > a:hover,
-.nav .open > a:focus{
-  background-color: rgba($widget-bg-common, .25);
-}
-
 .nav-tabs > li > a {
   border-radius: $border-radius-base $border-radius-base 0 0;
   color: $nav-tabs-link-color;
@@ -665,7 +577,6 @@ button.dropdown-toggle{
   > li > a {
     padding-top:    10px;
     padding-bottom: 10px;
-    line-height: $line-height-computed;
   }
 
   @include media-breakpoint-up(xs) {
@@ -741,7 +652,7 @@ button.dropdown-toggle{
 /***************************/
 
 .tooltip {
-  font-size: $font-size-small;
+  font-size: $font-size-sm;
 }
 
 .tooltip-inner {
@@ -793,7 +704,7 @@ button.dropdown-toggle{
   line-height: 14px; // ensure proper line-height if floated
   text-shadow: none;
   font-weight: $font-weight-semi-bold;
-  font-size: $font-size-small - 1;
+  font-size: $font-size-mini;
 }
 
 .badge{
@@ -834,7 +745,7 @@ button.dropdown-toggle{
 
 .help-block{
   margin-top: 5px;
-  font-size: $font-size-smaller;
+  font-size: $font-size-mini;
   color: $text-muted;
   display: block;
 }
@@ -869,7 +780,7 @@ button.dropdown-toggle{
 
 .alert-sm{
   padding: 10px 12px;
-  font-size: $font-size-small;
+  font-size: $font-size-sm;
 
   .close{
     font-size: 18px;
@@ -943,12 +854,12 @@ button.dropdown-toggle{
 
 .progress-sm{
   height: 10px;
-  margin-bottom: $line-height-computed/2;
+  margin-bottom: $spacer/2;
 }
 
 .progress-xs{
   height: 5px;
-  margin-bottom: $line-height-computed/2;
+  margin-bottom: $spacer/2;
 }
 
 /***************************/

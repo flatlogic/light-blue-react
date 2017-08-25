@@ -31,7 +31,7 @@
   color: $page-title-color;
   font-weight: 300;
   line-height: 1;
-  margin: 11px 0 $line-height-computed;
+  margin: 11px 0 1.5*$spacer;
 
   small{
     color: rgba($page-title-color, .7);
@@ -56,13 +56,6 @@
       background-color: lighten($widget-bg, 10%);
     }
   }
-}
-
-.form-actions {
-  padding: ($line-height-computed - 1) 20px $line-height-computed;
-  margin-top: $line-height-computed;
-  background-color: $bg-addition;
-  @include clearfix(); // Adding clearfix to allow for .pull-right button containers
 }
 
 .navbar .nav > li a:focus > i,

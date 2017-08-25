@@ -57,6 +57,7 @@ class Header extends React.Component {
       settingsOpen: false,
       mSelected: 0,
       hSelected: 0,
+      searchFocused: false,
     };
   }
 
@@ -117,10 +118,16 @@ class Header extends React.Component {
         <NavbarBrand className={s.logo} href="/">
           Light <strong>Blue</strong>
         </NavbarBrand>
-        <Nav className={s.nav}>
+        <InputGroup className={`${s.navbarForm} ${s.navItemOptional} ${this.state.searchFocused ? s.navbarFormFocused : ''} ml-auto mr-3`}>
+          <InputGroupAddon className={s.inputAddon}><i className="fa fa-search" /></InputGroupAddon>
+          <Input id="search-input" placeholder="Search..." className="input-transparent"
+                 onFocus={() => this.setState({searchFocused: true})}
+                 onBlur={() => this.setState({searchFocused: false})}/>
+        </InputGroup>
+        <Nav>
           <NavDropdown isOpen={this.state.messagesOpen} toggle={this.toggleMessagesDropdown}>
-            <DropdownToggle nav>
-              <i className={`${s.dropdownNavIcon} glyphicon glyphicon-comments`} />
+            <DropdownToggle nav className={s.navItem}>
+              <i className="glyphicon glyphicon-comments" />
             </DropdownToggle>
             <DropdownMenu className={`${s.dropdownMenu} ${s.messages}`} right>
               <DropdownItem>
@@ -158,8 +165,8 @@ class Header extends React.Component {
             </DropdownMenu>
           </NavDropdown>
           <NavDropdown isOpen={this.state.supportOpen} toggle={this.toggleSupportDropdown}>
-            <DropdownToggle nav>
-              <i className={`${s.dropdownNavIcon} glyphicon glyphicon-globe`} />
+            <DropdownToggle nav className={s.navItem}>
+              <i className="glyphicon glyphicon-globe" />
               <span className={s.count}>8</span>
             </DropdownToggle>
             <DropdownMenu right className={`${s.dropdownMenu} ${s.support}`}>
@@ -211,9 +218,9 @@ class Header extends React.Component {
             </DropdownMenu>
           </NavDropdown>
           <NavItem className={s.divider} />
-          <NavDropdown isOpen={this.state.settingsOpen} toggle={this.toggleSettingsDropdown} className="hidden-sm-down">
-            <DropdownToggle nav>
-              <i className={`${s.dropdownNavIcon} glyphicon glyphicon-cog`} />
+          <NavDropdown isOpen={this.state.settingsOpen} toggle={this.toggleSettingsDropdown} className={s.navItemOptional}>
+            <DropdownToggle nav className={s.navItem}>
+              <i className="glyphicon glyphicon-cog" />
             </DropdownToggle>
             <DropdownMenu className={`${s.dropdownMenu} ${s.settings}`}>
               <section className="settings-content">
@@ -230,9 +237,9 @@ class Header extends React.Component {
               </section>
             </DropdownMenu>
           </NavDropdown>
-          <NavDropdown isOpen={this.state.accountOpen} toggle={this.toggleAccountDropdown} className="hidden-sm-down">
-            <DropdownToggle nav>
-              <i className={`${s.dropdownNavIcon} glyphicon glyphicon-user`} />
+          <NavDropdown isOpen={this.state.accountOpen} toggle={this.toggleAccountDropdown} className={s.navItemOptional}>
+            <DropdownToggle nav className={s.navItem}>
+              <i className="glyphicon glyphicon-user" />
             </DropdownToggle>
             <DropdownMenu right className={`${s.dropdownMenu} ${s.account}`}>
               <section>
@@ -259,14 +266,14 @@ class Header extends React.Component {
               </DropdownItem>
             </DropdownMenu>
           </NavDropdown>
-          <NavItem className="hidden-sm-down">
-            <NavLink onClick={this.doLogout}>
-              <i className={`${s.dropdownNavIcon} glyphicon glyphicon-off`} />
+          <NavItem className={s.navItemOptional}>
+            <NavLink onClick={this.doLogout} className={s.navItem} href="#">
+              <i className="glyphicon glyphicon-off" />
             </NavLink>
           </NavItem>
-          <NavItem className="hidden-md-up">
-            <NavLink onClick={this.props.togleSidebar}>
-              <i className={`${s.dropdownNavIcon} fa fa-bars`} />
+          <NavItem className="d-md-none">
+            <NavLink onClick={this.props.togleSidebar} className={s.navItem} href="#">
+              <i className="fa fa-bars" />
             </NavLink>
           </NavItem>
         </Nav>

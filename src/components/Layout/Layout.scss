@@ -1,11 +1,6 @@
 @import '../../styles/app';
 
-.root {
-  height: 100%;
-}
-
 .wrap {
-  min-height: 100%;
   display: flex;
 
   @media (max-width: breakpoint-max('sm')) {
@@ -14,7 +9,6 @@
 }
 
 .content {
-  min-height: 100%;
   padding: 25px 2.5641%;
   flex: 1;
 

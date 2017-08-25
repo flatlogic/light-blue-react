@@ -65,9 +65,6 @@
       }
     }
 
-    h4{
-      font-size: $font-size-larger;
-    }
   }
 
   .body{
@@ -118,7 +115,7 @@
   z-index: 1;
   top: 0;
   right: 0;
-  font-size: $font-size-small;
+  font-size: $font-size-sm;
   word-spacing: 1px;
 
   &.left{

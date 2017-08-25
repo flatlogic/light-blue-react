@@ -65,13 +65,17 @@ $text-muted: darken($text-color, 15%) !default;
 
 $font-family-sans-serif:  "Open Sans", sans-serif !default;
 
-$font-size-base:          0.8rem !default;
-$font-size-large:         $font-size-base * 1.25 !default;
-$font-size-larger:        $font-size-base + 0.1rem;
-$font-size-small:         0.75rem !default;
-$font-size-mini:          $font-size-base * 0.75 !default;
-$font-size-index:         $font-size-base * 0.7 !default;
-$font-size-smaller:       $font-size-base * 0.85 !default;
+$font-size-initial:       13px; // reset default browser value from 16px to 13px
+$font-size-base:          1rem !default;
+$font-size-lg:            1.25rem !default;
+$font-size-sm:            .875rem !default;
+$font-size-larger:        1.1rem;
+$font-size-mini:          0.9rem;
+$font-size-index:         0.7rem;
+
+$small-font-size:         85%;
+
+$h5-font-size: $font-size-larger !default;
 
 $font-weight-bold: 700 !default;
 $font-weight-semi-bold: 600 !default;
@@ -80,7 +84,6 @@ $font-weight-thin: 300 !default;
 $font-weight-base: $font-weight-thin !default;
 
 $line-height-base:        1.428571429 !default; // 20/14
-$line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
 // Links
 // -------------------------
@@ -134,6 +137,9 @@ $header-dropdown-bg:                     rgba($widget-bg-common, .85);
 $header-dropdown-shadow:                 none;
 $header-dropdown-item-hover:             $brand-primary;
 
+$nav-link-padding-x: 0.9rem;
+$navbar-padding-x: 2rem;
+$navbar-padding-y: 0.9rem;
 $nav-tabs-link-color: $widget-color;
 
 $input-transparent-color: $text-color;
@@ -212,11 +218,6 @@ $input-border-focus:             #66afe9 !default;
 
 $input-group-addon-bg:           $bg-addition;
 $input-group-addon-border-color: transparent;
-
-// recalculate input heights
-$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
-$input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) !default;
-
 
 $legend-color:                   $white !default;
 
