@@ -273,3 +273,15 @@ $z-index-variants: (more: 1, less: -1);
 .bbrr{
   border-bottom-right-radius: $border-radius-base;
 }
+
+.d-sm-none-down {
+  @media (max-width: breakpoint-max(sm)) {
+    display: none !important;
+  }
+}
+
+.d-md-none-down {
+  @media (max-width: breakpoint-max(md)) {
+    display: none !important;
+  }
+}
