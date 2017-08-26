@@ -20,9 +20,11 @@ import {
   DropdownMenu,
   DropdownItem,
   Badge,
+  ButtonGroup,
+  Button
 } from 'reactstrap';
 import { logoutUser } from '../../actions/user';
-import { hideSidebar, moveSidebar } from '../../actions/navigation';
+import { toggleSidebar, positionSidebar } from '../../actions/navigation';
 
 import i1 from '../../images/1.png';
 import i2 from '../../images/2.png';
@@ -33,9 +35,8 @@ import s from './Header.scss';
 class Header extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    toggleSidebar: PropTypes.func.isRequired,
-    sidebarRight: PropTypes.bool.isRequired,
-    sidebarHidden: PropTypes.bool.isRequired,
+    sidebarState: PropTypes.string.isRequired,
+    sidebarPosition: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -47,16 +48,14 @@ class Header extends React.Component {
     this.toggleSupportDropdown = this.toggleSupportDropdown.bind(this);
     this.toggleSettingsDropdown = this.toggleSettingsDropdown.bind(this);
     this.toggleAccountDropdown = this.toggleAccountDropdown.bind(this);
-    this.toggleHide = this.toggleHide.bind(this);
-    this.toggleMove = this.toggleMove.bind(this);
+    this.moveSidebar = this.moveSidebar.bind(this);
+    this.toggleSidebar = this.toggleSidebar.bind(this);
 
     this.state = {
       visible: true,
       messagesOpen: false,
       supportOpen: false,
       settingsOpen: false,
-      mSelected: 0,
-      hSelected: 0,
       searchFocused: false,
     };
   }
@@ -94,22 +93,12 @@ class Header extends React.Component {
     });
   }
 
-  toggleHide(selected) {
-    this.setState({ hSelected: selected });
-
-    if ((selected === 1 && this.props.sidebarHidden) ||
-      (selected === 2 && !this.props.sidebarHidden)) {
-      this.props.dispatch(hideSidebar());
-    }
+  toggleSidebar(state) {
+    this.props.dispatch(toggleSidebar(state));
   }
 
-  toggleMove(selected) {
-    this.setState({ mSelected: selected });
-
-    if ((selected === 1 && this.props.sidebarRight) ||
-      (selected === 2 && !this.props.sidebarRight)) {
-      this.props.dispatch(moveSidebar());
-    }
+  moveSidebar(position) {
+    this.props.dispatch(positionSidebar(position));
   }
 
   render() {
@@ -118,7 +107,11 @@ class Header extends React.Component {
         <NavbarBrand className={s.logo} href="/">
           Light <strong>Blue</strong>
         </NavbarBrand>
-        <InputGroup className={`${s.navbarForm} ${s.navItemOptional} ${this.state.searchFocused ? s.navbarFormFocused : ''} ml-auto mr-3`}>
+        <UncontrolledAlert className={[s.alert, ' ml-auto mr-3'].join(' ')}>
+          <i className="fa fa-info-circle mr-1" /> Check out Light Blue <a href="#" onClick={() => this.setState({settingsOpen: true})}>settings</a> on
+          the right!
+        </UncontrolledAlert>
+        <InputGroup className={`${s.navbarForm} ${s.navItemOptional} ${this.state.searchFocused ? s.navbarFormFocused : ''} mr-3`}>
           <InputGroupAddon className={s.inputAddon}><i className="fa fa-search" /></InputGroupAddon>
           <Input id="search-input" placeholder="Search..." className="input-transparent"
                  onFocus={() => this.setState({searchFocused: true})}
@@ -129,7 +122,7 @@ class Header extends React.Component {
             <DropdownToggle nav className={s.navItem}>
               <i className="glyphicon glyphicon-comments" />
             </DropdownToggle>
-            <DropdownMenu className={`${s.dropdownMenu} ${s.messages}`} right>
+            <DropdownMenu className={`${s.dropdownMenu} ${s.messages}`}>
               <DropdownItem>
                 <img className={s.image} src={i1} alt="" />
                 <div className={s.details}>
@@ -171,41 +164,31 @@ class Header extends React.Component {
             </DropdownToggle>
             <DropdownMenu right className={`${s.dropdownMenu} ${s.support}`}>
               <DropdownItem>
-                <div className="picture">
-                  <Badge color="danger"><i className="fa fa-bell-o" /></Badge>
-                </div>
+                <Badge color="danger"><i className="fa fa-bell-o" /></Badge>
                 <div className={s.details}>
                   Check out this awesome ticket
                 </div>
               </DropdownItem>
               <DropdownItem>
-                <div className="picture">
-                  <Badge color="warning"><i className="fa fa-question-circle" /></Badge>
-                </div>
+                <Badge color="warning"><i className="fa fa-question-circle" /></Badge>
                 <div className={s.details}>
                   What is the best way to get ...
                 </div>
               </DropdownItem>
               <DropdownItem>
-                <div className="picture">
-                  <Badge color="success"><i className="fa fa-info-circle" /></Badge>
-                </div>
+                <Badge color="success"><i className="fa fa-info-circle" /></Badge>
                 <div className={s.details}>
                   This is just a simple notification
                 </div>
               </DropdownItem>
               <DropdownItem>
-                <div className="picture">
-                  <Badge color="info"><i className="fa fa-plus" /></Badge>
-                </div>
+                <Badge color="info"><i className="fa fa-plus" /></Badge>
                 <div className={s.details}>
                   12 new orders has arrived today
                 </div>
               </DropdownItem>
               <DropdownItem>
-                <div className="picture">
-                  <Badge color="danger"><i className="fa fa-tag" /></Badge>
-                </div>
+                <Badge color="danger"><i className="fa fa-tag" /></Badge>
                 <div className={s.details}>
                   One more thing that just happened
                 </div>
@@ -223,18 +206,16 @@ class Header extends React.Component {
               <i className="glyphicon glyphicon-cog" />
             </DropdownToggle>
             <DropdownMenu className={`${s.dropdownMenu} ${s.settings}`}>
-              <section className="settings-content">
-                <div className="setting clearfix">
-                  <div>Sidebar on the</div>
-                  <button type="button" onClick={() => this.toggleMove(1)} className={`btn btn-sm btn-secondary ${this.state.mSelected === 1 ? 'active' : ''}`}>Left</button>
-                  <button type="button" onClick={() => this.toggleMove(2)} className={`btn btn-sm btn-secondary ${this.state.mSelected === 2 ? 'active' : ''}`}>Right</button>
-                </div>
-                <div className="setting clearfix">
-                  <div>Sidebar</div>
-                  <button type="button" onClick={() => this.toggleHide(1)} className={`btn btn-sm btn-secondary ${this.state.hSelected === 1 ? 'active' : ''}`}>Show</button>
-                  <button type="button" onClick={() => this.toggleHide(2)} className={`btn btn-sm btn-secondary ${this.state.hSelected === 2 ? 'active' : ''}`}>Hide</button>
-                </div>
-              </section>
+                <h6>Sidebar on the</h6>
+                <ButtonGroup size="sm">
+                  <Button onClick={() => this.moveSidebar('left')} className={this.props.sidebarPosition === 'left' ? 'active' : ''}>Left</Button>
+                  <Button onClick={() => this.moveSidebar('right')} className={this.props.sidebarPosition === 'right' ? 'active' : ''}>Right</Button>
+                </ButtonGroup>
+                <h6 className="mt-2">Sidebar</h6>
+                <ButtonGroup size="sm">
+                  <Button onClick={() => this.toggleSidebar('show')} className={this.props.sidebarState === 'show' ? 'active' : ''}>Show</Button>
+                  <Button onClick={() => this.toggleSidebar('hide')} className={this.props.sidebarState === 'hide' ? 'active' : ''}>Hide</Button>
+                </ButtonGroup>
             </DropdownMenu>
           </NavDropdown>
           <NavDropdown isOpen={this.state.accountOpen} toggle={this.toggleAccountDropdown} className={s.navItemOptional}>
@@ -248,19 +229,19 @@ class Header extends React.Component {
               </section>
               <DropdownItem>
                 <NavLink href="/profile">
-                  <i className="fa fa-user" />
+                  <i className="fa fa-user fa-fw" />
                   Profile
                 </NavLink>
               </DropdownItem>
               <DropdownItem>
                 <NavLink href="/calendar">
-                  <i className="fa fa-calendar" />
+                  <i className="fa fa-calendar fa-fw" />
                   Calendar
                 </NavLink>
               </DropdownItem>
               <DropdownItem>
                 <NavLink href="/inbox">
-                  <i className="fa fa-inbox" />
+                  <i className="fa fa-inbox fa-fw" />
                   Inbox
                 </NavLink>
               </DropdownItem>
@@ -284,8 +265,8 @@ class Header extends React.Component {
 
 function mapStateToProps(store) {
   return {
-    sidebarHidden: store.navigation.sidebarHidden,
-    sidebarRight: store.navigation.sidebarRight,
+    sidebarState: store.navigation.sidebarState,
+    sidebarPosition: store.navigation.sidebarPosition,
   };
 }
 

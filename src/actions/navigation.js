@@ -1,19 +1,15 @@
-import { HIDE_SIDEBAR, OPEN_SIDEBAR, MUVE_SIDEBAR } from '../constants';
+import { TOGGLE_SIDEBAR, POSITION_SIDEBAR } from '../constants';
 
-export function hideSidebar() {
+export function toggleSidebar(state) {
   return {
-    type: HIDE_SIDEBAR,
+    type: TOGGLE_SIDEBAR,
+    state: state
   };
 }
 
-export function openSidebar() {
+export function positionSidebar(position) {
   return {
-    type: OPEN_SIDEBAR,
-  };
-}
-
-export function moveSidebar() {
-  return {
-    type: MUVE_SIDEBAR,
+    type: POSITION_SIDEBAR,
+    position: position
   };
 }

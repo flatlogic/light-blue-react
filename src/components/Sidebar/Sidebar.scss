@@ -12,6 +12,15 @@
     height: auto;
     overflow: auto;
   }
+
+  :global(.sidebar-right) & {
+    margin-left: 0;
+    margin-right: ($grid-gutter-width/2);
+  }
+
+  :global(.sidebar-hidden) & {
+    display: none;
+  }
 }
 
 .nav {

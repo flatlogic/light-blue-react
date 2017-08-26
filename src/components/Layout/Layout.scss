@@ -6,6 +6,10 @@
   @media (max-width: breakpoint-max('sm')) {
     flex-direction: column;
   }
+
+  &:global(.sidebar-right) {
+    flex-direction: row-reverse;
+  }
 }
 
 .content {

@@ -22,15 +22,15 @@ const AnotherBundle = Bundle.generateBundle(loadAnother);
 class Layout extends React.Component {
 
   static propTypes = {
-    sidebarHidden: PropTypes.bool.isRequired,
-    sidebarRight: PropTypes.bool.isRequired,
+    sidebarState: PropTypes.string.isRequired,
+    sidebarPosition: PropTypes.string.isRequired,
   };
 
   render() {
     return (
-      <div className={[s.root, this.props.sidebarHidden ? s.sidebarHidden : '', this.props.sidebarRight ? s.sidebarRight : ''].join(' ')}>
+      <div className={s.root}>
         <Header toggleSidebar={this.toggleSidebar} />
-        <div className={s.wrap}>
+        <div className={[s.wrap, this.props.sidebarState === 'hide' ? 'sidebar-hidden' : '', this.props.sidebarPosition === 'right' ? 'sidebar-right' : ''].join(' ')}>
           <Sidebar />
           <main className={[s.content].join(' ')}>
             <Switch>
@@ -46,8 +46,8 @@ class Layout extends React.Component {
 
 function mapStateToProps(store) {
   return {
-    sidebarHidden: store.navigation.sidebarHidden,
-    sidebarRight: store.navigation.sidebarRight,
+    sidebarState: store.navigation.sidebarState,
+    sidebarPosition: store.navigation.sidebarPosition,
   };
 }
 

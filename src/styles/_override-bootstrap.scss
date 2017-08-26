@@ -236,10 +236,6 @@ button.dropdown-toggle{
   }
 }
 
-.btn-secondary {
-  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
-}
-
 .btn-transparent{
   background: transparentize($text-transparent, .2);
   color: $widget-header-color;
@@ -272,37 +268,6 @@ button.dropdown-toggle{
 .btn-white{
   background: none;
   border: 2px solid #ffffff;
-}
-
-
-/***************************/
-/*      Button Groups      */
-/***************************/
-
-.btn-group > .btn + .btn {
-  margin-left: 0;
-}
-
-.btn-group > .btn:hover,
-.btn-group > .btn:focus,
-.btn-group > .btn:active,
-.btn-group > .btn.active {
-  z-index: auto;
-}
-
-.btn-group > .btn + .dropdown-toggle {
-  @include box-shadow(none);
-}
-
-.btn-toolbar {
-  font-size: 0; // Hack to remove whitespace that results from using inline-block
-  margin-top: $spacer / 2;
-  margin-bottom: $spacer / 2;
-  > .btn + .btn,
-  > .btn-group + .btn,
-  > .btn + .btn-group {
-    margin-left: 5px;
-  }
 }
 
 /***************************/
@@ -721,6 +686,13 @@ button.dropdown-toggle{
 
 .badge-success {
   @include badge-variant(theme-color("success"));
+  color: $white;
+
+  &[href] {
+    @include hover-focus {
+      color: $white;
+    }
+  }
 }
 
 .badge-info {
@@ -729,6 +701,13 @@ button.dropdown-toggle{
 
 .badge-warning {
   @include badge-variant(theme-color("warning"));
+  color: $white;
+
+  &[href] {
+    @include hover-focus {
+      color: $white;
+    }
+  }
 }
 
 .badge-danger {

@@ -1,27 +1,21 @@
-import { HIDE_SIDEBAR, OPEN_SIDEBAR, MUVE_SIDEBAR } from '../constants';
+import { TOGGLE_SIDEBAR, POSITION_SIDEBAR } from '../constants';
 
 const initialState = {
-  sidebarOpened: false,
-  sidebarRight: false,
-  sidebarHidden: false,
+  sidebarPosition: 'left',
+  sidebarState: 'show',
 };
 
 export default function runtime(state = initialState, action) {
   switch (action.type) {
-    case HIDE_SIDEBAR:
+    case TOGGLE_SIDEBAR:
       return {
         ...state,
-        sidebarHidden: !state.sidebarHidden,
+        sidebarState: action.state,
       };
-    case OPEN_SIDEBAR:
+    case POSITION_SIDEBAR:
       return {
         ...state,
-        sidebarOpened: !state.sidebarOpened,
-      };
-    case MUVE_SIDEBAR:
-      return {
-        ...state,
-        sidebarRight: !state.sidebarRight,
+        sidebarPosition: action.position,
       };
     default:
       return state;

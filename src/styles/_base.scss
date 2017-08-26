@@ -5,13 +5,20 @@
 .navbar,
 .sidebar {
   .alert-dismissible .close {
-    top: -1px;
     right: 0;
     padding-left: 10px;
     color: $white-dark;
     font-size: 1.2rem;
     font-weight: bold;
   }
+}
+
+.sidebar .alert-dismissible .close {
+  top: -1px;
+}
+
+.navbar .alert-dismissible .close {
+  top: 3px;
 }
 
 .navbar {
@@ -77,10 +84,4 @@
     top: -6px;
     left: 10px;
   }
-}
-
-.btn-sm{
-  line-height: 1.5;
-  font-size: 12px;
-  padding: 0 7px;
 }
