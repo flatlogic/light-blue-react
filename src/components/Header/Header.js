@@ -118,6 +118,11 @@ class Header extends React.Component {
                  onBlur={() => this.setState({searchFocused: false})}/>
         </InputGroup>
         <Nav className="ml-auto ml-lg-0">
+          <NavItem className="d-md-none">
+            <NavLink onClick={this.props.togleSidebar} className={s.navItem} href="#">
+              <i className="glyphicon glyphicon-search" />
+            </NavLink>
+          </NavItem>
           <NavDropdown isOpen={this.state.messagesOpen} toggle={this.toggleMessagesDropdown}>
             <DropdownToggle nav className={s.navItem}>
               <i className="glyphicon glyphicon-comments" />
