@@ -51,6 +51,26 @@
   }
 }
 
+.searchCollapse {
+  display: block;
+  @media (max-width: breakpoint-max(sm)) {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+
+    &:global(.collapsing) {
+      display: block;
+    }
+
+    .navbarForm {
+      width: auto;
+      margin: 0 2.5641%;
+    }
+  }
+}
+
 .navbarForm {
   padding: 6px 0;
   margin-left: 10px;

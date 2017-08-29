@@ -57,6 +57,7 @@ class Header extends React.Component {
       supportOpen: false,
       settingsOpen: false,
       searchFocused: false,
+      searchOpen: false,
     };
   }
 
@@ -111,15 +112,17 @@ class Header extends React.Component {
           <i className="fa fa-info-circle mr-1" /> Check out Light Blue <a href="#" onClick={() => this.setState({settingsOpen: true})}>settings</a> on
           the right!
         </UncontrolledAlert>
-        <InputGroup className={`${s.navbarForm} d-md-none-down mr-3 ${this.state.searchFocused ? s.navbarFormFocused : ''}`}>
-          <InputGroupAddon className={s.inputAddon}><i className="fa fa-search" /></InputGroupAddon>
-          <Input id="search-input" placeholder="Search..." className="input-transparent"
-                 onFocus={() => this.setState({searchFocused: true})}
-                 onBlur={() => this.setState({searchFocused: false})}/>
-        </InputGroup>
-        <Nav className="ml-auto ml-lg-0">
+        <Collapse className={[s.searchCollapse, 'ml-auto ml-lg-0 mr-md-3'].join(' ')} isOpen={this.state.searchOpen}>
+          <InputGroup className={`${s.navbarForm} ${this.state.searchFocused ? s.navbarFormFocused : ''}`}>
+            <InputGroupAddon className={s.inputAddon}><i className="fa fa-search" /></InputGroupAddon>
+            <Input id="search-input" placeholder="Search..." className="input-transparent"
+                   onFocus={() => this.setState({searchFocused: true})}
+                   onBlur={() => this.setState({searchFocused: false})}/>
+          </InputGroup>
+        </Collapse>
+        <Nav className="ml-auto ml-md-0">
           <NavItem className="d-md-none">
-            <NavLink onClick={this.props.togleSidebar} className={s.navItem} href="#">
+            <NavLink onClick={() => this.setState({ searchOpen: !this.state.searchOpen })} className={s.navItem} href="#">
               <i className="glyphicon glyphicon-search" />
             </NavLink>
           </NavItem>
