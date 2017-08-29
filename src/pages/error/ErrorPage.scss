@@ -11,6 +11,10 @@
 .errorContainer {
   padding-top: 10vh;
   text-align: center;
+
+  @media (max-height: 600px) {
+    padding-top: 3vh;
+  }
 }
 
 .errorBtn {

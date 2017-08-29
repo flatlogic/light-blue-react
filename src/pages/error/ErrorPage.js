@@ -18,11 +18,11 @@ class ErrorPage extends React.Component {
       <div className={s.errorPage}>
         <Container>
           <main id="content" className={s.errorContainer} role="main">
-            <Row>
+            <Row className="justify-content-center">
               <Col
-                xs={{ size: 10, offset: 1 }}
-                md={{ size: 6, offset: 3 }}
-                xl={{ size: 4, offset: 4 }}
+                xs={{ size: 10}}
+                md={{ size: 6 }}
+                xl={{ size: 4}}
               >
                 <div className={s.errorContainer}>
                   <h1 className={s.errorCode}>404</h1>
@@ -32,7 +32,7 @@ class ErrorPage extends React.Component {
                   <p className={[s.errorHelp, 'mb-3'].join(' ')}>
                     If you are sure it should, search for it.
                   </p>
-                  <Form method="get">
+                  <Form method="get" action="/">
                     <FormGroup>
                       <Input className="input-no-border" type="text" placeholder="Search Pages" />
                     </FormGroup>
