@@ -15,6 +15,7 @@ class Sidebar extends React.Component {
     dispatch: PropTypes.func.isRequired,
     sidebarState: PropTypes.string.isRequired,
     sidebarPosition: PropTypes.string.isRequired,
+    sidebarOpen: PropTypes.bool.isRequired,
   };
 
   dismissAlert(id) {
@@ -24,7 +25,9 @@ class Sidebar extends React.Component {
   render() {
     return (
       /* eslint-disable */
-      <nav className={[s.root, 'sidebar'].join(' ')}>
+      <nav className={[s.root, this.props.sidebarOpen ? s.sidebarOpen : '','sidebar'].join(' ')}
+           ref="element"
+           style={{height: this.props.sidebarOpen ? `${this.refs.element.scrollHeight}px` : 0}}>
         <ul className={s.nav}>
           <LinksGroup header="Dashboard" headerLink="/app" iconName="fa-home" />
           <LinksGroup header="Another Page" headerLink="/app/another" iconName="fa-tree" />
@@ -84,6 +87,7 @@ function mapStateToProps(store) {
     alertsList: store.alerts.alertsList,
     sidebarState: store.navigation.sidebarState,
     sidebarPosition: store.navigation.sidebarPosition,
+    sidebarOpen: store.navigation.sidebarOpen,
   };
 }
 

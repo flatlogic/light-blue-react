@@ -43,6 +43,10 @@
   small{
     color: rgba($page-title-color, .7);
   }
+
+  @media (max-width: breakpoint-max(sm)) {
+    margin-top: 0;
+  }
 }
 
 .form-control{

@@ -24,7 +24,7 @@ import {
   Button
 } from 'reactstrap';
 import { logoutUser } from '../../actions/user';
-import { toggleSidebar, positionSidebar } from '../../actions/navigation';
+import { toggleSidebar, positionSidebar, toggleOpenSidebar } from '../../actions/navigation';
 
 import i1 from '../../images/1.png';
 import i2 from '../../images/2.png';
@@ -50,6 +50,7 @@ class Header extends React.Component {
     this.toggleAccountDropdown = this.toggleAccountDropdown.bind(this);
     this.moveSidebar = this.moveSidebar.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
+    this.toggleOpenSidebar = this.toggleOpenSidebar.bind(this);
 
     this.state = {
       visible: true,
@@ -100,6 +101,10 @@ class Header extends React.Component {
 
   moveSidebar(position) {
     this.props.dispatch(positionSidebar(position));
+  }
+
+  toggleOpenSidebar() {
+    this.props.dispatch(toggleOpenSidebar());
   }
 
   render() {
@@ -261,7 +266,7 @@ class Header extends React.Component {
             </NavLink>
           </NavItem>
           <NavItem className="d-md-none">
-            <NavLink onClick={this.props.togleSidebar} className={s.navItem} href="#">
+            <NavLink onClick={this.toggleOpenSidebar} className={s.navItem} href="#">
               <i className="fa fa-bars" />
             </NavLink>
           </NavItem>
