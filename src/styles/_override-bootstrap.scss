@@ -30,6 +30,11 @@ blockquote{
   }
 }
 
+small,
+.small {
+  font-weight: inherit;
+}
+
 h1 small { font-size: $font-size-base * 1.75; } // ~24px
 h2 small { font-size: $font-size-base * 1.25; } // ~18px
 h3 small { font-size: $font-size-base; }

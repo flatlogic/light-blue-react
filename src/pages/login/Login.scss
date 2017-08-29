@@ -9,45 +9,27 @@
 }
 
 .widget {
-  width: 385px;
+  width: 350px;
   margin: 0 auto;
 
   header {
     margin: 15px 0 25px;
-
-    h4 {
-      font-size: 14px;
-      font-weight: $font-weight-semi-bold;
-    }
-  }
-
-  .label {
-    font-weight: $font-weight-thin;
   }
 
   :global .form-control {
     font-size: $font-size-base;
   }
-}
 
-.navbarForm {
-  padding: 6px 0;
-  width: auto;
-
-  .input-group-addon{
-    padding: 6px 7px;
-    i{
-      &, &:before, &:after{
-        width: 20px;
-        margin: 0;
-      }
-    }
+  :global .input-group-addon {
+    border: none;
   }
 }
 
 .formActions {
   margin: 0 (-$widget-padding-horizontal);
-   padding: 20px 15px 0 15px;
+  padding: 20px $widget-padding-horizontal 0;
+  background-color: $bg-addition;
+
 
   .smallCircle {
     display: inline-block;
@@ -64,20 +46,23 @@
     color: white;
     padding: 15px 0;
   }
+
+  :global .btn-lg {
+    font-size: $font-size-larger;
+  }
 }
 
 .footer {
-  margin: 0 (-$widget-padding-horizontal);
-    border-bottom-left-radius: $border-radius-base;
-    border-bottom-right-radius: $border-radius-base;
-    overflow: hidden;
-    position: static;
+  margin: 0 (-$widget-padding-horizontal) (-$widget-padding-vertical);
+  border-bottom-left-radius: $border-radius-base;
+  border-bottom-right-radius: $border-radius-base;
+  overflow: hidden;
+  position: static;
 
   .facebookLogin {
-    height: 30px;
+    padding: 10px 0;
     background: $blue;
     text-align: center;
-    padding-top: 10px;
 
     :global a {
       color: $white;

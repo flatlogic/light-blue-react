@@ -58,7 +58,7 @@ class Login extends React.Component {
       <div className={s.root}>
         <Widget className={`${s.widget}`}>
           <header className="text-center">
-            <h4>Login to your account</h4>
+            <h5 className="fw-semi-bold">Login to your account</h5>
           </header>
           <Form className="mt" onSubmit={this.doLogin}>
             {
@@ -70,29 +70,29 @@ class Login extends React.Component {
             }
             <FormGroup>
               <Label className={s.label} for="email">Email</Label>
-              <InputGroup className={`${s.navbarForm} input-group-lg`}>
+              <InputGroup className={`input-group-lg`}>
                 <InputGroupAddon><i className="fa fa-user" /></InputGroupAddon>
-                <Input id="email" className="input-lg input-transparent" value={this.state.login} onChange={this.changeLogin} type="text" required placeholder="Your Email" />
+                <Input id="email" className="input-transparent" value={this.state.login} onChange={this.changeLogin} type="text" required placeholder="Your Email" />
               </InputGroup>
             </FormGroup>
             <FormGroup>
               <Label className={s.label} for="password">Password</Label>
-              <InputGroup className={`${s.navbarForm} input-group-lg`}>
+              <InputGroup className={`input-group-lg`}>
                 <InputGroupAddon><i className="fa fa-lock" /></InputGroupAddon>
                 <Input type="password" className="input-lg input-transparent" id="password" value={this.state.password} onChange={this.changePassword} placeholder="Your Password" />
               </InputGroup>
             </FormGroup>
             <div className={s.formActions}>
-              <button type="submit" className="btn btn-block btn-danger">
-                <span className={s.smallCircle}><i className="fa fa-caret-right" /></span>
-                <small>Sign In</small>
+              <button type="submit" className="btn btn-block btn-danger btn-lg">
+                <span className={[s.smallCircle, 'mr-2'].join(' ')}><i className="fa fa-caret-right" /></span>
+                Sign In
               </button>
-              <a className={s.forgot}>Forgot Username or Password?</a>
+              <a className={s.forgot} href="#">Forgot Username or Password?</a>
             </div>
           </Form>
           <footer className={s.footer}>
             <div className={s.facebookLogin}>
-              <a><i className="fa fa-facebook-square fa-lg" /> LogIn with Facebook</a>
+              <a href="#"><i className="fa fa-facebook-square fa-lg" /> LogIn with Facebook</a>
             </div>
           </footer>
         </Widget>

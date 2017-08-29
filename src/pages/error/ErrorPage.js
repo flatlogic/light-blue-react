@@ -20,9 +20,9 @@ class ErrorPage extends React.Component {
           <main id="content" className={s.errorContainer} role="main">
             <Row className="justify-content-center">
               <Col
-                xs={{ size: 10}}
+                xs={{ size: 10 }}
                 md={{ size: 6 }}
-                xl={{ size: 4}}
+                xl={{ size: 4 }}
               >
                 <div className={s.errorContainer}>
                   <h1 className={s.errorCode}>404</h1>
