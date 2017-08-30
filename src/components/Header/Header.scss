@@ -2,9 +2,11 @@
 
 .logo {
   position: absolute;
+
   @media (min-height: 940px) {
     position: fixed;
   }
+
   left: 56px;
   top: 18px;
   z-index: 1;
@@ -24,12 +26,6 @@
     strong {
       display: block;
     }
-  }
-}
-
-.navItemOptional {
-  @media (max-width: breakpoint-max(sm)) {
-    display: none;
   }
 }
 
@@ -53,6 +49,7 @@
 
 .searchCollapse {
   display: block;
+
   @media (max-width: breakpoint-max(sm)) {
     display: none;
     position: absolute;
@@ -120,7 +117,7 @@
   }
 
   :global(.glyphicon),
-  :global(.fa){
+  :global(.fa) {
     vertical-align: baseline;
   }
 }
@@ -147,7 +144,7 @@
     left: -100px;
   }
 
-  &:after {
+  &::after {
     left: auto !important;
     right: 15px;
 
@@ -187,8 +184,7 @@
 }
 
 .support {
-
-  &:after {
+  &::after {
     @media (max-width: breakpoint-max(xs)) {
       right: 102px;
     }
@@ -246,7 +242,7 @@
   min-width: auto;
   left: -40px !important;
 
-  &:after {
+  &::after {
     right: 53px !important;
     left: auto;
   }

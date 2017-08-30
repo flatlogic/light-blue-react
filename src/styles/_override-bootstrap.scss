@@ -1,16 +1,13 @@
-/***************************/
 /*         Reset           */
-/***************************/
 
-a:focus{
+a:focus {
   outline: none;
 }
 
-/***************************/
 /*          Type           */
-/***************************/
 
-ul, ol {
+ul,
+ol {
   margin: 0;
 }
 
@@ -18,13 +15,13 @@ hr {
   border-top: none;
 }
 
-blockquote{
-
-  &.blockquote-sm{
+blockquote {
+  &.blockquote-sm {
     padding: 0 0 0 15px;
     font-size: $font-size-base;
   }
-  p{
+
+  p {
     font-size: inherit;
     margin-bottom: ($line-height-base * $font-size-base) / 2;
   }
@@ -40,11 +37,11 @@ h2 small { font-size: $font-size-base * 1.25; } // ~18px
 h3 small { font-size: $font-size-base; }
 h4 small { font-size: $font-size-base; }
 
-.text-primary        { color: $brand-primary; }
-.text-warning        { color: $brand-warning; }
-.text-danger         { color: $brand-danger; }
-.text-success        { color: $brand-success; }
-.text-info           { color: $brand-info; }
+.text-primary { color: $brand-primary; }
+.text-warning { color: $brand-warning; }
+.text-danger { color: $brand-danger; }
+.text-success { color: $brand-success; }
+.text-info { color: $brand-info; }
 
 @media (min-width: breakpoint-min('sm')) {
   .lead {
@@ -52,26 +49,20 @@ h4 small { font-size: $font-size-base; }
   }
 }
 
-/***************************/
 /*         Code            */
-/***************************/
 
 code,
 pre {
   border-radius: $border-radius-base;
 }
 
-
-/***************************/
 /*         Grid           */
-/***************************/
+
 .container {
   position: static;
 }
 
-/***************************/
 /*         Forms           */
-/***************************/
 
 label,
 input,
@@ -81,49 +72,48 @@ textarea {
   font-weight: $font-weight-base;
 }
 
-.form-control{
-  @include transition(border linear .2s, box-shadow linear .2s);
+.form-control {
+  @include transition(border linear 0.2s, box-shadow linear 0.2s);
 
-  &[type=search], &.search{
+  &[type=search],
+  &.search {
     padding-left: 26px;
   }
 }
 
 select:focus,
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
+input[type='file']:focus,
+input[type='radio']:focus,
+input[type='checkbox']:focus {
   outline: none;
 }
 
-.input-group-btn > .btn{
+.input-group-btn > .btn {
   z-index: 2;
 }
 
-/***************************/
 /*      Input Groups       */
-/***************************/
+
 .input-group-addon {
   color: $text-muted;
 }
 
-/***************************/
 /*        Tables        */
-/***************************/
 
-.table .table{
+.table .table {
   background-color: $bg-addition;
 }
 
 .table-hover {
   tbody {
-    td, th{
-      @include transition(background-color .2s);
+    td,
+    th {
+      @include transition(background-color 0.2s);
     }
   }
 }
 
-.table thead > tr > th{
+.table thead > tr > th {
   border-bottom: none;
   font-weight: 600;
   text-transform: uppercase;
@@ -131,19 +121,20 @@ input[type="checkbox"]:focus {
 }
 
 .table td > .checkbox,
-.table th > .checkbox{
+.table th > .checkbox {
   position: relative;
   left: 3px;
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 0;
-  > label:before,
-  > label:after{
+
+  > label::before,
+  > label::after {
     margin-left: 0;
   }
 }
 
-.table > thead > tr > th{
+.table > thead > tr > th {
   font-weight: $font-weight-semi-bold;
   text-transform: uppercase;
   border-bottom-width: 1px;
@@ -175,10 +166,7 @@ input[type="checkbox"]:focus {
   }
 }
 
-
-/***************************/
 /*        Dropdowns        */
-/***************************/
 
 .dropdown.open {
   .dropdown-menu {
@@ -186,16 +174,17 @@ input[type="checkbox"]:focus {
   }
 }
 
-button.dropdown-toggle{
-  &:after {
+button.dropdown-toggle {
+  &::after {
     content: none;
   }
+
   i {
     margin-left: 3px;
   }
 }
 
-.dropdown-menu{
+.dropdown-menu {
   border-radius: $border-radius-lg;
 }
 
@@ -203,9 +192,7 @@ button.dropdown-toggle{
   font-weight: $font-weight-base;
 }
 
-/***************************/
 /*      Buttons            */
-/***************************/
 
 .btn:focus {
   outline: none;
@@ -223,12 +210,14 @@ button.dropdown-toggle{
   &:hover,
   &:focus {
     color: $white;
+
     @include box-shadow(inset 0 1px 5px rgba(0, 0, 0, 0.08));
   }
 
-  &.active:hover{
+  &.active:hover {
     color: $white;
-    @include box-shadow(inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05));
+
+    @include box-shadow(inset 0 2px 4px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.05));
   }
 
   &.disabled,
@@ -236,58 +225,52 @@ button.dropdown-toggle{
     color: $white;
   }
 
-  .caret{
+  .caret {
     border-top-color: #fff;
   }
 }
 
-.btn-transparent{
-  background: transparentize($text-transparent, .2);
+.btn-transparent {
+  background: transparentize($text-transparent, 0.2);
   color: $widget-header-color;
   text-shadow: none;
+
   @include box-shadow(none);
 
-  &:hover{
+  &:hover {
     background: $text-transparent;
     color: $widget-header-color;
   }
 
-  &.active{
+  &.active {
     color: $widget-header-color;
-    background: rgba($widget-bg-common, .55);
-    &:hover{
-      background: rgba($widget-bg-common, .55);
+    background: rgba($widget-bg-common, 0.55);
+
+    &:hover {
+      background: rgba($widget-bg-common, 0.55);
     }
   }
 
-  .caret{
+  .caret {
     border-top-color: $widget-header-color;
   }
 }
 
 .btn-inverse {
-  @include button-variant($btn-inverse-color, $btn-inverse-bg, rgba(0, 0, 0, .2));
+  @include button-variant($btn-inverse-color, $btn-inverse-bg, rgba(0, 0, 0, 0.2));
 }
 
 /* since 1.5 */
-.btn-white{
+.btn-white {
   background: none;
-  border: 2px solid #ffffff;
+  border: 2px solid #fff;
 }
 
-/***************************/
 /*        TABBABLE         */
-/***************************/
-// copied from bs2
-
-
-// COMMON STYLES
-// -------------
-
-// Clear any floats
 .tabbable {
   @include clearfix();
 }
+
 .tab-content {
   overflow: auto; // prevent content from running below tabs
 }
@@ -304,11 +287,11 @@ button.dropdown-toggle{
 .pill-content > .pill-pane {
   display: none;
 }
+
 .tab-content > .active,
 .pill-content > .active {
   display: block;
 }
-
 
 // BOTTOM
 // ------
@@ -317,14 +300,17 @@ button.dropdown-toggle{
   margin-top: -1px;
   margin-bottom: 0;
 }
+
 .tabs-below > .nav-tabs > li > a {
   border-radius: 0 0 $border-radius-base $border-radius-base;
+
   &:hover,
   &:focus {
     border-bottom-color: transparent;
     border-top-color: #ddd;
   }
 }
+
 .tabs-below > .nav-tabs > .active > a,
 .tabs-below > .nav-tabs > .active > a:hover,
 .tabs-below > .nav-tabs > .active > a:focus {
@@ -340,6 +326,7 @@ button.dropdown-toggle{
 .tabs-right > .nav-tabs > li {
   float: none;
 }
+
 .tabs-left > .nav-tabs > li > a,
 .tabs-right > .nav-tabs > li > a {
   min-width: 74px;
@@ -353,14 +340,17 @@ button.dropdown-toggle{
   margin-right: 19px;
   border-right: 1px solid #ddd;
 }
+
 .tabs-left > .nav-tabs > li > a {
   margin-right: -1px;
   border-radius: $border-radius-base 0 0 $border-radius-base;
 }
+
 .tabs-left > .nav-tabs > li > a:hover,
 .tabs-left > .nav-tabs > li > a:focus {
   border-color: $gray-lighter #ddd $gray-lighter $gray-lighter;
 }
+
 .tabs-left > .nav-tabs .active > a,
 .tabs-left > .nav-tabs .active > a:hover,
 .tabs-left > .nav-tabs .active > a:focus {
@@ -373,39 +363,42 @@ button.dropdown-toggle{
   margin-left: 19px;
   border-left: 1px solid #ddd;
 }
+
 .tabs-right > .nav-tabs > li > a {
   margin-left: -1px;
   border-radius: 0 $border-radius-base $border-radius-base 0;
 }
+
 .tabs-right > .nav-tabs > li > a:hover,
 .tabs-right > .nav-tabs > li > a:focus {
   border-color: $gray-lighter $gray-lighter $gray-lighter #ddd;
 }
+
 .tabs-right > .nav-tabs .active > a,
 .tabs-right > .nav-tabs .active > a:hover,
 .tabs-right > .nav-tabs .active > a:focus {
   border-color: #ddd #ddd #ddd transparent;
 }
 
-/***************************/
 /*          Navs           */
-/***************************/
+
 .nav-tabs > li > a {
   border-radius: $border-radius-base $border-radius-base 0 0;
   color: $nav-tabs-link-color;
   padding-top: 8px;
   padding-bottom: 8px;
+
   &:hover,
   &:focus {
     border-color: transparent;
   }
 }
 
-.nav-tabs > .active{
+.nav-tabs > .active {
   margin-bottom: $nav-tabs-active-item-margin;
 }
 
-.nav-tabs{
+.nav-tabs {
   border-bottom: $nav-tabs-border;
 }
 
@@ -421,9 +414,11 @@ button.dropdown-toggle{
 .nav-tabs .dropdown-menu {
   border-radius: 0 0 $border-radius-base $border-radius-base; // remove the top rounded corners here since there is a hard edge above the menu
 }
+
 .nav-pills .dropdown-menu {
   border-radius: $border-radius-base; // make rounded corners match the pills
 }
+
 .tabs-below > .nav-tabs {
   border-top: $nav-tabs-border;
 }
@@ -445,6 +440,7 @@ button.dropdown-toggle{
   margin-left: 0;
   border-left: $nav-tabs-border;
 }
+
 .tabs-right > .nav-tabs > li > a {
   border-radius: 0 $border-radius-base $border-radius-base 0;
 }
@@ -459,19 +455,22 @@ button.dropdown-toggle{
     border-top-color: transparent;
   }
 }
+
 .tabs-below > .nav-tabs > .active > a,
 .tabs-below > .nav-tabs > .active > a:hover,
 .tabs-below > .nav-tabs > .active > a:focus {
-//  border-color: transparent;
+  //  border-color: transparent;
 }
 
 .tabs-left > .nav-tabs > li > a {
   margin-right: 0;
 }
+
 .tabs-left > .nav-tabs > li > a:hover,
 .tabs-left > .nav-tabs > li > a:focus {
   border-color: transparent;
 }
+
 .tabs-left > .nav-tabs .active > a,
 .tabs-left > .nav-tabs .active > a:hover,
 .tabs-left > .nav-tabs .active > a:focus {
@@ -479,21 +478,23 @@ button.dropdown-toggle{
   border-right-color: $nav-tabs-active-item-border-bottom;
 }
 
-.tabs-left > .nav-tabs .active{
+.tabs-left > .nav-tabs .active {
   margin-right: $nav-tabs-active-item-margin;
 }
 
-.tabs-right > .nav-tabs .active{
+.tabs-right > .nav-tabs .active {
   margin-left: $nav-tabs-active-item-margin;
 }
 
 .tabs-right > .nav-tabs > li > a {
   margin-left: 0;
 }
+
 .tabs-right > .nav-tabs > li > a:hover,
 .tabs-right > .nav-tabs > li > a:focus {
   border-color: transparent;
 }
+
 .tabs-right > .nav-tabs .active > a,
 .tabs-right > .nav-tabs .active > a:hover,
 .tabs-right > .nav-tabs .active > a:focus {
@@ -520,15 +521,14 @@ button.dropdown-toggle{
   padding: 0 1.28%;
 }
 
-/***************************/
 /*         Navbars         */
-/***************************/
 
-.navbar{
+.navbar {
   margin: 0;
 
   .btn-navbar {
     border: none;
+
     @include box-shadow(none);
   }
 }
@@ -538,6 +538,7 @@ button.dropdown-toggle{
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus {
   background: none;
+
   @include box-shadow(none);
 }
 
@@ -545,13 +546,13 @@ button.dropdown-toggle{
   margin: ($navbar-padding-y / 2) -$navbar-padding-x;
 
   > li > a {
-    padding-top:    10px;
+    padding-top: 10px;
     padding-bottom: 10px;
   }
 
   @include media-breakpoint-up(xs) {
-  //@media (max-width: $screen-xs-max) {
-  // Dropdowns get custom display when collapsed
+    //@media (max-width: $screen-xs-max) {
+    // Dropdowns get custom display when collapsed
     .open .dropdown-menu {
       position: absolute;
       float: left;
@@ -563,20 +564,19 @@ button.dropdown-toggle{
   }
 }
 
-/***************************/
 /*       Breadcrumbs       */
-/***************************/
 
-.breadcrumb{
-  a{
+.breadcrumb {
+  a {
     color: $breadcrumb-color;
     text-decoration: none;
-    &:hover{
+
+    &:hover {
       color: $breadcrumb-active-color;
     }
   }
 
-  .content > &{
+  .content > & {
     padding-left: 0;
     padding-right: 0;
     margin-top: 11px;
@@ -584,42 +584,42 @@ button.dropdown-toggle{
   }
 }
 
-/***************************/
 /*        Pagination       */
-/***************************/
-.pagination{
+
+.pagination {
   font-weight: $font-weight-normal;
 
   > li {
     display: inline; // Remove list-style and block-level defaults
     > a,
-    > span{
+    > span {
       border-radius: $border-radius-base;
       margin: 0 2px;
     }
   }
 }
 
-/***************************/
 /*         Modals          */
-/***************************/
 
 .modal {
   color: $gray-dark;
   border-radius: $border-radius-base;
 
-  h1,h2,h3,h4,h5,h6{
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $gray-dark;
   }
 }
 
-.modal-footer{
+.modal-footer {
   background-color: #f5f5f5;
 }
 
-/***************************/
 /*        Tooltips         */
-/***************************/
 
 .tooltip {
   font-size: $font-size-sm;
@@ -630,14 +630,18 @@ button.dropdown-toggle{
   white-space: nowrap;
 }
 
-/***************************/
 /*        Popovers         */
-/***************************/
 
 .popover {
   color: $text-color;
   border-radius: $border-radius-base;
-  h1,h2,h3,h4,h5,h6{
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $text-color;
   }
 }
@@ -646,15 +650,14 @@ button.dropdown-toggle{
   border-radius: $border-radius-base $border-radius-base 0 0;
 }
 
-/***************************/
 /*       Thumbnails        */
-/***************************/
 
 .thumbnail {
   border: none;
+
   @include box-shadow(none);
 
-  .widget &{
+  .widget & {
     border: $thumbnail-border;
   }
 }
@@ -663,9 +666,7 @@ button.dropdown-toggle{
   color: $widget-color;
 }
 
-/***************************/
 /*    Labels and badges    */
-/***************************/
 
 .label,
 .badge {
@@ -677,7 +678,7 @@ button.dropdown-toggle{
   font-size: $font-size-mini;
 }
 
-.badge{
+.badge {
   padding: 2px 9px;
 }
 
@@ -686,11 +687,12 @@ button.dropdown-toggle{
 }
 
 .badge-primary {
-  @include badge-variant(theme-color("primary"));
+  @include badge-variant(theme-color('primary'));
 }
 
 .badge-success {
-  @include badge-variant(theme-color("success"));
+  @include badge-variant(theme-color('success'));
+
   color: $white;
 
   &[href] {
@@ -701,11 +703,12 @@ button.dropdown-toggle{
 }
 
 .badge-info {
-  @include badge-variant(theme-color("info"));
+  @include badge-variant(theme-color('info'));
 }
 
 .badge-warning {
-  @include badge-variant(theme-color("warning"));
+  @include badge-variant(theme-color('warning'));
+
   color: $white;
 
   &[href] {
@@ -716,144 +719,139 @@ button.dropdown-toggle{
 }
 
 .badge-danger {
-  @include badge-variant(theme-color("danger"));
+  @include badge-variant(theme-color('danger'));
 }
 
-.badge-important{
-  @include badge-variant(theme-color("danger"));
+.badge-important {
+  @include badge-variant(theme-color('danger'));
 }
 
-.badge-inverse{
+.badge-inverse {
   @include badge-variant($gray-400);
 }
 
-.help-block{
+.help-block {
   margin-top: 5px;
   font-size: $font-size-mini;
   color: $text-muted;
   display: block;
 }
 
-/***************************/
 /*        Jumbotron        */
-/***************************/
 
-.jumbotron{
-  .widget > &{
+.jumbotron {
+  .widget > & {
     margin: (-$widget-padding-vertical) (-$widget-padding-horizontal);
   }
 
-  h1, .h1{
+  h1,
+  .h1 {
     line-height: 1;
   }
 }
 
-/***************************/
 /*          Alerts         */
-/***************************/
 
 .alert {
   text-shadow: none;
   font-weight: normal;
 }
 
-.close{
-  @include transition(opacity .2s ease-out);
+.close {
+  @include transition(opacity 0.2s ease-out);
+
   text-shadow: none;
 }
 
-.alert-sm{
+.alert-sm {
   padding: 10px 12px;
   font-size: $font-size-sm;
 
-  .close{
+  .close {
     font-size: 18px;
   }
 }
 
-
-/***************************/
 /*        List Groups      */
-/***************************/
 
-.list-group{
+.list-group {
   margin-bottom: 0;
-  .widget > &{
+
+  .widget > & {
     margin: (-$widget-padding-vertical) (-$widget-padding-horizontal);
   }
-  .widget .body > &{
+
+  .widget .body > & {
     margin: 0 (-$widget-padding-horizontal) (-$widget-padding-vertical);
 
-    .list-group-item:first-child{
+    .list-group-item:first-child {
       border-top: 1px solid $bg-addition;
     }
   }
 }
 
-.list-group-item{
+.list-group-item {
   border: none;
-  @include transition(background-color .2s ease-out);
+
+  @include transition(background-color 0.2s ease-out);
+
   color: $widget-color;
 
-  .widget &{
+  .widget & {
     background: none;
-    + .list-group-item{
+
+    + .list-group-item {
       border-top: 1px solid $bg-addition;
     }
   }
 
-  .list-group-outer &{
-    + .list-group-item{
+  .list-group-outer & {
+    + .list-group-item {
       margin-top: 10px;
     }
   }
 
-  > .fa-chevron-right{
+  > .fa-chevron-right {
     margin-top: 3px;
     margin-left: 6px;
     color: darken($text-color, 5%);
   }
 }
-.list-group-item{
 
+.list-group-item {
   .list-group-lg & {
-    padding: 15px 15px;
+    padding: 15px;
   }
 
-  .list-group:last-of-type &:last-child{
+  .list-group:last-of-type &:last-child {
     border-bottom: 0;
   }
 }
 
-
-/***************************/
 /*         Progress        */
-/***************************/
 
-.progress{
-  background: rgba(black, .15);
+.progress {
+  background: rgba(black, 0.15);
   overflow: hidden;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.1)
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.progress-sm{
+.progress-sm {
   height: 10px;
   margin-bottom: $spacer/2;
 }
 
-.progress-xs{
+.progress-xs {
   height: 5px;
   margin-bottom: $spacer/2;
 }
 
-/***************************/
 /*          Panels         */
-/***************************/
 
 .panel-heading {
   padding: 0;
 
-  > .accordion-toggle{
+  > .accordion-toggle {
     display: block;
     padding: 8px 15px;
   }
@@ -865,6 +863,7 @@ button.dropdown-toggle{
       border-top: 1px solid $bg-addition;
     }
   }
+
   .panel-footer {
     + .panel-collapse .panel-body {
       border-bottom: 1px solid $bg-addition;
@@ -872,63 +871,67 @@ button.dropdown-toggle{
   }
 }
 
-.panel{
+.panel {
   border: none;
   background-color: $widget-bg;
+
   @include box-shadow(none);
 
-  .content &{
+  .content & {
     color: $widget-color;
   }
 
-  .panel-heading a{
+  .panel-heading a {
     color: $widget-header-color;
     font-weight: $font-weight-base;
 
-    &:focus{
+    &:focus {
       text-decoration: none;
     }
-    &.collapsed{
+
+    &.collapsed {
       color: $text-muted;
     }
 
-    &[data-toggle="collapse"]{
-      &:before{
+    &[data-toggle='collapse'] {
+      &::before {
         display: inline-block;
         font-family: FontAwesome;
-        content: "\f107";
+        content: '\f107';
         float: right;
         margin-right: -8px;
         position: relative;
         top: 1px;
-        @include transition(transform .3s ease-in-out)
+
+        @include transition(transform 0.3s ease-in-out);
       }
-      &.collapsed:before{
+
+      &.collapsed::before {
         transform: rotate(90deg);
       }
     }
   }
 }
 
-.panel-body{
+.panel-body {
   border-top-color: $bg-addition;
 }
 
-/***************************/
 /*        Carousel         */
-/***************************/
 
-.carousel{
-  .widget > &{
+.carousel {
+  .widget > & {
     margin: 0 (-($widget-padding-horizontal)) 5px;
   }
 }
 
 .carousel-control {
-  &.left, &.right{
+  &.left,
+  &.right {
     background: none;
   }
-  i{
+
+  i {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -941,20 +944,18 @@ button.dropdown-toggle{
   }
 }
 
-.carousel-indicators{
-  &.outer{
+.carousel-indicators {
+  &.outer {
     bottom: -10px;
   }
-  li{
+
+  li {
     background-color: $bg-addition;
   }
 }
 
-
-/***************************/
 /*          Wells          */
-/***************************/
 
-.well{
+.well {
   @include box-shadow(none);
 }

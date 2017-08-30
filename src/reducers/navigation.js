@@ -3,7 +3,7 @@ import { TOGGLE_SIDEBAR, POSITION_SIDEBAR, TOGGLE_OPEN_SIDEBAR } from '../consta
 const initialState = {
   sidebarPosition: 'left',
   sidebarState: 'show',
-  sidebarOpen: false
+  sidebarOpen: false,
 };
 
 export default function runtime(state = initialState, action) {

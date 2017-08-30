@@ -13,7 +13,6 @@ import {
   Input,
   UncontrolledAlert,
   NavDropdown,
-  NavbarToggler,
   NavbarBrand,
   Collapse,
   DropdownToggle,
@@ -21,7 +20,7 @@ import {
   DropdownItem,
   Badge,
   ButtonGroup,
-  Button
+  Button,
 } from 'reactstrap';
 import { logoutUser } from '../../actions/user';
 import { toggleSidebar, positionSidebar, toggleOpenSidebar } from '../../actions/navigation';
@@ -114,15 +113,17 @@ class Header extends React.Component {
           Light <strong>Blue</strong>
         </NavbarBrand>
         <UncontrolledAlert className={[s.alert, 'd-md-none-down ml-auto mr-3'].join(' ')}>
-          <i className="fa fa-info-circle mr-1" /> Check out Light Blue <a href="#" onClick={() => this.setState({settingsOpen: true})}>settings</a> on
+          <i className="fa fa-info-circle mr-1" /> Check out Light Blue <a href="#" onClick={() => this.setState({ settingsOpen: true })}>settings</a> on
           the right!
         </UncontrolledAlert>
         <Collapse className={[s.searchCollapse, 'ml-auto ml-lg-0 mr-md-3'].join(' ')} isOpen={this.state.searchOpen}>
           <InputGroup className={`${s.navbarForm} ${this.state.searchFocused ? s.navbarFormFocused : ''}`}>
             <InputGroupAddon className={s.inputAddon}><i className="fa fa-search" /></InputGroupAddon>
-            <Input id="search-input" placeholder="Search..." className="input-transparent"
-                   onFocus={() => this.setState({searchFocused: true})}
-                   onBlur={() => this.setState({searchFocused: false})}/>
+            <Input
+              id="search-input" placeholder="Search..." className="input-transparent"
+              onFocus={() => this.setState({ searchFocused: true })}
+              onBlur={() => this.setState({ searchFocused: false })}
+            />
           </InputGroup>
         </Collapse>
         <Nav className="ml-auto ml-md-0">
@@ -219,16 +220,16 @@ class Header extends React.Component {
               <i className="glyphicon glyphicon-cog" />
             </DropdownToggle>
             <DropdownMenu className={`${s.dropdownMenu} ${s.settings}`}>
-                <h6>Sidebar on the</h6>
-                <ButtonGroup size="sm">
-                  <Button onClick={() => this.moveSidebar('left')} className={this.props.sidebarPosition === 'left' ? 'active' : ''}>Left</Button>
-                  <Button onClick={() => this.moveSidebar('right')} className={this.props.sidebarPosition === 'right' ? 'active' : ''}>Right</Button>
-                </ButtonGroup>
-                <h6 className="mt-2">Sidebar</h6>
-                <ButtonGroup size="sm">
-                  <Button onClick={() => this.toggleSidebar('show')} className={this.props.sidebarState === 'show' ? 'active' : ''}>Show</Button>
-                  <Button onClick={() => this.toggleSidebar('hide')} className={this.props.sidebarState === 'hide' ? 'active' : ''}>Hide</Button>
-                </ButtonGroup>
+              <h6>Sidebar on the</h6>
+              <ButtonGroup size="sm">
+                <Button onClick={() => this.moveSidebar('left')} className={this.props.sidebarPosition === 'left' ? 'active' : ''}>Left</Button>
+                <Button onClick={() => this.moveSidebar('right')} className={this.props.sidebarPosition === 'right' ? 'active' : ''}>Right</Button>
+              </ButtonGroup>
+              <h6 className="mt-2">Sidebar</h6>
+              <ButtonGroup size="sm">
+                <Button onClick={() => this.toggleSidebar('show')} className={this.props.sidebarState === 'show' ? 'active' : ''}>Show</Button>
+                <Button onClick={() => this.toggleSidebar('hide')} className={this.props.sidebarState === 'hide' ? 'active' : ''}>Hide</Button>
+              </ButtonGroup>
             </DropdownMenu>
           </NavDropdown>
           <NavDropdown isOpen={this.state.accountOpen} toggle={this.toggleAccountDropdown} className="d-sm-none-down">

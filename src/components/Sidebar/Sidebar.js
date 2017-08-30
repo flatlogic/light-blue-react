@@ -13,8 +13,6 @@ class Sidebar extends React.Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    sidebarState: PropTypes.string.isRequired,
-    sidebarPosition: PropTypes.string.isRequired,
     sidebarOpen: PropTypes.bool.isRequired,
   };
 
@@ -85,8 +83,6 @@ class Sidebar extends React.Component {
 function mapStateToProps(store) {
   return {
     alertsList: store.alerts.alertsList,
-    sidebarState: store.navigation.sidebarState,
-    sidebarPosition: store.navigation.sidebarPosition,
     sidebarOpen: store.navigation.sidebarOpen,
   };
 }

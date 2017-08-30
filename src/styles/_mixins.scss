@@ -1,11 +1,12 @@
-@mixin bold-font{
+@mixin bold-font {
   font-weight: $font-weight-base;
   color: $text-bold;
 }
 
 @mixin invalid-border {
   border-color: $orange;
-  @include box-shadow(inset 0 1px 1px rgba($red,.075));
+
+  @include box-shadow(inset 0 1px 1px rgba($red,0.075));
 }
 
 // Block level inputs
@@ -18,27 +19,29 @@
 
 // Generates single property classes
 // -------------------------
-@mixin property-variants($base, $property, $variants: ()){
+@mixin property-variants($base, $property, $variants: ()) {
   @each $size, $value in $variants {
-    @if $size == 'md'{
+    @if $size == 'md' {
       #{$base} {
         #{$property}: $value;
       }
+
       #{$base}-n {
         #{$property}: $value;
       }
     }
+
     #{$base}-#{$size} {
       #{$property}: $value;
     }
+
     #{$base}-n-#{$size} {
       #{$property}: -$value;
     }
   }
 }
 
-
-@mixin keyframes($name){
+@mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
     @content;
   }
@@ -48,26 +51,14 @@
   }
 }
 
-// Classes to be applied for high ppi displays
-// -------------------------
-@mixin retina(){
-  @media (min--moz-device-pixel-ratio: 1.3),
-  (-o-min-device-pixel-ratio: 2.6/2),
-  (-webkit-min-device-pixel-ratio: 1.3),
-  (min-device-pixel-ratio: 1.3),
-  (min-resolution: 1.3dppx) {
-    @content;
-  }
-}
-
 // Common thumbnail properties
 // -------------------------
-@mixin thumb($parent, $size){
+@mixin thumb($parent, $size) {
   #{$parent} {
     width: $size;
 
     > .glyphicon,
-    > .fa{
+    > .fa {
       line-height: $size;
     }
   }
@@ -85,7 +76,7 @@
     opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
   }
   &:-ms-input-placeholder { color: $color; } // Internet Explorer 10+
-  &::-webkit-input-placeholder  { color: $color; } // Safari and Chrome
+  &::-webkit-input-placeholder { color: $color; } // Safari and Chrome
 }
 
 // Box sizing
@@ -107,29 +98,34 @@
   user-select: $select;
 }
 
-@mixin background-radial-gradient($figure, $type, $position_x, $position_y, $color_1, $color_2){
+@mixin background-radial-gradient($figure, $type, $position_x, $position_y, $color_1, $color_2) {
   //there is a built-in compass radial-gradient function, but it does not provide enough compatibility, so need to imitate it
   //it also has an option $experimental-support-for-svg which should generate correct svg for IE, but it works incorrect, so
   //fixing it
   //issue id - https://github.com/chriseppstein/compass/issues/1225
   background-color: $color_1;
   //final w3c
-  background-image: radial-gradient(
+  background-image:
+    radial-gradient(
       $type $figure at $position_x $position_y,
       $color_1,
       $color_2
-  );
+    );
   //webkit-specific
-  background-image: -webkit-radial-gradient(
-      $position_x $position_y, $type $figure,
+  background-image:
+    -webkit-radial-gradient(
+      $position_x $position_y,
+      $type $figure,
       $color_1,
       $color_2
-  );
+    );
 
   //moz-specific
-  background-image: -moz-radial-gradient(
-      $position_x $position_y, $type $figure,
+  background-image:
+    -moz-radial-gradient(
+      $position_x $position_y,
+      $type $figure,
       $color_1,
       $color_2
-  );
+    );
 }

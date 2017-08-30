@@ -34,14 +34,15 @@
   }
 }
 
-.page-title{
+.page-title {
   color: $page-title-color;
   font-weight: 300;
   line-height: 1;
-  margin: 11px 0 1.5*$spacer;
+  /* stylelint-disable-next-line */
+  margin: 11px 0 (1.5*$spacer);
 
-  small{
-    color: rgba($page-title-color, .7);
+  small {
+    color: rgba($page-title-color, 0.7);
   }
 
   @media (max-width: breakpoint-max(sm)) {
@@ -49,16 +50,18 @@
   }
 }
 
-.form-control{
-  &.input-transparent{
+.form-control {
+  &.input-transparent {
     border: none;
     color: $input-transparent-color;
     background-color: $widget-bg;
+
     @include placeholder($input-transparent-placeholder-color);
 
-    &:focus{
+    &:focus {
       color: $input-transparent-color;
-      @include box-shadow(inset 0 1px 1px rgba(0,0,0,.2));
+
+      @include box-shadow(inset 0 1px 1px rgba(0,0,0,0.2));
     }
 
     &[disabled],
@@ -78,7 +81,7 @@
 }
 
 .navbar .dropdown > .dropdown-menu {
-  &:after {
+  &::after {
     content: '';
     display: inline-block;
     border-left: 6px solid transparent;

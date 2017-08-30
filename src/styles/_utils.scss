@@ -1,12 +1,10 @@
-/***********************************/
 /**            UTILS              **/
-/***********************************/
 
 // Util Components
 // ----------------------------
 
-.transition-height{
-  @include transition(height .15s ease-in-out);
+.transition-height {
+  @include transition(height 0.15s ease-in-out);
 }
 
 @include thumb('.thumb-lg', 60px);
@@ -17,18 +15,18 @@
 .thumb-xs,
 .thumb-sm,
 .thumb-lg,
-.thumb{
+.thumb {
   position: relative;
   display: inline-block;
   text-align: center;
 
-  img{
+  img {
     height: auto;
     max-width: 100%;
     vertical-align: middle;
   }
 
-  .status{
+  .status {
     position: absolute;
     top: 0;
     left: 0;
@@ -38,7 +36,7 @@
     border: 0.15em solid $white;
     border-radius: 50%;
 
-    &.status-bottom{
+    &.status-bottom {
       top: auto;
       left: auto;
       bottom: 0;
@@ -54,47 +52,53 @@
   text-overflow: ellipsis;
 }
 
-.thin-scroll{
+.thin-scroll {
   &::-webkit-scrollbar {
     height: 8px;
     width: 8px;
   }
+
   &::-webkit-scrollbar:hover {
     background-color: #e9e9e9;
     border: none;
   }
+
   &::-webkit-scrollbar-thumb {
     border: none;
-    background-color: rgba(0, 0, 0, .2);
-    @include box-shadow(inset 1px 1px 0 rgba(0, 0, 0, .1));
+    background-color: rgba(0, 0, 0, 0.2);
+
+    @include box-shadow(inset 1px 1px 0 rgba(0, 0, 0, 0.1));
   }
+
   &::-webkit-scrollbar-thumb:hover {
     background-color: $gray-light;
   }
 }
 
-@include keyframes('bg-attention'){
-  0%{
+@include keyframes('bg-attention') {
+  0% {
     background-color: lighten($brand-warning, 43%);
   }
-  5%{
+
+  5% {
     background-color: lighten($brand-warning, 33%);
   }
-  0%{
-    background-color: rgba(0,0,0,0);
-  }
-};
 
-.bg-attention{
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+.bg-attention {
   animation: bg-attention 10s;
 }
 
 /* .h* + .fw-bold */
 $font-sizes: 54px, $h1-font-size, $h2-font-size, $h3-font-size, $h4-font-size, $h5-font-size, $h6-font-size;
 $i: 0;
-@each $font-size in $font-sizes{
 
-  .value#{$i}{
+@each $font-size in $font-sizes {
+  .value#{$i} {
     margin: 0;
     font-size: $font-size;
     font-weight: $font-weight-semi-bold;
@@ -125,7 +129,7 @@ $margin-horizontal-variants: (lg: 20px, md: 15px, sm: 10px, xs: 5px, 0: 0);
 @include property-variants('.ml', 'margin-left', $margin-horizontal-variants);
 @include property-variants('.mr', 'margin-right', $margin-horizontal-variants);
 
-.no-padding{
+.no-padding {
   padding: 0;
 }
 
@@ -142,7 +146,7 @@ $height-variants: (50: 50px, 100: 100px, 150: 150px, 200: 200px, 250: 250px);
 @include property-variants('.height', 'height', $height-variants);
 @include property-variants('.max-height', 'max-height', $height-variants);
 
-$opacity-variants: (10: .1, 20: .2, 30: .3, 40: .4, 50: .5, 60: .6, 70: .7, 80: .8, 90: .9);
+$opacity-variants: (10: 0.1, 20: 0.2, 30: 0.3, 40: 0.4, 50: 0.5, 60: 0.6, 70: 0.7, 80: 0.8, 90: 0.9);
 
 @include property-variants('.opacity', 'opacity', $opacity-variants);
 
@@ -150,33 +154,32 @@ $z-index-variants: (more: 1, less: -1);
 
 @include property-variants('.z-index', 'z-index', $z-index-variants);
 
-
-.no-border{
+.no-border {
   border: none;
 }
 
-.bt{ border-top: 1px solid $gray-semi-lighter }
-.br{ border-right: 1px solid $gray-semi-lighter }
-.bb{ border-bottom: 1px solid $gray-semi-lighter }
-.bl{ border-left: 1px solid $gray-semi-lighter }
+.bt { border-top: 1px solid $gray-semi-lighter; }
+.br { border-right: 1px solid $gray-semi-lighter; }
+.bb { border-bottom: 1px solid $gray-semi-lighter; }
+.bl { border-left: 1px solid $gray-semi-lighter; }
 
-.overflow-hidden{
+.overflow-hidden {
   overflow: hidden;
 }
 
-.fw-semi-bold{
+.fw-semi-bold {
   font-weight: $font-weight-semi-bold;
 }
 
-.fw-normal{
+.fw-normal {
   font-weight: $font-weight-normal;
 }
 
-.fw-bold{
+.fw-bold {
   font-weight: $font-weight-bold;
 }
 
-.fw-thin{
+.fw-thin {
   font-weight: $font-weight-thin;
 }
 
@@ -202,15 +205,10 @@ $z-index-variants: (more: 1, less: -1);
 //override bs .text-* classes so they use $brand-* variables
 
 @include text-emphasis-variant('.text-primary', $brand-primary);
-
 @include text-emphasis-variant('.text-success', $brand-success);
-
 @include text-emphasis-variant('.text-info', $brand-info);
-
 @include text-emphasis-variant('.text-warning', $brand-warning);
-
 @include text-emphasis-variant('.text-danger', $brand-danger);
-
 @include text-emphasis-variant('.text-link', $link-color);
 
 //copy bg classes after bootstrap so it's possible to overload other bootstrap classes
@@ -220,10 +218,9 @@ $z-index-variants: (more: 1, less: -1);
 @include bg-variant('.bg-info', $brand-info);
 @include bg-variant('.bg-warning', $brand-warning);
 @include bg-variant('.bg-danger', $brand-danger);
-
 @include bg-variant('.bg-body', $body-bg);
 @include bg-variant('.bg-gray', $gray);
-@include bg-variant('.bg-gray-transparent', rgba($gray, .6));
+@include bg-variant('.bg-gray-transparent', rgba($gray, 0.6));
 @include bg-variant('.bg-gray-dark', $gray-dark);
 @include bg-variant('.bg-black', $black);
 @include bg-variant('.bg-gray-light', $gray-light);
@@ -232,9 +229,17 @@ $z-index-variants: (more: 1, less: -1);
 @include bg-variant('.bg-transparent', rgba(0,0,0,0));
 @include bg-variant('.bg-white', $white);
 
-.bg-body, .bg-body-light, .bg-gray, .bg-gray-transparent, .bg-transparent,
-.bg-primary, .bg-success, .bg-warning, .bg-danger, .bg-info{
-  @include transition(background-color .15s ease-in-out);
+.bg-body,
+.bg-body-light,
+.bg-gray,
+.bg-gray-transparent,
+.bg-transparent,
+.bg-primary,
+.bg-success,
+.bg-warning,
+.bg-danger,
+.bg-info {
+  @include transition(background-color 0.15s ease-in-out);
 }
 
 @include text-emphasis-variant('.text-white', $white);
@@ -245,32 +250,31 @@ $z-index-variants: (more: 1, less: -1);
 @include text-emphasis-variant('.text-gray-darker', $gray-darker);
 @include text-emphasis-variant('.text-gray-lighter', $gray-lighter);
 
-
-.text-light{
-  opacity: .8;
+.text-light {
+  opacity: 0.8;
 }
 
-.fs-mini{
+.fs-mini {
   font-size: $font-size-mini;
 }
 
-.fs-sm{
+.fs-sm {
   font-size: $font-size-sm;
 }
 
-.btlr{
+.btlr {
   border-top-left-radius: $border-radius-base;
 }
 
-.btrr{
+.btrr {
   border-top-right-radius: $border-radius-base;
 }
 
-.bblr{
+.bblr {
   border-bottom-left-radius: $border-radius-base;
 }
 
-.bbrr{
+.bbrr {
   border-bottom-right-radius: $border-radius-base;
 }
 

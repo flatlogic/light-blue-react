@@ -1,77 +1,54 @@
 
 @import '../../styles/app';
 
-.widget{
+.widget {
   border-radius: $border-radius-base;
+
   @include box-sizing(content-box);
+
   padding: $widget-padding;
   color: $widget-color;
   background: $widget-bg;
   margin-bottom: $widget-mb;
   position: relative;
 
-  //widget sizes
-  &.normal{
-    height: 220px;
-  }
-
-  &.large{
-    height: 315px;
-
-    .body{
-      height: 280px;
-    }
-  }
-
-  &.xlarge{
-    height: 415px;
-
-    .body{
-      height: 380px;
-    }
-  }
-
-  &.tiny{
-    height: 188px;
-  }
-
-  &.tiny-x2{
-    height: 426px;
-  }
-
-  &.transparent{
+  &.transparent {
     background: transparent;
+
     @include box-shadow(none);
   }
 
-  & > header{
+  & > header {
     position: relative;
     background: none;
     color: $widget-header-color;
 
-    + .widget-body{
+    + .widget-body {
       margin-top: $widget-padding-vertical;
     }
 
-    h1,h2,h3,h4,h5{
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
       margin: 0;
       line-height: 20px;
       font-weight: 600;
       color: inherit;
 
-      small{
+      small {
         text-transform: lowercase;
         color: $widget-header-smalls-color;
       }
     }
-
   }
 
-  .body{
+  .body {
     margin-top: 10px;
   }
 
-  & > footer{
+  & > footer {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -79,16 +56,17 @@
     margin: 15px 0 0;
   }
 
-  .actions{
+  .actions {
     position: absolute;
     right: 0;
     top: 0;
-    a{
+
+    a {
       text-decoration: none;
     }
   }
 
-  .widget-table-overflow{
+  .widget-table-overflow {
     margin: 0 (-$widget-padding-horizontal) (-$widget-padding-vertical);
     border-bottom-left-radius: $border-radius-base;
     border-bottom-right-radius: $border-radius-base;
@@ -110,7 +88,7 @@
   }
 }
 
-.widget-controls{
+.widget-controls {
   position: absolute;
   z-index: 1;
   top: 0;
@@ -118,31 +96,33 @@
   font-size: $font-size-sm;
   word-spacing: 1px;
 
-  &.left{
+  &.left {
     left: 0;
     right: auto;
   }
 
-  > a, > span{
+  > a,
+  > span {
     padding: 1px 4px;
     border-radius: 4px;
     color: $widget-controls-color;
-    @include transition(color .15s ease-in-out);
 
-    > .fa{
+    @include transition(color 0.15s ease-in-out);
+
+    > .fa {
       vertical-align: middle;
     }
 
-    > .glyphicon{
+    > .glyphicon {
       vertical-align: -1px;
     }
   }
 
-  > a:hover{
+  > a:hover {
     color: $widget-controls-hover-color;
   }
 
-  .fa-refresh{
+  .fa-refresh {
     position: relative;
     top: -1px;
   }
