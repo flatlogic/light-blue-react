@@ -208,6 +208,12 @@ $btn-inverse-color:              $gray-dark !default;
 $btn-inverse-bg: $white-dark !default;
 $btn-inverse-border: rgba(#000, 0.2);
 
+//== Navs
+// -------------------------
+
+$nav-tabs-link-hover-bg:                    rgba(26, 26, 26, 0.4) !default;
+$nav-tabs-link-bg:                          $widget-bg !default;
+
 // Forms
 // -------------------------
 
@@ -253,6 +259,12 @@ $state-warning-bg:               rgba($state-warning-border, 0.28) !default;
 $state-danger-text:              $white !default;
 $state-danger-border:            rgba(#f26349, 0.7) !default;
 $state-danger-bg:                rgba($state-danger-border, 0.29) !default;
+
+// Badges
+// --------------------------
+
+$badge-font-size: $font-size-sm;
+$badge-font-weight: $font-weight-semi-bold;
 
 //== Tables
 //

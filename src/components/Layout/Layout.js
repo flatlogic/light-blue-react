@@ -7,6 +7,7 @@ import { Switch, Route, withRouter } from 'react-router';
 // an example of react-router code-splitting
 /* eslint-disable */
 import loadAnother from 'bundle-loader?lazy!../../pages/another/Another';
+import loadUIIcons from 'bundle-loader?lazy!../../pages/ui-elements/icons/Icons';
 /* eslint-enable */
 
 import s from './Layout.scss';
@@ -18,6 +19,7 @@ import Bundle from '../../core/Bundle';
 import Dashboard from '../../pages/dashboard/Dashboard';
 
 const AnotherBundle = Bundle.generateBundle(loadAnother);
+const UIIconsBundle = Bundle.generateBundle(loadUIIcons);
 
 class Layout extends React.Component {
 
@@ -36,6 +38,7 @@ class Layout extends React.Component {
             <Switch>
               <Route path="/app" exact component={Dashboard} />
               <Route path="/app/another" exact component={AnotherBundle} />
+              <Route path="/app/ui/icons" exact component={UIIconsBundle} />
             </Switch>
           </main>
         </div>
