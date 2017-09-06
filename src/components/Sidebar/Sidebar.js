@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import s from './Sidebar.scss';
 import LinksGroup from './LinksGroup/LinksGroup';
 import { dismissAlert } from '../../actions/alerts';
+import { changeActiveSidebarItem } from '../../actions/navigation';
 
 class Sidebar extends React.Component {
 
@@ -27,31 +28,17 @@ class Sidebar extends React.Component {
            ref="element"
            style={{height: this.props.sidebarOpen ? `${this.refs.element.scrollHeight}px` : 0}}>
         <ul className={s.nav}>
-          <LinksGroup  header="Dashboard" headerLink="/app" iconName="fa-home" />
+          <LinksGroup header="Dashboard" headerLink="/app" iconName="fa-home" />
           <LinksGroup header="Another Page" headerLink="/app/another" iconName="fa-tree" />
           <LinksGroup
+            onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/ui'))}
+            isActive={this.props.activeItem === '/app/ui'}
             header="UI Elements"
             iconName="fa-child"
             headerLink="/app/ui"
             childrenLinks={[
               {
-                name: 'Icons', link: '/app/ui/icons1', iconName: 'fa-child',
-              },
-              {
-                name: 'Icons2', link: '/app/ui/icons2', iconName: 'fa-child',
-              }
-            ]}
-          />
-          <LinksGroup
-            header="UI Elements"
-            iconName="fa-child"
-            headerLink="/app/ui2"
-            childrenLinks={[
-              {
-                name: 'Icons', link: '/app/ui2/icons1', iconName: 'fa-child',
-              },
-              {
-                name: 'Icons2', link: '/app/ui2/icons2', iconName: 'fa-child',
+                name: 'Icons', link: '/app/ui/icons', iconName: 'fa-child',
               }
             ]}
           />

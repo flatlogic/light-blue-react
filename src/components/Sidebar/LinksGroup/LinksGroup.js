@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { NavLink, withRouter } from 'react-router-dom';
-import { Collapse, Badge } from 'reactstrap';
+import { Collapse } from 'reactstrap';
 import { Route } from 'react-router';
-import { changeActiveSidebarItem } from '../../../actions/navigation';
 
 import s from './LinksGroup.scss';
 
@@ -17,8 +15,9 @@ class LinksGroup extends Component {
     childrenLinks: PropTypes.array,
     iconName: PropTypes.string.isRequired,
     className: PropTypes.string,
-    badge: PropTypes.string,
-    activeItem: PropTypes.string.isRequired
+    activeItem: PropTypes.string,
+    isActive: PropTypes.bool,
+    onActiveSidebarItemChange: PropTypes.func,
   };
   /* eslint-enable */
 
@@ -38,12 +37,13 @@ class LinksGroup extends Component {
   }
 
   togglePanelCollapse() {
-    this.props.dispatch(changeActiveSidebarItem(this.props.headerLink));
-    this.setState({headerLinkWasClicked : !this.state.headerLinkWasClicked || this.props.headerLink !== this.props.activeItem});
+    this.props.onActiveSidebarItemChange();
+    this.setState({ headerLinkWasClicked:
+      !this.state.headerLinkWasClicked || !this.props.isActive });
   }
 
   render() {
-    var isOpen = this.props.activeItem === this.props.headerLink && this.state.headerLinkWasClicked;
+    const isOpen = this.props.isActive && this.state.headerLinkWasClicked;
 
     if (!this.props.childrenLinks) {
       return (
@@ -98,10 +98,4 @@ class LinksGroup extends Component {
   }
 }
 
-function mapStateToProps(store) {
-  return {
-    activeItem: store.navigation.activeItem,
-  };
-}
-
-export default withRouter(connect(mapStateToProps)(withStyles(s)(LinksGroup)));
+export default withRouter(withStyles(s)(LinksGroup));

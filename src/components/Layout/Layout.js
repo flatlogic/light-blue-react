@@ -38,10 +38,7 @@ class Layout extends React.Component {
             <Switch>
               <Route path="/app" exact component={Dashboard} />
               <Route path="/app/another" exact component={AnotherBundle} />
-              <Route path="/app/ui/icons1" exact component={UIIconsBundle} />
-              <Route path="/app/ui/icons2" exact component={UIIconsBundle} />
-              <Route path="/app/ui2/icons1" exact component={UIIconsBundle} />
-              <Route path="/app/ui2/icons2" exact component={UIIconsBundle} />
+              <Route path="/app/ui/icons" exact component={UIIconsBundle} />
             </Switch>
           </main>
         </div>

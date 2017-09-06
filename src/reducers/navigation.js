@@ -4,7 +4,7 @@ const initialState = {
   sidebarPosition: 'left',
   sidebarState: 'show',
   sidebarOpen: false,
-  activeItem: null
+  activeItem: null,
 };
 
 export default function runtime(state = initialState, action) {

@@ -110,10 +110,10 @@ app.get('*', async (req, res, next) => {
       store.dispatch(receiveLogout());
     }
 
-    var the_arr = req.url.split('/');
-    the_arr.pop();
+    const theArr = req.url.split('/');
+    theArr.pop();
 
-    store.dispatch(changeActiveSidebarItem(the_arr.join('/')));
+    store.dispatch(changeActiveSidebarItem(theArr.join('/')));
 
     // store.dispatch(setRuntimeVariable({
     //   name: 'initialNow',

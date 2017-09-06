@@ -50,5 +50,6 @@ a.headerLinkActive {
 .caret {
   float: right;
   margin-right: -8px;
+
   @include transition(transform 0.3s ease-in-out);
 }
