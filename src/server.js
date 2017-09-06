@@ -15,6 +15,7 @@ import { ErrorPageWithoutStyle } from './pages/error/ErrorPage';
 import createFetch from './createFetch';
 import configureStore from './store/configureStore';
 import { receiveLogin, receiveLogout } from './actions/user';
+import { changeActiveSidebarItem } from './actions/navigation';
 import config from './config';
 import assets from './assets.json'; // eslint-disable-line import/no-unresolved
 import theme from './styles/theme.scss';
@@ -108,6 +109,11 @@ app.get('*', async (req, res, next) => {
     } else {
       store.dispatch(receiveLogout());
     }
+
+    var the_arr = req.url.split('/');
+    the_arr.pop();
+
+    store.dispatch(changeActiveSidebarItem(the_arr.join('/')));
 
     // store.dispatch(setRuntimeVariable({
     //   name: 'initialNow',

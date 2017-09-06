@@ -27,8 +27,34 @@ class Sidebar extends React.Component {
            ref="element"
            style={{height: this.props.sidebarOpen ? `${this.refs.element.scrollHeight}px` : 0}}>
         <ul className={s.nav}>
-          <LinksGroup header="Dashboard" headerLink="/app" iconName="fa-home" />
+          <LinksGroup  header="Dashboard" headerLink="/app" iconName="fa-home" />
           <LinksGroup header="Another Page" headerLink="/app/another" iconName="fa-tree" />
+          <LinksGroup
+            header="UI Elements"
+            iconName="fa-child"
+            headerLink="/app/ui"
+            childrenLinks={[
+              {
+                name: 'Icons', link: '/app/ui/icons1', iconName: 'fa-child',
+              },
+              {
+                name: 'Icons2', link: '/app/ui/icons2', iconName: 'fa-child',
+              }
+            ]}
+          />
+          <LinksGroup
+            header="UI Elements"
+            iconName="fa-child"
+            headerLink="/app/ui2"
+            childrenLinks={[
+              {
+                name: 'Icons', link: '/app/ui2/icons1', iconName: 'fa-child',
+              },
+              {
+                name: 'Icons2', link: '/app/ui2/icons2', iconName: 'fa-child',
+              }
+            ]}
+          />
         </ul>
         <h6 className={s.navTitle}>
           Labels
@@ -84,6 +110,7 @@ function mapStateToProps(store) {
   return {
     alertsList: store.alerts.alertsList,
     sidebarOpen: store.navigation.sidebarOpen,
+    activeItem: store.navigation.activeItem,
   };
 }
 
