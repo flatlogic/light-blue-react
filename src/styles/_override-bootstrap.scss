@@ -16,6 +16,9 @@ hr {
 }
 
 blockquote {
+
+  border-left: $blockquote-border-width solid $blockquote-border-color;
+
   &.blockquote-sm {
     padding: 0 0 0 15px;
     font-size: $font-size-base;
@@ -26,6 +29,13 @@ blockquote {
     margin-bottom: ($line-height-base * $font-size-base) / 2;
   }
 }
+
+h1 { font-size: $font-size-base * 2.75; } // ~38px
+h2 { font-size: $font-size-base * 2.25; } // ~32px
+h3 { font-size: $font-size-base * 1.75; } // ~24px
+h4 { font-size: $font-size-base * 1.25; } // ~18px
+h5 { font-size: $font-size-base; }
+h6 { font-size: $font-size-base * 0.85; } // ~12px
 
 small,
 .small {
@@ -79,6 +89,17 @@ textarea {
   &.search {
     padding-left: 26px;
   }
+}
+
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: $spacer;
+  line-height: inherit;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 15px;
 }
 
 select:focus,

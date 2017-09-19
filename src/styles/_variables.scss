@@ -226,7 +226,7 @@ $input-group-addon-border-color: transparent;
 
 $input-btn-padding-y-lg:    0.9rem !default;
 
-$legend-color:                   $white !default;
+$legend-color:                   lighten($text-color, 15%) !default;
 
 // Dropdowns
 // -------------------------
@@ -335,11 +335,11 @@ $carousel-control-opacity:                    1 !default;
 $carousel-indicator-active-bg:                $red !default;
 $carousel-indicator-border-color:             transparent !default;
 
-// Wells
+// Card
 // -------------------------
 
-$well-bg:         $bg-addition !default;
-$well-border:     transparent !default;
+$card-bg:         $bg-addition !default;
+$card-border-color:     transparent !default;
 
 // Code (inline and block)
 // --------------------------------------------------
@@ -352,11 +352,16 @@ $pre-border-color: $widget-bg !default;
 // --------------------------------------------------
 
 $blockquote-border-color:             $widget-bg;
+$blockquote-border-width: 0.4rem !default;
 
 // Custom libs variables
 // ------------------------
 
 // Awesome Checkbox
 // ------------------------
-
-$awesome-checkbox-default-color:       #eee;
+$brand-primary: #5d8fc2 !default;
+$brand-success: #64bd63 !default;
+$brand-info: #5dc4bf !default;
+$brand-warning: #f0b518 !default;
+$brand-danger: #dd5826 !default;
+$input-bg-disabled: $gray-lighter !default;
