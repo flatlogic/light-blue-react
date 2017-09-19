@@ -755,77 +755,6 @@ button.dropdown-toggle {
   margin-bottom: $spacer/2;
 }
 
-/*          Panels         */
-
-.panel-heading {
-  padding: 0;
-
-  > .accordion-toggle {
-    display: block;
-    padding: 8px 15px;
-  }
-}
-
-.panel-group {
-  .panel-heading {
-    + .panel-collapse .panel-body {
-      border-top: 1px solid $bg-addition;
-    }
-  }
-
-  .panel-footer {
-    + .panel-collapse .panel-body {
-      border-bottom: 1px solid $bg-addition;
-    }
-  }
-}
-
-.panel {
-  border: none;
-  background-color: $widget-bg;
-
-  @include box-shadow(none);
-
-  .content & {
-    color: $widget-color;
-  }
-
-  .panel-heading a {
-    color: $widget-header-color;
-    font-weight: $font-weight-base;
-
-    &:focus {
-      text-decoration: none;
-    }
-
-    &.collapsed {
-      color: $text-muted;
-    }
-
-    &[data-toggle='collapse'] {
-      &::before {
-        display: inline-block;
-        font-family: FontAwesome;
-        content: '\f107';
-        float: right;
-        margin-right: -8px;
-        position: relative;
-        top: 1px;
-
-        @include transition(transform 0.3s ease-in-out);
-      }
-
-      &.collapsed::before {
-        transform: rotate(90deg);
-      }
-    }
-  }
-}
-
-.panel-body {
-  border-top-color: $bg-addition;
-}
-
 /*        Carousel         */
 
 .carousel {
@@ -863,8 +792,32 @@ button.dropdown-toggle {
   }
 }
 
-/*          Wells          */
+/*          Card          */
+.card-columns {
+  .card {
+    padding: 0;
 
-.well {
-  @include box-shadow(none);
+    .card-body {
+      border-top: 1px solid $bg-addition;
+    }
+  }
+
+  @include media-breakpoint-up(xs) {
+    column-count: 1;
+  }
 }
+
+.card {
+  padding: 19px;
+  margin-bottom: 20px;
+
+  &.card-sm {
+    padding: 9px;
+  }
+
+  &.card-white {
+    background-color: rgba($white, 0.2);
+  }
+}
+
+
