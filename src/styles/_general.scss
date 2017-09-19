@@ -56,6 +56,19 @@ textarea {
   font-family: $font-family-base;
 }
 
+input[type=search], input.search {
+  padding-left: 26px;
+  background-color: $input-bg;
+  background:url(../images/search.png) 5px 6px no-repeat $input-bg;
+
+  &.input-transparent {
+    border: none;
+    color: $widget-color;
+    background: url(../images/search.png) 5px 5px no-repeat $widget-bg;
+    @include placeholder(rgba(#eee, .76));
+  }
+}
+
 ul ul,
 ol ul {
   list-style: none;
@@ -92,6 +105,10 @@ form {
 
 .form-control {
   font-family: $font-family-sans-serif;
+}
+
+strong, b {
+  font-weight: bold;
 }
 
 svg {
