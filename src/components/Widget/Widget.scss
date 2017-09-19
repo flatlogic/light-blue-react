@@ -1,136 +1,77 @@
 
 @import '../../styles/app';
 
+.title {
+  margin-top: 0;
+
+  @include clearfix();
+}
+
 .widget {
-  border-radius: $border-radius-base;
-
-  @include box-sizing(content-box);
-
-  padding: $widget-padding;
-  color: $widget-color;
-  background: $widget-bg;
-  margin-bottom: $widget-mb;
+  display: block;
   position: relative;
+  margin-bottom: $grid-gutter-width;
+  padding: $widget-padding-vertical $widget-padding-horizontal;
+  background: $widget-bg;
+  border-radius: $border-radius-sm;
 
-  &.transparent {
-    background: transparent;
-
-    @include box-shadow(none);
-  }
-
-  & > header {
-    position: relative;
-    background: none;
-    color: $widget-header-color;
-
-    + .widget-body {
-      margin-top: $widget-padding-vertical;
-    }
+  > header {
+    margin: (-$widget-padding-vertical) (-$widget-padding-horizontal);
+    padding: $widget-padding-vertical $widget-padding-horizontal;
 
     h1,
     h2,
     h3,
     h4,
-    h5 {
+    h5,
+    h6 {
+      font-weight: $font-weight-semi-bold;
       margin: 0;
-      line-height: 20px;
-      font-weight: 600;
-      color: inherit;
-
-      small {
-        text-transform: lowercase;
-        color: $widget-header-smalls-color;
-      }
-    }
-  }
-
-  .body {
-    margin-top: 10px;
-  }
-
-  & > footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 15px 0 0;
-  }
-
-  .actions {
-    position: absolute;
-    right: 0;
-    top: 0;
-
-    a {
-      text-decoration: none;
-    }
-  }
-
-  .widget-table-overflow {
-    margin: 0 (-$widget-padding-horizontal) (-$widget-padding-vertical);
-    border-bottom-left-radius: $border-radius-base;
-    border-bottom-right-radius: $border-radius-base;
-
-    .table > thead > tr > th,
-    .table > thead > tr > td,
-    .table > tbody > tr > th,
-    .table > tbody > tr > td,
-    .table > tfoot > tr > th,
-    .table > tfoot > tr > td {
-      &:first-child {
-        padding-left: $widget-padding-horizontal;
-      }
-
-      &:last-child {
-        padding-right: $widget-padding-horizontal;
-      }
     }
   }
 }
 
-.widget-controls {
+.widgetBody {
+  margin-top: $widget-padding-vertical;
+}
+
+.widgetControls {
   position: absolute;
   z-index: 1;
   top: 0;
   right: 0;
-  font-size: $font-size-sm;
-  word-spacing: 1px;
+  padding: 14px;
 
-  &.left {
-    left: 0;
-    right: auto;
-  }
-
-  > a,
-  > span {
-    padding: 1px 4px;
+  a,
+  a:not([href]):not([tabindex]) {
+    padding: 1px 5px;
     border-radius: 4px;
     color: $widget-controls-color;
 
     @include transition(color 0.15s ease-in-out);
 
-    > .fa {
-      vertical-align: middle;
+    &:hover {
+      color: rgba($black, 0.1);
+      text-decoration: none;
     }
 
-    > .glyphicon {
-      vertical-align: -1px;
+    :global {
+      .fa {
+        position: relative;
+        top: 2px;
+      }
     }
-  }
-
-  > a:hover {
-    color: $widget-controls-hover-color;
-  }
-
-  .fa-refresh {
-    position: relative;
-    top: -1px;
   }
 }
 
-.title {
-  margin-top: 0;
-  color: $widget-header-color;
+.inverse {
+  top: 2px;
+  position: relative;
+  margin-left: 3px;
 
-  @include clearfix();
+  :global {
+    .glyphicon {
+      vertical-align: baseline;
+    }
+  }
 }
