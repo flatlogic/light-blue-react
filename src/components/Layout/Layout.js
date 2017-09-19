@@ -8,6 +8,11 @@ import { Switch, Route, withRouter } from 'react-router';
 /* eslint-disable */
 import loadAnother from 'bundle-loader?lazy!../../pages/another/Another';
 import loadUIIcons from 'bundle-loader?lazy!../../pages/ui-elements/icons/Icons';
+import loadUIButtons from 'bundle-loader?lazy!../../pages/ui-elements/buttons/Buttons';
+import loadUIAccordion from 'bundle-loader?lazy!../../pages/ui-elements/accordion/Accordion';
+import loadUITabs from 'bundle-loader?lazy!../../pages/ui-elements/tabs/Tabs';
+import loadFormsAccount from 'bundle-loader?lazy!../../pages/forms/account/Account';
+import loadFormsElements from 'bundle-loader?lazy!../../pages/forms/elements/Elements';
 /* eslint-enable */
 
 import s from './Layout.scss';
@@ -20,6 +25,11 @@ import Dashboard from '../../pages/dashboard/Dashboard';
 
 const AnotherBundle = Bundle.generateBundle(loadAnother);
 const UIIconsBundle = Bundle.generateBundle(loadUIIcons);
+const UIButtonsBundle = Bundle.generateBundle(loadUIButtons);
+const UIAccordionBundle = Bundle.generateBundle(loadUIAccordion);
+const UITabsBundle = Bundle.generateBundle(loadUITabs);
+const FormsAccountBundle = Bundle.generateBundle(loadFormsAccount);
+const FormsElementsBundle = Bundle.generateBundle(loadFormsElements);
 
 class Layout extends React.Component {
 
@@ -39,6 +49,11 @@ class Layout extends React.Component {
               <Route path="/app" exact component={Dashboard} />
               <Route path="/app/another" exact component={AnotherBundle} />
               <Route path="/app/ui/icons" exact component={UIIconsBundle} />
+              <Route path="/app/ui/buttons" exact component={UIButtonsBundle} />
+              <Route path="/app/ui/accordion" exact component={UIAccordionBundle} />
+              <Route path="/app/ui/tabs" exact component={UITabsBundle} />
+              <Route path="/app/forms/account" exact component={FormsAccountBundle} />
+              <Route path="/app/forms/elements" exact component={FormsElementsBundle} />
             </Switch>
           </main>
         </div>

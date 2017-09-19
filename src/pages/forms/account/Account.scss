@@ -1,0 +1,25 @@
+@import '../../../styles/app';
+
+:global {
+  @import '../../../../node_modules/react-select2-wrapper/css/select2';
+  @import '../../../../node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox';
+  @import '../../../../node_modules/react-datetime/css/react-datetime';
+}
+
+.submitBlock {
+  background-color: $bg-addition;
+  margin: $spacer 0 0;
+  padding: $spacer*1.5 $spacer*2;
+}
+
+.select2 {
+  :global {
+    .select2-container {
+      width: 100% !important;
+    }
+  }
+}
+
+.root {
+  // some styles
+}

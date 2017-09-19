@@ -33,12 +33,36 @@ class Sidebar extends React.Component {
           <LinksGroup
             onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/ui'))}
             isActive={this.props.activeItem === '/app/ui'}
-            header="UI Elements"
-            iconName="fa-child"
+            header="User Interface"
+            iconName="fa-magic"
             headerLink="/app/ui"
             childrenLinks={[
               {
-                name: 'Icons', link: '/app/ui/icons', iconName: 'fa-child',
+                name: 'Icons', link: '/app/ui/icons',
+              },
+              {
+                name: 'Buttons', link: '/app/ui/buttons',
+              },
+              {
+                name: 'Tabs', link: '/app/ui/tabs',
+              },
+              {
+                name: 'Accordion', link: '/app/ui/accordion',
+              }
+            ]}
+          />
+          <LinksGroup
+            onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/forms'))}
+            isActive={this.props.activeItem === '/app/forms'}
+            header="Forms"
+            iconName="fa-pencil"
+            headerLink="/app/forms"
+            childrenLinks={[
+              {
+                name: 'Account', link: '/app/forms/account',
+              },
+              {
+                name: 'Elements', link: '/app/forms/elements',
               }
             ]}
           />
