@@ -90,12 +90,15 @@ input[type='checkbox']:focus {
 
 .input-group-btn > .btn {
   z-index: 2;
+  border: none;
 }
 
 /*      Input Groups       */
 
 .input-group-addon {
   color: $text-muted;
+  border: none;
+  padding: 0.385rem 12px;
 }
 
 /*        Tables        */
@@ -175,10 +178,6 @@ input[type='checkbox']:focus {
 }
 
 button.dropdown-toggle {
-  &::after {
-    content: none;
-  }
-
   i {
     margin-left: 3px;
   }
@@ -190,6 +189,10 @@ button.dropdown-toggle {
 
 .dropdown-menu > li > a {
   font-weight: $font-weight-base;
+}
+
+.btn-group.show .dropdown-menu{
+  display: block;
 }
 
 /*      Buttons            */
@@ -222,7 +225,7 @@ button.dropdown-toggle {
 
   &.disabled,
   &[disabled] {
-    color: $white;
+    cursor: not-allowed;
   }
 
   .caret {
@@ -256,8 +259,13 @@ button.dropdown-toggle {
   }
 }
 
+.btn-secondary {
+  @include button-variant($gray, $gray, #4d4d4d);
+  @include box-shadow(none);
+}
+
 .btn-inverse {
-  @include button-variant($btn-inverse-color, $btn-inverse-bg, rgba(0, 0, 0, 0.2));
+  @include button-variant($white-dark, $white-dark, #dfdfdf);
 }
 
 /* since 1.5 */
