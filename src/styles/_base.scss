@@ -92,3 +92,19 @@
     left: 10px;
   }
 }
+
+.section{
+  font-size: $font-size-larger;
+  color: $text-muted;
+  font-weight: $font-weight-thin;
+  vertical-align: middle;
+  line-height: 30px;
+  padding: $section-padding-top 0 0 0;
+  margin-bottom: $section-margin-bottom;
+
+  small{
+    font-size: $font-size-sm;
+    color: $text-muted;
+    font-weight: bold;
+  }
+}

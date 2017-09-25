@@ -22,7 +22,7 @@ import {
 
 import Widget from '../../../components/Widget';
 import s from './Account.scss';
-import i1 from '../../../images/1.png';
+import i3 from '../../../images/3.png';
 
 class Buttons extends React.Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class Buttons extends React.Component {
     return (
       <div className={s.root}>
         <h2 className="page-title">Account Demo
-          <small>Out of the box form</small>
+          <small> Out of the box form</small>
         </h2>
         <Row>
           <Col lg={7}>
@@ -68,7 +68,7 @@ class Buttons extends React.Component {
                 <Row>
                   <Col md={4}>
                     <div className="text-center">
-                      <img className="rounded-circle" src={i1} alt="64x64" />
+                      <img className={`${s.profileImg} rounded-circle`} style={{height: 112 + 'px'}} src={i3} alt="64x64" />
                     </div>
                   </Col>
                   <Col md={6}>
@@ -82,13 +82,13 @@ class Buttons extends React.Component {
                     </address>
                   </Col>
                 </Row>
-                <FormGroup tag="fieldset">
+                <FormGroup tag="fieldset" className="mt-md">
                   <legend>Account Edit Form
-                    <small>Some explanation text</small>
+                    <small> Some explanation text</small>
                   </legend>
                 </FormGroup>
                 <FormGroup tag="fieldset">
-                  <legend>Personal Info</legend>
+                  <legend className="section">Personal Info</legend>
                   <FormGroup row>
                     <Label for="prefix" md={4}>Prefix</Label>
                     <Col md={4}>
@@ -136,7 +136,7 @@ class Buttons extends React.Component {
                   </FormGroup>
                 </FormGroup>
                 <FormGroup tag="fieldset">
-                  <legend>Contact Info</legend>
+                  <legend className="section">Contact Info</legend>
                   <FormGroup row>
                     <Label for="email" md={4}>Email
                       <span>*</span>
@@ -194,7 +194,12 @@ class Buttons extends React.Component {
                   </FormGroup>
                 </FormGroup>
                 <FormGroup tag="fieldset">
-                  <legend>Address</legend>
+                  <legend className="section">
+                    Address
+                    <button type="button" className="btn btn-transparent btn-xs float-right">
+                      <i className="fa fa-plus" /> Add Address
+                    </button>
+                  </legend>
                   <FormGroup row>
                     <Label for="email" md={4}>Address
                       <span>*</span>

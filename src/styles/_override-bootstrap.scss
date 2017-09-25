@@ -99,7 +99,13 @@ legend {
   line-height: inherit;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
-  font-size: 15px;
+  font-size: 19.5px;
+  font-weight: $font-weight-normal;
+
+  small{
+    color: $text-muted;
+    font-size: 14px;
+  }
 }
 
 select:focus,
@@ -252,6 +258,13 @@ button.dropdown-toggle {
   .caret {
     border-top-color: #fff;
   }
+}
+
+.btn-xs {
+  padding: 0 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
 }
 
 .btn-transparent {
