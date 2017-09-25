@@ -11,6 +11,7 @@ import loadUIIcons from 'bundle-loader?lazy!../../pages/ui-elements/icons/Icons'
 import loadUIButtons from 'bundle-loader?lazy!../../pages/ui-elements/buttons/Buttons';
 import loadUIAccordion from 'bundle-loader?lazy!../../pages/ui-elements/accordion/Accordion';
 import loadUITabs from 'bundle-loader?lazy!../../pages/ui-elements/tabs/Tabs';
+import loadUIDialogs from 'bundle-loader?lazy!../../pages/ui-elements/dialogs/Dialogs';
 import loadFormsAccount from 'bundle-loader?lazy!../../pages/forms/account/Account';
 import loadFormsElements from 'bundle-loader?lazy!../../pages/forms/elements/Elements';
 import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats/Stats';
@@ -29,6 +30,7 @@ const UIIconsBundle = Bundle.generateBundle(loadUIIcons);
 const UIButtonsBundle = Bundle.generateBundle(loadUIButtons);
 const UIAccordionBundle = Bundle.generateBundle(loadUIAccordion);
 const UITabsBundle = Bundle.generateBundle(loadUITabs);
+const UIDialogsBundle = Bundle.generateBundle(loadUIDialogs);
 const FormsAccountBundle = Bundle.generateBundle(loadFormsAccount);
 const FormsElementsBundle = Bundle.generateBundle(loadFormsElements);
 const StatisticsStatsBundle = Bundle.generateBundle(loadStatisticsStats);
@@ -54,6 +56,7 @@ class Layout extends React.Component {
               <Route path="/app/ui/buttons" exact component={UIButtonsBundle} />
               <Route path="/app/ui/accordion" exact component={UIAccordionBundle} />
               <Route path="/app/ui/tabs" exact component={UITabsBundle} />
+              <Route path="/app/ui/dialogs" exact component={UIDialogsBundle} />
               <Route path="/app/forms/account" exact component={FormsAccountBundle} />
               <Route path="/app/forms/elements" exact component={FormsElementsBundle} />
               <Route path="/app/statistics/stats" exact component={StatisticsStatsBundle} />
