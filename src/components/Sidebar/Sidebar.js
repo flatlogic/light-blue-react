@@ -66,6 +66,18 @@ class Sidebar extends React.Component {
               }
             ]}
           />
+          <LinksGroup
+            onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/statistics'))}
+            isActive={this.props.activeItem === '/app/statistics'}
+            header="Statistics"
+            iconName="fa-area-chart"
+            headerLink="/app/statistics"
+            childrenLinks={[
+              {
+                name: 'Stats', link: '/app/statistics/stats',
+              }
+            ]}
+          />
         </ul>
         <h6 className={s.navTitle}>
           Labels

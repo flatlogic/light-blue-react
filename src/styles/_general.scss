@@ -116,3 +116,27 @@ svg {
   width: 100%;
   display: block;
 }
+
+.box{
+  border-radius: $border-radius-base;
+
+  padding: 5px;
+  text-align: center;
+  margin-bottom: $widget-mb;
+  background: $widget-bg;
+  color: $widget-color;
+
+  .description{
+    font-weight: normal;
+    text-align: center;
+    margin: 10px -5px;
+  }
+
+  .icon, .big-text{
+    margin-top: 15px;
+    font-size: 36px;
+    line-height: 36px;
+    height: 36px;
+    font-weight: bold;
+  }
+}

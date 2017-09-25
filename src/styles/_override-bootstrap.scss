@@ -785,6 +785,7 @@ button.dropdown-toggle {
   background: rgba(black, 0.15);
   overflow: hidden;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: $form-group-margin-bottom;
 }
 
 .progress-sm {
@@ -795,6 +796,10 @@ button.dropdown-toggle {
 .progress-xs {
   height: 5px;
   margin-bottom: $spacer/2;
+}
+
+.progress-bar {
+  font-size: 1rem;
 }
 
 /*        Carousel         */

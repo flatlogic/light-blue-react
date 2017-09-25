@@ -13,6 +13,7 @@ import loadUIAccordion from 'bundle-loader?lazy!../../pages/ui-elements/accordio
 import loadUITabs from 'bundle-loader?lazy!../../pages/ui-elements/tabs/Tabs';
 import loadFormsAccount from 'bundle-loader?lazy!../../pages/forms/account/Account';
 import loadFormsElements from 'bundle-loader?lazy!../../pages/forms/elements/Elements';
+import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats/Stats';
 /* eslint-enable */
 
 import s from './Layout.scss';
@@ -30,6 +31,7 @@ const UIAccordionBundle = Bundle.generateBundle(loadUIAccordion);
 const UITabsBundle = Bundle.generateBundle(loadUITabs);
 const FormsAccountBundle = Bundle.generateBundle(loadFormsAccount);
 const FormsElementsBundle = Bundle.generateBundle(loadFormsElements);
+const StatisticsStatsBundle = Bundle.generateBundle(loadStatisticsStats);
 
 class Layout extends React.Component {
 
@@ -54,6 +56,7 @@ class Layout extends React.Component {
               <Route path="/app/ui/tabs" exact component={UITabsBundle} />
               <Route path="/app/forms/account" exact component={FormsAccountBundle} />
               <Route path="/app/forms/elements" exact component={FormsElementsBundle} />
+              <Route path="/app/statistics/stats" exact component={StatisticsStatsBundle} />
             </Switch>
           </main>
         </div>
