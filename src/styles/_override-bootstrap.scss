@@ -17,7 +17,9 @@ hr {
 
 blockquote {
 
-  border-left: $blockquote-border-width solid $blockquote-border-color;
+  &.blockquote {
+    border-left: $blockquote-border-width solid $blockquote-border-color;
+  }
 
   &.blockquote-sm {
     padding: 0 0 0 15px;

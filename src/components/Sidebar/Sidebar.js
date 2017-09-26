@@ -81,6 +81,18 @@ class Sidebar extends React.Component {
               }
             ]}
           />
+          <LinksGroup
+            onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/widgets'))}
+            isActive={this.props.activeItem === '/app/widgets'}
+            header="Widgets"
+            iconName="fa-th"
+            headerLink="/app/widgets"
+            childrenLinks={[
+              {
+                name: 'Basic', link: '/app/widgets/basic',
+              }
+            ]}
+          />
         </ul>
         <h6 className={s.navTitle}>
           Labels

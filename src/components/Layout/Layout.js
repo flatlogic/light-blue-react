@@ -15,6 +15,7 @@ import loadUIDialogs from 'bundle-loader?lazy!../../pages/ui-elements/dialogs/Di
 import loadFormsAccount from 'bundle-loader?lazy!../../pages/forms/account/Account';
 import loadFormsElements from 'bundle-loader?lazy!../../pages/forms/elements/Elements';
 import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats/Stats';
+import loadWidgetsBasic from 'bundle-loader?lazy!../../pages/widgets/basic/Basic';
 /* eslint-enable */
 
 import s from './Layout.scss';
@@ -34,6 +35,7 @@ const UIDialogsBundle = Bundle.generateBundle(loadUIDialogs);
 const FormsAccountBundle = Bundle.generateBundle(loadFormsAccount);
 const FormsElementsBundle = Bundle.generateBundle(loadFormsElements);
 const StatisticsStatsBundle = Bundle.generateBundle(loadStatisticsStats);
+const WidgetsBasicBundle = Bundle.generateBundle(loadWidgetsBasic);
 
 class Layout extends React.Component {
 
@@ -60,6 +62,7 @@ class Layout extends React.Component {
               <Route path="/app/forms/account" exact component={FormsAccountBundle} />
               <Route path="/app/forms/elements" exact component={FormsElementsBundle} />
               <Route path="/app/statistics/stats" exact component={StatisticsStatsBundle} />
+              <Route path="/app/widgets/basic" exact component={WidgetsBasicBundle} />
             </Switch>
           </main>
         </div>

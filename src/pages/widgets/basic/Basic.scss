@@ -1,0 +1,15 @@
+@import '../../../styles/app';
+
+.root {
+  h4{
+    font-size: $font-size-larger;
+  }
+
+  .tiny {
+    height: 198px;
+  }
+
+  .tinyX2 {
+    height: 426px;
+  }
+}
