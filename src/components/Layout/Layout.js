@@ -15,6 +15,7 @@ import loadUIDialogs from 'bundle-loader?lazy!../../pages/ui-elements/dialogs/Di
 import loadFormsAccount from 'bundle-loader?lazy!../../pages/forms/account/Account';
 import loadFormsElements from 'bundle-loader?lazy!../../pages/forms/elements/Elements';
 import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats/Stats';
+import loadTablesStatic from 'bundle-loader?lazy!../../pages/tables/static/Static';
 import loadWidgetsBasic from 'bundle-loader?lazy!../../pages/widgets/basic/Basic';
 /* eslint-enable */
 
@@ -35,6 +36,7 @@ const UIDialogsBundle = Bundle.generateBundle(loadUIDialogs);
 const FormsAccountBundle = Bundle.generateBundle(loadFormsAccount);
 const FormsElementsBundle = Bundle.generateBundle(loadFormsElements);
 const StatisticsStatsBundle = Bundle.generateBundle(loadStatisticsStats);
+const TablesStaticBundle = Bundle.generateBundle(loadTablesStatic);
 const WidgetsBasicBundle = Bundle.generateBundle(loadWidgetsBasic);
 
 class Layout extends React.Component {
@@ -62,6 +64,7 @@ class Layout extends React.Component {
               <Route path="/app/forms/account" exact component={FormsAccountBundle} />
               <Route path="/app/forms/elements" exact component={FormsElementsBundle} />
               <Route path="/app/statistics/stats" exact component={StatisticsStatsBundle} />
+              <Route path="/app/tables/static" exact component={TablesStaticBundle} />
               <Route path="/app/widgets/basic" exact component={WidgetsBasicBundle} />
             </Switch>
           </main>

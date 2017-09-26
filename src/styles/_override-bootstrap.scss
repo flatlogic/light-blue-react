@@ -145,6 +145,14 @@ input[type='checkbox']:focus {
   }
 }
 
+.table.table-striped,
+.table.table-hover {
+  thead > tr > th,
+  tfoot > tr > td{
+    border-top: none;
+  }
+}
+
 .table thead > tr > th {
   border-bottom: none;
   font-weight: 600;

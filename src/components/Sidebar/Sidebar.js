@@ -82,6 +82,18 @@ class Sidebar extends React.Component {
             ]}
           />
           <LinksGroup
+            onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/tables'))}
+            isActive={this.props.activeItem === '/app/tables'}
+            header="Tables"
+            iconName="fa-cog"
+            headerLink="/app/tables"
+            childrenLinks={[
+              {
+                name: 'Static', link: '/app/tables/static',
+              }
+            ]}
+          />
+          <LinksGroup
             onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/widgets'))}
             isActive={this.props.activeItem === '/app/widgets'}
             header="Widgets"
