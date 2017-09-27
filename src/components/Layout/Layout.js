@@ -6,7 +6,6 @@ import { Switch, Route, withRouter } from 'react-router';
 
 // an example of react-router code-splitting
 /* eslint-disable */
-import loadAnother from 'bundle-loader?lazy!../../pages/another/Another';
 import loadUIIcons from 'bundle-loader?lazy!../../pages/ui-elements/icons/Icons';
 import loadUIButtons from 'bundle-loader?lazy!../../pages/ui-elements/buttons/Buttons';
 import loadUIAccordion from 'bundle-loader?lazy!../../pages/ui-elements/accordion/Accordion';
@@ -27,7 +26,6 @@ import Bundle from '../../core/Bundle';
 // Dashboard component is loaded directly as an example of server side rendering
 import Dashboard from '../../pages/dashboard/Dashboard';
 
-const AnotherBundle = Bundle.generateBundle(loadAnother);
 const UIIconsBundle = Bundle.generateBundle(loadUIIcons);
 const UIButtonsBundle = Bundle.generateBundle(loadUIButtons);
 const UIAccordionBundle = Bundle.generateBundle(loadUIAccordion);
@@ -55,7 +53,6 @@ class Layout extends React.Component {
           <main className={[s.content].join(' ')}>
             <Switch>
               <Route path="/app" exact component={Dashboard} />
-              <Route path="/app/another" exact component={AnotherBundle} />
               <Route path="/app/ui/icons" exact component={UIIconsBundle} />
               <Route path="/app/ui/buttons" exact component={UIButtonsBundle} />
               <Route path="/app/ui/accordion" exact component={UIAccordionBundle} />
