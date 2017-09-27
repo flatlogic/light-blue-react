@@ -324,9 +324,9 @@ button.dropdown-toggle {
 }
 
 // Remove border on bottom, left, right
-.tabs-below > .nav-tabs,
-.tabs-right > .nav-tabs,
-.tabs-left > .nav-tabs {
+.tabs-below.nav-tabs,
+.tabs-right.nav-tabs,
+.tabs-left.nav-tabs {
   border-bottom: 0;
 }
 
@@ -344,12 +344,12 @@ button.dropdown-toggle {
 // BOTTOM
 // ------
 
-.tabs-below > .nav-tabs > li {
+.tabs-below.nav-tabs > li {
   margin-top: -1px;
   margin-bottom: 0;
 }
 
-.tabs-below > .nav-tabs > li > a {
+.tabs-below.nav-tabs > li > a {
   border-radius: 0 0 $border-radius-base $border-radius-base;
 
   &:hover,
@@ -359,9 +359,9 @@ button.dropdown-toggle {
   }
 }
 
-.tabs-below > .nav-tabs > .active > a,
-.tabs-below > .nav-tabs > .active > a:hover,
-.tabs-below > .nav-tabs > .active > a:focus {
+.tabs-below.nav-tabs > .active > a,
+.tabs-below.nav-tabs > .active > a:hover,
+.tabs-below.nav-tabs > .active > a:focus {
   border-color: $nav-tabs-active-item-border;
   border-top-color: $nav-tabs-active-item-border-bottom;
 }
@@ -370,61 +370,57 @@ button.dropdown-toggle {
 // ------------
 
 // Common styles
-.tabs-left > .nav-tabs > li,
-.tabs-right > .nav-tabs > li {
+.tabs-left.nav-tabs > li,
+.tabs-right.nav-tabs > li {
   float: none;
 }
 
-.tabs-left > .nav-tabs > li > a,
-.tabs-right > .nav-tabs > li > a {
+.tabs-left.nav-tabs > li > a,
+.tabs-right.nav-tabs > li > a {
   min-width: 74px;
   margin-right: 0;
   margin-bottom: 3px;
 }
 
 // Tabs on the left
-.tabs-left > .nav-tabs {
+.tabs-left.nav-tabs {
   float: left;
-  margin-right: 19px;
-  border-right: 1px solid #ddd;
 }
 
-.tabs-left > .nav-tabs > li > a {
+.tabs-left.nav-tabs > li > a {
   margin-right: -1px;
   border-radius: $border-radius-base 0 0 $border-radius-base;
 }
 
-.tabs-left > .nav-tabs > li > a:hover,
-.tabs-left > .nav-tabs > li > a:focus {
+.tabs-left.nav-tabs > li > a:hover,
+.tabs-left.nav-tabs > li > a:focus {
   border-color: $gray-lighter #ddd $gray-lighter $gray-lighter;
 }
 
-.tabs-left > .nav-tabs .active > a,
-.tabs-left > .nav-tabs .active > a:hover,
-.tabs-left > .nav-tabs .active > a:focus {
+.tabs-left.nav-tabs .active > a,
+.tabs-left.nav-tabs .active > a:hover,
+.tabs-left.nav-tabs .active > a:focus {
   border-color: #ddd transparent #ddd #ddd;
 }
 
 // Tabs on the right
-.tabs-right > .nav-tabs {
+.tabs-right.nav-tabs {
   float: right;
-  margin-left: 19px;
-  border-left: 1px solid #ddd;
 }
 
-.tabs-right > .nav-tabs > li > a {
+.tabs-right.nav-tabs > li > a {
   margin-left: -1px;
   border-radius: 0 $border-radius-base $border-radius-base 0;
 }
 
-.tabs-right > .nav-tabs > li > a:hover,
-.tabs-right > .nav-tabs > li > a:focus {
+.tabs-right.nav-tabs > li > a:hover,
+.tabs-right.nav-tabs > li > a:focus {
   border-color: $gray-lighter $gray-lighter $gray-lighter #ddd;
 }
 
-.tabs-right > .nav-tabs .active > a,
-.tabs-right > .nav-tabs .active > a:hover,
-.tabs-right > .nav-tabs .active > a:focus {
+.tabs-right.nav-tabs .active > a,
+.tabs-right.nav-tabs .active > a:hover,
+.tabs-right.nav-tabs .active > a:focus {
   border-color: #ddd #ddd #ddd transparent;
 }
 
@@ -446,7 +442,6 @@ button.dropdown-toggle {
       padding: 12px 18px;
       margin-right: 2px;
       border: none;
-      background-color: $nav-tabs-link-bg;
       color: $text-color;
 
       .label {
@@ -456,7 +451,7 @@ button.dropdown-toggle {
       @include transition(color 0.15s ease-in-out);
 
       &:hover {
-        background-color: $nav-tabs-link-hover-bg;
+        background-color: $nav-tabs-link-bg;
       }
     }
 
