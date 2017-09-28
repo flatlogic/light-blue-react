@@ -488,6 +488,10 @@ button.dropdown-toggle {
   background: none;
 }
 
+.nav-pills .nav-link {
+  padding: 0.8em 1.1em;
+}
+
 .nav-justified > li {
   padding: 0 1.28%;
 }
@@ -566,6 +570,14 @@ button.dropdown-toggle {
     > span {
       border-radius: $border-radius-base;
       margin: 0 2px;
+    }
+  }
+
+  .page-link {
+    border: none;
+
+    &:hover {
+      text-decoration: none;
     }
   }
 }
@@ -684,6 +696,10 @@ button.dropdown-toggle {
 
 .badge-inverse {
   @include badge-variant($gray-400);
+}
+
+.badge-gray {
+  @include badge-variant($gray);
 }
 
 .help-block {

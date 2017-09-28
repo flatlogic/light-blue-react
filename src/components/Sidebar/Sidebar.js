@@ -104,6 +104,18 @@ class Sidebar extends React.Component {
               }
             ]}
           />
+          <LinksGroup
+            onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/special'))}
+            isActive={this.props.activeItem === '/app/special'}
+            header="Special"
+            iconName="fa-leaf"
+            headerLink="/app/special"
+            childrenLinks={[
+              {
+                name: 'Search', link: '/app/special/search',
+              }
+            ]}
+          />
         </ul>
         <h6 className={s.navTitle}>
           Labels

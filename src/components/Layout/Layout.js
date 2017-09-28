@@ -16,6 +16,7 @@ import loadFormsElements from 'bundle-loader?lazy!../../pages/forms/elements/Ele
 import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats/Stats';
 import loadTablesStatic from 'bundle-loader?lazy!../../pages/tables/static/Static';
 import loadWidgetsBasic from 'bundle-loader?lazy!../../pages/widgets/basic/Basic';
+import loadSpecialSearch from 'bundle-loader?lazy!../../pages/special/search/Search';
 /* eslint-enable */
 
 import s from './Layout.scss';
@@ -36,6 +37,7 @@ const FormsElementsBundle = Bundle.generateBundle(loadFormsElements);
 const StatisticsStatsBundle = Bundle.generateBundle(loadStatisticsStats);
 const TablesStaticBundle = Bundle.generateBundle(loadTablesStatic);
 const WidgetsBasicBundle = Bundle.generateBundle(loadWidgetsBasic);
+const SpecialSearchBundle = Bundle.generateBundle(loadSpecialSearch);
 
 class Layout extends React.Component {
 
@@ -63,6 +65,7 @@ class Layout extends React.Component {
               <Route path="/app/statistics/stats" exact component={StatisticsStatsBundle} />
               <Route path="/app/tables/static" exact component={TablesStaticBundle} />
               <Route path="/app/widgets/basic" exact component={WidgetsBasicBundle} />
+              <Route path="/app/special/search" exact component={SpecialSearchBundle} />
             </Switch>
           </main>
         </div>

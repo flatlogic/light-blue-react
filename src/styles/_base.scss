@@ -170,3 +170,42 @@ section.widget-tabs {
     }
   }
 }
+
+.pagination-search-result > .active > a {
+  background-color: rgba(51,51,51,0.25);
+  color: #fff;
+}
+
+.pagination-search-result{
+  display: inline-flex;
+
+  > .page-link > .page-item,
+  > .page-link > span{
+    color: $text-color;
+
+    &:hover,
+    &:focus{
+      background-color: rgba($widget-bg, .25);
+      color: $white;
+    }
+  }
+
+  > .disabled > span,
+  > .disabled > span:hover,
+  > .disabled > span:focus,
+  > .disabled > .page-item,
+  > .disabled > .page-item:hover,
+  > .disabled > .page-item:focus{
+    color: #ddd;
+  }
+
+  > .active > .page-item,
+  > .active > .page-item:hover,
+  > .active > .page-item:focus,
+  > .active > span,
+  > .active > span:hover,
+  > .active > span:focus{
+    background-color: rgba($widget-bg, .25);
+    color: $white;
+  }
+}
