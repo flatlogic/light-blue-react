@@ -335,6 +335,13 @@ $carousel-control-opacity:                    1 !default;
 $carousel-indicator-active-bg:                $red !default;
 $carousel-indicator-border-color:             transparent !default;
 
+// Thumbnails
+// -------------------------
+
+$img-thumbnail-bg:                    $widget-bg;
+$img-thumbnail-border:                    none;
+$img-thumbnail-padding:               0.31rem;
+
 // Card
 // -------------------------
 

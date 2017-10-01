@@ -895,4 +895,33 @@ button.dropdown-toggle {
   }
 }
 
+.card-block {
+  flex: 1 1 auto;
+  padding: $card-spacer-x;
+}
+
+.card-title {
+  margin-top: $card-spacer-y;
+}
+
+.card-img-top {
+  width: 100%;
+}
+
+/*       Thumbnails        */
+.img-thumbnail {
+  border: $img-thumbnail-border;
+  background-color: $img-thumbnail-bg;
+  box-shadow: none;
+  padding: $img-thumbnail-padding;
+
+  .widget & {
+    border: $img-thumbnail-border;
+  }
+}
+
+.img-thumbnail .caption {
+  color: $widget-color;
+}
+
 

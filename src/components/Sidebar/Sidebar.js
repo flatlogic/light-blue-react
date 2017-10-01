@@ -66,6 +66,9 @@ class Sidebar extends React.Component {
               {
                 name: 'Maps', link: '/app/components/maps',
               },
+              {
+                name: 'Gallery', link: '/app/components/gallery',
+              },
             ]}
           />
           <LinksGroup

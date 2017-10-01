@@ -217,3 +217,13 @@ section.widget-tabs {
   cursor: pointer;
   border-radius: $border-radius-base;
 }
+
+/*          THUMBNAILS          */
+
+.img-thumbnail{
+  width: 100%;
+}
+
+.thumbnails .img-thumbnail {
+  margin-bottom: 20px;
+}
