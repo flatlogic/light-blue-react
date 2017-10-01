@@ -10,6 +10,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Card,
 } from 'reactstrap';
 
 import Widget from '../../../components/Widget';
@@ -133,7 +134,7 @@ class Buttons extends React.Component {
                 <small> Classes on hover</small>
               </h4>}
             >
-              <div className="card text-center">
+              <Card className="card-well text-center">
                 <div className="row">
                   <Col sm={4} md={4}>
                     <Button color="secondary" className="width-100 mb-xs mr-xs">Secondary</Button>
@@ -145,8 +146,8 @@ class Buttons extends React.Component {
                     <Button color="info" className="width-100 mb-xs mr-xs">&nbsp;Info&nbsp;</Button>
                   </Col>
                 </div>
-              </div>
-              <div className="card text-center">
+              </Card>
+              <Card className="card-well text-center">
                 <div className="row">
                   <Col sm={4} md={4}>
                     <Button color="success" className="width-100 mb-xs mr-xs">Success</Button>
@@ -158,7 +159,7 @@ class Buttons extends React.Component {
                     <Button color="danger" className="width-100 mb-xs mr-xs">Danger</Button>
                   </Col>
                 </div>
-              </div>
+              </Card>
               <div className="card bg-addition text-center">
                 <div className="row">
                   <Col sm={4} md={4}/>
@@ -172,7 +173,7 @@ class Buttons extends React.Component {
             <Widget
               title={<h4><i className="fa fa-star"/> Small ones</h4>}
             >
-              <div className="card card-sm card-white text-center">
+              <Card className="card-well card-sm card-white text-center">
                 <div className="row">
                   <Col sm={4} md={4}>
                     <Button color="secondary" size="sm" className="width-100 mb-xs mr-xs">Secondary</Button>
@@ -184,8 +185,8 @@ class Buttons extends React.Component {
                     <Button color="info" size="sm" className="width-100 mb-xs mr-xs">&nbsp;Info&nbsp;</Button>
                   </Col>
                 </div>
-              </div>
-              <div className="card card-sm card-white text-center">
+              </Card>
+              <Card className="card-well card-sm card-white text-center">
                 <div className="row">
                   <Col sm={4} md={4}>
                     <Button color="success" size="sm" className="width-100 mb-xs mr-xs">Success</Button>
@@ -197,21 +198,21 @@ class Buttons extends React.Component {
                     <Button color="danger" size="sm" className="width-100 mb-xs mr-xs">Danger</Button>
                   </Col>
                 </div>
-              </div>
-              <div className="card card-sm card-white text-center">
+              </Card>
+              <Card className="card-well card-sm card-white text-center">
                 <div className="row">
                   <Col sm={4} md={4}/>
                   <Col sm={4} md={4}>
                     <Button color="inverse" size="sm" className="width-100 mb-xs mr-xs">Inverse</Button>
                   </Col>
                 </div>
-              </div>
+              </Card>
             </Widget>
             {/* Size variants*/}
             <Widget
               title={<h4><i className="fa fa-star"/> Large ones</h4>}
             >
-              <div className="card card-sm text-center">
+              <Card className="card-well card-sm text-center">
                 <div className="row">
                   <Col sm={4} md={4}>
                     <Button color="secondary" size="lg" className="width-100 mb-xs mr-xs">Secondary</Button>
@@ -223,8 +224,8 @@ class Buttons extends React.Component {
                     <Button color="info" size="lg" className="width-100 mb-xs mr-xs">&nbsp;Info&nbsp;</Button>
                   </Col>
                 </div>
-              </div>
-              <div className="card card-sm text-center">
+              </Card>
+              <Card className="card-well card-sm text-center">
                 <div className="row">
                   <Col sm={4} md={4}>
                     <Button color="success" size="lg" className="width-100 mb-xs mr-xs">Success</Button>
@@ -236,15 +237,15 @@ class Buttons extends React.Component {
                     <Button color="danger" size="lg" className="width-100 mb-xs mr-xs">Danger</Button>
                   </Col>
                 </div>
-              </div>
-              <div className="card card-sm text-center">
+              </Card>
+              <Card className="card-well card-sm text-center">
                 <div className="row">
                   <Col sm={4} md={4}/>
                   <Col sm={4} md={4}>
                     <Button color="inverse" size="lg" className="width-100 mb-xs mr-xs">Inverse</Button>
                   </Col>
                 </div>
-              </div>
+              </Card>
             </Widget>
           </Col>
           <Col lg={6}>
@@ -252,7 +253,7 @@ class Buttons extends React.Component {
               title={<h4><i className="fa fa-cogs"/> Options</h4>}
             >
               {/* Disabled Buttons*/}
-              <div className="card card-sm">
+              <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Disabled state</blockquote>
                 <Row className="text-center mb-3">
                   <Col md={12}>
@@ -269,9 +270,9 @@ class Buttons extends React.Component {
                     <Button color="danger" className="width-100 mb-xs mr-xs" disabled>Danger</Button>
                   </Col>
                 </Row>
-              </div>
+              </Card>
               {/* Buttons Groups*/}
-              <div className="card card-sm">
+              <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Button groups</blockquote>
                 <Row className="text-center mb-3">
                   <Col md={12}>
@@ -294,9 +295,9 @@ class Buttons extends React.Component {
                     </Button>
                   </Col>
                 </Row>
-              </div>
+              </Card>
               {/* Button Dropdowns*/}
-              <div className="card card-sm">
+              <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Button dropdown menus</blockquote>
                 <Row className="text-center mb-3">
                   <Col md={12}>
@@ -338,9 +339,9 @@ class Buttons extends React.Component {
                     </ButtonDropdown>
                   </Col>
                 </Row>
-              </div>
+              </Card>
               {/* Button Dropdowns*/}
-              <div className="card card-sm">
+              <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Segmented dropdowns</blockquote>
                 <Row className="text-center mb-3">
                   <Col md={12}>
@@ -390,9 +391,9 @@ class Buttons extends React.Component {
                     </ButtonDropdown>
                   </Col>
                 </Row>
-              </div>
+              </Card>
               {/* Button Checkboxes*/}
-              <div className="card card-sm">
+              <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Checkboxes</blockquote>
                 <Row className="text-center mb-3">
                   <Col md={12}>
@@ -412,9 +413,9 @@ class Buttons extends React.Component {
                     </ButtonGroup>
                   </Col>
                 </Row>
-              </div>
+              </Card>
               {/* Button Radio*/}
-              <div className="card card-sm">
+              <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Radio</blockquote>
                 <Row className="text-center mb-3">
                   <Col md={12}>
@@ -434,9 +435,9 @@ class Buttons extends React.Component {
                     </ButtonGroup>
                   </Col>
                 </Row>
-              </div>
+              </Card>
               {/* Block Buttons*/}
-              <div className="card card-sm">
+              <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Block level buttons</blockquote>
                 <Row className="justify-content-center mb-3">
                   <Col md={8}>
@@ -448,7 +449,7 @@ class Buttons extends React.Component {
                     <Button color="danger" size="lg" block>Block level</Button>
                   </Col>
                 </Row>
-              </div>
+              </Card>
             </Widget>
           </Col>
         </Row>
