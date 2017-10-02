@@ -46,6 +46,9 @@ class Sidebar extends React.Component {
                 name: 'Dialogs', link: '/app/ui/dialogs',
               },
               {
+                name: 'Notifications', link: '/app/ui/notifications',
+              },
+              {
                 name: 'Tabs', link: '/app/ui/tabs',
               },
               {

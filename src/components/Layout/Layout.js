@@ -10,6 +10,7 @@ import loadUIIcons from 'bundle-loader?lazy!../../pages/ui-elements/icons/Icons'
 import loadUIButtons from 'bundle-loader?lazy!../../pages/ui-elements/buttons/Buttons';
 import loadUIAccordion from 'bundle-loader?lazy!../../pages/ui-elements/accordion/Accordion';
 import loadUITabs from 'bundle-loader?lazy!../../pages/ui-elements/tabs/Tabs';
+import loadUINotifications from 'bundle-loader?lazy!../../pages/ui-elements/notifications/Notifications';
 import loadUIDialogs from 'bundle-loader?lazy!../../pages/ui-elements/dialogs/Dialogs';
 import loadComponentsCalendar from 'bundle-loader?lazy!../../pages/components/calendar/Calendar';
 import loadComponentsMaps from 'bundle-loader?lazy!../../pages/components/maps/Maps';
@@ -34,6 +35,7 @@ const UIIconsBundle = Bundle.generateBundle(loadUIIcons);
 const UIButtonsBundle = Bundle.generateBundle(loadUIButtons);
 const UIAccordionBundle = Bundle.generateBundle(loadUIAccordion);
 const UITabsBundle = Bundle.generateBundle(loadUITabs);
+const UINotificationsBundle = Bundle.generateBundle(loadUINotifications);
 const UIDialogsBundle = Bundle.generateBundle(loadUIDialogs);
 const ComponentsCalendarBundle = Bundle.generateBundle(loadComponentsCalendar);
 const ComponentsMapsBundle = Bundle.generateBundle(loadComponentsMaps);
@@ -65,6 +67,7 @@ class Layout extends React.Component {
               <Route path="/app/ui/buttons" exact component={UIButtonsBundle} />
               <Route path="/app/ui/accordion" exact component={UIAccordionBundle} />
               <Route path="/app/ui/tabs" exact component={UITabsBundle} />
+              <Route path="/app/ui/notifications" exact component={UINotificationsBundle} />
               <Route path="/app/ui/dialogs" exact component={UIDialogsBundle} />
               <Route path="/app/components/calendar" exact component={ComponentsCalendarBundle} />
               <Route path="/app/components/maps" exact component={ComponentsMapsBundle} />
