@@ -134,6 +134,9 @@ class Sidebar extends React.Component {
             childrenLinks={[
               {
                 name: 'Search', link: '/app/special/search',
+              },
+              {
+                name: 'Invoice', link: '/app/special/invoice',
               }
             ]}
           />

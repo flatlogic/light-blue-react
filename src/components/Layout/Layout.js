@@ -21,6 +21,7 @@ import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats
 import loadTablesStatic from 'bundle-loader?lazy!../../pages/tables/static/Static';
 import loadWidgetsBasic from 'bundle-loader?lazy!../../pages/widgets/basic/Basic';
 import loadSpecialSearch from 'bundle-loader?lazy!../../pages/special/search/Search';
+import loadSpecialInvoice from 'bundle-loader?lazy!../../pages/special/invoice/Invoice';
 /* eslint-enable */
 
 import s from './Layout.scss';
@@ -46,6 +47,7 @@ const StatisticsStatsBundle = Bundle.generateBundle(loadStatisticsStats);
 const TablesStaticBundle = Bundle.generateBundle(loadTablesStatic);
 const WidgetsBasicBundle = Bundle.generateBundle(loadWidgetsBasic);
 const SpecialSearchBundle = Bundle.generateBundle(loadSpecialSearch);
+const SpecialInvoiceBundle = Bundle.generateBundle(loadSpecialInvoice);
 
 class Layout extends React.Component {
 
@@ -78,6 +80,7 @@ class Layout extends React.Component {
               <Route path="/app/tables/static" exact component={TablesStaticBundle} />
               <Route path="/app/widgets/basic" exact component={WidgetsBasicBundle} />
               <Route path="/app/special/search" exact component={SpecialSearchBundle} />
+              <Route path="/app/special/invoice" exact component={SpecialInvoiceBundle} />
             </Switch>
           </main>
         </div>

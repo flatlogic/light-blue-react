@@ -1,0 +1,30 @@
+@import '../../../styles/app';
+
+.root {
+  .invoiceLogo {
+    width: 253px;
+    height: 70px;
+  }
+
+  .invoiceNumber {
+    font-size: $font-size-base * 1.5;
+    margin-top: 15px;
+  }
+
+  .invoiceNumberInfo {
+    color: $text-muted;
+    font-size: $font-size-larger;
+  }
+
+  .invoiceInfo {
+    .detailsTitle {
+      color: $text-muted;
+      margin: 0;
+    }
+  }
+
+  .clientDetails {
+    text-align: right;
+  }
+
+}
