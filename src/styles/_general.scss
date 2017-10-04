@@ -5,6 +5,7 @@ html {
 body {
   overflow-x: hidden;
   color: $text-color;
+  background-attachment: fixed, fixed;
 
   @include background-radial-gradient (
     ellipse, farthest-side, 10%, 0,
