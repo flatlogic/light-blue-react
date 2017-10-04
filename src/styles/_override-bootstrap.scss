@@ -49,12 +49,6 @@ h2 small { font-size: $font-size-base * 1.25; } // ~18px
 h3 small { font-size: $font-size-base; }
 h4 small { font-size: $font-size-base; }
 
-.text-primary { color: $brand-primary; }
-.text-warning { color: $brand-warning; }
-.text-danger { color: $brand-danger; }
-.text-success { color: $brand-success; }
-.text-info { color: $brand-info; }
-
 @media (min-width: breakpoint-min('sm')) {
   .lead {
     font-size: 16px;
@@ -303,15 +297,6 @@ button.dropdown-toggle {
   }
 }
 
-.btn-secondary {
-  @include button-variant($gray, $gray, #4d4d4d);
-  @include box-shadow(none);
-}
-
-.btn-inverse {
-  @include button-variant($white-dark, $white-dark, #dfdfdf);
-}
-
 /* since 1.5 */
 .btn-white {
   background: none;
@@ -394,7 +379,7 @@ button.dropdown-toggle {
 
 .tabs-left.nav-tabs > li > a:hover,
 .tabs-left.nav-tabs > li > a:focus {
-  border-color: $gray-lighter #ddd $gray-lighter $gray-lighter;
+  border-color: $gray-200 #ddd $gray-200 $gray-200;
 }
 
 .tabs-left.nav-tabs .active > a,
@@ -415,7 +400,7 @@ button.dropdown-toggle {
 
 .tabs-right.nav-tabs > li > a:hover,
 .tabs-right.nav-tabs > li > a:focus {
-  border-color: $gray-lighter $gray-lighter $gray-lighter #ddd;
+  border-color: $gray-200 $gray-200 $gray-200 #ddd;
 }
 
 .tabs-right.nav-tabs .active > a,
@@ -585,7 +570,7 @@ button.dropdown-toggle {
 /*         Modals          */
 
 .modal {
-  color: $gray-dark;
+  color: $gray-700;
   border-radius: $border-radius-base;
 
   h1,
@@ -594,7 +579,7 @@ button.dropdown-toggle {
   h4,
   h5,
   h6 {
-    color: $gray-dark;
+    color: $gray-700;
   }
 }
 
@@ -641,7 +626,7 @@ button.dropdown-toggle {
   @include box-shadow(none);
 
   .widget & {
-    border: $thumbnail-border;
+    border-width: $thumbnail-border-width;
   }
 }
 
@@ -699,7 +684,7 @@ button.dropdown-toggle {
 }
 
 .badge-gray {
-  @include badge-variant($gray);
+  @include badge-variant($gray-600);
 }
 
 .help-block {
@@ -909,13 +894,10 @@ button.dropdown-toggle {
 
 /*       Thumbnails        */
 .img-thumbnail {
-  border: $img-thumbnail-border;
-  background-color: $img-thumbnail-bg;
   box-shadow: none;
-  padding: $img-thumbnail-padding;
 
   .widget & {
-    border: $img-thumbnail-border;
+    border-width: $thumbnail-border-width;
   }
 }
 

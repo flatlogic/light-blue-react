@@ -71,17 +71,17 @@
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: $gray-light;
+    background-color: $gray-400;
   }
 }
 
 @include keyframes('bg-attention') {
   0% {
-    background-color: lighten($brand-warning, 43%);
+    background-color: lighten(theme-color('warning'), 43%);
   }
 
   5% {
-    background-color: lighten($brand-warning, 33%);
+    background-color: lighten(theme-color('warning'), 33%);
   }
 
   0% {
@@ -158,10 +158,10 @@ $z-index-variants: (more: 1, less: -1);
   border: none;
 }
 
-.bt { border-top: 1px solid $gray-semi-lighter; }
-.br { border-right: 1px solid $gray-semi-lighter; }
-.bb { border-bottom: 1px solid $gray-semi-lighter; }
-.bl { border-left: 1px solid $gray-semi-lighter; }
+.bt { border-top: 1px solid $gray-300; }
+.br { border-right: 1px solid $gray-300; }
+.bb { border-bottom: 1px solid $gray-300; }
+.bl { border-left: 1px solid $gray-300; }
 
 .overflow-hidden {
   overflow: hidden;
@@ -202,30 +202,16 @@ $z-index-variants: (more: 1, less: -1);
 // Text & Background Variations
 // ----------------------------
 
-//override bs .text-* classes so they use $brand-* variables
-
-@include text-emphasis-variant('.text-primary', $brand-primary);
-@include text-emphasis-variant('.text-success', $brand-success);
-@include text-emphasis-variant('.text-info', $brand-info);
-@include text-emphasis-variant('.text-warning', $brand-warning);
-@include text-emphasis-variant('.text-danger', $brand-danger);
-@include text-emphasis-variant('.text-link', $link-color);
-
 //copy bg classes after bootstrap so it's possible to overload other bootstrap classes
 
-@include bg-variant('.bg-primary', $brand-primary);
-@include bg-variant('.bg-success', $brand-success);
-@include bg-variant('.bg-info', $brand-info);
-@include bg-variant('.bg-warning', $brand-warning);
-@include bg-variant('.bg-danger', $brand-danger);
 @include bg-variant('.bg-body', $body-bg);
-@include bg-variant('.bg-gray', $gray);
-@include bg-variant('.bg-gray-transparent', rgba($gray, 0.6));
-@include bg-variant('.bg-gray-dark', $gray-dark);
+@include bg-variant('.bg-gray', $gray-600);
+@include bg-variant('.bg-gray-transparent', rgba($gray-600, 0.6));
+@include bg-variant('.bg-gray-dark', $gray-700);
 @include bg-variant('.bg-black', $black);
-@include bg-variant('.bg-gray-light', $gray-light);
+@include bg-variant('.bg-gray-light', $gray-400);
 @include bg-variant('.bg-blue-light', rgba(0,0,0,0.15));
-@include bg-variant('.bg-gray-lighter', $gray-lighter);
+@include bg-variant('.bg-gray-lighter', $gray-200);
 @include bg-variant('.bg-transparent', rgba(0,0,0,0));
 @include bg-variant('.bg-white', $white);
 
@@ -243,12 +229,12 @@ $z-index-variants: (more: 1, less: -1);
 }
 
 @include text-emphasis-variant('.text-white', $white);
-@include text-emphasis-variant('.text-gray', $gray);
-@include text-emphasis-variant('.text-gray-dark', $gray-dark);
-@include text-emphasis-variant('.text-gray-light', $gray-light);
-@include text-emphasis-variant('.text-semi-muted', $gray-semi-light);
-@include text-emphasis-variant('.text-gray-darker', $gray-darker);
-@include text-emphasis-variant('.text-gray-lighter', $gray-lighter);
+@include text-emphasis-variant('.text-gray', $gray-600);
+@include text-emphasis-variant('.text-gray-dark', $gray-700);
+@include text-emphasis-variant('.text-gray-light', $gray-400);
+@include text-emphasis-variant('.text-semi-muted', $gray-500);
+@include text-emphasis-variant('.text-gray-darker', $gray-900);
+@include text-emphasis-variant('.text-gray-lighter', $gray-200);
 
 .text-light {
   opacity: 0.8;

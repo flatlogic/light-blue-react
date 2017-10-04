@@ -23,7 +23,7 @@ div.abc-radio label {
 
 .checkbox-dark input[type='checkbox']:checked + label {
   &::after {
-    color: $gray;
+    color: $gray-600;
   }
 }
 
@@ -44,12 +44,12 @@ div.abc-radio label {
     padding: 2px 3px;
     border: none;
     font-weight: $font-weight-normal;
-    background-color: $gray-semi-lighter;
+    background-color: $gray-300;
     color: $text-color;
   }
 
   a:not([href]):not([tabindex]) {
-    color: $gray;
+    color: $gray-600;
 
     &:hover {
       color: inherit;
@@ -71,7 +71,7 @@ a.fc-event{
 }
 
 .fc-event, .fc-event:hover, .ui-widget .fc-event{
-  color: $gray;
+  color: $gray-600;
 }
 
 .fc-unthemed th,

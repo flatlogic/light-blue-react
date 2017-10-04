@@ -7,15 +7,13 @@
 $glyphicons-halflings-class-prefix: glyphicon !default;
 $glyphicons-halflings-font-path: '../fonts/glyphicons' !default;
 
+// Font Awesome
+
+$fa-font-path: '../fonts/font-awesome' !default;
+
 // Bootstrap options
 
-$enable-flex:               true !default;
-$enable-rounded:            true !default;
 $enable-shadows:            true !default;
-$enable-gradients:          false !default;
-$enable-transitions:        true !default;
-$enable-hover-media-query:  false !default;
-$enable-grid-classes:       true !default;
 
 // Colors
 // ------------------------
@@ -36,31 +34,34 @@ $black:                 #000 !default;
 $colors: $red, $orange, $lime, $green, $teal, $blue, $brown, $red-dark;
 $color-names: 'red', 'orange', 'lime', 'green', 'teal', 'blue', 'brown', 'red-dark';
 
-$white-dark:            #f8f8f8 !default;
-$shadow-color:            rgba(#676767, 0.4) !default;
+$gray-100: #f8f8f8 !default;
+$gray-200: #eeeeee !default;
+$gray-300: #dddddd !default;
+$gray-400: #999999 !default;
+$gray-500: #777777 !default;
+$gray-600: #666666 !default;
+$gray-700: #555555 !default;
+$gray-800: #343a40 !default;
+$gray-900: #222222 !default;
+$black:  #000 !default;
 
-//copy from BS
-$gray-darker:           lighten(#000, 13.5%) !default; // #222
-$gray-dark:             #555 !default;
-$gray:                  #666;
-$gray-light:            lighten(#000, 60%) !default;   // #999
-$gray-lighter:          lighten(#000, 93.5%) !default; // #eee
-$gray-semi-light:       #777;
-$gray-semi-lighter:     #ddd;
-
-$brand-primary:         $blue !default;
-$brand-success:         $green !default;
-$brand-warning:         $orange !default;
-$brand-danger:          $red !default;
-$brand-info:            $teal !default;
+$theme-colors: (
+  primary: $blue,
+  secondary: $gray-600,
+  success: $green,
+  info: $teal,
+  warning: $orange,
+  danger: $red,
+  light: $gray-100,
+  dark: $gray-800
+) !default;
 
 $bg-gradient-color-1: #154265;
 $bg-gradient-color-2: #7392c2;
 
 // Typography
 // -------------------------
-$text-color: $white-dark !default;
-$text-bold: lighten($text-color, 3%);
+$text-color: $gray-100 !default;
 $text-muted: darken($text-color, 15%) !default;
 
 $font-family-sans-serif:  'Open Sans', sans-serif !default;
@@ -84,6 +85,7 @@ $font-weight-thin: 300 !default;
 $font-weight-base: $font-weight-thin !default;
 
 $line-height-base:        1.428571429 !default; // 20/14
+$line-height-lg:              1.33 !default;
 
 // Links
 // -------------------------
@@ -105,14 +107,13 @@ $basic-border-color: transparent;
 $widget-bg-common:        #333 !default; //#ddd
 $widget-mb:        30px;
 $widget-color:     $text-color;
+$widget-bg: rgba($widget-bg-common, 0.4);
 $widget-header-color: lighten($widget-color, 5%);
 $widget-header-smalls-color: $text-muted;
 $widget-controls-color: rgba($white, 0.45);
-$widget-controls-hover-color: rgba($white, 0.6);
 
 $text-transparent: rgba($widget-bg-common, 0.5);
 $bg-addition: rgba($widget-bg-common, 0.3);
-$widget-bg: rgba($widget-bg-common, 0.4);
 
 $widget-padding-vertical: 15px;
 $widget-padding-horizontal: 17px;
@@ -125,21 +126,12 @@ $sidebar-item-sub-active-bg: darken($sidebar-item-active-bg, 15%);
 
 $page-title-color: $white;
 
-$header-link-color: $text-transparent;
-$header-notification-count: rgba($widget-bg-common, 0.55);
-
-$header-search-query-placeholder-color: rgba(#eee, 0.76);
-
-$header-dropdown-primary-color:          $widget-header-color;
-$header-dropdown-secondary-color:        #ddd;
 $header-dropdown-bg:                     rgba($widget-bg-common, 0.85);
-$header-dropdown-shadow:                 none;
-$header-dropdown-item-hover:             $brand-primary;
+$header-dropdown-item-hover:             theme-color(primary);
 
 $nav-link-padding-x: 0.9rem;
 $navbar-padding-x: 2rem;
 $navbar-padding-y: 0.9rem;
-$nav-tabs-link-color: $widget-color;
 
 $input-transparent-color: $text-color;
 $input-transparent-placeholder-color: rgba(#eee, 0.76);
@@ -147,51 +139,15 @@ $input-transparent-placeholder-color: rgba(#eee, 0.76);
 // Widgets
 // -------------------------
 
-$feed-item-bg: $widget-bg;
-$feed-item-color: $white;
-$feed-item-line-color: transparent;
-
-$nav-tabs-link-color: $widget-color;
-$nav-tabs-active-item-margin: 0;
 $nav-tabs-active-item-border: $basic-border-color;
 $nav-tabs-active-item-border-bottom: $basic-border-color;
 $nav-tabs-border: none;
 $nav-tabs-tab-content-bg: $bg-addition;
+$nav-tabs-link-bg:                          $widget-bg !default;
 
 $tabs-widget-active-item-hover-bg: rgba(darken($widget-bg-common, 10%), 0.4);
 
-$location-selector-bg: $bg-addition;
-$location-selector-border-color: #eee;
-$messenger-spinner-bg: $white;
-
 $calendar-border: rgba($white, 0.33);
-
-$dropzone-color:         #eee;
-
-/////////////////////////////////////////////////
-//              Font Awesome vars              //
-/////////////////////////////////////////////////
-
-$fa-font-path: '../fonts/font-awesome' !default;
-
-/////////////////////////////////////////////////
-//           Override bootstrap vars           //
-/////////////////////////////////////////////////
-
-$bootstrap-sass-asset-helper: false;
-
-
-// Components
-// -------------------------
-
-$padding-base-vertical:          0.3rem !default;
-$padding-base-horizontal:        12px !default;
-
-$padding-small-vertical:         0.25rem !default;
-$padding-small-horizontal:       10px !default;
-
-$line-height-large:              1.33 !default;
-$line-height-small:              1.5 !default;
 
 $border-radius-base:        3px !default;
 
@@ -200,33 +156,17 @@ $border-radius-base:        3px !default;
 
 $btn-font-weight:                $font-weight-base !default;
 
-$btn-secondary-color:              #fff !default;
-$btn-secondary-bg:                 $gray !default;
-$btn-secondary-border:             rgba(0, 0, 0, 0.15) !default;
-
-$btn-inverse-color:              $gray-dark !default;
-$btn-inverse-bg: $white-dark !default;
-$btn-inverse-border: rgba(#000, 0.2);
-
-//== Navs
-// -------------------------
-
-$nav-tabs-link-hover-bg:                    rgba(26, 26, 26, 0.4) !default;
-$nav-tabs-link-bg:                          $widget-bg !default;
-
 // Forms
 // -------------------------
 
-$input-color:                    $gray-dark;
-$input-border:                   #ccc !default;
-$input-border-focus:             #66afe9 !default;
+$input-color:                    $gray-700;
+$input-border-color:             #ccc !default;
+$input-focus-border-color:       #66afe9 !default;
 
 $input-group-addon-bg:           $bg-addition;
 $input-group-addon-border-color: transparent;
 
-$input-btn-padding-y-lg:    0.9rem !default;
-
-$legend-color:                   lighten($text-color, 15%) !default;
+$input-btn-padding-y-lg:         0.9rem !default;
 
 // Dropdowns
 // -------------------------
@@ -237,7 +177,7 @@ $dropdown-border:                rgba(0, 0, 0, 0.2) !default;
 $dropdown-link-active-color:     #fff !default;
 $dropdown-link-active-bg:        $blue !default;
 
-$dropdown-link-color:            $gray !default;
+$dropdown-link-color:            $gray-600 !default;
 $dropdown-link-hover-color:      $white !default;
 $dropdown-link-hover-bg:         $dropdown-link-active-bg !default;
 
@@ -268,23 +208,20 @@ $badge-font-weight: $font-weight-semi-bold;
 
 //== Tables
 //
-$table-bg-accent:               $bg-addition !default;
+$table-accent-bg:               $bg-addition !default;
+$table-hover-bg:                darken($bg-addition, 5%);
 $table-border-color:            rgba($widget-bg-common, 0.35) !default; // table and cell border
-$table-bg-hover:                darken($bg-addition, 5%);
 
 // List group
 // -------------------------
-$list-group-bg: $widget-bg !default;
-$list-group-border:           transparent !default;
-$list-group-link-color:       $widget-color;
-$list-group-hover-bg: $bg-addition;
+$list-group-bg:                 $widget-bg !default;
+$list-group-border-color:       transparent !default;
+$list-group-hover-bg:           $bg-addition;
+
 // Jumbotron
 // -------------------------
 
-$jumbotron-color:                inherit !default;
 $jumbotron-bg:                   transparent !default;
-
-$jumbotron-heading-color:        inherit !default;
 
 // Popovers
 // -------------------------
@@ -295,52 +232,50 @@ $popover-border-color:                transparent;
 // Thumbnails
 // -------------------------
 $thumbnail-bg:                    $widget-bg;
-$thumbnail-border:                    none;
+$thumbnail-border-width:          0;
 
 // Pagination
 // -------------------------
 
 $pagination-color:                     $text-color !default;
 $pagination-bg:                        transparent !default;
-$pagination-border:                    transparent !default;
+$pagination-border-color:              transparent !default;
 
 $pagination-hover-color:               $white !default;
 $pagination-hover-bg:                  $bg-addition !default;
-$pagination-hover-border:              transparent !default;
+$pagination-hover-border-color:        transparent !default;
 
 $pagination-active-color:              $white !default;
 $pagination-active-bg:                 $bg-addition !default;
-$pagination-active-border:             transparent !default;
+$pagination-active-border-color:       transparent !default;
 
-$pagination-disabled-color:            $gray-lighter !default;
+$pagination-disabled-color:            $gray-200 !default;
 $pagination-disabled-bg:               transparent !default;
-$pagination-disabled-border:           transparent !default;
+$pagination-disabled-border-color:     transparent !default;
 
 // Breadcrumbs
 // -------------------------
-$breadcrumb-bg:               transparent !default;
 $breadcrumb-color:            $text-color !default;
-$breadcrumb-active-color:     darken($breadcrumb-color, 25%) !default;
-$breadcrumb-separator:        '>' !default;
+$breadcrumb-bg:               transparent !default;
+$breadcrumb-divider-color:    $text-color !default;
+$breadcrumb-active-color:     darken($breadcrumb-divider-color, 25%) !default;
+$breadcrumb-divider:        '>' !default;
 
 // Carousel
 // ------------------------
 
 $carousel-control-color:      $widget-color;
-$carousel-text-shadow:                        none !default;
-
 $carousel-control-width:                      6% !default;
 $carousel-control-opacity:                    1 !default;
 
 $carousel-indicator-active-bg:                $red !default;
-$carousel-indicator-border-color:             transparent !default;
 
 // Thumbnails
 // -------------------------
 
-$img-thumbnail-bg:                    $widget-bg;
-$img-thumbnail-border:                    none;
-$img-thumbnail-padding:               0.31rem;
+$thumbnail-bg:                    $widget-bg;
+$thumbnail-border-width:          0;
+$thumbnail-padding:               0.31rem;
 
 // Card
 // -------------------------
@@ -354,9 +289,7 @@ $card-spacer-y: 0.69rem;
 // Code (inline and block)
 // --------------------------------------------------
 
-$pre-bg: $bg-addition !default;
 $pre-color:                   $text-color !default;
-$pre-border-color: $widget-bg !default;
 
 // Type
 // --------------------------------------------------
@@ -364,17 +297,8 @@ $pre-border-color: $widget-bg !default;
 $blockquote-border-color:             $widget-bg;
 $blockquote-border-width: 0.4rem !default;
 
-// Custom libs variables
-// ------------------------
-
 // Awesome Checkbox
 // ------------------------
-$brand-primary: #5d8fc2 !default;
-$brand-success: #64bd63 !default;
-$brand-info: #5dc4bf !default;
-$brand-warning: #f0b518 !default;
-$brand-danger: #dd5826 !default;
-$input-bg-disabled: $gray-lighter !default;
 $awesome-checkbox-default-color: #eee !default;
 
 // Section
