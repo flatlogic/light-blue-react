@@ -32,13 +32,6 @@ blockquote {
   }
 }
 
-h1 { font-size: $font-size-base * 2.75; } // ~38px
-h2 { font-size: $font-size-base * 2.25; } // ~32px
-h3 { font-size: $font-size-base * 1.75; } // ~24px
-h4 { font-size: $font-size-base * 1.25; } // ~18px
-h5 { font-size: $font-size-base; }
-h6 { font-size: $font-size-base * 0.85; } // ~12px
-
 small,
 .small {
   font-weight: inherit;
@@ -113,14 +106,12 @@ input[type='checkbox']:focus {
 
 .input-group-btn > .btn {
   z-index: 2;
-  border: none;
 }
 
 /*      Input Groups       */
 
 .input-group-addon {
   color: $text-muted;
-  border: none;
   padding: 0.385rem 12px;
 }
 
