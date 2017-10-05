@@ -56,16 +56,17 @@ textarea {
   font-family: $font-family-base;
 }
 
-input[type=search], input.search {
+input[type=search],
+input.search {
   padding-left: 26px;
-  background-color: $input-bg;
-  background:url(../images/search.png) 5px 6px no-repeat $input-bg;
+  background: url(../images/search.png) 5px 6px no-repeat $input-bg;
 
   &.input-transparent {
     border: none;
     color: $widget-color;
     background: url(../images/search.png) 5px 5px no-repeat $widget-bg;
-    @include placeholder(rgba(#eee, .76));
+
+    @include placeholder(rgba(#eee, 0.76));
   }
 }
 
@@ -107,7 +108,8 @@ form {
   font-family: $font-family-sans-serif;
 }
 
-strong, b {
+strong,
+b {
   font-weight: bold;
 }
 
@@ -117,22 +119,22 @@ svg {
   display: block;
 }
 
-.box{
+.box {
   border-radius: $border-radius-base;
-
   padding: 5px;
   text-align: center;
   margin-bottom: $widget-mb;
   background: $widget-bg;
   color: $widget-color;
 
-  .description{
+  .description {
     font-weight: normal;
     text-align: center;
     margin: 10px -5px;
   }
 
-  .icon, .big-text{
+  .icon,
+  .big-text {
     margin-top: 15px;
     font-size: 36px;
     line-height: 36px;

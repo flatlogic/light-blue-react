@@ -1,3 +1,4 @@
+/* eslint class-methods-use-this: ["error", { "exceptMethods": ["printInvoice"] }] */
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import {
@@ -27,7 +28,7 @@ class Stats extends React.Component {
         <Widget className="no-margin">
           <Row>
             <Col sm={6} className="col-print-6">
-              <img src={iLogo} alt="Logo" className={s.invoiceLogo}/>
+              <img src={iLogo} alt="Logo" className={s.invoiceLogo} />
             </Col>
             <Col sm={6} className="col-print-6">
               <div className={`${s.invoiceNumber} text-right`}>
@@ -72,57 +73,58 @@ class Stats extends React.Component {
           </section>
           <Table className="table-bordered table-striped">
             <thead>
-            <tr>
-              <th>#</th>
-              <th>Item</th>
-              <th className="hidden-sm-down hidden-print">Description</th>
-              <th>Quantity</th>
-              <th className="hidden-sm-down hidden-print">Price per Unit</th>
-              <th>Total</th>
-            </tr>
+              <tr>
+                <th>#</th>
+                <th>Item</th>
+                <th className="hidden-sm-down hidden-print">Description</th>
+                <th>Quantity</th>
+                <th className="hidden-sm-down hidden-print">Price per Unit</th>
+                <th>Total</th>
+              </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>1</td>
-              <td>Brand-new 27' monitor</td>
-              <td className="hidden-sm-down hidden-print">2,560x1,440-pixel (WQHD) resolution supported!</td>
-              <td>2</td>
-              <td className="hidden-sm-down hidden-print">700</td>
-              <td>1,400.00</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Domain: okendoken.com</td>
-              <td className="hidden-sm-down hidden-print">6-month registration</td>
-              <td>1</td>
-              <td className="hidden-sm-down hidden-print">10.99</td>
-              <td>21.88</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Atlas Shrugged</td>
-              <td className="hidden-sm-down hidden-print">Novel by Ayn Rand, first published in 1957 in the United
-                States
-              </td>
-              <td>5</td>
-              <td className="hidden-sm-down hidden-print">35</td>
-              <td>175.00</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>New Song by Dr. Pre</td>
-              <td className="hidden-sm-down hidden-print">Lyrics: praesent blandit augue non sapien ornare imperdiet
-              </td>
-              <td>1</td>
-              <td className="hidden-sm-down hidden-print">2</td>
-              <td>2.00</td>
-            </tr>
+              <tr>
+                <td>1</td>
+                <td>Brand-new 27 monitor</td>
+                <td className="hidden-sm-down hidden-print">2,560x1,440-pixel (WQHD) resolution supported!</td>
+                <td>2</td>
+                <td className="hidden-sm-down hidden-print">700</td>
+                <td>1,400.00</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Domain: okendoken.com</td>
+                <td className="hidden-sm-down hidden-print">6-month registration</td>
+                <td>1</td>
+                <td className="hidden-sm-down hidden-print">10.99</td>
+                <td>21.88</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Atlas Shrugged</td>
+                <td className="hidden-sm-down hidden-print">Novel by Ayn Rand, first published in 1957 in the United
+                  States
+                </td>
+                <td>5</td>
+                <td className="hidden-sm-down hidden-print">35</td>
+                <td>175.00</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>New Song by Dr. Pre</td>
+                <td className="hidden-sm-down hidden-print">Lyrics: praesent blandit augue non sapien ornare imperdiet
+                </td>
+                <td>1</td>
+                <td className="hidden-sm-down hidden-print">2</td>
+                <td>2.00</td>
+              </tr>
             </tbody>
           </Table>
           <Row>
             <Col sm={6} className="col-print-6">
               <blockquote className="blockquote blockquote-sm">
-                <strong>Note:</strong> Keep in mind, sometimes bad things happen. But it's just sometimes.
+                <strong>Note:</strong>
+                Keep in mind, sometimes bad things happen. But it&#39;s just sometimes.
               </blockquote>
             </Col>
             <Col sm={6} className="col-print-6">

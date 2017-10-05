@@ -3,7 +3,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import {
   compose,
   withProps,
-  lifecycle
+  lifecycle,
 } from 'recompose';
 import {
   Row,
@@ -24,21 +24,19 @@ import Widget from '../../../components/Widget';
 class Maps extends React.Component {
 
   render() {
-
-    const BasicMap = withScriptjs(withGoogleMap(props =>
+    const BasicMap = withScriptjs(withGoogleMap(() =>
       <GoogleMap
         defaultZoom={12}
-        defaultCenter={ { lat: parseFloat(-37.813179), lng: parseFloat(144.950259) } }
-      >
-      </GoogleMap>
+        defaultCenter={{ lat: parseFloat(-37.813179), lng: parseFloat(144.950259) }}
+      />,
     ));
 
     const AddressMap = compose(
       withProps({
-        googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg",
-        loadingElement: <div style={{height: `100%`}}/>,
-        containerElement: <div style={{height: `400px`}}/>,
-        mapElement: <div style={{height: `100%`}}/>,
+        googleMapURL: 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg',
+        loadingElement: <div style={{ height: '100%' }} />,
+        containerElement: <div style={{ height: '400px' }} />,
+        mapElement: <div style={{ height: '100%' }} />,
       }),
       lifecycle({
         componentWillMount() {
@@ -47,30 +45,30 @@ class Maps extends React.Component {
           this.setState({
             bounds: null,
             center: {
-              lat: 41.9, lng: -87.624
+              lat: 41.9, lng: -87.624,
             },
             markers: [],
-            onMapMounted: ref => {
+            onMapMounted: (ref) => {
               refs.map = ref;
             },
             onBoundsChanged: () => {
               this.setState({
                 bounds: refs.map.getBounds(),
                 center: refs.map.getCenter(),
-              })
+              });
             },
-            onSearchBoxMounted: ref => {
+            onSearchBoxMounted: (ref) => {
               refs.searchBox = ref;
             },
             onPlacesChanged: () => {
               const places = refs.searchBox.getPlaces();
               const bounds = new google.maps.LatLngBounds();
 
-              places.forEach(place => {
+              places.forEach((place) => {
                 if (place.geometry.viewport) {
-                  bounds.union(place.geometry.viewport)
+                  bounds.union(place.geometry.viewport);
                 } else {
-                  bounds.extend(place.geometry.location)
+                  bounds.extend(place.geometry.location);
                 }
               });
               const nextMarkers = places.map(place => ({
@@ -84,11 +82,11 @@ class Maps extends React.Component {
               });
               refs.map.fitBounds(bounds);
             },
-          })
+          });
         },
       }),
       withScriptjs,
-      withGoogleMap
+      withGoogleMap,
     )(props =>
       <GoogleMap
         ref={props.onMapMounted}
@@ -107,23 +105,23 @@ class Maps extends React.Component {
             type="text"
             placeholder="Enter Address"
             style={{
-              boxSizing: `border-box`,
-              border: `none`,
-              width: `153px`,
-              height: `32px`,
-              marginTop: `20px`,
-              padding: `0 12px`,
-              borderRadius: `3px`,
-              fontSize: `14px`,
-              outline: `none`,
-              textOverflow: `ellipses`,
+              boxSizing: 'border-box',
+              border: 'none',
+              width: '153px',
+              height: '32px',
+              marginTop: '20px',
+              padding: '0 12px',
+              borderRadius: '3px',
+              fontSize: '14px',
+              outline: 'none',
+              textOverflow: 'ellipses',
             }}
           />
         </SearchBox>
-        {props.markers.map((marker, index) =>
-          <Marker key={index} position={marker.position}/>
+        {props.markers.map(marker =>
+          <Marker key={marker.id} position={marker.position} />,
         )}
-      </GoogleMap>
+      </GoogleMap>,
     );
 
     return (
@@ -133,12 +131,12 @@ class Maps extends React.Component {
         </h2>
         <Row>
           <Col md={6}>
-            <Widget title={<h5><i className="fa fa-google-plus"/> Google maps. Basic</h5>}>
+            <Widget title={<h5><i className="fa fa-google-plus" /> Google maps. Basic</h5>}>
               <BasicMap
                 googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg"
-                loadingElement={<div style={{height: `100%`}}/>}
-                containerElement={<div style={{height: `400px`}}/>}
-                mapElement={<div style={{height: `100%`}}/>}
+                loadingElement={<div style={{ height: '100%' }} />}
+                containerElement={<div style={{ height: '400px' }} />}
+                mapElement={<div style={{ height: '100%' }} />}
               />
             </Widget>
           </Col>

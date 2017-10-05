@@ -16,7 +16,6 @@ hr {
 }
 
 blockquote {
-
   &.blockquote {
     border-left: $blockquote-border-width solid $blockquote-border-color;
   }
@@ -864,6 +863,7 @@ button.dropdown-toggle {
   &.card-white {
     background-color: rgba($white, 0.2);
   }
+
   &.card-well {
     padding: 19px;
     margin-bottom: 20px;

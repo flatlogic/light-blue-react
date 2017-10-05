@@ -9,7 +9,7 @@ import {
 
 import 'fullcalendar/dist/fullcalendar';
 import 'jquery-ui/ui/widgets/draggable';
-import 'moment/moment';
+import moment from 'moment/moment';
 import $ from 'jquery';
 
 import s from './Calendar.scss';
@@ -156,6 +156,8 @@ class Calendar extends React.Component {
         $(event.target).remove();
       },
     };
+
+    this.dragOptions = { zIndex: 999, revert: true, revertDuration: 0 };
 
     this.prev = this.prev.bind(this);
     this.next = this.next.bind(this);

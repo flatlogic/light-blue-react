@@ -11,7 +11,7 @@ import {
   UncontrolledTooltip,
   Popover,
   PopoverTitle,
-  PopoverContent
+  PopoverContent,
 } from 'reactstrap';
 
 import s from './Dialogs.scss';
@@ -23,7 +23,7 @@ class Dialogs extends React.Component {
     this.state = {
       modal1: false,
       modal2: false,
-      popoverOpen: false
+      popoverOpen: false,
     };
 
     this.toggle = this.toggle.bind(this);
@@ -33,20 +33,19 @@ class Dialogs extends React.Component {
 
   toggle() {
     this.setState({
-      modal1: !this.state.modal1
+      modal1: !this.state.modal1,
     });
   }
 
   toggle2() {
     this.setState({
-      modal2: !this.state.modal2
+      modal2: !this.state.modal2,
     });
   }
 
   togglePopover() {
-    console.log('1');
     this.setState({
-      popoverOpen: !this.state.popoverOpen
+      popoverOpen: !this.state.popoverOpen,
     });
   }
 
@@ -61,8 +60,8 @@ class Dialogs extends React.Component {
             <Widget
               title={<h5><i className="fa fa-magic" /> Dialogs</h5>}
             >
-              <div className="modal" style={{position: 'relative', top: 'auto', right: 'auto', left: 'auto', bottom: 'auto', zIndex: 1, display: 'block', overflow: 'hidden'}}>
-                <div className="modal-dialog" role="document" style={{width: 'auto', padding: 0}}>
+              <div className="modal" style={{ position: 'relative', top: 'auto', right: 'auto', left: 'auto', bottom: 'auto', zIndex: 1, display: 'block', overflow: 'hidden' }}>
+                <div className="modal-dialog" role="document" style={{ width: 'auto', padding: 0 }}>
                   <div className="modal-content">
                     <div className="modal-header">
                       <h5 className="modal-title">Modal title</h5>
@@ -97,7 +96,9 @@ class Dialogs extends React.Component {
                   <p>This <Button id="popover" onClick={this.togglePopover}>button</Button>
                     <Popover placement="right" isOpen={this.state.popoverOpen} target="popover" toggle={this.togglePopover}>
                       <PopoverTitle>A Title</PopoverTitle>
-                      <PopoverContent>And here's some amazing content. It's very engaging. right?</PopoverContent>
+                      <PopoverContent>
+                        And here&#39;s some amazing content. It&#39;s very engaging. right?
+                      </PopoverContent>
                     </Popover> should trigger a popover on click.
                   </p>
 
@@ -117,8 +118,14 @@ class Dialogs extends React.Component {
                   <hr />
 
                   <h4>Blah blah blah text</h4>
-                  <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                  <p>
+                    Cras mattis consectetur purus sit amet fermentum.
+                    Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+                    Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                  </p>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+                    Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+                  </p>
                 </ModalBody>
                 <ModalFooter>
                   <Button color="secondary" onClick={this.toggle}>Cancel</Button>
@@ -130,7 +137,11 @@ class Dialogs extends React.Component {
               title={<h5><i className="fa fa-ban" /> Blocking one</h5>}
             >
               <Button color="warning" onClick={this.toggle2} size="lg" block>Launch blocking modal</Button>
-              <Modal isOpen={this.state.modal2} toggle={this.toggle2} backdrop={"static"}>
+              <Modal
+                isOpen={this.state.modal2}
+                toggle={this.toggle2}
+                backdrop={'static'}
+              >
                 <ModalHeader toggle={this.toggle2}>Modal Heading</ModalHeader>
                 <ModalBody>
                   <h4>Text in a modal</h4>
@@ -140,7 +151,9 @@ class Dialogs extends React.Component {
                   <p>This <Button id="popover" onClick={this.togglePopover}>button</Button>
                     <Popover placement="right" isOpen={this.state.popoverOpen} target="popover" toggle={this.togglePopover}>
                       <PopoverTitle>A Title</PopoverTitle>
-                      <PopoverContent>And here's some amazing content. It's very engaging. right?</PopoverContent>
+                      <PopoverContent>
+                        And here&#39;s some amazing content. It&#39;s very engaging. right?
+                      </PopoverContent>
                     </Popover> should trigger a popover on click.
                   </p>
 
@@ -160,8 +173,13 @@ class Dialogs extends React.Component {
                   <hr />
 
                   <h4>Blah blah blah text</h4>
-                  <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                  <p>Cras mattis consectetur purus sit amet fermentum.
+                    Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+                    Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                  </p>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+                    Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+                  </p>
                 </ModalBody>
                 <ModalFooter>
                   <Button color="secondary" onClick={this.toggle2}>Cancel</Button>

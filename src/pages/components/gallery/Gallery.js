@@ -7,7 +7,6 @@ import {
   CardImg,
   CardBlock,
   CardTitle,
-  CardSubtitle,
   CardText,
   Button,
 } from 'reactstrap';
@@ -33,12 +32,12 @@ class Gallery extends React.Component {
     this.state = {
       currentImage: 0,
       lightboxIsOpen: false,
-      images: [{src: i5}, {src: i9}, {src: i6}, {src: i8}, {src: i7}],
+      images: [{ src: i5 }, { src: i9 }, { src: i6 }, { src: i8 }, { src: i7 }],
       theme: {
         arrow: {
           ':focus': {
             outline: 0,
-          }
+          },
         },
         close: {
           ':focus': {
@@ -113,8 +112,7 @@ class Gallery extends React.Component {
                   <Col sm={6}>
                     <a
                       href="#"
-                      key={0}
-                      onClick={(e) => this.openLightbox(0, e)}
+                      onClick={(e) => { this.openLightbox(0, e); }}
                     >
                       <img src={i5} alt="" className="img-thumbnail" />
                     </a>
@@ -124,8 +122,7 @@ class Gallery extends React.Component {
                       <Col sm={8}>
                         <a
                           href="#"
-                          key={0}
-                          onClick={(e) => this.openLightbox(1, e)}
+                          onClick={(e) => { this.openLightbox(1, e); }}
                         >
                           <img src={i9} alt="" className="img-thumbnail" />
                         </a>
@@ -133,8 +130,7 @@ class Gallery extends React.Component {
                       <Col sm={4}>
                         <a
                           href="#"
-                          key={0}
-                          onClick={(e) => this.openLightbox(2, e)}
+                          onClick={(e) => { this.openLightbox(2, e); }}
                         >
                           <img src={i6} alt="" className="img-thumbnail" />
                         </a>
@@ -144,8 +140,7 @@ class Gallery extends React.Component {
                       <Col sm={8}>
                         <a
                           href="#"
-                          key={0}
-                          onClick={(e) => this.openLightbox(3, e)}
+                          onClick={(e) => { this.openLightbox(3, e); }}
                         >
                           <img src={i8} alt="" className="img-thumbnail" />
                         </a>
@@ -153,8 +148,7 @@ class Gallery extends React.Component {
                       <Col sm={4}>
                         <a
                           href="#"
-                          key={0}
-                          onClick={(e) => this.openLightbox(4, e)}
+                          onClick={(e) => { this.openLightbox(4, e); }}
                         >
                           <img src={i7} alt="" className="img-thumbnail" />
                         </a>
@@ -172,8 +166,8 @@ class Gallery extends React.Component {
                 onClose={this.closeLightbox}
                 onClickImage={this.handleClickImage}
                 onClickThumbnail={this.gotoImage}
-                backdropClosesModal={true}
-                enableKeyboardInput={true}
+                backdropClosesModal
+                enableKeyboardInput
                 theme={this.state.theme}
               />
             </Widget>

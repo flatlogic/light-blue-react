@@ -14,6 +14,9 @@ module.exports = {
 
     globals: {
       __DEV__: true,
+      google: true,
+      Messenger: true,
+      jQuery: true,
     },
 
     env: {
@@ -54,6 +57,7 @@ module.exports = {
       'react/prefer-stateless-function': 'off',
 
       "linebreak-style": 0,
-      'jsx-a11y/href-no-hash': 'off'
+      'jsx-a11y/href-no-hash': 'off',
+      "jsx-a11y/no-static-element-interactions": 0,
     },
   };

@@ -3,17 +3,8 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import {
   Row,
   Col,
-  Button,
-  UncontrolledDropdown,
-  DropdownMenu,
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
   Collapse,
 } from 'reactstrap';
-import classnames from 'classnames';
 
 import s from './Accordion.scss';
 
@@ -35,7 +26,7 @@ class Accordion extends React.Component {
         We searched for a solution of how to make widgets look like real widgets, so we decided that
         deep background - is what makes widgets look real.
         </p>
-        <p class="no-margin text-muted"><em>- Some One</em></p>`
+        <p class="no-margin text-muted"><em>- Some One</em></p>`,
       }, {
         title: 'Normal Text Insertion',
         body: `Why don't use Lore Ipsum? I think if some one says don't use lore ipsum it's very
@@ -59,7 +50,7 @@ class Accordion extends React.Component {
         We searched for a solution of how to make widgets look like real widgets, so we decided that
         deep background - is what makes widgets look real.
         </p>
-        <p class="no-margin text-muted"><em>- Some One</em></p>`
+        <p class="no-margin text-muted"><em>- Some One</em></p>`,
       }, {
         title: 'Normal Text Insertion',
         body: `Why don't use Lore Ipsum? I think if some one says don't use lore ipsum it's very
@@ -78,8 +69,6 @@ class Accordion extends React.Component {
   }
 
   toggleAccordionFirst(id) {
-    console.log(id);
-
     const arr = [];
     arr.length = this.state.accordionFirst.length;
     arr.fill(false);
@@ -111,7 +100,8 @@ class Accordion extends React.Component {
                 (
                   <div className="card mb-xs" key={`accord-one-${index.toString()}`}>
                     <div
-                      className="card-header" role="button"
+                      className="card-header"
+                      role="button"
                       onClick={() => {
                         this.toggleAccordionFirst(index);
                       }}
@@ -119,12 +109,12 @@ class Accordion extends React.Component {
                       <div className="mb-0">
                         <a className="accordion-toggle" role="button">
                           {element.title}
-                          <i className="fa fa-angle-down float-right"/>
+                          <i className="fa fa-angle-down float-right" />
                         </a>
                       </div>
                     </div>
                     <Collapse isOpen={this.state.accordionFirst[index]}>
-                      <div className="card-body" dangerouslySetInnerHTML={{__html: element.body}}/>
+                      <div className="card-body" dangerouslySetInnerHTML={{ __html: element.body }} />
                     </Collapse>
                   </div>))}
             </div>
@@ -135,20 +125,21 @@ class Accordion extends React.Component {
               {this.state.accordionSecondContent.map((element, index) => (
                 <div className="card mb-xs" key={`accord-one-${index.toString()}`}>
                   <div
-                    className="card-header" role="button"
+                    className="card-header"
+                    role="button"
                     onClick={() => {
                       this.toggleAccordionSecond(index);
                     }}
                   >
                     <div className="mb-0">
                       <a className="accordion-toggle" role="button">
-                        {element.title}
-                        <i className="fa fa-angle-down float-right"/>
+                        { element.title }
+                        <i className="fa fa-angle-down float-right" />
                       </a>
                     </div>
                   </div>
                   <Collapse className="" isOpen={this.state.accordionSecond[index]}>
-                    <div className="card-body" dangerouslySetInnerHTML={{__html: element.body}}/>
+                    <div className="card-body" dangerouslySetInnerHTML={{ __html: element.body }} />
                   </Collapse>
                 </div>))}
             </div>

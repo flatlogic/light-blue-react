@@ -13,11 +13,10 @@ import {
   Button,
   InputGroup,
   InputGroupButton,
-  InputGroupAddon,
   UncontrolledButtonDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
 } from 'reactstrap';
 
 import Widget from '../../../components/Widget';
@@ -60,7 +59,7 @@ class Buttons extends React.Component {
         <Row>
           <Col lg={7}>
             <Widget
-              title={<h4><i className="fa fa-user"/> Account Profile
+              title={<h4><i className="fa fa-user" /> Account Profile
                 <small> Create new or edit existing user</small>
               </h4>}
             >
@@ -68,7 +67,7 @@ class Buttons extends React.Component {
                 <Row>
                   <Col md={4}>
                     <div className="text-center">
-                      <img className={`${s.profileImg} rounded-circle`} style={{height: 112 + 'px'}} src={i3} alt="64x64" />
+                      <img className="rounded-circle" style={{ height: `${112} + px` }} src={i3} alt="64x64" />
                     </div>
                   </Col>
                   <Col md={6}>
@@ -92,7 +91,7 @@ class Buttons extends React.Component {
                   <FormGroup row>
                     <Label for="prefix" md={4}>Prefix</Label>
                     <Col md={4}>
-                      <Input type="text" name="prefix" className="input-transparent"/>
+                      <Input type="text" name="prefix" className="input-transparent" />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -100,7 +99,7 @@ class Buttons extends React.Component {
                       <span>*</span>
                     </Label>
                     <Col md={8}>
-                      <Input type="text" name="first-name" className="input-transparent"/>
+                      <Input type="text" name="first-name" className="input-transparent" />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -108,13 +107,13 @@ class Buttons extends React.Component {
                       <span>*</span>
                     </Label>
                     <Col md={8}>
-                      <Input type="text" name="last-name" className="input-transparent"/>
+                      <Input type="text" name="last-name" className="input-transparent" />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
                     <Label for="middle-name" md={4}>Middle Name / Initial</Label>
                     <Col md={8}>
-                      <Input type="text" name="Middle Name / Initial" className="input-transparent"/>
+                      <Input type="text" name="Middle Name / Initial" className="input-transparent" />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -131,7 +130,7 @@ class Buttons extends React.Component {
                       <span>*</span>
                     </Label>
                     <Col md={6}>
-                      <Input type="text" name="date-of-birth" className="input-transparent"/>
+                      <Input type="text" name="date-of-birth" className="input-transparent" />
                     </Col>
                   </FormGroup>
                 </FormGroup>
@@ -143,7 +142,7 @@ class Buttons extends React.Component {
                     </Label>
                     <Col md={6}>
                       <InputGroup>
-                        <Input type="text" name="email" className="input-transparent"/>
+                        <Input type="text" name="email" className="input-transparent" />
                         <InputGroupButton><Button color="success">
                           Write an email
                         </Button></InputGroupButton>
@@ -156,7 +155,7 @@ class Buttons extends React.Component {
                     </Label>
                     <Col md={6}>
                       <InputGroup>
-                        <Input type="text" name="phone" className="input-transparent"/>
+                        <Input type="text" name="phone" className="input-transparent" />
                         <InputGroupButton>
                           <UncontrolledButtonDropdown>
                             <DropdownToggle caret color="secondary">
@@ -176,7 +175,7 @@ class Buttons extends React.Component {
                     <Label for="fax" md={4}>Fax</Label>
                     <Col md={6}>
                       <InputGroup>
-                        <Input type="text" name="fax" className="input-transparent"/>
+                        <Input type="text" name="fax" className="input-transparent" />
                         <InputGroupButton>
                           <UncontrolledButtonDropdown>
                             <DropdownToggle caret color="secondary">
@@ -206,7 +205,7 @@ class Buttons extends React.Component {
                     </Label>
                     <Col md={6}>
                       <InputGroup className="mb-2">
-                        <Input type="text" name="phone" className="input-transparent"/>
+                        <Input type="text" name="phone" className="input-transparent" />
                         <InputGroupButton>
                           <UncontrolledButtonDropdown>
                             <DropdownToggle caret color="secondary">
@@ -220,7 +219,7 @@ class Buttons extends React.Component {
                           </UncontrolledButtonDropdown>
                         </InputGroupButton>
                       </InputGroup>
-                      <Input type="text" name="phone" className="input-transparent"/>
+                      <Input type="text" name="phone" className="input-transparent" />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -228,7 +227,7 @@ class Buttons extends React.Component {
                       <span>*</span>
                     </Label>
                     <Col md={6}>
-                      <Input type="text" name="sity" className="input-transparent"/>
+                      <Input type="text" name="sity" className="input-transparent" />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -259,7 +258,7 @@ class Buttons extends React.Component {
                   </FormGroup>
                 </FormGroup>
                 <FormGroup row className={s.submitBlock}>
-                  <Label md={4}/>
+                  <Label md={4} />
                   <Col md={7}>
                     <Button color="primary" type="submit" className="mr-xs">Validate & Submit</Button>
                     <Button color="inverse">Cancel</Button>
@@ -270,7 +269,7 @@ class Buttons extends React.Component {
           </Col>
           <Col lg={5}>
             <Widget
-              title={<h4><i className="fa fa-cogs"/> Account settings</h4>}
+              title={<h4><i className="fa fa-cogs" /> Account settings</h4>}
             >
               <Form>
                 <FormGroup>
@@ -282,7 +281,7 @@ class Buttons extends React.Component {
                     inputProps={{
                       ref: (input) => {
                         this.refDatePicker = input;
-                      }
+                      },
                     }}
                   />
                   <span className="help-block">Bootstrap datepicker</span>
@@ -318,7 +317,7 @@ class Buttons extends React.Component {
                   </Col>
                 </FormGroup>
                 <FormGroup className="checkbox abc-checkbox">
-                  <Input id="checkbox1"/>
+                  <Input id="checkbox1" />
                   <Label for="checkbox1">
                     Request password change
                   </Label>
@@ -328,6 +327,7 @@ class Buttons extends React.Component {
           </Col>
         </Row>
       </div>
+
     );
   }
 

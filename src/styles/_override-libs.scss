@@ -35,7 +35,7 @@ div.abc-radio label {
 
 /* Full Calendar */
 
-.fc-grid th{
+.fc-grid th {
   text-transform: uppercase;
 }
 
@@ -57,20 +57,22 @@ div.abc-radio label {
   }
 }
 
-.fc-unthemed .fc-today{
-  background-color: rgba(#fff1b8, .35);
+.fc-unthemed .fc-today {
+  background-color: rgba(#fff1b8, 0.35);
 }
 
 td.fc-day-top.fc-today.fc-state-highlight {
   border-color: rgb(221, 221, 221);
 }
 
-a.fc-event{
+a.fc-event {
   height: auto;
   line-height: 20px;
 }
 
-.fc-event, .fc-event:hover, .ui-widget .fc-event{
+.fc-event,
+.fc-event:hover,
+.ui-widget .fc-event {
   color: $gray-600;
 }
 
@@ -80,7 +82,7 @@ a.fc-event{
 .fc-unthemed thead,
 .fc-unthemed tbody,
 .fc-unthemed .fc-row,
-.fc-unthemed .fc-popover{
+.fc-unthemed .fc-popover {
   border-color: $calendar-border;
 }
 
@@ -100,17 +102,17 @@ a.fc-event{
   }
 }
 
-.fc-grid th{
+.fc-grid th {
   text-transform: uppercase;
 }
 
-.fc-today{
+.fc-today {
   background-color: #88918e !important;
   border-left-color: rgb(221, 221, 221);
   border-top-color: rgb(221, 221, 221);
 }
 
-a.fc-event{
+a.fc-event {
   height: auto;
   line-height: $line-height-base;
 }
@@ -129,14 +131,14 @@ a.fc-event{
     padding: 6px;
     font-size: $font-size-mini;
     cursor: pointer;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     background-color: $white;
     border: 1px solid #bbb;
   }
 }
 
 .widget-calendar {
-  @include media-breakpoint-up(xl){
+  @include media-breakpoint-up(xl) {
     margin-top: -100px;
   }
 }

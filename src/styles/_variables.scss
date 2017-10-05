@@ -35,14 +35,14 @@ $colors: $red, $orange, $lime, $green, $teal, $blue, $brown, $red-dark;
 $color-names: 'red', 'orange', 'lime', 'green', 'teal', 'blue', 'brown', 'red-dark';
 
 $gray-100: #f8f8f8 !default;
-$gray-200: #eeeeee !default;
-$gray-300: #dddddd !default;
-$gray-400: #999999 !default;
-$gray-500: #777777 !default;
-$gray-600: #666666 !default;
-$gray-700: #555555 !default;
+$gray-200: #eee !default;
+$gray-300: #ddd !default;
+$gray-400: #999 !default;
+$gray-500: #777 !default;
+$gray-600: #666 !default;
+$gray-700: #555 !default;
 $gray-800: #343a40 !default;
-$gray-900: #222222 !default;
+$gray-900: #222 !default;
 $black:  #000 !default;
 
 $theme-colors: (
@@ -309,6 +309,6 @@ $section-padding-top: 0.77rem; //~10px
 
 // Messenger
 // -------------------------
-$bg-messenger-color: rgba(51,51,51,0.3);
-$bg-messenger-bit-color: rgba(26,26,26,0.3);
-$bg-messenger-bit-hover-color: rgba(13,13,13,0.3);
+$bg-messenger-color: rgba(51, 51, 51, 0.3);
+$bg-messenger-bit-color: rgba(26, 26, 26, 0.3);
+$bg-messenger-bit-hover-color: rgba(13, 13, 13, 0.3);

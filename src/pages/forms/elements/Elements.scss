@@ -57,9 +57,6 @@
   line-height: 0.1;
 }
 
-
-
-
 .select2 {
   :global {
     .select2-container {
@@ -425,18 +422,18 @@
   }
 }
 
-.dropzone {
-  width: 100%;
-  text-align: center;
-  padding: 40px 10px;
-  height: 200px;
-  border: 2px dashed #ccc;
-
-  @include border-radius($border-radius);
-
-  img {
-    max-height: 100px;
-    max-width: 150px;
-    border-radius: 5px;
-  }
-}
+//.dropzone {
+//  width: 100%;
+//  text-align: center;
+//  padding: 40px 10px;
+//  height: 200px;
+//  border: 2px dashed #ccc;
+//
+//  @include border-radius($border-radius);
+//
+//  img {
+//    max-height: 100px;
+//    max-width: 150px;
+//    border-radius: 5px;
+//  }
+//}

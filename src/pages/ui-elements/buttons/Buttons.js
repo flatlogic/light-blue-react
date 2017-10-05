@@ -5,7 +5,6 @@ import {
   Col,
   Button,
   ButtonGroup,
-  ButtonToolbar,
   ButtonDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -49,11 +48,11 @@ class Buttons extends React.Component {
   }
 
   onRadioBtnClickOne(rSelectedOne) {
-    this.setState({rSelectedOne});
+    this.setState({ rSelectedOne });
   }
 
   onRadioBtnClickTwo(rSelectedTwo) {
-    this.setState({rSelectedTwo});
+    this.setState({ rSelectedTwo });
   }
 
   onCheckboxBtnClickOne(selected) {
@@ -63,7 +62,7 @@ class Buttons extends React.Component {
     } else {
       this.state.cSelectedOne.splice(index, 1);
     }
-    this.setState({cSelectedOne: [...this.state.cSelectedOne]});
+    this.setState({ cSelectedOne: [...this.state.cSelectedOne] });
   }
 
   onCheckboxBtnClickTwo(selected) {
@@ -73,7 +72,7 @@ class Buttons extends React.Component {
     } else {
       this.state.cSelectedTwo.splice(index, 1);
     }
-    this.setState({cSelectedTwo: [...this.state.cSelectedTwo]});
+    this.setState({ cSelectedTwo: [...this.state.cSelectedTwo] });
   }
 
   toggleOne() {
@@ -128,9 +127,9 @@ class Buttons extends React.Component {
 
         <Row>
           <Col lg={6}>
-            {/* Color options*/}
+            {/* Color options */}
             <Widget
-              title={<h4><i className="fa fa-star"/> Default buttons
+              title={<h4><i className="fa fa-star" /> Default buttons
                 <small> Classes on hover</small>
               </h4>}
             >
@@ -162,16 +161,16 @@ class Buttons extends React.Component {
               </Card>
               <div className="card bg-addition text-center">
                 <div className="row">
-                  <Col sm={4} md={4}/>
+                  <Col sm={4} md={4} />
                   <Col sm={4} md={4}>
                     <Button color="inverse" className="width-100 mb-xs mr-xs">Inverse</Button>
                   </Col>
                 </div>
               </div>
             </Widget>
-            {/* Size variants*/}
+            {/* Size variants */}
             <Widget
-              title={<h4><i className="fa fa-star"/> Small ones</h4>}
+              title={<h4><i className="fa fa-star" /> Small ones</h4>}
             >
               <Card className="card-well card-sm card-white text-center">
                 <div className="row">
@@ -201,16 +200,16 @@ class Buttons extends React.Component {
               </Card>
               <Card className="card-well card-sm card-white text-center">
                 <div className="row">
-                  <Col sm={4} md={4}/>
+                  <Col sm={4} md={4} />
                   <Col sm={4} md={4}>
                     <Button color="inverse" size="sm" className="width-100 mb-xs mr-xs">Inverse</Button>
                   </Col>
                 </div>
               </Card>
             </Widget>
-            {/* Size variants*/}
+            {/* Size variants */}
             <Widget
-              title={<h4><i className="fa fa-star"/> Large ones</h4>}
+              title={<h4><i className="fa fa-star" /> Large ones</h4>}
             >
               <Card className="card-well card-sm text-center">
                 <div className="row">
@@ -240,7 +239,7 @@ class Buttons extends React.Component {
               </Card>
               <Card className="card-well card-sm text-center">
                 <div className="row">
-                  <Col sm={4} md={4}/>
+                  <Col sm={4} md={4} />
                   <Col sm={4} md={4}>
                     <Button color="inverse" size="lg" className="width-100 mb-xs mr-xs">Inverse</Button>
                   </Col>
@@ -250,9 +249,9 @@ class Buttons extends React.Component {
           </Col>
           <Col lg={6}>
             <Widget
-              title={<h4><i className="fa fa-cogs"/> Options</h4>}
+              title={<h4><i className="fa fa-cogs" /> Options</h4>}
             >
-              {/* Disabled Buttons*/}
+              {/* Disabled Buttons */}
               <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Disabled state</blockquote>
                 <Row className="text-center mb-3">
@@ -271,7 +270,7 @@ class Buttons extends React.Component {
                   </Col>
                 </Row>
               </Card>
-              {/* Buttons Groups*/}
+              {/* Buttons Groups */}
               <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Button groups</blockquote>
                 <Row className="text-center mb-3">
@@ -285,18 +284,18 @@ class Buttons extends React.Component {
                 <Row className="text-center">
                   <Col md={12}>
                     <Button color="success" className="mr-xs">
-                      <i className="fa fa-align-left"/>
+                      <i className="fa fa-align-left" />
                     </Button>
                     <Button color="warning" className="mr-xs">
-                      <i className="fa fa-align-center"/>
+                      <i className="fa fa-align-center" />
                     </Button>
                     <Button color="danger" className="mr-xs">
-                      <i className="fa fa-align-right"/>
+                      <i className="fa fa-align-right" />
                     </Button>
                   </Col>
                 </Row>
               </Card>
-              {/* Button Dropdowns*/}
+              {/* Button Dropdowns */}
               <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Button dropdown menus</blockquote>
                 <Row className="text-center mb-3">
@@ -309,7 +308,7 @@ class Buttons extends React.Component {
                         <DropdownItem header>Header</DropdownItem>
                         <DropdownItem disabled>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
-                        <DropdownItem divider/>
+                        <DropdownItem divider />
                         <DropdownItem>Another Action</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
@@ -321,7 +320,7 @@ class Buttons extends React.Component {
                         <DropdownItem header>Header</DropdownItem>
                         <DropdownItem disabled>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
-                        <DropdownItem divider/>
+                        <DropdownItem divider />
                         <DropdownItem>Another Action</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
@@ -333,66 +332,66 @@ class Buttons extends React.Component {
                         <DropdownItem header>Header</DropdownItem>
                         <DropdownItem disabled>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
-                        <DropdownItem divider/>
+                        <DropdownItem divider />
                         <DropdownItem>Another Action</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
                   </Col>
                 </Row>
               </Card>
-              {/* Button Dropdowns*/}
+              {/* Button Dropdowns */}
               <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Segmented dropdowns</blockquote>
                 <Row className="text-center mb-3">
                   <Col md={12}>
                     <ButtonDropdown className="mr-2" isOpen={this.state.dropdownOpenFive} toggle={this.toggleFive}>
-                      <Button>{this.props.text}</Button>
+                      <Button />
                       <DropdownToggle caret size="lg">Gray</DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem header>Header</DropdownItem>
                         <DropdownItem disabled>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
-                        <DropdownItem divider/>
+                        <DropdownItem divider />
                         <DropdownItem>Another Action</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
                     <ButtonDropdown className="mr-2" isOpen={this.state.dropdownOpenSix} toggle={this.toggleSix}>
-                      <Button color="inverse">{this.props.text}</Button>
+                      <Button />
                       <DropdownToggle caret color="inverse">Gray</DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem header>Header</DropdownItem>
                         <DropdownItem disabled>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
-                        <DropdownItem divider/>
+                        <DropdownItem divider />
                         <DropdownItem>Another Action</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
                     <ButtonDropdown className="mr-2" isOpen={this.state.dropdownOpenSeven} toggle={this.toggleSeven}>
-                      <Button color="info">{this.props.text}</Button>
+                      <Button />
                       <DropdownToggle caret color="info" size="sm">Gray</DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem header>Header</DropdownItem>
                         <DropdownItem disabled>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
-                        <DropdownItem divider/>
+                        <DropdownItem divider />
                         <DropdownItem>Another Action</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
                     <ButtonDropdown isOpen={this.state.dropdownOpenSeven} toggle={this.toggleSeven}>
-                      <Button color="primary">{this.props.text}</Button>
+                      <Button />
                       <DropdownToggle caret color="primary" size="sm">Gray</DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem header>Header</DropdownItem>
                         <DropdownItem disabled>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
-                        <DropdownItem divider/>
+                        <DropdownItem divider />
                         <DropdownItem>Another Action</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
                   </Col>
                 </Row>
               </Card>
-              {/* Button Checkboxes*/}
+              {/* Button Checkboxes */}
               <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Checkboxes</blockquote>
                 <Row className="text-center mb-3">
@@ -414,7 +413,7 @@ class Buttons extends React.Component {
                   </Col>
                 </Row>
               </Card>
-              {/* Button Radio*/}
+              {/* Button Radio */}
               <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Radio</blockquote>
                 <Row className="text-center mb-3">
@@ -436,7 +435,7 @@ class Buttons extends React.Component {
                   </Col>
                 </Row>
               </Card>
-              {/* Block Buttons*/}
+              {/* Block Buttons */}
               <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Block level buttons</blockquote>
                 <Row className="justify-content-center mb-3">

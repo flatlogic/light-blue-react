@@ -30,7 +30,6 @@ import TextareaAutosize from 'react-autosize-textarea';
 
 
 import Widget from '../../../components/Widget';
-
 import s from './Elements.scss';
 
 class Elements extends React.Component {
@@ -347,7 +346,7 @@ class Elements extends React.Component {
             </Widget>
           </Col>
 
-          {/* Default form*/}
+          {/* Default form */}
           <Col lg={6}>
             <Widget title={<h6> Prepended and appended inputs </h6>} settings refresh close>
               <FormGroup>
@@ -508,7 +507,7 @@ class Elements extends React.Component {
             </Widget>
           </Col>
 
-          {/* Input Groups*/}
+          {/* Input Groups */}
           <Col lg={4}>
             <Widget
               title={<h6> Form <span className="fw-semi-bold">Options</span></h6>}
@@ -564,7 +563,7 @@ class Elements extends React.Component {
                     <Input rows="4" type="textarea" name="text" id="default-textarea" className="input-transparent" />
                   </Col>
                 </FormGroup>
-                <FormGroup row> {/* todo: fix autosize*/}
+                <FormGroup row> {/* todo: fix autosize */}
                   <Label md={3} className="text-md-right" for="elastic-textarea">Auto-growing
                     textarea</Label>
                   <Col md={9}>
@@ -600,7 +599,7 @@ class Elements extends React.Component {
                     Markdown Editor
                   </Label>
                   <Col md={9}>
-                    {/* todo: change markdown*/}
+                    {/* todo: change markdown */}
                     <ReactMarkdown
                       source='
                     ### Hello there
@@ -623,7 +622,7 @@ class Elements extends React.Component {
             </Widget>
           </Col>
 
-          {/* selects*/}
+          {/* selects */}
           <Col lg="6">
             <Widget
               title={<h6><i className="fa fa-list-alt" /> Selects </h6>} refresh close
@@ -641,7 +640,7 @@ class Elements extends React.Component {
                     />
                   </Col>
                 </FormGroup>
-                <FormGroup row> {/* todo: fix group select*/}
+                <FormGroup row> {/* todo: fix group select */}
                   <Label md="4" for="grouped-select">Select with search & groups</Label>
                   <Col md="6" className={s.select2}>
                     <Select2
@@ -796,8 +795,8 @@ class Elements extends React.Component {
 
                     <legend>Basic</legend>
                     <p>
-                      Supports bootstrap brand colors: <code>.abc-checkbox-primary</code>, <code>.abc-checkbox-info</code>
-                      etc.
+                      Supports bootstrap brand colors: <code>.abc-checkbox-primary</code>,
+                      <code>.abc-checkbox-info</code> etc.
                       Pure <abbr title="Cascading Style Sheet">css</abbr> solution with no
                       javascript.
                       Let your checkboxes shine!
@@ -917,8 +916,8 @@ class Elements extends React.Component {
                   <Col lg="4">
                     <legend>Basic</legend>
                     <p>
-                      Supports bootstrap brand colors: <code>.abc-radio-primary</code>, <code>.abc-radio-danger</code>
-                      etc.
+                      Supports bootstrap brand colors: <code>.abc-radio-primary</code>,
+                      <code>.abc-radio-danger</code>etc.
                       Pure css solution with no javascript. Let your radios shine!
                     </p>
                     <Row>
@@ -1012,9 +1011,9 @@ class Elements extends React.Component {
                           id="datepicker"
                           open={this.state.isDatePickerOpen}
                           viewMode="days" timeFormat={false}
-                          inputProps={{ref: (input) => {this.refDatePicker = input;}}}
+                          inputProps={{ ref: (input) => { this.refDatePicker = input; } }}
                         />
-                        <InputGroupAddon onClick={() => {this.refDatePicker.focus()}}>
+                        <InputGroupAddon onClick={() => { this.refDatePicker.focus(); }}>
                           <i className="glyphicon glyphicon-th" />
                         </InputGroupAddon>
                       </div>
@@ -1023,10 +1022,10 @@ class Elements extends React.Component {
                       <div className="datepicker">
                         <Datetime
                           open={this.state.isTimePickerOpen} id="timepicker"
-                          inputProps={{ref: (input) => {this.refTimePicker = input;}}}
+                          inputProps={{ ref: (input) => { this.refTimePicker = input; } }}
                           viewMode="time" dateFormat={false}
                         />
-                        <InputGroupAddon onClick={() => {this.refTimePicker.focus()}}>
+                        <InputGroupAddon onClick={() => { this.refTimePicker.focus(); }}>
                           <i className="glyphicon glyphicon-time" />
                         </InputGroupAddon>
                       </div>
@@ -1044,7 +1043,7 @@ class Elements extends React.Component {
                       Colorpicker plugin for Twitter Bootstrap, originally written by Stefan Petre
                     </span>
                   </Label>
-                  <InputGroup id="colorpicker"> {/* todo: fix value input*/}
+                  <InputGroup id="colorpicker"> {/* todo: fix value input */}
                     <Input
                       type="text" onChange={this.changeColorInput} id="colorpickeri"
                       value={this.state.colorpickerInputValue}
@@ -1062,7 +1061,7 @@ class Elements extends React.Component {
             </Widget>
           </Col>
 
-          {/* input masks*/}
+          {/* input masks */}
           <Col lg="6" xs="12">
             <Widget title={<h6> Input <strong>Masks</strong></h6>} close settings refresh>
               <Form className="form-label-left">
