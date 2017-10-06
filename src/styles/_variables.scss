@@ -76,7 +76,12 @@ $font-size-index:         0.7rem;
 
 $small-font-size:         85%;
 
-$h5-font-size: $font-size-larger !default;
+$h1-font-size: $font-size-base * 2.75;
+$h2-font-size: $font-size-base * 2.25;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.25;
+$h5-font-size: $font-size-base;
+$h6-font-size: $font-size-base * 0.85;
 
 $font-weight-bold: 700 !default;
 $font-weight-semi-bold: 600 !default;
@@ -236,6 +241,8 @@ $thumbnail-border-width:          0;
 
 // Pagination
 // -------------------------
+
+$pagination-border-width: 0;
 
 $pagination-color:                     $text-color !default;
 $pagination-bg:                        transparent !default;

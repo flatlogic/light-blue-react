@@ -8,4 +8,110 @@
   h4 {
     font-size: 14px;
   }
+
+  :global {
+    .fc-grid th {
+      text-transform: uppercase;
+    }
+
+    .fc-event-container {
+      .fc-event {
+        padding: 2px 3px;
+        border: none;
+        font-weight: $font-weight-normal;
+        background-color: $gray-300;
+        color: $text-color;
+      }
+
+      a:not([href]):not([tabindex]) {
+        color: $gray-600;
+
+        &:hover {
+          color: inherit;
+        }
+      }
+    }
+
+    .fc-unthemed .fc-today {
+      background-color: rgba(#fff1b8, 0.35);
+    }
+
+    td.fc-day-top.fc-today.fc-state-highlight {
+      border-color: rgb(221, 221, 221);
+    }
+
+    a.fc-event {
+      height: auto;
+      line-height: 20px;
+    }
+
+    .fc-event,
+    .fc-event:hover,
+    .ui-widget .fc-event {
+      color: $gray-600;
+    }
+
+    .fc-unthemed th,
+    .fc-unthemed td,
+    .fc-unthemed hr,
+    .fc-unthemed thead,
+    .fc-unthemed tbody,
+    .fc-unthemed .fc-row,
+    .fc-unthemed .fc-popover {
+      border-color: $calendar-border;
+    }
+
+    .calendar-controls {
+      label.btn.btn-secondary {
+        margin-bottom: 0;
+      }
+    }
+
+    .fc-body {
+      .fc-widget-content {
+        .fc-scroller {
+          overflow-y: hidden !important;
+        }
+      }
+    }
+
+    .fc-grid th {
+      text-transform: uppercase;
+    }
+
+    .fc-today {
+      background-color: #88918e !important;
+      border-left-color: rgb(221, 221, 221);
+      border-top-color: rgb(221, 221, 221);
+    }
+
+    a.fc-event {
+      height: auto;
+      line-height: $line-height-base;
+    }
+
+    .full-calendar {
+      margin-top: 10px;
+    }
+
+    .calendar-external-events {
+      margin-top: 20px;
+
+      .external-event {
+        margin: 10px 0;
+        padding: 6px;
+        font-size: $font-size-mini;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        background-color: $white;
+        border: 1px solid #bbb;
+      }
+    }
+
+    .widget-calendar {
+      @include media-breakpoint-up(xl) {
+        margin-top: -100px;
+      }
+    }
+  }
 }
