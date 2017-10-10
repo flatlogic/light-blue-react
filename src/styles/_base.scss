@@ -234,3 +234,7 @@ section.widget-tabs {
 .thumbnails .img-thumbnail {
   margin-bottom: 20px;
 }
+
+/*       Background Variant        */
+
+@include bg-variant('.bg-lime', $lime);

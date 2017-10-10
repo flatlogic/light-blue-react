@@ -137,6 +137,9 @@ class Sidebar extends React.Component {
               },
               {
                 name: 'Invoice', link: '/app/special/invoice',
+              },
+              {
+                name: 'Landing', link: '/landing',
               }
             ]}
           />

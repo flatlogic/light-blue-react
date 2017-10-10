@@ -1,0 +1,255 @@
+@import '../../styles/app';
+
+.root {
+  .landing {
+    padding-bottom: 40px;
+
+    .pageHeader {
+      margin: 15px 0;
+    }
+
+    :global {
+      .navbar {
+        padding: 0;
+      }
+    }
+
+    .navbarMenu > li {
+      > a {
+        line-height: 40px;
+        padding: 0 10px;
+        width: auto;
+        font-size: $font-size-lg;
+      }
+    }
+
+    .navbarButtons {
+      margin-right: 20px;
+
+      @include media-breakpoint-down(sm) {
+        margin-left: auto;
+      }
+
+      > li {
+        float: left;
+
+        > a {
+          margin: 7px 10px;
+        }
+      }
+    }
+
+    :global {
+      .logo {
+        position: static;
+        margin: 0;
+
+        a {
+          color: $white;
+          text-decoration: none;
+          font-weight: normal;
+        }
+      }
+    }
+
+    .content {
+      padding: 25px 0;
+    }
+
+    .lead {
+      font-weight: normal;
+    }
+
+    //.btn {
+    //  font-weight: normal;
+    //
+    //  + .btn {
+    //    margin-left: 10px;
+    //  }
+    //}
+
+    .widgetAbout {
+      margin-top: 60px;
+      padding: 20px;
+
+      h2,
+      h4 {
+        margin-top: 0;
+        font-weight: bold;
+      }
+
+      .preview {
+        margin: 40px 0;
+      }
+
+      :global {
+        .btn {
+          color: white;
+        }
+      }
+
+      p {
+        font-size: $font-size-larger;
+      }
+    }
+
+    .features {
+      margin-top: 60px;
+    }
+
+    .feature {
+      text-align: center;
+
+      .icon {
+        display: inline-block;
+        height: 60px;
+        width: 60px;
+        font-size: 40px;
+        line-height: 60px;
+        vertical-align: middle;
+        border-radius: 50%;
+
+        > i {
+          color: #fff;
+        }
+      }
+    }
+
+    .thanks {
+      margin-top: 60px;
+    }
+
+    .backToTop {
+      color: $text-color;
+    }
+  }
+
+  .widgetWhite {
+    background: $white;
+    color: $gray-600;
+    //box-shadow: 0 -1px 1px $border, 0 1px 1px $shadow-color;
+
+    * {
+      color: $gray-600;
+    }
+  }
+
+  //.carousel-landing {
+  //  height: 450px;
+  //  overflow: hidden;
+  //
+  //  .carousel-indicators {
+  //    align-items: center;
+  //
+  //    > li {
+  //      max-width: 10px;
+  //      height: 10px;
+  //      border-radius: 10px;
+  //
+  //      &.active {
+  //        max-width: 12px;
+  //        height: 12px;
+  //      }
+  //    }
+  //  }
+  //
+  //  img {
+  //    max-width: 100%;
+  //  }
+  //
+  //  h1 {
+  //    font-size: 45px;
+  //    line-height: 1.1;
+  //  }
+  //
+  //  .carousel-item > .row > *:first-child {
+  //    text-align: right;
+  //  }
+  //
+  //  .slide-one-header {
+  //    margin-top: 80px;
+  //  }
+  //
+  //  .slide-two-header {
+  //    margin-bottom: 40px;
+  //  }
+  //
+  //  .slide-three-header {
+  //    margin-top: 100px;
+  //    margin-bottom: 20px;
+  //  }
+  //
+  //  .btn-version-preview {
+  //    margin-top: 20px;
+  //    @include media-breakpoint-between(sm, md) {
+  //      display: none;
+  //    }
+  //  }
+  //}
+
+  //.carousel-fade {
+  //  .carousel-inner {
+  //    > .carousel-item {
+  //      transition: opacity .2s ease-in-out;
+  //    }
+  //
+  //    > .carousel-item:nth-child(2) {
+  //      flex-direction: column;
+  //    }
+  //
+  //    > .carousel-item:nth-child(3) {
+  //      justify-content: center;
+  //    }
+  //
+  //  }
+  //}
+
+  //.carousel-control-landing {
+  //  opacity: 1;
+  //  width: 2%;
+  //  //font-size: 50px;
+  //  text-shadow: 0 0 8px rgba(255,255,255, .6);
+  //
+  //  @include media-breakpoint-up(md) {
+  //    &.carousel-control-prev,
+  //    &.carousel-control-next {
+  //      font-size: 50px;
+  //    }
+  //  }
+  //
+  //  &.carousel-control-prev {
+  //    background: none;
+  //  }
+  //  &.carousel-control-next {
+  //    background: none;
+  //  }
+  //}
+
+  @include media-breakpoint-down(sm) {
+    .landing {
+      :global {
+        .container {
+          width: auto;
+        }
+
+        .logo {
+          width: auto;
+
+          small {
+            display: none;
+          }
+        }
+      }
+
+      .features {
+        + .features {
+          margin-top: 0;
+        }
+      }
+
+      .feature {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
