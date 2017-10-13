@@ -15,6 +15,7 @@ class Widget extends React.Component {
     collapse: PropTypes.bool,
     refresh: PropTypes.bool,
     settings: PropTypes.bool,
+    print: PropTypes.bool,
     settingsInverse: PropTypes.bool,
   };
 
@@ -26,6 +27,7 @@ class Widget extends React.Component {
     collapse: false,
     refresh: false,
     settings: false,
+    print: false,
     settingsInverse: false,
   };
 
@@ -56,7 +58,9 @@ class Widget extends React.Component {
               /></a>
             </span>
           )}
-
+          {this.props.print && (
+            <a><i className="fa fa-print" /></a>
+          )}
           {this.props.close && (
             <a data-widgster="close"><i className="glyphicon glyphicon-remove" /></a>
 

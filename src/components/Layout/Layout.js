@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { connect } from 'react-redux';
-import { Switch, Route, withRouter } from 'react-router';
+import { Switch, Route, withRouter, Redirect } from 'react-router';
 
 // an example of react-router code-splitting
 /* eslint-disable */
@@ -22,6 +22,7 @@ import loadTablesStatic from 'bundle-loader?lazy!../../pages/tables/static/Stati
 import loadWidgetsBasic from 'bundle-loader?lazy!../../pages/widgets/basic/Basic';
 import loadSpecialSearch from 'bundle-loader?lazy!../../pages/special/search/Search';
 import loadSpecialInvoice from 'bundle-loader?lazy!../../pages/special/invoice/Invoice';
+import loadSpecialInbox from 'bundle-loader?lazy!../../pages/special/inbox/Inbox';
 /* eslint-enable */
 
 import s from './Layout.scss';
@@ -31,6 +32,7 @@ import Bundle from '../../core/Bundle';
 
 // Dashboard component is loaded directly as an example of server side rendering
 import Dashboard from '../../pages/dashboard/Dashboard';
+import Inbox from '../../pages/special/inbox/Inbox';
 
 const UIIconsBundle = Bundle.generateBundle(loadUIIcons);
 const UIButtonsBundle = Bundle.generateBundle(loadUIButtons);
@@ -48,6 +50,7 @@ const TablesStaticBundle = Bundle.generateBundle(loadTablesStatic);
 const WidgetsBasicBundle = Bundle.generateBundle(loadWidgetsBasic);
 const SpecialSearchBundle = Bundle.generateBundle(loadSpecialSearch);
 const SpecialInvoiceBundle = Bundle.generateBundle(loadSpecialInvoice);
+const SpecialInboxBundle = Bundle.generateBundle(loadSpecialInbox);
 
 class Layout extends React.Component {
 
@@ -81,6 +84,7 @@ class Layout extends React.Component {
               <Route path="/app/widgets/basic" exact component={WidgetsBasicBundle} />
               <Route path="/app/special/search" exact component={SpecialSearchBundle} />
               <Route path="/app/special/invoice" exact component={SpecialInvoiceBundle} />
+              <Route path="/app/special/inbox" component={SpecialInboxBundle} />
             </Switch>
           </main>
         </div>

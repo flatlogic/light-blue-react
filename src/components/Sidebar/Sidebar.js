@@ -140,7 +140,10 @@ class Sidebar extends React.Component {
               },
               {
                 name: 'Landing', link: '/landing',
-              }
+              },
+              {
+                name: 'Inbox', link: '/app/special/inbox',
+              },
             ]}
           />
         </ul>
