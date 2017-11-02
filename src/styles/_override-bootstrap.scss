@@ -208,6 +208,8 @@ button.dropdown-toggle {
 
 .dropdown-menu {
   border-radius: $border-radius-lg;
+  min-width: 0;
+  width: fit-content;
 }
 
 .dropdown-menu > li > a {

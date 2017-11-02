@@ -114,7 +114,9 @@ class Accordion extends React.Component {
                       </div>
                     </div>
                     <Collapse isOpen={this.state.accordionFirst[index]}>
+                      {/* eslint-disable */}
                       <div className="card-body" dangerouslySetInnerHTML={{ __html: element.body }} />
+                      {/* eslint-enable */}
                     </Collapse>
                   </div>))}
             </div>
@@ -139,7 +141,9 @@ class Accordion extends React.Component {
                     </div>
                   </div>
                   <Collapse className="" isOpen={this.state.accordionSecond[index]}>
+                    {/* eslint-disable */}
                     <div className="card-body" dangerouslySetInnerHTML={{ __html: element.body }} />
+                    {/* eslint-enable */}
                   </Collapse>
                 </div>))}
             </div>

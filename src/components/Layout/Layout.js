@@ -19,6 +19,7 @@ import loadFormsAccount from 'bundle-loader?lazy!../../pages/forms/account/Accou
 import loadFormsElements from 'bundle-loader?lazy!../../pages/forms/elements/Elements';
 import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats/Stats';
 import loadTablesStatic from 'bundle-loader?lazy!../../pages/tables/static/Static';
+import loadTablesDynamic from 'bundle-loader?lazy!../../pages/tables/dynamic/Dynamic';
 import loadWidgetsBasic from 'bundle-loader?lazy!../../pages/widgets/basic/Basic';
 import loadSpecialSearch from 'bundle-loader?lazy!../../pages/special/search/Search';
 import loadSpecialInvoice from 'bundle-loader?lazy!../../pages/special/invoice/Invoice';
@@ -45,6 +46,7 @@ const FormsAccountBundle = Bundle.generateBundle(loadFormsAccount);
 const FormsElementsBundle = Bundle.generateBundle(loadFormsElements);
 const StatisticsStatsBundle = Bundle.generateBundle(loadStatisticsStats);
 const TablesStaticBundle = Bundle.generateBundle(loadTablesStatic);
+const TablesDynamicBundle = Bundle.generateBundle(loadTablesDynamic);
 const WidgetsBasicBundle = Bundle.generateBundle(loadWidgetsBasic);
 const SpecialSearchBundle = Bundle.generateBundle(loadSpecialSearch);
 const SpecialInvoiceBundle = Bundle.generateBundle(loadSpecialInvoice);
@@ -78,6 +80,7 @@ class Layout extends React.Component {
               <Route path="/app/forms/elements" exact component={FormsElementsBundle} />
               <Route path="/app/statistics/stats" exact component={StatisticsStatsBundle} />
               <Route path="/app/tables/static" exact component={TablesStaticBundle} />
+              <Route path="/app/tables/dynamic" exact component={TablesDynamicBundle} />
               <Route path="/app/widgets/basic" exact component={WidgetsBasicBundle} />
               <Route path="/app/special/search" exact component={SpecialSearchBundle} />
               <Route path="/app/special/invoice" exact component={SpecialInvoiceBundle} />

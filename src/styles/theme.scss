@@ -7,11 +7,12 @@
 @import '../../node_modules/bootstrap/scss/bootstrap';
 @import '../../node_modules/glyphicons-halflings/scss/glyphicons-halflings';
 @import '../../node_modules/font-awesome/scss/font-awesome';
+@import '../../node_modules/react-table/react-table.css';
+@import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 @import 'mixins';
 @import 'base';
 @import 'override-libs';
 @import 'override-bootstrap';
-@import 'override-custom-libs';
 @import 'general';
 @import 'utils';
 @import 'print';

@@ -33,3 +33,68 @@ div.abc-radio label {
   vertical-align: middle;
 }
 
+/* React Tables */
+.ReactTable {
+  input,
+  select {
+    border: none !important;
+    color: $input-transparent-color !important;
+    background-color: $widget-bg !important;
+
+    &:focus {
+      color: $input-transparent-color;
+
+      @include box-shadow(inset 0 1px 1px rgba(0,0,0,0.2));
+    }
+  }
+}
+
+.ReactTable .rt-tbody .rt-tr.-odd {
+  background-color: $table-accent-bg !important;
+}
+
+.ReactTable .rt-tbody .rt-tr {
+  @include hover() {
+    background-color: $table-hover-bg !important;
+  }
+}
+
+.ReactTable .-pagination {
+  button {
+    color: $text-color !important;
+    background: rgba($black, 0.15) !important;
+
+    &:hover:not([disabled]) {
+      background: rgba($black, 0.2) !important;
+    }
+  }
+}
+
+/* React Bootstrap Tables */
+.react-bs-container-header .table > thead > tr > th,
+.react-bs-container-body .table > tbody > tr > td {
+  border: none;
+}
+
+.react-bs-container-body .table > tbody > tr > td {
+  border-top: 1px solid $table-border-color;
+}
+
+.react-bs-table {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.react-bs-container-body {
+  .table {
+    tbody tr:nth-of-type(odd) {
+      background-color: $table-accent-bg;
+    }
+
+    tbody tr {
+      @include hover {
+        background-color: $table-hover-bg;
+      }
+    }
+  }
+}

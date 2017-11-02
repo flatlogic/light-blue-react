@@ -110,6 +110,9 @@ class Sidebar extends React.Component {
             childrenLinks={[
               {
                 name: 'Static', link: '/app/tables/static',
+              },
+              {
+                name: 'Dynamic', link: '/app/tables/dynamic',
               }
             ]}
           />
