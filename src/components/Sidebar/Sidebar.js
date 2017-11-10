@@ -125,6 +125,9 @@ class Sidebar extends React.Component {
             childrenLinks={[
               {
                 name: 'Basic', link: '/app/widgets/basic',
+              },
+              {
+                name: 'Live', link: '/app/widgets/live',
               }
             ]}
           />

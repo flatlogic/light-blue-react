@@ -738,11 +738,35 @@ button.dropdown-toggle {
 }
 
 .list-group-item {
-  border: none;
+  border: 1px solid rgba($black, 0.125);
 
-  @include transition(background-color 0.2s ease-out);
+  @include transition(background 0.15s ease-in-out);
 
   color: $widget-color;
+
+  &:first-child {
+    border-radius: 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: $gray-100;
+  }
+
+  &,
+  &:hover {
+    text-decoration: none;
+    color: #f8f8f8;
+    background-color: rgba(51, 51, 51, 0.3);
+  }
+
+  &:not(.ui-sortable-handle) {
+    border-left: none;
+    border-right: none;
+  }
 
   .widget & {
     background: none;
@@ -767,7 +791,7 @@ button.dropdown-toggle {
 
 .list-group-item {
   .list-group-lg & {
-    padding: 15px;
+    padding: 1.25rem;
   }
 
   .list-group:last-of-type &:last-child {

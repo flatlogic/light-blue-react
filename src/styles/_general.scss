@@ -76,8 +76,8 @@ ol ul {
   list-style: none;
 }
 
-ul,
-ol {
+ul:not(.text-list),
+ol:not(.text-list) {
   list-style: none;
   padding: 0;
 }

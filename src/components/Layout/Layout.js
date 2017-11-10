@@ -21,6 +21,7 @@ import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats
 import loadTablesStatic from 'bundle-loader?lazy!../../pages/tables/static/Static';
 import loadTablesDynamic from 'bundle-loader?lazy!../../pages/tables/dynamic/Dynamic';
 import loadWidgetsBasic from 'bundle-loader?lazy!../../pages/widgets/basic/Basic';
+import loadWidgetsLive from 'bundle-loader?lazy!../../pages/widgets/live/Live';
 import loadSpecialSearch from 'bundle-loader?lazy!../../pages/special/search/Search';
 import loadSpecialInvoice from 'bundle-loader?lazy!../../pages/special/invoice/Invoice';
 /* eslint-enable */
@@ -48,6 +49,7 @@ const StatisticsStatsBundle = Bundle.generateBundle(loadStatisticsStats);
 const TablesStaticBundle = Bundle.generateBundle(loadTablesStatic);
 const TablesDynamicBundle = Bundle.generateBundle(loadTablesDynamic);
 const WidgetsBasicBundle = Bundle.generateBundle(loadWidgetsBasic);
+const WidgetsLiveBundle = Bundle.generateBundle(loadWidgetsLive);
 const SpecialSearchBundle = Bundle.generateBundle(loadSpecialSearch);
 const SpecialInvoiceBundle = Bundle.generateBundle(loadSpecialInvoice);
 
@@ -82,6 +84,7 @@ class Layout extends React.Component {
               <Route path="/app/tables/static" exact component={TablesStaticBundle} />
               <Route path="/app/tables/dynamic" exact component={TablesDynamicBundle} />
               <Route path="/app/widgets/basic" exact component={WidgetsBasicBundle} />
+              <Route path="/app/widgets/live" exact component={WidgetsLiveBundle} />
               <Route path="/app/special/search" exact component={SpecialSearchBundle} />
               <Route path="/app/special/invoice" exact component={SpecialInvoiceBundle} />
             </Switch>

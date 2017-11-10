@@ -53,7 +53,12 @@ $theme-colors: (
   warning: $orange,
   danger: $red,
   light: $gray-100,
-  dark: $gray-800
+  dark: $gray-800,
+  primary-light: #dee4ee,
+  success-light: #ecfaec,
+  info-light: #f2fafa,
+  warning-light: #fdf7e6,
+  danger-light: #fff2ef,
 ) !default;
 
 $bg-gradient-color-1: #154265;
