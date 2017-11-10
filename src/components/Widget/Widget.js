@@ -50,16 +50,12 @@ class Widget extends React.Component {
             <a><i className="fa fa-refresh" /></a>
           )}
           {this.props.collapse && (
-            <span>
-              <a data-widgster="collapse" title="Collapse"><i
-                className="glyphicon glyphicon-chevron-down"
-              /></a>
-            </span>
+            <a data-widgster="collapse" title="Collapse">
+              <i className="glyphicon glyphicon-chevron-down" />
+            </a>
           )}
-
           {this.props.close && (
             <a data-widgster="close"><i className="glyphicon glyphicon-remove" /></a>
-
           )}
         </div>
         <div className={s.widgetBody}>

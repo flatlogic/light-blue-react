@@ -156,6 +156,10 @@ $calendar-border: rgba($white, 0.33);
 
 $border-radius-base:        3px !default;
 
+$feed-item-bg: $widget-bg;
+$feed-item-color: $white;
+$feed-item-line-color: transparent;
+
 // Buttons
 // -------------------------
 
@@ -319,3 +323,7 @@ $section-padding-top: 0.77rem; //~10px
 $bg-messenger-color: rgba(51, 51, 51, 0.3);
 $bg-messenger-bit-color: rgba(26, 26, 26, 0.3);
 $bg-messenger-bit-hover-color: rgba(13, 13, 13, 0.3);
+
+// == Dashboard
+$padding-small-vertical:    0.25rem !default;
+$padding-small-horizontal:  0.75rem !default;

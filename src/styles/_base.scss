@@ -130,6 +130,29 @@
   }
 }
 
+.chart-col-header {
+  width: 100px;
+}
+
+.table .chart-cell {
+  padding: 3px;
+}
+
+.source-col-header {
+  width: 30%;
+}
+
+.sources-table {
+  td,
+  th {
+    text-align: center;
+
+    &:first-child {
+      text-align: left;
+    }
+  }
+}
+
 .tab-content {
   background: $nav-tabs-tab-content-bg;
   padding: 10px;
@@ -158,10 +181,17 @@
 
 section.widget-tabs {
   background: none;
+  padding: 0;
 
   @include box-shadow(none);
 
-  padding: 0;
+  > div {
+    margin-top: 0;
+  }
+
+  .tab-content {
+    padding: 1.2rem 1.4rem;
+  }
 
   .nav > .nav-item > .nav-link:not(.active) {
     background: $widget-bg;
@@ -172,6 +202,13 @@ section.widget-tabs {
       border-color: transparent;
     }
   }
+}
+
+.tab-header {
+  margin-top: 0;
+  margin-bottom: 1em;
+  font-size: $font-size-larger;
+  color: $widget-header-color;
 }
 
 .pagination-search-result > .active > a {

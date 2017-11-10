@@ -28,7 +28,6 @@ import MaskedInput from 'react-maskedinput';
 import ReactBootstrapSlider from 'react-bootstrap-slider';
 import TextareaAutosize from 'react-autosize-textarea';
 
-
 import Widget from '../../../components/Widget';
 import s from './Elements.scss';
 
