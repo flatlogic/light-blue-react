@@ -292,3 +292,11 @@ section.widget-tabs {
   margin: -1px -1px calc(#{$grid-gutter-width} - 1px) -1px;
 }
 
+/*         Form Action           */
+
+.form-actions {
+  padding: 17px 20px 18px;
+  background-color: $bg-addition;
+
+  @include clearfix(); // Adding clearfix to allow for .float-right button containers
+}

@@ -85,6 +85,9 @@ class Sidebar extends React.Component {
                 name: 'Account', link: '/app/forms/account',
               },
               {
+                name: 'Article', link: '/app/forms/article',
+              },
+              {
                 name: 'Elements', link: '/app/forms/elements',
               }
             ]}

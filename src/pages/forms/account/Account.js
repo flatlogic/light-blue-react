@@ -23,7 +23,7 @@ import Widget from '../../../components/Widget';
 import s from './Account.scss';
 import i3 from '../../../images/3.png';
 
-class Buttons extends React.Component {
+class Account extends React.Component {
   constructor(props) {
     super(props);
 
@@ -333,4 +333,4 @@ class Buttons extends React.Component {
 
 }
 
-export default withStyles(s)(Buttons);
+export default withStyles(s)(Account);

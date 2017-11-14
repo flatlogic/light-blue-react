@@ -1,0 +1,9 @@
+@import '../../../styles/app';
+
+:global {
+  @import '../../../../node_modules/react-datetime/css/react-datetime';
+}
+
+.root {
+  // some styles
+}

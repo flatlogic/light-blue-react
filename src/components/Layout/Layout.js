@@ -16,6 +16,7 @@ import loadComponentsCalendar from 'bundle-loader?lazy!../../pages/components/ca
 import loadComponentsMaps from 'bundle-loader?lazy!../../pages/components/maps/Maps';
 import loadComponentsGallery from 'bundle-loader?lazy!../../pages/components/gallery/Gallery';
 import loadFormsAccount from 'bundle-loader?lazy!../../pages/forms/account/Account';
+import loadFormsArticle from 'bundle-loader?lazy!../../pages/forms/article/Article';
 import loadFormsElements from 'bundle-loader?lazy!../../pages/forms/elements/Elements';
 import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats/Stats';
 import loadTablesStatic from 'bundle-loader?lazy!../../pages/tables/static/Static';
@@ -44,6 +45,7 @@ const ComponentsCalendarBundle = Bundle.generateBundle(loadComponentsCalendar);
 const ComponentsMapsBundle = Bundle.generateBundle(loadComponentsMaps);
 const ComponentsGalleryBundle = Bundle.generateBundle(loadComponentsGallery);
 const FormsAccountBundle = Bundle.generateBundle(loadFormsAccount);
+const FormsArticleBundle = Bundle.generateBundle(loadFormsArticle);
 const FormsElementsBundle = Bundle.generateBundle(loadFormsElements);
 const StatisticsStatsBundle = Bundle.generateBundle(loadStatisticsStats);
 const TablesStaticBundle = Bundle.generateBundle(loadTablesStatic);
@@ -79,6 +81,7 @@ class Layout extends React.Component {
               <Route path="/app/components/maps" exact component={ComponentsMapsBundle} />
               <Route path="/app/components/gallery" exact component={ComponentsGalleryBundle} />
               <Route path="/app/forms/account" exact component={FormsAccountBundle} />
+              <Route path="/app/forms/article" exact component={FormsArticleBundle} />
               <Route path="/app/forms/elements" exact component={FormsElementsBundle} />
               <Route path="/app/statistics/stats" exact component={StatisticsStatsBundle} />
               <Route path="/app/tables/static" exact component={TablesStaticBundle} />
