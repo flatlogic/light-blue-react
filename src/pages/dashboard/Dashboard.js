@@ -37,6 +37,7 @@ class Dashboard extends React.Component {
       activeTab: 1,
       messages: [
         {
+          id: 1,
           time: '4 min',
           sender: 'Tikhon Laninga',
           text: `Hey Sam, how is it going? But I must explain to you how all this mistaken
@@ -44,6 +45,7 @@ class Dashboard extends React.Component {
           image: i2,
         },
         {
+          id: 2,
           time: '3 min',
           sender: 'Cenhelm Houston',
           text: `Pretty good. Doing my homework..  No one rejects, dislikes, or avoids
@@ -51,6 +53,7 @@ class Dashboard extends React.Component {
           image: i1,
         },
         {
+          id: 3,
           time: '2 min',
           sender: 'Tikhon Laninga',
           text: `Anys chance to go out? To take a trivial example, which of us ever undertakes
@@ -58,6 +61,7 @@ class Dashboard extends React.Component {
           image: i2,
         },
         {
+          id: 4,
           time: '2 min',
           sender: 'Cenhelm Houston',
           text: `.. Maybe 40-50 mins. I don't know exactly. On the other hand, we denounce
@@ -65,6 +69,7 @@ class Dashboard extends React.Component {
           image: i1,
         },
         {
+          id: 5,
           time: '1 min',
           sender: 'Tikhon Laninga',
           text: `Anyway sounds great! These cases are perfectly simple and easy to
@@ -75,7 +80,7 @@ class Dashboard extends React.Component {
       newMessage: '',
     };
 
-    this.toggle = this.toggle.bind(this);
+    this.toggleActiveTab = this.toggleActiveTab.bind(this);
     this.messageInputUpdate = this.messageInputUpdate.bind(this);
     this.handleEnterPress = this.handleEnterPress.bind(this);
     this.addMessage = this.addMessage.bind(this);
@@ -86,7 +91,7 @@ class Dashboard extends React.Component {
     // this.initInteractiveSparklines();
   }
 
-  toggle(tabIndex) {
+  toggleActiveTab(tabIndex) {
     this.setState({ activeTab: tabIndex });
   }
 
@@ -203,16 +208,12 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className={s.root}>
-        <h2 className="page-title">Dashboard
-          <small>Statistics and more</small>
-        </h2>
+        <h2 className="page-title">Dashboard <small>Statistics and more</small></h2>
         <Row>
           <Col xl={8}>
             <Widget
               title={
-                <h4>Visits
-                  <small>Based on a three months data</small>
-                </h4>
+                <h4>Visits <small>Based on a three months data</small></h4>
               } settings collapse close
             >
               <svg
@@ -243,9 +244,7 @@ class Dashboard extends React.Component {
             </Widget>
             <Widget
               title={
-                <h4>Traffic Sources
-                  <small>One month tracking</small>
-                </h4>
+                <h4>Traffic Sources <small>One month tracking</small></h4>
               } expand collapse close
             >
               <div className="widget-table-overflow">
@@ -340,7 +339,7 @@ class Dashboard extends React.Component {
                 </Table>
               </div>
             </Widget>
-            <Widget title={<h4>Chat</h4>} options close>
+            <Widget title={<h4>Chat</h4>} settings close>
               <div className="chat">
                 <Scrollbars
                   ref={(r) => {
@@ -351,8 +350,7 @@ class Dashboard extends React.Component {
                   <div className={s.chatMessages}>
                     {
                       this.state.messages.map(message =>
-
-                        <div className={s.chatMessage}>
+                        <div className={s.chatMessage} key={message.id}>
                           <div
                             className={classnames(s.sender,
                             { 'float-left': message.sender === 'Tikhon Laninga' },
@@ -406,13 +404,13 @@ class Dashboard extends React.Component {
           <Col xl={4}>
             <Widget
               title={
-                <div>
-                  <h4>Feed<Badge color="success">412</Badge></h4>
-                  <Button color="transparent">Show All <i className="fa fa-arrow-down" /></Button>
-                </div>
+                <h4>Feed <Badge color="success">412</Badge></h4>
+              }
+              customControls={
+                <Button color="transparent" size="sm">Show All <i className="fa fa-arrow-down" /></Button>
               }
             >
-              <Scrollbars autoHeight>
+              <Scrollbars style={{ height: 280 }}>
                 <div className={s.feed}>
                   <div className={s.wrapper}>
                     <div className={s.verticalLine} />
@@ -516,7 +514,7 @@ class Dashboard extends React.Component {
                     <NavLink
                       className={classnames({ active: this.state.activeTab === 1 })}
                       onClick={() => {
-                        this.toggle(1);
+                        this.toggleActiveTab(1);
                       }}
                     >
                       Users
@@ -526,7 +524,7 @@ class Dashboard extends React.Component {
                     <NavLink
                       className={classnames({ active: this.state.activeTab === 2 })}
                       onClick={() => {
-                        this.toggle(2);
+                        this.toggleActiveTab(2);
                       }}
                     >
                       Favorites
@@ -536,7 +534,7 @@ class Dashboard extends React.Component {
                     <NavLink
                       className={classnames({ active: this.state.activeTab === 3 })}
                       onClick={() => {
-                        this.toggle(3);
+                        this.toggleActiveTab(3);
                       }}
                     >
                       Commenters
@@ -608,12 +606,10 @@ class Dashboard extends React.Component {
                           <div className={s.name}><a href="#">Jessica Johnsson</a></div>
                           <div className={s.options}>
                             <Button color="success" size="xs" className="mr-1">
-                              <i className="fa fa-phone" />
-                              Call
+                              <i className="fa fa-phone" /> Call
                             </Button>
                             <Button color="warning" size="xs">
-                              <i className="fa fa-envelope-o" />
-                              Message
+                              <i className="fa fa-envelope-o" /> Message
                             </Button>
                           </div>
                         </div>
@@ -624,12 +620,10 @@ class Dashboard extends React.Component {
                           <div className={s.name}><a href="#">Frans Garey</a></div>
                           <div className={s.options}>
                             <Button color="success" size="xs" className="mr-1">
-                              <i className="fa fa-phone" />
-                              Call
+                              <i className="fa fa-phone" /> Call
                             </Button>
                             <Button color="warning" size="xs">
-                              <i className="fa fa-envelope-o" />
-                              Message
+                              <i className="fa fa-envelope-o" /> Message
                             </Button>
                           </div>
                         </div>
@@ -640,12 +634,10 @@ class Dashboard extends React.Component {
                           <div className={s.name}><a href="#">Erebus Novak</a></div>
                           <div className={s.options}>
                             <Button color="success" size="xs" className="mr-1">
-                              <i className="fa fa-phone" />
-                              Call
+                              <i className="fa fa-phone" /> Call
                             </Button>
                             <Button color="warning" size="xs">
-                              <i className="fa fa-envelope-o" />
-                              Message
+                              <i className="fa fa-envelope-o" /> Message
                             </Button>
                           </div>
                         </div>
@@ -656,12 +648,10 @@ class Dashboard extends React.Component {
                           <div className={s.name}><a href="#">Leopoldo Reier</a></div>
                           <div className={s.options}>
                             <Button color="success" size="xs" className="mr-1">
-                              <i className="fa fa-phone" />
-                              Call
+                              <i className="fa fa-phone" /> Call
                             </Button>
                             <Button color="warning" size="xs">
-                              <i className="fa fa-envelope-o" />
-                              Message
+                              <i className="fa fa-envelope-o" /> Message
                             </Button>
                           </div>
                         </div>
@@ -672,12 +662,10 @@ class Dashboard extends React.Component {
                           <div className={s.name}><a href="#">Finees Lund</a></div>
                           <div className={s.options}>
                             <Button color="success" size="xs" className="mr-1">
-                              <i className="fa fa-phone" />
-                              Call
+                              <i className="fa fa-phone" /> Call
                             </Button>
                             <Button color="warning" size="xs">
-                              <i className="fa fa-envelope-o" />
-                              Message
+                              <i className="fa fa-envelope-o" /> Message
                             </Button>
                           </div>
                         </div>
