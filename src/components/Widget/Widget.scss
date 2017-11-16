@@ -58,6 +58,16 @@
   }
 }
 
+:global {
+  .widget.large {
+    height: 345px;
+
+    .widget-body {
+      height: 280px;
+    }
+  }
+}
+
 .widgetBody {
   margin-top: $widget-padding-vertical;
 }

@@ -8,6 +8,10 @@ import {
 import {
   Row,
   Col,
+  UncontrolledButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from 'reactstrap';
 import {
   withGoogleMap,
@@ -16,12 +20,27 @@ import {
   Marker,
 } from 'react-google-maps';
 import SearchBox from 'react-google-maps/lib/components/places/SearchBox';
-import $ from 'jquery';
+import jQuery from 'jquery';
 
 import s from './Maps.scss';
 import Widget from '../../../components/Widget';
+import VectorMap from './vector-map/VectorMap';
 
 class Maps extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      dropdownValue: 'Europe',
+    };
+
+    this.changeDropdown = this.changeDropdown.bind(this);
+  }
+
+  changeDropdown(e) {
+    this.setState({ dropdownValue: e.currentTarget.textContent });
+  }
 
   render() {
     const BasicMap = withScriptjs(withGoogleMap(() =>
@@ -74,7 +93,7 @@ class Maps extends React.Component {
               const nextMarkers = places.map(place => ({
                 position: place.geometry.location,
               }));
-              const nextCenter = $.get(nextMarkers, '0.position', this.state.center);
+              const nextCenter = jQuery.get(nextMarkers, '0.position', this.state.center);
 
               this.setState({
                 center: nextCenter,
@@ -143,6 +162,60 @@ class Maps extends React.Component {
           <Col md={6}>
             <Widget title={<h5><i className="fa fa-map-marker" /> Address and location</h5>}>
               <AddressMap />
+            </Widget>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <Widget
+              title={
+                <h5><i className="fa fa-arrow-right" /> Region vector map</h5>
+              }
+              className="large"
+              customControls={
+                <UncontrolledButtonDropdown>
+                  <DropdownToggle
+                    caret color="success"
+                    className="dropdown-toggle-split mr-xs"
+                  >
+                    {this.state.dropdownValue}
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem onClick={this.changeDropdown}>
+                      Europe
+                    </DropdownItem>
+                    <DropdownItem onClick={this.changeDropdown}>
+                      USA
+                    </DropdownItem>
+                    <DropdownItem onClick={this.changeDropdown}>
+                      Australia
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledButtonDropdown>
+              }
+            >
+              {
+                this.state.dropdownValue === 'Europe' &&
+                <VectorMap map="europe_en" zoomed="true" />
+              }
+              {
+                this.state.dropdownValue === 'USA' &&
+                <VectorMap map="usa_en" />
+              }
+              {
+                this.state.dropdownValue === 'Australia' &&
+                <VectorMap map="australia_en" />
+              }
+            </Widget>
+          </Col>
+          <Col md={6}>
+            <Widget
+              title={
+                <h5><i className="fa fa-dashboard" /> World vector map</h5>
+              }
+              className="large"
+            >
+              <VectorMap />
             </Widget>
           </Col>
         </Row>
