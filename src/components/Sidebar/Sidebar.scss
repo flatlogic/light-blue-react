@@ -14,6 +14,10 @@
     overflow: auto;
   }
 
+  @media (min-height: breakpoint-min('lg')) {
+    position: fixed;
+  }
+
   :global(.sidebar-right) & {
     margin-left: 0;
     margin-right: ($grid-gutter-width/2);
