@@ -104,7 +104,10 @@ class Sidebar extends React.Component {
             childrenLinks={[
               {
                 name: 'Stats', link: '/app/statistics/stats',
-              }
+              },
+              {
+                name: 'Charts', link: '/app/statistics/charts',
+              },
             ]}
           />
           <LinksGroup

@@ -7,6 +7,55 @@
   @include transition(height 0.15s ease-in-out);
 }
 
+/**
+ * .circle & .rounded are pretty cool way to add a bit of beauty to raw data.
+ * should be used with bg-* and text-* classes for colors.
+ */
+.circle,
+.rounded,
+.circle-o {
+  display: inline-block;
+  width: #{$line-height-base}em;
+  height: #{$line-height-base}em;
+  line-height: #{$line-height-base}em;
+  text-align: center;
+}
+
+.circle,
+.circle-o {
+  @include border-radius(50%);
+}
+
+.rounded {
+  @include border-radius(5px);
+}
+
+.circle-lg,
+.rounded-lg {
+  width: 2.2em;
+  height: 2.2em;
+  line-height: 2.2em;
+}
+
+.circle-o {
+  border: #{$line-height-base/5}em solid transparent;
+
+  // stylelint-disable
+  &.circle-o-danger { border-color: theme-color('danger') };
+  &.circle-o-warning { border-color: theme-color('warning') };
+  &.circle-o-success { border-color: theme-color('success') };
+  &.circle-o-info { border-color: theme-color('info') };
+  &.circle-o-primary { border-color: theme-color('primary') };
+  &.circle-o-black { border-color: $black };
+  &.circle-o-gray-darker { border-color: $gray-900 };
+  &.circle-o-gray-dark { border-color: $gray-800 };
+  &.circle-o-gray { border-color: $gray-700 };
+  &.circle-o-gray-light { border-color: $gray-600 };
+  &.circle-o-gray-lighter { border-color: $gray-200 };
+  &.circle-o-white { border-color: $white };
+  // stylelint-enable
+}
+
 @include thumb('.thumb-lg', 60px);
 @include thumb('.thumb', 48px);
 @include thumb('.thumb-sm', 34px);
@@ -277,4 +326,8 @@ $z-index-variants: (more: 1, less: -1);
   @media (max-width: breakpoint-max(md)) {
     display: none !important;
   }
+}
+
+.chart-overflow-bottom {
+  margin: 0 (-$widget-padding-horizontal) (-$widget-padding-vertical);
 }

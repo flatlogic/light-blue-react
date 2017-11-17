@@ -300,3 +300,35 @@ section.widget-tabs {
 
   @include clearfix(); // Adding clearfix to allow for .float-right button containers
 }
+
+/*         STats Row             */
+
+.stats-row {
+  margin-bottom: 1.25rem;
+}
+
+.stat-item {
+  display: inline-block;
+  padding-right: 1.25rem;
+
+  & + .stat-item {
+    padding-left: 1.25rem;
+    border-left: 1px solid $hr-border-color;
+  }
+
+  .name {
+    margin-bottom: 0.25rem;
+    font-size: $font-size-sm;
+  }
+
+  .value {
+    font-weight: bold;
+  }
+
+  &.stat-item-mini-chart {
+    position: relative;
+    top: -1rem;
+    padding-left: 0;
+    border-left: none;
+  }
+}
