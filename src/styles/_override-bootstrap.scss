@@ -820,9 +820,12 @@ button.dropdown-toggle {
   margin-bottom: $form-group-margin-bottom;
 }
 
+.progress-lg {
+  height: 1.38rem;
+}
+
 .progress-sm {
-  height: 10px;
-  margin-bottom: $spacer/2;
+  height: 0.62rem;
 }
 
 .progress-xs {

@@ -3,6 +3,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import {
   Row,
   Col,
+  Progress,
 } from 'reactstrap';
 
 import s from './Stats.scss';
@@ -84,22 +85,12 @@ class Stats extends React.Component {
               title={<h5><i className="fa fa-arrow-right" /> Progressbars</h5>}
             >
               <h5 className="mt-0 mb-xs font-weight-normal">Simple one</h5>
-              <div className="progress bg-blue-light mt-0">
-                <div className="progress-bar" role="progressbar" style={{ width: `${60} + %`, height: `${1.38} + rem` }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" />
-              </div>
+              <Progress value="60" className="progress-lg" />
               <h5 className="mt-0 mb-xs font-weight-normal">Styled ones</h5>
-              <div className="progress bg-blue-light mt-0">
-                <div className="progress-bar bg-success" role="progressbar" style={{ width: `${33} + %`, height: `${1.38} + rem` }} aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" />
-              </div>
-              <div className="progress bg-blue-light mt-2">
-                <div className="progress-bar bg-warning" role="progressbar" style={{ width: `${52} + %`, height: `${1.38} + rem` }} aria-valuenow="52" aria-valuemin="0" aria-valuemax="100" />
-              </div>
-              <div className="progress bg-blue-light mt-2">
-                <div className="progress-bar bg-danger" role="progressbar" style={{ width: `${43} + %`, height: `${1.38} + rem` }} aria-valuenow="43" aria-valuemin="0" aria-valuemax="100" />
-              </div>
-              <div className="progress bg-blue-light mt-0">
-                <div className="progress-bar bg-inverse" role="progressbar" style={{ width: `${33} + %`, height: `${1.38} + rem` }} aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" />
-              </div>
+              <Progress color="success" value="33" className="progress-lg" />
+              <Progress color="warning" value="52" className="progress-lg" />
+              <Progress color="danger" value="43" className="progress-lg" />
+              <Progress color="inverse" value="33" className="progress-lg" />
             </Widget>
           </Col>
           <Col md={4}>
@@ -107,25 +98,14 @@ class Stats extends React.Component {
               title={<h5><i className="fa fa-caret-right" /> Small ones</h5>}
             >
               <h5 className="mt-0 mb-xs font-weight-normal">Colors</h5>
-              <div className="progress bg-blue-light mt-0">
-                <div className="progress-bar bg-info" role="progressbar" style={{ width: `${23} + %`, height: `${0.62} + rem` }} aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" />
-              </div>
-              <div className="progress bg-blue-light mt-1">
-                <div className="progress-bar bg-warning" role="progressbar" style={{ width: `${76} + %`, height: `${0.62} + rem` }} aria-valuenow="76" aria-valuemin="0" aria-valuemax="100" />
-              </div>
-              <div className="progress bg-blue-light mt-1">
-                <div className="progress-bar bg-success" role="progressbar" style={{ width: `${43} + %`, height: `${0.62} + rem` }} aria-valuenow="43" aria-valuemin="0" aria-valuemax="100" />
-              </div>
-              <div className="progress bg-blue-light mt-10">
-                <div className="progress-bar bg-danger" role="progressbar" style={{ width: `${53} + %`, height: `${0.62} + rem` }} aria-valuenow="53" aria-valuemin="0" aria-valuemax="100" />
-              </div>
-              <div className="progress bg-blue-light mt-0">
-                <div className="progress-bar bg-inverse" role="progressbar" style={{ width: `${29} + %`, height: `${0.62} + rem` }} aria-valuenow="29" aria-valuemin="0" aria-valuemax="100" />
-              </div>
+              <Progress color="info" value="23" className="progress-sm" />
+              <Progress color="warning" value="76" className="progress-sm" />
+              <Progress color="success" value="43" className="progress-sm" />
+              <Progress color="danger" value="53" className="progress-sm" />
+              <Progress color="inverse" value="29" className="progress-sm" />
               <h5 className="mt-0 mb-xs font-weight-normal">Default progressbar</h5>
-              <div className="progress bg-blue-light mt-0">
-                <div className="progress-bar" role="progressbar" style={{ width: `${60} + %`, height: `${0.62} + rem` }} aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" />
-              </div>
+              <Progress value="60" className="progress-sm" />
+
             </Widget>
           </Col>
           <Col md={4}>
@@ -133,17 +113,11 @@ class Stats extends React.Component {
               title={<h5><i className="fa fa-angle-right" /> Some extensions</h5>}
             >
               <h5 className="mt-0 mb-xs font-weight-normal">With embedded percentage</h5>
-              <div className="progress bg-blue-light mt-0">
-                <div className="progress-bar" role="progressbar" style={{ width: `${79} + %`, height: `${1.38} + rem` }} aria-valuenow="79" aria-valuemin="0" aria-valuemax="100">79%</div>
-              </div>
+              <Progress value="79" className="progress-lg">79%</Progress>
               <h5 className="mt-0 mb-xs font-weight-normal">Active one</h5>
-              <div className="progress bg-blue-light mt-0">
-                <div className="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style={{ width: `${51} + %`, height: `${1.38} + rem` }} aria-valuenow="51" aria-valuemin="0" aria-valuemax="100">51%</div>
-              </div>
+              <Progress animated color="warning" value="51" className="progress-lg">51%</Progress>
               <h5 className="mt-0 mb-xs font-weight-normal">Inversed progress-bar</h5>
-              <div className="progress bg-blue-light mt-0">
-                <div className="progress-bar bg-inverse" role="progressbar" style={{ width: `${64} + %`, height: `${1.38} + rem` }} aria-valuenow="64" aria-valuemin="0" aria-valuemax="100">64%</div>
-              </div>
+              <Progress value="64" color="inverse" className="progress-lg">64%</Progress>
             </Widget>
           </Col>
         </Row>
@@ -158,18 +132,14 @@ class Stats extends React.Component {
                   <div className={`${s.key} float-right`}>CPU</div>
                   <div className="stat">
                     <div className="info">60% / 37&deg;C / 3.3 Ghz</div>
-                    <div className="progress bg-blue-light mt-0">
-                      <div className="progress-bar" role="progressbar" style={{ width: `${70} + %`, height: `${0.62} + rem` }} aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" />
-                    </div>
+                    <Progress value="70" className="progress-sm" />
                   </div>
                 </li>
                 <li>
                   <div className={`${s.key} float-right`}>Mem</div>
                   <div className="stat">
                     <div className="info">29% / 4GB (16 GB)</div>
-                    <div className="progress bg-blue-light mt-0">
-                      <div className="progress-bar bg-warning" role="progressbar" style={{ width: `${29} + %`, height: `${0.62} + rem` }} aria-valuenow="29" aria-valuemin="0" aria-valuemax="100" />
-                    </div>
+                    <Progress color="warning" value="29" className="progress-sm" />
                   </div>
                 </li>
                 <li>
@@ -177,18 +147,14 @@ class Stats extends React.Component {
                   <div className="stat">
                     <div className="info">6 Mb/s <i className="fa fa-caret-down" /> &nbsp; 3 Mb/s <i className="fa fa-caret-up" />
                     </div>
-                    <div className="progress bg-blue-light mt-0">
-                      <div className="progress-bar bg-danger" role="progressbar" style={{ width: `${48} + %`, height: `${0.62} + rem` }} aria-valuenow="48" aria-valuemin="0" aria-valuemax="100" />
-                    </div>
+                    <Progress color="danger" value="48" className="progress-sm" />
                   </div>
                 </li>
                 <li>
                   <div className={`${s.key} float-right`}>Access</div>
                   <div className="stat">
                     <div className="info">17 Mb/s <i className="fa fa-caret-up" /> &nbsp; (+18%)</div>
-                    <div className="progress bg-blue-light mt-0">
-                      <div className="progress-bar bg-success" role="progressbar" style={{ width: `${64} + %`, height: `${0.62} + rem` }} aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" />
-                    </div>
+                    <Progress color="success" value="64" className="progress-sm" />
                   </div>
                 </li>
               </ul>
@@ -232,7 +198,7 @@ class Stats extends React.Component {
                   </div>
                   <span className={s.key}>Mobile</span>
                   <div className="value float-right">
-                    <span className="badge badge-pill badge-default">32%</span>
+                    <span className="badge badge-pill badge-inverse">32%</span>
                   </div>
                 </li>
               </ul>
