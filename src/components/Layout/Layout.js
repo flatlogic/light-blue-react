@@ -19,6 +19,7 @@ import loadFormsAccount from 'bundle-loader?lazy!../../pages/forms/account/Accou
 import loadFormsArticle from 'bundle-loader?lazy!../../pages/forms/article/Article';
 import loadFormsElements from 'bundle-loader?lazy!../../pages/forms/elements/Elements';
 import loadFormsValidation from 'bundle-loader?lazy!../../pages/forms/validation/Validation';
+import loadFormsWizard from 'bundle-loader?lazy!../../pages/forms/wizard/Wizard';
 import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats/Stats';
 import loadStatisticsCharts from 'bundle-loader?lazy!../../pages/statistics/charts/Charts';
 import loadTablesStatic from 'bundle-loader?lazy!../../pages/tables/static/Static';
@@ -50,6 +51,7 @@ const FormsAccountBundle = Bundle.generateBundle(loadFormsAccount);
 const FormsArticleBundle = Bundle.generateBundle(loadFormsArticle);
 const FormsElementsBundle = Bundle.generateBundle(loadFormsElements);
 const FormsValidationBundle = Bundle.generateBundle(loadFormsValidation);
+const FormsWizardBundle = Bundle.generateBundle(loadFormsWizard);
 const StatisticsStatsBundle = Bundle.generateBundle(loadStatisticsStats);
 const StatisticsChartsBundle = Bundle.generateBundle(loadStatisticsCharts);
 const TablesStaticBundle = Bundle.generateBundle(loadTablesStatic);
@@ -88,6 +90,7 @@ class Layout extends React.Component {
               <Route path="/app/forms/article" exact component={FormsArticleBundle} />
               <Route path="/app/forms/elements" exact component={FormsElementsBundle} />
               <Route path="/app/forms/validation" exact component={FormsValidationBundle} />
+              <Route path="/app/forms/wizard" exact component={FormsWizardBundle} />
               <Route path="/app/statistics/stats" exact component={StatisticsStatsBundle} />
               <Route path="/app/statistics/charts" exact component={StatisticsChartsBundle} />
               <Route path="/app/tables/static" exact component={TablesStaticBundle} />

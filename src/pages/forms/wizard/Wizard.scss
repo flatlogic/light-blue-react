@@ -1,0 +1,75 @@
+@import '../../../styles/app';
+
+:global {
+  @import '../../../../node_modules/react-select2-wrapper/css/select2';
+  @import '../../../../node_modules/react-datetime/css/react-datetime';
+}
+
+.root {
+  :global {
+    .tab-content {
+      overflow: visible;
+    }
+  }
+
+  .formWizard {
+    :global {
+      .progress {
+        margin-top: 6px;
+        margin-bottom: 10px;
+      }
+
+      .form-group:last-child {
+        margin-bottom: 0;
+      }
+
+      .pager {
+        display: flex;
+        margin: 18px 0;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .disabled button {
+          cursor: not-allowed;
+          opacity: 0.65;
+        }
+      }
+
+      #datepicker .input-group {
+        width: 100%;
+        display: flex !important;
+
+        .form-control {
+          border-bottom-right-radius: 0.25rem;
+          border-top-right-radius: 0.25rem;
+        }
+
+        .input-group-addon {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .wizardNavigation {
+    margin-bottom: 5px;
+
+    :global {
+      .active {
+        background: none;
+      }
+    }
+
+    a {
+      color: $text-color;
+
+      strong {
+        font-weight: $font-weight-semi-bold;
+      }
+
+      small {
+        font-weight: $font-weight-thin;
+      }
+    }
+  }
+}

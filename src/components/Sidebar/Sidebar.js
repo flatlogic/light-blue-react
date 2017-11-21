@@ -93,6 +93,9 @@ class Sidebar extends React.Component {
               {
                 name: 'Forms Validation', link: '/app/forms/validation',
               },
+              {
+                name: 'Wizard', link: '/app/forms/wizard',
+              },
             ]}
           />
           <LinksGroup
