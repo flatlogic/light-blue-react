@@ -1,0 +1,12 @@
+@import '../../../styles/app';
+
+:global {
+  .rickshaw_legend {
+    background-color: $widget-bg;
+    color: $widget-header-color;
+  }
+
+  .detail {
+    color: $gray-900;
+  }
+}

@@ -22,6 +22,7 @@ import loadFormsValidation from 'bundle-loader?lazy!../../pages/forms/validation
 import loadFormsWizard from 'bundle-loader?lazy!../../pages/forms/wizard/Wizard';
 import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats/Stats';
 import loadStatisticsCharts from 'bundle-loader?lazy!../../pages/statistics/charts/Charts';
+import loadStatisticsRealtime from 'bundle-loader?lazy!../../pages/statistics/realtime/Realtime';
 import loadTablesStatic from 'bundle-loader?lazy!../../pages/tables/static/Static';
 import loadTablesDynamic from 'bundle-loader?lazy!../../pages/tables/dynamic/Dynamic';
 import loadWidgetsBasic from 'bundle-loader?lazy!../../pages/widgets/basic/Basic';
@@ -54,6 +55,7 @@ const FormsValidationBundle = Bundle.generateBundle(loadFormsValidation);
 const FormsWizardBundle = Bundle.generateBundle(loadFormsWizard);
 const StatisticsStatsBundle = Bundle.generateBundle(loadStatisticsStats);
 const StatisticsChartsBundle = Bundle.generateBundle(loadStatisticsCharts);
+const StatisticsRealtimeBundle = Bundle.generateBundle(loadStatisticsRealtime);
 const TablesStaticBundle = Bundle.generateBundle(loadTablesStatic);
 const TablesDynamicBundle = Bundle.generateBundle(loadTablesDynamic);
 const WidgetsBasicBundle = Bundle.generateBundle(loadWidgetsBasic);
@@ -93,6 +95,7 @@ class Layout extends React.Component {
               <Route path="/app/forms/wizard" exact component={FormsWizardBundle} />
               <Route path="/app/statistics/stats" exact component={StatisticsStatsBundle} />
               <Route path="/app/statistics/charts" exact component={StatisticsChartsBundle} />
+              <Route path="/app/statistics/realtime" exact component={StatisticsRealtimeBundle} />
               <Route path="/app/tables/static" exact component={TablesStaticBundle} />
               <Route path="/app/tables/dynamic" exact component={TablesDynamicBundle} />
               <Route path="/app/widgets/basic" exact component={WidgetsBasicBundle} />

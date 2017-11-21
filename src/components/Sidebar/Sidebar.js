@@ -111,6 +111,9 @@ class Sidebar extends React.Component {
               {
                 name: 'Charts', link: '/app/statistics/charts',
               },
+              {
+                name: 'Realtime', link: '/app/statistics/realtime'
+              }
             ]}
           />
           <LinksGroup
