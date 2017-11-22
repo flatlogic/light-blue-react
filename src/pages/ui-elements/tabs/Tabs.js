@@ -4,8 +4,11 @@ import {
   Row,
   Col,
   Button,
-  UncontrolledDropdown,
+  ButtonToolbar,
+  UncontrolledNavDropdown,
+  DropdownToggle,
   DropdownMenu,
+  DropdownItem,
   TabContent,
   TabPane,
   Nav,
@@ -109,37 +112,32 @@ class TabsAccordion extends React.Component {
                     <span>Orange</span>
                   </NavLink>
                 </NavItem>
-                <NavItem>
-                  <UncontrolledDropdown>
-
-                    <NavLink
-                      className={classnames({ active: this.state.activeFirstTab === 'tab13' || this.state.activeFirstTab === 'tab14' })}
-                    >
-                      <span
-                        data-toggle="dropdown"
-                      >Dropdown <b className="caret" /></span>
-                      <DropdownMenu>
-                        <div
-                          role="menuitem"
-                          className="dropdown-item display-block"
-                          onClick={() => {
-                            this.toggleFirstTabs('tab13');
-                          }}
-                        >@fat
-                        </div>
-                        <div
-                          role="menuitem"
-                          className="dropdown-item display-block"
-                          onClick={() => {
-                            this.toggleFirstTabs('tab14');
-                          }}
-                        >@mdo
-                        </div>
-                      </DropdownMenu>
-                    </NavLink>
-                  </UncontrolledDropdown>
-
-                </NavItem>
+                <UncontrolledNavDropdown>
+                  <DropdownToggle
+                    nav
+                    caret
+                    className={classnames({
+                      active: this.state.activeFirstTab === 'tab13' ||
+                      this.state.activeFirstTab === 'tab14',
+                    })}
+                  >
+                    Dropdown
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem
+                      onClick={() => {
+                        this.toggleFirstTabs('tab13');
+                      }}
+                    >Green
+                    </DropdownItem>
+                    <DropdownItem
+                      onClick={() => {
+                        this.toggleFirstTabs('tab14');
+                      }}
+                    >Blue
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledNavDropdown>
               </Nav>
               <TabContent activeTab={this.state.activeFirstTab}>
                 <TabPane tabId="tab11">
@@ -157,10 +155,10 @@ class TabsAccordion extends React.Component {
                   <p>The same thing is for startups and ideas. If you have an idea right away after
                     it appears in your mind you should go and make a first step to implement
                     it. </p>
-                  <div className="float-right">
-                    <Button color="inverse" className="mr-xs">Cancel</Button>
+                  <ButtonToolbar className="float-right">
+                    <Button color="inverse">Cancel</Button>
                     <Button color="primary">Some button</Button>
-                  </div>
+                  </ButtonToolbar>
                 </TabPane>
                 <TabPane tabId="tab12">
                   <div className={s.tabPicture}>
@@ -168,20 +166,29 @@ class TabsAccordion extends React.Component {
                   </div>
                 </TabPane>
                 <TabPane tabId="tab13">
-                  <p> If you will think too much it will sink in the swamp of never implemented
-                    plans and
-                    ideas or will just go away or will be implemented by someone else.</p>
+                  <p>The same thing is for startups and ideas. If you have an idea right away
+                    after it appears in your mind you should go and make a first step to implement
+                    it. If you will think too much it will sink in the swamp of never implemented
+                    plans and ideas or will just go away or will be implemented by someone else.
+                  </p>
                   <p><strong>5 months of doing everything to achieve nothing.</strong></p>
-                  <p>{`You'll automatically skip - because you know - it's just non-informative stub.
-                  But what if there some text like this one?`}</p>
+                  <p>I had an idea named Great Work. It was a service aimed to help people find
+                    their passion. Yes I know it sound crazy and super naïve but I worked on
+                    that. I started to work on planning, graphics, presentations, pictures,
+                    descriptions, articles, investments and so on. I worked on everything
+                    but not the project itself
+                  </p>
+                  <ButtonToolbar>
+                    <Button color="danger">Some button</Button>
+                    <Button color="default">Cancel</Button>
+                  </ButtonToolbar>
                 </TabPane>
                 <TabPane tabId="tab14">
-                  <blockquote className="blockquote-sm blockquote mb-xs">
-                    Plan it? Make it!
-                  </blockquote>
-                  <p>The same thing is for startups and ideas. If you have an idea right away after
-                    it appears
-                    in your mind you should go and make a first step to implement it.</p>
+                  <p>I realized really simple thing recently. Try is million times better than
+                    think. The real world is much more representative than any models either
+                    they are built in mind or on the shit of paper.
+                  </p>
+                  <Button color="warning" block>Some button</Button>
                 </TabPane>
               </TabContent>
             </Widget>
@@ -213,16 +220,32 @@ class TabsAccordion extends React.Component {
                     <span>Profile</span>
                   </NavLink>
                 </NavItem>
-                <NavItem>
-                  <NavLink
-                    className={classnames({ active: this.state.activeSecondTab === 'tab23' })}
-                    onClick={() => {
-                      this.toggleSecondTabs('tab23');
-                    }}
+                <UncontrolledNavDropdown>
+                  <DropdownToggle
+                    nav
+                    caret
+                    className={classnames({
+                      active: this.state.activeSecondTab === 'tab23' ||
+                      this.state.activeSecondTab === 'tab24',
+                    })}
                   >
-                    <span>Dropdown</span>
-                  </NavLink>
-                </NavItem>
+                    Dropdown
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem
+                      onClick={() => {
+                        this.toggleSecondTabs('tab23');
+                      }}
+                    >@fat
+                    </DropdownItem>
+                    <DropdownItem
+                      onClick={() => {
+                        this.toggleSecondTabs('tab24');
+                      }}
+                    >@mdo
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledNavDropdown>
               </Nav>
               <TabContent activeTab={this.state.activeSecondTab}>
                 <TabPane tabId="tab21">
@@ -249,13 +272,21 @@ class TabsAccordion extends React.Component {
                   </p>
                 </TabPane>
                 <TabPane tabId="tab23">
-                  <p>Messenger bag gentrify pitchfork tattooed craft beer,
-                    iphone skateboard locavore carles etsy salvia banksy hoodie helvetica.
-                    DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.
-                    Williamsburg banh mi whatever gluten-free,
-                    carles pitchfork biodiesel fixie etsy retro mlkshk vice blog.
-                    Scenester cred you probably haven&#39;t heard of them,
-                    vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
+                  <p>Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard
+                    locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy
+                    irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi
+                    whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk
+                    vice blog. Scenester cred you probably haven&#39;t heard of them, vinyl craft
+                    beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
+                  </p>
+                </TabPane>
+                <TabPane tabId="tab24">
+                  <p>They sold out master cleanse gluten-free squid scenester freegan cosby
+                    sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche
+                    high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi
+                    before they sold out farm-to-table VHS viral locavore cosby sweater.
+                    Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa
+                    ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.
                   </p>
                 </TabPane>
               </TabContent>

@@ -361,9 +361,11 @@ button.dropdown-toggle {
 // ------------
 
 // Common styles
-.tabs-left.nav-tabs > li,
-.tabs-right.nav-tabs > li {
+.tabs-left.nav-tabs > li.nav-item,
+.tabs-right.nav-tabs > li.nav-item {
   float: none;
+  margin-bottom: 0;
+  margin-left: 0;
 }
 
 .tabs-left.nav-tabs > li > a,
@@ -379,7 +381,7 @@ button.dropdown-toggle {
 }
 
 .tabs-left.nav-tabs > li > a {
-  margin-right: -1px;
+  //margin-right: -1px;
   border-radius: $border-radius-base 0 0 $border-radius-base;
 }
 
@@ -400,7 +402,7 @@ button.dropdown-toggle {
 }
 
 .tabs-right.nav-tabs > li > a {
-  margin-left: -1px;
+  //margin-left: -1px;
   border-radius: 0 $border-radius-base $border-radius-base 0;
 }
 
@@ -418,8 +420,8 @@ button.dropdown-toggle {
 /*          Navs          */
 
 .nav-tabs {
-  &.nav-item + .nav-item {
-    margin-left: 0;
+  .nav-item + .nav-item {
+    margin-left: 2px;
   }
 
   border-bottom: none;
@@ -429,9 +431,13 @@ button.dropdown-toggle {
   > .nav-item {
     margin-bottom: 0;
 
+    &.dropdown > .nav-link {
+      color: $white;
+    }
+
     > .nav-link {
-      padding: 12px 18px;
-      margin-right: 2px;
+      //padding: 12px 18px;
+      //margin-right: 2px;
       border: none;
       color: $text-color;
 
