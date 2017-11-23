@@ -9,10 +9,6 @@ import {
 import Widget from '../../../components/Widget';
 
 import s from './Notifications.scss';
-import messengerStyle from './MessengerGlobal.scss';
-
-
-messengerStyle._insertCss();
 
 function initializationMessengerCode() {
   (function () {

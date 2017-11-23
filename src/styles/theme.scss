@@ -13,6 +13,9 @@
 @import '../../node_modules/nvd3/build/nv.d3.css';
 @import '../../node_modules/rickshaw/rickshaw.css';
 @import '../../node_modules/animate.css/animate';
+@import '../../node_modules/messenger/build/css/messenger';
+@import '../../node_modules/messenger/build/css/messenger-spinner';
+@import 'override-messenger';
 @import 'mixins';
 @import 'base';
 @import 'override-libs';
