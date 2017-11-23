@@ -2,6 +2,11 @@
 
 /*          NEWS LIST          */
 :global {
+  .animated {
+    -webkit-animation-iteration-count: unset;
+    animation-iteration-count: unset;
+  }
+
   .news-list {
     margin-bottom: 0;
     padding-left: 0;
@@ -47,7 +52,7 @@
     }
 
     .name {
-      text-transform: uppercase;
+      text-transform: none;
 
       a {
         text-decoration: none;

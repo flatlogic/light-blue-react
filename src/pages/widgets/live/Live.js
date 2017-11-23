@@ -10,7 +10,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  UncontrolledDropdown,
+  Dropdown,
   Button,
   Modal,
   ModalHeader,
@@ -53,9 +53,11 @@ class Live extends React.Component {
     this.state = {
       isOpen: false,
       modal: false,
+      isOpenAutoload: false,
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.closePrompt = this.closePrompt.bind(this);
+    this.toggleAutoloadDropdown = this.toggleAutoloadDropdown.bind(this);
   }
 
   componentDidMount() {
@@ -63,6 +65,7 @@ class Live extends React.Component {
     this.initSharesWidget();
     this.initNewsWidget();
     this.initAutoLoadWidget();
+    this.initFullScreen();
   }
 
   initSharesWidget() {
@@ -74,9 +77,6 @@ class Live extends React.Component {
   }
 
   initNewsWidget() {
-    /**
-     * Make refresh button spin when loading
-     */
     $('#news-widget').bind('load.widgster', () => {
       $(this).find('[data-widgster="load"] > i').addClass('fa-spin');
     }).bind('loaded.widgster', () => {
@@ -84,14 +84,33 @@ class Live extends React.Component {
     });
   }
 
-  initAutoLoadWidget() {
-    $('#autoload-widget').bind('load.widgster', () => {
-      $(this).find('.fa-spinner').addClass('fa-spin in');
-    }).bind('loaded.widgster', () => {
-      $(this).find('.fa-spinner').removeClass('fa-spin in');
-    }).bind('load.widgster fullscreen.widgster restore.widgster', () => {
-      $(this).find('.dropdown.open > .dropdown-toggle').dropdown('toggle');
+  initFullScreen() { // eslint-disable-line
+    const $widgets = $('.widget');
+
+    $widgets.on('fullscreen.widgster', (el) => {
+      $('.widget, .sidebar, .logo, .page-header, .page-title')
+        .not(el.target).fadeTo(150, 0);
+      // prevent widget from dragging when fullscreened
+      $('.widget-container').sortable('option', 'disabled', true);
+    }).on('restore.widgster closed.widgster', (el) => {
+      $('.widget, .sidebar, .logo, .page-header, .page-title')
+        .not(el.target).fadeTo(150, 1);
+      // allow dragging back
+      $('.widget-container').sortable('option', 'disabled', false);
     });
+  }
+
+  initAutoLoadWidget() {
+    $('#autoload-widget')
+      .on('load.widgster', (el) => {
+        $('.fa-spinner', el.target).addClass('fa-spin in');
+      })
+      .on('loaded.widgster', (el) => {
+        $('.fa-spinner', el.target).removeClass('fa-spin in');
+      })
+      .on('load.widgster fullscreen.widgster restore.widgster', () => {
+        this.toggleAutoloadDropdown();
+      });
   }
 
   closePrompt(callback) {
@@ -106,6 +125,10 @@ class Live extends React.Component {
     this.setState({ modal: !this.state.modal });
   }
 
+  toggleAutoloadDropdown() {
+    this.setState({ isOpenAutoload: !this.state.isOpenAutoload });
+  }
+
   render() {
     return (
       <div>
@@ -113,8 +136,8 @@ class Live extends React.Component {
           <small> Draggable widgets. Touch screen support</small>
         </h2>
         <Row>
-          <Col xl={1} />
-          <Col xl={7}>
+          <Col lg={1} className="d-lg-block d-none" />
+          <Col md={7}>
             <Widget
               title={<h5>New Widgets &nbsp;<span className="badge badge-danger fw-normal">since 2.1</span></h5>}
             >
@@ -152,7 +175,7 @@ class Live extends React.Component {
         </Row>
 
         <Row className="grid-demo">
-          <Col className="widget-container" xl={6} xs={12}>
+          <Col className="widget-container" md={6} xs={12}>
             <Widget
               title={<h6>Default <span className="fw-semi-bold">Widget</span></h6>}
               refresh collapse fullscreen close
@@ -231,10 +254,9 @@ class Live extends React.Component {
               data-widgster-show-loader="false"
               title={<h6>Autoload <span className="fw-semi-bold">Widget</span></h6>}
               customControls={
-                <UncontrolledDropdown>
+                <Dropdown isOpen={this.state.isOpenAutoload} toggle={this.toggleAutoloadDropdown}>
                   <DropdownToggle
                     tag="span"
-                    data-toggle="dropdown"
                   >
                     <i className="glyphicon glyphicon-cog" />
                   </DropdownToggle>
@@ -250,7 +272,7 @@ class Live extends React.Component {
                     <DropdownItem divider />
                     <DropdownItem data-widgster="close" title="Close">Close</DropdownItem>
                   </DropdownMenu>
-                </UncontrolledDropdown>
+                </Dropdown>
               }
             >
               <div>
@@ -264,13 +286,14 @@ class Live extends React.Component {
                     <Label for="exampleInputEmail1"><i className="fa fa-circle text-warning" /> &nbsp; Email
                       address</Label>
                     <Input
+                      className="input-transparent"
                       type="email" id="exampleInputEmail1"
                       placeholder="Enter email"
                     />
                   </FormGroup>
                   <FormGroup>
                     <Label for="pswd"><i className="fa fa-circle text-danger" /> &nbsp; Password</Label>
-                    <Input id="pswd" type="text" placeholder="Min 8 characters" />
+                    <Input className="input-transparent" id="pswd" type="text" placeholder="Min 8 characters" />
                   </FormGroup>
                   <p>
                     To make a widget automatically load it&apos;s content you just need to set
@@ -333,11 +356,11 @@ class Live extends React.Component {
             >
               <ul className={'news-list stretchable'}>
                 <li>
-                  <span className="icon bg-danger text-white">
+                  <span className="icon bg-warning text-white">
                     <i className="fa fa-star" />
                   </span>
                   <div className="news-item-info">
-                    <h5 className="name m-0 mb-xs"><a href="#">First Human Colony on Mars</a></h5>
+                    <h4 className="name m-0 mb-xs"><a href="#">First Human Colony on Mars</a></h4>
                     <p className="fs-mini">
                       First 700 people will take part in building first human settlement
                       outside of Earth. That&apos;s awesome, right?
@@ -350,7 +373,7 @@ class Live extends React.Component {
                     <i className="fa fa-microphone" />
                   </span>
                   <div className="news-item-info">
-                    <h5 className="name m-0 mb-xs"><a href="#">Light Blue reached $300</a></h5>
+                    <h4 className="name m-0 mb-xs"><a href="#">Light Blue reached $300</a></h4>
                     <p className="fs-mini">
                       Light Blue Inc. shares just hit $300 price. &quot;This was inevitable. It
                       should have happen sooner or later&quot; - says NYSE expert.
@@ -359,11 +382,11 @@ class Live extends React.Component {
                   </div>
                 </li>
                 <li>
-                  <span className="icon bg-success text-white">
+                  <span className="icon bg-lime text-white">
                     <i className="fa fa-eye" />
                   </span>
                   <div className="news-item-info">
-                    <h5 className="name m-0 mb-xs"><a href="#">No more spying</a></h5>
+                    <h4 className="name m-0 mb-xs"><a href="#">No more spying</a></h4>
                     <p className="fs-mini">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
                       do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -379,7 +402,7 @@ class Live extends React.Component {
                   Do you really want to unrevertably remove this super news widget?
                 </ModalBody>
                 <ModalFooter>
-                  <Button color="default" onClick={this.toggleModal} data-dismiss="modal">No</Button>{' '}
+                  <Button color="primary" onClick={this.toggleModal} data-dismiss="modal">No</Button>{' '}
                   <Button color="danger" data-widgster="close" id="news-widget-remove">Yes,
                     remove widget</Button>
                 </ModalFooter>
@@ -409,10 +432,9 @@ class Live extends React.Component {
             </Widget>
 
             <Widget
-              className="bg-gray"
               bodyClass={'p-0'}
             >
-              <div className="jumbotron handle bg-gray text-white mb-0">
+              <div className="jumbotron handle mb-0">
                 <div className="container">
                   <h1>Draggable story!</h1>
                   <p className="lead">
