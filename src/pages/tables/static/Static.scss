@@ -2,8 +2,12 @@
 
 :global {
   @import '../../../../node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox';
+
+  .text-center svg {
+    display: inline-block;
+  }
 }
 
-.root {
-  // some styles
+.imgRounded {
+  border-radius: $border-radius;
 }

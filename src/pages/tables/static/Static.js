@@ -5,7 +5,18 @@ import {
   Row,
   Col,
   Table,
+  Progress,
+  UncontrolledButtonDropdown,
+  Button,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Badge,
+  Input,
+  Label,
 } from 'reactstrap';
+import { Sparklines, SparklinesBars } from 'react-sparklines';
+
 
 import s from './Static.scss';
 import Widget from '../../../components/Widget';
@@ -19,7 +30,7 @@ class Static extends React.Component {
       tableStriped: [
         {
           id: 1,
-          picture: 'assets/src/images/jpeg/1.jpg',
+          picture: require('../../../images/jpeg/1.jpg'), // eslint-disable-line global-require
           description: 'Palo Alto',
           info: {
             type: 'JPEG',
@@ -34,7 +45,7 @@ class Static extends React.Component {
         },
         {
           id: 2,
-          picture: '../../../images/jpeg/1.jpg',
+          picture: require('../../../images/jpeg/2.jpg'), // eslint-disable-line global-require
           description: 'The Sky',
           info: {
             type: 'PSD',
@@ -49,7 +60,7 @@ class Static extends React.Component {
         },
         {
           id: 3,
-          picture: 'assets/img/jpeg/3.jpg',
+          picture: require('../../../images/jpeg/3.jpg'), // eslint-disable-line global-require
           description: 'Down the road',
           label: {
             colorClass: 'danger',
@@ -68,7 +79,7 @@ class Static extends React.Component {
         },
         {
           id: 4,
-          picture: 'assets/img/jpeg/4.jpg',
+          picture: require('../../../images/jpeg/4.jpg'), // eslint-disable-line global-require
           description: 'The Edge',
           info: {
             type: 'PNG',
@@ -83,7 +94,7 @@ class Static extends React.Component {
         },
         {
           id: 5,
-          picture: 'assets/img/jpeg/11.jpg',
+          picture: require('../../../images/jpeg/11.jpg'), // eslint-disable-line global-require
           description: 'Fortress',
           info: {
             type: 'JPEG',
@@ -110,21 +121,33 @@ class Static extends React.Component {
     return `${dateSet[1]} ${dateSet[2]}, ${dateSet[3]}`;
   }
 
-  // checkAll() {
-    // e.fill(!e[0]);
-    // this.setState({checkboxes: e});
-  // }
+  checkAll(ev, checkbox) {
+    const checkboxArr = (new Array(this.state[checkbox].length)).fill(ev.target.checked);
+    this.setState({
+      [checkbox]: checkboxArr,
+    });
+  }
+
+  changeCheck(ev, checkbox, id) {
+    this.state[checkbox][id] = ev.target.checked;
+    if (!ev.target.checked) {
+      this.state[checkbox][0] = false;
+    }
+    this.setState({
+      [checkbox]: this.state[checkbox],
+    });
+  }
 
   render() {
     return (
-      <div className={s.root}>
+      <div>
         <h2 className="page-title">Tables - <span className="fw-semi-bold">Static</span></h2>
         <Row>
           <Col>
             <Widget
-              title={<h5>
+              title={<h4>
                 Table <span className="fw-semi-bold">Styles</span>
-              </h5>} settings close
+              </h4>} settings close
             >
               <Table className="table-striped">
                 <thead>
@@ -144,8 +167,10 @@ class Static extends React.Component {
                       <tr key={row.id}>
                         <td>{row.id}</td>
                         <td>
-                          {/* <img className="img-rounded" src={require(el.picture)}
-                          alt="" height="50" /> */}
+                          <img
+                            className={s.imgRounded} src={row.picture}
+                            alt="" height="50"
+                          />
                         </td>
                         <td>
                           {row.description}
@@ -176,14 +201,10 @@ class Static extends React.Component {
                           {row.size}
                         </td>
                         <td className="width-150">
-                          <div className="progress bg-blue-light mt-0">
-                            <div
-                              className={`progress-bar bg-${row.progress.colorClass}`}
-                              role="progressbar"
-                              style={{ width: `${row.progress.percent} + %`, height: `${0.62} + rem` }}
-                              aria-valuenow={row.progress.percent} aria-valuemin="0" aria-valuemax="100"
-                            />
-                          </div>
+                          <Progress
+                            color={row.progress.colorClass} value={row.progress.percent}
+                            className="progress-sm mb-xs"
+                          />
                         </td>
                       </tr>,
                     )
@@ -192,12 +213,17 @@ class Static extends React.Component {
               </Table>
               <div className="clearfix">
                 <div className="float-right">
-                  <button className="btn btn-secondary btn-sm">
-                    Send to ...
-                  </button>
-                  <button className="btn btn-inverse btn-sm">
-                    Clear
-                  </button>
+                  <Button color="secondary" className="mr-xs" size="sm">Send to...</Button>
+                  <UncontrolledButtonDropdown>
+                    <DropdownToggle color="inverse" className="mr-xs" size="sm" caret>Clear</DropdownToggle>
+                    <DropdownMenu right>
+                      <DropdownItem>Clear</DropdownItem>
+                      <DropdownItem>Move ...</DropdownItem>
+                      <DropdownItem>Something else here</DropdownItem>
+                      <DropdownItem divider />
+                      <DropdownItem>Separated link</DropdownItem>
+                    </DropdownMenu>
+                  </UncontrolledButtonDropdown>
                 </div>
                 <p>Basic table with styled content</p>
               </div>
@@ -211,7 +237,7 @@ class Static extends React.Component {
             >
               <h3>Stripped <span className="fw-semi-bold">Table</span></h3>
 
-              <p>Each row is highlighted. You will never lost there. Just
+              <p>Each row is highlighted. You will never lost there. Just&nbsp;
                 <code>.table-striped</code> it.
               </p>
               <Table className="table-striped">
@@ -219,11 +245,11 @@ class Static extends React.Component {
                   <tr>
                     <th>
                       <div className="abc-checkbox">
-                        {/* {<input id="checkbox1" type="checkbox"
-                        (change)="checkAll($event, tb1)"> */}
-                        {/* } */}
-                        <input id="checkbox1" type="checkbox" />
-                        <label htmlFor="checkbox1" />
+                        <Input
+                          id="checkbox1" type="checkbox" checked={this.state.checkboxes1[0]}
+                          onChange={event => this.checkAll(event, 'checkboxes1')}
+                        />
+                        <Label for="checkbox1" />
                       </div>
                     </th>
                     <th>First Name</th>
@@ -235,35 +261,44 @@ class Static extends React.Component {
                   <tr>
                     <td>
                       <div className="abc-checkbox">
-                        <input id="checkbox2" type="checkbox" />
-                        <label htmlFor="checkbox2" />
+                        <Input
+                          id="checkbox2" type="checkbox" checked={this.state.checkboxes1[1]}
+                          onChange={event => this.changeCheck(event, 'checkboxes1', 1)}
+                        />
+                        <Label for="checkbox2" />
                       </div>
                     </td>
                     <td>Mark</td>
                     <td>Otto</td>
-                    <td><span className="badge badge-danger">Online</span></td>
+                    <td><Badge color="danger">Online</Badge></td>
                   </tr>
                   <tr>
                     <td>
                       <div className="abc-checkbox">
-                        <input id="checkbox3" type="checkbox" />
-                        <label htmlFor="checkbox3" />
+                        <Input
+                          id="checkbox3" type="checkbox" checked={this.state.checkboxes1[2]}
+                          onChange={event => this.changeCheck(event, 'checkboxes1', 2)}
+                        />
+                        <Label for="checkbox3" />
                       </div>
                     </td>
-                    <td>Jacob <span className="badge badge-warning text-gray-dark fw-semi-bold">ALERT!</span></td>
+                    <td>Jacob <Badge color="warning" className="text-gray-dark">ALERT!</Badge></td>
                     <td>Thornton</td>
                     <td><span className="badge bg-gray-light">Away</span></td>
                   </tr>
                   <tr>
                     <td>
                       <div className="abc-checkbox">
-                        <input id="checkbox4" type="checkbox" />
-                        <label htmlFor="checkbox4" />
+                        <Input
+                          id="checkbox4" type="checkbox" checked={this.state.checkboxes1[3]}
+                          onChange={event => this.changeCheck(event, 'checkboxes1', 3)}
+                        />
+                        <Label for="checkbox4" />
                       </div>
                     </td>
                     <td>Larry</td>
                     <td>the Bird</td>
-                    <td><span className="badge badge-danger">Construct</span></td>
+                    <td><Badge color="danger">Construct</Badge></td>
                   </tr>
                 </tbody>
               </Table>
@@ -289,28 +324,28 @@ class Static extends React.Component {
                       <td>Mark</td>
                       <td>Otto</td>
                       <td><a href="#">ottoto@example.com</a></td>
-                      <td><span className="badge badge-pill bg-gray-lighter text-gray fw-semi-bold">Pending</span></td>
+                      <td><Badge color="light" className="text-gray" pill>Pending</Badge></td>
                     </tr>
                     <tr>
                       <td>2</td>
                       <td>Jacob</td>
                       <td>Thornton</td>
                       <td><a href="#">fat.thor@example.com</a></td>
-                      <td><span className="badge badge-pill bg-gray-lighter text-gray-light">Unconfirmed</span></td>
+                      <td><Badge color="light" className="text-gray-light" pill>Unconfirmed</Badge></td>
                     </tr>
                     <tr>
                       <td>3</td>
                       <td>Larry</td>
                       <td>the Bird</td>
                       <td><a href="#">larry@example.com</a></td>
-                      <td><span className="badge badge-pill bg-gray-lighter text-gray fw-semi-bold">New</span></td>
+                      <td><Badge color="light" className="text-gray" pill>New</Badge></td>
                     </tr>
                     <tr>
                       <td>4</td>
                       <td>Peter</td>
                       <td>Horadnia</td>
                       <td><a href="#">peter@example.com</a></td>
-                      <td><span className="badge badge-pill bg-gray-lighter text-gray-light">Active</span></td>
+                      <td><Badge color="light" className="text-gray-light" pill>Active</Badge></td>
                     </tr>
                   </tbody>
                 </Table>
@@ -326,14 +361,15 @@ class Static extends React.Component {
                 all of us learned in school the table should look like. Just add`}
                 <code>.table-bordered</code> to it.</p>
               <Table className="table-bordered table-lg mt-lg mb-0">
-                <thead>
+                <thead className="text-uppercase">
                   <tr>
                     <th>
                       <div className="abc-checkbox">
-                        {/* <input id="checkbox10" type="checkbox"
-                        onChange={() => { this.checkAll(); }} /> */}
-                        <input id="checkbox10" type="checkbox" />
-                        <label htmlFor="checkbox10" />
+                        <Input
+                          id="checkbox10" type="checkbox" checked={this.state.checkboxes2[0]}
+                          onChange={event => this.checkAll(event, 'checkboxes2')}
+                        />
+                        <Label for="checkbox10" />
                       </div>
                     </th>
                     <th>Product</th>
@@ -345,81 +381,91 @@ class Static extends React.Component {
                   <tr>
                     <td>
                       <div className="abc-checkbox">
-                        <input id="checkbox11" type="checkbox" />
-                        <label htmlFor="checkbox11" />
+                        <Input
+                          id="checkbox11" type="checkbox" checked={this.state.checkboxes2[1]}
+                          onChange={event => this.changeCheck(event, 'checkboxes2', 1)}
+                        />
+                        <Label for="checkbox11" />
                       </div>
                     </td>
                     <td>On the Road</td>
                     <td className="text-right">$25 224.2</td>
                     <td className="text-center">
-                      {/* { <div className="sparkline" */}
-                      {/* jq-sparkline [options]="{type: 'bar', barColor: '#618fb0'}"
-                      [data]="[13,14,16,15,4,14,20]"></div> */}
-                      {/* } */}
+                      <Sparklines data={[13, 14, 16, 15, 4, 14, 20]} style={{ width: '35px', height: '20px' }}>
+                        <SparklinesBars style={{ fill: '#618fb0' }} />
+                      </Sparklines>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <div className="abc-checkbox">
-                        <input id="checkbox12" type="checkbox" />
-                        <label htmlFor="checkbox12" />
+                        <Input
+                          id="checkbox12" type="checkbox" checked={this.state.checkboxes2[2]}
+                          onChange={event => this.changeCheck(event, 'checkboxes2', 2)}
+                        />
+                        <Label for="checkbox12" />
                       </div>
                     </td>
                     <td>HP Core i7</td>
                     <td className="text-right">$87 346.1</td>
                     <td className="text-center">
-                      {/* {<div className="sparkline" */}
-                      {/* jq-sparkline [options]="{type: 'bar', barColor: '#999'}"
-                      [data]="[14,12,16,11,17,19,16]"></div> */}
-                      {/* } */}
+                      <Sparklines data={[14, 12, 16, 11, 17, 19, 16]} style={{ width: '35px', height: '20px' }}>
+                        <SparklinesBars style={{ fill: '#999' }} />
+                      </Sparklines>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <div className="abc-checkbox">
-                        <input id="checkbox13" type="checkbox" />
-                        <label htmlFor="checkbox13" />
+                        <Input
+                          id="checkbox13" type="checkbox" checked={this.state.checkboxes2[3]}
+                          onChange={event => this.changeCheck(event, 'checkboxes2', 3)}
+                        />
+                        <Label for="checkbox13" />
                       </div>
                     </td>
-                    <td>Let&#39;s Dance</td>
+                    <td>Let&apos;s Dance</td>
                     <td className="text-right">$57 944.6</td>
                     <td className="text-center">
-                      {/* { <div className="sparkline" */}
-                      {/* jq-sparkline [options]="{type: 'bar', barColor: '#f0b518'}"
-                      [data]="[11,17,19,16,14,12,16]"></div> */}
-                      {/* } */}
+                      <Sparklines data={[11, 17, 19, 16, 14, 12, 16]} style={{ width: '35px', height: '20px' }}>
+                        <SparklinesBars style={{ fill: '#f0b518' }} />
+                      </Sparklines>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <div className="abc-checkbox">
-                        <input id="checkbox14" type="checkbox" />
-                        <label htmlFor="checkbox14" />
+                        <Input
+                          id="checkbox14" type="checkbox" checked={this.state.checkboxes2[4]}
+                          onChange={event => this.changeCheck(event, 'checkboxes2', 4)}
+                        />
+                        <Label for="checkbox14" />
                       </div>
                     </td>
                     <td>Air Pro</td>
                     <td className="text-right">$118 533.1</td>
                     <td className="text-center">
-                      {/* { <div className="sparkline" */}
-                      {/* jq-sparkline [options]="{type: 'bar', barColor: '#e5603b'}"
-                      [data]="[13,14,20,16,15,4,14]"></div> */}
-                      {/* } */}
+                      <Sparklines data={[13, 14, 20, 16, 15, 4, 14]} style={{ width: '35px', height: '20px' }}>
+                        <SparklinesBars style={{ fill: '#e5603b' }} />
+                      </Sparklines>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <div className="abc-checkbox">
-                        <input id="checkbox15" type="checkbox" />
-                        <label htmlFor="checkbox15" />
+                        <Input
+                          id="checkbox15" type="checkbox" checked={this.state.checkboxes2[5]}
+                          onChange={event => this.changeCheck(event, 'checkboxes2', 5)}
+                        />
+                        <Label for="checkbox15" />
                       </div>
                     </td>
                     <td>Version Control</td>
                     <td className="text-right">$72 854.5</td>
                     <td className="text-center">
-                      {/* { <div className="sparkline" */}
-                      {/* jq-sparkline [options]="{type: 'bar', barColor: '#618fb0'}"
-                      [data]="[16,15,4,14,13,14,20]"></div> */}
-                      {/* } */}
+                      <Sparklines data={[16, 15, 4, 14, 13, 14, 20]} style={{ width: '35px', height: '20px' }}>
+                        <SparklinesBars style={{ fill: '#618fb0' }} />
+                      </Sparklines>
                     </td>
                   </tr>
                 </tbody>
@@ -441,11 +487,11 @@ class Static extends React.Component {
                     <tr>
                       <th>
                         <div className="abc-checkbox">
-                          {/* {<input id="checkbox10" type="checkbox"
-                          (change)="checkAll($event, tb2)"> */}
-                          {/* } */}
-                          <input id="checkbox210" type="checkbox" />
-                          <label htmlFor="checkbox210" />
+                          <Input
+                            id="checkbox20" type="checkbox" checked={this.state.checkboxes3[0]}
+                            onChange={event => this.checkAll(event, 'checkboxes3')}
+                          />
+                          <Label for="checkbox20" />
                         </div>
                       </th>
                       <th>Product</th>
@@ -457,81 +503,91 @@ class Static extends React.Component {
                     <tr>
                       <td>
                         <div className="abc-checkbox">
-                          <input id="checkbox211" type="checkbox" />
-                          <label htmlFor="checkbox211" />
+                          <Input
+                            id="checkbox21" type="checkbox" checked={this.state.checkboxes3[1]}
+                            onChange={event => this.changeCheck(event, 'checkboxes3', 1)}
+                          />
+                          <Label for="checkbox21" />
                         </div>
                       </td>
                       <td>On the Road</td>
                       <td className="text-right">$25 224.2</td>
                       <td className="text-center">
-                        {/* { <div className="sparkline" */}
-                        {/* jq-sparkline [options]="{type: 'bar', barColor: '#618fb0'}"
-                        [data]="[13,14,16,15,4,14,20]"></div> */}
-                        {/* } */}
+                        <Sparklines data={[13, 14, 16, 15, 4, 14, 20]} style={{ width: '35px', height: '20px' }}>
+                          <SparklinesBars style={{ fill: '#618fb0' }} />
+                        </Sparklines>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <div className="abc-checkbox">
-                          <input id="checkbox212" type="checkbox" />
-                          <label htmlFor="checkbox212" />
+                          <Input
+                            id="checkbox22" type="checkbox" checked={this.state.checkboxes3[2]}
+                            onChange={event => this.changeCheck(event, 'checkboxes3', 2)}
+                          />
+                          <Label for="checkbox22" />
                         </div>
                       </td>
                       <td>HP Core i7</td>
                       <td className="text-right">$87 346.1</td>
                       <td className="text-center">
-                        {/* {<div className="sparkline" */}
-                        {/* jq-sparkline [options]="{type: 'bar', barColor: '#999'}"
-                        [data]="[14,12,16,11,17,19,16]"></div> */}
-                        {/* } */}
+                        <Sparklines data={[14, 12, 16, 11, 17, 19, 16]} style={{ width: '35px', height: '20px' }}>
+                          <SparklinesBars style={{ fill: '#999' }} />
+                        </Sparklines>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <div className="abc-checkbox">
-                          <input id="checkbox213" type="checkbox" />
-                          <label htmlFor="checkbox213" />
+                          <Input
+                            id="checkbox23" type="checkbox" checked={this.state.checkboxes3[3]}
+                            onChange={event => this.changeCheck(event, 'checkboxes3', 3)}
+                          />
+                          <Label for="checkbox23" />
                         </div>
                       </td>
-                      <td>Let&#39;s Dance</td>
+                      <td>Let&apos;s Dance</td>
                       <td className="text-right">$57 944.6</td>
                       <td className="text-center">
-                        {/* { <div className="sparkline" */}
-                        {/* jq-sparkline [options]="{type: 'bar', barColor: '#f0b518'}"
-                        [data]="[11,17,19,16,14,12,16]"></div> */}
-                        {/* } */}
+                        <Sparklines data={[11, 17, 19, 16, 14, 12, 16]} style={{ width: '35px', height: '20px' }}>
+                          <SparklinesBars style={{ fill: '#f0b518' }} />
+                        </Sparklines>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <div className="abc-checkbox">
-                          <input id="checkbox214" type="checkbox" />
-                          <label htmlFor="checkbox214" />
+                          <Input
+                            id="checkbox24" type="checkbox" checked={this.state.checkboxes3[4]}
+                            onChange={event => this.changeCheck(event, 'checkboxes3', 4)}
+                          />
+                          <Label for="checkbox24" />
                         </div>
                       </td>
                       <td>Air Pro</td>
                       <td className="text-right">$118 533.1</td>
                       <td className="text-center">
-                        {/* { <div className="sparkline" */}
-                        {/* jq-sparkline [options]="{type: 'bar', barColor: '#e5603b'}"
-                        [data]="[13,14,20,16,15,4,14]"></div> */}
-                        {/* } */}
+                        <Sparklines data={[13, 14, 20, 16, 15, 4, 14]} style={{ width: '35px', height: '20px' }}>
+                          <SparklinesBars style={{ fill: '#e5603b' }} />
+                        </Sparklines>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <div className="abc-checkbox">
-                          <input id="checkbox215" type="checkbox" />
-                          <label htmlFor="checkbox215" />
+                          <Input
+                            id="checkbox25" type="checkbox" checked={this.state.checkboxes3[5]}
+                            onChange={event => this.changeCheck(event, 'checkboxes3', 5)}
+                          />
+                          <Label for="checkbox25" />
                         </div>
                       </td>
                       <td>Version Control</td>
                       <td className="text-right">$72 854.5</td>
                       <td className="text-center">
-                        {/* { <div className="sparkline" */}
-                        {/* jq-sparkline [options]="{type: 'bar', barColor: '#618fb0'}"
-                        [data]="[16,15,4,14,13,14,20]"></div> */}
-                        {/* } */}
+                        <Sparklines data={[16, 15, 4, 14, 13, 14, 20]} style={{ width: '35px', height: '20px' }}>
+                          <SparklinesBars style={{ fill: '#618fb0' }} />
+                        </Sparklines>
                       </td>
                     </tr>
                   </tbody>
