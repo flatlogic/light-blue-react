@@ -11,8 +11,6 @@ import loadErrorPage from 'bundle-loader?lazy!../pages/error/ErrorPage';
 
 import LayoutComponent from '../components/Layout/Layout';
 import LoginComponent from '../pages/login/Login';
-import LandingComponent from '../pages/landing/Landing';
-
 
 const ErrorPageBundle = Bundle.generateBundle(loadErrorPage);
 
@@ -85,7 +83,6 @@ class App extends React.PureComponent {
         <Route path="/" exact render={() => <Redirect to="/app" />} />
         <PrivateRoute isAuthenticated={this.props.isAuthenticated} path="/app" component={LayoutComponent} />
         <Route path="/login" exact component={LoginComponent} />
-        <Route path="/landing" exact component={LandingComponent} />
         <Route component={ErrorPageBundle} />
       </Switch>
     );
