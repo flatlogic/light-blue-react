@@ -1,0 +1,26 @@
+@import '../../../styles/app';
+
+.root {
+  .navEmailFolders {
+    > li > a {
+      color: $gray-200;
+      font-weight: $font-weight-normal;
+      background-color: transparent;
+
+      &:hover {
+        background-color: rgba($widget-bg-common, 0.25);
+        color: $text-color;
+      }
+    }
+
+    > li.active > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: rgba($widget-bg-common, 0.25);
+        color: $text-color;
+        font-weight: $font-weight-semi-bold;
+      }
+    }
+  }
+}

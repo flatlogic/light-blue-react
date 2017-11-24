@@ -598,6 +598,13 @@ button.dropdown-toggle {
   .page-link:hover {
     text-decoration: none;
   }
+
+  .page-item {
+    &.disabled,
+    &[disabled] {
+      cursor: not-allowed;
+    }
+  }
 }
 
 /*         Modals          */

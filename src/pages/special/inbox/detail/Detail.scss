@@ -1,0 +1,70 @@
+@import '../../../../styles/app';
+
+.root {
+  .emailView {
+    margin: $widget-padding-vertical 0;
+
+    hr {
+      margin: 5px 0;
+    }
+
+    .emailBody {
+      margin-top: $spacer;
+    }
+  }
+
+  .emailActions {
+    //  .btn-group {
+    //    display: inline-flex !important;
+    //  }
+    //
+    //  .dropdown-toggle {
+    //    padding-left: 8px;
+    //    padding-right: 8px;
+    //  }
+  }
+
+  h4 {
+    font-size: 14px;
+  }
+
+  .emailDetails img {
+    width: 30px;
+    height: 30px;
+    float: left;
+  }
+
+  .emailDetailsContent {
+    @include clearfix();
+
+    .email {
+      color: $text-muted;
+      font-size: $font-size-mini;
+    }
+
+    .receiver {
+      display: block;
+      color: $text-muted;
+      margin-top: -6px;
+    }
+
+    .emailDate {
+      margin-right: 10px;
+      line-height: 28px;
+      vertical-align: middle;
+    }
+  }
+
+  .emailAttachments {
+    .attachment {
+      img {
+        display: block;
+      }
+
+      .title {
+        margin: 0;
+        font-weight: bold;
+      }
+    }
+  }
+}

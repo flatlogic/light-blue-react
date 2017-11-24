@@ -29,6 +29,7 @@ import loadWidgetsBasic from 'bundle-loader?lazy!../../pages/widgets/basic/Basic
 import loadWidgetsLive from 'bundle-loader?lazy!../../pages/widgets/live/Live';
 import loadSpecialSearch from 'bundle-loader?lazy!../../pages/special/search/Search';
 import loadSpecialInvoice from 'bundle-loader?lazy!../../pages/special/invoice/Invoice';
+import loadSpecialInbox from 'bundle-loader?lazy!../../pages/special/inbox/Inbox';
 /* eslint-enable */
 
 import s from './Layout.scss';
@@ -62,6 +63,7 @@ const WidgetsBasicBundle = Bundle.generateBundle(loadWidgetsBasic);
 const WidgetsLiveBundle = Bundle.generateBundle(loadWidgetsLive);
 const SpecialSearchBundle = Bundle.generateBundle(loadSpecialSearch);
 const SpecialInvoiceBundle = Bundle.generateBundle(loadSpecialInvoice);
+const SpecialInboxBundle = Bundle.generateBundle(loadSpecialInbox);
 
 class Layout extends React.Component {
 
@@ -102,6 +104,7 @@ class Layout extends React.Component {
               <Route path="/app/widgets/live" exact component={WidgetsLiveBundle} />
               <Route path="/app/special/search" exact component={SpecialSearchBundle} />
               <Route path="/app/special/invoice" exact component={SpecialInvoiceBundle} />
+              <Route path="/app/special/inbox" component={SpecialInboxBundle} />
             </Switch>
           </main>
         </div>

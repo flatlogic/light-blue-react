@@ -1,0 +1,106 @@
+@import '../../../../styles/app';
+
+:global {
+  @import '../../../../../node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox';
+}
+
+.root {
+  .tableEmails {
+    margin-bottom: 0;
+
+    thead > tr > th:first-child {
+      padding-left: 0.75rem;
+    }
+
+    tbody > tr > td {
+      &:first-child {
+        width: 45px;
+        padding: 0.75rem;
+      }
+
+      &:last-child {
+        padding-right: 17px;
+      }
+    }
+
+    tr {
+      height: 40px;
+    }
+
+    td,
+    th {
+      padding: 10px;
+    }
+
+    td > .abcCheckbox,
+    th > .abcCheckbox {
+      top: 8px;
+
+      label {
+        top: -7px;
+        left: 11px;
+      }
+
+      > label::before,
+      > label::after {
+        margin-left: -1.25rem;
+      }
+    }
+
+    .selectMail {
+      padding-left: 5px;
+    }
+
+    .name,
+    .subject,
+    .date {
+      cursor: pointer;
+    }
+
+    .date {
+      text-align: right;
+      min-width: 65px;
+    }
+
+    .unread {
+      font-weight: $font-weight-semi-bold;
+      color: $text-color;
+    }
+
+    .favorite {
+      text-align: center;
+    }
+
+    .starred {
+      color: $text-muted;
+      cursor: pointer;
+
+      @include transition(color 0.2s);
+
+      &:hover {
+        color: $text-color;
+      }
+
+      i {
+        color: theme-color('warning');
+      }
+    }
+  }
+
+  .widgetEmailCount {
+    margin: 0;
+    font-size: $font-size-sm;
+    color: #d2d2d2;
+    line-height: 29px;
+    vertical-align: bottom;
+  }
+
+  .widgetEmailPagination {
+    margin-left: 10px;
+    border-left: 1px solid #ddd;
+    padding-left: 15px;
+    border-radius: 0;
+    vertical-align: -9px;
+  }
+}
+

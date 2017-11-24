@@ -16,7 +16,6 @@ import Widget from '../../../components/Widget';
 
 import s from './Buttons.scss';
 
-
 class Buttons extends React.Component {
   constructor(props) {
     super(props);
