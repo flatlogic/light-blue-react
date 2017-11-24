@@ -18,7 +18,7 @@ class Stats extends React.Component {
           <small> Tiles, bars and more</small>
         </h2>
         <Row>
-          <Col md={2} sm={4}>
+          <Col lg={2} md={4} sm={6}>
             <div className="box">
               <div className="icon">
                 <i className="fa fa-calendar" />
@@ -28,7 +28,7 @@ class Stats extends React.Component {
               </div>
             </div>
           </Col>
-          <Col md={2} sm={4}>
+          <Col lg={2} md={4} sm={6}>
             <div className="box">
               <div className="big-text">
                 3.28%
@@ -38,7 +38,7 @@ class Stats extends React.Component {
               </div>
             </div>
           </Col>
-          <Col md={2} sm={4}>
+          <Col lg={2} md={4} sm={6}>
             <div className="box">
               <div className="icon">
                 <i className="fa fa-user" />
@@ -48,7 +48,7 @@ class Stats extends React.Component {
               </div>
             </div>
           </Col>
-          <Col md={2} sm={4}>
+          <Col lg={2} md={4} sm={6}>
             <div className="box">
               <div className="big-text">
                 +512
@@ -58,7 +58,7 @@ class Stats extends React.Component {
               </div>
             </div>
           </Col>
-          <Col md={2} sm={4}>
+          <Col lg={2} md={4} sm={6}>
             <div className="box">
               <div className="icon">
                 <i className="fa fa-shopping-cart" />
@@ -68,7 +68,7 @@ class Stats extends React.Component {
               </div>
             </div>
           </Col>
-          <Col md={2} sm={4}>
+          <Col lg={2} md={4} sm={6}>
             <div className="box">
               <div className="big-text">
                 6.42%
@@ -80,7 +80,7 @@ class Stats extends React.Component {
           </Col>
         </Row>
         <Row className={s.equalHeightStats}>
-          <Col md={4}>
+          <Col lg={4} md={12} xs={12}>
             <Widget
               title={<h5><i className="fa fa-arrow-right" /> Progressbars</h5>}
             >
@@ -93,7 +93,7 @@ class Stats extends React.Component {
               <Progress color="inverse" value="33" className="progress-lg" />
             </Widget>
           </Col>
-          <Col md={4}>
+          <Col lg={4} md={12} xs={12}>
             <Widget
               title={<h5><i className="fa fa-caret-right" /> Small ones</h5>}
             >
@@ -108,7 +108,7 @@ class Stats extends React.Component {
 
             </Widget>
           </Col>
-          <Col md={4}>
+          <Col lg={4} md={12} xs={12}>
             <Widget
               title={<h5><i className="fa fa-angle-right" /> Some extensions</h5>}
             >
@@ -122,8 +122,8 @@ class Stats extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col md={3} />
-          <Col md={3}>
+          <Col lg={3} className="d-md-none" />
+          <Col lg={3} md={12} xs={12}>
             <Widget
               title={<h5><i className="fa fa-magnet" /> Server Overview</h5>}
             >
@@ -160,7 +160,7 @@ class Stats extends React.Component {
               </ul>
             </Widget>
           </Col>
-          <Col md={3}>
+          <Col lg={3} md={12} xs={12}>
             <Widget
               title={<h5><i className="fa fa-lightbulb" />Stats Overview</h5>}
             >
