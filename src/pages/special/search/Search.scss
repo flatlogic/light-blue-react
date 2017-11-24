@@ -24,6 +24,10 @@
     background-color: $widget-bg;
     border-radius: $border-radius;
 
+    &:first-of-type {
+      overflow: hidden;
+    }
+
     @include clearfix();
 
     .imageLink {
