@@ -28,6 +28,7 @@ class Buttons extends React.Component {
     this.toggleFive = this.toggleFive.bind(this);
     this.toggleSix = this.toggleSix.bind(this);
     this.toggleSeven = this.toggleSeven.bind(this);
+    this.toggleEight = this.toggleEight.bind(this);
 
     this.onRadioBtnClickOne = this.onRadioBtnClickOne.bind(this);
     this.onRadioBtnClickTwo = this.onRadioBtnClickTwo.bind(this);
@@ -101,22 +102,27 @@ class Buttons extends React.Component {
 
   toggleFive() {
     this.setState({
-      dropdownOpenFour: !this.state.dropdownOpenFour,
+      dropdownOpenFive: !this.state.dropdownOpenFive,
     });
   }
 
   toggleSix() {
     this.setState({
-      dropdownOpenFour: !this.state.dropdownOpenFour,
+      dropdownOpenSix: !this.state.dropdownOpenSix,
     });
   }
 
   toggleSeven() {
     this.setState({
-      dropdownOpenFour: !this.state.dropdownOpenFour,
+      dropdownOpenSeven: !this.state.dropdownOpenSeven,
     });
   }
 
+  toggleEight() {
+    this.setState({
+      dropdownOpenEight: !this.state.dropdownOpenEight,
+    });
+  }
 
   render() {
     return (
@@ -136,37 +142,37 @@ class Buttons extends React.Component {
               <Card className="card-well text-center">
                 <div className="row">
                   <Col sm={4} md={4}>
-                    <Button color="secondary" className="width-100 mb-xs mr-xs">Secondary</Button>
+                    <Button color="secondary" className="mb-xs mr-xs">Secondary</Button>
                   </Col>
                   <Col sm={4} md={4}>
-                    <Button color="primary" className="width-100 mb-xs mr-xs">Primary</Button>
+                    <Button color="primary" className="mb-xs mr-xs">Primary</Button>
                   </Col>
                   <Col sm={4} md={4}>
-                    <Button color="info" className="width-100 mb-xs mr-xs">&nbsp;Info&nbsp;</Button>
+                    <Button color="info" className="mb-xs mr-xs">&nbsp;Info&nbsp;</Button>
                   </Col>
                 </div>
               </Card>
               <Card className="card-well text-center">
                 <div className="row">
                   <Col sm={4} md={4}>
-                    <Button color="success" className="width-100 mb-xs mr-xs">Success</Button>
+                    <Button color="success" className="mb-xs mr-xs">Success</Button>
                   </Col>
                   <Col sm={4} md={4}>
-                    <Button color="warning" className="width-100 mb-xs mr-xs">Warning</Button>
+                    <Button color="warning" className="mb-xs mr-xs">Warning</Button>
                   </Col>
                   <Col sm={4} md={4}>
-                    <Button color="danger" className="width-100 mb-xs mr-xs">Danger</Button>
+                    <Button color="danger" className="mb-xs mr-xs">Danger</Button>
                   </Col>
                 </div>
               </Card>
-              <div className="card bg-addition text-center">
+              <Card className="card-well text-center">
                 <div className="row">
                   <Col sm={4} md={4} />
                   <Col sm={4} md={4}>
-                    <Button color="inverse" className="width-100 mb-xs mr-xs">Inverse</Button>
+                    <Button color="inverse" className="mb-xs mr-xs">Inverse</Button>
                   </Col>
                 </div>
-              </div>
+              </Card>
             </Widget>
             {/* Size variants */}
             <Widget
@@ -175,26 +181,26 @@ class Buttons extends React.Component {
               <Card className="card-well card-sm card-white text-center">
                 <div className="row">
                   <Col sm={4} md={4}>
-                    <Button color="secondary" size="sm" className="width-100 mb-xs mr-xs">Secondary</Button>
+                    <Button color="secondary" size="sm" className="mb-xs mr-xs">Secondary</Button>
                   </Col>
                   <Col sm={4} md={4}>
-                    <Button color="primary" size="sm" className="width-100 mb-xs mr-xs">Primary</Button>
+                    <Button color="primary" size="sm" className="mb-xs mr-xs">Primary</Button>
                   </Col>
                   <Col sm={4} md={4}>
-                    <Button color="info" size="sm" className="width-100 mb-xs mr-xs">&nbsp;Info&nbsp;</Button>
+                    <Button color="info" size="sm" className="mb-xs mr-xs">&nbsp;Info&nbsp;</Button>
                   </Col>
                 </div>
               </Card>
               <Card className="card-well card-sm card-white text-center">
                 <div className="row">
                   <Col sm={4} md={4}>
-                    <Button color="success" size="sm" className="width-100 mb-xs mr-xs">Success</Button>
+                    <Button color="success" size="sm" className="mb-xs mr-xs">Success</Button>
                   </Col>
                   <Col sm={4} md={4}>
-                    <Button color="warning" size="sm" className="width-100 mb-xs mr-xs">Warning</Button>
+                    <Button color="warning" size="sm" className="mb-xs mr-xs">Warning</Button>
                   </Col>
                   <Col sm={4} md={4}>
-                    <Button color="danger" size="sm" className="width-100 mb-xs mr-xs">Danger</Button>
+                    <Button color="danger" size="sm" className="mb-xs mr-xs">Danger</Button>
                   </Col>
                 </div>
               </Card>
@@ -202,7 +208,7 @@ class Buttons extends React.Component {
                 <div className="row">
                   <Col sm={4} md={4} />
                   <Col sm={4} md={4}>
-                    <Button color="inverse" size="sm" className="width-100 mb-xs mr-xs">Inverse</Button>
+                    <Button color="inverse" size="sm" className="mb-xs mr-xs">Inverse</Button>
                   </Col>
                 </div>
               </Card>
@@ -214,26 +220,26 @@ class Buttons extends React.Component {
               <Card className="card-well card-sm text-center">
                 <div className="row">
                   <Col sm={4} md={4}>
-                    <Button color="secondary" size="lg" className="width-100 mb-xs mr-xs">Secondary</Button>
+                    <Button color="secondary" size="lg" className="mb-xs mr-xs">Secondary</Button>
                   </Col>
                   <Col sm={4} md={4}>
-                    <Button color="primary" size="lg" className="width-100 mb-xs mr-xs">Primary</Button>
+                    <Button color="primary" size="lg" className="mb-xs mr-xs">Primary</Button>
                   </Col>
                   <Col sm={4} md={4}>
-                    <Button color="info" size="lg" className="width-100 mb-xs mr-xs">&nbsp;Info&nbsp;</Button>
+                    <Button color="info" size="lg" className="mb-xs mr-xs">&nbsp;Info&nbsp;</Button>
                   </Col>
                 </div>
               </Card>
               <Card className="card-well card-sm text-center">
                 <div className="row">
                   <Col sm={4} md={4}>
-                    <Button color="success" size="lg" className="width-100 mb-xs mr-xs">Success</Button>
+                    <Button color="success" size="lg" className="mb-xs mr-xs">Success</Button>
                   </Col>
                   <Col sm={4} md={4}>
-                    <Button color="warning" size="lg" className="width-100 mb-xs mr-xs">Warning</Button>
+                    <Button color="warning" size="lg" className="mb-xs mr-xs">Warning</Button>
                   </Col>
                   <Col sm={4} md={4}>
-                    <Button color="danger" size="lg" className="width-100 mb-xs mr-xs">Danger</Button>
+                    <Button color="danger" size="lg" className="mb-xs mr-xs">Danger</Button>
                   </Col>
                 </div>
               </Card>
@@ -241,7 +247,7 @@ class Buttons extends React.Component {
                 <div className="row">
                   <Col sm={4} md={4} />
                   <Col sm={4} md={4}>
-                    <Button color="inverse" size="lg" className="width-100 mb-xs mr-xs">Inverse</Button>
+                    <Button color="inverse" size="lg" className="mb-xs mr-xs">Inverse</Button>
                   </Col>
                 </div>
               </Card>
@@ -256,17 +262,17 @@ class Buttons extends React.Component {
                 <blockquote className="blockquote-sm mb-3">Disabled state</blockquote>
                 <Row className="text-center mb-3">
                   <Col md={12}>
-                    <Button color="secondary" className="width-100 mb-xs mr-xs" disabled>Secondary</Button>
-                    <Button color="primary" className="width-100 mb-xs mr-xs" disabled>Primary</Button>
-                    <Button color="info" className="width-100 mb-xs mr-xs" disabled>Info</Button>
-                    <Button color="inverse" className="width-100 mb-xs mr-xs" disabled>Inverse</Button>
+                    <Button color="secondary" className="mb-xs mr-xs" disabled>Secondary</Button>
+                    <Button color="primary" className="mb-xs mr-xs" disabled>Primary</Button>
+                    <Button color="info" className="mb-xs mr-xs" disabled>Info</Button>
+                    <Button color="inverse" className="mb-xs mr-xs" disabled>Inverse</Button>
                   </Col>
                 </Row>
                 <Row className="text-center">
                   <Col md={12}>
-                    <Button color="success" className="width-100 mb-xs mr-xs" disabled>Success</Button>
-                    <Button color="warning" className="width-100 mb-xs mr-xs" disabled>Warning</Button>
-                    <Button color="danger" className="width-100 mb-xs mr-xs" disabled>Danger</Button>
+                    <Button color="success" className="mb-xs mr-xs" disabled>Success</Button>
+                    <Button color="warning" className="mb-xs mr-xs" disabled>Warning</Button>
+                    <Button color="danger" className="mb-xs mr-xs" disabled>Danger</Button>
                   </Col>
                 </Row>
               </Card>
@@ -300,40 +306,52 @@ class Buttons extends React.Component {
                 <blockquote className="blockquote-sm mb-3">Button dropdown menus</blockquote>
                 <Row className="text-center mb-3">
                   <Col md={12}>
-                    <ButtonDropdown isOpen={this.state.dropdownOpenOne} toggle={this.toggleOne}>
-                      <DropdownToggle caret color="danger" className="width-100 mb-xs mr-xs">
-                        One
+                    <ButtonDropdown
+                      isOpen={this.state.dropdownOpenOne}
+                      toggle={this.toggleOne}
+                      className="mr-xs"
+                    >
+                      <DropdownToggle caret color="danger">
+                        &nbsp; One &nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem header>Header</DropdownItem>
-                        <DropdownItem disabled>Action</DropdownItem>
+                        <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
                         <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Separated link</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
-                    <ButtonDropdown isOpen={this.state.dropdownOpenTwo} toggle={this.toggleTwo}>
-                      <DropdownToggle caret color="secondary" className="width-100 mb-xs mr-xs">
-                        Two
+                    <ButtonDropdown
+                      isOpen={this.state.dropdownOpenTwo}
+                      toggle={this.toggleTwo}
+                      className="mr-xs"
+                    >
+                      <DropdownToggle caret color="inverse">
+                        &nbsp; Two &nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem header>Header</DropdownItem>
-                        <DropdownItem disabled>Action</DropdownItem>
+                        <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
                         <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Separated link</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
-                    <ButtonDropdown isOpen={this.state.dropdownOpenThree} toggle={this.toggleThree}>
-                      <DropdownToggle caret color="warning" className="width-100 mb-xs mr-xs">
-                        Three
+                    <ButtonDropdown
+                      isOpen={this.state.dropdownOpenThree}
+                      toggle={this.toggleThree}
+                      className="mr-xs"
+                    >
+                      <DropdownToggle caret color="warning">
+                        &nbsp; Three &nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem header>Header</DropdownItem>
-                        <DropdownItem disabled>Action</DropdownItem>
+                        <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
                         <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Separated link</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
                   </Col>
@@ -344,48 +362,64 @@ class Buttons extends React.Component {
                 <blockquote className="blockquote-sm mb-3">Segmented dropdowns</blockquote>
                 <Row className="text-center mb-3">
                   <Col md={12}>
-                    <ButtonDropdown className="mr-2" isOpen={this.state.dropdownOpenFive} toggle={this.toggleFive}>
-                      <Button />
-                      <DropdownToggle caret size="lg">Gray</DropdownToggle>
+                    <ButtonDropdown
+                      className="mr-xs"
+                      isOpen={this.state.dropdownOpenFive}
+                      toggle={this.toggleFive}
+                    >
+                      <Button size="lg" color="inverse">Gray</Button>
+                      <DropdownToggle caret color="inverse" className="dropdown-toggle-split" />
                       <DropdownMenu>
-                        <DropdownItem header>Header</DropdownItem>
-                        <DropdownItem disabled>Action</DropdownItem>
+                        <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
                         <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Separated link</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
-                    <ButtonDropdown className="mr-2" isOpen={this.state.dropdownOpenSix} toggle={this.toggleSix}>
-                      <Button />
-                      <DropdownToggle caret color="inverse">Gray</DropdownToggle>
+                    <ButtonDropdown
+                      className="mr-xs"
+                      isOpen={this.state.dropdownOpenSix}
+                      toggle={this.toggleSix}
+                    >
+                      <Button>White</Button>
+                      <DropdownToggle caret className="dropdown-toggle-split" />
                       <DropdownMenu>
-                        <DropdownItem header>Header</DropdownItem>
-                        <DropdownItem disabled>Action</DropdownItem>
+                        <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
                         <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Separated link</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
-                    <ButtonDropdown className="mr-2" isOpen={this.state.dropdownOpenSeven} toggle={this.toggleSeven}>
-                      <Button />
-                      <DropdownToggle caret color="info" size="sm">Gray</DropdownToggle>
+                    <ButtonDropdown
+                      className="mr-xs"
+                      isOpen={this.state.dropdownOpenSeven}
+                      toggle={this.toggleSeven}
+                    >
+                      <Button color="info" size="sm">Blue</Button>
+                      <DropdownToggle caret color="info" className="dropdown-toggle-split" />
                       <DropdownMenu>
-                        <DropdownItem header>Header</DropdownItem>
-                        <DropdownItem disabled>Action</DropdownItem>
+                        <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
                         <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Separated link</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
-                    <ButtonDropdown isOpen={this.state.dropdownOpenSeven} toggle={this.toggleSeven}>
-                      <Button />
-                      <DropdownToggle caret color="primary" size="sm">Gray</DropdownToggle>
+                    <ButtonDropdown
+                      className="mr-xs"
+                      isOpen={this.state.dropdownOpenEight}
+                      toggle={this.toggleEight}
+                    >
+                      <Button color="primary" size="xs">Teal</Button>
+                      <DropdownToggle caret color="primary" className="dropdown-toggle-split" />
                       <DropdownMenu>
-                        <DropdownItem header>Header</DropdownItem>
-                        <DropdownItem disabled>Action</DropdownItem>
+                        <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
                         <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Separated link</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
                   </Col>
@@ -398,15 +432,15 @@ class Buttons extends React.Component {
                   <Col md={12}>
                     <ButtonGroup>
                       <Button
-                        color="secondary" onClick={() => this.onCheckboxBtnClickOne(1)}
+                        color="inverse" onClick={() => this.onCheckboxBtnClickOne(1)}
                         active={this.state.cSelectedOne.includes(1)}
                       >Left way</Button>
                       <Button
-                        color="secondary" onClick={() => this.onCheckboxBtnClickOne(2)}
+                        color="inverse" onClick={() => this.onCheckboxBtnClickOne(2)}
                         active={this.state.cSelectedOne.includes(2)}
                       >Middle way</Button>
                       <Button
-                        color="secondary" onClick={() => this.onCheckboxBtnClickOne(3)}
+                        color="inverse" onClick={() => this.onCheckboxBtnClickOne(3)}
                         active={this.state.cSelectedOne.includes(3)}
                       >Right way</Button>
                     </ButtonGroup>

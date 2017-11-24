@@ -237,8 +237,6 @@ button.dropdown-toggle {
 
   &:hover,
   &:focus {
-    color: $white;
-
     @include box-shadow(inset 0 1px 5px rgba(0, 0, 0, 0.08));
   }
 
@@ -255,6 +253,33 @@ button.dropdown-toggle {
 
   .caret {
     border-top-color: #fff;
+  }
+}
+
+.btn-secondary {
+  border-color: $gray-400;
+  color: $gray-800;
+
+  &.active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  }
+}
+
+.btn-success,
+.btn-info,
+.btn-warning {
+  color: $white;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.btn,
+.btn-inverse,
+.btn-gray {
+  &:not(.active) {
+    box-shadow: none !important;
   }
 }
 
@@ -901,10 +926,6 @@ button.dropdown-toggle {
   border: none;
   padding: $card-padding;
 
-  &.card-sm {
-    padding: 9px;
-  }
-
   &.card-white {
     background-color: rgba($white, 0.2);
   }
@@ -912,6 +933,10 @@ button.dropdown-toggle {
   &.card-well {
     padding: 19px;
     margin-bottom: 20px;
+  }
+
+  &.card-sm {
+    padding: 9px;
   }
 }
 

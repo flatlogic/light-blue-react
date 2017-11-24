@@ -221,7 +221,7 @@ class Elements extends React.Component {
             <Widget title={<h5> <i className="fa fa-align-left" /> Inputs </h5>} settings refresh close>
               <FormGroup>
                 <Form>
-                  <legend>Horizontal form</legend>
+                  <legend className="section">Horizontal form</legend>
                   <FormGroup row>
                     <Label for="normal-field" md={4} className="text-md-right">
                       Normal field
@@ -347,10 +347,10 @@ class Elements extends React.Component {
 
           {/* Default form */}
           <Col lg={6}>
-            <Widget title={<h6> Prepended and appended inputs </h6>} settings refresh close>
+            <Widget title={<h5> Prepended and appended inputs </h5>} settings refresh close>
               <FormGroup>
                 <Form>
-                  <legend><strong>Default</strong> Form</legend>
+                  <legend className="section">Default Form</legend>
                   <Row>
                     <Col md={8}>
                       <FormGroup>
@@ -485,7 +485,7 @@ class Elements extends React.Component {
               settings refresh close
             >
               <Form>
-                <legend>Control sizing</legend>
+                <legend className="section">Control sizing</legend>
                 <p>
                   Set input heights using parameters like <code>size=&apos;lg&apos;</code> and
                   <code>size=&apos;sm&apos;</code>.
@@ -513,7 +513,7 @@ class Elements extends React.Component {
               settings refresh close
             >
               <Form>
-                <legend> Input Groups</legend>
+                <legend className="section"> Input Groups</legend>
                 <p>
                   Different colors & sizes for any elements including input groups. Elements may be
                   easily styled with classes like <code>.bg-primary</code> or
@@ -552,9 +552,9 @@ class Elements extends React.Component {
         <Row>
           {/* textares */}
           <Col lg="6">
-            <Widget title={<h6><i className="fa fa-font" /> Textareas</h6>} settings refresh close>
+            <Widget title={<h5><i className="fa fa-font" /> Textareas</h5>} settings refresh close>
               <Form>
-                <legend>Small form</legend>
+                <legend className="section">Small form</legend>
                 <FormGroup row>
                   <Label md={3} className="text-md-right" for="default-textarea">Default
                     textarea</Label>
@@ -628,7 +628,7 @@ class Elements extends React.Component {
               settings
             >
               <Form className="form-label-left">
-                <legend>Default form with labels on left</legend>
+                <legend className="section">Default form with labels on left</legend>
                 <FormGroup row>
                   <Label md="4" for="default-select">Default select</Label>
                   <Col md="6">
@@ -650,7 +650,7 @@ class Elements extends React.Component {
               </Form>
 
               <Form>
-                <legend>Dropdown based colored selects</legend>
+                <legend className="section">Dropdown based colored selects</legend>
                 <FormGroup row>
                   <Label md="4" for="simple-select">Simple select</Label>
                   <Col md="8">
@@ -792,7 +792,7 @@ class Elements extends React.Component {
                 <Col lg="4">
                   <Form>
 
-                    <legend>Basic</legend>
+                    <legend className="section">Basic</legend>
                     <p>
                       Supports bootstrap brand colors: <code>.abc-checkbox-primary</code>,
                       <code>.abc-checkbox-info</code> etc.
@@ -844,7 +844,7 @@ class Elements extends React.Component {
 
                 <Col lg="4">
                   <Form>
-                    <legend>Circled</legend>
+                    <legend className="section">Circled</legend>
                     <p>
                       <code>.abc-checkbox-circle</code> for roundness. No more sad controls
                       controls.
@@ -869,7 +869,7 @@ class Elements extends React.Component {
 
                 <Col lg="4">
                   <Form>
-                    <legend>Disabled</legend>
+                    <legend className="section">Disabled</legend>
                     <p>
                       Disabled state also supported. Full stack checkbox functionality.
                     </p>
@@ -909,11 +909,11 @@ class Elements extends React.Component {
         {/* radio controls */}
         <Row>
           <Col md="12">
-            <Widget title={<h6> Radio <strong>Controls</strong></h6>} close refresh settings>
+            <Widget title={<h5> Radio <strong>Controls</strong></h5>} close refresh settings>
               <Form>
                 <Row>
                   <Col lg="4">
-                    <legend>Basic</legend>
+                    <legend className="section">Basic</legend>
                     <p>
                       Supports bootstrap brand colors: <code>.abc-radio-primary</code>,
                       <code>.abc-radio-danger</code>etc.
@@ -949,7 +949,7 @@ class Elements extends React.Component {
                     </Row>
                   </Col>
                   <Col lg="4">
-                    <legend>
+                    <legend className="section">
                       Disabled
                     </legend>
                     <p>
@@ -968,7 +968,7 @@ class Elements extends React.Component {
                     </FormGroup>
                   </Col>
                   <Col lg="4">
-                    <legend>
+                    <legend className="section">
                       Cool iOS-like switches
                     </legend>
                     <p>
@@ -998,9 +998,9 @@ class Elements extends React.Component {
         <Row>
           {/* pickers */}
           <Col lg="6" xs="12">
-            <Widget title={<h6>Pickers</h6>} close refresh settings>
+            <Widget title={<h5>Pickers</h5>} close refresh settings>
               <Form>
-                <legend>Date & Time</legend>
+                <legend className="section">Date & Time</legend>
                 <FormGroup>
                   <Label for="datetimepicker">Time-enabled</Label>
                   <Row>
@@ -1034,7 +1034,7 @@ class Elements extends React.Component {
               </Form>
 
               <Form>
-                <legend>Colors</legend>
+                <legend className="section">Colors</legend>
                 <FormGroup>
                   <Label for="colorpickeri">
                     Simple select
@@ -1062,9 +1062,9 @@ class Elements extends React.Component {
 
           {/* input masks */}
           <Col lg="6" xs="12">
-            <Widget title={<h6> Input <strong>Masks</strong></h6>} close settings refresh>
+            <Widget title={<h5> Input <strong>Masks</strong></h5>} close settings refresh>
               <Form className="form-label-left">
-                <legend>Masked inputs</legend>
+                <legend className="section">Masked inputs</legend>
                 <FormGroup row>
                   <Label md="4" xs="12" for="mask-phone">
                     Phone
@@ -1116,7 +1116,7 @@ class Elements extends React.Component {
         {/* sliders */}
         <Row>
           <Col xs="12">
-            <Widget title={<h6>Sliders</h6>} settings close refresh>
+            <Widget title={<h5>Sliders</h5>} settings close refresh>
               <Row>
                 <Col lg="4">
                   <h4>Color Options</h4>

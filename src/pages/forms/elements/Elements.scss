@@ -125,11 +125,16 @@
     /* Datepicker */
 
     .datepicker {
+      .form-control {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
       .input-group-addon {
         display: inline-block;
         position: relative;
         top: -2px;
-        left: -2px;
+        padding: 0.52rem 1rem;
       }
 
       i.glyphicon {
@@ -422,18 +427,3 @@
   }
 }
 
-//.dropzone {
-//  width: 100%;
-//  text-align: center;
-//  padding: 40px 10px;
-//  height: 200px;
-//  border: 2px dashed #ccc;
-//
-//  @include border-radius($border-radius);
-//
-//  img {
-//    max-height: 100px;
-//    max-width: 150px;
-//    border-radius: 5px;
-//  }
-//}
