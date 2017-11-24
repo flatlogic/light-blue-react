@@ -22,7 +22,7 @@ class Stats extends React.Component {
   render() {
     return (
       <div className={s.root}>
-        <h2 className="page-title">Invoice
+        <h2 className="page-title">Invoice&nbsp;
           <small>Print optimized page</small>
         </h2>
         <Widget className="no-margin">
@@ -123,7 +123,7 @@ class Stats extends React.Component {
           <Row>
             <Col sm={6} className="col-print-6">
               <blockquote className="blockquote blockquote-sm">
-                <strong>Note:</strong>
+                <strong>Note:</strong>&nbsp;
                 Keep in mind, sometimes bad things happen. But it&#39;s just sometimes.
               </blockquote>
             </Col>

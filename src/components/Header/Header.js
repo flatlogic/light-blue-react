@@ -108,7 +108,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <Navbar>
+      <Navbar className="d-print-none">
         <NavbarBrand className={s.logo} href="/">
           Light <strong>Blue</strong>
         </NavbarBrand>
