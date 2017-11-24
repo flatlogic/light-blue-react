@@ -26,6 +26,107 @@ import s from './Maps.scss';
 import Widget from '../../../components/Widget';
 import VectorMap from './vector-map/VectorMap';
 
+const BasicMap = withScriptjs(withGoogleMap(() =>
+  <GoogleMap
+    defaultZoom={12}
+    defaultCenter={{ lat: parseFloat(-37.813179), lng: parseFloat(144.950259) }}
+  />,
+));
+
+
+const AddressMap = compose(
+  withProps({
+    googleMapURL: 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg',
+    loadingElement: <div style={{ height: '100%' }} />,
+    containerElement: <div style={{ height: '400px' }} />,
+    mapElement: <div style={{ height: '100%' }} />,
+  }),
+  lifecycle({
+    componentWillMount() {
+      const refs = {};
+
+      this.setState({
+        bounds: null,
+        center: {
+          lat: 41.9, lng: -87.624,
+        },
+        markers: [],
+        onMapMounted: (ref) => {
+          refs.map = ref;
+        },
+        onBoundsChanged: () => {
+          this.setState({
+            bounds: refs.map.getBounds(),
+            center: refs.map.getCenter(),
+          });
+        },
+        onSearchBoxMounted: (ref) => {
+          refs.searchBox = ref;
+        },
+        onPlacesChanged: () => {
+          const places = refs.searchBox.getPlaces();
+          const bounds = new google.maps.LatLngBounds();
+
+          places.forEach((place) => {
+            if (place.geometry.viewport) {
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          const nextMarkers = places.map(place => ({
+            position: place.geometry.location,
+          }));
+          const nextCenter = jQuery.get(nextMarkers, '0.position', this.state.center);
+
+          this.setState({
+            center: nextCenter,
+            markers: nextMarkers,
+          });
+          refs.map.fitBounds(bounds);
+        },
+      });
+    },
+  }),
+  withScriptjs,
+  withGoogleMap,
+)(props =>
+  <GoogleMap
+    ref={props.onMapMounted}
+    defaultZoom={15}
+    center={props.center}
+    onBoundsChanged={props.onBoundsChanged}
+  >
+    <SearchBox
+      ref={props.onSearchBoxMounted}
+      bounds={props.bounds}
+      controlPosition={google.maps.ControlPosition.TOP_LEFT}
+      onPlacesChanged={props.onPlacesChanged}
+    >
+      <input
+        className="form-control input-transparent mt-n-xs"
+        type="text"
+        placeholder="Enter Address"
+        style={{
+          boxSizing: 'border-box',
+          border: 'none',
+          width: '153px',
+          height: '32px',
+          marginTop: '20px',
+          padding: '0 12px',
+          borderRadius: '3px',
+          fontSize: '14px',
+          outline: 'none',
+          textOverflow: 'ellipses',
+        }}
+      />
+    </SearchBox>
+    {props.markers.map(marker =>
+      <Marker key={marker.id} position={marker.position} />,
+    )}
+  </GoogleMap>,
+);
+
 class Maps extends React.Component {
 
   constructor(props) {
@@ -43,113 +144,13 @@ class Maps extends React.Component {
   }
 
   render() {
-    const BasicMap = withScriptjs(withGoogleMap(() =>
-      <GoogleMap
-        defaultZoom={12}
-        defaultCenter={{ lat: parseFloat(-37.813179), lng: parseFloat(144.950259) }}
-      />,
-    ));
-
-    const AddressMap = compose(
-      withProps({
-        googleMapURL: 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg',
-        loadingElement: <div style={{ height: '100%' }} />,
-        containerElement: <div style={{ height: '400px' }} />,
-        mapElement: <div style={{ height: '100%' }} />,
-      }),
-      lifecycle({
-        componentWillMount() {
-          const refs = {};
-
-          this.setState({
-            bounds: null,
-            center: {
-              lat: 41.9, lng: -87.624,
-            },
-            markers: [],
-            onMapMounted: (ref) => {
-              refs.map = ref;
-            },
-            onBoundsChanged: () => {
-              this.setState({
-                bounds: refs.map.getBounds(),
-                center: refs.map.getCenter(),
-              });
-            },
-            onSearchBoxMounted: (ref) => {
-              refs.searchBox = ref;
-            },
-            onPlacesChanged: () => {
-              const places = refs.searchBox.getPlaces();
-              const bounds = new google.maps.LatLngBounds();
-
-              places.forEach((place) => {
-                if (place.geometry.viewport) {
-                  bounds.union(place.geometry.viewport);
-                } else {
-                  bounds.extend(place.geometry.location);
-                }
-              });
-              const nextMarkers = places.map(place => ({
-                position: place.geometry.location,
-              }));
-              const nextCenter = jQuery.get(nextMarkers, '0.position', this.state.center);
-
-              this.setState({
-                center: nextCenter,
-                markers: nextMarkers,
-              });
-              refs.map.fitBounds(bounds);
-            },
-          });
-        },
-      }),
-      withScriptjs,
-      withGoogleMap,
-    )(props =>
-      <GoogleMap
-        ref={props.onMapMounted}
-        defaultZoom={15}
-        center={props.center}
-        onBoundsChanged={props.onBoundsChanged}
-      >
-        <SearchBox
-          ref={props.onSearchBoxMounted}
-          bounds={props.bounds}
-          controlPosition={google.maps.ControlPosition.TOP_LEFT}
-          onPlacesChanged={props.onPlacesChanged}
-        >
-          <input
-            className="form-control input-transparent mt-n-xs"
-            type="text"
-            placeholder="Enter Address"
-            style={{
-              boxSizing: 'border-box',
-              border: 'none',
-              width: '153px',
-              height: '32px',
-              marginTop: '20px',
-              padding: '0 12px',
-              borderRadius: '3px',
-              fontSize: '14px',
-              outline: 'none',
-              textOverflow: 'ellipses',
-            }}
-          />
-        </SearchBox>
-        {props.markers.map(marker =>
-          <Marker key={marker.id} position={marker.position} />,
-        )}
-      </GoogleMap>,
-    );
-
     return (
       <div className={s.root}>
         <h2 className="page-title">Maps
           <small> Built-in google & vector maps</small>
         </h2>
         <Row>
-          <Col md={6}>
+          <Col md={6} xs={12}>
             <Widget title={<h5><i className="fa fa-google-plus" /> Google maps. Basic</h5>}>
               <BasicMap
                 googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg"
@@ -159,14 +160,14 @@ class Maps extends React.Component {
               />
             </Widget>
           </Col>
-          <Col md={6}>
+          <Col md={6} xs={12}>
             <Widget title={<h5><i className="fa fa-map-marker" /> Address and location</h5>}>
               <AddressMap />
             </Widget>
           </Col>
         </Row>
         <Row>
-          <Col md={6}>
+          <Col md={6} xs={12}>
             <Widget
               title={
                 <h5><i className="fa fa-arrow-right" /> Region vector map</h5>
@@ -196,7 +197,7 @@ class Maps extends React.Component {
             >
               {
                 this.state.dropdownValue === 'Europe' &&
-                <VectorMap map="europe_en" zoomed="true" />
+                <VectorMap map="europe_en" zoomed />
               }
               {
                 this.state.dropdownValue === 'USA' &&
@@ -208,7 +209,7 @@ class Maps extends React.Component {
               }
             </Widget>
           </Col>
-          <Col md={6}>
+          <Col md={6} xs={12}>
             <Widget
               title={
                 <h5><i className="fa fa-dashboard" /> World vector map</h5>

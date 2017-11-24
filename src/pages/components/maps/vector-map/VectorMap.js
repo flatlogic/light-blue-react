@@ -45,10 +45,11 @@ class VectorMap extends React.Component {
   }
 
   initVectorMap() {
-    const options = this.props.options;
+    const options = Object.assign({}, this.props.options);
     options.map = this.props.map;
+    options.scaleColors = ['#b6d6ff', '#005ace'];
     jQuery(this.el).empty();
-    jQuery(this.el).vectorMap(this.props.options);
+    jQuery(this.el).vectorMap(options);
 
     if (this.props.zoomed) {
       jQuery(this.el).vectorMap('zoomIn');
