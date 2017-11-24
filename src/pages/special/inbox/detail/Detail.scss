@@ -14,30 +14,30 @@
   }
 
   .emailActions {
-  //  .btn-group {
-  //    display: inline-flex !important;
-  //  }
-  //
-  //  .dropdown-toggle {
-  //    padding-left: 8px;
-  //    padding-right: 8px;
-  //  }
+    //  .btn-group {
+    //    display: inline-flex !important;
+    //  }
+    //
+    //  .dropdown-toggle {
+    //    padding-left: 8px;
+    //    padding-right: 8px;
+    //  }
   }
 
   h4 {
     font-size: 14px;
   }
 
-  .emailDetails img{
+  .emailDetails img {
     width: 30px;
     height: 30px;
     float: left;
   }
 
-  .emailDetailsContent{
+  .emailDetailsContent {
     @include clearfix();
 
-    .email{
+    .email {
       color: $text-muted;
       font-size: $font-size-mini;
     }
@@ -67,6 +67,4 @@
       }
     }
   }
-
 }
-

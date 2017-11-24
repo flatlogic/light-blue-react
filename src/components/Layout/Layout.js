@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { connect } from 'react-redux';
-import { Switch, Route, withRouter, Redirect } from 'react-router';
+import { Switch, Route, withRouter } from 'react-router';
 
 // an example of react-router code-splitting
 /* eslint-disable */
@@ -32,7 +32,6 @@ import Bundle from '../../core/Bundle';
 
 // Dashboard component is loaded directly as an example of server side rendering
 import Dashboard from '../../pages/dashboard/Dashboard';
-import Inbox from '../../pages/special/inbox/Inbox';
 
 const UIIconsBundle = Bundle.generateBundle(loadUIIcons);
 const UIButtonsBundle = Bundle.generateBundle(loadUIButtons);

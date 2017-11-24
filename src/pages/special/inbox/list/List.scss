@@ -5,11 +5,7 @@
 }
 
 .root {
-  .btn-sm {
-    font-size: 12px;
-  }
-
-  .tableEmails{
+  .tableEmails {
     margin-bottom: 0;
 
     thead > tr > th:first-child {
@@ -19,7 +15,7 @@
     tbody > tr > td {
       &:first-child {
         width: 45px;
-        padding: 0.75rem;;
+        padding: 0.75rem;
       }
 
       &:last-child {
@@ -38,7 +34,6 @@
 
     td > .abcCheckbox,
     th > .abcCheckbox {
-
       top: 8px;
 
       label {
@@ -46,9 +41,9 @@
         left: 11px;
       }
 
-      > label:before,
-      > label:after {
-        margin-left: -1.25rem;;
+      > label::before,
+      > label::after {
+        margin-left: -1.25rem;
       }
     }
 
@@ -76,46 +71,29 @@
       text-align: center;
     }
 
-    .starred{
+    .starred {
       color: $text-muted;
       cursor: pointer;
-      @include transition(color .2s);
-      &:hover{
+
+      @include transition(color 0.2s);
+
+      &:hover {
         color: $text-color;
       }
 
-      .fa-star{
+      i {
         color: theme-color('warning');
       }
     }
   }
 
-  //.widget-email-count{
-  //  display: inline-block;
-  //  margin: 0;
-  //  font-size: $font-size-sm;
-  //  color: #d2d2d2;
-  //  line-height: 29px;
-  //  vertical-align: bottom;
-  //
-  //  + .widget-email-pagination{
-  //    margin-left: 10px;
-  //    border-left: 1px solid $gray-light;
-  //    padding-left: 15px;
-  //    border-radius: 0;
-  //    vertical-align: -9px;
-  //  }
-  //}
-
-  .widget-email-pagination{
+  .widgetEmailCount {
     margin: 0;
-    display: inline-flex;
+    font-size: $font-size-sm;
+    color: #d2d2d2;
+    line-height: 29px;
+    vertical-align: bottom;
   }
-
-  .widget-body.mailbox-body {
-    margin: 0 -17px -12px;
-  }
-
 
   .widgetEmailPagination {
     margin-left: 10px;

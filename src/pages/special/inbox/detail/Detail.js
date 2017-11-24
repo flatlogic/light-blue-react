@@ -29,10 +29,18 @@ class Detail extends React.Component {
     };
 
     this.backToList = this.backToList.bind(this);
+    this.goToReply = this.goToReply.bind(this);
   }
 
   backToList() {
-    this.props.history.goBack();
+    this.props.history.push('/app/special/inbox');
+  }
+
+  goToReply() {
+    this.props.history.push({
+      pathname: '/app/special/inbox/form',
+      query: { id: this.props.match.params.id },
+    });
   }
 
   render() {
@@ -44,6 +52,7 @@ class Detail extends React.Component {
           </Button>
         </div>
         <Widget
+          className="widget-email"
           title={<h4>{this.state.mail.subject}</h4>} print
         >
           <div className={s.emailView}>
@@ -62,12 +71,12 @@ class Detail extends React.Component {
                 </div>
                 <div className={`${s.emailActions} float-right`}>
                   <div className="btn-group d-inline-flex">
-                    <button className="btn btn-sm btn-transparent">
+                    <Button color="transparent" size="sm" onClick={this.goToReply}>
                       <i className="fa fa-reply mr-xs" /> Reply
-                    </button>
-                    <button className="btn btn-sm btn-transparent">
+                    </Button>
+                    <Button color="transparent" size="sm">
                       <i className="fa fa-angle-down" />
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <time className={`${s.emailDate} float-right`}>
@@ -93,7 +102,7 @@ class Detail extends React.Component {
                   }
                   {
                     this.state.mail.attachments &&
-                    <p className="details"><strong>{this.state.mail.attachments.length} attachments</strong> &nbsp;
+                    <p><strong>{this.state.mail.attachments.length} attachments</strong> &nbsp;
                       -&nbsp; <a href="#">Download all
                         attachments</a>
                       &nbsp;&nbsp;&nbsp;<a href="#">View all Images</a></p>
@@ -105,9 +114,9 @@ class Detail extends React.Component {
                         className={s.attachment}
                         key={this.state.mail.attachments.indexOf(attachment)}
                       >
-                        <img className="img-fluid" alt="" />
+                        <img className="img-fluid" alt="" src={attachment} />
                         <h5 className={s.title}>some-cool-image{i + 1}.jpg</h5>
-                        <p className="details">
+                        <p>
                           568K&nbsp;&nbsp;
                           <a href="#">View</a> &nbsp;&nbsp;
                           <a href="#">Download</a>
