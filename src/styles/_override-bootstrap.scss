@@ -256,7 +256,7 @@ button.dropdown-toggle {
   }
 }
 
-.btn-secondary {
+.btn-inverse {
   border-color: $gray-400;
   color: $gray-800;
 
@@ -276,7 +276,7 @@ button.dropdown-toggle {
 }
 
 .btn,
-.btn-inverse,
+.btn-secondary,
 .btn-gray {
   &:not(.active) {
     box-shadow: none !important;

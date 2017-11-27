@@ -127,7 +127,7 @@ class Buttons extends React.Component {
     return (
       <div className={s.root}>
         <h2 className="page-title">Buttons
-          <small>Buttons, states and more</small>
+          <small> Buttons, states and more</small>
         </h2>
 
         <Row>
@@ -366,8 +366,8 @@ class Buttons extends React.Component {
                       isOpen={this.state.dropdownOpenFive}
                       toggle={this.toggleFive}
                     >
-                      <Button size="lg" color="inverse">Gray</Button>
-                      <DropdownToggle caret color="inverse" className="dropdown-toggle-split" />
+                      <Button size="lg" color="secondary">Gray</Button>
+                      <DropdownToggle caret color="secondary" className="dropdown-toggle-split" />
                       <DropdownMenu>
                         <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
@@ -381,8 +381,8 @@ class Buttons extends React.Component {
                       isOpen={this.state.dropdownOpenSix}
                       toggle={this.toggleSix}
                     >
-                      <Button>White</Button>
-                      <DropdownToggle caret className="dropdown-toggle-split" />
+                      <Button color="inverse">White</Button>
+                      <DropdownToggle caret color="inverse" className="dropdown-toggle-split" />
                       <DropdownMenu>
                         <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
@@ -431,15 +431,15 @@ class Buttons extends React.Component {
                   <Col md={12}>
                     <ButtonGroup>
                       <Button
-                        color="inverse" onClick={() => this.onCheckboxBtnClickOne(1)}
+                        color="secondary" onClick={() => this.onCheckboxBtnClickOne(1)}
                         active={this.state.cSelectedOne.includes(1)}
                       >Left way</Button>
                       <Button
-                        color="inverse" onClick={() => this.onCheckboxBtnClickOne(2)}
+                        color="secondary" onClick={() => this.onCheckboxBtnClickOne(2)}
                         active={this.state.cSelectedOne.includes(2)}
                       >Middle way</Button>
                       <Button
-                        color="inverse" onClick={() => this.onCheckboxBtnClickOne(3)}
+                        color="secondary" onClick={() => this.onCheckboxBtnClickOne(3)}
                         active={this.state.cSelectedOne.includes(3)}
                       >Right way</Button>
                     </ButtonGroup>
