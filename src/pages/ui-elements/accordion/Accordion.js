@@ -5,6 +5,7 @@ import {
   Col,
   Collapse,
 } from 'reactstrap';
+import classnames from 'classnames';
 
 import s from './Accordion.scss';
 
@@ -109,7 +110,12 @@ class Accordion extends React.Component {
                       <div className="mb-0">
                         <a className="accordion-toggle" role="button">
                           {element.title}
-                          <i className="fa fa-angle-down float-right" />
+                          <i
+                            className={classnames(
+                              'fa float-right fa-angle-left',
+                              { rotate: this.state.accordionFirst[index] },
+                            )}
+                          />
                         </a>
                       </div>
                     </div>
@@ -136,7 +142,12 @@ class Accordion extends React.Component {
                     <div className="mb-0">
                       <a className="accordion-toggle" role="button">
                         { element.title }
-                        <i className="fa fa-angle-down float-right" />
+                        <i
+                          className={classnames(
+                            'fa float-right fa-angle-left',
+                            { rotate: this.state.accordionSecond[index] },
+                          )}
+                        />
                       </a>
                     </div>
                   </div>

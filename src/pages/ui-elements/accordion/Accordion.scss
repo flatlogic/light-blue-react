@@ -1,5 +1,15 @@
 @import '../../../styles/app';
 
 .root {
-  // some styles
+  :global {
+    .accordion-toggle {
+      i {
+        transition: transform 0.15s ease-in-out;
+
+        &.rotate {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+  }
 }
