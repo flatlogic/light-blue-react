@@ -4,6 +4,13 @@ import { connect } from 'react-redux';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import jQuery from 'jquery';
 import { withRouter } from 'react-router-dom';
+import {
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Button,
+} from 'reactstrap';
 /* eslint-disable */
 import 'imports-loader?jQuery=jquery,this=>window!jqvmap/dist/jquery.vmap';
 import 'imports-loader?jQuery=jquery,this=>window!jqvmap/dist/maps/jquery.vmap.world';
@@ -34,20 +41,36 @@ class VectorMap extends React.Component {
       selectedColor: 'red',
       selectedRegion: null,
       showTooltip: true,
-      // onRegionClick: (event, code, region) => {
-        // console.log(code);
-      // },
     },
   };
 
+  constructor(props) {
+    super(props);
+    this.onRegionClick = this.onRegionClick.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+
+    this.state = {
+      showModal: false,
+    };
+  }
+
   componentDidMount() {
     this.initVectorMap();
+  }
+
+  onRegionClick(event, code, region) {
+    this.setState({
+      region,
+      code: code.toUpperCase(),
+      showModal: true,
+    });
   }
 
   initVectorMap() {
     const options = Object.assign({}, this.props.options);
     options.map = this.props.map;
     options.scaleColors = ['#b6d6ff', '#005ace'];
+    options.onRegionClick = this.onRegionClick;
     jQuery(this.el).empty();
     jQuery(this.el).vectorMap(options);
 
@@ -58,14 +81,33 @@ class VectorMap extends React.Component {
     }
   }
 
+  toggleModal() {
+    this.setState({
+      showModal: !this.state.showModal,
+    });
+  }
+
   render() {
     return (
-      <div
-        className={s.map}
-        ref={(r) => {
-          this.el = r;
-        }}
-      />
+      <div className={s.container}>
+        <div
+          className={s.map}
+          ref={(r) => {
+            this.el = r;
+          }}
+        />
+        <Modal fade isOpen={this.state.showModal} toggle={this.toggleModal}>
+          <ModalHeader toggle={this.toggleModal}>Modal title
+          </ModalHeader>
+          <ModalBody>
+            <p>You clicked <strong>{this.state.region}</strong> which has code {this.state.code}</p>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={this.toggleModal} color="secondary">OK</Button>
+          </ModalFooter>
+        </Modal>
+      </div>
+
     );
   }
 }
