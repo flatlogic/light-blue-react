@@ -290,6 +290,13 @@ button.dropdown-toggle {
   border-radius: 3px;
 }
 
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
 .btn-transparent {
   background: transparentize($text-transparent, 0.2);
   color: $widget-header-color;

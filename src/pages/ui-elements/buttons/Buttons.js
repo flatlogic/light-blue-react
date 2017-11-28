@@ -131,7 +131,7 @@ class Buttons extends React.Component {
         </h2>
 
         <Row>
-          <Col lg={6}>
+          <Col lg={6} xs={12}>
             {/* Color options */}
             <Widget
               title={<h4><i className="fa fa-star" /> Default buttons
@@ -252,7 +252,7 @@ class Buttons extends React.Component {
               </Card>
             </Widget>
           </Col>
-          <Col lg={6}>
+          <Col lg={6} xs={12}>
             <Widget
               title={<h4><i className="fa fa-cogs" /> Options</h4>}
             >
@@ -367,7 +367,7 @@ class Buttons extends React.Component {
                       toggle={this.toggleFive}
                     >
                       <Button size="lg" color="secondary">Gray</Button>
-                      <DropdownToggle caret color="secondary" className="dropdown-toggle-split" />
+                      <DropdownToggle caret color="secondary" className="dropdown-toggle-split btn-lg" />
                       <DropdownMenu>
                         <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
@@ -397,7 +397,7 @@ class Buttons extends React.Component {
                       toggle={this.toggleSeven}
                     >
                       <Button color="info" size="sm">Blue</Button>
-                      <DropdownToggle caret color="info" className="dropdown-toggle-split" />
+                      <DropdownToggle caret color="info" className="dropdown-toggle-split btn-sm" />
                       <DropdownMenu>
                         <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
@@ -412,7 +412,7 @@ class Buttons extends React.Component {
                       toggle={this.toggleEight}
                     >
                       <Button color="primary" size="xs">Teal</Button>
-                      <DropdownToggle caret color="primary" className="dropdown-toggle-split" />
+                      <DropdownToggle caret color="primary" className="dropdown-toggle-split btn-xs" />
                       <DropdownMenu>
                         <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another Action</DropdownItem>
@@ -472,12 +472,12 @@ class Buttons extends React.Component {
               <Card className="card-well card-sm">
                 <blockquote className="blockquote-sm mb-3">Block level buttons</blockquote>
                 <Row className="justify-content-center mb-3">
-                  <Col md={8}>
+                  <Col md={8} sm={12}>
                     <Button color="warning" size="lg" block>Block level</Button>
                   </Col>
                 </Row>
                 <Row className="justify-content-center">
-                  <Col md={8}>
+                  <Col md={8} sm={12}>
                     <Button color="danger" size="lg" block>Block level</Button>
                   </Col>
                 </Row>
