@@ -1,0 +1,22 @@
+@import '../../../styles/app';
+
+.root {
+  // some styles
+}
+
+.dropzone {
+  width: 100%;
+  text-align: center;
+  padding: 40px 10px;
+  height: 200px;
+  border: 2px dashed #ccc;
+
+  @include border-radius($border-radius);
+
+  img {
+    max-height: 100px;
+    max-width: 150px;
+    border-radius: 5px;
+  }
+}
+

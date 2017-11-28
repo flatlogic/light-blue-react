@@ -72,6 +72,9 @@ class Sidebar extends React.Component {
               {
                 name: 'Gallery', link: '/app/components/gallery',
               },
+              {
+                name: 'Fileuploader', link: '/app/components/fileupload',
+              },
             ]}
           />
           <LinksGroup

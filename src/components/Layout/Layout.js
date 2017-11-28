@@ -15,6 +15,7 @@ import loadUIDialogs from 'bundle-loader?lazy!../../pages/ui-elements/dialogs/Di
 import loadComponentsCalendar from 'bundle-loader?lazy!../../pages/components/calendar/Calendar';
 import loadComponentsMaps from 'bundle-loader?lazy!../../pages/components/maps/Maps';
 import loadComponentsGallery from 'bundle-loader?lazy!../../pages/components/gallery/Gallery';
+import loadComponentsFileupload from 'bundle-loader?lazy!../../pages/components/fileupload/Fileupload';
 import loadFormsAccount from 'bundle-loader?lazy!../../pages/forms/account/Account';
 import loadFormsArticle from 'bundle-loader?lazy!../../pages/forms/article/Article';
 import loadFormsElements from 'bundle-loader?lazy!../../pages/forms/elements/Elements';
@@ -49,6 +50,7 @@ const UIDialogsBundle = Bundle.generateBundle(loadUIDialogs);
 const ComponentsCalendarBundle = Bundle.generateBundle(loadComponentsCalendar);
 const ComponentsMapsBundle = Bundle.generateBundle(loadComponentsMaps);
 const ComponentsGalleryBundle = Bundle.generateBundle(loadComponentsGallery);
+const ComponentsFileuploadBundle = Bundle.generateBundle(loadComponentsFileupload);
 const FormsAccountBundle = Bundle.generateBundle(loadFormsAccount);
 const FormsArticleBundle = Bundle.generateBundle(loadFormsArticle);
 const FormsElementsBundle = Bundle.generateBundle(loadFormsElements);
@@ -90,6 +92,7 @@ class Layout extends React.Component {
               <Route path="/app/components/calendar" exact component={ComponentsCalendarBundle} />
               <Route path="/app/components/maps" exact component={ComponentsMapsBundle} />
               <Route path="/app/components/gallery" exact component={ComponentsGalleryBundle} />
+              <Route path="/app/components/fileupload" exact component={ComponentsFileuploadBundle} />
               <Route path="/app/forms/account" exact component={FormsAccountBundle} />
               <Route path="/app/forms/article" exact component={FormsArticleBundle} />
               <Route path="/app/forms/elements" exact component={FormsElementsBundle} />
