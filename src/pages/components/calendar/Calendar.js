@@ -5,6 +5,12 @@ import {
   Col,
   ButtonGroup,
   Button,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Input,
+  Label,
 } from 'reactstrap';
 
 import 'fullcalendar/dist/fullcalendar';
@@ -22,7 +28,19 @@ class Calendar extends React.Component {
 
     this.state = {
       calendarView: 'month',
+      isCreateEvent: false,
+      isShowEvent: false,
+      event: {},
+      newEvent: {
+        title: '',
+        start: new Date(),
+      },
     };
+
+    this.toggleCreateEvent = this.toggleCreateEvent.bind(this);
+    this.toggleShowEvent = this.toggleShowEvent.bind(this);
+    this.calendarEventClick = this.calendarEventClick.bind(this);
+    this.calendarCreateClick = this.calendarCreateClick.bind(this);
 
     const date = new Date();
     const d = date.getDate();
@@ -99,16 +117,21 @@ class Calendar extends React.Component {
       ],
       selectable: true,
       selectHelper: true,
-      select: (start, end, allDay) => {
+      select: (start, end, allDay) => { // eslint-disable-line
+        this.state.newEvent = {
+          start,
+          end,
+          allDay: !start.hasTime(),
+        };
         this.createEvent = () => {
-          const title = this.event.title;
+          const title = this.inputRef.value;
           if (title) {
             this.$calendar.fullCalendar('renderEvent',
               {
                 title,
-                start,
-                end,
-                allDay,
+                start: this.state.newEvent.start,
+                end: this.state.newEvent.end,
+                allDay: this.state.newEvent.allDay,
                 backgroundColor: '#64bd63',
                 textColor: '#fff',
               },
@@ -116,15 +139,12 @@ class Calendar extends React.Component {
             );
           }
           this.$calendar.fullCalendar('unselect');
-          $('#create-event-modal').modal('hide');
+          this.toggleCreateEvent();
         };
 
-        $('#create-event-modal').modal('show');
+        this.calendarCreateClick();
       },
-      eventClick: (event) => {
-        this.event = event;
-        $('#show-event-modal').modal('show');
-      },
+      eventClick: this.calendarEventClick,
       editable: true,
       droppable: true,
 
@@ -142,7 +162,7 @@ class Calendar extends React.Component {
         copiedEventObject.start = dateItem;
         copiedEventObject.allDay = !dateItem.hasTime();
 
-        const $categoryClass = $(event.target).data('event-class');
+        const $categoryClass = $(event.target).data('event-classname');
         if ($categoryClass) {
           copiedEventObject.className = [$categoryClass];
         }
@@ -196,6 +216,32 @@ class Calendar extends React.Component {
     return moment(this.$calendar.fullCalendar('getDate')).format('dddd');
   }
 
+  toggleCreateEvent() {
+    this.setState({
+      isCreateEvent: !this.state.isCreateEvent,
+    });
+  }
+
+  toggleShowEvent() {
+    this.setState({
+      isShowEvent: !this.state.isShowEvent,
+    });
+  }
+
+  calendarEventClick(event) {
+    const newEvent = event;
+    newEvent.startStr = (event.start) ? event.start.format('HH: mm') : null;
+    newEvent.endStr = (event.end) ? event.end.format('HH: mm') : null;
+    this.setState({
+      event: newEvent,
+    });
+    this.toggleShowEvent();
+  }
+
+  calendarCreateClick() {
+    this.toggleCreateEvent();
+  }
+
   render() {
     return (
       <div className={s.root}>
@@ -203,7 +249,28 @@ class Calendar extends React.Component {
           <small> Draggable access</small>
         </h2>
         <Row>
-          <Col md={8}>
+          <Col lg={4} md={12} xs={12} className="order-lg-12">
+            <Widget title={<h5><i className="fa fa-exchange" /> Draggable events</h5>}>
+              <div>
+                <div className="external-event draggable bg-danger" data-event-className="bg-danger text-white">
+                  <i className="fa fa-check" /> Buy this template
+                </div>
+                <div className="external-event draggable bg-warning" data-event-className="bg-warning text-white">
+                  Study some Node
+                </div>
+                <div className="external-event draggable bg-success" data-event-className="bg-success text-white">
+                  Make a tea
+                </div>
+                <div className="external-event draggable bg-primary" data-event-className="bg-primary text-white">
+                  <i className="fa fa-book" /> Go to school
+                </div>
+                <div className="external-event draggable bg-info" data-event-className="bg-info text-white">
+                  Open windows
+                </div>
+              </div>
+            </Widget>
+          </Col>
+          <Col md={12} lg={8} xs={12} className="">
             <Widget
               title={
                 <Row>
@@ -243,28 +310,46 @@ class Calendar extends React.Component {
               <div id="calendar" className="calendar mt-lg" />
             </Widget>
           </Col>
-          <Col md={4}>
-            <Widget title={<h5><i className="fa fa-exchange" /> Draggable events</h5>}>
-              <div>
-                <div className="external-event draggable bg-danger" data-event-class="bg-danger text-white">
-                  <i className="fa fa-check" /> Buy this template
-                </div>
-                <div className="external-event draggable bg-warning" data-event-class="bg-warning text-white">
-                  Study some Node
-                </div>
-                <div className="external-event draggable bg-success" data-event-class="bg-success text-white">
-                  Make a tea
-                </div>
-                <div className="external-event draggable bg-primary" data-event-class="bg-primary text-white">
-                  <i className="fa fa-book" /> Go to school
-                </div>
-                <div className="external-event draggable bg-info" data-event-class="bg-info text-white">
-                  Open windows
-                </div>
-              </div>
-            </Widget>
-          </Col>
         </Row>
+        <Modal fade isOpen={this.state.isCreateEvent} toggle={this.toggleCreateEvent}>
+          <ModalHeader toggle={this.toggleCreateEvent}>Modal title
+          </ModalHeader>
+          <ModalBody>
+            <Label for="event-name">Event name</Label>
+            <Input
+              type="text" className="bg-gray-lighter" name="event-name" id="event-name"
+              innerRef={(r) => {
+                this.inputRef = r;
+              }}
+            />
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={this.toggleCreateEvent} color="secondary">Cancel</Button>
+            <Button onClick={this.createEvent} color="success">OK</Button>
+          </ModalFooter>
+        </Modal>
+
+        <Modal id="show-event-modal" fade isOpen={this.state.isShowEvent} toggle={this.toggleShowEvent}>
+          <ModalHeader toggle={this.toggleShowEvent}>{this.state.event.title}
+          </ModalHeader>
+          <ModalBody>
+            {!!this.state.event.allDay && (<p>All day event</p>)}
+            {(!!this.state.event.startStr && !this.state.event.allDay) && (<p>
+              Start At:&nbsp;<strong>{this.state.event.startStr}</strong>
+            </p>)
+            }
+            {(!!this.state.event.endStr && !this.state.event.allDay) && (<p>
+              End At:&nbsp;<strong>{this.state.event.endStr}</strong>
+            </p>)
+            }
+            {!!this.state.event.description && (
+              <p>{this.state.event.description}</p>
+            )}
+          </ModalBody>
+          <ModalFooter>
+            <Button color="secondary" size="sm" onClick={this.toggleShowEvent}>OK</Button>
+          </ModalFooter>
+        </Modal>
       </div>
     );
   }
