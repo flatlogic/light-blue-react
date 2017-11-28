@@ -1,0 +1,6 @@
+{
+  "name": "dialogs",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Dialogs.js"
+}

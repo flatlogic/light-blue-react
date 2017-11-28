@@ -1,6 +1,6 @@
 {
-  "name": "live",
+  "name": "basic",
   "version": "0.0.0",
-  "main": "./Live.js",
+  "main": "./Basic.js",
   "private": true
 }

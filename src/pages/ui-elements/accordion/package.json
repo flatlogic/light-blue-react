@@ -1,0 +1,6 @@
+{
+  "name": "accordion",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Accordion.js"
+}

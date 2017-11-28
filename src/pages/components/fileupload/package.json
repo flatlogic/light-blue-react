@@ -1,0 +1,6 @@
+{
+  "name": "fileupload",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Fileupload.js"
+}

@@ -6,31 +6,31 @@ import { Switch, Route, withRouter } from 'react-router';
 
 // an example of react-router code-splitting
 /* eslint-disable */
-import loadUIIcons from 'bundle-loader?lazy!../../pages/ui-elements/icons/Icons';
-import loadUIButtons from 'bundle-loader?lazy!../../pages/ui-elements/buttons/Buttons';
-import loadUIAccordion from 'bundle-loader?lazy!../../pages/ui-elements/accordion/Accordion';
-import loadUITabs from 'bundle-loader?lazy!../../pages/ui-elements/tabs/Tabs';
-import loadUINotifications from 'bundle-loader?lazy!../../pages/ui-elements/notifications/Notifications';
-import loadUIDialogs from 'bundle-loader?lazy!../../pages/ui-elements/dialogs/Dialogs';
-import loadComponentsCalendar from 'bundle-loader?lazy!../../pages/components/calendar/Calendar';
-import loadComponentsMaps from 'bundle-loader?lazy!../../pages/components/maps/Maps';
-import loadComponentsGallery from 'bundle-loader?lazy!../../pages/components/gallery/Gallery';
-import loadComponentsFileupload from 'bundle-loader?lazy!../../pages/components/fileupload/Fileupload';
-import loadFormsAccount from 'bundle-loader?lazy!../../pages/forms/account/Account';
-import loadFormsArticle from 'bundle-loader?lazy!../../pages/forms/article/Article';
-import loadFormsElements from 'bundle-loader?lazy!../../pages/forms/elements/Elements';
-import loadFormsValidation from 'bundle-loader?lazy!../../pages/forms/validation/Validation';
-import loadFormsWizard from 'bundle-loader?lazy!../../pages/forms/wizard/Wizard';
-import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats/Stats';
-import loadStatisticsCharts from 'bundle-loader?lazy!../../pages/statistics/charts/Charts';
-import loadStatisticsRealtime from 'bundle-loader?lazy!../../pages/statistics/realtime/Realtime';
-import loadTablesStatic from 'bundle-loader?lazy!../../pages/tables/static/Static';
-import loadTablesDynamic from 'bundle-loader?lazy!../../pages/tables/dynamic/Dynamic';
-import loadWidgetsBasic from 'bundle-loader?lazy!../../pages/widgets/basic/Basic';
-import loadWidgetsLive from 'bundle-loader?lazy!../../pages/widgets/live/Live';
-import loadSpecialSearch from 'bundle-loader?lazy!../../pages/special/search/Search';
-import loadSpecialInvoice from 'bundle-loader?lazy!../../pages/special/invoice/Invoice';
-import loadSpecialInbox from 'bundle-loader?lazy!../../pages/special/inbox/Inbox';
+import loadUIIcons from 'bundle-loader?lazy!../../pages/ui-elements/icons';
+import loadUIButtons from 'bundle-loader?lazy!../../pages/ui-elements/buttons';
+import loadUIAccordion from 'bundle-loader?lazy!../../pages/ui-elements/accordion';
+import loadUITabs from 'bundle-loader?lazy!../../pages/ui-elements/tabs';
+import loadUINotifications from 'bundle-loader?lazy!../../pages/ui-elements/notifications';
+import loadUIDialogs from 'bundle-loader?lazy!../../pages/ui-elements/dialogs';
+import loadComponentsCalendar from 'bundle-loader?lazy!../../pages/components/calendar';
+import loadComponentsMaps from 'bundle-loader?lazy!../../pages/components/maps';
+import loadComponentsGallery from 'bundle-loader?lazy!../../pages/components/gallery';
+import loadComponentsFileupload from 'bundle-loader?lazy!../../pages/components/fileupload';
+import loadFormsAccount from 'bundle-loader?lazy!../../pages/forms/account';
+import loadFormsArticle from 'bundle-loader?lazy!../../pages/forms/article';
+import loadFormsElements from 'bundle-loader?lazy!../../pages/forms/elements';
+import loadFormsValidation from 'bundle-loader?lazy!../../pages/forms/validation';
+import loadFormsWizard from 'bundle-loader?lazy!../../pages/forms/wizard';
+import loadStatisticsStats from 'bundle-loader?lazy!../../pages/statistics/stats';
+import loadStatisticsCharts from 'bundle-loader?lazy!../../pages/statistics/charts';
+import loadStatisticsRealtime from 'bundle-loader?lazy!../../pages/statistics/realtime';
+import loadTablesStatic from 'bundle-loader?lazy!../../pages/tables/static';
+import loadTablesDynamic from 'bundle-loader?lazy!../../pages/tables/dynamic';
+import loadWidgetsBasic from 'bundle-loader?lazy!../../pages/widgets/basic';
+import loadWidgetsLive from 'bundle-loader?lazy!../../pages/widgets/live';
+import loadSpecialSearch from 'bundle-loader?lazy!../../pages/special/search';
+import loadSpecialInvoice from 'bundle-loader?lazy!../../pages/special/invoice';
+import loadSpecialInbox from 'bundle-loader?lazy!../../pages/special/inbox';
 /* eslint-enable */
 
 import s from './Layout.scss';
@@ -39,7 +39,7 @@ import Sidebar from '../Sidebar';
 import Bundle from '../../core/Bundle';
 
 // Dashboard component is loaded directly as an example of server side rendering
-import Dashboard from '../../pages/dashboard/Dashboard';
+import Dashboard from '../../pages/dashboard';
 
 const UIIconsBundle = Bundle.generateBundle(loadUIIcons);
 const UIButtonsBundle = Bundle.generateBundle(loadUIButtons);

@@ -1,0 +1,7 @@
+{
+  "name": "inbox",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Inbox.js"
+
+}
