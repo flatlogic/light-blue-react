@@ -30,15 +30,54 @@ class Sidebar extends React.Component {
         <ul className={s.nav}>
           <LinksGroup header="Dashboard" headerLink="/app" iconName="fa-home" />
           <LinksGroup
+            onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/forms'))}
+            isActive={this.props.activeItem === '/app/forms'}
+            header="Forms"
+            iconName="fa-pencil"
+            headerLink="/app/forms"
+            childrenLinks={[
+              {
+                name: 'Account', link: '/app/forms/account',
+              },
+              {
+                name: 'Article', link: '/app/forms/article',
+              },
+              {
+                name: 'Elements', link: '/app/forms/elements',
+              },
+              {
+                name: 'Validation', link: '/app/forms/validation',
+              },
+              {
+                name: 'Wizard', link: '/app/forms/wizard',
+              },
+            ]}
+          />
+          <LinksGroup
+            onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/statistics'))}
+            isActive={this.props.activeItem === '/app/statistics'}
+            header="Statistics"
+            iconName="fa-area-chart"
+            headerLink="/app/statistics"
+            childrenLinks={[
+              {
+                name: 'Stats', link: '/app/statistics/stats',
+              },
+              {
+                name: 'Charts', link: '/app/statistics/charts',
+              },
+              {
+                name: 'Realtime', link: '/app/statistics/realtime'
+              }
+            ]}
+          />
+          <LinksGroup
             onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/ui'))}
             isActive={this.props.activeItem === '/app/ui'}
             header="User Interface"
             iconName="fa-magic"
             headerLink="/app/ui"
             childrenLinks={[
-              {
-                name: 'Icons', link: '/app/ui/icons',
-              },
               {
                 name: 'Buttons', link: '/app/ui/buttons',
               },
@@ -47,6 +86,9 @@ class Sidebar extends React.Component {
               },
               {
                 name: 'Notifications', link: '/app/ui/notifications',
+              },
+              {
+                name: 'Icons', link: '/app/ui/icons',
               },
               {
                 name: 'Tabs', link: '/app/ui/tabs',
@@ -75,48 +117,6 @@ class Sidebar extends React.Component {
               {
                 name: 'Fileuploader', link: '/app/components/fileupload',
               },
-            ]}
-          />
-          <LinksGroup
-            onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/forms'))}
-            isActive={this.props.activeItem === '/app/forms'}
-            header="Forms"
-            iconName="fa-pencil"
-            headerLink="/app/forms"
-            childrenLinks={[
-              {
-                name: 'Account', link: '/app/forms/account',
-              },
-              {
-                name: 'Article', link: '/app/forms/article',
-              },
-              {
-                name: 'Elements', link: '/app/forms/elements',
-              },
-              {
-                name: 'Forms Validation', link: '/app/forms/validation',
-              },
-              {
-                name: 'Wizard', link: '/app/forms/wizard',
-              },
-            ]}
-          />
-          <LinksGroup
-            onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/statistics'))}
-            isActive={this.props.activeItem === '/app/statistics'}
-            header="Statistics"
-            iconName="fa-area-chart"
-            headerLink="/app/statistics"
-            childrenLinks={[
-              {
-                name: 'Stats', link: '/app/statistics/stats',
-              },
-              {
-                name: 'Charts', link: '/app/statistics/charts',
-              },
-              {
-                name: 'Realtime', link: '/app/statistics/realtime'
-              }
             ]}
           />
           <LinksGroup
@@ -163,10 +163,10 @@ class Sidebar extends React.Component {
                 name: 'Invoice', link: '/app/special/invoice',
               },
               {
-                name: 'Landing', link: '/landing',
+                name: 'Inbox', link: '/app/special/inbox',
               },
               {
-                name: 'Inbox', link: '/app/special/inbox',
+                name: 'Error Page', link: '/error',
               },
             ]}
           />
