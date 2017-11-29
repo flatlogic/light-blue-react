@@ -15,9 +15,7 @@ import {
 import d3 from 'd3';
 import nv from 'nvd3';
 import classnames from 'classnames';
-/* eslint-disable */
-// import 'imports-loader?jQuery=jquery,this=>window!jquery-sparkline';
-/* eslint-enable */
+import { Sparklines, SparklinesLine } from 'react-sparklines';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 import Widget from '../../components/Widget';
@@ -80,15 +78,35 @@ class Dashboard extends React.Component {
       newMessage: '',
     };
 
+    this.tableSparklineValues = [[], [], [], [], []];
+
     this.toggleActiveTab = this.toggleActiveTab.bind(this);
     this.messageInputUpdate = this.messageInputUpdate.bind(this);
     this.handleEnterPress = this.handleEnterPress.bind(this);
     this.addMessage = this.addMessage.bind(this);
+    this.sparklineDataIten = this.sparklineDataIten.bind(this);
+
+    this.sparklineDataIten();
   }
 
   componentDidMount() {
     this.initD3Chart();
-    // this.initInteractiveSparklines();
+  }
+
+  sparklineDataIten() {
+    for (let i = 0; i < this.tableSparklineValues.length; i + 1) {
+      this.tableSparklineValues[i] = [
+        10 + this.randomValue(), 15 + this.randomValue(),
+        20 + this.randomValue(), 15 + this.randomValue(),
+        25 + this.randomValue(), 25 + this.randomValue(),
+        30 + this.randomValue(), 30 + this.randomValue(),
+        40 + this.randomValue(),
+      ];
+    }
+  }
+
+  randomValue() {                           //eslint-disable-line
+    return Math.floor(Math.random() * 40);
   }
 
   toggleActiveTab(tabIndex) {
@@ -169,15 +187,6 @@ class Dashboard extends React.Component {
     });
   }
 
-  // initInteractiveSparklines() {
-  //   const data = [9, 12, 14, 15, 10, 14, 20];
-  //   const option = {type: 'bar', barColor: '#f0b518',
-  // height: '30px', barWidth: 6, barSpacing: 2};
-  //   const option2 = {type: 'bar', barColor: '#FFA587',
-  // height: '30px', barWidth: 6, barSpacing: 2};
-  //   $(this.InteractiveSparkline1).sparkline(data, option);
-  //   $(this.InteractiveSparkline2).sparkline(data, option2);
-  // }
 
   messageInputUpdate(event) {
     this.setState({ newMessage: event.target.value });
@@ -255,7 +264,7 @@ class Dashboard extends React.Component {
                       <th>Amount</th>
                       <th>Change</th>
                       <th className="hidden-xs-down">Percent.,%</th>
-                      <th>Target</th>
+                      <th className="width-100">Target</th>
                       <th className="chart-col-header hidden-xs-down">Trend</th>
                     </tr>
                   </thead>
@@ -267,12 +276,9 @@ class Dashboard extends React.Component {
                       <td className="hidden-xs-down">+12</td>
                       <td>900</td>
                       <td className="chart-cell hidden-xs-down">
-                        <div
-                          className="sparkline"
-                          ref={(r) => {
-                            this.InteractiveSparkline1 = r;
-                          }}
-                        />
+                        <Sparklines data={this.tableSparklineValues[0]} style={{ height: '20%' }}>
+                          <SparklinesLine style={{ stroke: '#3ecd74', fill: 'rgb(86, 188, 118)', strokeWidth: 3 }} />
+                        </Sparklines>
                       </td>
                     </tr>
                     <tr>
@@ -282,12 +288,9 @@ class Dashboard extends React.Component {
                       <td className="hidden-xs-down">+64</td>
                       <td>500</td>
                       <td className="chart-cell hidden-xs-down">
-                        <div
-                          className="sparkline"
-                          ref={(r) => {
-                            this.InteractiveSparkline1 = r;
-                          }}
-                        />
+                        <Sparklines data={this.tableSparklineValues[1]} style={{ height: '20%' }}>
+                          <SparklinesLine style={{ stroke: '#f2c34d', fill: 'rgb(234, 200, 94)', strokeWidth: 3 }} />
+                        </Sparklines>
                       </td>
                     </tr>
                     <tr>
@@ -297,12 +300,9 @@ class Dashboard extends React.Component {
                       <td className="hidden-xs-down">+3</td>
                       <td>180</td>
                       <td className="chart-cell hidden-xs-down">
-                        <div
-                          className="sparkline"
-                          ref={(r) => {
-                            this.InteractiveSparkline1 = r;
-                          }}
-                        />
+                        <Sparklines data={this.tableSparklineValues[2]} style={{ height: '20%' }}>
+                          <SparklinesLine style={{ stroke: '#4e91ce', fill: 'rgb(106, 141, 167)', strokeWidth: 3 }} />
+                        </Sparklines>
                       </td>
                     </tr>
                     <tr>
@@ -312,12 +312,9 @@ class Dashboard extends React.Component {
                       <td className="hidden-xs-down">+43</td>
                       <td>876</td>
                       <td className="chart-cell hidden-xs-down">
-                        <div
-                          className="sparkline"
-                          ref={(r) => {
-                            this.InteractiveSparkline1 = r;
-                          }}
-                        />
+                        <Sparklines data={this.tableSparklineValues[3]} style={{ height: '20%' }}>
+                          <SparklinesLine style={{ stroke: '#f25118', fill: 'rgb(229, 96, 59)', strokeWidth: 3 }} />
+                        </Sparklines>
                       </td>
                     </tr>
                     <tr>
@@ -327,12 +324,9 @@ class Dashboard extends React.Component {
                       <td className="hidden-xs-down">-7</td>
                       <td>844</td>
                       <td className="chart-cell hidden-xs-down">
-                        <div
-                          className="sparkline"
-                          ref={(r) => {
-                            this.InteractiveSparkline1 = r;
-                          }}
-                        />
+                        <Sparklines data={this.tableSparklineValues[4]} style={{ height: '20%' }}>
+                          <SparklinesLine style={{ stroke: '#fff', fill: 'rgb(128, 128, 128)', strokeWidth: 3 }} />
+                        </Sparklines>
                       </td>
                     </tr>
                   </tbody>
