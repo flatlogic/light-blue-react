@@ -22,32 +22,28 @@ import {
 import Widget from '../../../components/Widget';
 import s from './Account.scss';
 import i3 from '../../../images/3.png';
+import {
+  select2CountryData,
+  select2StateData,
+  select2AccountGroupsList,
+} from './Data';
 
 class Account extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectGroupData: [
-        {
-          id: '1',
-          text: 'Belarus',
-        },
-        {
-          id: '2',
-          text: 'United States',
-        }, {
-          id: '3',
-          text: 'Belarus',
-        }],
+      selectWebsiteData: ['Admin', 'Main Website'],
+      websiteSelectVal: 'Admin',
+
       isDatePickerOpen: false,
-      defaultSelectVal: 'Andromeda',
-      selectDefaultData: [{
-        id: 'Magellanic', text: 'Admin',
-      }, {
-        id: 'Andromeda', text: 'Main Website',
-      }],
     };
+  }
+
+  websiteSelectChange(e) {
+    this.setState({
+      websiteSelectVal: e,
+    });
   }
 
   render() {
@@ -236,7 +232,7 @@ class Account extends React.Component {
                     </Label>
                     <Col md="4" className={s.select2}>
                       <Select2
-                        data={this.state.selectGroupData}
+                        data={select2StateData}
                         options={{
                           placeholder: 'Select state',
                         }}
@@ -249,7 +245,7 @@ class Account extends React.Component {
                     </Label>
                     <Col md="4" className={s.select2}>
                       <Select2
-                        data={this.state.selectGroupData}
+                        data={select2CountryData}
                         options={{
                           placeholder: 'Select country',
                         }}
@@ -270,12 +266,16 @@ class Account extends React.Component {
           <Col lg={5}>
             <Widget
               title={<h4><i className="fa fa-cogs" /> Account settings</h4>}
+              customControls={
+                <Button color="inverse" size="xs"><i className="fa fa-arrow-down" /> View more</Button>
+              }
             >
               <Form>
                 <FormGroup>
                   <Label for="datepicker">Account expiration date</Label>
                   <Datetime
                     id="datepicker"
+                    className="datepicker"
                     open={this.state.isDatePickerOpen}
                     viewMode="days" timeFormat={false}
                     inputProps={{
@@ -286,39 +286,31 @@ class Account extends React.Component {
                   />
                   <span className="help-block">Bootstrap datepicker</span>
                 </FormGroup>
-                <FormGroup>
-                  <Label for="website">Associate to Website</Label>
-                  <Col md="12">
-                    <Select2
-                      className={s.select2}
-                      value={this.state.defaultSelectVal}
-                      data={this.state.selectDefaultData}
-                    />
-                  </Col>
+                <FormGroup className={s.select2} >
+                  <Label>Associate to Website</Label>
+                  <Select2
+                    value={this.state.websiteSelectVal}
+                    data={this.state.selectWebsiteData}
+                  />
                 </FormGroup>
-                <FormGroup>
-                  <Label for="website">Associate to Website</Label>
-                  <Col md="12">
-                    <Select2
-                      className={s.select2}
-                      value={this.state.defaultSelectVal}
-                      data={this.state.selectDefaultData}
-                    />
-                  </Col>
+                <FormGroup className={s.select2}>
+                  <Label>Created By</Label>
+                  <Select2
+                    disabled
+                    options={{ placeholder: 'Admin' }}
+                  />
                 </FormGroup>
-                <FormGroup>
-                  <Label for="website">Associate to Website</Label>
-                  <Col md="12">
-                    <Select2
-                      className={s.select2}
-                      value={this.state.defaultSelectVal}
-                      data={this.state.selectDefaultData}
-                    />
-                  </Col>
+                <FormGroup className={s.select2}>
+                  <Label>Account Group</Label>
+                  <Select2
+                    multiple
+                    data={select2AccountGroupsList}
+                    options={{ placeholder: 'Choose one or more groups for account' }}
+                  />
                 </FormGroup>
-                <FormGroup className="checkbox abc-checkbox">
-                  <Input id="checkbox1" />
-                  <Label for="checkbox1">
+                <FormGroup className="checkbox abc-checkbox" check>
+                  <Input id="checkbox1" type="checkbox" />{' '}
+                  <Label for="checkbox1" check >
                     Request password change
                   </Label>
                 </FormGroup>
