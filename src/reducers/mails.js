@@ -5,7 +5,7 @@ import {
   DELETE_MAIL,
   TOGGLE_ALL_CHECKED,
   CHANGE_FILTERED_MAILS,
-} from '../actions/mail';
+} from '../constants';
 
 const defaultState = {
   mailsList: [

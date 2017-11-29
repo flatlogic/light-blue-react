@@ -13,9 +13,13 @@ class Login extends React.Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    location: PropTypes.isRequired,
+    location: PropTypes.oneOfType({
+      state: PropTypes.shape({}),
+    }).isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
-    errorMessage: PropTypes.isRequired,
+    errorMessage: PropTypes.shape({
+      state: PropTypes.shape({}),
+    }).isRequired,
   };
 
   constructor(props) {
@@ -46,7 +50,7 @@ class Login extends React.Component {
   }
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/app' } };
+    const from = this.props.location.state ? this.props.location.state.from : { pathname: '/app' };
 
     if (this.props.isAuthenticated) { // cant access login page while logged in
       return (
@@ -84,7 +88,7 @@ class Login extends React.Component {
             </FormGroup>
             <div className={s.formActions}>
               <button type="submit" className="btn btn-block btn-danger btn-lg">
-                <span className={[s.smallCircle, 'mr-2'].join(' ')}><i className="fa fa-caret-right" /></span>
+                <span className={`${s.smallCircle} mr-2`}><i className="fa fa-caret-right" /></span>
                 Sign In
               </button>
               <a className={s.forgot} href="#">Forgot Username or Password?</a>

@@ -1,4 +1,4 @@
-import { DISMISS_ALERT } from '../actions/alerts';
+import { DISMISS_ALERT } from '../constants';
 
 const defaultState = {
   alertsList: [

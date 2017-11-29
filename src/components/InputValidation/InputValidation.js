@@ -14,10 +14,10 @@ class InputValidation extends React.Component {
     name: PropTypes.string,
     id: PropTypes.string,
     placeholder: PropTypes.string,
-    setValue: PropTypes.func,
-    isFormSubmitted: PropTypes.func,
-    getErrorMessage: PropTypes.func,
-    showRequired: PropTypes.func,
+    setValue: PropTypes.func.isRequired,
+    isFormSubmitted: PropTypes.func.isRequired,
+    getErrorMessage: PropTypes.func.isRequired,
+    showRequired: PropTypes.func.isRequired,
   };
   /* eslint-enable */
 

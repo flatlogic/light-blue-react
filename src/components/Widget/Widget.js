@@ -17,6 +17,7 @@ class Widget extends React.Component {
     close: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
     fullscreen: PropTypes.bool,
     collapse: PropTypes.bool,
+    expand: PropTypes.bool,
     refresh: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
     settings: PropTypes.bool,
     settingsInverse: PropTypes.bool,
@@ -24,7 +25,7 @@ class Widget extends React.Component {
     showTooltip: PropTypes.bool,
     bodyClass: PropTypes.string,
     customControls: PropTypes.node,
-    options: PropTypes.object, //eslint-disable-line
+    options: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -34,6 +35,7 @@ class Widget extends React.Component {
     close: false,
     fullscreen: false,
     collapse: false,
+    expand: false,
     refresh: false,
     settings: false,
     settingsInverse: false,
@@ -65,6 +67,7 @@ class Widget extends React.Component {
       close,
       fullscreen,
       collapse,
+      expand,
       refresh,
       settings,
       settingsInverse,
@@ -78,7 +81,7 @@ class Widget extends React.Component {
     const randomId = this.state.randomId;
     return (
       <section
-        className={[s.widget, 'widget', className].join(' ')}
+        className={`${s.widget} widget ${className}`}
         ref={(widget) => { this.el = widget; }} {...attributes}
       >
         {

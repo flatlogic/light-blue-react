@@ -29,7 +29,7 @@ class ErrorPage extends React.Component {
                   <p className={s.errorInfo}>
                     Opps, it seems this page does not exist.
                   </p>
-                  <p className={[s.errorHelp, 'mb-3'].join(' ')}>
+                  <p className={`${s.errorHelp} mb-3`}>
                     If you are sure it should, search for it.
                   </p>
                   <Form method="get" action="/">

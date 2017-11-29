@@ -23,11 +23,11 @@ import {
   Button,
 } from 'reactstrap';
 import { logoutUser } from '../../actions/user';
-import { toggleSidebar, positionSidebar, toggleOpenSidebar } from '../../actions/navigation';
+import { toggleVisibilitySidebar, positionSidebar, toggleSidebar } from '../../actions/navigation';
 
-import i1 from '../../images/1.png';
-import i2 from '../../images/2.png';
-import i3 from '../../images/3.png';
+import sender1 from '../../images/1.png';
+import sender2 from '../../images/2.png';
+import sender3 from '../../images/3.png';
 
 import s from './Header.scss';
 
@@ -48,8 +48,9 @@ class Header extends React.Component {
     this.toggleSettingsDropdown = this.toggleSettingsDropdown.bind(this);
     this.toggleAccountDropdown = this.toggleAccountDropdown.bind(this);
     this.moveSidebar = this.moveSidebar.bind(this);
+    this.toggleVisibilitySidebar = this.toggleVisibilitySidebar.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
-    this.toggleOpenSidebar = this.toggleOpenSidebar.bind(this);
+    this.toggleSearchOpen = this.toggleSearchOpen.bind(this);
 
     this.state = {
       visible: true,
@@ -94,29 +95,35 @@ class Header extends React.Component {
     });
   }
 
-  toggleSidebar(state) {
-    this.props.dispatch(toggleSidebar(state));
+  toggleSearchOpen() {
+    this.setState({
+      searchOpen: !this.state.searchOpen,
+    });
+  }
+
+  toggleVisibilitySidebar(state) {
+    this.props.dispatch(toggleVisibilitySidebar(state));
   }
 
   moveSidebar(position) {
     this.props.dispatch(positionSidebar(position));
   }
 
-  toggleOpenSidebar() {
-    this.props.dispatch(toggleOpenSidebar());
+  toggleSidebar() {
+    this.props.dispatch(toggleSidebar());
   }
 
   render() {
     return (
       <Navbar className="d-print-none">
-        <NavbarBrand className={s.logo} href="/">
+        <NavbarBrand className={`${s.logo} ${this.props.sidebarState === 'hide' ? `${s.logoHidden}` : ''}`} href="/">
           Light <strong>Blue</strong>
         </NavbarBrand>
-        <UncontrolledAlert className={[s.alert, 'd-md-none-down ml-auto mr-3'].join(' ')}>
+        <UncontrolledAlert className={`${s.alert} d-md-none-down ml-auto mr-3`}>
           <i className="fa fa-info-circle mr-1" /> Check out Light Blue <a href="#" onClick={() => this.setState({ settingsOpen: true })}>settings</a> on
           the right!
         </UncontrolledAlert>
-        <Collapse className={[s.searchCollapse, 'ml-auto ml-lg-0 mr-md-3'].join(' ')} isOpen={this.state.searchOpen}>
+        <Collapse className={`${s.searchCollapse} ml-auto ml-lg-0 mr-md-3`} isOpen={this.state.searchOpen}>
           <InputGroup className={`${s.navbarForm} ${this.state.searchFocused ? s.navbarFormFocused : ''}`}>
             <InputGroupAddon className={s.inputAddon}><i className="fa fa-search" /></InputGroupAddon>
             <Input
@@ -128,7 +135,7 @@ class Header extends React.Component {
         </Collapse>
         <Nav className="ml-auto ml-md-0">
           <NavItem className="d-md-none">
-            <NavLink onClick={() => this.setState({ searchOpen: !this.state.searchOpen })} className={s.navItem} href="#">
+            <NavLink onClick={this.toggleSearchOpen} className={s.navItem} href="#">
               <i className="glyphicon glyphicon-search" />
             </NavLink>
           </NavItem>
@@ -138,7 +145,7 @@ class Header extends React.Component {
             </DropdownToggle>
             <DropdownMenu className={`${s.dropdownMenu} ${s.messages}`}>
               <DropdownItem>
-                <img className={s.image} src={i1} alt="" />
+                <img className={s.image} src={sender1} alt="" />
                 <div className={s.details}>
                   <div>Jane Hew</div>
                   <div className={s.text}>
@@ -147,7 +154,7 @@ class Header extends React.Component {
                 </div>
               </DropdownItem>
               <DropdownItem>
-                <img className={s.image} src={i2} alt="" />
+                <img className={s.image} src={sender2} alt="" />
                 <div className={s.details}>
                   <div>Alies Rumiancaŭ</div>
                   <div className={s.text}>
@@ -156,7 +163,7 @@ class Header extends React.Component {
                 </div>
               </DropdownItem>
               <DropdownItem>
-                <img className={s.image} src={i3} alt="" />
+                <img className={s.image} src={sender3} alt="" />
                 <div className={s.details}>
                   <div>Michał Rumiancaŭ</div>
                   <div className={s.text}>
@@ -227,8 +234,8 @@ class Header extends React.Component {
               </ButtonGroup>
               <h6 className="mt-2">Sidebar</h6>
               <ButtonGroup size="sm">
-                <Button onClick={() => this.toggleSidebar('show')} className={this.props.sidebarState === 'show' ? 'active' : ''}>Show</Button>
-                <Button onClick={() => this.toggleSidebar('hide')} className={this.props.sidebarState === 'hide' ? 'active' : ''}>Hide</Button>
+                <Button onClick={() => this.toggleVisibilitySidebar('show')} className={this.props.sidebarState === 'show' ? 'active' : ''}>Show</Button>
+                <Button onClick={() => this.toggleVisibilitySidebar('hide')} className={this.props.sidebarState === 'hide' ? 'active' : ''}>Hide</Button>
               </ButtonGroup>
             </DropdownMenu>
           </NavDropdown>
@@ -238,7 +245,7 @@ class Header extends React.Component {
             </DropdownToggle>
             <DropdownMenu right className={`${s.dropdownMenu} ${s.account}`}>
               <section>
-                <img src={i2} alt="" className={s.imageAccount} />
+                <img src={sender2} alt="" className={s.imageAccount} />
                 Philip Daineka
               </section>
               <DropdownItem>
@@ -267,7 +274,7 @@ class Header extends React.Component {
             </NavLink>
           </NavItem>
           <NavItem className="d-md-none">
-            <NavLink onClick={this.toggleOpenSidebar} className={s.navItem} href="#">
+            <NavLink onClick={this.toggleSidebar} className={s.navItem} href="#">
               <i className="fa fa-bars" />
             </NavLink>
           </NavItem>

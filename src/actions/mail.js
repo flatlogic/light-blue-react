@@ -1,9 +1,11 @@
-export const TOGGLE_STAR_STATUS = 'TOGGLE_STAR_STATUS';
-export const SET_READ_STATUS = 'TOGGLE_READ_STATUS';
-export const SET_SELECT_STATUS = 'SET_SELECT_STATUS';
-export const DELETE_MAIL = 'DELETE_MAIL';
-export const TOGGLE_ALL_CHECKED = 'TOGGLE_ALL_CHECKED';
-export const CHANGE_FILTERED_MAILS = 'CHANGE_FILTERED_MAILS';
+import {
+  TOGGLE_STAR_STATUS,
+  SET_READ_STATUS,
+  SET_SELECT_STATUS,
+  DELETE_MAIL,
+  TOGGLE_ALL_CHECKED,
+  CHANGE_FILTERED_MAILS,
+} from '../constants';
 
 export function changeFilteredMails(folderName) {
   return {

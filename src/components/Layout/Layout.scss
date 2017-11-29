@@ -20,9 +20,5 @@
   padding: 25px 2.5641%;
   flex: 1;
 
-  @media (min-height: breakpoint-min('md')) {
-    margin-left: 185px;
-  }
-
   @include transition(opacity 0.2s);
 }

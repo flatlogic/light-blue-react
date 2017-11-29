@@ -1,6 +1,6 @@
 import {
   LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS,
-} from '../actions/user';
+} from '../constants';
 
 // The auth reducer. The starting state sets authentication
 // based on a token being in local storage. In a real app,

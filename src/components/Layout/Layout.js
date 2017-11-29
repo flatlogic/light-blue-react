@@ -78,9 +78,9 @@ class Layout extends React.Component {
     return (
       <div className={s.root}>
         <Header toggleSidebar={this.toggleSidebar} />
-        <div className={[s.wrap, this.props.sidebarState === 'hide' ? 'sidebar-hidden' : '', this.props.sidebarPosition === 'right' ? 'sidebar-right' : ''].join(' ')}>
+        <div className={`${s.wrap} ${this.props.sidebarState === 'hide' ? 'sidebar-hidden' : ''} ${this.props.sidebarPosition === 'right' ? 'sidebar-right' : ''}`}>
           <Sidebar />
-          <main className={[s.content].join(' ')}>
+          <main className={s.content}>
             <Switch>
               <Route path="/app" exact component={Dashboard} />
               <Route path="/app/ui/icons" exact component={UIIconsBundle} />

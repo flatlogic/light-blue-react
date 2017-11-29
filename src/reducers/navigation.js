@@ -1,4 +1,4 @@
-import { TOGGLE_SIDEBAR, POSITION_SIDEBAR, TOGGLE_OPEN_SIDEBAR, CHANGE_ACTIVE_SIDEBAR_ITEM } from '../constants';
+import { TOGGLE_VISIBILITY_SIDEBAR, POSITION_SIDEBAR, TOGGLE_SIDEBAR, CHANGE_ACTIVE_SIDEBAR_ITEM } from '../constants';
 
 const initialState = {
   sidebarPosition: 'left',
@@ -9,7 +9,7 @@ const initialState = {
 
 export default function runtime(state = initialState, action) {
   switch (action.type) {
-    case TOGGLE_SIDEBAR:
+    case TOGGLE_VISIBILITY_SIDEBAR:
       return {
         ...state,
         sidebarState: action.state,
@@ -19,7 +19,7 @@ export default function runtime(state = initialState, action) {
         ...state,
         sidebarPosition: action.position,
       };
-    case TOGGLE_OPEN_SIDEBAR:
+    case TOGGLE_SIDEBAR:
       return {
         ...state,
         sidebarOpen: !state.sidebarOpen,

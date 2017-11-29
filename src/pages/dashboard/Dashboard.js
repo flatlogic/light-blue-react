@@ -365,7 +365,7 @@ class Dashboard extends React.Component {
                             </div>
                           </div>
                           <div
-                            className={[s.chatMessageBody, message.sender !== 'Tikhon Laninga' ? s.onLeft : ''].join(' ')}
+                            className={`${s.chatMessageBody} ${message.sender !== 'Tikhon Laninga' ? s.onLeft : ''}`}
                           >
                             <span className={s.arrow} />
                             <div className={s.sender}><a href="#">{message.sender}</a></div>

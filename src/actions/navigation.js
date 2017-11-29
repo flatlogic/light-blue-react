@@ -1,8 +1,8 @@
-import { TOGGLE_SIDEBAR, POSITION_SIDEBAR, TOGGLE_OPEN_SIDEBAR, CHANGE_ACTIVE_SIDEBAR_ITEM } from '../constants';
+import { TOGGLE_VISIBILITY_SIDEBAR, POSITION_SIDEBAR, TOGGLE_SIDEBAR, CHANGE_ACTIVE_SIDEBAR_ITEM } from '../constants';
 
-export function toggleSidebar(state) {
+export function toggleVisibilitySidebar(state) {
   return {
-    type: TOGGLE_SIDEBAR,
+    type: TOGGLE_VISIBILITY_SIDEBAR,
     state,
   };
 }
@@ -14,9 +14,9 @@ export function positionSidebar(position) {
   };
 }
 
-export function toggleOpenSidebar() {
+export function toggleSidebar() {
   return {
-    type: TOGGLE_OPEN_SIDEBAR,
+    type: TOGGLE_SIDEBAR,
   };
 }
 

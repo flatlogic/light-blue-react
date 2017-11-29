@@ -27,8 +27,8 @@ class LinksGroup extends Component {
     className: '',
   };
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.togglePanelCollapse = this.togglePanelCollapse.bind(this);
 
     this.state = {
@@ -47,7 +47,7 @@ class LinksGroup extends Component {
 
     if (!this.props.childrenLinks) {
       return (
-        <li className={[s.headerLink, this.props.className].join(' ')}>
+        <li className={`${s.headerLink} ${this.props.className}`}>
           <NavLink to={this.props.headerLink} activeClassName={s.headerLinkActive} exact>
             <span className={s.icon}>
               <i className={`fa ${this.props.iconName}`} />
@@ -63,15 +63,15 @@ class LinksGroup extends Component {
         path={this.props.headerLink}
         children={({ match }) => {
           return (
-            <li className={[s.headerLink, this.props.className].join(' ')}>
-              <a className={[match ? s.headerLinkActive : '', isOpen ? s.collapsed : ''].join(' ')}
+            <li className={`${s.headerLink} ${this.props.className}`}>
+              <a className={`${match ? s.headerLinkActive : ''} ${isOpen ? s.collapsed : ''}`}
                 onClick={this.togglePanelCollapse}
               >
                 <span className={s.icon}>
                   <i className={`fa ${this.props.iconName}`} />
                 </span>
                 {this.props.header}
-                <b className={['fa fa-angle-left', s.caret].join(' ')} />
+                <b className={`${s.caret} fa fa-angle-left`} />
               </a>
               {/* eslint-enable */}
               <Collapse className={s.panel} isOpen={isOpen}>

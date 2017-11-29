@@ -1,6 +1,6 @@
-export const DISMISS_ALERT = 'DISMISS_ALERT';
+import { DISMISS_ALERT } from '../constants';
 
-export function dismissAlert(id) {
+export default function dismissAlert(id) {
   return {
     type: DISMISS_ALERT,
     id,
