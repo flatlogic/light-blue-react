@@ -254,7 +254,7 @@ class Dashboard extends React.Component {
             <Widget
               title={
                 <h4>Traffic Sources <small>One month tracking</small></h4>
-              } expand collapse close
+              } collapse close
             >
               <div className="widget-table-overflow">
                 <Table className="table-striped table-lg mt-sm mb-0 table-sources">
