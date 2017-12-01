@@ -94,7 +94,7 @@ class Dashboard extends React.Component {
   }
 
   sparklineDataIten() {
-    for (let i = 0; i < this.tableSparklineValues.length; i + 1) {
+    for (let i = 0; i < this.tableSparklineValues.length; i += 1) {
       this.tableSparklineValues[i] = [
         10 + this.randomValue(), 15 + this.randomValue(),
         20 + this.randomValue(), 15 + this.randomValue(),
