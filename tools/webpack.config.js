@@ -216,6 +216,7 @@ const clientConfig = {
         },
         mangle: {
           screw_ie8: true,
+          except: ['$super'],
         },
         output: {
           comments: false,
