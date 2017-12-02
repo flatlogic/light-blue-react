@@ -31,6 +31,7 @@ class Sidebar extends React.Component {
         >
           <ul className={s.nav}>
             <LinksGroup header="Dashboard" headerLink="/app" iconName="fa-home" />
+            <LinksGroup header={<span>LB Package <sup className="text-warning fw-bold">4.0</sup></span>} headerLink="/app/package" iconName="fa-database" />
             <LinksGroup
               onActiveSidebarItemChange={() => this.props.dispatch(changeActiveSidebarItem('/app/forms'))}
               isActive={this.props.activeItem === '/app/forms'}
@@ -159,13 +160,13 @@ class Sidebar extends React.Component {
               headerLink="/app/special"
               childrenLinks={[
                 {
-                  name: 'Search', link: '/app/special/search',
+                  name: <span>Search <sup className="text-warning fw-bold">new</sup></span>, link: '/app/special/search',
                 },
                 {
                   name: 'Invoice', link: '/app/special/invoice',
                 },
                 {
-                  name: 'Inbox', link: '/app/special/inbox',
+                  name: <span>Inbox &nbsp; <span className="badge badge-danger">3</span></span>, link: '/app/special/inbox',
                 },
                 {
                   name: 'Error Page', link: '/error',

@@ -78,7 +78,7 @@ class LinksGroup extends Component {
                 <ul>
                   {this.props.childrenLinks &&
                   this.props.childrenLinks.map(child =>
-                    <li key={child.name}>
+                    <li key={`${child.name}-${child.link}`}>
                       <NavLink
                         to={child.link}
                         exact

@@ -38,8 +38,9 @@ import Header from '../Header';
 import Sidebar from '../Sidebar';
 import Bundle from '../../core/Bundle';
 
-// Dashboard component is loaded directly as an example of server side rendering
+// Dashboard & Package components are loaded directly as an example of server side rendering
 import Dashboard from '../../pages/dashboard';
+import Package from '../../pages/package';
 
 const UIIconsBundle = Bundle.generateBundle(loadUIIcons);
 const UIButtonsBundle = Bundle.generateBundle(loadUIButtons);
@@ -83,6 +84,7 @@ class Layout extends React.Component {
           <main className={s.content}>
             <Switch>
               <Route path="/app" exact component={Dashboard} />
+              <Route path="/app/package" exact component={Package} />
               <Route path="/app/ui/icons" exact component={UIIconsBundle} />
               <Route path="/app/ui/buttons" exact component={UIButtonsBundle} />
               <Route path="/app/ui/accordion" exact component={UIAccordionBundle} />
@@ -109,6 +111,9 @@ class Layout extends React.Component {
               <Route path="/app/special/invoice" exact component={SpecialInvoiceBundle} />
               <Route path="/app/special/inbox" component={SpecialInboxBundle} />
             </Switch>
+            <footer className="text-muted text-center">
+              Light Blue 4.0 React Version - Made by <a href="https://flatlogic.com" rel="nofollow noopener noreferrer" target="_blank">Flatlogic</a>
+            </footer>
           </main>
         </div>
       </div>

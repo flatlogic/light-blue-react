@@ -341,6 +341,10 @@ button.dropdown-toggle {
   border: 2px solid #fff;
 }
 
+.btn-link {
+  font-weight: $font-weight-base;
+}
+
 /*        TABBABLE         */
 .tabbable {
   @include clearfix();
