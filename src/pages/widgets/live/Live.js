@@ -177,7 +177,7 @@ class Live extends React.Component {
         <Row className="grid-demo">
           <Col className="widget-container" md={6} xs={12}>
             <Widget
-              title={<h6>Default <span className="fw-semi-bold">Widget</span></h6>}
+              title={<h5>Default <span className="fw-semi-bold">Widget</span></h5>}
               refresh collapse fullscreen close
               showTooltip tooltipPlacement={tooltipPlacement}
               data-widgster-load="/demo/grid/default.php"
@@ -196,10 +196,10 @@ class Live extends React.Component {
               data-widgster-load="/demo/grid/shares.php"
               data-post-processing
               showTooltip tooltipPlacement={tooltipPlacement}
-              title={<h6>
+              title={<h5>
                 <span className="badge badge-primary"><i className="fa fa-facebook" /></span> &nbsp;
                 Latest <span className="fw-semi-bold">Shares</span>
-              </h6>}
+              </h5>}
               close="Close" refresh="Reload"
               bodyClass={'p-0'}
             >
@@ -209,7 +209,7 @@ class Live extends React.Component {
                     <img className="rounded-circle" src={i1} alt="..." />
                   </span>
                   <div>
-                    <h6 className="m-0">Maikel Basso</h6>
+                    <h5 className="m-0">Maikel Basso</h5>
                     <small className="text-muted">about 2 mins ago</small>
                   </div>
                   <i className="fa fa-circle ml-auto text-danger" />
@@ -219,7 +219,7 @@ class Live extends React.Component {
                     <img className="rounded-circle" src={i2} alt="..." />
                   </span>
                   <div>
-                    <h6 className="m-0">Ianus Arendse</h6>
+                    <h5 className="m-0">Ianus Arendse</h5>
                     <small className="text-muted">about 42 mins ago</small>
                   </div>
                   <i className="fa fa-circle ml-auto text-info" />
@@ -229,7 +229,7 @@ class Live extends React.Component {
                     <img className="rounded-circle" src={i3} alt="..." />
                   </span>
                   <div>
-                    <h6 className="m-0">Valdemar Landau</h6>
+                    <h5 className="m-0">Valdemar Landau</h5>
                     <small className="text-muted">one hour ago</small>
                   </div>
                   <i className="fa fa-circle ml-auto text-success" />
@@ -239,7 +239,7 @@ class Live extends React.Component {
                     <img className="rounded-circle" src={i14} alt="..." />
                   </span>
                   <div>
-                    <h6 className="m-0">Rick Teagan</h6>
+                    <h5 className="m-0">Rick Teagan</h5>
                     <small className="text-muted">3 hours ago</small>
                   </div>
                   <i className="fa fa-circle ml-auto text-warning" />
@@ -252,7 +252,7 @@ class Live extends React.Component {
               data-post-processing="true"
               data-widgster-autoload="true"
               data-widgster-show-loader="false"
-              title={<h6>Autoload <span className="fw-semi-bold">Widget</span></h6>}
+              title={<h5>Autoload <span className="fw-semi-bold">Widget</span></h5>}
               customControls={
                 <Dropdown isOpen={this.state.isOpenAutoload} toggle={this.toggleAutoloadDropdown}>
                   <DropdownToggle
@@ -317,7 +317,7 @@ class Live extends React.Component {
 
             <Widget>
               <header>
-                <h6>Custom <span className="fw-semi-bold">Loader</span></h6>
+                <h5>Custom <span className="fw-semi-bold">Loader</span></h5>
               </header>
               <div className="widget-body" style={{ minHeight: '140px' }}>
                 <div className="loader animated fadeIn handle">
@@ -335,7 +335,7 @@ class Live extends React.Component {
               id="news-widget"
               data-widgster-load="/demo/grid/news.php"
               data-post-processing="true"
-              title={<div><h6> News <span className="badge badge-pill badge-success">17</span></h6>
+              title={<div><h5> News <span className="badge badge-pill badge-success">17</span></h5>
                 <span className="text-muted">spinning refresh button & close prompt</span>
               </div>}
               customControls={
@@ -412,7 +412,7 @@ class Live extends React.Component {
 
             <Widget
               className="locked" data-widgster-collapsed="true"
-              title={<h6>Collapsed by default & locked</h6>}
+              title={<h5>Collapsed by default & locked</h5>}
               collapse close
             >
               <div className="widget-body">

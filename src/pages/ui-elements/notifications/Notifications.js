@@ -146,7 +146,7 @@ class Notifications extends React.Component {
           <small>&nbsp;Transactional messages in your app</small>
         </h2>
 
-        <Widget title={<h6> Messenger </h6>} close collapse settings>
+        <Widget title='Messenger' close collapse settings>
           <Row>
             <Col lg="4" xs="12">
               <h5 className="m-t-1">Layout options</h5>

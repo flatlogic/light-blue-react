@@ -163,6 +163,15 @@
 }
 
 .messages {
+  &::after {
+    left: auto !important;
+    right: 212px;
+
+    @media (max-width: breakpoint-max(xs)) {
+      right: 212px;
+    }
+  }
+
   button {
     display: flex;
     height: 60px;

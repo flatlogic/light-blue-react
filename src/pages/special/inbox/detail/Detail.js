@@ -85,10 +85,12 @@ class Detail extends React.Component {
               </div>
             </div>
             <div className={s.emailBody}>
+              {/* eslint-disable react/no-danger */}
               <div
                 className={s.emailBody}
                 dangerouslySetInnerHTML={{ __html: this.state.mail.body }}
               />
+              {/* eslint-enable react/no-danger */}
             </div>
             {
               this.state.mail.body &&

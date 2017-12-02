@@ -110,24 +110,24 @@ class Charts extends React.Component {
         tickLength: 0,
         tickColor: 'transparent',
         tickDecimals: 0,
+        color: 'white',
         min: 2,
         font: {
           lineHeight: 12,
           weight: 300,
           family: 'Open Sans',
           size: 12,
-          color: '#f8f8f8',
         },
       },
       yaxis: {
         tickDecimals: 0,
         tickColor: 'transparent',
+        color: 'white',
         font: {
           lineHeight: 12,
           weight: 300,
           family: 'Open Sans',
           size: 12,
-          color: '#f8f8f8',
         },
       },
       grid: {

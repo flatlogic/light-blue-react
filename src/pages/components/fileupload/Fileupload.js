@@ -34,7 +34,7 @@ class Fileupload extends React.Component {
         </h2>
         <Row>
           <Col lg="6" md={12}>
-            <Widget title={<h6><strong>Drop</strong> Zone</h6>} settings close>
+            <Widget title={<h5><strong>Drop</strong> Zone</h5>} settings close>
               <div>
                 <Dropzone
                   onDrop={this.onDrop} accept="image/*"
