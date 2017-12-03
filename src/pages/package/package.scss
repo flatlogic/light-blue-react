@@ -1,0 +1,323 @@
+@import '../../styles/app';
+
+.root {
+  :global {
+    /*       NVD3      */
+    .nvtooltip {
+      //padding: $padding-small-vertical $padding-small-horizontal;
+      //font-family: $font-family-base;
+      //font-size: $font-size-sm;
+      //text-align: center;
+
+      //  p {
+      //    margin: 0;
+      //    padding: 0;
+      //  }
+      //
+      //h3 {
+      //  background: none;
+      //  border-bottom: 0;
+      //}
+    }
+    //
+    svg text {
+      font: $font-weight-base $font-size-sm $font-family-base;
+      fill: $text-color;
+    }
+    //
+    //svg .title {
+    //  font: $font-weight-bold $font-size-base $font-family-base;
+    //}
+    //
+    //.nvd3.nv-noData {
+    //  font-size: $font-size-lg;
+    //  font-weight: $font-weight-bold;
+    //}
+    //
+    .nvd3 .nv-axis path.domain {
+      stroke-opacity: 0;
+    }
+
+    .nvd3 .nv-axis line {
+      stroke: #000;
+      stroke-opacity: 0.1;
+    }
+
+    //
+    //.nv-controlsWrap {
+    //  .nv-legend-symbol {
+    //    fill: red !important;
+    //    stroke: red !important;
+    //  }
+    //}
+  }
+
+  .feed {
+    height: 100%;
+    position: relative;
+
+    .wrapper {
+      position: relative;
+    }
+
+    .verticalLine {
+      height: 100%;
+      width: 2px;
+      background: $feed-item-line-color;
+      position: absolute;
+      left: 13px;
+    }
+  }
+
+  .feedItem {
+    @include clearfix;
+
+    padding-right: 6px;
+
+    .icon {
+      position: relative;
+      z-index: 1;
+      background: $feed-item-bg;
+      text-align: center;
+      color: $feed-item-color;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      vertical-align: middle;
+      border-radius: 20px;
+      font-size: 16px;
+
+      img {
+        position: relative;
+        top: -2px;
+        width: 26px;
+        height: 26px;
+      }
+    }
+  }
+
+  .feedItem + .feedItem {
+    margin-top: 10px;
+  }
+
+  .feedItemBody {
+    padding-top: 3px;
+    margin-left: 40px;
+    vertical-align: bottom;
+
+    .time {
+      font-size: $font-size-sm;
+      line-height: 1.5em;
+      color: $text-muted;
+    }
+  }
+
+  .visitsInfo {
+    margin: $widget-padding-vertical (-$widget-padding-horizontal) (-$widget-padding-vertical);
+    padding-top: 18px;
+    padding-bottom: 3px;
+    border: none;
+    text-align: center;
+
+    .key {
+      color: $widget-header-color;
+    }
+
+    .value {
+      margin-top: 16px;
+      margin-bottom: 16px;
+      font-size: $font-size-lg;
+    }
+  }
+
+  .chatMessages {
+    padding-right: 15px; //some space for scroll
+  }
+
+  .chatFooter {
+    height: 40px;
+
+    @include box-sizing(border-box);
+
+    padding-top: 10px;
+
+    input {
+      margin-bottom: 0;
+    }
+  }
+
+  .chatMessage {
+    @include clearfix;
+
+    .icon {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      width: 53px;
+      height: 53px;
+      line-height: 53px;
+      vertical-align: middle;
+      border-radius: 53px;
+
+      img {
+        position: relative;
+        top: -2px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    .time {
+      font-size: $font-size-sm;
+      line-height: 1.5em;
+      text-align: center;
+      color: $text-muted;
+    }
+  }
+
+  .chatMessage + .chatMessage {
+    margin-top: 10px;
+  }
+
+  .chatMessageBody {
+    margin-left: 63px;
+    padding: 8px 10px;
+    background: $bg-addition;
+    position: relative;
+    border-left: 2px solid darken($widget-bg, 10%);
+    border-radius: $border-radius-base;
+
+    &.onLeft {
+      margin-left: 0;
+      margin-right: 63px;
+      border-left: none;
+      border-right: 2px solid darken($widget-bg, 10%);
+
+      .arrow {
+        left: auto;
+        right: -7px;
+        border-right: none;
+        border-left: 5px solid darken($widget-bg, 10%);
+      }
+
+      .sender,
+      .text {
+        text-align: right;
+      }
+    }
+
+    .arrow {
+      display: block;
+      position: absolute;
+      top: 21px;
+      left: -7px;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-right: 5px solid darken($widget-bg, 10%);
+    }
+  }
+}
+
+.newsList {
+  &.newsListNoHover li:hover {
+    background: none;
+    cursor: default;
+  }
+
+  li {
+    @include box-sizing(content-box);
+
+    border-top: 1px solid $bg-addition;
+    padding: 12px;
+    margin: 0 (-$widget-padding-horizontal);
+    cursor: pointer;
+    height: 50px;
+
+    @include transition(background-color 0.2s ease-out);
+
+    &:hover {
+      background: $bg-addition;
+    }
+
+    &:last-child {
+      margin-bottom: -$widget-padding-vertical;
+    }
+  }
+
+  img,
+  .icon {
+    float: left;
+    height: 50px;
+    width: 50px;
+  }
+
+  .icon {
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 32px;
+  }
+
+  .newsItemInfo {
+    margin-left: 62px; /* 50 + 12px padding */
+  }
+
+  .name,
+  .time,
+  .position {
+    line-height: 16px;
+  }
+
+  h4.name {
+    text-transform: none;
+  }
+
+  .name {
+    margin: 0;
+    text-transform: uppercase;
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        color: $link-color;
+      }
+    }
+  }
+
+  p {
+    margin-top: 5px;
+    font-size: 90%;
+    line-height: 1.4;
+  }
+
+  .time {
+    font-size: $font-size-sm;
+    color: $text-muted;
+  }
+
+  .options {
+    margin-top: 5px;
+  }
+
+  .comment {
+    font-size: $font-size-sm;
+    color: $widget-color;
+    line-height: 1.3em;
+  }
+}
+
+.serverStats {
+  margin-top: -3px;
+  margin-bottom: 2px;
+
+  li {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
