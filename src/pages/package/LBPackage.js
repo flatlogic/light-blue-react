@@ -80,7 +80,7 @@ class LBPackage extends React.Component {
                 works out of the box! <br /><br /></p>
               <a
                 className="btn btn-transparent btn-lg btn-block"
-                href="http://demo.flatlogic.com/4.0.0/a4/"
+                href="http://demo.flatlogic.com/4.0.0/angular/"
               >
                 Go to Demo
               </a>
