@@ -17,6 +17,30 @@ class Sidebar extends React.Component {
     sidebarOpen: PropTypes.bool.isRequired,
   };
 
+  componentDidMount() {
+    this.element.addEventListener('transitionend', () => {
+      if (this.props.sidebarOpen) {
+        this.element.classList.add(s.sidebarOpen);
+      } else {
+        this.element.classList.remove(s.sidebarOpen);
+      }
+    }, false);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.sidebarOpen !== this.props.sidebarOpen) {
+      if (nextProps.sidebarOpen) {
+        this.element.style.height = `${this.element.scrollHeight}px`;
+      } else {
+        this.element.style.height = `${this.element.scrollHeight}px`;
+        this.element.classList.remove(s.sidebarOpen);
+        setTimeout(() => {
+          this.element.style.height = '';
+        }, 0);
+      }
+    }
+  }
+
   dismissAlert(id) {
     this.props.dispatch(dismissAlert(id));
   }
@@ -25,9 +49,8 @@ class Sidebar extends React.Component {
     return (
       /* eslint-disable */
       <div className={s.root}>
-        <nav className={`${s.sidebar} ${this.props.sidebarOpen ? s.sidebarOpen : ''} sidebar`}
-             ref="element"
-             style={{height: this.props.sidebarOpen ? `${this.refs.element.scrollHeight}px` : 0}}
+        <nav className={`${s.sidebar} sidebar`}
+             ref={(nav) => { this.element = nav; }}
         >
           <ul className={s.nav}>
             <LinksGroup header="Dashboard" headerLink="/app" iconName="fa-home" />

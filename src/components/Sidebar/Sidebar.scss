@@ -1,7 +1,9 @@
 @import '../../styles/app';
 
 .root {
-  width: $sidebar-width-open;
+  @include media-breakpoint-up('md') {
+    width: $sidebar-width-open;
+  }
 
   :global(.sidebar-hidden) & {
     display: none;
@@ -20,7 +22,7 @@
   color: $sidebar-color;
   transition: height 0.3s ease-in-out;
 
-  @media (min-width: breakpoint-min('md')) {
+  @include media-breakpoint-up('md') {
     width: $sidebar-width-open;
     height: auto !important;
     overflow: auto;
@@ -34,6 +36,10 @@
     margin-left: 0;
     margin-right: ($grid-gutter-width/2);
   }
+}
+
+.sidebarOpen {
+  height: auto !important;
 }
 
 .nav {
