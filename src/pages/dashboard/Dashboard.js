@@ -263,9 +263,9 @@ class Dashboard extends React.Component {
                     <th className="source-col-header">Source</th>
                     <th>Amount</th>
                     <th>Change</th>
-                    <th className="hidden-xs-down">Percent.,%</th>
+                    <th className="d-sm-down-none">Percent.,%</th>
                     <th className="width-100">Target</th>
-                    <th className="chart-col-header hidden-xs-down">Trend</th>
+                    <th className="chart-col-header d-sm-down-none">Trend</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -273,9 +273,9 @@ class Dashboard extends React.Component {
                     <td><Badge color="important">Direct</Badge></td>
                     <td>713</td>
                     <td><strong className="text-green">+53</strong></td>
-                    <td className="hidden-xs-down">+12</td>
+                    <td className="d-sm-down-none">+12</td>
                     <td>900</td>
-                    <td className="chart-cell hidden-xs-down">
+                    <td className="chart-cell d-sm-down-none">
                       <Sparklines data={this.tableSparklineValues[0]} style={{ height: '20%' }}>
                         <SparklinesLine style={{ stroke: '#3ecd74', fill: 'rgb(86, 188, 118)', strokeWidth: 3 }} />
                       </Sparklines>
@@ -285,9 +285,9 @@ class Dashboard extends React.Component {
                     <td><Badge color="warning">Refer</Badge></td>
                     <td>562</td>
                     <td><strong>+84</strong></td>
-                    <td className="hidden-xs-down">+64</td>
+                    <td className="d-sm-down-none">+64</td>
                     <td>500</td>
-                    <td className="chart-cell hidden-xs-down">
+                    <td className="chart-cell d-sm-down-none">
                       <Sparklines data={this.tableSparklineValues[1]} style={{ height: '20%' }}>
                         <SparklinesLine style={{ stroke: '#f2c34d', fill: 'rgb(234, 200, 94)', strokeWidth: 3 }} />
                       </Sparklines>
@@ -297,9 +297,9 @@ class Dashboard extends React.Component {
                     <td><Badge color="success">Social</Badge></td>
                     <td>148</td>
                     <td><strong className="text-red">-12</strong></td>
-                    <td className="hidden-xs-down">+3</td>
+                    <td className="d-sm-down-none">+3</td>
                     <td>180</td>
-                    <td className="chart-cell hidden-xs-down">
+                    <td className="chart-cell d-sm-down-none">
                       <Sparklines data={this.tableSparklineValues[2]} style={{ height: '20%' }}>
                         <SparklinesLine style={{ stroke: '#4e91ce', fill: 'rgb(106, 141, 167)', strokeWidth: 3 }} />
                       </Sparklines>
@@ -309,9 +309,9 @@ class Dashboard extends React.Component {
                     <td><Badge color="info">Search</Badge></td>
                     <td>653</td>
                     <td><strong className="text-green">+23</strong></td>
-                    <td className="hidden-xs-down">+43</td>
+                    <td className="d-sm-down-none">+43</td>
                     <td>876</td>
-                    <td className="chart-cell hidden-xs-down">
+                    <td className="chart-cell d-sm-down-none">
                       <Sparklines data={this.tableSparklineValues[3]} style={{ height: '20%' }}>
                         <SparklinesLine style={{ stroke: '#f25118', fill: 'rgb(229, 96, 59)', strokeWidth: 3 }} />
                       </Sparklines>
@@ -321,9 +321,9 @@ class Dashboard extends React.Component {
                     <td><Badge color="default">Internal</Badge></td>
                     <td>976</td>
                     <td><strong>+101</strong></td>
-                    <td className="hidden-xs-down">-7</td>
+                    <td className="d-sm-down-none">-7</td>
                     <td>844</td>
-                    <td className="chart-cell hidden-xs-down">
+                    <td className="chart-cell d-sm-down-none">
                       <Sparklines data={this.tableSparklineValues[4]} style={{ height: '20%' }}>
                         <SparklinesLine style={{ stroke: '#fff', fill: 'rgb(128, 128, 128)', strokeWidth: 3 }} />
                       </Sparklines>
