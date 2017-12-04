@@ -326,3 +326,18 @@ $z-index-variants: (more: 1, less: -1);
 .chart-overflow-bottom {
   margin: 0 (-$widget-padding-horizontal) (-$widget-padding-vertical);
 }
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-down($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .d#{$infix}-down-none { display: none !important; }
+    .d#{$infix}-down-inline { display: inline !important; }
+    .d#{$infix}-down-inline-block { display: inline-block !important; }
+    .d#{$infix}-down-block { display: block !important; }
+    .d#{$infix}-down-table { display: table !important; }
+    .d#{$infix}-down-table-cell { display: table-cell !important; }
+    .d#{$infix}-down-flex { display: flex !important; }
+    .d#{$infix}-down-inline-flex { display: inline-flex !important; }
+  }
+}
