@@ -111,7 +111,7 @@ class Layout extends React.Component {
               <Route path="/app/special/invoice" exact component={SpecialInvoiceBundle} />
               <Route path="/app/special/inbox" component={SpecialInboxBundle} />
             </Switch>
-            <footer className="text-muted text-center">
+            <footer className={s.footer}>
               Light Blue 4.0 React Version - Made by <a href="https://flatlogic.com" rel="nofollow noopener noreferrer" target="_blank">Flatlogic</a>
             </footer>
           </main>

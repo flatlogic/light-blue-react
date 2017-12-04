@@ -17,8 +17,15 @@
 }
 
 .content {
+  position: relative;
   padding: 25px 2.5641%;
   flex: 1;
 
   @include transition(opacity 0.2s);
+}
+
+.footer {
+  position: absolute;
+  bottom: 15px;
+  color: $text-muted;
 }
