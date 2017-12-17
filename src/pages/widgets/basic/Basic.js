@@ -35,14 +35,14 @@ class Basic extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col md={5}>
+          <Col md={5} xs={12}>
             <Widget className={s.tinyX2} title={<h4>Col-md-5</h4>} />
           </Col>
-          <Col md={4}>
+          <Col md={4} xs={12}>
             <Widget className={s.tiny} title={<h4>Col-md-4</h4>} />
             <Widget className={s.tiny} title={<h4>Col-md-4</h4>} />
           </Col>
-          <Col md={3}>
+          <Col md={3} xs={12}>
             <Widget className={s.tiny} title={<h4>Col-md-3</h4>} />
             <Widget className={s.tiny} title={<h4>Col-md-3</h4>} />
           </Col>

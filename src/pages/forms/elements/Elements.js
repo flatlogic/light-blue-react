@@ -216,7 +216,7 @@ class Elements extends React.Component {
 
         <Row>
           {/* Horizontal form */}
-          <Col lg={6}>
+          <Col lg={6} xs={12}>
             <Widget title={<h5> <i className="fa fa-align-left" /> Inputs </h5>} settings refresh close>
               <FormGroup>
                 <Form>
@@ -345,7 +345,7 @@ class Elements extends React.Component {
           </Col>
 
           {/* Default form */}
-          <Col lg={6}>
+          <Col lg={6} xs={12}>
             <Widget title={<h5> Prepended and appended inputs </h5>} settings refresh close>
               <FormGroup>
                 <Form>
@@ -478,7 +478,7 @@ class Elements extends React.Component {
 
         <Row>
           {/* Control sizing */}
-          <Col lg={8}>
+          <Col lg={8} xs={12}>
             <Widget
               title={<h6> Form <span className="fw-semi-bold">Options</span></h6>}
               settings refresh close
@@ -506,7 +506,7 @@ class Elements extends React.Component {
           </Col>
 
           {/* Input Groups */}
-          <Col lg={4}>
+          <Col lg={4} xs={12}>
             <Widget
               title={<h6> Form <span className="fw-semi-bold">Options</span></h6>}
               settings refresh close
@@ -550,7 +550,7 @@ class Elements extends React.Component {
 
         <Row>
           {/* textares */}
-          <Col lg="6">
+          <Col lg={6} xs={12}>
             <Widget title={<h5><i className="fa fa-font" /> Textareas</h5>} settings refresh close>
               <Form>
                 <legend className="section">Small form</legend>
@@ -585,7 +585,7 @@ class Elements extends React.Component {
                       editorClassName={s.wysiwygEditor}
                       toolbarClassName={s.wysiwygToolbar}
                     />
-                    <div className="text-md-right mt-xs">
+                    <div className="text-md-right mt-md">
                       <Button color="danger" className="mr-xs">Save</Button>
                       <Button color="secondary">Clear</Button>
                     </div>
@@ -596,7 +596,7 @@ class Elements extends React.Component {
           </Col>
 
           {/* selects */}
-          <Col lg="6">
+          <Col lg={6} xs={12}>
             <Widget
               title={<h6><i className="fa fa-list-alt" /> Selects </h6>} refresh close
               settings
@@ -604,8 +604,8 @@ class Elements extends React.Component {
               <Form className="form-label-left">
                 <legend className="section">Default form with labels on left</legend>
                 <FormGroup row>
-                  <Label md="4" for="default-select">Default select</Label>
-                  <Col md="6">
+                  <Label md={4} for="default-select">Default select</Label>
+                  <Col md={6}>
                     <Select2
                       className={s.select2}
                       value={this.state.defaultSelectVal}
@@ -614,8 +614,8 @@ class Elements extends React.Component {
                   </Col>
                 </FormGroup>
                 <FormGroup row> {/* todo: fix group select */}
-                  <Label md="4" for="grouped-select">Select with search & groups</Label>
-                  <Col md="6" className={s.select2}>
+                  <Label md={4} for="grouped-select">Select with search & groups</Label>
+                  <Col md={6} className={s.select2}>
                     <Select2
                       data={this.state.selectGroupData}
                     />
@@ -626,8 +626,8 @@ class Elements extends React.Component {
               <Form>
                 <legend className="section">Dropdown based colored selects</legend>
                 <FormGroup row>
-                  <Label md="4" for="simple-select">Simple select</Label>
-                  <Col md="8">
+                  <Label md={4} for="simple-select">Simple select</Label>
+                  <Col md={8}>
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
                         caret color="secondary"
@@ -652,11 +652,11 @@ class Elements extends React.Component {
                 </FormGroup>
 
                 <FormGroup row>
-                  <Label md="4" for="simple-red-select">
+                  <Label md={4} for="simple-red-select">
                     Colored ones
                     <span className="help-block">A bit of Japanese</span>
                   </Label>
-                  <Col md="8">
+                  <Col md={8}>
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
                         caret color="danger"
@@ -721,14 +721,14 @@ class Elements extends React.Component {
                 </FormGroup>
 
                 <FormGroup row>
-                  <Label md="4" for="simple-big-select">
+                  <Label md={4} for="simple-big-select">
                     Big One
                     <span className="help-block">
                     Size can be controlled with <code>size=&apos;lg&apos;</code> & <code>size=&apos;
                       sm&apos;</code>
                     </span>
                   </Label>
-                  <Col md="8">
+                  <Col md={8}>
                     <UncontrolledButtonDropdown id="simple-big-select">
                       <DropdownToggle
                         caret color="secondary" size="lg"
@@ -757,13 +757,13 @@ class Elements extends React.Component {
 
         {/* checkbox */}
         <Row>
-          <Col sm="12">
+          <Col sm={12} xs={12}>
             <Widget
               title={<h6> Checkbox <strong>Controls</strong></h6>} settings refresh
               close
             >
               <Row>
-                <Col lg="4">
+                <Col lg={4}>
                   <Form>
 
                     <legend className="section">Basic</legend>
@@ -816,7 +816,7 @@ class Elements extends React.Component {
 
                 </Col>
 
-                <Col lg="4">
+                <Col lg={4}>
                   <Form>
                     <legend className="section">Circled</legend>
                     <p>
@@ -841,7 +841,7 @@ class Elements extends React.Component {
                   </Form>
                 </Col>
 
-                <Col lg="4">
+                <Col lg={4}>
                   <Form>
                     <legend className="section">Disabled</legend>
                     <p>
@@ -882,11 +882,11 @@ class Elements extends React.Component {
 
         {/* radio controls */}
         <Row>
-          <Col md="12">
+          <Col md={12} xs={12}>
             <Widget title={<h5> Radio <strong>Controls</strong></h5>} close refresh settings>
               <Form>
                 <Row>
-                  <Col lg="4">
+                  <Col lg={4}>
                     <legend className="section">Basic</legend>
                     <p>
                       Supports bootstrap brand colors: <code>.abc-radio-primary</code>,
@@ -894,7 +894,7 @@ class Elements extends React.Component {
                       Pure css solution with no javascript. Let your radios shine!
                     </p>
                     <Row>
-                      <Col md="6">
+                      <Col md={6}>
                         <FormGroup className="radio abc-radio">
                           <Input
                             type="radio" name="radio1" id="radio1" value="option1"
@@ -907,7 +907,7 @@ class Elements extends React.Component {
                           <Label for="radio2">Big</Label>
                         </FormGroup>
                       </Col>
-                      <Col md="6">
+                      <Col md={6}>
                         <FormGroup className="radio abc-radio abc-radio-danger">
                           <Input type="radio" id="radio3" value="option1" name="radio2" />
                           <Label for="radio3">Next</Label>
@@ -922,7 +922,7 @@ class Elements extends React.Component {
                       </Col>
                     </Row>
                   </Col>
-                  <Col lg="4">
+                  <Col lg={4}>
                     <legend className="section">
                       Disabled
                     </legend>
@@ -941,7 +941,7 @@ class Elements extends React.Component {
                       <Label for="radio6">One</Label>
                     </FormGroup>
                   </Col>
-                  <Col lg="4">
+                  <Col lg={4}>
                     <legend className="section">
                       Cool iOS-like switches
                     </legend>
@@ -971,14 +971,14 @@ class Elements extends React.Component {
 
         <Row>
           {/* pickers */}
-          <Col lg="6" xs="12">
+          <Col lg={6} xs={12}>
             <Widget title={<h5>Pickers</h5>} close refresh settings>
               <Form>
                 <legend className="section">Date & Time</legend>
                 <FormGroup>
                   <Label for="datetimepicker">Time-enabled</Label>
                   <Row>
-                    <Col xs="6">
+                    <Col xs={6}>
                       <div className="datepicker">
                         <Datetime
                           id="datepicker"
@@ -991,7 +991,7 @@ class Elements extends React.Component {
                         </InputGroupAddon>
                       </div>
                     </Col>
-                    <Col xs="6">
+                    <Col xs={6}>
                       <div className="datepicker">
                         <Datetime
                           open={this.state.isTimePickerOpen} id="timepicker"
@@ -1035,16 +1035,16 @@ class Elements extends React.Component {
           </Col>
 
           {/* input masks */}
-          <Col lg="6" xs="12">
+          <Col lg={6} xs={12}>
             <Widget title={<h5> Input <strong>Masks</strong></h5>} close settings refresh>
               <Form className="form-label-left">
                 <legend className="section">Masked inputs</legend>
                 <FormGroup row>
-                  <Label md="4" xs="12" for="mask-phone">
+                  <Label md={4} xs={12} for="mask-phone">
                     Phone
                     <span className="help-block">(123) 456-7890</span>
                   </Label>
-                  <Col md="6" xs="12">
+                  <Col md={6} xs={12}>
                     <MaskedInput
                       className="form-control" id="mask-phone" mask="(111) 111-1111"
                       size="10"
@@ -1052,11 +1052,11 @@ class Elements extends React.Component {
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Label md="4" xs="12" for="mask-int-phone">
+                  <Label md={4} xs={12} for="mask-int-phone">
                     International Phone
                     <span className="help-block">+375 123 456 789</span>
                   </Label>
-                  <Col md="6" xs="12">
+                  <Col md={6} xs={12}>
                     <MaskedInput
                       className="form-control" id="mask-int-phone"
                       mask="+111 111 111 111"
@@ -1064,20 +1064,20 @@ class Elements extends React.Component {
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Label md="4" xs="12" for="mask-date">
+                  <Label md={4} xs={12} for="mask-date">
                     Date Format
                     <span className="help-block">07-03-2013</span>
                   </Label>
-                  <Col md="6" xs="12">
+                  <Col md={6} xs={12}>
                     <MaskedInput className="form-control" id="mask-date" mask="11-11-1111" />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Label md="4" xs="12" for="mask-time">
+                  <Label md={4} xs={12} for="mask-time">
                     Time
                     <span className="help-block">13:43</span>
                   </Label>
-                  <Col md="6" xs="12">
+                  <Col md={6} xs={12}>
                     <MaskedInput className="form-control" id="mask-date" mask="11:11" />
                   </Col>
                 </FormGroup>
@@ -1089,10 +1089,10 @@ class Elements extends React.Component {
 
         {/* sliders */}
         <Row>
-          <Col xs="12">
+          <Col xs={12}>
             <Widget title={<h5>Sliders</h5>} settings close refresh>
               <Row>
-                <Col lg="4">
+                <Col lg={4}>
                   <h4>Color Options</h4>
                   <p>Sing extends Bootstrap Slider and provides different color options:</p>
                   <Form>
@@ -1139,7 +1139,7 @@ class Elements extends React.Component {
                   </Form>
                 </Col>
 
-                <Col lg="4">
+                <Col lg={4}>
                   <h4>Slider Orientation</h4>
                   <p>
                     Vertical orientation is also possible. Simply changing <strong>
@@ -1147,7 +1147,7 @@ class Elements extends React.Component {
                     attribute does the thing.
                   </p>
                   <Row>
-                    <Col md="8">
+                    <Col md={8}>
                       <span className="">
                         <ReactBootstrapSlider
                           value={14}
@@ -1201,7 +1201,7 @@ class Elements extends React.Component {
                   </Row>
                 </Col>
 
-                <Col lg="4">
+                <Col lg={4}>
                   <h4>Range Selector</h4>
                   <p>Range selector, options specified via <strong>data-slider-value</strong>
                     attribute as

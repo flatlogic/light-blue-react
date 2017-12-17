@@ -23,7 +23,7 @@ class LBPackage extends React.Component {
         <p className="lead">You will get access to all those versions
           listed below after you purchase any Light Blue licence!</p>
         <Row>
-          <Col lg={5} md={6}>
+          <Col lg={5} md={6} xs={12}>
             <Widget
               title={
                 <h4>Pure Ajax Version</h4>
@@ -55,7 +55,7 @@ class LBPackage extends React.Component {
               </a>
             </Widget>
           </Col>
-          <Col lg={5} md={6}>
+          <Col lg={5} md={6} xs={12}>
             <Widget
               title={
                 <h4>Angular Version</h4>

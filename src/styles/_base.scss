@@ -274,8 +274,14 @@ section.widget-tabs {
   width: 100%;
 }
 
-.thumbnails .img-thumbnail {
-  margin-bottom: 20px;
+.thumbnails {
+  div {
+    margin-bottom: 20px;
+  }
+
+  .img-thumbnail {
+    margin-bottom: 20px;
+  }
 }
 
 /*       Background Variant        */

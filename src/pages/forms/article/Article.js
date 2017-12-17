@@ -62,7 +62,7 @@ class Article extends React.Component {
           <small> Out of the box form</small>
         </h2>
         <Row>
-          <Col lg="8">
+          <Col lg={8} xs={12}>
             <Widget
               title={
                 <h4><i className="fa fa-file-alt" />Article
@@ -113,7 +113,7 @@ class Article extends React.Component {
               </Form>
             </Widget>
           </Col>
-          <Col lg="4">
+          <Col lg={4} xs={12}>
             <Widget
               title={<h4><i className="fa fa-cog" /> Options
                 <small> Publishing, categories</small>

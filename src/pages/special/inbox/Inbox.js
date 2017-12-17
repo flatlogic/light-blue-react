@@ -55,7 +55,7 @@ class Inbox extends React.Component {
           <small>&nbsp;Ready-to-use client-side application</small>
         </h2>
         <Row>
-          <Col xl={2} lg={3}>
+          <Col xl={2} lg={3} xs={12}>
             <Button color="danger" block onClick={() => this.openForm()}>Compose</Button>
             <Nav className={`nav-pills nav-stacked ${s.navEmailFolders} mt flex-column`}>
               <NavItem

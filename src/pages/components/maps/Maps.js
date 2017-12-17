@@ -150,7 +150,7 @@ class Maps extends React.Component {
           <small> Built-in google & vector maps</small>
         </h2>
         <Row>
-          <Col md={6} xs={12}>
+          <Col lg={6} xs={12}>
             <Widget title={<h5><i className="fa fa-google-plus" /> Google maps. Basic</h5>}>
               <BasicMap
                 googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg"
@@ -160,14 +160,14 @@ class Maps extends React.Component {
               />
             </Widget>
           </Col>
-          <Col md={6} xs={12}>
+          <Col lg={6} xs={12}>
             <Widget title={<h5><i className="fa fa-map-marker" /> Address and location</h5>}>
               <AddressMap />
             </Widget>
           </Col>
         </Row>
         <Row>
-          <Col md={6} xs={12}>
+          <Col lg={6} xs={12}>
             <Widget
               title={
                 <h5><i className="fa fa-arrow-right" /> Region vector map</h5>
@@ -209,7 +209,7 @@ class Maps extends React.Component {
               }
             </Widget>
           </Col>
-          <Col md={6} xs={12}>
+          <Col lg={6} xs={12}>
             <Widget
               title={
                 <h5><i className="fa fa-dashboard" /> World vector map</h5>

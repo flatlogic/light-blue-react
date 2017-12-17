@@ -219,7 +219,7 @@ class Dashboard extends React.Component {
       <div className={s.root}>
         <h2 className="page-title">Dashboard <small>Statistics and more</small></h2>
         <Row>
-          <Col xl={8}>
+          <Col xl={8} xs={12}>
             <Widget
               title={
                 <h4>Visits <small>Based on a three months data</small></h4>
@@ -394,7 +394,7 @@ class Dashboard extends React.Component {
               </div>
             </Widget>
           </Col>
-          <Col xl={4}>
+          <Col xl={4} xs={12}>
             <Widget
               title={
                 <h4>Feed <Badge color="success">412</Badge></h4>

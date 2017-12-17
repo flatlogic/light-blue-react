@@ -56,7 +56,7 @@ class Dialogs extends React.Component {
           <small> Normal & blocking dialog</small>
         </h2>
         <Row>
-          <Col md={5}>
+          <Col lg={5} xs={12}>
             <Widget
               title={<h5><i className="fa fa-magic" /> Dialogs</h5>}
             >
@@ -81,7 +81,7 @@ class Dialogs extends React.Component {
               </div>
             </Widget>
           </Col>
-          <Col md={5}>
+          <Col lg={5} xs={12}>
             <Widget
               title={<h5><i className="fa fa-bolt" /> Live Demo</h5>}
             >

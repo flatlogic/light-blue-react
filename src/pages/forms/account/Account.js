@@ -53,7 +53,7 @@ class Account extends React.Component {
           <small> Out of the box form</small>
         </h2>
         <Row>
-          <Col lg={7}>
+          <Col lg={7} xs={12}>
             <Widget
               title={<h4><i className="fa fa-user" /> Account Profile
                 <small> Create new or edit existing user</small>

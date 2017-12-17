@@ -94,7 +94,7 @@ class Accordion extends React.Component {
           <small> Simple and toggle accordion</small>
         </h2>
         <Row className="mt-xs">
-          <Col md="6" xs="12">
+          <Col lg="6" xs="12">
             <h4><strong>Simple</strong> Accordion</h4>
             <div className="card-columns">
               {this.state.accordionFirstContent.map((element, index) =>
@@ -127,7 +127,7 @@ class Accordion extends React.Component {
                   </div>))}
             </div>
           </Col>
-          <Col md="6" xs="12">
+          <Col lg="6" xs="12">
             <h4><strong>Toggle</strong> Accordion</h4>
             <div className="card-columns">
               {this.state.accordionSecondContent.map((element, index) => (

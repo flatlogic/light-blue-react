@@ -137,7 +137,7 @@ class Live extends React.Component {
         </h2>
         <Row>
           <Col lg={1} className="d-lg-block d-none" />
-          <Col md={7}>
+          <Col lg={7} xs={12}>
             <Widget
               title={<h5>New Widgets &nbsp;<span className="badge badge-danger fw-normal">since 2.1</span></h5>}
             >
@@ -175,7 +175,7 @@ class Live extends React.Component {
         </Row>
 
         <Row className="grid-demo">
-          <Col className="widget-container" md={6} xs={12}>
+          <Col className="widget-container" lg={6} xs={12}>
             <Widget
               title={<h5>Default <span className="fw-semi-bold">Widget</span></h5>}
               refresh collapse fullscreen close
@@ -328,9 +328,7 @@ class Live extends React.Component {
               </div>
             </Widget>
           </Col>
-
-
-          <Col xl={6} className="widget-container">
+          <Col xl={12} className="widget-container">
             <Widget
               id="news-widget"
               data-widgster-load="/demo/grid/news.php"

@@ -87,8 +87,7 @@ class TabsAccordion extends React.Component {
         <h2 className="page-title">Tabs
           <small> Tabs-enabled widget and more</small>
         </h2>
-        <Row>
-          <Col md="2" />
+        <Row className="justify-content-center">
           <Col md="6" xs="12">
             <Widget className="widget-tabs">
               <Nav tabs>
