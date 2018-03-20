@@ -101,6 +101,7 @@
   background-color: $color_1;
   //final w3c
   background-image:
+    url(../images/bg-pattern.svg),
     radial-gradient(
       $type $figure at $position_x $position_y,
       $color_1,
@@ -108,6 +109,7 @@
     );
   //webkit-specific
   background-image:
+    url(../images/bg-pattern.svg),
     -webkit-radial-gradient(
       $position_x $position_y,
       $type $figure,
@@ -117,10 +119,12 @@
 
   //moz-specific
   background-image:
+    url(../images/bg-pattern.svg),
     -moz-radial-gradient(
       $position_x $position_y,
       $type $figure,
       $color_1,
       $color_2
     );
+  background-size: cover;
 }

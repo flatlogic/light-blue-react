@@ -1,6 +1,7 @@
 {
-  "name": "web",
-  "version": "0.0.0",
+  "name": "light-blue",
+  "description": "Light Blue - React Admin Dashboard App",
+  "version": "4.0.1",
   "private": true,
   "engines": {
     "node": "6.11.x"
