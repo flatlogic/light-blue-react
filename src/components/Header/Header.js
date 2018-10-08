@@ -12,7 +12,7 @@ import {
   InputGroup,
   Input,
   UncontrolledAlert,
-  NavDropdown,
+  Dropdown,
   NavbarBrand,
   Collapse,
   DropdownToggle,
@@ -125,7 +125,7 @@ class Header extends React.Component {
         </UncontrolledAlert>
         <Collapse className={`${s.searchCollapse} ml-auto ml-lg-0 mr-md-3`} isOpen={this.state.searchOpen}>
           <InputGroup className={`${s.navbarForm} ${this.state.searchFocused ? s.navbarFormFocused : ''}`}>
-            <InputGroupAddon className={s.inputAddon}><i className="fa fa-search" /></InputGroupAddon>
+            <InputGroupAddon addonType="prepend" className={s.inputAddon}><i className="fa fa-search" /></InputGroupAddon>
             <Input
               id="search-input" placeholder="Search..." className="input-transparent"
               onFocus={() => this.setState({ searchFocused: true })}
@@ -139,7 +139,7 @@ class Header extends React.Component {
               <i className="glyphicon glyphicon-search" />
             </NavLink>
           </NavItem>
-          <NavDropdown isOpen={this.state.messagesOpen} toggle={this.toggleMessagesDropdown}>
+          <Dropdown nav isOpen={this.state.messagesOpen} toggle={this.toggleMessagesDropdown}>
             <DropdownToggle nav className={s.navItem}>
               <i className="glyphicon glyphicon-comments" />
             </DropdownToggle>
@@ -177,8 +177,8 @@ class Header extends React.Component {
                 </a>
               </DropdownItem>
             </DropdownMenu>
-          </NavDropdown>
-          <NavDropdown isOpen={this.state.supportOpen} toggle={this.toggleSupportDropdown}>
+          </Dropdown>
+          <Dropdown nav isOpen={this.state.supportOpen} toggle={this.toggleSupportDropdown}>
             <DropdownToggle nav className={s.navItem}>
               <i className="glyphicon glyphicon-globe" />
               <span className={s.count}>8</span>
@@ -220,9 +220,9 @@ class Header extends React.Component {
                 </a>
               </DropdownItem>
             </DropdownMenu>
-          </NavDropdown>
+          </Dropdown>
           <NavItem className={s.divider} />
-          <NavDropdown isOpen={this.state.settingsOpen} toggle={this.toggleSettingsDropdown} className="d-sm-none-down">
+          <Dropdown nav isOpen={this.state.settingsOpen} toggle={this.toggleSettingsDropdown} className="d-sm-none-down">
             <DropdownToggle nav className={s.navItem}>
               <i className="glyphicon glyphicon-cog" />
             </DropdownToggle>
@@ -238,8 +238,8 @@ class Header extends React.Component {
                 <Button onClick={() => this.toggleVisibilitySidebar('hide')} className={this.props.sidebarState === 'hide' ? 'active' : ''}>Hide</Button>
               </ButtonGroup>
             </DropdownMenu>
-          </NavDropdown>
-          <NavDropdown isOpen={this.state.accountOpen} toggle={this.toggleAccountDropdown} className="d-sm-none-down">
+          </Dropdown>
+          <Dropdown nav isOpen={this.state.accountOpen} toggle={this.toggleAccountDropdown} className="d-sm-none-down">
             <DropdownToggle nav className={s.navItem}>
               <i className="glyphicon glyphicon-user" />
             </DropdownToggle>
@@ -267,7 +267,7 @@ class Header extends React.Component {
                 </NavLink>
               </DropdownItem>
             </DropdownMenu>
-          </NavDropdown>
+          </Dropdown>
           <NavItem className="d-sm-none-down">
             <NavLink onClick={this.doLogout} className={s.navItem} href="#">
               <i className="glyphicon glyphicon-off" />
