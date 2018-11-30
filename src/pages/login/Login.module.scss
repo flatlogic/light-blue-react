@@ -1,0 +1,65 @@
+@import '../../styles/app';
+
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.widget {
+  max-width: 385px;
+  overflow: hidden;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: $font-weight-normal;
+    text-align: center;
+  }
+
+  .widgetLoginInfo {
+    font-size: 13px;
+    color: #888;
+    margin-top: 1px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  :global {
+    input.form-control.input-transparent {
+      padding-left: 10px;
+
+      &:active,
+      &:focus {
+        background: $widget-bg-color;
+      }
+    }
+  }
+}
+
+.smallCircle {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.2);
+}
+
+.footer {
+  margin-bottom: 25px;
+  font-size: 13px;
+  color: #636c72;
+  text-align: center;
+
+  @media (min-height: 600px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

@@ -1,0 +1,72 @@
+@import '../../../../styles/app';
+
+.mobileModal {
+  display: none;
+  position: absolute;
+  min-height: 100vh !important;
+  min-width: 100vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: $gray-700;
+  // margin: -#{$content-padding * 3.5} -15px -40px;
+  // min-height: calc(100vh - #{$navbar-height});
+}
+
+.mobileModalActive {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileModalTitle {
+  position: relative;
+  width: 100%;
+  height: $navbar-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $addition-bg;
+
+  button {
+    left: 35px;
+    padding: 0;
+    border: none;
+    position: absolute;
+    background: transparent;
+
+    &:focus {
+      outline: none;
+    }
+
+    img {
+      height: 15px;
+    }
+
+    & :global .back {
+      height: 17px;
+    }
+  }
+
+  h5 {
+    margin: 0;
+    font-weight: $font-weight-normal;
+  }
+}
+
+.mobileModalBody {
+  min-height: calc(100vh - #{$navbar-height * 2});
+  background-color: $white;
+  padding-left: 35px;
+
+  li {
+    display: flex;
+    align-items: center;
+    height: $navbar-height;
+    border-bottom: 2px solid $addition-bg;
+    font-weight: $font-weight-normal;
+  }
+
+  & :global .option {
+    border: none;
+  }
+}
