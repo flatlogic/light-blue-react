@@ -168,6 +168,7 @@ $navbar-bg: transparent !default;
 $dropdown-link-color: $text-color;
 $dropdown-link-hover-bg: theme-color('primary');
 $dropdown-link-hover-color: $text-color;
+$dropdown-bg: rgba($bg-addition, .8);
 
 // Widgets
 // -------------------------

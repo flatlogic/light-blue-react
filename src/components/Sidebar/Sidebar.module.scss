@@ -2,7 +2,7 @@
 
 .root {
   width: $sidebar-width-open;
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
@@ -11,6 +11,7 @@
   overflow-y: auto;
   margin-left: 15px;
   transition: height 1s;
+  transform: translateX(-$sidebar-width-open);
 
   @media print {
     display: none;
@@ -21,6 +22,7 @@
     right: 0;
     margin-left: 0;
     margin-right: 15px;
+    transform: translateX($sidebar-width-open);
   }
 
   :global(.sidebar-hide) & {
@@ -34,8 +36,9 @@
     position: static !important;
     width: 100%;
     margin-left: 0;
-    padding-left: 15px;
+    padding: 0 15px;
     height: 0;
+    transform: none;
 
     .logo,
     .sidebarAlerts,

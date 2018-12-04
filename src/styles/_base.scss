@@ -301,6 +301,10 @@ table > thead > tr > th {
   outline: 0;
   color: $link-color;
   padding: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .bg-widget-transparent {

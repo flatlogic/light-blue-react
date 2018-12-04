@@ -76,6 +76,7 @@ class Calendar extends React.Component {
       popover_options: {
         placement: 'top',
         html: true,
+        trigger: 'hover',
       },
     });
     $calendar.find('.icon-arrow-left').addClass('la la-arrow-left');
