@@ -47,7 +47,7 @@ class Stats extends React.Component {
                       <Col sm={6} className="col-print-6">
                         <h5 className="text-muted no-margin">Company Information</h5>
                         <h3 className="company-name m-t-1">
-                          Wrapbootstrap LLC
+                          Flatlogic LLC
                         </h3>
                         <address>
                           <strong>2 Infinite Loop</strong><br />

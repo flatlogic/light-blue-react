@@ -15,7 +15,7 @@ const PrivateRoute = ({ component, ...rest }) => {
   return ( // eslint-disable-line
   <Route
     {...rest} render={props => (
-    true ? (
+    localStorage.getItem('id_token') ? (
       React.createElement(component, props)
     ) : (
       <Redirect

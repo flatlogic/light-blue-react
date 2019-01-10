@@ -69,14 +69,14 @@ class Login extends React.Component {
                 )
               }
               <label htmlFor="email-input" className="ml-4">Email</label>
-              <InputGroup size="lg" className="input-group-no-border px-4">
+              <InputGroup className="input-group-no-border px-4">
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText><i className="fa fa-user text-white" /></InputGroupText>
                 </InputGroupAddon>
                 <Input id="email-input" className="input-transparent" placeholder="Your Email" value={this.state.login} onChange={this.changeLogin} />
               </InputGroup>
               <label htmlFor="password-input" className="mt ml-4">Password</label>
-              <InputGroup size="lg" className="input-group-no-border px-4">
+              <InputGroup className="input-group-no-border px-4">
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText><i className="fa fa-lock text-white" /></InputGroupText>
                 </InputGroupAddon>

@@ -13,6 +13,7 @@ import YearsMap from './components/years-map/YearsMap';
 import FlotCharts from './components/flot-charts/FlotCharts';
 import NasdaqSparkline from './components/nasdaq-sparkline-widget/nasdaqSparkline';
 import Skycon from '../../components/Skycon/Skycon';
+import { Input, InputGroup, InputGroupAddon, Button } from 'reactstrap';
 import './Widgets.scss';
 
 import peopleA1 from '../../images/people/a1.jpg';
@@ -585,14 +586,10 @@ class Widgets extends React.Component {
                 </div>
               </div>
               <footer className="bg-widget-transparent bt">
-                <div className="input-group input-group-sm">
-                  <input type="text" className="form-control" placeholder="Your message" />
-                  <span className="input-group-btn">
-                    <button type="submit" className="btn btn-default">
-              Send
-            </button>
-                  </span>
-                </div>
+                  <InputGroup size="sm">
+                      <Input placeholder="Your message" />
+                      <InputGroupAddon addonType="append"><Button color="default">Send</Button></InputGroupAddon>
+                  </InputGroup>
               </footer>
             </Widget>
           </Col>

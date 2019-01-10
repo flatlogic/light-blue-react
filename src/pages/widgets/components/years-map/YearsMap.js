@@ -12,7 +12,7 @@ class YearsMap extends React.Component {
   constructor(prop) {
     super(prop);
     this.state = {
-      activeYear: 2012,
+      activeYear: 2019,
     };
     this.triggerYear = this.triggerYear.bind(this);
   }
@@ -138,22 +138,22 @@ class YearsMap extends React.Component {
       </div>
       <Nav className="map-controls" pills fill>
         <NavItem>
-          <NavLink active={this.state.activeYear === 2012} onClick={() => this.triggerYear(2012)}>2012</NavLink>
+            <NavLink active={this.state.activeYear === 2014} onClick={() => this.triggerYear(2014)}>2014</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink active={this.state.activeYear === 2013} onClick={() => this.triggerYear(2013)}>2013</NavLink>
+            <NavLink active={this.state.activeYear === 2015} onClick={() => this.triggerYear(2015)}>2015</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink active={this.state.activeYear === 2014} onClick={() => this.triggerYear(2014)}>2014</NavLink>
+            <NavLink active={this.state.activeYear === 2016} onClick={() => this.triggerYear(2016)}>2016</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink active={this.state.activeYear === 2015} onClick={() => this.triggerYear(2015)}>2015</NavLink>
+            <NavLink active={this.state.activeYear === 2017} onClick={() => this.triggerYear(2017)}>2017</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink active={this.state.activeYear === 2016} onClick={() => this.triggerYear(2016)}>2016</NavLink>
+            <NavLink active={this.state.activeYear === 2018} onClick={() => this.triggerYear(2018)}>2018</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink active={this.state.activeYear === 2017} onClick={() => this.triggerYear(2017)}>2017</NavLink>
+            <NavLink active={this.state.activeYear === 2019} onClick={() => this.triggerYear(2019)}>2019</NavLink>
         </NavItem>
       </Nav>
     </div>);

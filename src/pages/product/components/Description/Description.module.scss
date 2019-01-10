@@ -21,6 +21,7 @@
 
   :global .dot-before {
     margin: 3px 0;
+    font-weight: 300;
 
     &::before {
       content: '•';

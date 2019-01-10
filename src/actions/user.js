@@ -65,7 +65,9 @@ export function loginUser(creds) {
     dispatch(requestLogin(creds));
 
     return setTimeout(() => {
-      if (creds.login.length > 0 && creds.password.length > 0) {
+      // password & login check must go here
+      // if (creds.login.length && creds.password.length) {
+      if (true) {
         localStorage.setItem('id_token', 1);
         // Dispatch the success action with fake user
         dispatch(receiveLogin({ id: 1 }));
