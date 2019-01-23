@@ -18,10 +18,10 @@ class ErrorPage extends React.Component {
           <div className={`${s.errorContainer} mx-auto`}>
             <h1 className={s.errorCode}>404</h1>
             <p className={s.errorInfo}>
-              Opps, it seems that this page does not exist.
+              Opps, it seems that this page does not exist here.
             </p>
             <p className={[s.errorHelp, 'mb-3'].join(' ')}>
-              If you are sure it should, search for it.
+              If you are sure it should, please search for it:
             </p>
             <Form method="get">
               <FormGroup>
@@ -35,7 +35,7 @@ class ErrorPage extends React.Component {
             </Form>
           </div>
           <footer className={s.pageFooter}>
-            2017 &copy; Light Blue. Admin Dashboard Template.
+            2019 &copy; Light Blue - React Admin Dashboard Template.
           </footer>
         </Container>
       </div>

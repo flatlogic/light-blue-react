@@ -27,6 +27,7 @@ class Analytics extends Component {
                   <Widget
                     className="mb-0 h-100"
                     bodyClass="mt-lg"
+                    close
                     title={<h5>Visits Today</h5>}
                   >
                     <div className="d-flex justify-content-between align-items-center mb">
@@ -55,6 +56,7 @@ class Analytics extends Component {
                   <Widget
                     bodyClass="mt"
                     className="mb-0 h-100"
+                    close
                     title={<h5>Revenue Breakdown</h5>}
                   >
                     <RevenueChart />
@@ -66,6 +68,7 @@ class Analytics extends Component {
                   <Widget
                     bodyClass="mt"
                     className="mb-0 h-100"
+                    close
                     title={<h5>App Perfomance</h5>}
                   >
                     <p className="text-muted d-flex flex-wrap">
@@ -79,17 +82,17 @@ class Analytics extends Component {
                       </small>
                     </p>
                     <h6 className="fs-sm text-muted">SDK</h6>
-                    <div className="progress mb-xs" style={{ height: '4px' }} >
+                    <div className="progress progress-xs mb-xs" >
                       <div className="progress-bar bg-success" role="progressbar" style={{ width: '60%' }} aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" />
                     </div>
-                    <div className="progress" style={{ height: '4px' }} >
+                    <div className="progress progress-xs" >
                       <div className="progress-bar bg-info" role="progressbar" style={{ width: '30%' }} aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" />
                     </div>
                     <h6 className="mt fs-sm text-muted">Integration</h6>
-                    <div className="progress mb-xs" style={{ height: '4px' }} >
+                    <div className="progress progress-xs mb-xs" >
                       <div className="progress-bar bg-success" role="progressbar" style={{ width: '40%' }} aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" />
                     </div>
-                    <div className="progress" style={{ height: '4px' }} >
+                    <div className="progress progress-xs">
                       <div className="progress-bar bg-info" role="progressbar" style={{ width: '55%' }} aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" />
                     </div>
                   </Widget>
@@ -100,6 +103,7 @@ class Analytics extends Component {
                   <Widget
                     bodyClass="mt-lg"
                     className="mb-0 h-100"
+                    close
                     title={<h5>Server Overview</h5>}
                   >
                     <div className="d-flex justify-content-between flex-wrap mb-sm">
@@ -114,7 +118,7 @@ class Analytics extends Component {
                         <LineChart color="#9964e3" />
                       </div>
                     </div>
-                    <div className="d-flex justify-content-between flex-wrap">
+                    <div className="d-none justify-content-between flex-wrap">
                       <p className="width-150"><small>57% / 21°С / 3.3 Ghz</small></p>
                       <div className={s.sparklineWrapper}>
                         <LineChart color="#3abf94" />

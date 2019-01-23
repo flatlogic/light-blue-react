@@ -40,7 +40,7 @@ class Widgets extends React.Component {
                 <Row className="flex-nowrap">
                   <Col xs={3}>
                     <span className="widget-icon">
-                      <i className="glyphicon glyphicon-globe text-primary" />
+                      <i className="fi flaticon-like text-primary" />
                     </span>
                   </Col>
                   <Col xs="9">
@@ -67,7 +67,7 @@ class Widgets extends React.Component {
                 <Row className="flex-nowrap">
                   <Col xs="3">
                     <span className="widget-icon">
-                      <i className="glyphicon glyphicon-user text-info" />
+                      <i className="fi flaticon-magic-wand text-info" />
                     </span>
                   </Col>
                   <Col xs="9">
@@ -130,7 +130,7 @@ class Widgets extends React.Component {
                     <Row className="flex-nowrap">
                       <Col xs={3}>
                         <span className="widget-icon">
-                          <i className="glyphicon glyphicon-globe" />
+                          <i className="fi flaticon-notebook-4" />
                         </span>
                       </Col>
                       <Col xs="9">
@@ -153,7 +153,7 @@ class Widgets extends React.Component {
                     <Row className="flex-nowrap">
                       <Col xs={3}>
                         <span className="widget-icon">
-                          <i className="glyphicon glyphicon-certificate" />
+                          <i className="fi flaticon-shuffle" />
                         </span>
                       </Col>
                       <Col xs={9}>
@@ -182,7 +182,7 @@ class Widgets extends React.Component {
                 <Row className="flex-nowrap">
                   <Col xs={3}>
                     <span className="widget-icon">
-                      <i className="glyphicon glyphicon-usd text-success" />
+                      <i className="fi flaticon-diamond text-success" />
                     </span>
                   </Col>
                   <Col xs={9}>

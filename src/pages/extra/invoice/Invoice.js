@@ -10,7 +10,7 @@ import {
 
 import s from './Invoice.module.scss';
 import Widget from '../../../components/Widget';
-import iLogo from '../../../images/invoice-logo.png';
+import iLogo from '../../../images/flatlogic-logo.jpg';
 
 class Stats extends React.Component {
 

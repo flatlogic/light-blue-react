@@ -121,7 +121,7 @@ class Buttons extends React.Component {
                   <Button color="warning" className="width-100 mb-xs mr-xs">Warning</Button>
                   <Button color="danger" className="width-100 mb-xs mr-xs">Danger</Button>
                   <Button color="gray" className="width-100 mb-xs mr-xs">Gray</Button>
-                  <Button color="inverse" className="width-100 mb-xs mr-xs">Inverse</Button>
+                  <Button color="dark" className="width-100 mb-xs mr-xs">Dark</Button>
                 </p>
               </div>
             </Widget>

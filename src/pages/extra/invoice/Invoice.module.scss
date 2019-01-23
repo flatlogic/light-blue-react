@@ -2,7 +2,8 @@
 
 .root {
   .invoiceLogo {
-    max-height: 50px;
+    max-height: 100px;
+    border-radius: $widget-border-radius;
   }
 
   .invoiceBody {

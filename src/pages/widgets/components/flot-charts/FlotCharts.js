@@ -80,7 +80,7 @@ class FlotCharts extends React.Component {
                 January, 2018
               </p>
             </Col>
-            <Col xs={3}>
+            <Col xs={4}>
               <h5>
                 <small className="text-white">Best</small>
               </h5>

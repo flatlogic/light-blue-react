@@ -98,7 +98,7 @@ class Login extends React.Component {
           </Widget>
         </Container>
         <footer className={s.footer}>
-          2018 &copy; Light Blue. Admin Dashboard Template.
+          2019 &copy; Light Blue - React Admin Dashboard Template.
         </footer>
       </div>
     );

@@ -221,7 +221,14 @@ small {
 ///////// Buttons //////////
 
 .dropdown-toggle::after {
-  margin-top: 3px;
+  font-family: LineAwesome;
+  content: "\F110";
+  border: none;
+  width: auto;
+  height: auto;
+  vertical-align: baseline;
+  opacity: .8;
+  font-size: 85%;
 }
 
 .btn-link {
@@ -312,10 +319,10 @@ small {
 
   &.active {
     color: $white;
-    background: rgba($widget-bg-common, 0.55);
+    background: darken($widget-bg-color, 20%);
 
     &:hover {
-      background: rgba($widget-bg-common, 0.55);
+      background: darken($widget-bg-color, 20%);
     }
   }
 

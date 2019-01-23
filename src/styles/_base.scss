@@ -138,6 +138,16 @@
   td:last-child {
     padding-right: $widget-padding-horizontal;
   }
+
+  tr:last-child {
+    td:first-child {
+      border-bottom-left-radius: $widget-border-radius;
+    }
+
+    td:last-child {
+      border-bottom-right-radius: $widget-border-radius;
+    }
+  }
 }
 
 table > thead > tr > th {

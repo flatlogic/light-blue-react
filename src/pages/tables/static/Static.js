@@ -164,7 +164,6 @@ class Static extends React.Component {
                     <th className="hidden-sm-down">Date</th>
                     <th className="hidden-sm-down">Size</th>
                     <th className="hidden-sm-down">Status</th>
-                    <th />
                   </tr>
                 </thead>
                 <tbody>

@@ -82,10 +82,10 @@ class Sidebar extends React.Component {
             index="main"
             childrenLinks={[
               {
-                header: 'Analytics', link: '/app/main/analytics',
+                header: 'Visits', link: '/app/main/dashboard',
               },
               {
-                header: 'Visits', link: '/app/main/dashboard',
+                header: 'Analytics', link: '/app/main/analytics',
               },
               {
                 header: 'Widgets', link: '/app/main/widgets',

@@ -72,7 +72,7 @@ class SPackage extends React.Component {
                 works out of the box! <br /><br /></p>
               <a
                 className="btn btn-transparent btn-lg btn-block"
-                href="https://flatlogic.com/admin-dashboards/light-blue-angular/demo"
+                href="https://demo.flatlogic.com/4.0.1/angular/#/app/dashboard"
               >
                 Go to Demo
               </a>
@@ -104,7 +104,7 @@ class SPackage extends React.Component {
                 schemes which you can easily switch based on your choice.</p>
               <a
                 className="btn btn-transparent btn-lg btn-block"
-                href="https://flatlogic.com/admin-dashboards/light-blue-html5/demo"
+                href="https://demo.flatlogic.com/4.0.1/dark/"
               >
                 Go to Demo
               </a>

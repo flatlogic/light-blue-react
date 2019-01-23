@@ -56,7 +56,7 @@ $theme-colors: (
   info: $teal,
   warning: $orange,
   danger: $red,
-  dark: $gray-800,
+  dark: $gray-700,
   inverse: $gray-100,
   gray: $gray-300,
   light: $gray-100,
@@ -121,15 +121,19 @@ $breadcrumb-divider: '>';
 $breadcrumb-padding-y: 0;
 $breadcrumb-bg: transparent;
 
-$widget-bg: #333;
+// Widgets
+// -------------------------
 $widget-border-radius: 10px;
+$widget-padding-vertical: 15px !default;
+$widget-padding-horizontal: 20px !default;
+$widget-bg-color: rgba(0,0,0,.24);
 
 $widget-title-color: #fff;
 $widget-shadow: 0 25px 20px -20px rgba(0,0,0,0.1), 0 0 15px rgba(0,0,0,0.06);
 $widget-shadow-designated: -1px 0 8px $gray-400;
 
-$text-transparent: rgba($widget-bg, 0.5);
-$bg-addition: rgba($widget-bg, 0.3);
+$text-transparent: opacify($widget-bg-color, .07);
+$bg-addition: darken($widget-bg-color, .07);
 
 $input-btn-line-height: 1.5;
 
@@ -170,13 +174,6 @@ $dropdown-link-hover-bg: theme-color('primary');
 $dropdown-link-hover-color: $text-color;
 $dropdown-bg: rgba($bg-addition, .8);
 
-// Widgets
-// -------------------------
-$widget-padding-vertical: 15px !default;
-$widget-padding-horizontal: 20px !default;
-$widget-bg-color: rgba(51,51,51,.425);
-$widget-bg-common:        #333 !default;
-
 //== Navs
 //
 $nav-tabs-active-link-hover-bg:  $widget-bg-color !default;
@@ -215,7 +212,7 @@ $btn-default-border: $addition-bg !default;
 
 // Table
 $table-border-width: 1px;
-$table-accent-bg: $bg-addition !default;
+$table-accent-bg: $widget-bg-color !default;
 $table-border-color: rgba(51,51,51,0.35) !default;
 
 // Pagination
