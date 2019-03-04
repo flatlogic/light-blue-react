@@ -66,6 +66,7 @@ class LinksGroup extends Component {
               to={this.props.link}
               activeClassName={s.headerLinkActive}
               exact
+              {...this.props}
             >
               <span className={s.icon}>
                 <i className={`fi ${this.props.iconName}`} />
