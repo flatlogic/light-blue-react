@@ -1026,11 +1026,10 @@ class Elements extends React.Component {
                       <div className="datepicker" style={{display: 'flex'}}>
                         <Datetime
                           id="datepicker"
-                          open={this.state.isDatePickerOpen}
-                          viewMode="days" timeFormat={false}
-                          inputProps={{ ref: (input) => { this.refDatePicker = input; } }}
+                          viewMode="days"
+                          timeFormat={false}
                         />
-                        <InputGroupAddon addonType="append" onClick={() => { this.refDatePicker.focus(); }}>
+                        <InputGroupAddon addonType="append">
                           <span className="input-group-text"><i className="glyphicon glyphicon-th" /></span>
                         </InputGroupAddon>
                       </div>
@@ -1038,11 +1037,11 @@ class Elements extends React.Component {
                     <Col xs="6">
                       <div className="datepicker" style={{display: 'flex'}}>
                         <Datetime
-                          open={this.state.isTimePickerOpen} id="timepicker"
-                          inputProps={{ ref: (input) => { this.refTimePicker = input; } }}
-                          viewMode="time" dateFormat={false}
+                          id="timepicker"
+                          viewMode="time"
+                          dateFormat={false}
                         />
-                        <InputGroupAddon addonType="append" onClick={() => { this.refTimePicker.focus(); }}>
+                        <InputGroupAddon addonType="append">
                           <span className="input-group-text"><i className="glyphicon glyphicon-time" /></span>
                         </InputGroupAddon>
                       </div>

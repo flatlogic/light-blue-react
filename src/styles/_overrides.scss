@@ -1126,3 +1126,17 @@ div.abc-radio label {
     color: $gray-600;
   }
 }
+
+.datepicker {
+  .rdtPicker {
+    background: rgba(51, 51, 51, 0.85);
+
+    .rdtDay:hover,
+    .rdtMonth:hover,
+    .rdtBtn:hover,
+    .rdtActive,
+    thead tr:first-child th:hover {
+      background-color: rgba($widget-bg-color, 0.4);
+    }
+  }
+}
