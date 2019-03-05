@@ -1108,3 +1108,17 @@ div.abc-radio label {
     }
   }
 }
+
+/* MDE EDITOR */
+.markdown-help,
+.mde-header-item .fa {
+  color: white !important;
+}
+
+.markdown-help-svg {
+  fill: white !important;
+}
+
+.mde-preview-content {
+  border-color: rgba(255, 255, 255, .3) !important;
+}
