@@ -162,7 +162,7 @@ class Dynamic extends React.Component {
               props => (
                 <div>
                   <h3>Input something at below input field:</h3>
-                  <Row>
+                  <Row className="mb-lg">
                     <Col lg={{ size: 4, offset: 8 }} md={{ size: 5, offset: 7 }} sm={{ size: 6, offset: 6 }} xs={12}>
                       <SearchBar { ...props.searchProps } />
                     </Col>
