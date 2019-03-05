@@ -7,18 +7,21 @@ import {
   DropdownMenu,
   DropdownToggle,
   DropdownItem,
+  Row,
+  Col,
 } from 'reactstrap';
-
-import {
-  BootstrapTable,
-  TableHeaderColumn,
-} from 'react-bootstrap-table';
+import classnames from 'classnames';
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 
 import ReactTable from 'react-table';
 
 import { reactTableData, reactBootstrapTableData } from './data';
 import Widget from '../../../components/Widget';
 import s from './Dynamic.module.scss';
+
+const { SearchBar } = Search;
 
 class Dynamic extends React.Component {
 
@@ -50,12 +53,6 @@ class Dynamic extends React.Component {
   };
 
   render() {
-    const options = {
-      sizePerPage: 10,
-      paginationSize: 3,
-      sizePerPageDropDown: this.renderSizePerPageDropDown,
-    };
-
     function infoFormatter(cell) {
       return (
         <div>
@@ -86,16 +83,35 @@ class Dynamic extends React.Component {
 
     function progressSortFunc(a, b, order) {
       if (order === 'asc') {
-        return a.status.progress - b.status.progress;
+        return a.progress - b.progress;
       }
-      return b.status.progress - a.status.progress;
+      return b.progress - a.progress;
     }
 
     function dateSortFunc(a, b, order) {
       if (order === 'asc') {
-        return new Date(a.date).getTime() - new Date(b.date).getTime();
+        return new Date(a).getTime() - new Date(b).getTime();
       }
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
+      return new Date(b).getTime() - new Date(a).getTime();
+    }
+
+    function sortableHeaderFormatter(column, index, components) {
+      let icon = (<div className={classnames(s.sortArrowsContainer, 'ml-sm')}>
+        <span className={classnames('caret', 'mb-xs', s.rotatedArrow)} />
+        <span className="caret"/>
+      </div>);
+
+      if (components.sortElement.props.order === 'asc') {
+        icon = (<div className="ml-sm">
+          <span className={classnames('caret', 'mb-xs', s.rotatedArrow)}/>
+        </div>);
+      } else if (components.sortElement.props.order === 'desc') {
+        icon = (<div className="ml-sm">
+          <span className="caret mb-xs"/>
+        </div>);
+      }
+
+      return <div className={s.sortableHeaderContainer}>{column.text} {icon}</div>
     }
 
     return (
@@ -109,26 +125,57 @@ class Dynamic extends React.Component {
           <p>
             Fully customizable Table. Built with <a href="https://allenfang.github.io/react-bootstrap-table/" target="_blank" rel="noopener noreferrer">react-bootstrap-table</a>
           </p>
-          <BootstrapTable data={this.state.reactBootstrapTable} version="4" pagination options={options} search tableContainerClass={`table-striped table-hover ${s.bootstrapTable}`}>
-            <TableHeaderColumn className="width-50" columnClassName="width-50" dataField="id" isKey>
-              <span className="fs-sm">ID</span>
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField="name" dataSort>
-              <span className="fs-sm">Name</span>
-            </TableHeaderColumn>
-            <TableHeaderColumn className="d-none d-md-table-cell" columnClassName="d-none d-md-table-cell" dataField="info" dataFormat={infoFormatter}>
-              <span className="fs-sm">Info</span>
-            </TableHeaderColumn>
-            <TableHeaderColumn className="d-none d-md-table-cell" columnClassName="d-none d-md-table-cell" dataField="description" dataFormat={descriptionFormatter}>
-              <span className="fs-sm">Description</span>
-            </TableHeaderColumn>
-            <TableHeaderColumn className="d-none d-md-table-cell" columnClassName="d-none d-md-table-cell" dataField="date" dataSort sortFunc={dateSortFunc}>
-              <span className="fs-sm">Date</span>
-            </TableHeaderColumn>
-            <TableHeaderColumn className="width-150" columnClassName="width-150" dataField="status" dataSort dataFormat={progressFormatter} sortFunc={progressSortFunc}>
-              <span className="fs-sm">Status</span>
-            </TableHeaderColumn>
-          </BootstrapTable>
+          <ToolkitProvider
+            keyField="id"
+            data={this.state.reactBootstrapTable}
+            columns={[{
+              dataField: 'id',
+              text: 'ID'
+            }, {
+              dataField: 'name',
+              text: 'Name'
+            }, {
+              dataField: 'description',
+              text: 'Description',
+              formatter: descriptionFormatter,
+            }, {
+              dataField: 'info',
+              text: 'info',
+              formatter: infoFormatter,
+            }, {
+              dataField: 'date',
+              text: 'Date',
+              sort: true,
+              sortFunc: dateSortFunc,
+              headerFormatter: sortableHeaderFormatter,
+            }, {
+              dataField: 'status',
+              text: 'Status',
+              formatter: progressFormatter,
+              sort: true,
+              sortFunc: progressSortFunc,
+              headerFormatter: sortableHeaderFormatter,
+            }]}
+            search
+          >
+            {
+              props => (
+                <div>
+                  <h3>Input something at below input field:</h3>
+                  <Row>
+                    <Col lg={{ size: 4, offset: 8 }} md={{ size: 5, offset: 7 }} sm={{ size: 6, offset: 6 }} xs={12}>
+                      <SearchBar { ...props.searchProps } />
+                    </Col>
+                  </Row>
+                  <BootstrapTable
+                    { ...props.baseProps }
+                    pagination={paginationFactory()}
+                    striped
+                  />
+                </div>
+              )
+            }
+          </ToolkitProvider>
         </Widget>
         <Widget title={<h4>React <span className="fw-semi-bold">Table</span></h4>} collapse close>
           <p>

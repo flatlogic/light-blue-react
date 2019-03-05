@@ -1,20 +1,15 @@
 @import '../../../styles/app';
 
-.bootstrapTable {
-  border: none;
+.sortableHeaderContainer {
+  display: flex;
+  align-items: center;
+}
 
-  :global .table {
-    thead,
-    tbody {
-      th,
-      td {
-        border-right: none;
-        border-left: none;
-      }
-    }
+.sortArrowsContainer {
+  display: flex;
+  flex-direction: column;
+}
 
-    thead th {
-      background: transparent;
-    }
-  }
+.rotatedArrow {
+  transform: rotate(180deg);
 }
