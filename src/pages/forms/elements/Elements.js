@@ -247,7 +247,7 @@ class Elements extends React.Component {
                       <span className="help-block">Some help text</span>
                     </Label>
                     <Col md={7}>
-                      <Input type="text" name="password" id="hint-field" />
+                      <Input className="input-transparent" type="text" name="password" id="hint-field" />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -255,6 +255,7 @@ class Elements extends React.Component {
                       enabled</Label>
                     <Col md={7}>
                       <Input
+                        className="input-transparent"
                         type="text" id="tooltip-enabled"
                         placeholder="Hover over me.."
                       />
@@ -268,6 +269,7 @@ class Elements extends React.Component {
                       input</Label>
                     <Col md={7}>
                       <Input
+                        className="input-transparent"
                         type="text" id="disabled-input"
                         disabled="disabled" value="Default value"
                       />
@@ -278,6 +280,7 @@ class Elements extends React.Component {
                       Max length</Label>
                     <Col md={7}>
                       <Input
+                        className="input-transparent"
                         type="text" id="max-length" maxLength="3"
                         placeholder="Max length 3 characters"
                       />
@@ -292,7 +295,7 @@ class Elements extends React.Component {
                     <Col md={7}>
                       <InputGroup>
                         <InputGroupAddon addonType="prepend"><span className="input-group-text"><i className="fa fa-user" /></span></InputGroupAddon>
-                        <Input id="prepended-input" type="test" bsSize="16" placeholder="Username" />
+                        <Input className="input-transparent" id="prepended-input" type="test" bsSize="16" placeholder="Username" />
                       </InputGroup>
                     </Col>
                   </FormGroup>
@@ -304,6 +307,7 @@ class Elements extends React.Component {
                       <InputGroup>
                         <InputGroupAddon addonType="prepend"><span className="input-group-text"><i className="fa fa-lock" /></span></InputGroupAddon>
                         <Input
+                          className="input-transparent"
                           id="password-field" type="password"
                           placeholder="Password"
                         />
@@ -316,7 +320,7 @@ class Elements extends React.Component {
                     </Label>
                     <Col md={7}>
                       <InputGroup>
-                        <Input id="appended-input" bsSize="16" type="text" />
+                        <Input className="input-transparent" id="appended-input" bsSize="16" type="text" />
                         <InputGroupAddon addonType="append">.00</InputGroupAddon>
                       </InputGroup>
                     </Col>
@@ -328,7 +332,7 @@ class Elements extends React.Component {
                     <Col md={7}>
                       <InputGroup>
                         <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                        <Input id="combined-input" bsSize="16" type="text" />
+                        <Input className="input-transparent" id="combined-input" bsSize="16" type="text" />
                         <InputGroupAddon addonType="append">.00</InputGroupAddon>
                       </InputGroup>
                     </Col>
@@ -339,7 +343,7 @@ class Elements extends React.Component {
                     </Label>
                     <Col md={7}>
                       <InputGroup className="input-group-transparent">
-                        <Input id="transparent-input" type="text" />
+                        <Input className="input-transparent" id="transparent-input" type="text" />
                         <InputGroupAddon addonType="append"><span className="input-group-text"><i className="fa fa-camera" /></span></InputGroupAddon>
                       </InputGroup>
                     </Col>
@@ -558,7 +562,7 @@ class Elements extends React.Component {
                     <InputGroupAddon addonType="prepend">
                       <span className="input-group-text"><i className="fa fa-bars" /></span>
                     </InputGroupAddon>
-                    <Input type="text" placeholder="Username" bsSize="16" />
+                    <Input className="input-transparent" type="text" placeholder="Username" bsSize="16" />
                   </InputGroup>
                 </FormGroup>
                 <FormGroup>
@@ -584,7 +588,7 @@ class Elements extends React.Component {
                   <Label md={3} className="text-md-right" for="default-textarea">Default
                     textarea</Label>
                   <Col md={9}>
-                    <Input rows="4" type="textarea" name="text" id="default-textarea" />
+                    <Input rows="4" className="input-transparent" type="textarea" name="text" id="default-textarea" />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
@@ -594,7 +598,7 @@ class Elements extends React.Component {
                     <TextareaAutosize
                       rows={3} id="elastic-textarea"
                       placeholder="Try to add few new lines.."
-                      className={`form-control ${s.autogrow} transition-height`}
+                      className={`form-control ${s.autogrow} transition-height input-transparent`}
                     />
                   </Col>
                 </FormGroup>
