@@ -2,7 +2,6 @@
   "name": "light-blue-react",
   "version": "5.0.1",
   "private": true,
-  "homepage": "/light-blue-react",
   "dependencies": {
     "@babel/core": "7.1.0",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
@@ -83,6 +82,7 @@
     "react-bootstrap-table2-toolkit": "^1.3.1",
     "react-datetime": "^2.16.1",
     "react-dev-utils": "^6.0.5",
+    "react-dnd": "^7.3.1",
     "react-dom": "^16.5.2",
     "react-draft-wysiwyg": "1.10.12",
     "react-dropzone": "^6.2.4",
