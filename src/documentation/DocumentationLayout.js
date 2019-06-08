@@ -8,7 +8,7 @@ import Hammer from 'rc-hammerjs';
 
 import Header from './DocumentationHeader';
 import Sidebar from './DocumentationSidebar';
-import { openSidebar, closeSidebar, changeActiveSidebarItem } from '../actions/navigation';
+import { openSidebar, closeSidebar } from '../actions/navigation';
 import s from '../components/Layout/Layout.module.scss';
 import sd from './styles.module.scss';
 

@@ -6,7 +6,7 @@ import { Progress, Alert } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import { dismissAlert } from '../../actions/alerts';
 import s from './Sidebar.module.scss';
-import LinksGroup from './LinksGroup/LinksGroup';
+import LinksGroup from './LinksGroup';
 
 import { changeActiveSidebarItem } from '../../actions/navigation';
 import { logoutUser } from '../../actions/user';
@@ -82,16 +82,39 @@ class Sidebar extends React.Component {
             index="main"
             childrenLinks={[
               {
-                header: 'Visits', link: '/app/main/dashboard',
+                header: 'Analytics', link: '/app/main/analytics',
               },
               {
-                header: 'Analytics', link: '/app/main/analytics',
+                header: 'Visits', link: '/app/main/dashboard',
               },
               {
                 header: 'Widgets', link: '/app/main/widgets',
               },
             ]}
           />
+            <LinksGroup
+                onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+                activeItem={this.props.activeItem}
+                header="E-commerce"
+                isHeader
+                iconName="flaticon-diamond"
+                link="/app/ecommerce"
+                index="ecommerce"
+                label="NodeJS"
+                labelColor="danger"
+                exact={false}
+                childrenLinks={[
+                    {
+                        header: 'Product Management', link: '/app/ecommerce/management',
+                    },
+                    {
+                        header: 'Products Grid', link: '/app/ecommerce/products',
+                    },
+                    {
+                        header: 'Product Page', link: '/app/ecommerce/product',
+                    },
+                ]}
+            />
           <LinksGroup
             onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
             activeItem={this.props.activeItem}
@@ -119,23 +142,6 @@ class Sidebar extends React.Component {
             iconName="flaticon-paper-plane"
             index="inbox"
             badge="9"
-          />
-          <LinksGroup
-            onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
-            activeItem={this.props.activeItem}
-            header="E-commerce"
-            isHeader
-            iconName="flaticon-diamond"
-            link="/app/ecommerce"
-            index="ecommerce"
-            childrenLinks={[
-              {
-                header: 'Products Grid', link: '/app/ecommerce/products',
-              },
-              {
-                header: 'Product Page', link: '/app/ecommerce/product',
-              },
-            ]}
           />
           <LinksGroup
             onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}

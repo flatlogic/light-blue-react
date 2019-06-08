@@ -90,6 +90,10 @@
       margin: 0 2.5641%;
     }
   }
+
+  &:global(.collapse) {
+    display: none;
+  }
 }
 
 .navbarForm {

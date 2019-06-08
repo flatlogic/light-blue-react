@@ -1,116 +1,167 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter, Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Button, Container, Alert, Input, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
+import { Container, Alert, Button, FormGroup, Label, InputGroup, InputGroupAddon, Input, InputGroupText } from 'reactstrap';
 import Widget from '../../components/Widget';
-import s from './Login.module.scss';
-import { loginUser } from '../../actions/user';
+import { loginUser, receiveToken } from '../../actions/user';
+import jwt from "jsonwebtoken";
+import microsoft from '../../images/microsoft.png';
 
 class Login extends React.Component {
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      login: '',
-      password: '',
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired,
     };
 
-    this.doLogin = this.doLogin.bind(this);
-    this.changeLogin = this.changeLogin.bind(this);
-    this.changePassword = this.changePassword.bind(this);
-  }
-
-  changeLogin(event) {
-    this.setState({ login: event.target.value });
-  }
-
-  changePassword(event) {
-    this.setState({ password: event.target.value });
-  }
-
-  doLogin(e) {
-    e.preventDefault();
-    this.props.dispatch(loginUser({ login: this.state.login, password: this.state.password }));
-  }
-
-  render() {
-    const { from } = this.props.location.state || { from: { pathname: '/app' } }; // eslint-disable-line
-
-    // cant access login page while logged in
-    if (this.props.isAuthenticated) { // eslint-disable-line
-      return (
-        <Redirect to={from} />
-      );
+    static isAuthenticated(token) {
+        if (!token) return;
+        const date = new Date().getTime() / 1000;
+        const data = jwt.decode(token);
+        return date < data.exp;
     }
 
-    return (
-      <div className={s.root}>
-        <Container>
-          <Widget className={`${s.widget} mx-auto`} bodyClass="p-0" title={<h3 className="mt-0">Login to your Web App</h3>}>
-            <p className={s.widgetLoginInfo}>
-              Use Facebook, Twitter or your email to sign in.
-            </p>
-            {/* eslint-disable */}
-            <p className={s.widgetLoginInfo}>
-              Don't have an account? Sign up now!
-            </p>
-            {/* eslint-disable */}
-            <form className="mt" onSubmit={this.doLogin} href="/app">
-              {
-                this.props.errorMessage && ( // eslint-disable-line
-                  <Alert className="alert-sm mx-4" color="danger">
-                    {this.props.errorMessage}
-                  </Alert>
-                )
-              }
-              <label htmlFor="email-input" className="ml-4">Email</label>
-              <InputGroup className="input-group-no-border px-4">
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText><i className="fa fa-user text-white" /></InputGroupText>
-                </InputGroupAddon>
-                <Input id="email-input" className="input-transparent" placeholder="Your Email" value={this.state.login} onChange={this.changeLogin} />
-              </InputGroup>
-              <label htmlFor="password-input" className="mt ml-4">Password</label>
-              <InputGroup className="input-group-no-border px-4">
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText><i className="fa fa-lock text-white" /></InputGroupText>
-                </InputGroupAddon>
-                <Input id="password-input" className="input-transparent" placeholder="Your Password"  value={this.state.password} onChange={this.changePassword} />
-              </InputGroup>
-              <div className="bg-widget-transparent mt-4">
-                <div className="p-4">
-                  <Button color="danger" style={{width: '100%'}} type="submit">
-                    <span className={s.smallCircle}><i className="fa fa-caret-right"></i></span>
-                    <small className="ml-xs">Sign In</small>
-                  </Button>
-                  <a href="#" className="text-center text-white w-100 d-block mt-4">Forgot Username or Password?</a>
-                </div>
-                <Button type="reset" color="primary" style={{minWidth: '100%', borderRadius: 0}}>
-                  <span><i className="fa fa-facebook-square fa-lg"></i> LogIn with Facebook</span>
-                </Button>
-              </div>
-            </form>
-          </Widget>
-          <footer className={s.footer}>
-            2019 &copy; Light Blue - React Admin Dashboard Template.
-          </footer>
-        </Container>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            email: '',
+            password: '',
+        };
+
+        this.doLogin = this.doLogin.bind(this);
+        this.googleLogin = this.googleLogin.bind(this);
+        this.microsoftLogin = this.microsoftLogin.bind(this);
+        this.changeEmail = this.changeEmail.bind(this);
+        this.changePassword = this.changePassword.bind(this);
+        this.signUp = this.signUp.bind(this);
+    }
+
+    changeEmail(event) {
+        this.setState({ email: event.target.value });
+    }
+
+    changePassword(event) {
+        this.setState({ password: event.target.value });
+    }
+
+    doLogin(e) {
+        e.preventDefault();
+        this.props.dispatch(loginUser({ email: this.state.email, password: this.state.password }));
+    }
+
+    googleLogin() {
+        this.props.dispatch(loginUser({social: "google"}));
+    }
+
+    microsoftLogin() {
+        this.props.dispatch(loginUser({social: "microsoft"}));
+    }
+
+    componentDidMount() {
+        const params = new URLSearchParams(this.props.location.search);
+        const token = params.get('token');
+        if (token) {
+            this.props.dispatch(receiveToken(token));
+        }
+    }
+
+    signUp() {
+        this.props.history.push('/register');
+    }
+
+    render() {
+        const { from } = this.props.location.state || { from: { pathname: '/app' } }; // eslint-disable-line
+
+        // cant access login page while logged in
+        if (Login.isAuthenticated(localStorage.getItem('token'))) {
+            return (
+                <Redirect to={from} />
+            );
+        }
+
+        return (
+            <div className="auth-page">
+                <Container>
+                    <Widget className="widget-auth mx-auto" title={<h3 className="mt-0">Login to your Web App</h3>}>
+                        <p className="widget-auth-info">
+                            Use your email to sign in.
+                        </p>
+                        <Alert className="alert-sm text-center mt-2 widget-middle-overflow rounded-0" color="secondary">
+                            This is a real app with Node.js backend - use
+                            <br/>
+                            <span className="font-weight-bold">"admin@flatlogic.com / password"</span>
+                            <br/>
+                            to login!
+                        </Alert>
+                        <form onSubmit={this.doLogin}>
+                            {
+                                this.props.errorMessage && (
+                                    <Alert className="alert-sm widget-middle-overflow rounded-0" color="danger">
+                                        {this.props.errorMessage}
+                                    </Alert>
+                                )
+                            }
+                            <FormGroup className="mt">
+                                <Label for="email">Email</Label>
+                                <InputGroup className="input-group-no-border">
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>
+                                            <i className="la la-user text-white"/>
+                                        </InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input id="email" className="input-transparent pl-3" value={this.state.email} onChange={this.changeEmail} type="email"
+                                           required name="email" placeholder="Email"/>
+                                </InputGroup>
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="password">Password</Label>
+                                <InputGroup className="input-group-no-border">
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>
+                                            <i className="la la-lock text-white"/>
+                                        </InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input id="password" className="input-transparent pl-3" value={this.state.password}
+                                           onChange={this.changePassword} type="password"
+                                           required name="password" placeholder="Password"/>
+                                </InputGroup>
+                            </FormGroup>
+                            <div className="bg-widget-transparent auth-widget-footer">
+                                <Button type="submit" color="danger" className="auth-btn"
+                                        size="sm">{this.props.isFetching ? 'Loading...' : 'Login'}</Button>
+                                <p className="widget-auth-info mt-4">
+                                    Don't have an account? Sign up now!
+                                </p>
+                                <Link className="d-block text-center mb-4" to="register">Create an Account</Link>
+                                <div className="social-buttons">
+                                    <Button onClick={this.googleLogin} color="primary" className="social-button">
+                                        <i className="social-icon social-google"/>
+                                        <p className="social-text">GOOGLE</p>
+                                    </Button>
+                                    <Button onClick={this.microsoftLogin} color="success" className="social-button">
+                                        <i className="social-icon social-microsoft"
+                                           style={{backgroundImage: `url(${microsoft})`}}/>
+                                        <p className="social-text">MICROSOFT</p>
+                                    </Button>
+                                </div>
+                            </div>
+                        </form>
+                    </Widget>
+                </Container>
+                <footer className="auth-footer">
+                    2019 &copy; Sing App - React Admin Dashboard Template.
+                </footer>
+            </div>
+        );
+    }
 }
 
 function mapStateToProps(state) {
-  return {
-    isFetching: state.auth.isFetching,
-    isAuthenticated: state.auth.isAuthenticated,
-    errorMessage: state.auth.errorMessage,
-  };
+    return {
+        isFetching: state.auth.isFetching,
+        isAuthenticated: state.auth.isAuthenticated,
+        errorMessage: state.auth.errorMessage,
+    };
 }
 
 export default withRouter(connect(mapStateToProps)(Login));

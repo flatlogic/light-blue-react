@@ -5,17 +5,27 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux'
 import ReduxThunk from 'redux-thunk'
-import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import axios from 'axios';
+import logger from 'redux-logger'
 
+import App from './components/App';
+import config from './config';
 import reducers from './reducers';
 import * as $ from 'jquery'
-window.jQuery = window.$ = $
+window.jQuery = window.$ = $;
+
+axios.defaults.baseURL = config.baseURLApi;
+axios.defaults.headers.common['Content-Type'] = "application/json";
+const token = localStorage.getItem('token');
+if (token) {
+    axios.defaults.headers.common['Authorization'] = "Bearer " + token;
+}
 
 const store = createStore(
   reducers,
-  applyMiddleware(ReduxThunk)
-)
+  applyMiddleware(ReduxThunk, logger)
+);
 
 ReactDOM.render(
     <Provider store={store}>

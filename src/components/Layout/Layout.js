@@ -26,6 +26,7 @@ import ExtraGallery from '../../pages/extra/gallery';
 import Grid from '../../pages/grid';
 import Widgets from '../../pages/widgets';
 import Products from '../../pages/products';
+import Management from '../../pages/management';
 import Product from '../../pages/product';
 import Package from '../../pages/package';
 import Email from '../../pages/email';
@@ -48,13 +49,14 @@ import ChartsMorris from '../../pages/charts/morris';
 import ChartsFlot from '../../pages/charts/flot';
 import ChartsSparkline from '../../pages/charts/sparkline';
 import ChartsRickshaw from '../../pages/charts/rickshaw';
-import DashboardAnalytics from '../../pages/analytics'; 
+import DashboardAnalytics from '../../pages/analytics';
 import Dashboard from '../../pages/dashboard';
 
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import { openSidebar, closeSidebar } from '../../actions/navigation';
 import s from './Layout.module.scss';
+import ProductEdit from '../../pages/management/components/productEdit';
 
 class Layout extends React.Component {
   static propTypes = {
@@ -106,70 +108,73 @@ class Layout extends React.Component {
           <Sidebar />
           <Hammer onSwipe={this.handleSwipe}>
             <main className={s.content}>
-                <TransitionGroup>
-                    <CSSTransition
-                        key={this.props.location.pathname}
-                        classNames="fade"
-                        timeout={200}
-                    >
-                      <Switch>
-                        <Route path="/app/main" exact render={() => <Redirect to="/app/main/dashboard" />} />
-                        <Route path="/app/main/dashboard" exact component={Dashboard} />
-                        <Route path="/app/main/widgets" exact component={Widgets} />
-                        <Route path="/app/main/analytics" exact component={DashboardAnalytics} />
-                        <Route path="/app/ecommerce/products" exact component={Products} />
-                        <Route path="/app/ecommerce/product" exact component={Product} />
-                        <Route path="/app/profile" exact component={Profile} />
-                        <Route path="/app/inbox" exact component={Email} />
-                        <Route path="/app/ui" exact render={() => <Redirect to="/app/ui/components" />} />
-                        <Route path="/app/ui/buttons" exact component={UIButtons} />
-                        <Route path="/app/ui/icons" exact component={UIIcons} />
-                        <Route path="/app/ui/tabs-accordion" exact component={UITabsAccordion} />
-                        <Route path="/app/ui/notifications" exact component={UINotifications} />
-                        <Route path="/app/ui/list-groups" exact component={UIListGroups} />
-                        <Route path="/app/ui/alerts" exact component={UIAlerts} />
-                        <Route path="/app/ui/badge" exact component={UIBadge} />
-                        <Route path="/app/ui/card" exact component={UICard} />
-                        <Route path="/app/ui/carousel" exact component={UICarousel} />
-                        <Route path="/app/ui/jumbotron" exact component={UIJumbotron} />
-                        <Route path="/app/ui/modal" exact component={UIModal} />
-                        <Route path="/app/ui/popovers" exact component={UIPopovers} />
-                        <Route path="/app/ui/progress" exact component={UIProgress} />
-                        <Route path="/app/ui/navbar" exact component={UINavbar} />
-                        <Route path="/app/ui/nav" exact component={UINav} />
-                        <Route path="/app/grid" exact component={Grid} />
-                        <Route path="/app/package" exact component={Package} />
-                        <Route path="/app/forms" exact render={() => <Redirect to="/app/forms/elements" />} />
-                        <Route path="/app/forms/elements" exact component={FormsElements} />
-                        <Route path="/app/forms/validation" exact component={FormsValidation} />
-                        <Route path="/app/forms/wizard" exact component={FormsWizard} />
-                        <Route path="/app/charts/" exact render={() => <Redirect to="/app/charts/overview" />} />
-                        <Route path="/app/charts/overview" exact component={Charts} />
-                        <Route path="/app/charts/easy-pie" exact component={ChartsEasyPie} />
-                        <Route path="/app/charts/morris" exact component={ChartsMorris} />
-                        <Route path="/app/charts/flot" exact component={ChartsFlot} />
-                        <Route path="/app/charts/sparkline" exact component={ChartsSparkline} />
-                        <Route path="/app/charts/rickshaw" exact component={ChartsRickshaw} />
-                        <Route path="/app/tables" exact render={() => <Redirect to="/app/tables/static" />} />
-                        <Route path="/app/tables/static" exact component={TablesStatic} />
-                        <Route path="/app/tables/dynamic" exact component={TablesDynamic} />
-                        <Route path="/app/extra" exact render={() => <Redirect to="/app/extra/calendar" />} />
-                        <Route path="/app/extra/calendar" exact component={ExtraCalendar} />
-                        <Route path="/app/extra/invoice" exact component={ExtraInvoice} />
-                        <Route path="/app/extra/search" exact component={ExtraSearch} />
-                        <Route path="/app/extra/timeline" exact component={ExtraTimeline} />
-                        <Route path="/app/extra/gallery" exact component={ExtraGallery} />
-                        <Route path="/app/maps" exact render={() => <Redirect to="/app/maps/google" />} />
-                        <Route path="/app/maps/google" exact component={MapsGoogle} />
-                        <Route path="/app/maps/vector" exact component={MapsVector} />
-                        <Route path="/app/core" exact render={() => <Redirect to="/app/core/typography" />} />
-                        <Route path="/app/core/typography" exact component={CoreTypography} />
-                        <Route path="/app/core/colors" exact component={CoreColors} />
-                        <Route path="/app/core/grid" exact component={CoreGrid} />
-                      </Switch>
-
-                    </CSSTransition>
-                </TransitionGroup>
+              <TransitionGroup>
+                <CSSTransition
+                  key={this.props.location.pathname}
+                  classNames="fade"
+                  timeout={200}
+                >
+                  <Switch>
+                    <Route path="/app/main" exact render={() => <Redirect to="/app/main/analytics" />} />
+                    <Route path="/app/main/dashboard" exact component={Dashboard} />
+                    <Route path="/app/main/widgets" exact component={Widgets} />
+                    <Route path="/app/main/analytics" exact component={DashboardAnalytics} />
+                    <Route path="/app/ecommerce/management" exact component={Management} />
+                    <Route path="/app/ecommerce/management/:id" exact component={ProductEdit} />
+                    <Route path="/app/ecommerce/management/create" exact component={ProductEdit} />
+                    <Route path="/app/ecommerce/products" exact component={Products} />
+                    <Route path="/app/ecommerce/product" exact component={Product} />
+                    <Route path="/app/ecommerce/product/:id" exact component={Product} />
+                    <Route path="/app/profile" exact component={Profile} />
+                    <Route path="/app/inbox" exact component={Email} />
+                    <Route path="/app/ui" exact render={() => <Redirect to="/app/ui/components" />} />
+                    <Route path="/app/ui/buttons" exact component={UIButtons} />
+                    <Route path="/app/ui/icons" exact component={UIIcons} />
+                    <Route path="/app/ui/tabs-accordion" exact component={UITabsAccordion} />
+                    <Route path="/app/ui/notifications" exact component={UINotifications} />
+                    <Route path="/app/ui/list-groups" exact component={UIListGroups} />
+                    <Route path="/app/ui/alerts" exact component={UIAlerts} />
+                    <Route path="/app/ui/badge" exact component={UIBadge} />
+                    <Route path="/app/ui/card" exact component={UICard} />
+                    <Route path="/app/ui/carousel" exact component={UICarousel} />
+                    <Route path="/app/ui/jumbotron" exact component={UIJumbotron} />
+                    <Route path="/app/ui/modal" exact component={UIModal} />
+                    <Route path="/app/ui/popovers" exact component={UIPopovers} />
+                    <Route path="/app/ui/progress" exact component={UIProgress} />
+                    <Route path="/app/ui/navbar" exact component={UINavbar} />
+                    <Route path="/app/ui/nav" exact component={UINav} />
+                    <Route path="/app/grid" exact component={Grid} />
+                    <Route path="/app/package" exact component={Package} />
+                    <Route path="/app/forms" exact render={() => <Redirect to="/app/forms/elements" />} />
+                    <Route path="/app/forms/elements" exact component={FormsElements} />
+                    <Route path="/app/forms/validation" exact component={FormsValidation} />
+                    <Route path="/app/forms/wizard" exact component={FormsWizard} />
+                    <Route path="/app/charts/" exact render={() => <Redirect to="/app/charts/overview" />} />
+                    <Route path="/app/charts/overview" exact component={Charts} />
+                    <Route path="/app/charts/easy-pie" exact component={ChartsEasyPie} />
+                    <Route path="/app/charts/morris" exact component={ChartsMorris} />
+                    <Route path="/app/charts/flot" exact component={ChartsFlot} />
+                    <Route path="/app/charts/sparkline" exact component={ChartsSparkline} />
+                    <Route path="/app/charts/rickshaw" exact component={ChartsRickshaw} />
+                    <Route path="/app/tables" exact render={() => <Redirect to="/app/tables/static" />} />
+                    <Route path="/app/tables/static" exact component={TablesStatic} />
+                    <Route path="/app/tables/dynamic" exact component={TablesDynamic} />
+                    <Route path="/app/extra" exact render={() => <Redirect to="/app/extra/calendar" />} />
+                    <Route path="/app/extra/calendar" exact component={ExtraCalendar} />
+                    <Route path="/app/extra/invoice" exact component={ExtraInvoice} />
+                    <Route path="/app/extra/search" exact component={ExtraSearch} />
+                    <Route path="/app/extra/timeline" exact component={ExtraTimeline} />
+                    <Route path="/app/extra/gallery" exact component={ExtraGallery} />
+                    <Route path="/app/maps" exact render={() => <Redirect to="/app/maps/google" />} />
+                    <Route path="/app/maps/google" exact component={MapsGoogle} />
+                    <Route path="/app/maps/vector" exact component={MapsVector} />
+                    <Route path="/app/core" exact render={() => <Redirect to="/app/core/typography" />} />
+                    <Route path="/app/core/typography" exact component={CoreTypography} />
+                    <Route path="/app/core/colors" exact component={CoreColors} />
+                    <Route path="/app/core/grid" exact component={CoreGrid} />
+                  </Switch>
+                </CSSTransition>
+              </TransitionGroup>
               <footer className={s.contentFooter}>
                 Light Blue React Dashboard - React admin template made by <a href="https://flatlogic.com" >Flatlogic</a>
               </footer>

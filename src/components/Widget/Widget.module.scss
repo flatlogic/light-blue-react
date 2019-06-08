@@ -7,6 +7,10 @@
   @include clearfix();
 }
 
+:global .widget.collapsed {
+  min-height: unset;
+}
+
 .widget {
   display: block;
   position: relative;
@@ -15,6 +19,7 @@
   background: $widget-bg-color;
   border-radius: $widget-border-radius;
   box-shadow: $widget-shadow;
+  min-height: 150px;
 
   > header {
     margin: (-$widget-padding-vertical) (-$widget-padding-horizontal);
@@ -238,4 +243,10 @@
     line-height: 45px;
     display: inline-block;
   }
+}
+
+.widgetLoader {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

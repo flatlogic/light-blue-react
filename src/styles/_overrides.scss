@@ -221,7 +221,7 @@ small {
 ///////// Buttons //////////
 
 .dropdown-toggle::after {
-  font-family: LineAwesome;
+  font-family: LineAwesome, sans-serif;
   content: "\F110";
   border: none;
   width: auto;
@@ -603,6 +603,10 @@ h6,
   border: none;
 
   @include box-shadow(none);
+
+  .popover-header {
+    border-bottom: none;
+  }
 }
 
 .popover-content {
@@ -709,9 +713,6 @@ pre {
   border: 1px solid $gray-400;
   border-radius: $border-radius;
   white-space: pre-line;       /* css-3 */
-  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
 
   // Account for some code outputs that place code tags in pre tags
   code {
@@ -917,12 +918,10 @@ ul.messenger.messenger-spinner-active .messenger-spinner .messenger-spinner {
   height: 100%;
   -webkit-animation-iteration-count: infinite;
   -moz-animation-iteration-count: infinite;
-  -ms-animation-iteration-count: infinite;
   -o-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
   -moz-animation-timing-function: linear;
-  -ms-animation-timing-function: linear;
   -o-animation-timing-function: linear;
   animation-timing-function: linear;
 }
@@ -939,7 +938,6 @@ ul.messenger.messenger-spinner-active .messenger-spinner .messenger-spinner {
   border-bottom-left-radius: 0;
   -webkit-animation-name: ui-spinner-rotate-left;
   -moz-animation-name: ui-spinner-rotate-left;
-  -ms-animation-name: ui-spinner-rotate-left;
   -o-animation-name: ui-spinner-rotate-left;
   animation-name: ui-spinner-rotate-left;
   -webkit-transform-origin: 0 50%;
@@ -961,7 +959,6 @@ ul.messenger.messenger-spinner-active .messenger-spinner .messenger-spinner {
   border-bottom-right-radius: 0;
   -webkit-animation-name: ui-spinner-rotate-right;
   -moz-animation-name: ui-spinner-rotate-right;
-  -ms-animation-name: ui-spinner-rotate-right;
   -o-animation-name: ui-spinner-rotate-right;
   animation-name: ui-spinner-rotate-right;
   -webkit-transform-origin: 100% 50%;
@@ -1121,4 +1118,58 @@ div.abc-radio label {
 
 .mde-preview-content {
   border-color: rgba(255, 255, 255, .3) !important;
+}
+
+///// Toastify /////
+.Toastify {
+  .Toastify__toast {
+    font-family: Montserrat, sans-serif;
+    border-radius: $border-radius;
+    &.Toastify__toast--success {
+      background: $success;
+    }
+
+    &.Toastify__toast--warn {
+      background: $warning;
+    }
+
+    &.Toastify__toast--error {
+      background: $danger;
+    }
+
+    &.Toastify__toast--info {
+      background: $info;
+    }
+
+    &-body {
+      text-align: center;
+    }
+  }
+
+  .notification-close {
+    height: $font-size-base;
+
+    &:hover {
+      color: darken($white, 10%);
+    }
+  }
+}
+
+
+//// React Tags Input ////
+.react-tagsinput {
+  &.react-tagsinput--focused {
+    border-color: $input-focus-border-color;
+  }
+
+  .react-tagsinput-tag, .react-tagsinput-input {
+    margin: 2px !important;
+  }
+
+  .react-tagsinput-tag {
+    border-radius: $border-radius;
+    background-color: $purple;
+    color: white;
+    border-color: darken($purple, 10%);
+  }
 }

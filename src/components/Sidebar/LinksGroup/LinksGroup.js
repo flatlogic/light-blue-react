@@ -8,7 +8,6 @@ import classnames from 'classnames';
 import s from './LinksGroup.module.scss';
 
 class LinksGroup extends Component {
-  /* eslint-disable */
   static propTypes = {
     header: PropTypes.node.isRequired,
     link: PropTypes.string.isRequired,
@@ -22,17 +21,20 @@ class LinksGroup extends Component {
     index: PropTypes.string,
     deep: PropTypes.number,
     onActiveSidebarItemChange: PropTypes.func,
+    labelColor: PropTypes.string,
+    exact: PropTypes.bool
   };
-  /* eslint-enable */
 
   static defaultProps = {
     link: '',
     childrenLinks: null,
+      header: '',
     className: '',
     isHeader: false,
     deep: 0,
     activeItem: '',
     label: '',
+    exact: true
   };
 
   constructor(props) {
@@ -58,6 +60,8 @@ class LinksGroup extends Component {
       this.props.activeItem.includes(this.props.index) &&
       this.state.headerLinkWasClicked;
 
+    const {exact} = this.props.exact;
+
     if (!this.props.childrenLinks) {
       if (this.props.isHeader) {
         return (
@@ -65,13 +69,13 @@ class LinksGroup extends Component {
             <NavLink
               to={this.props.link}
               activeClassName={s.headerLinkActive}
-              exact
-              {...this.props}
+              exact={exact}
+              target={this.props.target}
             >
               <span className={s.icon}>
                 <i className={`fi ${this.props.iconName}`} />
               </span>
-              {this.props.header} {this.props.label && <sup className={s.headerLabel}>{this.props.label}</sup>}
+              {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'}`}>{this.props.label}</sup>}
               {this.props.badge && <Badge className={s.badge} color="warning" pill>9</Badge>}
             </NavLink>
           </li>
@@ -89,9 +93,9 @@ class LinksGroup extends Component {
                 e.preventDefault();
               }
             }}
-            exact
+            exact={exact}
           >
-            {this.props.header} {this.props.label && <sup className={s.headerLabel}>{this.props.label}</sup>}
+            {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'}`}>{this.props.label}</sup>}
           </NavLink>
         </li>
       );
@@ -114,7 +118,7 @@ class LinksGroup extends Component {
                     <i className={`fi ${this.props.iconName}`} />
                   </span> : null
                 }
-                {this.props.header} {this.props.label && <sup className={s.header}>{this.props.label}</sup>}
+                {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'} ml-1`}>{this.props.label}</sup>}
                 <b className={['fa fa-angle-left', s.caret].join(' ')} />
               </a>
               {/* eslint-enable */}
