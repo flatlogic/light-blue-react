@@ -178,21 +178,21 @@ class ProductEdit extends React.Component {
                             <FormGroup row>
                                 <Label md={2} for="productTitle">Title</Label>
                                 <Col md={5}>
-                                    <Input id="productTitle" type="text" defaultValue={product.title}
+                                    <Input className="input-transparent" id="productTitle" type="text" defaultValue={product.title}
                                            onChange={(event) => this.updateProduct(event.target.value, 'title')}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
                                 <Label md={2} for="productSubtitle">Subtitle</Label>
                                 <Col md={5}>
-                                    <Input id="productSubtitle" type="text" defaultValue={product.subtitle}
+                                    <Input className="input-transparent" id="productSubtitle" type="text" defaultValue={product.subtitle}
                                            onChange={(event) => this.updateProduct(event.target.value, 'subtitle')}/>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
                                 <Label md={2} for="productPrice">Price</Label>
                                 <Col md={2}>
-                                    <Input id="productPrice" type="number" step={0.01} min={0.01}
+                                    <Input className="input-transparent" id="productPrice" type="number" step={0.01} min={0.01}
                                            defaultValue={product.price}
                                            onChange={(event) => this.updateProduct(event.target.value, 'price')}/>
                                 </Col>
@@ -200,7 +200,7 @@ class ProductEdit extends React.Component {
                             <FormGroup row>
                                 <Label md={2} for="productDiscount">Discount</Label>
                                 <Col md={2}>
-                                    <Input id="productDiscount" type="number" step={1} min={0} max={100}
+                                    <Input className="input-transparent" id="productDiscount" type="number" step={1} min={0} max={100}
                                            defaultValue={product.discount || 0}
                                            onChange={(event) => this.updateProduct(event.target.value, 'discount')}/>
                                 </Col>
@@ -208,7 +208,7 @@ class ProductEdit extends React.Component {
                             <FormGroup row>
                                 <Label md={2} for="productDescription_1">Description 1</Label>
                                 <Col md={5}>
-                                <textarea rows={3} className="form-control" id="productDescription_1"
+                                <textarea rows={3} className="form-control input-transparent" id="productDescription_1"
                                           ref={this.description_1}
                                           onChange={(event) => this.updateProduct(event.target.value, 'description_1')}/>
                                 </Col>
@@ -216,7 +216,7 @@ class ProductEdit extends React.Component {
                             <FormGroup row>
                                 <Label md={2} for="productDescription_2">Description 2</Label>
                                 <Col md={5}>
-                                <textarea rows={3} className="form-control" id="productDescription_2"
+                                <textarea rows={3} className="form-control input-transparent" id="productDescription_2"
                                           ref={this.description_2}
                                           onChange={(event) => this.updateProduct(event.target.value, 'description_2')}/>
                                 </Col>
@@ -224,7 +224,7 @@ class ProductEdit extends React.Component {
                             <FormGroup row>
                                 <Label md={2} for="productCode">Code</Label>
                                 <Col md={2}>
-                                    <Input id="productCode" type="text"
+                                    <Input className="input-transparent" id="productCode" type="text"
                                            defaultValue={product.code}
                                            onChange={(event) => this.updateProduct(event.target.value, 'code')}/>
                                 </Col>
@@ -232,7 +232,7 @@ class ProductEdit extends React.Component {
                             <FormGroup row>
                                 <Label md={2} for="productHashtag">Hashtag</Label>
                                 <Col md={5}>
-                                    <Input id="productHashtag" type="text"
+                                    <Input className="input-transparent" id="productHashtag" type="text"
                                            defaultValue={product.hashtag}
                                            onChange={(event) => this.updateProduct(event.target.value, 'hashtag')}/>
                                 </Col>
@@ -240,7 +240,7 @@ class ProductEdit extends React.Component {
                             <FormGroup row>
                                 <Label md={2} for="productTechnology">Technology</Label>
                                 <Col md={5}>
-                                    <TagsInput className="react-tagsinput form-control" id="productTechnology"
+                                    <TagsInput className="react-tagsinput form-control input-transparent" id="productTechnology"
                                                value={product.technology}
                                                onChange={(tags) => this.updateProduct(tags, 'technology')}/>
                                 </Col>
@@ -248,7 +248,7 @@ class ProductEdit extends React.Component {
                             <FormGroup row>
                                 <Label md={2} for="productRating">Rating</Label>
                                 <Col md={2}>
-                                    <Input id="productRating" step={0.1} min={0} max={5} type="number"
+                                    <Input className="input-transparent" id="productRating" step={0.1} min={0} max={5} type="number"
                                            defaultValue={product.rating}
                                            onChange={(event) => this.updateProduct(event.target.value, 'rating')}/>
                                 </Col>
