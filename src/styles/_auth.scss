@@ -24,8 +24,16 @@
   }
 
   .auth-btn {
-    border-radius: 0;
-    margin: 0 (-$widget-padding-horizontal);
+    margin-top: $spacer;
+
+    .auth-btn-circle {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.2);
+    }
   }
 
   .auth-widget-footer {

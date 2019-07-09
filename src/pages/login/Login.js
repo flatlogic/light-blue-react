@@ -126,9 +126,14 @@ class Login extends React.Component {
                                            required name="password" placeholder="Password"/>
                                 </InputGroup>
                             </FormGroup>
-                            <div className="bg-widget-transparent auth-widget-footer">
+                            <div className="bg-widget auth-widget-footer">
                                 <Button type="submit" color="danger" className="auth-btn"
-                                        size="sm">{this.props.isFetching ? 'Loading...' : 'Login'}</Button>
+                                        size="sm">
+                                  <span className="auth-btn-circle">
+                                    <i className="la la-caret-right"/>
+                                  </span>
+                                  {this.props.isFetching ? 'Loading...' : 'Login'}
+                                </Button>
                                 <p className="widget-auth-info mt-4">
                                     Don't have an account? Sign up now!
                                 </p>
