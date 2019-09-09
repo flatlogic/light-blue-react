@@ -1,9 +1,14 @@
 import React from 'react';
 import $ from 'jquery';
+import {
+  Breadcrumb, BreadcrumbItem
+} from 'reactstrap'
 /* eslint-disable */
 import 'imports-loader?jQuery=jquery,this=>window!jvectormap/jquery-jvectormap.min.js';
 import 'imports-loader?jQuery=jquery,this=>window!./jvector-world.js';
 /* eslint-enable */
+
+import Widget from '../../../components/Widget';
 
 import s from './Vector.module.scss';
 
@@ -84,18 +89,24 @@ class VectorMap extends React.Component {
   render() {
     return (
       <div>
-        <div
-          className={`${s.contentMap} vector-map`} ref={(r) => {
-            this.vectorMap = r;
-          }}
-        />
+        <Breadcrumb>
+          <BreadcrumbItem>YOU ARE HERE</BreadcrumbItem>
+          <BreadcrumbItem active>Vector Maps</BreadcrumbItem>
+        </Breadcrumb>
+
         <header className="page-title">
           <h1 className="m-0 mb-sm">Vector <span className="fw-semi-bold">Maps</span></h1>
-          <p className="page-title fs-sm m-0">
-            <span className="fw-semi-bold">1 656 843</span>
-            <span className="ml-xs circle bg-gray"><i className="text-gray-lighter fa fa-circle" /></span>
-          </p>
         </header>
+        <Widget
+          title={<h4>Vector Maps <small className="text-muted">Default and customized</small></h4>}
+          collapse close
+        >
+          <div
+            className={`${s.contentMap} vector-map`} ref={(r) => {
+            this.vectorMap = r;
+          }}
+          />
+        </Widget>
       </div>);
   }
 
