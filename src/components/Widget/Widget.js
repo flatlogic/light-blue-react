@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import jQuery from 'jquery';
 import { UncontrolledTooltip } from 'reactstrap';
-import 'imports-loader?window.jQuery=jquery,this=>window!widgster'; // eslint-disable-line
 import s from './Widget.module.scss';
 import Loader from '../Loader'; // eslint-disable-line css-modules/no-unused-class
 import widgetHoc from './widgetHoc';
+import AnimateHeight from 'react-animate-height';
 
 class Widget extends React.Component {
   static propTypes = {
@@ -48,12 +47,23 @@ class Widget extends React.Component {
 	};
 
   componentDidMount() {
-    const options = this.props.options;
-    options.bodySelector = '.widget-body';
-    jQuery(this.el).widgster(options);
+
 	}
+
+	state = {
+    height: 'auto',
+  };
+ 
+  toggle = () => {
+    const { height } = this.state;
+ 
+    this.setState({
+      height: height === 'auto' ? 0 : 'auto',
+    });
+  };
 	
   render() {
+		const { height } = this.state;
     const {
       title,
       className,
@@ -83,6 +93,7 @@ class Widget extends React.Component {
 		const mainControls = !!(close || fullscreen || collapse || refresh || settings || settingsInverse);
 		
     return (
+
       <section
 				style={{display: hideWidget ? 'none' : ''}}  
         className={
@@ -92,14 +103,15 @@ class Widget extends React.Component {
 					className].join(' ')
 				}
         ref={(widget) => { this.el = widget; }} {...attributes}
-      >
+      >			
         {
           title && (
             typeof title === 'string'
               ? <h5 className={s.title}>{title}</h5>
               : <header className={s.title}>{title}</header>
           )
-        }
+				}
+				
         {
           !customControls && mainControls && (
             <div className={`${s.widgetControls} widget-controls`}>
@@ -148,7 +160,7 @@ class Widget extends React.Component {
               )}
               {collapse && (
                 <span>
-                  <button onClick={handleCollapse} id={`collapseId-${randomId}`}>
+                  <button onClick={this.toggle} id={`collapseId-${randomId}`}>
                     <i className="la la-angle-down" />
                     {showTooltip && (
                       <UncontrolledTooltip
@@ -187,7 +199,12 @@ class Widget extends React.Component {
                 </button>
               )}
             </div>
-          )}
+					)}
+					
+					{/* <AnimateHeight
+			duration={ 500 }
+			height={ height } // see props documentation bellow
+		> */}
         {
           customControls && (
             <div className={`${s.widgetControls} widget-controls`}>
@@ -195,12 +212,15 @@ class Widget extends React.Component {
             </div>
           )
 				}
-		
-					<div className={`${s.widgetBody} widget-body ${collapseWidget ? [s.widgetCollapsing, s.widgetHideBody].join(' ') : s.widgetExpanding} ${bodyClass}`}>
+			
+
+				<div className={`${s.widgetBody} widget-body ${collapseWidget ? [s.widgetCollapsing, s.widgetHideBody].join(' ') : s.widgetExpanding} ${bodyClass}`}>
 						{fetchingData ?  <Loader className={s.widgetLoader} size={40}/> : children}
 					</div>
-
-      </section>
+		
+		{/* </AnimateHeight> */}
+      </section>	
+			
     );
   }
 }

@@ -1188,11 +1188,6 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
-"@kunukn/react-collapse@^1":
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/@kunukn/react-collapse/-/react-collapse-1.2.7.tgz#be96ccc11021acb923de96678b62e7de73ea89fe"
-  integrity sha512-Ez4CqaPqYFdYX8k8A0Y0640tEZT6oo+Lj3g3KyzuWjkl6uOBrnBohxyUfrCoS6wYVun9GUOgRH5V3pSirrmJDQ==
-
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-4.2.0.tgz#dadcb6218503532d6884b210e7f3c502caaa44b1"
@@ -8315,6 +8310,14 @@ rc@^1.2.7:
   resolved "https://registry.yarnpkg.com/react-addons-transition-group/-/react-addons-transition-group-15.6.2.tgz#8baebc2ae91ccdbf245fe29c9fd3d36f8b471923"
   dependencies:
     react-transition-group "^1.2.0"
+
+react-animate-height@^2.0.15:
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/react-animate-height/-/react-animate-height-2.0.15.tgz#155f42e1ab0befe785b36b3e76233230172c1857"
+  integrity sha512-YTyXGx833DyiRrjMfwRqXNkvIYEdBGCR3vAK56Hj/2yvZnLE0ySiVEu58pNuH0Pkn8uU9ZDZWCVNZEv7eAlPeQ==
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.1"
 
 react-animated-number@^0.4.4:
   version "0.4.4"

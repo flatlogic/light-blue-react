@@ -6,22 +6,40 @@
 
   @include clearfix();
 }
+// Fix
+// :global .widget.collapsed {
+//   min-height: unset;
+// }
+// :global .rah-static.rah-static--height-auto {
+// 	padding: $widget-padding-vertical $widget-padding-horizontal;
+// 	border-radius: $widget-border-radius;
+// }
+// :global .rah-animating.rah-animating--up {
+// 	overflow: hidden;
+// 	border-radius: $widget-border-radius;
+// 	padding: $widget-padding-vertical $widget-padding-horizontal;
+// }
+// :global .rah-animating.rah-animating--down {
+// 	padding: $widget-padding-vertical $widget-padding-horizontal;
+// 	overflow: hidden;
+// 	border-radius: $widget-border-radius;
+// }
 
-:global .widget.collapsed {
-  min-height: unset;
-}
-
+// :global .rah-animating.rah-animating--to-height-zero {
+// 	padding: 0 $widget-padding-horizontal;
+// 	overflow: hidden;
+// 	border-radius: $widget-border-radius;
+// }
 
 .widget {
   display: block;
   position: relative;
   margin-bottom: $grid-gutter-width;
-  padding: $widget-padding-vertical $widget-padding-horizontal;
+	border-radius: $widget-border-radius;
   background: $widget-bg-color;
-  border-radius: $widget-border-radius;
   box-shadow: $widget-shadow;
   min-height: 150px;
-
+	padding: $widget-padding-vertical $widget-padding-horizontal;
   > header {
     margin: (-$widget-padding-vertical) (-$widget-padding-horizontal);
     padding: $widget-padding-vertical $widget-padding-horizontal;
@@ -66,10 +84,10 @@
   &:global.bg-transparent {
     box-shadow: none;
 	}
-
-
-	
 }
+
+
+
 .widgetCollapsing {
 	height: 0!important;
 	visibility: hidden;
