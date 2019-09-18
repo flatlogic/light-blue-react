@@ -5,6 +5,7 @@ import { UncontrolledTooltip } from 'reactstrap';
 import 'imports-loader?window.jQuery=jquery,this=>window!widgster'; // eslint-disable-line
 import s from './Widget.module.scss';
 import Loader from '../Loader'; // eslint-disable-line css-modules/no-unused-class
+import widgetHoc from './widgetHoc';
 
 class Widget extends React.Component {
   static propTypes = {
@@ -34,7 +35,7 @@ class Widget extends React.Component {
     children: [],
     close: false,
     fullscreen: false,
-    collapse: false,
+    collapse: true,
     refresh: false,
     settings: false,
     settingsInverse: false,
@@ -43,22 +44,15 @@ class Widget extends React.Component {
     bodyClass: '',
     customControls: null,
     options: {},
-    fetchingData: false
-  };
-
-  constructor(prop) {
-    super(prop);
-    this.state = {
-      randomId: Math.floor(Math.random() * 100),
-    };
-  }
+		fetchingData: false,
+	};
 
   componentDidMount() {
     const options = this.props.options;
     options.bodySelector = '.widget-body';
     jQuery(this.el).widgster(options);
-  }
-
+	}
+	
   render() {
     const {
       title,
@@ -74,15 +68,29 @@ class Widget extends React.Component {
       showTooltip,
       bodyClass,
       customControls,
-      fetchingData,
+			fetchingData,
+
+			randomId,
+			hideWidget,
+			collapseWidget,
+			handleClose,
+			handleCollapse,
+			handleExpand,
+
       options, //eslint-disable-line
       ...attributes
     } = this.props;
-    const randomId = this.state.randomId;
-    const mainControls = !!(close || fullscreen || collapse || refresh || settings || settingsInverse);
+		const mainControls = !!(close || fullscreen || collapse || refresh || settings || settingsInverse);
+		
     return (
       <section
-        className={['widget', s.widget, className].join(' ')}
+				style={{display: hideWidget ? 'none' : ''}}  
+        className={
+					['widget', 
+					collapseWidget ? 'collapsed' : '', 
+					s.widget, 
+					className].join(' ')
+				}
         ref={(widget) => { this.el = widget; }} {...attributes}
       >
         {
@@ -140,7 +148,7 @@ class Widget extends React.Component {
               )}
               {collapse && (
                 <span>
-                  <button data-widgster="collapse" id={`collapseId-${randomId}`}>
+                  <button onClick={handleCollapse} id={`collapseId-${randomId}`}>
                     <i className="la la-angle-down" />
                     {showTooltip && (
                       <UncontrolledTooltip
@@ -153,7 +161,7 @@ class Widget extends React.Component {
               )}
               {collapse && (
                 <span>
-                  <button data-widgster="expand" id={`expandId-${randomId}`}>
+                  <button onClick={handleExpand} id={`expandId-${randomId}`}>
                     <i className="la la-angle-up" />
                     {showTooltip && (
                       <UncontrolledTooltip
@@ -166,7 +174,7 @@ class Widget extends React.Component {
               )}
 
               {close && (
-                <button data-widgster="close" id={`closeId-${randomId}`}>
+                <button onClick={handleClose} id={`closeId-${randomId}`}>
                   {typeof close === 'string' ?
                     <strong className="text-gray-light">{close}</strong> :
                     <i className="la la-remove" />}
@@ -186,13 +194,15 @@ class Widget extends React.Component {
               {customControls}
             </div>
           )
-        }
-        <div className={`${s.widgetBody} widget-body ${bodyClass}`}>
-          {fetchingData ?  <Loader className={s.widgetLoader} size={40}/> : children}
-        </div>
+				}
+		
+					<div className={`${s.widgetBody} widget-body ${collapseWidget ? [s.widgetCollapsing, s.widgetHideBody].join(' ') : s.widgetExpanding} ${bodyClass}`}>
+						{fetchingData ?  <Loader className={s.widgetLoader} size={40}/> : children}
+					</div>
+
       </section>
     );
   }
 }
 
-export default Widget;
+export default widgetHoc(Widget);

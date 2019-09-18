@@ -11,6 +11,7 @@
   min-height: unset;
 }
 
+
 .widget {
   display: block;
   position: relative;
@@ -64,9 +65,26 @@
 
   &:global.bg-transparent {
     box-shadow: none;
-  }
+	}
+
+
+	
+}
+.widgetCollapsing {
+	height: 0!important;
+	visibility: hidden;
+	transition: all .25s ease;
 }
 
+.widgetExpanding {
+	visibility: visible;
+	height: auto;
+	transition: all .25s ease;
+}
+
+.widgetHideBody {
+	display: none;
+}
 .widgetBody {
   @include clearfix();
 
@@ -80,6 +98,10 @@
 
 .widgetControls + .widgetBody {
   margin-top: $widget-padding-vertical;
+}
+
+.widgetControls + .widgetBody.widgetCollapsing {
+	margin-top: 0;
 }
 
 .widgetControls,

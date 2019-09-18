@@ -1188,6 +1188,11 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
+"@kunukn/react-collapse@^1":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@kunukn/react-collapse/-/react-collapse-1.2.7.tgz#be96ccc11021acb923de96678b62e7de73ea89fe"
+  integrity sha512-Ez4CqaPqYFdYX8k8A0Y0640tEZT6oo+Lj3g3KyzuWjkl6uOBrnBohxyUfrCoS6wYVun9GUOgRH5V3pSirrmJDQ==
+
 "@svgr/babel-plugin-add-jsx-attribute@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-4.2.0.tgz#dadcb6218503532d6884b210e7f3c502caaa44b1"
