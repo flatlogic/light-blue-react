@@ -440,7 +440,7 @@ class Widgets extends React.Component {
           <Col lg={6} xs={12}>
             <Row>
               <Col md={6} xs={12}>
-                <Widget className="widget-sm">
+                <Widget className="">
                   <h6 className="mt-3 fw-normal">
                     Nasdaq
                   </h6>
@@ -452,7 +452,7 @@ class Widgets extends React.Component {
                 </Widget>
               </Col>
               <Col md={6} xs={12}>
-                <Widget className="widget-sm bg-success text-white">
+                <Widget className="bg-success text-white">
                   <p className="mb-xs"><i className="fa fa-comments fa-2x" /></p>
                   <h5>
                     Lots of <span className="fw-semi-bold">possibilities</span> to customize your
@@ -473,7 +473,7 @@ class Widgets extends React.Component {
             </Row>
             <Row>
               <Col md={6} xs={12}>
-                <Widget className="widget-sm bg-primary text-white">
+                <Widget className="bg-primary text-white">
                   <p className="mb-xs"><i className="fa fa-arrow-circle-up fa-3x opacity-50" /></p>
                   <p className="mb text-light">
                     <time>10 June</time>
@@ -490,7 +490,7 @@ class Widgets extends React.Component {
               </Col>
               <Col md={6} xs={12}>
                 <Widget
-                  className="widget-sm"
+                  className=""
                   title={<h6>Server <span className="fw-semi-bold">Overview</span></h6>}
                 >
                   <div className="clearfix fs-mini">
@@ -602,7 +602,7 @@ class Widgets extends React.Component {
 
         <Row>
           <Col lg={3} xs={12}>
-            <Widget className="widget-padding-lg">
+            <Widget className="widget-padding-md">
               <div className="clearfix">
                 <LiveTile
                   data-mode="carousel" data-speed="750" data-delay="3000"
@@ -649,7 +649,7 @@ class Widgets extends React.Component {
           </Col>
 
           <Col lg={3} xs={12}>
-            <Widget className="widget-padding-lg bg-primary text-white">
+            <Widget className="widget-padding-md bg-primary text-white">
               <div className="clearfix">
                 <LiveTile data-mode="carousel" data-speed="300" data-delay="3000" data-height="313">
                   <div>
@@ -694,15 +694,15 @@ class Widgets extends React.Component {
             >
               <div>
                 <Widget
-                  className="widget-padding-lg widget-md bg-widget-transparent-dark text-white"
+                  className="widget-padding-md bg-widget-transparent-dark text-white"
                   bodyClass="widget-body-container"
                 >
                   <div className="text-center">
                     <i className="fa fa-child text-warning fa-5x" />
                   </div>
                   <h3 className="fw-normal">Light Blue Web App</h3>
-                  <div className="widget-footer-bottom">
-                    <div className="mb-sm">Cutting-edge tech and design delivered</div>
+                  <div className="widget-footer-bottom-no-slide">
+                    <div className="mb-sm mt-no-slide">Cutting-edge tech and design delivered</div>
                     <p>
                       <button className="btn btn-default btn-block">Hover over me!</button>
                     </p>
@@ -710,13 +710,13 @@ class Widgets extends React.Component {
                 </Widget>
               </div>
               <div>
-                <Widget className="widget-padding-lg widget-md" bodyClass="widget-body-container">
+                <Widget className="widget-padding-md " bodyClass="widget-body-container">
                   <div className="text-center">
                     <i className="fa fa-globe text-primary fa-5x" />
                   </div>
                   <h3 className="fw-normal">Join The Web Now!</h3>
-                  <div className="widget-footer-bottom">
-                    <div className="mb-sm">Cutting-edge tech and design delivered</div>
+                  <div className="widget-footer-bottom-no-slide">
+                    <div className="mb-sm mt-no-slide">Cutting-edge tech and design delivered</div>
                     <p>
                       <button className="btn btn-gray btn-block">Join now!</button>
                     </p>

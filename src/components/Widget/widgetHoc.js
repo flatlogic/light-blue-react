@@ -6,7 +6,9 @@ const widgetHoc = (WrappedComponent) => {
 			state = {
 				randomId: Math.floor(Math.random() * 100),
 				hideWidget: false,
-				collapseWidget: false
+				collapseWidget: false,
+				height: 'auto',
+				fullscreened: false,
 			}
 
 			componentDidMount() {
@@ -18,16 +20,41 @@ const widgetHoc = (WrappedComponent) => {
 			}
 
 			handleCollapse = () => {
-				this.setState({ collapseWidget: true})
-			}
+
+				this.setState({
+					height: 0,
+					collapseWidget: true,
+					reloading: false
+				});
+
+			};
 
 			handleExpand = () => {
-				this.setState({ collapseWidget: false})
+				
+				this.setState({
+					height: 'auto',
+					collapseWidget: false
+				});
+
+			};
+
+			handleReload = () => {
+				this.setState({ reloading: true });
+				
+				setTimeout(() => this.setState({ reloading: false }),2000);
+			}
+
+			handleFullscreen = () => {
+				this.setState({ fullscreened: !this.state.fullscreened })
+			}
+
+			handleRestore = () => {
+				this.setState({ fullscreened: false })
 			}
 
 			render() {
 
-					const { randomId, hideWidget, collapseWidget } = this.state;
+					const { randomId, hideWidget, collapseWidget, height, reloading, fullscreened } = this.state;
 				
 					return(
 									<WrappedComponent 
@@ -35,10 +62,15 @@ const widgetHoc = (WrappedComponent) => {
 										randomId={randomId}
 										hideWidget={hideWidget}
 										collapseWidget={collapseWidget}
+										height={height}
+										reloading={reloading}
+										fullscreened={fullscreened}
 
 										handleClose={this.handleClose}
 										handleCollapse={this.handleCollapse}
 										handleExpand={this.handleExpand}
+										handleReload={this.handleReload}
+										handleFullscreen={this.handleFullscreen}
 									/>
 					)
 			}

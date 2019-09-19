@@ -6,42 +6,51 @@
 
   @include clearfix();
 }
-// Fix
-// :global .widget.collapsed {
-//   min-height: unset;
-// }
-// :global .rah-static.rah-static--height-auto {
-// 	padding: $widget-padding-vertical $widget-padding-horizontal;
-// 	border-radius: $widget-border-radius;
-// }
-// :global .rah-animating.rah-animating--up {
-// 	overflow: hidden;
-// 	border-radius: $widget-border-radius;
-// 	padding: $widget-padding-vertical $widget-padding-horizontal;
-// }
-// :global .rah-animating.rah-animating--down {
-// 	padding: $widget-padding-vertical $widget-padding-horizontal;
-// 	overflow: hidden;
-// 	border-radius: $widget-border-radius;
-// }
 
-// :global .rah-animating.rah-animating--to-height-zero {
-// 	padding: 0 $widget-padding-horizontal;
-// 	overflow: hidden;
-// 	border-radius: $widget-border-radius;
-// }
+:global .widget.collapsed {
+  min-height: unset;
+}
+
+:global .mt-no-slide {
+	margin-top: 100px;
+}
+
+:global .fullscreened{
+	position: fixed!important;
+	top: 50%;
+	right: 0px;
+	bottom: 0px;
+	left: 50%;
+	margin: 0px;
+	z-index: 10000;
+	transform: translate(-50%, -50%);
+
+	&::before {
+		content: '';
+		position: absolute;
+		pointer-events: none;
+		z-index: -1;
+		top: -75%;
+    left: -75%;
+    width: 150vw;
+    height: 150vh;
+		background-color: rgba(0,0,0,.75);
+	}
+}
+
+
 
 .widget {
-  display: block;
+	display: block;
   position: relative;
   margin-bottom: $grid-gutter-width;
 	border-radius: $widget-border-radius;
   background: $widget-bg-color;
   box-shadow: $widget-shadow;
   min-height: 150px;
-	padding: $widget-padding-vertical $widget-padding-horizontal;
+	// padding: $widget-padding-vertical $widget-padding-horizontal;
   > header {
-    margin: (-$widget-padding-vertical) (-$widget-padding-horizontal);
+    // margin: (-$widget-padding-vertical) (-$widget-padding-horizontal);
     padding: $widget-padding-vertical $widget-padding-horizontal;
 
     h1,
@@ -71,40 +80,30 @@
         text-align: center;
       }
     }
-
     .widget-body.p-0 {
-      margin: $widget-padding-vertical (-$widget-padding-horizontal) (-$widget-padding-vertical);
+			margin: $widget-padding-vertical (-$widget-padding-horizontal) (-$widget-padding-vertical);
+			
 
       + footer {
         margin-top: $widget-padding-vertical;
       }
-    }
+		}
+
   }
 
   &:global.bg-transparent {
     box-shadow: none;
 	}
 }
-
-
-
-.widgetCollapsing {
-	height: 0!important;
-	visibility: hidden;
-	transition: all .25s ease;
+.widget {
+	&:global.p-0 .widget-body {
+			padding: 0!important;
+	}	
 }
 
-.widgetExpanding {
-	visibility: visible;
-	height: auto;
-	transition: all .25s ease;
-}
-
-.widgetHideBody {
-	display: none;
-}
 .widgetBody {
-  @include clearfix();
+	@include clearfix();
+	padding: $widget-padding-vertical $widget-padding-horizontal;
 
   > footer {
     margin: $spacer/2 (-$widget-padding-horizontal) (-$widget-padding-vertical);
@@ -125,7 +124,7 @@
 .widgetControls,
 :global(.widget-controls) {
   position: absolute;
-  z-index: 1;
+  z-index: 50;
   top: 0;
   right: 0;
   display: flex;
@@ -237,7 +236,7 @@
   }
 
   .widget-body-container {
-    position: relative;
+    // position: relative;
     height: 100%;
   }
 

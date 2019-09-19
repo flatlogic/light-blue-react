@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import jQuery from 'jquery';
 import { UncontrolledTooltip } from 'reactstrap';
+import 'imports-loader?window.jQuery=jquery,this=>window!widgster'; // eslint-disable-line
 import s from './Widget.module.scss';
 import Loader from '../Loader'; // eslint-disable-line css-modules/no-unused-class
 import widgetHoc from './widgetHoc';
@@ -25,17 +27,16 @@ class Widget extends React.Component {
     bodyClass: PropTypes.string,
     customControls: PropTypes.node,
     options: PropTypes.object, //eslint-disable-line,
-    fetchingData: PropTypes.bool
   };
 
   static defaultProps = {
     title: null,
     className: '',
     children: [],
-    close: false,
-    fullscreen: false,
+    close: true,
+    fullscreen: true,
     collapse: true,
-    refresh: false,
+    refresh: true,
     settings: false,
     settingsInverse: false,
     tooltipPlacement: 'bottom',
@@ -43,27 +44,16 @@ class Widget extends React.Component {
     bodyClass: '',
     customControls: null,
     options: {},
-		fetchingData: false,
+
 	};
 
   componentDidMount() {
-
+		const options = this.props.options;
+    options.bodySelector = '.widget-body';
+    jQuery(this.el).widgster(options);
 	}
-
-	state = {
-    height: 'auto',
-  };
- 
-  toggle = () => {
-    const { height } = this.state;
- 
-    this.setState({
-      height: height === 'auto' ? 0 : 'auto',
-    });
-  };
 	
   render() {
-		const { height } = this.state;
     const {
       title,
       className,
@@ -79,13 +69,19 @@ class Widget extends React.Component {
       bodyClass,
       customControls,
 			fetchingData,
+			reloading,
+			fullscreened,
 
 			randomId,
+			height,
 			hideWidget,
 			collapseWidget,
 			handleClose,
 			handleCollapse,
 			handleExpand,
+			handleReload,
+			handleFullscreen,
+			handleRestore,
 
       options, //eslint-disable-line
       ...attributes
@@ -98,6 +94,7 @@ class Widget extends React.Component {
 				style={{display: hideWidget ? 'none' : ''}}  
         className={
 					['widget', 
+					fullscreened ? 'fullscreened'  : '',
 					collapseWidget ? 'collapsed' : '', 
 					s.widget, 
 					className].join(' ')
@@ -124,7 +121,7 @@ class Widget extends React.Component {
                 /></button>
               )}
               {refresh && (
-                <button data-widgster="load" id={`reloadId-${randomId}`}>
+                <button onClick={handleReload} id={`reloadId-${randomId}`}>
                   {typeof refresh === 'string' ?
                     <strong className="text-gray-light">{refresh}</strong> :
                     <i className="la la-refresh" />}
@@ -137,8 +134,8 @@ class Widget extends React.Component {
                 </button>
               )}
               {fullscreen && (
-                <button data-widgster="fullscreen" id={`fullscreenId-${randomId}`}>
-                  <i className="glyphicon glyphicon-resize-full" />
+                <button onClick={handleFullscreen} id={`fullscreenId-${randomId}`}>
+                  <i className={`glyphicon glyphicon-resize-${fullscreened ? 'small' : 'full'}`} />
                   {showTooltip && (
                     <UncontrolledTooltip
                       placement={tooltipPlacement}
@@ -147,7 +144,7 @@ class Widget extends React.Component {
                   )}
                 </button>
               )}
-              {fullscreen && (
+              {/* {fullscreen && (
                 <button data-widgster="restore" id={`restoreId-${randomId}`}>
                   <i className="glyphicon glyphicon-resize-small" />
                   {showTooltip && (
@@ -157,10 +154,10 @@ class Widget extends React.Component {
                     >Restore</UncontrolledTooltip>
                   )}
                 </button>
-              )}
+              )} */}
               {collapse && (
                 <span>
-                  <button onClick={this.toggle} id={`collapseId-${randomId}`}>
+                  <button onClick={handleCollapse} id={`collapseId-${randomId}`}>
                     <i className="la la-angle-down" />
                     {showTooltip && (
                       <UncontrolledTooltip
@@ -201,10 +198,10 @@ class Widget extends React.Component {
             </div>
 					)}
 					
-					{/* <AnimateHeight
-			duration={ 500 }
-			height={ height } // see props documentation bellow
-		> */}
+				<AnimateHeight
+					duration={ 500 }
+					height={ height } // see props documentation bellow
+				>
         {
           customControls && (
             <div className={`${s.widgetControls} widget-controls`}>
@@ -214,11 +211,11 @@ class Widget extends React.Component {
 				}
 			
 
-				<div className={`${s.widgetBody} widget-body ${collapseWidget ? [s.widgetCollapsing, s.widgetHideBody].join(' ') : s.widgetExpanding} ${bodyClass}`}>
-						{fetchingData ?  <Loader className={s.widgetLoader} size={40}/> : children}
+					<div className={`${s.widgetBody} widget-body ${bodyClass}`}>
+						{reloading ?  <Loader className={s.widgetLoader} size={40}/> : children}
 					</div>
 		
-		{/* </AnimateHeight> */}
+				</AnimateHeight>
       </section>	
 			
     );
