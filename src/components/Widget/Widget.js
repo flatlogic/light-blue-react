@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { UncontrolledTooltip } from 'reactstrap';
 import s from './Widget.module.scss';
 import Loader from '../Loader'; // eslint-disable-line css-modules/no-unused-class
-import widgetHoc from './widgetHoc';
 import AnimateHeight from 'react-animate-height';
 
 class Widget extends React.Component {
@@ -45,8 +44,50 @@ class Widget extends React.Component {
 
   };
 
-  componentDidMount() {
+  state = {
+    randomId: Math.floor(Math.random() * 100),
+    hideWidget: false,
+    collapseWidget: false,
+    height: 'auto',
+    fullscreened: false,
+    reloading: false,
+  }
 
+  componentDidMount() {
+    
+  }
+
+  handleClose = () => {
+    this.setState({ hideWidget: !this.state.hideWidget})
+  }
+
+  handleCollapse = () => {
+
+    this.setState({
+      height: 0,
+      collapseWidget: true,
+      reloading: false
+    });
+
+  };
+
+  handleExpand = () => {
+    
+    this.setState({
+      height: 'auto',
+      collapseWidget: false
+    });
+
+  };
+
+  handleReload = () => {
+    this.setState({ reloading: true });
+    
+    setTimeout(() => this.setState({ reloading: false }),2000);
+  }
+
+  handleFullscreen = () => {
+    this.setState({ fullscreened: !this.state.fullscreened });
   }
   
   render() {
@@ -65,24 +106,19 @@ class Widget extends React.Component {
       bodyClass,
       customControls,
       fetchingData,
-      reloading,
-      fullscreened,
-
-      randomId,
-      height,
-      hideWidget,
-      collapseWidget,
-      handleClose,
-      handleCollapse,
-      handleExpand,
-      handleReload,
-      handleFullscreen,
-      handleRestore,
-
       options, //eslint-disable-line
       ...attributes
     } = this.props;
     const mainControls = !!(close || fullscreen || collapse || refresh || settings || settingsInverse);
+
+    const {
+      reloading,
+      fullscreened,
+      randomId,
+      height,
+      hideWidget,
+      collapseWidget 
+    } = this.state;
     
     return (
     <React.Fragment>
@@ -117,7 +153,7 @@ class Widget extends React.Component {
                 /></button>
               )}
               {refresh && (
-                <button onClick={handleReload} id={`reloadId-${randomId}`}>
+                <button onClick={this.handleReload} id={`reloadId-${randomId}`}>
                   {typeof refresh === 'string' ?
                     <strong className="text-gray-light">{refresh}</strong> :
                     <i className="la la-refresh" />}
@@ -130,7 +166,7 @@ class Widget extends React.Component {
                 </button>
               )}
               {fullscreen && (
-                <button onClick={handleFullscreen} id={`fullscreenId-${randomId}`}>
+                <button onClick={this.handleFullscreen} id={`fullscreenId-${randomId}`}>
                   <i className={`glyphicon glyphicon-resize-${fullscreened ? 'small' : 'full'}`} />
                   {showTooltip && (
                     <UncontrolledTooltip
@@ -154,7 +190,7 @@ class Widget extends React.Component {
               {!fullscreened && 
                 collapse && (
                   <span>
-                    <button onClick={handleCollapse} id={`collapseId-${randomId}`}>
+                    <button onClick={this.handleCollapse} id={`collapseId-${randomId}`}>
                     <i className="la la-angle-down" />
                       {showTooltip && (
                         <UncontrolledTooltip
@@ -170,7 +206,7 @@ class Widget extends React.Component {
               {!fullscreened &&
                 collapse && (
                 <span>
-                  <button onClick={handleExpand} id={`expandId-${randomId}`}>
+                  <button onClick={this.handleExpand} id={`expandId-${randomId}`}>
                     <i className="la la-angle-up" />
                     {showTooltip && (
                       <UncontrolledTooltip
@@ -184,7 +220,7 @@ class Widget extends React.Component {
 
               {!fullscreened &&
                 close && (
-                <button onClick={handleClose} id={`closeId-${randomId}`}>
+                <button onClick={this.handleClose} id={`closeId-${randomId}`}>
                   {typeof close === 'string' ?
                     <strong className="text-gray-light">{close}</strong> :
                     <i className="la la-remove" />}
@@ -218,10 +254,10 @@ class Widget extends React.Component {
        </AnimateHeight>
        
       </section>
-      <div style={{display: fullscreened ? 'block'  : 'none'}} className="widgetBgFc"></div>
+      <div style={{display: fullscreened ? 'block'  : 'none'}} className={s.widgetBgFc}></div>
       </React.Fragment>
     );
   }
 }
 
-export default widgetHoc(Widget);
+export default Widget;

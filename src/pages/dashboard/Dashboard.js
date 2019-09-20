@@ -368,7 +368,7 @@ class Dashboard extends React.Component {
           </Col>
 
           <Col lg={4} xs={12}>
-            <Widget title={<h6>Calendar</h6>} settings close bodyClass="p-0">
+            <Widget title={<h6>Calendar</h6>} settings close bodyClass="">
               <Calendar />
               <div className="list-group fs-mini">
                 <button className="list-group-item text-ellipsis">

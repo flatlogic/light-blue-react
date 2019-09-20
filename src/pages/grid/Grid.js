@@ -17,6 +17,7 @@ import {
   ModalFooter,
 } from 'reactstrap';
 import $ from 'jquery';
+import 'imports-loader?window.jQuery=jquery,this=>window!widgster'; // eslint-disable-line
 import 'imports-loader?window.jQuery=jquery,this=>window!jquery-ui/ui/widgets/sortable'; //eslint-disable-line
 
 import Widget from '../../components/Widget';
@@ -164,7 +165,6 @@ class Grid extends React.Component {
                 Latest <span className="fw-semi-bold">Shares</span>
               </h6>}
               close="Close" refresh="Reload"
-              bodyClass={'p-0'}
             >
               <div className="list-group list-group-lg">
                 <button className="list-group-item text-left">
@@ -311,7 +311,7 @@ class Grid extends React.Component {
                   <button data-widgster="close" title="Close"><i className="glyphicon glyphicon-remove" /></button>
                 </div>
               }
-              bodyClass={'p-0'}
+              
               options={{
                 showLoader: false,
                 closePrompt: this.closePrompt,

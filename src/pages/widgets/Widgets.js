@@ -35,7 +35,7 @@ class Widgets extends React.Component {
       <div className="root">
         <Row>
           <Col lg={3} md={6} xs={12}>
-            <Widget className="">
+            <Widget>
               <div className="clearfix">
                 <Row className="flex-nowrap">
                   <Col xs={3}>
@@ -62,7 +62,7 @@ class Widgets extends React.Component {
             </Widget>
           </Col>
           <Col lg={3} md={6} xs={12}>
-            <Widget className="">
+            <Widget>
               <div className="clearfix">
                 <Row className="flex-nowrap">
                   <Col xs="3">
@@ -120,7 +120,7 @@ class Widgets extends React.Component {
             </Widget>
           </Col>
           <Col lg={3} md={6} xs={12}>
-            <Widget className="">
+            <Widget>
               <div className="clearfix">
                 <LiveTile
                   data-mode="flip" data-speed="750" data-delay="4000"
@@ -177,7 +177,7 @@ class Widgets extends React.Component {
             </Widget>
           </Col>
           <Col lg={3} md={6} xs={12}>
-            <Widget className="">
+            <Widget>
               <div className="clearfix">
                 <Row className="flex-nowrap">
                   <Col xs={3}>
@@ -440,7 +440,7 @@ class Widgets extends React.Component {
           <Col lg={6} xs={12}>
             <Row>
               <Col md={6} xs={12}>
-                <Widget className="">
+                <Widget>
                   <h6 className="mt-3 fw-normal">
                     Nasdaq
                   </h6>
@@ -490,7 +490,6 @@ class Widgets extends React.Component {
               </Col>
               <Col md={6} xs={12}>
                 <Widget
-                  className=""
                   title={<h6>Server <span className="fw-semi-bold">Overview</span></h6>}
                 >
                   <div className="clearfix fs-mini">
