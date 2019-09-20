@@ -694,7 +694,7 @@ class Widgets extends React.Component {
             >
               <div>
                 <Widget
-									fullscreen={false}
+                  fullscreen={false}
                   className="widget-padding-md bg-widget-transparent-dark text-white"
                   bodyClass="widget-body-container"
                 >

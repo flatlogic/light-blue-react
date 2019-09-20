@@ -43,12 +43,12 @@ class Widget extends React.Component {
     customControls: null,
     options: {},
 
-	};
+  };
 
   componentDidMount() {
 
-	}
-	
+  }
+  
   render() {
     const {
       title,
@@ -64,47 +64,47 @@ class Widget extends React.Component {
       showTooltip,
       bodyClass,
       customControls,
-			fetchingData,
-			reloading,
-			fullscreened,
+      fetchingData,
+      reloading,
+      fullscreened,
 
-			randomId,
-			height,
-			hideWidget,
-			collapseWidget,
-			handleClose,
-			handleCollapse,
-			handleExpand,
-			handleReload,
-			handleFullscreen,
-			handleRestore,
+      randomId,
+      height,
+      hideWidget,
+      collapseWidget,
+      handleClose,
+      handleCollapse,
+      handleExpand,
+      handleReload,
+      handleFullscreen,
+      handleRestore,
 
       options, //eslint-disable-line
       ...attributes
     } = this.props;
-		const mainControls = !!(close || fullscreen || collapse || refresh || settings || settingsInverse);
-		
+    const mainControls = !!(close || fullscreen || collapse || refresh || settings || settingsInverse);
+    
     return (
-		<React.Fragment>
+    <React.Fragment>
       <section
-				style={{display: hideWidget ? 'none' : ''}}  
+        style={{display: hideWidget ? 'none' : ''}}  
         className={
-					['widget', 
-					fullscreened ? 'fullscreened'  : '',
-					collapseWidget ? 'collapsed' : '', 
-					s.widget, 
-					className].join(' ')
-				}
+          ['widget', 
+          fullscreened ? 'fullscreened'  : '',
+          collapseWidget ? 'collapsed' : '', 
+          s.widget, 
+          className].join(' ')
+        }
         ref={(widget) => { this.el = widget; }} {...attributes}
-      >			
+        >
         {
           title && (
             typeof title === 'string'
               ? <h5 className={s.title}>{title}</h5>
               : <header className={s.title}>{title}</header>
           )
-				}
-				
+        }
+        
         {
           !customControls && mainControls && (
             <div className={`${s.widgetControls} widget-controls`}>
@@ -150,25 +150,25 @@ class Widget extends React.Component {
                     >Restore</UncontrolledTooltip>
                   )}
                 </button>
-							)} */}
-							{!fullscreen && 
-								collapse && (
-									<span>
-										<button onClick={handleCollapse} id={`collapseId-${randomId}`}>
-											<i className="la la-angle-down" />
-											{showTooltip && (
-												<UncontrolledTooltip
-													placement={tooltipPlacement}
-													target={`collapseId-${randomId}`}
-												>Collapse</UncontrolledTooltip>
-											)}
-										</button>
-									</span>
-								)							
-							}
+              )} */}
+              {!fullscreen && 
+                collapse && (
+                  <span>
+                    <button onClick={handleCollapse} id={`collapseId-${randomId}`}>
+                    <i className="la la-angle-down" />
+                      {showTooltip && (
+                        <UncontrolledTooltip
+                          placement={tooltipPlacement}
+                          target={`collapseId-${randomId}`}
+                        >Collapse</UncontrolledTooltip>
+                      )}
+                    </button>
+                  </span>
+                )
+              }
 
               {!fullscreened &&
-								collapse && (
+                collapse && (
                 <span>
                   <button onClick={handleExpand} id={`expandId-${randomId}`}>
                     <i className="la la-angle-up" />
@@ -182,8 +182,8 @@ class Widget extends React.Component {
                 </span>
               )}
 
-							{!fullscreened &&
-								close && (
+              {!fullscreened &&
+                close && (
                 <button onClick={handleClose} id={`closeId-${randomId}`}>
                   {typeof close === 'string' ?
                     <strong className="text-gray-light">{close}</strong> :
@@ -197,29 +197,29 @@ class Widget extends React.Component {
                 </button>
               )}
             </div>
-					)}
-					
-				<AnimateHeight
-					duration={ 500 }
-					height={ height } // see props documentation bellow
-				>
+          )}
+            
+        <AnimateHeight
+          duration={ 500 }
+          height={ height } // see props documentation bellow
+        >
         {
           customControls && (
             <div className={`${s.widgetControls} widget-controls`}>
               {customControls}
             </div>
           )
-				}
+        }
 
-					<div className={`${s.widgetBody} widget-body ${bodyClass}`}>
-						{reloading ?  <Loader className={s.widgetLoader} size={40}/> : children}
-					</div>
-		
-				</AnimateHeight>
-				
+          <div className={`${s.widgetBody} widget-body ${bodyClass}`}>
+            {reloading ?  <Loader className={s.widgetLoader} size={40}/> : children}
+          </div>
+    
+       </AnimateHeight>
+       
       </section>
-			<div style={{display: fullscreened ? 'block'  : 'none'}} className="widgetBgFc"></div>
-			</React.Fragment>
+      <div style={{display: fullscreened ? 'block'  : 'none'}} className="widgetBgFc"></div>
+      </React.Fragment>
     );
   }
 }
