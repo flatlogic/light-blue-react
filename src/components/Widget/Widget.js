@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { UncontrolledTooltip } from 'reactstrap';
 import s from './Widget.module.scss';
+import classNames from 'classnames';
 import Loader from '../Loader'; // eslint-disable-line css-modules/no-unused-class
 import AnimateHeight from 'react-animate-height';
 
@@ -126,8 +127,7 @@ class Widget extends React.Component {
         style={{display: hideWidget ? 'none' : ''}}  
         className={
           ['widget', 
-          fullscreened ? 'fullscreened'  : '',
-          collapseWidget ? 'collapsed' : '', 
+          classNames({'fullscreened' : !!fullscreened, 'collapsed' : !!collapseWidget}),
           s.widget, 
           className].join(' ')
         }
@@ -248,7 +248,7 @@ class Widget extends React.Component {
         }
 
           <div className={`${s.widgetBody} widget-body ${bodyClass}`}>
-            {reloading ?  <Loader className={s.widgetLoader} size={40}/> : children}
+            {reloading || fetchingData ?  <Loader className={s.widgetLoader} size={40}/> : children}
           </div>
     
        </AnimateHeight>

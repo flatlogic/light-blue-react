@@ -157,6 +157,7 @@ class Grid extends React.Component {
               ref={(r) => {
                 this.sharesWidget = r;
               }}
+              bodyClass={"reset-padding"}
               data-widgster-load="/demo/grid/shares.php"
               data-post-processing
               showTooltip tooltipPlacement={tooltipPlacement}
@@ -395,7 +396,6 @@ class Grid extends React.Component {
 
             <Widget
               className="bg-gray"
-              bodyClass={'p-0'}
             >
               <div className="jumbotron handle bg-gray text-white mb-0">
                 <div className="container">
