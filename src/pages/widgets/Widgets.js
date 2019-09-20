@@ -694,6 +694,7 @@ class Widgets extends React.Component {
             >
               <div>
                 <Widget
+									fullscreen={false}
                   className="widget-padding-md bg-widget-transparent-dark text-white"
                   bodyClass="widget-body-container"
                 >
@@ -710,7 +711,7 @@ class Widgets extends React.Component {
                 </Widget>
               </div>
               <div>
-                <Widget className="widget-padding-md " bodyClass="widget-body-container">
+                <Widget fullscreen={false} className="widget-padding-md " bodyClass="widget-body-container">
                   <div className="text-center">
                     <i className="fa fa-globe text-primary fa-5x" />
                   </div>
@@ -726,7 +727,6 @@ class Widgets extends React.Component {
             </LiveTile>
           </Col>
         </Row>
-
       </div>
     );
   }

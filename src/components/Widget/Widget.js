@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import jQuery from 'jquery';
 import { UncontrolledTooltip } from 'reactstrap';
-import 'imports-loader?window.jQuery=jquery,this=>window!widgster'; // eslint-disable-line
 import s from './Widget.module.scss';
 import Loader from '../Loader'; // eslint-disable-line css-modules/no-unused-class
 import widgetHoc from './widgetHoc';
@@ -48,9 +46,7 @@ class Widget extends React.Component {
 	};
 
   componentDidMount() {
-		const options = this.props.options;
-    options.bodySelector = '.widget-body';
-    jQuery(this.el).widgster(options);
+
 	}
 	
   render() {
@@ -89,7 +85,7 @@ class Widget extends React.Component {
 		const mainControls = !!(close || fullscreen || collapse || refresh || settings || settingsInverse);
 		
     return (
-
+		<React.Fragment>
       <section
 				style={{display: hideWidget ? 'none' : ''}}  
         className={
@@ -154,21 +150,25 @@ class Widget extends React.Component {
                     >Restore</UncontrolledTooltip>
                   )}
                 </button>
-              )} */}
-              {collapse && (
-                <span>
-                  <button onClick={handleCollapse} id={`collapseId-${randomId}`}>
-                    <i className="la la-angle-down" />
-                    {showTooltip && (
-                      <UncontrolledTooltip
-                        placement={tooltipPlacement}
-                        target={`collapseId-${randomId}`}
-                      >Collapse</UncontrolledTooltip>
-                    )}
-                  </button>
-                </span>
-              )}
-              {collapse && (
+							)} */}
+							{!fullscreen && 
+								collapse && (
+									<span>
+										<button onClick={handleCollapse} id={`collapseId-${randomId}`}>
+											<i className="la la-angle-down" />
+											{showTooltip && (
+												<UncontrolledTooltip
+													placement={tooltipPlacement}
+													target={`collapseId-${randomId}`}
+												>Collapse</UncontrolledTooltip>
+											)}
+										</button>
+									</span>
+								)							
+							}
+
+              {!fullscreened &&
+								collapse && (
                 <span>
                   <button onClick={handleExpand} id={`expandId-${randomId}`}>
                     <i className="la la-angle-up" />
@@ -182,7 +182,8 @@ class Widget extends React.Component {
                 </span>
               )}
 
-              {close && (
+							{!fullscreened &&
+								close && (
                 <button onClick={handleClose} id={`closeId-${randomId}`}>
                   {typeof close === 'string' ?
                     <strong className="text-gray-light">{close}</strong> :
@@ -209,15 +210,16 @@ class Widget extends React.Component {
             </div>
           )
 				}
-			
 
 					<div className={`${s.widgetBody} widget-body ${bodyClass}`}>
 						{reloading ?  <Loader className={s.widgetLoader} size={40}/> : children}
 					</div>
 		
 				</AnimateHeight>
-      </section>	
-			
+				
+      </section>
+			<div style={{display: fullscreened ? 'block'  : 'none'}} className="widgetBgFc"></div>
+			</React.Fragment>
     );
   }
 }
