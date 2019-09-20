@@ -151,7 +151,7 @@ class Widget extends React.Component {
                   )}
                 </button>
               )} */}
-              {!fullscreen && 
+              {!fullscreened && 
                 collapse && (
                   <span>
                     <button onClick={handleCollapse} id={`collapseId-${randomId}`}>
