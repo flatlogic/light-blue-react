@@ -71,7 +71,8 @@ class Widget extends React.Component {
     height: 'auto',
     fullscreened: false,
     reloading: false,
-    modal: false
+    modal: false,
+    apiData: ''
   }
 
   componentDidMount() {
@@ -119,9 +120,7 @@ class Widget extends React.Component {
       this.setState({ reloading: true });
       fetch('https://jsonplaceholder.typicode.com/todos/1')
         .then(response => response.json())
-        .then(json => {
-          console.log(json.title);
-        })
+        .then(json => this.setState({ apiData: json.title}))
         .then(setTimeout(() => this.setState({ reloading: false }), 1000))
     }
   }
@@ -178,8 +177,7 @@ class Widget extends React.Component {
           classNames({'fullscreened' : !!fullscreened, 'collapsed' : !!collapseWidget, 'reloading': !!reloading}),
           s.widget, 
           className].join(' ')
-        }
-        ref={(widget) => { this.el = widget; }} {...attributes}
+        } {...attributes}
         >
         {
           title && (
@@ -224,17 +222,6 @@ class Widget extends React.Component {
                   )}
                 </button>
               )}
-              {/* {fullscreen && (
-                <button data-widgster="restore" id={`restoreId-${randomId}`}>
-                  <i className="glyphicon glyphicon-resize-small" />
-                  {showTooltip && (
-                    <UncontrolledTooltip
-                      placement={tooltipPlacement}
-                      target={`restoreId-${randomId}`}
-                    >Restore</UncontrolledTooltip>
-                  )}
-                </button>
-              )} */}
               {!fullscreened && 
                 collapse && (
                   <span>

@@ -80,6 +80,7 @@
   // padding: $widget-padding-vertical $widget-padding-horizontal;
   > header {
     // margin: (-$widget-padding-vertical) (-$widget-padding-horizontal);
+    transition: padding .3s linear;
     padding: $widget-padding-vertical $widget-padding-horizontal 0;
 
     h1,

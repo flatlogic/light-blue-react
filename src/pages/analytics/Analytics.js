@@ -39,7 +39,6 @@ class Analytics extends Component {
 
     componentDidMount() {
         this.props.dispatch(receiveDataRequest());
-        console.log(this.props)
     }
 
   render() {
