@@ -207,7 +207,7 @@ class Widgets extends React.Component {
         <FlotCharts />
         <Row>
           <Col lg={4} xs={12}>
-            <Widget refresh close bodyClass="mt-0">
+            <Widget refresh close bodyClass="mt-0" >
               <div className="widget-top-overflow widget-padding-md clearfix bg-warning text-white">
                 <h3 className="mt-lg mb-lg">Light Blue - <span className="fw-semi-bold">Next Generation</span> Admin
                   Dashboard

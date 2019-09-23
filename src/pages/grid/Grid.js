@@ -6,19 +6,7 @@ import {
   Input,
   Form,
   FormGroup,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
 } from 'reactstrap';
-import $ from 'jquery';
-import 'imports-loader?window.jQuery=jquery,this=>window!widgster'; // eslint-disable-line
-import 'imports-loader?window.jQuery=jquery,this=>window!jquery-ui/ui/widgets/sortable'; //eslint-disable-line
 
 import Widget from '../../components/Widget';
 import './Grid.scss';
@@ -29,71 +17,9 @@ import peopleA2 from '../../images/people/a2.jpg';
 import peopleA3 from '../../images/people/a3.jpg';
 import peopleA4 from '../../images/people/a4.jpg';
 
-const sortOptions = {
-  connectWith: '.widget-container',
-  handle: 'header, .handle',
-  cursor: 'move',
-  iframeFix: false,
-  items: '.widget:not(.locked)',
-  opacity: 0.8,
-  helper: 'original',
-  revert: true,
-  forceHelperSize: true,
-  placeholder: 'widget widget-placeholder',
-  forcePlaceholderSize: true,
-  tolerance: 'pointer',
-};
-
 const tooltipPlacement = 'bottom';
 
 class Grid extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-      modal: false,
-    };
-    this.toggleModal = this.toggleModal.bind(this);
-    this.closePrompt = this.closePrompt.bind(this);
-  }
-
-  componentDidMount() {
-    $('.widget-container').sortable(sortOptions);
-    this.initSharesWidget();
-    this.initNewsWidget();
-  }
-
-  initSharesWidget() {
-    $(this.sharesWidget).widgster({
-      loaderTemplate: `<div class="loader animated fadeIn">
-         <span class="spinner"><i class="fa fa-spinner fa-spin"></i></span>
-      </div>`,
-    });
-  }
-
-  initNewsWidget() {
-    /**
-     * Make refresh button spin when loading
-     */
-    $('#news-widget').bind('load.widgster', () => {
-      $(this).find('[data-widgster="load"] > i').addClass('fa-spin');
-    }).bind('loaded.widgster', () => {
-      $(this).find('[data-widgster="load"] > i').removeClass('fa-spin');
-    });
-  }
-
-  closePrompt(callback) {
-    this.setState({ modal: true });
-    $('#news-widget-remove').bind('click', () => {
-      this.setState({ modal: false });
-      callback();
-    });
-  }
-
-  toggleModal() {
-    this.setState({ modal: !this.state.modal });
-  }
 
   render() {
     return (
@@ -144,7 +70,6 @@ class Grid extends React.Component {
               title={<h6>Default <span className="fw-semi-bold">Widget</span></h6>}
               refresh collapse fullscreen close
               showTooltip tooltipPlacement={tooltipPlacement}
-              data-widgster-load="/demo/grid/default.php"
             >
               <div>
                 <p>A timestamp this widget was created: Apr 24, 19:07:07</p>
@@ -153,13 +78,9 @@ class Grid extends React.Component {
             </Widget>
 
             <Widget
+              prompt={true}
               className="shares-widget"
-              ref={(r) => {
-                this.sharesWidget = r;
-              }}
               bodyClass={"reset-padding"}
-              data-widgster-load="/demo/grid/shares.php"
-              data-post-processing
               showTooltip tooltipPlacement={tooltipPlacement}
               title={<h6>
                 <span className="badge badge-primary"><i className="fa fa-facebook" /></span> &nbsp;
@@ -211,35 +132,12 @@ class Grid extends React.Component {
               </div>
            </Widget>
             <Widget
+              prompt={true}
               id="autoload-widget"
-              data-widgster-load="/demo/grid/autoload.php"
-              data-post-processing="true"
-              data-widgster-autoload="true"
-              data-widgster-show-loader="false"
               title={<h6>Autoload <span className="fw-semi-bold">Widget</span></h6>}
-              customControls={
-                <UncontrolledDropdown>
-                  <DropdownToggle
-                    tag="span"
-                    data-toggle="dropdown"
+              customControls={true}
+              customDropDown={true}
 
-                  >
-                    <i className="glyphicon glyphicon-cog" />
-                  </DropdownToggle>
-                  <DropdownMenu className="bg-widget-transparent" right>
-                    <DropdownItem data-widgster="load" title="Reload">
-                      Reload &nbsp;&nbsp;
-                      <span className="badge badge-pill badge-success animated bounceIn">
-                        <strong>9</strong>
-                      </span>
-                    </DropdownItem>
-                    <DropdownItem data-widgster="fullscreen" title="Full Screen">Fullscreen</DropdownItem>
-                    <DropdownItem data-widgster="restore" title="Restore">Restore</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem data-widgster="close" title="Close">Close</DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-              }
             >
               <div>
                 <h3 className="text-center m-0">Sign up, it&apos;s <strong>free</strong></h3>
@@ -297,26 +195,16 @@ class Grid extends React.Component {
           <Col xl={6} className="widget-container">
             <Widget
               id="news-widget"
-              data-widgster-load="/demo/grid/news.php"
-              data-post-processing="true"
               title={<div><h6> News <span className="badge badge-pill badge-success">17</span></h6>
                 <span className="text-muted">spinning refresh button & close prompt</span>
               </div>}
-              customControls={
-                <div>
-                  <button data-widgster="expand" title="Expand"><i className="glyphicon glyphicon-chevron-up" /></button>
-                  <button data-widgster="collapse" title="Collapse"><i
-                    className="glyphicon glyphicon-chevron-down"
-                  /></button>
-                  <button data-widgster="load" title="I am spinning!"><i className="fa fa-refresh" /></button>
-                  <button data-widgster="close" title="Close"><i className="glyphicon glyphicon-remove" /></button>
-                </div>
-              }
-              
-              options={{
-                showLoader: false,
-                closePrompt: this.closePrompt,
-              }}
+              customControls={true}
+              prompt={true}
+              customClose={<button><i title="Close" className="glyphicon glyphicon-remove" /></button>}
+              customExpand={<button><i title="Expand" className="glyphicon glyphicon-chevron-up" /></button>}
+              customCollapse={<button><i title="Collapse" className="glyphicon glyphicon-chevron-down"/></button>}
+              customFullscreen={<button><i title="Fullscreen" className={`glyphicon glyphicon-resize-${true ? 'small' : 'full'}`} /></button>}
+              customReload={<button><i title="I am spinning!" className="fa fa-refresh" /></button>}
             >
               <ul className={'news-list stretchable'}>
                 <li>
@@ -360,17 +248,7 @@ class Grid extends React.Component {
                 </li>
               </ul>
 
-              <Modal isOpen={this.state.modal} toggle={this.toggleModal} id="news-close-modal">
-                <ModalHeader toggle={this.toggleModal} id="news-close-modal-label">Sure?</ModalHeader>
-                <ModalBody className="bg-white">
-                  Do you really want to unrevertably remove this super news widget?
-                </ModalBody>
-                <ModalFooter>
-                  <Button color="default" onClick={this.toggleModal} data-dismiss="modal">No</Button>{' '}
-                  <Button color="danger" data-widgster="close" id="news-widget-remove">Yes,
-                    remove widget</Button>
-                </ModalFooter>
-              </Modal>
+
 
             </Widget>
 
