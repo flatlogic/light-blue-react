@@ -131,6 +131,7 @@
     "rickshaw": "1.6.6",
     "showdown": "1.8.6",
     "skycons": "^1.0.0",
+    "sortablejs": "^1.10.0",
     "widgster": "^1.0.0"
   },
   "devDependencies": {

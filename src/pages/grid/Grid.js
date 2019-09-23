@@ -7,6 +7,7 @@ import {
   Form,
   FormGroup,
 } from 'reactstrap';
+import Sortable from 'sortablejs'
 
 import Widget from '../../components/Widget';
 import './Grid.scss';
@@ -20,6 +21,25 @@ import peopleA4 from '../../images/people/a4.jpg';
 const tooltipPlacement = 'bottom';
 
 class Grid extends React.Component {
+
+	componentDidMount() {
+		var el = document.querySelector('.widget-container');
+		new Sortable(el, {
+				group: "words",
+				handle: ".widget",
+				draggable: ".widget",
+				ghostClass: "sortable-ghost",
+				onAdd: function (evt){
+					var itemEl = evt.item;
+				},
+				onUpdate: function (evt){
+					var itemEl = evt.item; // the current dragged HTMLElement
+				},
+				onRemove: function (evt){
+					var itemEl = evt.item;
+				}
+		});
+	}
 
   render() {
     return (
