@@ -8,23 +8,13 @@
   @include clearfix();
 }
 
-:global .mt-no-slide {
-  margin-top: 100px;
-}
-
-:global .reloading {
-  min-height: 150px;
-}
-
 :global .h-100 {
   height: 100%;
 }
 
-
-:global .widget.sortable-chosen{
-background:rgba(0, 0, 0, 0.24)
+.reloading {
+  min-height: 150px;
 }
-
 
 .widgetBackground {
   position: fixed;

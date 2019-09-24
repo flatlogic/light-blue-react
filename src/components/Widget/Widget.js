@@ -115,12 +115,12 @@ class Widget extends React.Component {
 
   handleReload = () => {
     this.setState({ reloading: true });
-    let endpoint = true;
+    let endpoint = false;
     if(!endpoint) {
       setTimeout(() => this.setState({ reloading: false }),2000);
     } else {
       this.setState({ reloading: true });
-      fetch('https://jsonplaceholder.typicode.com/todos/1')
+      fetch('https://yourapi.com')
         .then(response => response.json())
         .then(json => this.setState({ apiData: json.title}))
         .then(setTimeout(() => this.setState({ reloading: false }), 1000))
@@ -178,7 +178,7 @@ class Widget extends React.Component {
       <section
         style={{display: hideWidget ? 'none' : ''}}  
         className={
-          classNames('widget', {'fullscreened' : !!fullscreened, 'collapsed' : !!collapseWidget, 'reloading': !!reloading}, s.widget, className)
+          classNames('widget', {'fullscreened' : !!fullscreened, 'collapsed' : !!collapseWidget}, s.widget, className, reloading ? s.reloading : '')
         } {...attributes}
         >
         {

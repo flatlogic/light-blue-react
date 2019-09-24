@@ -440,7 +440,7 @@ class Widgets extends React.Component {
           <Col lg={6} xs={12}>
             <Row>
               <Col md={6} xs={12}>
-                <Widget>
+                <Widget className="widget-sm">
                   <h6 className="mt-3 fw-normal">
                     Nasdaq
                   </h6>
@@ -452,7 +452,7 @@ class Widgets extends React.Component {
                 </Widget>
               </Col>
               <Col md={6} xs={12}>
-                <Widget className="bg-success text-white">
+                <Widget className="bg-success text-white widget-sm">
                   <p className="mb-xs"><i className="fa fa-comments fa-2x" /></p>
                   <h5>
                     Lots of <span className="fw-semi-bold">possibilities</span> to customize your
@@ -473,7 +473,7 @@ class Widgets extends React.Component {
             </Row>
             <Row>
               <Col md={6} xs={12}>
-                <Widget className="bg-primary text-white">
+                <Widget className="bg-primary text-white widget-sm">
                   <p className="mb-xs"><i className="fa fa-arrow-circle-up fa-3x opacity-50" /></p>
                   <p className="mb text-light">
                     <time>10 June</time>
@@ -489,7 +489,7 @@ class Widgets extends React.Component {
                 </Widget>
               </Col>
               <Col md={6} xs={12}>
-                <Widget
+                <Widget className="widget-sm"
                   title={<h6>Server <span className="fw-semi-bold">Overview</span></h6>}
                 >
                   <div className="clearfix fs-mini">
@@ -701,8 +701,8 @@ class Widgets extends React.Component {
                     <i className="fa fa-child text-warning fa-5x" />
                   </div>
                   <h3 className="fw-normal">Light Blue Web App</h3>
-                  <div className="widget-footer-bottom-no-slide">
-                    <div className="mb-sm mt-no-slide">Cutting-edge tech and design delivered</div>
+                  <div>
+                    <div className="mb-sm set-margin">Cutting-edge tech and design delivered</div>
                     <p>
                       <button className="btn btn-default btn-block">Hover over me!</button>
                     </p>
@@ -715,8 +715,8 @@ class Widgets extends React.Component {
                     <i className="fa fa-globe text-primary fa-5x" />
                   </div>
                   <h3 className="fw-normal">Join The Web Now!</h3>
-                  <div className="widget-footer-bottom-no-slide">
-                    <div className="mb-sm mt-no-slide">Cutting-edge tech and design delivered</div>
+                  <div>
+                    <div className="mb-sm set-margin">Cutting-edge tech and design delivered</div>
                     <p>
                       <button className="btn btn-gray btn-block">Join now!</button>
                     </p>
