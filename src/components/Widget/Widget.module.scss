@@ -24,6 +24,12 @@
   height: 100%;
 }
 
+
+:global .widget.sortable-chosen{
+background:rgba(0, 0, 0, 0.24)
+}
+
+
 .widgetBgFc {
   position: fixed;
   display: none;

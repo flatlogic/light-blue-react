@@ -23,22 +23,24 @@ const tooltipPlacement = 'bottom';
 class Grid extends React.Component {
 
 	componentDidMount() {
-		var el = document.querySelector('.widget-container');
-		new Sortable(el, {
+		var el = document.querySelectorAll('.widget-container');
+		new Sortable(el[0], {
 				group: "words",
-				handle: ".widget",
+        handle: ".widget",
+        animation: 350,
 				draggable: ".widget",
-				ghostClass: "sortable-ghost",
-				onAdd: function (evt){
-					var itemEl = evt.item;
-				},
-				onUpdate: function (evt){
-					var itemEl = evt.item; // the current dragged HTMLElement
-				},
-				onRemove: function (evt){
-					var itemEl = evt.item;
-				}
-		});
+        ghostClass: "sortable-ghost",
+        group: "shared"
+    });
+    new Sortable(el[1], {
+      group: "words",
+      handle: ".widget",
+      animation: 350,
+      draggable: ".widget",
+      ghostClass: "sortable-ghost",
+      group: "shared",
+      filter: ".locked"
+  });
 	}
 
   render() {
@@ -273,9 +275,9 @@ class Grid extends React.Component {
             </Widget>
 
             <Widget
-              className="locked" data-widgster-collapsed="true"
+              className="locked"
               title={<h6>Collapsed by default & locked</h6>}
-              collapse close
+              collapse close collapsed
             >
               <div className="widget-body">
                 <blockquote>
@@ -294,26 +296,8 @@ class Grid extends React.Component {
 
             <Widget
               className="bg-gray"
+              customBody={true}
             >
-              <div className="jumbotron handle bg-gray text-white mb-0">
-                <div className="container">
-                  <h1>Draggable story!</h1>
-                  <p className="lead">
-                    <em>Build</em> your own
-                    interfaces! Sit back and relax.
-                  </p>
-                  <p className="text-center">
-                    <button className="btn btn-danger btn-lg" data-widgster="fullscreen">
-                      Fullscreen me! &nbsp;
-                      <i className="fa fa-check" />
-                    </button>
-                  </p>
-                  <button className="btn btn-danger btn-lg" data-widgster="restore">
-                    Want to go back?
-                  </button>
-                </div>
-              </div>
-
             </Widget>
           </Col>  
         </Row>

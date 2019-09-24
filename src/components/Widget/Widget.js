@@ -59,7 +59,7 @@ class Widget extends React.Component {
     customReload: null,
     customDropDown: null,
     prompt: false,
-    apiContent: '',
+    collapsed: false,
     options: {},
 
   };
@@ -76,7 +76,9 @@ class Widget extends React.Component {
   }
 
   componentDidMount() {
-    
+    if(this.props.collapsed) {
+      this.handleCollapse();
+    }
   }
 
   toggleModal = () => {
@@ -151,8 +153,9 @@ class Widget extends React.Component {
       customReload,
       fetchingData,
       customDropDown,
+      customBody,
       prompt,
-      apiContent,
+      collapsed,
       options, //eslint-disable-line
       ...attributes
     } = this.props;
@@ -167,6 +170,8 @@ class Widget extends React.Component {
       collapseWidget,
       modal,
     } = this.state;
+
+    
     
     return (
     <React.Fragment>
@@ -346,7 +351,27 @@ class Widget extends React.Component {
 
 
           <div className={`${s.widgetBody} widget-body ${bodyClass}`}>
-            {reloading || fetchingData ?  <Loader className={s.widgetLoader} size={40}/> : children}
+            {reloading || fetchingData ?  <Loader className={s.widgetLoader} size={40}/> : customBody ? (
+                <div className="jumbotron handle bg-gray text-white mb-0">
+                <div className="container">
+                  <h1>Draggable story!</h1>
+                  <p className="lead">
+                    <em>Build</em> your own
+                    interfaces! Sit back and relax.
+                  </p>
+                  <p className="text-center">
+                    <button onClick={this.handleFullscreen} className="btn btn-danger btn-lg">
+                      {!fullscreened ? 
+                        <React.Fragment>Fullscreen me! &nbsp;
+                          <i className="fa fa-check" />
+                        </React.Fragment>
+                        : 'Go Back'
+                      }
+                    </button>
+                  </p>
+                </div>
+              </div>
+            ) : children}
           </div>
     
        </AnimateHeight>
