@@ -7,7 +7,7 @@ import {
   Form,
   FormGroup,
 } from 'reactstrap';
-import Sortable from 'sortablejs'
+import Sortable from 'react-sortablejs'
 
 import Widget from '../../components/Widget';
 import './Grid.scss';
@@ -22,26 +22,26 @@ const tooltipPlacement = 'bottom';
 
 class Grid extends React.Component {
 
-	componentDidMount() {
-		var el = document.querySelectorAll('.widget-container');
-		new Sortable(el[0], {
-				group: "words",
-        handle: ".widget",
-        animation: 350,
-				draggable: ".widget",
-        ghostClass: "sortable-ghost",
-        group: "shared"
-    });
-    new Sortable(el[1], {
-      group: "words",
-      handle: ".widget",
-      animation: 350,
-      draggable: ".widget",
-      ghostClass: "sortable-ghost",
-      group: "shared",
-      filter: ".locked"
-  });
-	}
+  componentDidMount() {
+  //   var el = document.querySelectorAll('.widget-container');
+  //   new Sortable(el[0], {
+  //       group: "words",
+  //       handle: ".widget",
+  //       animation: 350,
+  //       draggable: ".widget",
+  //       ghostClass: "sortable-ghost",
+  //       group: "shared"
+  //   });
+  //   new Sortable(el[1], {
+  //     group: "words",
+  //     handle: ".widget",
+  //     animation: 350,
+  //     draggable: ".widget",
+  //     ghostClass: "sortable-ghost",
+  //     group: "shared",
+  //     filter: ".locked"
+  // });
+  }
 
   render() {
     return (
@@ -88,6 +88,7 @@ class Grid extends React.Component {
 
         <Row className="grid-demo">
           <Col className="widget-container" xl={6} xs={12}>
+            <Sortable>
             <Widget
               title={<h6>Default <span className="fw-semi-bold">Widget</span></h6>}
               refresh collapse fullscreen close
@@ -211,6 +212,7 @@ class Grid extends React.Component {
                 </div>
               </div>
             </Widget>
+            </Sortable>
           </Col>
 
 

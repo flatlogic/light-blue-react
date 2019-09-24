@@ -8,10 +8,6 @@
   @include clearfix();
 }
 
-:global .widget.collapsed {
-  min-height: unset;
-}
-
 :global .mt-no-slide {
   margin-top: 100px;
 }
@@ -30,7 +26,7 @@ background:rgba(0, 0, 0, 0.24)
 }
 
 
-.widgetBgFc {
+.widgetBackground {
   position: fixed;
   display: none;
   top: 0px;
@@ -52,18 +48,6 @@ background:rgba(0, 0, 0, 0.24)
   margin: 0px;
   z-index: 10000;
   transform: translate(-50%, -50%);
-
-  // &::before {
-  //   content: '';
-  //   position: absolute;
-  //   pointer-events: none;
-  //   z-index: -1;
-  //   top: -75%;
-  //   left: -75%;
-  //   width: 150vw;
-  //   height: 150vh;
-  //   background-color: rgba(0,0,0,.75);
-  // }
 }
 
 :global .widget.collapsed {
@@ -82,10 +66,7 @@ background:rgba(0, 0, 0, 0.24)
   border-radius: $widget-border-radius;
   background: $widget-bg-color;
   box-shadow: $widget-shadow;
-  // min-height: 150px;
-  // padding: $widget-padding-vertical $widget-padding-horizontal;
   > header {
-    // margin: (-$widget-padding-vertical) (-$widget-padding-horizontal);
     transition: padding .3s linear;
     padding: $widget-padding-vertical $widget-padding-horizontal 0;
 

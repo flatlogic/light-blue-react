@@ -42,10 +42,10 @@ class Widget extends React.Component {
     title: null,
     className: '',
     children: [],
-    close: true,
-    fullscreen: true,
-    collapse: true,
-    refresh: true,
+    close: false,
+    fullscreen: false,
+    collapse: false,
+    refresh: false,
     settings: false,
     settingsInverse: false,
     tooltipPlacement: 'bottom',
@@ -178,10 +178,7 @@ class Widget extends React.Component {
       <section
         style={{display: hideWidget ? 'none' : ''}}  
         className={
-          ['widget', 
-          classNames({'fullscreened' : !!fullscreened, 'collapsed' : !!collapseWidget, 'reloading': !!reloading}),
-          s.widget, 
-          className].join(' ')
+          classNames('widget', {'fullscreened' : !!fullscreened, 'collapsed' : !!collapseWidget, 'reloading': !!reloading}, s.widget, className)
         } {...attributes}
         >
         {
@@ -390,7 +387,7 @@ class Widget extends React.Component {
         </ModalFooter>
       </Modal> 
       )}
-      <div style={{display: fullscreened ? 'block'  : 'none'}} className={s.widgetBgFc}></div>
+      <div style={{display: fullscreened ? 'block'  : 'none'}} className={s.widgetBackground}></div>
       </React.Fragment>
     );
   }
