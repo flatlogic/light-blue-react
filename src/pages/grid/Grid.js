@@ -8,6 +8,7 @@ import {
   FormGroup,
 } from 'reactstrap';
 import Sortable from 'react-sortablejs'
+import { Draggable, Droppable } from 'react-drag-and-drop'
 
 import Widget from '../../components/Widget';
 import './Grid.scss';
