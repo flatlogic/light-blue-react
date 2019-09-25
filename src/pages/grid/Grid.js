@@ -140,9 +140,7 @@ class Grid extends React.Component {
               prompt={true}
               id="autoload-widget"
               title={<h6>Autoload <span className="fw-semi-bold">Widget</span></h6>}
-              customControls={true}
               customDropDown={true}
-
             >
               <div>
                 <h3 className="text-center m-0">Sign up, it&apos;s <strong>free</strong></h3>
@@ -211,11 +209,10 @@ class Grid extends React.Component {
               </div>}
               customControls={true}
               prompt={true}
-              customClose={<button><i title="Close" className="glyphicon glyphicon-remove" /></button>}
-              customExpand={<button><i title="Expand" className="glyphicon glyphicon-chevron-up" /></button>}
-              customCollapse={<button><i title="Collapse" className="glyphicon glyphicon-chevron-down"/></button>}
-              customFullscreen={<button><i title="Fullscreen" className={`glyphicon glyphicon-resize-${true ? 'small' : 'full'}`} /></button>}
-              customReload={<button><i title="I am spinning!" className="fa fa-refresh" /></button>}
+              customClose={true}
+              customCollapse={true}
+              customFullscreen={true}
+              customReload={true}
             >
               <ul className={'news-list stretchable'}>
                 <li>

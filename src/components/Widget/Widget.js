@@ -91,10 +91,10 @@ class Widget extends React.Component {
   }
 
   handleCollapse = () => {
-
+    let heightValue = this.state.collapseWidget ? 'auto' : 0
     this.setState({
-      height: 0,
-      collapseWidget: true,
+      height: heightValue,
+      collapseWidget: !this.state.collapseWidget,
       reloading: false
     });
 
@@ -229,7 +229,7 @@ class Widget extends React.Component {
                 collapse && (
                   <span>
                     <button onClick={this.handleCollapse} id={`collapseId-${randomId}`}>
-                    <i className="la la-angle-down" />
+                    <i className={`la la-angle-${!collapseWidget ? 'down' : 'up'}`} />
                       {showTooltip && (
                         <UncontrolledTooltip
                           placement={tooltipPlacement}
@@ -240,22 +240,6 @@ class Widget extends React.Component {
                   </span>
                 )
               }
-
-              {!fullscreened &&
-                collapse && (
-                <span>
-                  <button onClick={this.handleExpand} id={`expandId-${randomId}`}>
-                    <i className="la la-angle-up" />
-                    {showTooltip && (
-                      <UncontrolledTooltip
-                        placement={tooltipPlacement}
-                        target={`expandId-${randomId}`}
-                      >Expand</UncontrolledTooltip>
-                    )}
-                  </button>
-                </span>
-              )}
-
               {!fullscreened && (
                 (close && !prompt) ? (
                 <button onClick={this.handleClose} id={`closeId-${randomId}`}>
@@ -284,60 +268,47 @@ class Widget extends React.Component {
               ))}
             </div>
           )}
+          {customDropDown && (
+            <div className={`${s.widgetControls} widget-controls`}>
+            <UncontrolledDropdown>
+              <DropdownToggle
+                tag="span"
+                data-toggle="dropdown"
+
+              >
+                <i className="glyphicon glyphicon-cog" />
+              </DropdownToggle>
+              <DropdownMenu className="bg-widget-transparent" right>
+                <DropdownItem onClick={this.handleReload} title="Reload">
+                  Reload &nbsp;&nbsp;
+                  <span className="badge badge-pill badge-success animated bounceIn">
+                    <strong>9</strong>
+                  </span>
+                </DropdownItem>
+                <DropdownItem onClick={this.handleFullscreen} title={!fullscreened ? "Full Screen" : "Restore"}>{!fullscreened ? "Fullscreen" : "Restore"} </DropdownItem>
+                <DropdownItem divider />
+                {!prompt ? <DropdownItem onClick={this.handleClose} title="Close">Close</DropdownItem>
+                : <DropdownItem onClick={this.toggleModal} title="Close">Close</DropdownItem>}
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            </div>
+          )}
         {
           customControls && (
             <div className={`${s.widgetControls} widget-controls`}>
-              {customDropDown && (
-                <UncontrolledDropdown>
-                  <DropdownToggle
-                    tag="span"
-                    data-toggle="dropdown"
-
-                  >
-                    <i className="glyphicon glyphicon-cog" />
-                  </DropdownToggle>
-                  <DropdownMenu className="bg-widget-transparent" right>
-                    <DropdownItem onClick={this.handleReload} title="Reload">
-                      Reload &nbsp;&nbsp;
-                      <span className="badge badge-pill badge-success animated bounceIn">
-                        <strong>9</strong>
-                      </span>
-                    </DropdownItem>
-                    <DropdownItem onClick={this.handleFullscreen} title={!fullscreened ? "Full Screen" : "Restore"}>{!fullscreened ? "Fullscreen" : "Restore"} </DropdownItem>
-                    <DropdownItem divider />
-                    {!prompt ? <DropdownItem onClick={this.handleClose} title="Close">Close</DropdownItem>
-                    : <DropdownItem onClick={this.toggleModal} title="Close">Close</DropdownItem>}
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-              )}
               {!fullscreened && ((customClose && !prompt) ? (
-                <div className={s.customControlItem} onClick={this.handleClose}>
-                  {customClose}
-                </div>
+                <button onClick={this.handleClose} id={`closeId-${randomId}`} className={s.customControlItem}><i title="Close" className="glyphicon glyphicon-remove"/></button>
               ) : (
-                <div className={s.customControlItem} onClick={this.toggleModal}>
-                  {customClose}
-                </div>
-              ))}
-              {!fullscreened && (customExpand && (
-                <div className={s.customControlItem} onClick={this.handleExpand}>
-                  {customExpand}
-                </div>
+                  <button onClick={this.toggleModal} id={`closeId-${randomId}`} className={s.customControlItem}><i title="Close" className="glyphicon glyphicon-remove"/></button>
               ))}
               {!fullscreened && (customCollapse && (
-                <div className={s.customControlItem} onClick={this.handleCollapse}>
-                  {customCollapse}
-                </div>
+                  <button onClick={this.handleCollapse} id={`closeId-${randomId}`} className={s.customControlItem}><i title="Collapse" className={`glyphicon glyphicon-chevron-${!collapseWidget ? 'down' : 'up'}`}/></button>
               ))}
               {customFullscreen && (
-                <div className={s.customControlItem} onClick={this.handleFullscreen}>
-                  {customFullscreen}
-                </div>
+                  <button onClick={this.handleFullscreen} id={`closeId-${randomId}`} className={s.customControlItem}><i title="Fullscreen" className={`glyphicon glyphicon-resize-${fullscreened ? 'small' : 'full'}`} /></button>
               )}
               {customReload && (
-                <div className={s.customControlItem} onClick={this.handleReload}>
-                  {customReload}
-                </div>
+                  <button onClick={this.handleReload} id={`closeId-${randomId}`} className={s.customControlItem}><i title="I am spinning!" className="fa fa-refresh" /></button>
               )}
             </div>
           )
