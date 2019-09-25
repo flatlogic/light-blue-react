@@ -37,6 +37,7 @@ class Widget extends React.Component {
     bodyClass: PropTypes.string,
     customControls: PropTypes.bool,
     options: PropTypes.object, //eslint-disable-line,
+    fetchingData: PropTypes.bool
   };
 
   static defaultProps = {
@@ -62,7 +63,7 @@ class Widget extends React.Component {
     prompt: false,
     collapsed: false,
     options: {},
-
+    fetchingData: false
   };
 
   state = {
