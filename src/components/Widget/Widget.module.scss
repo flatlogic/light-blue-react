@@ -46,6 +46,12 @@
     transition-delay: 0.2s;
     padding: $widget-padding-vertical $widget-padding-horizontal;
   }
+  > h5 {
+    transition: padding .3s, margin-bottom .3s linear;
+    transition-delay: 0.2s;
+    padding: $widget-padding-vertical $widget-padding-horizontal;
+    margin-bottom: 0;
+  }
 }
 
 
