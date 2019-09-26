@@ -8,7 +8,6 @@ import {
   FormGroup,
 } from 'reactstrap';
 import Sortable from 'react-sortablejs'
-import { Draggable, Droppable } from 'react-drag-and-drop'
 
 import Widget from '../../components/Widget';
 import './Grid.scss';
@@ -70,7 +69,8 @@ class Grid extends React.Component {
           <Col className="widget-container" xl={6} xs={12}>
             <Sortable options={{
               group: "shared",
-              animation: 350
+              animation: 350,
+              ghostClass: 'widget-placeholder-react'
             }}>
             <Widget
               title={<h6>Default <span className="fw-semi-bold">Widget</span></h6>}
@@ -200,6 +200,7 @@ class Grid extends React.Component {
           <Col xl={6} className="widget-container">
           <Sortable options={{
               group: "shared",
+              ghostClass: 'widget-placeholder-react',
               animation: 350,
               filter: ".locked"
             }}>
@@ -282,7 +283,7 @@ class Grid extends React.Component {
             </Widget>
 
             <Widget
-              className="bg-gray"
+              className="custom-gray-bg"
               customBody={true}
             >
             </Widget>
