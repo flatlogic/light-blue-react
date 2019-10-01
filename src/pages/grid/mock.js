@@ -4,9 +4,11 @@ export default {
   mainData: {
     default: [
         {
+          id: 1,
           value: 'A timestamp this widget was created: Apr 24, 19:01:07'
         },
         {
+          id: 2,
           value: 'A timestamp this widget was updated: Apr 24, 19:07:07'
         },
       ],
@@ -82,7 +84,7 @@ export default {
         name: 'Jenny Wilington',
         comment: 'just now',
         type: 'success',
-        extraClass: 'animated fadeInDown bg-warning-light'
+        extraClass: 'animated fadeInDown'
       },
       {
         img: '/images/people/a1.jpg',
@@ -115,7 +117,7 @@ export default {
     },
     news: [
       {
-        extraClass: 'animated fadeInDown bg-warning-light',
+        extraClass: 'animated fadeInDown',
         background: 'warning',
         icon: 'lock',
         title: 'Just now! Check update time',

@@ -63,7 +63,7 @@ class Widget extends React.Component {
     prompt: false,
     collapsed: false,
     options: {},
-    fetchingData: false
+    fetchingData: false,
   };
 
   state = {
@@ -75,12 +75,6 @@ class Widget extends React.Component {
     reloading: false,
     modal: false,
     apiData: ''
-  }
-  /* refactor in constructor */
-  componentDidMount() {
-    if(this.props.collapsed) {
-      this.handleCollapse();
-    }
   }
 
   toggleModal = () => {
@@ -116,11 +110,13 @@ class Widget extends React.Component {
   };
 
   handleReload = () => {
-    this.props.updateWidgetData('default')
+    const { widgetType, updateWidgetData, ...rest } = this.props;
+    const type = widgetType;
+    updateWidgetData(type)
     this.setState({ reloading: true });
     let endpoint = false;
     if(!endpoint) {
-      setTimeout(() => this.setState({ reloading: false }, () => console.log(this.props.children)),2000);
+      setTimeout(() => this.setState({ reloading: false }),2000);
     } else {
       this.setState({ reloading: true });
       fetch('https://yourapi.com')
@@ -133,9 +129,18 @@ class Widget extends React.Component {
   handleFullscreen = () => {
     this.setState({ fullscreened: !this.state.fullscreened });
   }
+
+  /* refactor in constructor */
+  componentDidMount() {
+    if(this.props.collapsed) {
+    
+    this.handleCollapse();
+    }
+    
+  }
   
   render() {
-    console.log('render')
+  
     const {
       title,
       className,

@@ -12,12 +12,6 @@ import Sortable from 'react-sortablejs'
 import Widget from '../../components/Widget';
 import './Grid.scss';
 
-
-import peopleA1 from '../../images/people/a1.jpg';
-import peopleA2 from '../../images/people/a2.jpg';
-import peopleA3 from '../../images/people/a3.jpg';
-import peopleA4 from '../../images/people/a4.jpg';
-
 import mock from './mock';
 
 const tooltipPlacement = 'bottom';
@@ -27,21 +21,15 @@ class Grid extends React.Component {
   state = {
     gridData: mock.mainData,
     updatedData: mock.updatedData,
-    fetchingData: false
   }
+
   updateWidgetData = (widget) => {
-    console.log('start')
-    
     this.setState({
-      gridData: this.state.gridData = Object.assign({}, this.state.gridData, {
+      gridData: Object.assign({}, this.state.gridData, {
         [widget]: this.state.updatedData[widget]
       })
     })
-    
   }
-  
-
-
 
   render() {
 
@@ -52,15 +40,8 @@ class Grid extends React.Component {
           <li className="breadcrumb-item active">Grid</li>
         </ol>
         <h1 className="page-title">Grid - <span className="fw-semi-bold">Options</span></h1>
-        {
-          this.state.gridData.default.map(item => (
-            <React.Fragment>
-              <p key={item.value}>{item.value}</p><br/>
-            </React.Fragment>
-          ))
-        }
+    
         <Row> 
-       
 
           <Col xl={7}>
             <Widget
@@ -97,25 +78,31 @@ class Grid extends React.Component {
         
         <Row className="grid-demo">
           <Col className="widget-container" xl={6} xs={12}>
-            <Sortable options={{
+            <Sortable 
+            options={{
               group: "shared",
               animation: 350,
               ghostClass: 'widget-placeholder-react'
             }}>
             <Widget
               updateWidgetData={this.updateWidgetData}
+              widgetType="default"
               title={<h6>Default <span className="fw-semi-bold">Widget</span></h6>}
               refresh collapse fullscreen close
               showTooltip tooltipPlacement={tooltipPlacement}
             >
               <div>
-                {this.state.gridData.default.map(item => (
-                  <p key={item.value}>{item.value}</p>
+              {this.state.gridData.default.map(item => (
+                  
+                    <p key={item.value}>{item.value}</p>
+                  
                 ))} 
               </div>
             </Widget>
 
             <Widget
+              updateWidgetData={this.updateWidgetData}
+              widgetType="shares"
               prompt={true}
               className="shares-widget"
               bodyClass={"reset-padding"}
@@ -127,46 +114,19 @@ class Grid extends React.Component {
               close="Close" refresh="Reload"
             >
               <div className="list-group list-group-lg">
-                <button className="list-group-item text-left">
+              {this.state.gridData.shares.map(item => (
+                <button key={item.name} className={`list-group-item text-left ${item.extraClass}`}>
                   <span className="thumb-sm mr">
-                    <img className="rounded-circle" src={peopleA1} alt="..." />
+                    <img className="rounded-circle" src={item.img} alt="..." />
                   </span>
                   <div>
-                    <h6 className="m-0">Maikel Basso</h6>
-                    <small className="text-muted">about 2 mins ago</small>
+                    <h6 className="m-0">{item.name}</h6>
+                    <small className="text-muted">{item.comment}</small>
                   </div>
-                  <i className="fa fa-circle ml-auto text-danger" />
-                </button>
-                <button className="list-group-item text-left">
-                  <span className="thumb-sm mr">
-                    <img className="rounded-circle" src={peopleA2} alt="..." />
-                  </span>
-                  <div>
-                    <h6 className="m-0">Ianus Arendse</h6>
-                    <small className="text-muted">about 42 mins ago</small>
-                  </div>
-                  <i className="fa fa-circle ml-auto text-info" />
-                </button>
-                <button className="list-group-item text-left">
-                  <span className="thumb-sm mr">
-                    <img className="rounded-circle" src={peopleA3} alt="..." />
-                  </span>
-                  <div>
-                    <h6 className="m-0">Valdemar Landau</h6>
-                    <small className="text-muted">one hour ago</small>
-                  </div>
-                  <i className="fa fa-circle ml-auto text-success" />
-                </button>
-                <button className="list-group-item text-left mb-n-md">
-                  <span className="thumb-sm mr">
-                    <img className="rounded-circle" src={peopleA4} alt="..." />
-                  </span>
-                  <div>
-                    <h6 className="m-0">Rick Teagan</h6>
-                    <small className="text-muted">3 hours ago</small>
-                  </div>
-                  <i className="fa fa-circle ml-auto text-warning" />
-                </button>
+                  <i className={`fa fa-circle ml-auto text-${item.type}`} />
+                </button>                
+              ))}
+
               </div>
            </Widget>
             <Widget
@@ -237,6 +197,8 @@ class Grid extends React.Component {
               filter: ".locked"
             }}>
             <Widget
+              updateWidgetData={this.updateWidgetData}
+              widgetType="news"
               id="news-widget"
               title={<div><h6> News <span className="badge badge-pill badge-success">17</span></h6>
                 <span className="text-muted">spinning refresh button & close prompt</span>
@@ -249,45 +211,20 @@ class Grid extends React.Component {
               customReload={true}
             >
               <ul className={'news-list stretchable'}>
-                <li>
-                  <span className="icon bg-danger text-white">
-                    <i className="fa fa-star" />
-                  </span>
-                  <div className="news-item-info">
-                    <h5 className="name m-0 mb-xs"><button className="btn-link">First Human Colony on Mars</button></h5>
-                    <p className="fs-mini">
-                      First 700 people will take part in building first human settlement outside of Earth.
-                      That&apos;s awesome, right?
-                    </p>
-                    <time className="help-block">Mar 20, 18:46</time>
-                  </div>
-                </li>
-                <li>
-                  <span className="icon bg-info text-white">
-                    <i className="fa fa-microphone" />
-                  </span>
-                  <div className="news-item-info">
-                    <h5 className="name m-0 mb-xs"><button className="btn-link">Light Blue reached $300</button></h5>
-                    <p className="fs-mini">
-                      Light Blue Inc. shares just hit $300 price. &quot;This was inevitable. It should
-                      have happen sooner or later&quot; - says NYSE expert.
-                    </p>
-                    <time className="help-block">Sep 25, 11:59</time>
-                  </div>
-                </li>
-                <li>
-                  <span className="icon bg-success text-white">
-                    <i className="fa fa-eye" />
-                  </span>
-                  <div className="news-item-info">
-                    <h5 className="name m-0 mb-xs"><button className="btn-link">No more spying</button></h5>
-                    <p className="fs-mini">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua.
-                    </p>
-                    <time className="help-block">Mar 20, 18:46</time>
-                  </div>
-                </li>
+                {this.state.gridData.news.map(item => (
+                  <li className={item.extraClass} key={item.title}>
+                    <span className={`icon text-white bg-${item.background}`}>
+                      <i className={`fa fa-${item.icon}`}></i>
+                    </span>
+                    <div className="news-item-info">
+                      <h5 className="name m-0 mb-xs"><a href="#">{item.title}</a></h5>
+                      <p className="fs-mini">
+                        {item.description}
+                      </p>
+                      <time className="help-block">{item.date}</time>
+                    </div>
+                  </li>
+                ))}
               </ul>
 
 
@@ -297,7 +234,7 @@ class Grid extends React.Component {
             <Widget
               className="locked"
               title={<h6>Collapsed by default & locked</h6>}
-              collapse close collapsed
+              collapse close collapsed 
             >
               <div className="widget-body">
                 <blockquote>

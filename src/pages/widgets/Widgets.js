@@ -26,9 +26,6 @@ import img18 from '../../images/pictures/18.jpg';
 import img17 from '../../images/pictures/17.jpg';
 
 class Widgets extends React.Component {
-  componentDidMount() {
-
-  }
 
   render() {
     return (
