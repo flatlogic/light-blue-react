@@ -40,6 +40,35 @@
   transform: translate(-50%, -50%)!important;
 }
 
+@media(max-width: 1400px) {
+  :global .fullscreened{
+    position: fixed!important;
+    top: 50%;
+    height: 70vh;
+    right: 0px;
+    bottom: 0px;
+    left: 50%;
+    margin: 0px;
+    z-index: 10000;
+    transform: translate(-50%, -50%)!important;
+  }
+}
+
+@media(max-width: 992px) {
+  :global .fullscreened{
+    position: fixed!important;
+    top: 50%;
+    height: 90vh;
+    width: 90vw;
+    right: 0px;
+    bottom: 0px;
+    left: 50%;
+    margin: 0px;
+    z-index: 10000;
+    transform: translate(-50%, -50%)!important;
+  }
+}
+
 :global .widget.collapsed {
   > header {
     transition: padding .3s linear;

@@ -76,7 +76,7 @@ class Widget extends React.Component {
     modal: false,
     apiData: ''
   }
-
+  /* refactor in constructor */
   componentDidMount() {
     if(this.props.collapsed) {
       this.handleCollapse();
@@ -116,10 +116,11 @@ class Widget extends React.Component {
   };
 
   handleReload = () => {
+    this.props.updateWidgetData('default')
     this.setState({ reloading: true });
     let endpoint = false;
     if(!endpoint) {
-      setTimeout(() => this.setState({ reloading: false }),2000);
+      setTimeout(() => this.setState({ reloading: false }, () => console.log(this.props.children)),2000);
     } else {
       this.setState({ reloading: true });
       fetch('https://yourapi.com')
@@ -134,6 +135,7 @@ class Widget extends React.Component {
   }
   
   render() {
+    console.log('render')
     const {
       title,
       className,
@@ -286,10 +288,11 @@ class Widget extends React.Component {
                     <strong>9</strong>
                   </span>
                 </DropdownItem>
+                
                 <DropdownItem onClick={this.handleFullscreen} title={!fullscreened ? "Full Screen" : "Restore"}>{!fullscreened ? "Fullscreen" : "Restore"} </DropdownItem>
                 <DropdownItem divider />
-                {!prompt ? <DropdownItem onClick={this.handleClose} title="Close">Close</DropdownItem>
-                : <DropdownItem onClick={this.toggleModal} title="Close">Close</DropdownItem>}
+                {!fullscreened && (!prompt ? <DropdownItem onClick={this.handleClose} title="Close">Close</DropdownItem>
+                : <DropdownItem onClick={this.toggleModal} title="Close">Close</DropdownItem>)}
               </DropdownMenu>
             </UncontrolledDropdown>
             </div>
