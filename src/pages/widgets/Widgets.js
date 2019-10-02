@@ -26,16 +26,13 @@ import img18 from '../../images/pictures/18.jpg';
 import img17 from '../../images/pictures/17.jpg';
 
 class Widgets extends React.Component {
-  componentDidMount() {
-
-  }
 
   render() {
     return (
       <div className="root">
         <Row>
           <Col lg={3} md={6} xs={12}>
-            <Widget className="">
+            <Widget>
               <div className="clearfix">
                 <Row className="flex-nowrap">
                   <Col xs={3}>
@@ -62,7 +59,7 @@ class Widgets extends React.Component {
             </Widget>
           </Col>
           <Col lg={3} md={6} xs={12}>
-            <Widget className="">
+            <Widget>
               <div className="clearfix">
                 <Row className="flex-nowrap">
                   <Col xs="3">
@@ -120,7 +117,7 @@ class Widgets extends React.Component {
             </Widget>
           </Col>
           <Col lg={3} md={6} xs={12}>
-            <Widget className="">
+            <Widget>
               <div className="clearfix">
                 <LiveTile
                   data-mode="flip" data-speed="750" data-delay="4000"
@@ -177,7 +174,7 @@ class Widgets extends React.Component {
             </Widget>
           </Col>
           <Col lg={3} md={6} xs={12}>
-            <Widget className="">
+            <Widget>
               <div className="clearfix">
                 <Row className="flex-nowrap">
                   <Col xs={3}>
@@ -207,7 +204,7 @@ class Widgets extends React.Component {
         <FlotCharts />
         <Row>
           <Col lg={4} xs={12}>
-            <Widget refresh close bodyClass="mt-0">
+            <Widget refresh close bodyClass="mt-0" >
               <div className="widget-top-overflow widget-padding-md clearfix bg-warning text-white">
                 <h3 className="mt-lg mb-lg">Light Blue - <span className="fw-semi-bold">Next Generation</span> Admin
                   Dashboard
@@ -452,7 +449,7 @@ class Widgets extends React.Component {
                 </Widget>
               </Col>
               <Col md={6} xs={12}>
-                <Widget className="widget-sm bg-success text-white">
+                <Widget className="bg-success text-white widget-sm">
                   <p className="mb-xs"><i className="fa fa-comments fa-2x" /></p>
                   <h5>
                     Lots of <span className="fw-semi-bold">possibilities</span> to customize your
@@ -473,7 +470,7 @@ class Widgets extends React.Component {
             </Row>
             <Row>
               <Col md={6} xs={12}>
-                <Widget className="widget-sm bg-primary text-white">
+                <Widget className="bg-primary text-white widget-sm">
                   <p className="mb-xs"><i className="fa fa-arrow-circle-up fa-3x opacity-50" /></p>
                   <p className="mb text-light">
                     <time>10 June</time>
@@ -489,8 +486,7 @@ class Widgets extends React.Component {
                 </Widget>
               </Col>
               <Col md={6} xs={12}>
-                <Widget
-                  className="widget-sm"
+                <Widget className="widget-sm"
                   title={<h6>Server <span className="fw-semi-bold">Overview</span></h6>}
                 >
                   <div className="clearfix fs-mini">
@@ -602,7 +598,7 @@ class Widgets extends React.Component {
 
         <Row>
           <Col lg={3} xs={12}>
-            <Widget className="widget-padding-lg">
+            <Widget className="widget-padding-md">
               <div className="clearfix">
                 <LiveTile
                   data-mode="carousel" data-speed="750" data-delay="3000"
@@ -649,7 +645,7 @@ class Widgets extends React.Component {
           </Col>
 
           <Col lg={3} xs={12}>
-            <Widget className="widget-padding-lg bg-primary text-white">
+            <Widget className="widget-padding-md bg-primary text-white">
               <div className="clearfix">
                 <LiveTile data-mode="carousel" data-speed="300" data-delay="3000" data-height="313">
                   <div>
@@ -694,15 +690,16 @@ class Widgets extends React.Component {
             >
               <div>
                 <Widget
-                  className="widget-padding-lg widget-md bg-widget-transparent-dark text-white"
+                  fullscreen={false}
+                  className="widget-padding-md bg-widget-transparent-dark text-white"
                   bodyClass="widget-body-container"
                 >
                   <div className="text-center">
                     <i className="fa fa-child text-warning fa-5x" />
                   </div>
                   <h3 className="fw-normal">Light Blue Web App</h3>
-                  <div className="widget-footer-bottom">
-                    <div className="mb-sm">Cutting-edge tech and design delivered</div>
+                  <div>
+                    <div className="mb-sm set-margin">Cutting-edge tech and design delivered</div>
                     <p>
                       <button className="btn btn-default btn-block">Hover over me!</button>
                     </p>
@@ -710,13 +707,13 @@ class Widgets extends React.Component {
                 </Widget>
               </div>
               <div>
-                <Widget className="widget-padding-lg widget-md" bodyClass="widget-body-container">
+                <Widget fullscreen={false} className="widget-padding-md " bodyClass="widget-body-container">
                   <div className="text-center">
                     <i className="fa fa-globe text-primary fa-5x" />
                   </div>
                   <h3 className="fw-normal">Join The Web Now!</h3>
-                  <div className="widget-footer-bottom">
-                    <div className="mb-sm">Cutting-edge tech and design delivered</div>
+                  <div>
+                    <div className="mb-sm set-margin">Cutting-edge tech and design delivered</div>
                     <p>
                       <button className="btn btn-gray btn-block">Join now!</button>
                     </p>
@@ -726,7 +723,6 @@ class Widgets extends React.Component {
             </LiveTile>
           </Col>
         </Row>
-
       </div>
     );
   }

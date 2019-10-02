@@ -169,7 +169,7 @@ class Analytics extends Component {
               <Col xs={12} className="mb-lg">
                 <Widget
                   className="pb-0"
-                  bodyClass="p-0 mt"
+                  bodyClass={`mt ${s.resetPadding}`}
                   title={<h4> Support <strong>Requests</strong></h4>}
                   close settings
                 >
@@ -181,7 +181,7 @@ class Analytics extends Component {
           <div className={s.analyticsSide}>
             <Row>
               <Col xs={12} md={6} xl={12} className={s.lastSideElement}>
-                <Widget className="mb-xlg pt-0" bodyClass="p-0 mt-0">
+                <Widget className="mb-xlg pt-0" bodyClass="mt-0">
                   <Calendar />
                 </Widget>
               </Col>
