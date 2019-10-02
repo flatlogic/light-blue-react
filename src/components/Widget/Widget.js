@@ -120,7 +120,9 @@ class Widget extends React.Component {
   handleReload = () => {
     const { widgetType, updateWidgetData } = this.props;
     const type = widgetType;
-    updateWidgetData(type)
+    if(type) {
+      updateWidgetData(type)
+    }
     this.setState({ reloading: true });
     let endpoint = false;
     if(!endpoint) {
