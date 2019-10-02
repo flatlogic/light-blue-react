@@ -67,16 +67,30 @@ class Widget extends React.Component {
     widgetType: "",
   };
 
-  state = {
-    randomId: uuidv4(),
-    hideWidget: false,
-    collapseWidget: false,
-    height: 'auto',
-    fullscreened: false,
-    reloading: false,
-    modal: false,
-    apiData: ''
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      randomId: uuidv4(),
+      hideWidget: false,
+      collapseWidget: false,
+      height: 'auto',
+      fullscreened: false,
+      reloading: false,
+      modal: false,
+      apiData: ''
+    }
+
+    if(this.props.collapsed) {
+      this.state = {
+        ...this.state,
+        height: 0,
+        collapseWidget: true,
+      };
+    }
   }
+
+
 
   toggleModal = () => {
     this.setState({ modal: !this.state.modal });
@@ -129,15 +143,6 @@ class Widget extends React.Component {
 
   handleFullscreen = () => {
     this.setState({ fullscreened: !this.state.fullscreened });
-  }
-
-  /* refactor in constructor */
-  componentDidMount() {
-    if(this.props.collapsed) {
-    
-    this.handleCollapse();
-    }
-    
   }
   
   render() {
