@@ -73,21 +73,14 @@ class Widget extends React.Component {
     this.state = {
       randomId: uuidv4(),
       hideWidget: false,
-      collapseWidget: false,
-      height: 'auto',
+      collapseWidget: !!props.collapsed,
+      height:  props.collapsed ? 0 : 'auto',
       fullscreened: false,
       reloading: false,
       modal: false,
       apiData: ''
     }
 
-    if(this.props.collapsed) {
-      this.state = {
-        ...this.state,
-        height: 0,
-        collapseWidget: true,
-      };
-    }
   }
 
 
