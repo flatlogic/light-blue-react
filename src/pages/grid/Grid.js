@@ -217,7 +217,7 @@ class Grid extends React.Component {
                       <i className={`fa fa-${item.icon}`}></i>
                     </span>
                     <div className="news-item-info">
-                      <h5 className="name m-0 mb-xs"><a href="#">{item.title}</a></h5>
+                      <h5 className="name m-0 mb-xs"><a href="#/app/grid">{item.title}</a></h5>
                       <p className="fs-mini">
                         {item.description}
                       </p>

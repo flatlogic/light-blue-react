@@ -37,7 +37,7 @@ class Widget extends React.Component {
     bodyClass: PropTypes.string,
     customControls: PropTypes.bool,
     options: PropTypes.object, //eslint-disable-line,
-    fetchingData: PropTypes.bool
+    fetchingData: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -64,6 +64,7 @@ class Widget extends React.Component {
     collapsed: false,
     options: {},
     fetchingData: false,
+    widgetType: "",
   };
 
   state = {
@@ -110,7 +111,7 @@ class Widget extends React.Component {
   };
 
   handleReload = () => {
-    const { widgetType, updateWidgetData, ...rest } = this.props;
+    const { widgetType, updateWidgetData } = this.props;
     const type = widgetType;
     updateWidgetData(type)
     this.setState({ reloading: true });
@@ -165,6 +166,8 @@ class Widget extends React.Component {
       customBody,
       prompt,
       collapsed,
+      widgetType,
+      updateWidgetData,
       options, //eslint-disable-line
       ...attributes
     } = this.props;
