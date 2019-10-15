@@ -157,7 +157,7 @@ $header-color: #ffffff;
 } 
 
 
-.box {
+.calendar-item-container {
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -168,7 +168,7 @@ $header-color: #ffffff;
 
 }
 
-.box.arrow {
+.calendar-item-container.arrow {
   cursor: pointer;
   font-size: 0.9rem;
   color: #d6dee5;
@@ -185,6 +185,7 @@ $header-color: #ffffff;
   .day-number {
     width: 28px;
     height: 28px;
+    cursor: pointer;
     display: flex;
     margin: 3px 0;
     color: #ffffff;

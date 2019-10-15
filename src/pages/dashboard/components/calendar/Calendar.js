@@ -81,7 +81,7 @@ class Calendar extends Component {
 
   renderMonthLabel = () =>  {
     return (
-      <span className="box month-label">
+      <span className="calendar-item-container month-label">
         {this.state.selectedMonth.format("MMMM YYYY")}
       </span>
     );
@@ -90,7 +90,7 @@ class Calendar extends Component {
   renderDayLabel = () =>  {
     const currentSelectedDay = this.state.selectedDay;
     return (
-      <span className="box month-label">
+      <span className="calendar-item-container month-label">
         {currentSelectedDay.format("DD MMMM YYYY")}
       </span>
     );
@@ -98,7 +98,7 @@ class Calendar extends Component {
   
   renderTodayLabel = () =>  {
     return (
-      <span className="box today-label" onClick={this.goToCurrentMonthView}>
+      <span className="calendar-item-container today-label" onClick={this.goToCurrentMonthView}>
         Today
       </span>
     );
@@ -149,14 +149,17 @@ class Calendar extends Component {
           <header className="calendar-header">
             <div className="calendar_row title-header">
               <i
-                className="box arrow la la-arrow-left"
+                className="calendar-item-container arrow la la-arrow-left"
                 onClick={this.previous}
               />
-              <div className="box header-text">
+              <div className="calendar-item-container header-text">
               
               {this.renderMonthLabel()}
               </div>
-              <i className="box arrow la la-arrow-right" onClick={this.next} />
+              <i 
+                className="calendar-item-container arrow la la-arrow-right" 
+                onClick={this.next} 
+              />
             </div>
             <DayNames />
           </header>

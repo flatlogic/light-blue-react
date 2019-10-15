@@ -26,15 +26,17 @@ class Day extends Component {
           (day.hasEvents ? " has-events" : "") } > 
 
         {!day.hasEvents ? 
-        <a href="javascript:void(0);" className="day-number">{day.number}</a> 
+        <div className="day-number">{day.number}</div> 
         : (day.hasEvents && day.link) 
         ? 
         <React.Fragment>
           <a
+            rel="noopener noreferrer"
+            target="_blank"
             onMouseEnter={this.toggleTooltip}
             onMouseOut={this.toggleTooltip}
             id={`Tooltip${day.number}`}
-            href={day.link ? day.link : "javascript:void(0);"} 
+            href={day.link ? day.link : "#"} 
             className="day-number"> {day.number}
             {day.itemStyle ? 
               <span 
@@ -53,17 +55,16 @@ class Day extends Component {
         : (day.hasEvents && !day.link)
         ? 
           <React.Fragment>
-            <a
+            <div
               onClick={this.togglePopover}
               id={`Popover${day.number}`}
-              href={day.link ? day.link : "javascript:void(0);"} 
               className="day-number"> {day.number}
                 {day.itemStyle ? 
                   <span 
                     style={{backgroundColor: `${day.itemStyle}`}} 
                     className={`calendar-dot`}>
                   </span> : "" }
-            </a>
+            </div>
             <Popover 
               placement="top" 
               isOpen={this.state.popoverShow} 
