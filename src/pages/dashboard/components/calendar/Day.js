@@ -67,7 +67,6 @@ class Day extends Component {
                   </span> : "" }
             </div>
             <Popover 
-              className={s.popoverHeader}
               placement="top" 
               isOpen={this.state.popoverShow} 
               target={`Popover${day.number}`} 

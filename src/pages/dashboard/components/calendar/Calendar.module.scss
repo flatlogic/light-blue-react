@@ -1,6 +1,12 @@
 @import '../../../../styles/app';
 
 
+:global {
+  .popover-header {
+    color: #000000;
+  }  
+}
+
 .calendarRectangle {
   width: 100%;
   position: relative;
@@ -224,8 +230,4 @@
   height: 6px;
   border-radius: 6px;
   background-color: inherit;
-}
-
-.popoverHeader {
-  color: #000000;
 }
