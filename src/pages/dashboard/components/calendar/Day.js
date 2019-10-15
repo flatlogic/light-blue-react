@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Popover, PopoverHeader, PopoverBody, Tooltip,} from 'reactstrap';
+import s from './Calendar.module.scss'
 
 class Day extends Component {
   state = {
@@ -19,14 +20,14 @@ class Day extends Component {
     const { day, selected } = this.props;
     return (
       <div className={
-          "day" +
-          (day.isToday ? " today" : "") +
-          (day.isCurrentMonth ? "" : " different-month") +
-          (day.date.isSame(selected) ? " selected" : "") +
-          (day.hasEvents ? " has-events" : "") } > 
+          `${s.day}` +
+          (day.isToday ? ` ${s.today}` : "") +
+          (day.isCurrentMonth ? "" : ` ${s.differentMonth}`) +
+          (day.date.isSame(selected) ? ` ${s.selected}` : "") +
+          (day.hasEvents ? ` ${s.hasEvents}` : "") } > 
 
         {!day.hasEvents ? 
-        <div className="day-number">{day.number}</div> 
+        <div className={s.dayNumber}>{day.number}</div> 
         : (day.hasEvents && day.link) 
         ? 
         <React.Fragment>
@@ -37,11 +38,11 @@ class Day extends Component {
             onMouseOut={this.toggleTooltip}
             id={`Tooltip${day.number}`}
             href={day.link ? day.link : "#"} 
-            className="day-number"> {day.number}
+            className={s.dayNumber}> {day.number}
             {day.itemStyle ? 
               <span 
                 style={{backgroundColor: `${day.itemStyle}`}} 
-                className={`calendar-dot`}>
+                className={s.calendarDot}>
               </span> : "" }
           </a>
           <Tooltip 
@@ -58,14 +59,15 @@ class Day extends Component {
             <div
               onClick={this.togglePopover}
               id={`Popover${day.number}`}
-              className="day-number"> {day.number}
+              className={s.dayNumber}> {day.number}
                 {day.itemStyle ? 
                   <span 
                     style={{backgroundColor: `${day.itemStyle}`}} 
-                    className={`calendar-dot`}>
+                    className={s.calendarDot}>
                   </span> : "" }
             </div>
             <Popover 
+              className={s.popoverHeader}
               placement="top" 
               isOpen={this.state.popoverShow} 
               target={`Popover${day.number}`} 

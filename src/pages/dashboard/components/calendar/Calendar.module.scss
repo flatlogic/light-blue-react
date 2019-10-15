@@ -1,16 +1,7 @@
 @import '../../../../styles/app';
 
-$header-color: #ffffff;
-.event-top-text {
-  background-color: #e2e8eb;
-  color: #29323a;
-}
-.event-bottom-text {
-  background-color: #EBEFF1;
-  color: #29323a;
-  
-}
-.calendar-rectangle {
+
+.calendarRectangle {
   width: 100%;
   position: relative;
   margin-left: auto;
@@ -21,25 +12,25 @@ $header-color: #ffffff;
 
 }
 
-.calendar_row {
+.calendarRow {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.main-calendar {
+.mainCalendar {
   height: 100%;
   display: flex;
   flex-wrap: wrap;
 
-  .calendar-header {
+  .calendarHeader {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    color: $header-color;
+    color: #fff;
 
-    .title-header {
+    .titleHeader {
       width: 100%;
       height: 70%;
       white-space: nowrap;
@@ -54,19 +45,19 @@ $header-color: #ffffff;
         font-size: 1.2em;
       }
 
-      .header-text {
+      .headerText {
         flex: 5;
         display: flex;
         
 
-        .today-label {
+        .todayLabel {
           flex: 1;
           font-size: 0.8em;
         
           
         }
 
-        .month-label {
+        .monthLabel {
           flex: 3;
           color: #d6dee5;
           font-size: 0.9rem;
@@ -74,20 +65,20 @@ $header-color: #ffffff;
       }
     }
 
-    .days-header {
+    .daysHeader {
       width: 100%;
       padding: 5px 0;
       background-color: transparent;
 
-      .day-name {
+      .dayName {
         color: #d6dee5;
       }
     }
 
-    .button-container {
+    .buttonContainer {
       width: 100%;
       height: 30%;
-      .event-button {
+      .eventButton {
         flex-grow: 1;
         display: flex;
         height: 100%;
@@ -97,7 +88,7 @@ $header-color: #ffffff;
     }
   }
 
-  .days-container {
+  .daysContainer {
     width: 100%;
     background: transparent;
     height: inherit;
@@ -107,7 +98,7 @@ $header-color: #ffffff;
     }
   }
 
-  .day-events {
+  .dayEvents {
     position: absolute;
     width: 100px;
     top: 0;
@@ -128,7 +119,7 @@ $header-color: #ffffff;
       height: 0px;
     }
 
-    .event-container {
+    .eventContainer {
       text-align: left;
       width: 100%;
       border-radius: 4px;
@@ -140,11 +131,8 @@ $header-color: #ffffff;
       &:hover {
         cursor: pointer;
       }
-      hr {
-        margin: 0;
-      }
 
-      .event-attribute {
+      .eventAttribute {
         height: 100%;
         overflow: hidden;
         box-sizing: border-box;
@@ -157,7 +145,7 @@ $header-color: #ffffff;
 } 
 
 
-.calendar-item-container {
+.calendarItemContainer {
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -168,7 +156,7 @@ $header-color: #ffffff;
 
 }
 
-.calendar-item-container.arrow {
+.calendarItem-container.arrow {
   cursor: pointer;
   font-size: 0.9rem;
   color: #d6dee5;
@@ -182,7 +170,7 @@ $header-color: #ffffff;
   height: 30px;
   width: 30px;
 
-  .day-number {
+  .dayNumber {
     width: 28px;
     height: 28px;
     cursor: pointer;
@@ -196,9 +184,9 @@ $header-color: #ffffff;
 
 
 
-  &.has-events {
+  &.hasEvents {
     
-    .day-number {
+    .dayNumber {
       position: relative;
       color: #ffffff;
       background-color: rgba(0,0,0,.15);
@@ -207,28 +195,28 @@ $header-color: #ffffff;
     }
   }
 
-  &.different-month {
+  &.differentMonth {
     visibility: hidden;
     height: 0;
   }
 }
 
 @media(max-width: 810px) {
-  .day .day-number {
+  .day .dayNumber {
     width: 25px;
     height: 25px;
   }
 }
-.day.selected.has-events {
+.day.selected.hasEvents {
   position: relative;
 
-  .day-events {
+  .dayEvents {
     transform: translate(0, -100%);
     display: block;
   }
 }
 
-.calendar-dot {
+.calendarDot {
   position: absolute;
   bottom: 1px;
   right: 1px;
@@ -238,6 +226,6 @@ $header-color: #ffffff;
   background-color: inherit;
 }
 
-.popover-header {
+.popoverHeader {
   color: #000000;
 }

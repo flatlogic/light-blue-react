@@ -3,7 +3,7 @@ import DayNames from './DayNames'
 import uuid from 'uuid/v4'
 import Week from './Week'
 import moment from 'moment/moment'
-import './Calendar.scss'
+import s from './Calendar.module.scss'
 
 
 class Calendar extends Component {
@@ -55,7 +55,7 @@ class Calendar extends Component {
   
   renderMonthLabel = () =>  {
     return (
-      <span className="calendar-item-container month-label">
+      <span className={`${s.calendarItemContainer} ${s.monthLabel}`}>
         {this.state.selectedMonth.format("MMMM YYYY")}
       </span>
     );
@@ -99,27 +99,27 @@ class Calendar extends Component {
   render() {
 
       return (
-        <div className="calendar-rectangle">
-        <div className="calendar-content">
-        <section className="main-calendar">
-          <header className="calendar-header">
-            <div className="calendar_row title-header">
+        <div className={`${s.calendarRectangle}`}>
+        <div className={`${s.calendarContent}`}>
+        <section className={`${s.mainCalendar}`}>
+          <header className={`${s.calendarHeader}`}>
+            <div className={`${s.calendarRow} ${s.titleHeader}`}>
               <i
-                className="calendar-item-container arrow la la-arrow-left"
+                className={`${s.calendarItemContainer} ${s.arrow} la la-arrow-left`}
                 onClick={this.previous}
               />
-              <div className="calendar-item-container header-text">
+              <div className={`${s.calendarItemContainer} ${s.headerText}`}>
               
               {this.renderMonthLabel()}
               </div>
               <i 
-                className="calendar-item-container arrow la la-arrow-right" 
+                className={`${s.calendarItemContainer} ${s.arrow} la la-arrow-right`} 
                 onClick={this.next} 
               />
             </div>
             <DayNames />
           </header>
-          <div className="days-container">
+          <div className={`${s.daysContainer}`}>
             {this.renderWeeks()}
           </div>
         </section>

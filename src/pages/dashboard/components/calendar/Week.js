@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Day from './Day'
 import uuid from 'uuid/v4'
+import s from './Calendar.module.scss'
 
 class Week extends Component {
   render() {
@@ -52,7 +53,7 @@ class Week extends Component {
         date.add(1, "d");
     }
     return (
-      <div className="calendar_row week">
+      <div className={`${s.calendarRow} ${s.week}`}>
         {days}
       </div>
     );
