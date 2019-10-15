@@ -1,102 +1,173 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import React, { Component } from 'react'
+import DayNames from './DayNames'
+import uuid from 'uuid/v4'
+import Week from './Week'
+import moment from 'moment/moment'
+import './Calendar.scss'
 
-/* eslint-disable */
-import $ from 'jquery';
-import 'imports-loader?jQuery=jquery,this=>window!bootstrap';
-import 'imports-loader?jQuery=jquery,this=>window!bootstrap_calendar/bootstrap_calendar/js/bootstrap_calendar';
-/* eslint-enable */
 
-import './Calendar.scss';
+class Calendar extends Component {
 
-const monthNames = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-const dayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-
-class Calendar extends React.Component {
-  static propTypes = {
-    white: PropTypes.bool,
-  }
-
-  static defaultProps = {
-    white: false,
-  }
-
-  componentDidMount() {
-      const $calendar = $(this.element);
-    const now = new Date();
-    const month = now.getMonth() + 1;
-    const year = now.getFullYear();
-    const events = [
-      [
-        `2/${month}/${year}`,
-        'The flower bed',
-        '#',
-        '#5d8fc2',
-        'Contents here',
+    state = {
+      selectedMonth: moment(),
+      selectedDay: moment().startOf("day"),
+      selectedMonthEvents: [
+        {
+          title: "The flower bed",
+          info: "Contents here",
+          itemStyle: "#5d8fc2",
+          date: moment("20191002", "YYYYMMDD"),
+        },
+        {
+          title: "Stop world water pollution",
+          info: "Have a kick off meeting with .inc company",
+          itemStyle: "#f0b518",
+          date: moment("20191005", "YYYYMMDD"),
+        },
+        {
+          title: "Light Blue 2.2 release",
+          info: "Some contents here",
+          itemStyle: "#64bd63",
+          date: moment("20191018", "YYYYMMDD"),
+        },
+        {
+          title: "A link",
+          info: "",
+          itemStyle: "#dd5826",
+          link: "http://www.flatlogic.com",
+          date: moment("20191029", "YYYYMMDD"),
+        },
       ],
-      [
-        `5/${month}/${year}`,
-        'Stop world water pollution',
-        '#',
-        '#f0b518',
-        'Have a kick off meeting with .inc company',
-      ],
-      [
-        `18/${month}/${year}`,
-        'Light Blue 2.2 release',
-        '#',
-        '#64bd63',
-        'Some contents here',
-      ],
-      [
-        `29/${month}/${year}`,
-        'A link',
-        'http://www.flatlogic.com',
-        '#dd5826',
-      ],
-    ];
-    $calendar.calendar({
-      months: monthNames,
-      days: dayNames,
-      events,
-      popover_options: {
-        placement: 'top',
-        html: true,
-        trigger: 'hover',
-      },
-    });
-    $calendar.find('.icon-arrow-left').addClass('la la-arrow-left');
-    $calendar.find('.icon-arrow-right').addClass('la la-arrow-right');
-    const restyleCalendar = () => {
-      $calendar.find('.event').each((index, el) => {
-        const $eventIndicator = $('<span></span>');
-        $eventIndicator
-          .css('background-color', $(el).css('background-color'))
-          .appendTo($(el).find('a'));
-        $(el).css('background-color', '');
-      });
+      showEvents: false
     };
-    $calendar.find('.icon-arrow-left, .icon-arrow-right').parent().on('click', restyleCalendar);
-    restyleCalendar();
+
+
+
+  
+
+  previous = () => {
+    this.setState({
+      selectedMonth: this.state.selectedMonth.subtract(1, "month")
+    });
   }
+
+  next = () =>  {
+    this.setState({
+      selectedMonth: this.state.selectedMonth.add(1, "month")
+    });
+  }
+
+  select = (day) =>  {
+    this.setState({
+      selectedMonth: day.date,
+      selectedDay: day.date.clone(),
+      showEvents: !this.state.showEvents
+    });
+  }
+
+  goToCurrentMonthView = () => {
+    this.setState({
+      selectedMonth: moment()
+    });
+  }
+  
+  showCalendar = () =>  {
+    this.setState({
+      selectedMonth: this.state.selectedMonth,
+      selectedDay: this.state.selectedDay,
+      showEvents: false
+    });
+  }
+
+  renderMonthLabel = () =>  {
+    return (
+      <span className="box month-label">
+        {this.state.selectedMonth.format("MMMM YYYY")}
+      </span>
+    );
+  }
+
+  renderDayLabel = () =>  {
+    const currentSelectedDay = this.state.selectedDay;
+    return (
+      <span className="box month-label">
+        {currentSelectedDay.format("DD MMMM YYYY")}
+      </span>
+    );
+  }
+  
+  renderTodayLabel = () =>  {
+    return (
+      <span className="box today-label" onClick={this.goToCurrentMonthView}>
+        Today
+      </span>
+    );
+  }
+  
+  renderWeeks = () =>  {
+    const currentMonthView = this.state.selectedMonth;
+    const currentSelectedDay = this.state.selectedDay;
+
+    let weeks = [];
+    let done = false;
+    let previousCurrentNextView = currentMonthView
+      .clone()
+      .startOf("month")
+      .subtract(1, "d")
+      .day("Sunday");
+    let count = 0;
+    let monthIndex = previousCurrentNextView.month();
+
+    while (!done) {
+      weeks.push(
+        <Week
+          key={uuid()}
+          showEvents={this.state.showEvents}
+          selectedMonth={this.state.selectedMonth}
+          selectedDay={this.state.selectedDay}
+          selectedMonthEvents={this.state.selectedMonthEvents}
+          previousCurrentNextView={previousCurrentNextView.clone()}
+          currentMonthView={currentMonthView}
+          selected={currentSelectedDay}
+          select={day => this.select(day)}
+        />
+      );
+      previousCurrentNextView.add(1, "w");
+      done = count++ > 2 && monthIndex !== previousCurrentNextView.month();
+      monthIndex = previousCurrentNextView.month();
+    }
+    return weeks;
+  }
+
 
   render() {
-    return (<div ref={(el) => this.element = el} className={cx('calendar', { 'calendar-white': this.props.white })} />);
-  }
+
+      return (
+        <div className="calendar-rectangle">
+        <div className="calendar-content">
+        <section className="main-calendar">
+          <header className="calendar-header">
+            <div className="calendar_row title-header">
+              <i
+                className="box arrow la la-arrow-left"
+                onClick={this.previous}
+              />
+              <div className="box header-text">
+              
+              {this.renderMonthLabel()}
+              </div>
+              <i className="box arrow la la-arrow-right" onClick={this.next} />
+            </div>
+            <DayNames />
+          </header>
+          <div className="days-container">
+            {this.renderWeeks()}
+          </div>
+        </section>
+        </div>
+        </div>
+      );
+    }
 }
 
 export default Calendar;
