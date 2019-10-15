@@ -8,11 +8,7 @@ class Week extends Component {
     let date = this.props.previousCurrentNextView;
 
     const {
-      showEvents,
-      selectedMonth,
-      selectedDay,
       selectedMonthEvents,
-      select,
       selected,
       currentMonthView,
     } = this.props;
@@ -31,7 +27,6 @@ class Week extends Component {
           info  = selectedMonthEvents[j].info ? selectedMonthEvents[j].info : '';
           itemStyle = selectedMonthEvents[j].itemStyle ? selectedMonthEvents[j].itemStyle : '';
           link  = selectedMonthEvents[j].link ? selectedMonthEvents[j].link : '';
-          
         }
       }
 
@@ -50,13 +45,9 @@ class Week extends Component {
       
       days.push(<Day 
         key={uuid()}
-        showEvents={showEvents}
-        selectedMonth={selectedMonth}
-        selectedDay={selectedDay}
-        selectedMonthEvents={selectedMonthEvents}
         day={day} 
         selected={selected} 
-        select={select} />);
+        />);
         date = date.clone();
         date.add(1, "d");
     }

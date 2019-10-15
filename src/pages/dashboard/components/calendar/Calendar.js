@@ -41,10 +41,6 @@ class Calendar extends Component {
       showEvents: false
     };
 
-
-
-  
-
   previous = () => {
     this.setState({
       selectedMonth: this.state.selectedMonth.subtract(1, "month")
@@ -56,29 +52,7 @@ class Calendar extends Component {
       selectedMonth: this.state.selectedMonth.add(1, "month")
     });
   }
-
-  select = (day) =>  {
-    this.setState({
-      selectedMonth: day.date,
-      selectedDay: day.date.clone(),
-      showEvents: !this.state.showEvents
-    });
-  }
-
-  goToCurrentMonthView = () => {
-    this.setState({
-      selectedMonth: moment()
-    });
-  }
   
-  showCalendar = () =>  {
-    this.setState({
-      selectedMonth: this.state.selectedMonth,
-      selectedDay: this.state.selectedDay,
-      showEvents: false
-    });
-  }
-
   renderMonthLabel = () =>  {
     return (
       <span className="calendar-item-container month-label">
@@ -87,22 +61,8 @@ class Calendar extends Component {
     );
   }
 
-  renderDayLabel = () =>  {
-    const currentSelectedDay = this.state.selectedDay;
-    return (
-      <span className="calendar-item-container month-label">
-        {currentSelectedDay.format("DD MMMM YYYY")}
-      </span>
-    );
-  }
-  
-  renderTodayLabel = () =>  {
-    return (
-      <span className="calendar-item-container today-label" onClick={this.goToCurrentMonthView}>
-        Today
-      </span>
-    );
-  }
+
+
   
   renderWeeks = () =>  {
     const currentMonthView = this.state.selectedMonth;
@@ -122,14 +82,10 @@ class Calendar extends Component {
       weeks.push(
         <Week
           key={uuid()}
-          showEvents={this.state.showEvents}
-          selectedMonth={this.state.selectedMonth}
-          selectedDay={this.state.selectedDay}
           selectedMonthEvents={this.state.selectedMonthEvents}
           previousCurrentNextView={previousCurrentNextView.clone()}
           currentMonthView={currentMonthView}
           selected={currentSelectedDay}
-          select={day => this.select(day)}
         />
       );
       previousCurrentNextView.add(1, "w");
