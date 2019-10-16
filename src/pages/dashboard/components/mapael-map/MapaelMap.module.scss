@@ -40,6 +40,8 @@
 
     .map {
       position: relative;
+      height: 400px;
+      margin: (-$widget-padding-vertical) (-$widget-padding-horizontal) 0;
     }
 
     .stats {
