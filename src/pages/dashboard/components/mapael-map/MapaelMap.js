@@ -13,6 +13,8 @@ import s from './MapaelMap.module.scss';
   componentDidMount() {
     let map = am4core.create("map", am4maps.MapChart);
     map.geodata = am4geodata_usaHigh;
+    map.percentHeight = 90;
+    map.dy = 10;
     map.projection = new am4maps.projections.AlbersUsa();
     let polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.useGeodata = true;
@@ -36,9 +38,9 @@ import s from './MapaelMap.module.scss';
     let polygonTemplate = polygonSeries.mapPolygons.template;
     polygonTemplate.tooltipText = "{name}";
     polygonTemplate.fill = am4core.color("rgba(255, 255, 255, 0.2)");
-    polygonTemplate.stroke = am4core.color("rgba(255, 255, 255, 0.5)")
+    polygonTemplate.stroke = am4core.color("rgba(255, 255, 255, 0.4)")
     let hs = polygonTemplate.states.create("hover");
-    hs.properties.fill = am4core.color("#7f8d9e");
+    hs.properties.fill = am4core.color("rgba(225, 225, 225, 0.2)");
     let citySeries = map.series.push(new am4maps.MapImageSeries());
     citySeries.data = cities;
     citySeries.dataFields.value = "size";
@@ -55,7 +57,6 @@ import s from './MapaelMap.module.scss';
     circle.tooltipText = '{tooltip}';
     circle.propertyFields.radius = 'size';
     this.map = map;
-  
   }
 
   componentWillUnmount() {
@@ -81,7 +82,7 @@ import s from './MapaelMap.module.scss';
             <i className="fa fa-map-marker" />
           </p>
         </div>
-        <div className="map" id="map">
+        <div className={s.map} id="map">
           <span>Alternative content for the map</span>
         </div>
       </div>

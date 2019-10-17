@@ -1,5 +1,12 @@
 @import '../../../../styles/app';
 
+.map {
+  position: relative;
+  height: 500px;
+  svg {
+    height: 500px;
+  }
+}
 .mapael {
   position: relative;
   margin: (-$widget-padding-vertical) (-$widget-padding-horizontal) 0;
@@ -38,11 +45,7 @@
       left: 36px;
     }
 
-    .map {
-      position: relative;
-      height: 400px;
-      margin: (-$widget-padding-vertical) (-$widget-padding-horizontal) 0;
-    }
+
 
     .stats {
       position: absolute;
