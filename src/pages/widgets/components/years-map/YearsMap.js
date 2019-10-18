@@ -9,8 +9,10 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 import fakeWorldData from './MapData';
 
-import './YearsMap.scss';
+import s from './YearsMap.module.scss';
+
 am4core.useTheme(am4themes_animated);
+
 class YearsMap extends React.Component {
 
   state = {
@@ -38,20 +40,24 @@ class YearsMap extends React.Component {
     map.zoomControl = new am4maps.ZoomControl();
     map.zoomControl.align = 'left';
     map.zoomControl.valign = 'bottom';
-    map.zoomControl.dx = 10;
-    map.zoomControl.dy = -30;
+    map.zoomControl.dx = 2;
+    map.zoomControl.dy = -21;
     map.zoomControl.layout = 'horizontal';
-    map.zoomControl.minusButton.background.fill = am4core.color("#fff");
-    map.zoomControl.plusButton.background.fill = am4core.color("#fff");
+    map.zoomControl.minusButton.background.fill = am4core.color("rgba(51,51,51,.85)");
+    map.zoomControl.plusButton.background.fill = am4core.color("rgba(51,51,51,.85)");
     map.zoomControl.minusButton.background.stroke = am4core.color("#ccc");
     map.zoomControl.plusButton.background.stroke = am4core.color("#ccc");
-    map.zoomControl.plusButton.background.cornerRadius(16,16,16,16);
-    map.zoomControl.minusButton.background.cornerRadius(16,16,16,16);
+    map.zoomControl.plusButton.background.cornerRadius(3,3,3,3);
+    map.zoomControl.minusButton.background.cornerRadius(3,3,3,3);
     map.zoomControl.plusButton.dx = 5;
+    map.zoomControl.plusButton.scale = .75;
+    map.zoomControl.minusButton.scale = .75;
+    map.zoomControl.plusButton.label.fill = am4core.color("#fff");
+    map.zoomControl.minusButton.label.fill = am4core.color("#fff");
     let plusButtonHoverState = map.zoomControl.plusButton.background.states.create("hover");
-    plusButtonHoverState.properties.fill = am4core.color("#ccc");
+    plusButtonHoverState.properties.fill = am4core.color("#020202");
     let minusButtonHoverState = map.zoomControl.minusButton.background.states.create("hover");
-    minusButtonHoverState.properties.fill = am4core.color("#ccc");
+    minusButtonHoverState.properties.fill = am4core.color("#020202");
     let polygonTemplate = this.polygonSeries.mapPolygons.template;
     polygonTemplate.tooltipHTML = "{tooltip}";
     polygonTemplate.fill = am4core.color("#eee");
@@ -81,11 +87,10 @@ class YearsMap extends React.Component {
   }
 
   render() {
-    console.log('render')
     return (
     <div>
-      <div className="mapael">
-        <div className="stats">
+      <div className={s.mapChart}>
+        <div className={s.stats}>
           <h6>YEARLY <span className="fw-semi-bold">DISTRIBUTIONS</span></h6>
           <span className="pull-left mr-xs">
             <small><span className="circle bg-warning text-gray-dark">
@@ -95,11 +100,8 @@ class YearsMap extends React.Component {
             <strong>17% last year</strong>
           </p>
         </div>
-        <div className="map" id="map-widget">
+        <div className={s.map} id="map-widget">
           <span>Alternative content for the map</span>
-        </div>
-        <div className="areaLegend">
-          <span>Alternative content for the legend</span>
         </div>
       </div>
       <Nav className="map-controls" pills fill>

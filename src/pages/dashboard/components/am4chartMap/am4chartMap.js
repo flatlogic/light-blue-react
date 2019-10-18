@@ -6,7 +6,7 @@ import cities from './mock';
 import am4geodata_usaHigh from "@amcharts/amcharts4-geodata/usaHigh";
 
 import AnimateNumber from 'react-animated-number';
-import s from './MapaelMap.module.scss';
+import s from './am4chartMap.module.scss';
   
   class MapaelMap extends Component {
   
@@ -20,17 +20,22 @@ import s from './MapaelMap.module.scss';
     polygonSeries.useGeodata = true;
     map.homeZoomLevel = 1.2;
     map.zoomControl = new am4maps.ZoomControl();
+    map.zoomControl.layout = 'horizontal';
     map.zoomControl.align = 'left';
     map.zoomControl.valign = 'bottom';
-    map.zoomControl.dy = -20;
+    map.zoomControl.dy = -10;
+    map.zoomControl.contentHeight = 20;
     map.zoomControl.minusButton.background.fill = am4core.color("#fff");
     map.zoomControl.minusButton.background.stroke = am4core.color("#ccc");
     map.zoomControl.minusButton.label.fontWeight = 600;
-    map.zoomControl.minusButton.label.fontSize = 16;
+    map.zoomControl.minusButton.label.fontSize = 18;
+    map.zoomControl.minusButton.scale = .75;
     map.zoomControl.plusButton.background.fill = am4core.color("#fff");
     map.zoomControl.plusButton.background.stroke = am4core.color("#ccc");
     map.zoomControl.plusButton.label.fontWeight = 600;
-    map.zoomControl.plusButton.label.fontSize = 16;
+    map.zoomControl.plusButton.label.fontSize = 18;
+    map.zoomControl.plusButton.scale = .75;
+    map.zoomControl.plusButton.dx = 5;
     let plusButtonHoverState = map.zoomControl.plusButton.background.states.create("hover");
     plusButtonHoverState.properties.fill = am4core.color("#e9ecef");
     let minusButtonHoverState = map.zoomControl.minusButton.background.states.create("hover");
@@ -67,8 +72,8 @@ import s from './MapaelMap.module.scss';
 
   render() {
     return (
-      <div className={`mapael ${s.mapael}`} id="mapael">
-        <div className="stats">
+      <div className={s.mapChart}>
+        <div className={s.stats}>
           <h6 className="mt-1">GEO-LOCATIONS</h6>
           <p className="h3 m-0">
             <span className="mr-xs fw-normal">
