@@ -2,152 +2,91 @@ import React from 'react';
 import {
   Row, Col, Button,
 } from 'reactstrap';
-/* eslint-disable */
-import 'imports-loader?$=jquery,this=>window!messenger/build/js/messenger';
-/* eslint-enable */
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Widget from '../../../components/Widget';
 import s from './Notifications.module.scss';
 
-// todo @franckeeva what about server side rendering? this will fail unless launched as lazy route
-const Messenger = window.Messenger;
-
-/* eslint-disable */
-function initializationMessengerCode() {
-  (function () {
-    let $,
-      FlatMessage,
-      spinner_template,
-      __hasProp = {}.hasOwnProperty,
-      __extends = function (child, parent) {
-        for (const key in parent) {
-          if (__hasProp.call(parent, key)) child[key] = parent[key];
-        }
-
-        function ctor() {
-          this.constructor = child;
-        }
-
-        ctor.prototype = parent.prototype;
-        child.prototype = new ctor();
-        child.__super__ = parent.prototype;
-        return child;
-      };
-
-    $ = jQuery;
-
-    spinner_template = '<div class="messenger-spinner">\n    <span class="messenger-spinner-side messenger-spinner-side-left">\n        <span class="messenger-spinner-fill"></span>\n    </span>\n    <span class="messenger-spinner-side messenger-spinner-side-right">\n        <span class="messenger-spinner-fill"></span>\n    </span>\n</div>';
-
-    FlatMessage = (function (_super) {
-      __extends(FlatMessage, _super);
-
-      function FlatMessage() {
-        return FlatMessage.__super__.constructor.apply(this, arguments);
-      }
-
-      FlatMessage.prototype.template = function (opts) {
-        let $message;
-        $message = FlatMessage.__super__.template.apply(this, arguments);
-        $message.append($(spinner_template));
-        return $message;
-      };
-
-      return FlatMessage;
-    }(Messenger.Message));
-
-    Messenger.themes.air = {
-      Message: FlatMessage,
-    };
-  }).call(window);
-}
-/* eslint-enable */
 
 class Notifications extends React.Component {
-  constructor() {
-    super();
-    this.addSuccessNotification = this.addSuccessNotification.bind(this);
-    this.addInfoNotification = this.addInfoNotification.bind(this);
-    this.addErrorNotification = this.addErrorNotification.bind(this);
-    this.toggleLocation = this.toggleLocation.bind(this);
-    this.state = {
-      locationClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
-    };
+  
+  state = {
+    position: "bottom-right"
   }
-
 
   componentDidMount() {
-    initializationMessengerCode();
-    Messenger.options = {
-      extraClasses: this.state.locationClasses,
-      theme: 'air',
-    };
-    Messenger().post('Thanks for checking out Messenger!');
+    this.addSuccessNotification();
   }
 
-  addSuccessNotification() {
-    Messenger().post({
-      extraClasses: this.state.locationClasses,
-      message: 'Showing success message was successful!',
-      type: 'success',
-      showCloseButton: true,
-    });
-    return false;
+  addSuccessNotification = () => toast.success('Wow so easy!', {
+    position: this.state.position,
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true
+  });
+  
+
+  addInfoNotification = () => toast.info('Wow so easy!', {
+    position: this.state.position,
+    autoClose: false,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true
+  });
+
+  addErrorNotification = () => {
+
+    if (Math.floor(Math.random() * 3) + 1  < 3) { 
+      
+      toast.error('Error destroying alien planet', {
+        position: this.state.position,
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true
+      });
+    } else {
+      toast.success('Alien planet destroyed!', {
+        position: this.state.position,
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true
+      });      
+    }
+
   }
 
-  addInfoNotification() {
-    const msg = Messenger().post({
-      extraClasses: this.state.locationClasses,
-      message: 'Launching thermonuclear war...',
-      actions: {
-        cancel: {
-          label: 'cancel launch',
-          action: () => msg.update({
-            message: 'Thermonuclear war averted', type: 'success', actions: false,
-          }),
-        },
-      },
-    });
-
-    return false;
-  }
-
-  addErrorNotification() {
-    let i = 0;
-    Messenger().run({
-      errorMessage: 'Error destroying alien planet',
-      successMessage: 'Alien planet destroyed!',
-      extraClasses: this.state.locationClasses,
-      action(opts) {
-        /* eslint-disable */
-        if (++i < 3) {
-          return opts.error({
-            status: 500,
-            readyState: 0,
-            responseText: 0,
-          });
-        }
-        /* eslint-enable */
-        return opts.success();
-      },
-    });
-  }
-
-  toggleLocation(vertical = 'top', horizontal = '') {
-    let className = `messenger-fixed messenger-on-${vertical}`;
-    className += (horizontal === '') ? '' : ` messenger-on-${horizontal}`;
+  toggleLocation = (location) => {
+    let className = location;
     this.setState({
-      locationClasses: className,
+      position: className,
     });
-    Messenger.options = {
-      extraClasses: className,
-      theme: 'air',
-    };
-    Messenger();
   }
 
   render() {
     return (
       <div className={s.root}>
+      <ToastContainer 
+        enableMultiContainer 
+        containerId={'toast-container'} 
+        position={this.state.position}
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover
+      />
         <ol className="breadcrumb">
           <li className="breadcrumb-item">YOU ARE HERE</li>
           <li className="breadcrumb-item active">UI Notifications</li>
@@ -163,35 +102,34 @@ class Notifications extends React.Component {
                 them
                 to change notifications position:</p>
               <div className="location-selector">
-                { /* eslint-disable */}
                 <div
                   className="bit top left" onClick={() => {
-                    this.toggleLocation('top', 'left');
+                    this.toggleLocation('top-left');
                   }}
                 />
                 <div
                   className="bit top right" onClick={() => {
-                    this.toggleLocation('top', 'right');
+                    this.toggleLocation('top-right');
                   }}
                 />
                 <div
                   className="bit top" onClick={() => {
-                    this.toggleLocation('top', '');
+                    this.toggleLocation('top-center');
                   }}
                 />
                 <div
                   className="bit bottom left" onClick={() => {
-                    this.toggleLocation('bottom', 'left');
+                    this.toggleLocation('bottom-left');
                   }}
                 />
                 <div
                   className="bit bottom right" onClick={() => {
-                    this.toggleLocation('bottom', 'right');
+                    this.toggleLocation('bottom-right');
                   }}
                 />
                 <div
                   className="bit bottom" onClick={() => {
-                    this.toggleLocation('bottom', '');
+                    this.toggleLocation('bottom-center');
                   }}
                 />
                 { /* eslint-enable */}

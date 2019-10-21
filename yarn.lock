@@ -9366,9 +9366,10 @@ react-tagsinput@^3.19.0:
   version "3.19.0"
   resolved "https://registry.yarnpkg.com/react-tagsinput/-/react-tagsinput-3.19.0.tgz#6e3b45595f2d295d4657bf194491988f948caabf"
 
-react-toastify@^5.1.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-5.2.1.tgz#faa05bc4cd5066ee50bf56c7f8b8fd1492e71aca"
+react-toastify@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-5.4.0.tgz#29501618d02cc25329c32bfd7cfeed19b532b2ef"
+  integrity sha512-0cdPq1gyxAcYu0KiDPOYp9nNiqIFDWoi7nyoaSw496DElUnNlcjhc7Aduz8CXrGTRugvjuXd3eplUvFaCeQMNA==
   dependencies:
     "@babel/runtime" "^7.4.2"
     classnames "^2.2.6"
