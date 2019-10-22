@@ -9,83 +9,82 @@ import 'react-toastify/dist/ReactToastify.css';
 import Widget from '../../../components/Widget';
 import s from './Notifications.module.scss';
 
-
 class Notifications extends React.Component {
   
   state = {
-    position: "bottom-right"
+    options: {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true
+    }
   }
 
   componentDidMount() {
-    this.addSuccessNotification();
+    toast.success('Thanks for checking out Messenger!', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      pauseOnHover: false,
+      draggable: true
+    });
   }
 
-  addSuccessNotification = () => toast.success('Wow so easy!', {
-    position: this.state.position,
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true
-  });
+  addSuccessNotification = () => toast.success('Showing success message was successful!', this.state.options);
   
 
-  addInfoNotification = () => toast.info('Wow so easy!', {
-    position: this.state.position,
-    autoClose: false,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true
+  addInfoNotification = () => toast.info( 
+  <div>
+    Launching thermonuclear war...
+    <button className={s.notifyRetry} onClick={this.launchNotification}>Cancel launch</button>
+  </div>, 
+  { 
+    ...this.state.options,
   });
 
+
   addErrorNotification = () => {
-
-    if (Math.floor(Math.random() * 3) + 1  < 3) { 
-      
-      toast.error('Error destroying alien planet', {
-        position: this.state.position,
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true
-      });
-    } else {
-      toast.success('Alien planet destroyed!', {
-        position: this.state.position,
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true
-      });      
-    }
-
+      toast.error(
+      <div>
+        Error destroying alien planet
+        <button className={s.errorRetry} onClick={this.retryNotification}>Retry</button>
+      </div>
+      , this.state.options);
   }
 
   toggleLocation = (location) => {
-    let className = location;
     this.setState({
-      position: className,
+      options: {
+        position: location,
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true
+      }
     });
+  }
+
+  retryNotification = () => {
+    toast.success('Alien planet destroyed!', {...this.state.options, delay: 1000});
+  }
+  launchNotification = () => {
+    toast.success('Thermonuclear war averted', {...this.state.options, delay: 1000});
   }
 
   render() {
     return (
       <div className={s.root}>
-      <ToastContainer 
+      <ToastContainer
+        position={this.state.position}
         enableMultiContainer 
         containerId={'toast-container'} 
-        position={this.state.position}
-        autoClose={5000}
-        hideProgressBar={false}
         newestOnTop
         closeOnClick
         rtl={false}
-        pauseOnVisibilityChange
-        draggable
-        pauseOnHover
+        
       />
         <ol className="breadcrumb">
           <li className="breadcrumb-item">YOU ARE HERE</li>
@@ -132,7 +131,6 @@ class Notifications extends React.Component {
                     this.toggleLocation('bottom-center');
                   }}
                 />
-                { /* eslint-enable */}
               </div>
             </Col>
 
@@ -154,10 +152,10 @@ class Notifications extends React.Component {
               <h5 className="m-t-1">Dead Simple Usage</h5>
               <p>Just few lines of code to instantiate a notifications object. Does not require
                 passing any options:</p>
-              <pre><code>{'Messenger().post("Thanks for checking out Messenger!");'}</code></pre>
+              <pre><code>{'toast("Thanks for checking out Messenger!");'}</code></pre>
               <p>More complex example:</p>
               <pre>
-                <code>{'\nMessenger().post({\n  message: \'There was an explosion while processing your request.\',\n  type: \'error\',\n  showCloseButton: true\n});\n\n'}
+                <code>{'\ntoast.success( \'There was an explosion while processing your request.\', { \n position: location,\n autoClose: 5000, \n hideProgressBar: false, \n closeOnClick: true,\n pauseOnHover: true, \n draggable: true \n});\n\n'}
                 </code>
               </pre>
             </Col>
