@@ -3,9 +3,9 @@ import {
   Row, Col, Button,
 } from 'reactstrap';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import uuid from 'uuid/v4'
 import Widget from '../../../components/Widget';
 import s from './Notifications.module.scss';
 
@@ -15,8 +15,7 @@ class Notifications extends React.Component {
     options: {
       position: "top-right",
       autoClose: 5000,
-      hideProgressBar: true,
-      closeOnClick: true,
+      closeOnClick: false,
       pauseOnHover: false,
       draggable: true
     }
@@ -26,66 +25,52 @@ class Notifications extends React.Component {
     toast.success('Thanks for checking out Messenger!', {
       position: "bottom-right",
       autoClose: 5000,
-      hideProgressBar: true,
+      closeOnClick: true,
       pauseOnHover: false,
       draggable: true
     });
   }
 
   addSuccessNotification = () => toast.success('Showing success message was successful!', this.state.options);
-  
-
-  addInfoNotification = () => toast.info( 
-  <div>
-    Launching thermonuclear war...
-    <button className={s.notifyRetry} onClick={this.launchNotification}>Cancel launch</button>
-  </div>, 
-  { 
-    ...this.state.options,
-  });
-
-
-  addErrorNotification = () => {
-      toast.error(
-      <div>
-        Error destroying alien planet
-        <button className={s.errorRetry} onClick={this.retryNotification}>Retry</button>
-      </div>
-      , this.state.options);
-  }
 
   toggleLocation = (location) => {
-    this.setState({
+    this.setState(prevState => ({
       options: {
-        position: location,
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true
+        ...prevState.options,
+        position: location
       }
-    });
+    }));
   }
+ 
+  addInfoNotification = () => {
+    let id = uuid();
+    toast.info( 
+    <div>
+      Launching thermonuclear war...
+      <Button onClick={() => this.launchNotification(id)} outline color="default" size="xs" className="width-100 mb-xs mr-xs mt-1">Cancel launch</Button>
+    </div>, 
+    {...this.state.options,toastId: id},
+    );
+  }
+ 
+  launchNotification = (id) => toast.update(id, { ...this.state.options, render: "Thermonuclear war averted", type: toast.TYPE.SUCCESS });
+ 
+  addErrorNotification = () => {
+    let id = uuid();
+    toast.error(
+    <div>
+      Error destroying alien planet
+      <Button onClick={() => this.retryNotification(id)} outline color="default" size="xs" className="width-100 mb-xs mr-xs mt-1">Retry</Button>
+    </div>, 
+    {...this.state.options,toastId: id}
+    );
+  } 
 
-  retryNotification = () => {
-    toast.success('Alien planet destroyed!', {...this.state.options, delay: 1000});
-  }
-  launchNotification = () => {
-    toast.success('Thermonuclear war averted', {...this.state.options, delay: 1000});
-  }
-
+  retryNotification = (id) =>  toast.update(id, {...this.state.options, render: 'Alien planet destroyed!', type: toast.TYPE.SUCCESS });
+  
   render() {
     return (
       <div className={s.root}>
-      <ToastContainer
-        position={this.state.position}
-        enableMultiContainer 
-        containerId={'toast-container'} 
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        
-      />
         <ol className="breadcrumb">
           <li className="breadcrumb-item">YOU ARE HERE</li>
           <li className="breadcrumb-item active">UI Notifications</li>
