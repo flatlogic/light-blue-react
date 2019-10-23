@@ -13,9 +13,9 @@ class Notifications extends React.Component {
   
   state = {
     options: {
-      position: "bottom-right",
+      position: "top-right",
       autoClose: 5000,
-      hideProgressBar: false,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: false,
       draggable: true
@@ -26,7 +26,7 @@ class Notifications extends React.Component {
     toast.success('Thanks for checking out Messenger!', {
       position: "bottom-right",
       autoClose: 5000,
-      hideProgressBar: false,
+      hideProgressBar: true,
       pauseOnHover: false,
       draggable: true
     });
