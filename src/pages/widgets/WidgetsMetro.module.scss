@@ -4,7 +4,7 @@
 
 .flipCard {
   background-color: transparent;
-  height: 313px;
+  height: 390px;
   perspective: 1000px;
 }
 
@@ -58,29 +58,42 @@
   }
 }
 
-.adjustSlides {
-  :global {
-    .slick-slide {
-      margin: -2px 0; 
-    }    
-  }
-
-}
-
-.secondTextDescription {
+.positionElementBottom {
   position: absolute;
   bottom: 0;
+}
+
+.positionDescriptionText {
+  position: absolute;
+  bottom: 10%;
 }
 
 .slideWrap {
-  height: 320px;
+  min-height: 320px;
+  height: 100%;
   position: relative;
 }
-.personalData {
-  position: absolute;
-  bottom: 0;
-}
+
 .heading4 {
   font-size: 1.5rem;
   margin-bottom: 0;
 }
+
+.wideName {
+  width: 180px;
+}
+
+
+
+.itemMinWidth {
+  min-width: 175px;
+}
+
+@media(max-width: 1235px) {
+  .slideWrap {
+    p.smallSite {
+      font-size: 1.3rem;
+    }
+  }
+}
+

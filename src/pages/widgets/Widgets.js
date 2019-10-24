@@ -30,7 +30,7 @@ import img17 from '../../images/pictures/17.jpg';
 class Widgets extends React.Component {
 
   render() {
-    var settings = {
+    let settings = {
       dots: false,
       infinite: true,
       vertical: true,
@@ -41,21 +41,6 @@ class Widgets extends React.Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       draggable: false,
-    };
-
-    var settings2 = {
-      dots: false,
-      infinite: true,
-      centerMode: false,
-      vertical: true,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      adaptiveHeight: false,
-      arrows: false,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      draggable: false,
-      padSlides: 40
     };
 
     return (
@@ -98,7 +83,7 @@ class Widgets extends React.Component {
                     </span>
                   </Col>
                   <Col xs="9">   
-                    <Slider {...settings} className={s.hideOverflow}>
+                    <Slider {...settings} className={`${s.hideOverflow} ${s.itemMinWidth}`}>
                       <div>
                         <h6 className="m-0">VISITS TODAY</h6>
                         <p className="h2 m-0 fw-normal">12,324</p>
@@ -140,7 +125,7 @@ class Widgets extends React.Component {
           <Col xl={3} lg={4}  md={6} xs={12}>
             <Widget>
               <div className="clearfix">
-                <Slider {...settings}  className={s.hideOverflow}>
+                <Slider {...settings}  className={`${s.hideOverflow} ${s.itemMinWidth}`}>
                   <div className="text-white">
                     <Row className="flex-nowrap">
                       <Col xs={3}>
@@ -615,34 +600,34 @@ class Widgets extends React.Component {
         </Row>
 
         <Row>
-          <Col lg={3} xs={12}>
+          <Col xl={3} lg={4} xs={12}>
             <Widget className="widget-padding-md">
               <div className="clearfix">
-                <Slider {...settings} className={`${s.adjustSlides} ${s.hideOverflow}`}>
-                  <div>
+                <Slider {...settings} className={s.hideOverflow}>
+                  <div className={s.slideWrap}>
                     <h3>Basic & <span className="fw-semi-bold">Advanced</span> Features</h3>
-                    <p className="value4 mt-lg">All you need in one app</p>
+                    <p className={`value4 mt-lg ${s.smallSite}`}>All you need in one app</p>
                     <div className="h5 mt-lg mb-lg">
                       <i className="fa fa-quote-left opacity-50" />
                       &nbsp;That&apos;s awesome!  &nbsp;
                       <i className="fa fa-quote-right opacity-50" />
                     </div>
                     <div>
-                      <p>Attention to what&apos;s really important</p>
-                      <button className="btn btn-info btn-block mt">Order Now!</button>
+                      <p className={s.positionDescriptionText}>Attention to what&apos;s really important</p>
+                      <button className={`${s.positionElementBottom} btn btn-info btn-block mt`}>Order Now!</button>
                     </div>
                   </div>
-                  <div>
+                  <div className={s.slideWrap}>
                     <h3>Beautiful <span className="fw-semi-bold">Thing</span></h3>
-                    <p className="value4 mt-lg">Life-time package support</p>
+                    <p className={`value4 mt-lg ${s.smallSite}`}>Life-time package support</p>
                     <div className="h5 mt-lg mb-lg">
                       <i className="fa fa-quote-left opacity-50" />
                       &nbsp;That&apos;s awesome!  &nbsp;
                       <i className="fa fa-quote-right opacity-50" />
                     </div>
                     <div>
-                      <p>Attention to what&apos;s really important</p>
-                      <button className="btn btn-inverse btn-block mt"><span
+                      <p className={s.positionDescriptionText}>Attention to what&apos;s really important</p>
+                      <button className={`${s.positionElementBottom} btn btn-inverse btn-block mt`} ><span
                         className="fw-semi-bold text-warning"
                       >Ready?</span>
                       </button>
@@ -653,27 +638,27 @@ class Widgets extends React.Component {
             </Widget>
           </Col>
 
-          <Col lg={3} xs={12}>
+          <Col xl={3} lg={4} xs={12}>
             <Widget className="widget-chart-changes" close refresh bodyClass="mt-0">
               <ChangesChart />
             </Widget>
           </Col>
 
-          <Col lg={3} xs={12}>
+          <Col xl={3} lg={4} xs={12}>
             <Widget className="widget-padding-md bg-primary text-white">
               <div className="clearfix">
-              <Slider {...settings2} className={s.hideOverflow}>
+              <Slider {...settings} className={s.hideOverflow}>
                   <div className={s.slideWrap}>
                     <p className="h4">
                       <i className="fa fa-quote-left opacity-50" />
                       &nbsp;Thanks for the awesome support. That&apos;s awesome!&nbsp;
                       <i className="fa fa-quote-right opacity-50" />
                     </p>
-                    <div className={s.personalData}>
+                    <div className={s.positionElementBottom}>
                       <span className="thumb pull-left mr">
                         <img className="rounded-circle" src={peopleA4} alt="..." />
                       </span>
-                      <h4 className="m-0"><span className="fw-semi-bold">Miha </span>Koshir</h4>
+                      <h4 className={`${s.wideName} m-0`}><span className="fw-semi-bold">Miha </span>Koshir</h4>
                       <p className="text-light m-0">@miha</p>
                     </div>
                   </div>
@@ -686,7 +671,7 @@ class Widgets extends React.Component {
                       <p className="text-light m-0">@ess</p>
                     </div>
                     <div>
-                      <p className={`h4 ${s.secondTextDescription}`}>
+                      <p className={`h4 ${s.positionElementBottom}`}>
                         <i className="fa fa-quote-left opacity-50" />
                         &nbsp;Could have never imagined it would be so great!&nbsp;
                         <i className="fa fa-quote-right opacity-50" />
@@ -699,7 +684,7 @@ class Widgets extends React.Component {
             
           </Col>
 
-          <Col lg={3} xs={12} className="col-lg-3 col-12">
+          <Col xl={3} lg={4} xs={12} className="col-lg-3 col-12">
               <div className={s.flipCard}>
                 <div className={s.flipCardInner}>
                   <div className={s.flipCardFront}>
