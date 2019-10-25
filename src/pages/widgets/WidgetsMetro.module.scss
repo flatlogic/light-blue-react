@@ -4,7 +4,7 @@
 
 .flipCard {
   background-color: transparent;
-  height: 390px;
+  height: 375px;
   perspective: 1000px;
 }
 
@@ -66,6 +66,14 @@
 .positionDescriptionText {
   position: absolute;
   bottom: 10%;
+}
+
+.postitionGroupElements {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0px;
+  padding: 0 30px 15px;
 }
 
 .slideWrap {

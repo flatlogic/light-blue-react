@@ -688,32 +688,32 @@ class Widgets extends React.Component {
               <div className={s.flipCard}>
                 <div className={s.flipCardInner}>
                   <div className={s.flipCardFront}>
-                <Widget
-                  fullscreen={false}
-                  className="widget-padding-md bg-widget-transparent-dark text-white"
-                  bodyClass="widget-body-container"
-                >
-                  <div className="text-center">
-                    <i className="fa fa-child text-warning fa-5x" />
-                  </div>
-                  <h3 className="fw-normal">Light Blue Web App</h3>
-                  <div>
-                    <div className="mb-sm set-margin">Cutting-edge tech and design delivered</div>
-                    <p>
-                      <button className="btn btn-default btn-block">Hover over me!</button>
-                    </p>
-                  </div>
-                </Widget>
+                    <Widget
+                      fullscreen={false}
+                      className={`widget-padding-md bg-widget-transparent-dark text-white ${s.slideWrap}`}
+                      bodyClass="widget-body-container"
+                    >
+                      <div className="text-center">
+                        <i className="fa fa-child text-warning fa-5x" />
+                      </div>
+                      <h3 className="fw-normal">Light Blue Web App</h3>
+                      <div className={s.postitionGroupElements}>
+                        <div className="mb-sm">Cutting-edge tech and design delivered</div>
+                        <p>
+                          <button className="btn btn-default btn-block">Hover over me!</button>
+                        </p>
+                      </div>
+                    </Widget>
                 </div>
               
               <div className={s.flipCardBack}>
-                <Widget fullscreen={false} className="widget-padding-md " bodyClass="widget-body-container">
+                <Widget fullscreen={false} className={`widget-padding-md ${s.slideWrap}`}  bodyClass="widget-body-container">
                   <div className="text-center">
                     <i className="fa fa-globe text-primary fa-5x" />
                   </div>
                   <h3 className="fw-normal">Join The Web Now!</h3>
-                  <div>
-                    <div className="mb-sm set-margin">Cutting-edge tech and design delivered</div>
+                  <div className={s.postitionGroupElements}>
+                    <div className="mb-sm">Cutting-edge tech and design delivered</div>
                     <p>
                       <button className="btn btn-gray btn-block">Join now!</button>
                     </p>
