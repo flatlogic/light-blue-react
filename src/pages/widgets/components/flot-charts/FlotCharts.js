@@ -5,13 +5,14 @@ import {
   Button,
   Badge,
 } from 'reactstrap';
-import ReactFlot from 'react-flot';
+import HighchartsReact from 'highcharts-react-official'
 
 import Widget from '../../../../components/Widget';
-import s from './FlotCharts.module.scss';
+import s from './FlotCharts.module.scss';  
 
 class FlotCharts extends React.Component {
-  static generateRandomData(labels) {
+
+  generateRandomData = (labels) => {
     function random() {
       return (Math.floor(Math.random() * 30)) + 10;
     }
@@ -27,47 +28,57 @@ class FlotCharts extends React.Component {
       maxValueIndex -= 1;
       data.push({
         data: randomSeries,
-        showLabels: true,
-        label: labels[i].label,
-        labelPlacement: 'below',
-        canvasRender: true,
-        cColor: 'red',
         color: labels[i].color,
+        name: labels[i].name
       });
     }
     return data;
   }
 
   render() {
-    const flotOptions = {
-      series: {
-        lines: {
-          show: true,
+    const options = {
+      credits: {
+        enabled: false
+      },
+      title: false,
+      chart: {
+        height: 200,
+        margin: 0,
+        backgroundColor: 'rgba(0,0,0,0)'
+      },
+      exporting: {
+        enabled: false
+      },
+      plotOptions: {
+        area: {
+          fillOpacity: 0.5
+        },
+        series: {
+          fillOpacity: 0.1,
           lineWidth: 1,
-          fill: false,
-          fillColor: { colors: [{ opacity: 0.001 }, { opacity: 0.5 }] },
+          marker: {
+            enabled: false,
+            symbol: 'circle'
+          },
+          states: {
+            hover: {
+              lineWidth: 1
+            }
+          }
         },
-        points: {
-          show: false,
-          fill: true,
-        },
-        shadowSize: 0,
       },
       legend: false,
-      grid: {
-        show: false,
-        margin: 0,
-        labelMargin: 0,
-        axisMargin: 0,
-        hoverable: true,
-        clickable: true,
-        tickColor: 'rgba(255,255,255,1)',
-        borderWidth: 0,
+      xAxis: {
+        visible: false,
+        minPadding: 0,
+        maxPadding: 0
       },
-    };
-
-    const generateData = this.constructor.generateRandomData;
-
+      yAxis: {
+        visible: false,
+        minPadding: 0,
+        maxPadding: 0
+      }
+    };  
     return (<Row>
       <Col lg={6} xs={12}>
         <Widget
@@ -104,17 +115,11 @@ class FlotCharts extends React.Component {
             </div>
           </div>
           <div className={`${s.chart}`}>
-            <ReactFlot
-              id="product-chart-1"
-              data={
-                generateData([{
-                  label: 'Visitors', color: '#777',
-                }, {
-                  label: 'Charts', color: '#dd5826',
-                }])}
-              options={flotOptions}
-              height={'100%'}
-            />
+            <HighchartsReact options={{...options, series: this.generateRandomData([{
+                name: 'Visitors', color: '#777',
+              }, {
+                name: 'Charts', color: '#dd5826',
+              }])}} />
           </div>
         </Widget>
       </Col>
@@ -161,17 +166,14 @@ class FlotCharts extends React.Component {
             </div>
           </div>
           <div className={`${s.chart}`}>
-            <ReactFlot
-              id="product-chart-2"
-              data={
-                generateData([{
-                  label: 'Controllers', color: '#777',
-                }, {
-                  label: 'Scopes', color: '#f0b518',
-                }])}
-              options={flotOptions}
-              height={'100%'}
-            />
+            <HighchartsReact options={{
+              ...options,
+              series: this.generateRandomData([{
+                name: 'Controllers', color: '#777',
+              }, {
+                name: 'Scopes', color: '#f0b518',
+              }])
+            }} />
           </div>
         </Widget>
       </Col>
