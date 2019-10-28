@@ -345,23 +345,23 @@ export const chartData = {
           symbolFill: 'none',
           'stroke-linecap': 'square',
           theme: {
-              'stroke-width': 0,
-              stroke: 'none',
-              fill: 'none',
-              r: 0, // border radius
-              states: {
-                  hover: {
-                      fill: 'none',
-                      stroke: 'none'
-                  },
-                  select: {
-                      fill: 'none',
-                      stroke: 'none'
-                  }
+            'stroke-width': 0,
+            stroke: 'none',
+            fill: 'none',
+            r: 0, // border radius
+            states: {
+              hover: {
+                fill: 'none',
+                stroke: 'none'
+              },
+              select: {
+                fill: 'none',
+                stroke: 'none'
               }
+            }
           }
-      }
-    },
+        }
+      },
       colors: ['#ffc247', '#ffebb2', '#ffc0d9'],
 
       series: [{

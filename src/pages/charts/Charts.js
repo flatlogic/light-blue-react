@@ -1,11 +1,10 @@
 import React from 'react';
 
 import {
-  Row, Col, Progress,
+  Row, Col
 } from 'reactstrap';
 
 import Widget from '../../components/Widget';
-import { Chart } from 'highcharts-react-official';
 import ApexChart from 'react-apexcharts';
 
 import s from './Charts.module.scss';

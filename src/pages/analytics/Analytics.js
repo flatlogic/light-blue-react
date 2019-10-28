@@ -5,13 +5,13 @@ import cx from 'classnames';
 import { Col, Row, Progress } from 'reactstrap';
 
 import Widget from '../../components/Widget';
-import RevenueChart from './components/Charts/RevenueChart';
 import LineChart from './components/Charts/LineChart';
 import MainChart from './components/Charts/MainChart';
 import TaskContainer from './components/TaskContainer/TaskContainer';
 import BigStat from './components/BigStat/BigStat';
 import TableContainer from './components/TableContainer/TableContainer';
 import Calendar from '../dashboard/components/calendar/Calendar';
+import HighchartsReact from 'highcharts-react-official'
 
 import mock from './mock';
 import s from './Analitycs.module.scss';
@@ -36,6 +36,66 @@ class Analytics extends Component {
         mainChart: [],
         isReceiving: false
     };
+
+    donut = () => {
+      let series = [
+        {
+          name: 'Revenue',
+          data: mock.backendData.revenue.map(s => {
+            return {
+              name: s.label,
+              y: s.data
+            }
+          })
+        }
+      ];
+      return {
+        chart: {
+          type: 'pie',
+          height: 120,
+          backgroundColor: 'rgba(0,0,0,0)',
+        },
+        credits: {
+          enabled: false
+        },
+        title: false,
+        plotOptions: {
+          pie: {
+            dataLabels: {
+              enabled: false
+            },
+            showInLegend: true,
+            innerSize: 80,
+            size: 100,
+            states: {
+              hover: {
+                halo: {
+                  size: 1
+                }
+              }
+            }
+          }
+        },
+        colors: ['#ffc247', '#f55d5d', '#9964e3'],
+        legend: {
+          align: 'right',
+          verticalAlign: 'middle',
+          layout: 'vertical',
+          itemStyle: {
+            color: '#495057',
+            fontWeight: 100,
+            fontFamily: 'Montserrat'
+          },
+          itemMarginBottom: 5,
+          symbolRadius: 0
+        },
+        exporting: {
+          enabled: false
+        },
+        series
+      };
+    }
+
 
     componentDidMount() {
         this.props.dispatch(receiveDataRequest());
@@ -94,7 +154,7 @@ class Analytics extends Component {
                     fetchingData={isReceiving}
                     title={<h5>Revenue Breakdown</h5>}
                   >
-                    <RevenueChart data={revenue} />
+                    <HighchartsReact options={this.donut()} />
                   </Widget>
                 </div>
               </Col>
@@ -155,7 +215,7 @@ class Analytics extends Component {
                 </div>
               </Col>
               <Col xs={12}>
-                  <MainChart data={mainChart} isReceiving={isReceiving} />
+                  <MainChart data={mock.backendData.mainChart} isReceiving={isReceiving} />
               </Col>
               <Col xs={12} lg={6} xl={4}>
                 <BigStat {...mock.bigStat[0]} />
