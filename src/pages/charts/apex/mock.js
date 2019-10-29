@@ -1,3 +1,6 @@
+import config from '../config';
+const colors = config.chartColors;
+
 var generateDayWiseTimeSeries = function (baseval, count, yrange) {
   var i = 0;
   var series = [];
@@ -37,7 +40,6 @@ export default {
     options: {
       chart: {
         height: 350,
-        foreColor: "#ffffff",
         zoom: {
           enabled: false
         }
@@ -50,18 +52,30 @@ export default {
       },
       title: {
         text: 'Product Trends by Month',
-        align: 'left'
-      },
-      grid: {
-        row: {
-          colors: ['#f3f3f3', 'transparent'],
-          opacity: 0.5
-        },
+        align: 'left',
+        style: {
+          color: colors.textColor
+        }
       },
       xaxis: {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+        labels: {
+          style: {
+            colors: colors.textColor
+          }
+        }
       },
-      colors: ['#547fff']
+      yaxis: {
+        labels: {
+          style: {
+            color: colors.textColor
+          }
+        }
+      },
+      tooltip: {
+        theme: 'dark'
+      },
+      colors: [colors.blue]
     }
   },
   area: {
@@ -89,10 +103,12 @@ export default {
     ],
     options: {
       chart: {
-        foreColor: "#ffffff",
         stacked: true,
       },
-      colors: ['#547fff', '#3abf94', '#c1ccd3'],
+      tooltip: {
+        theme: 'dark'
+      },
+      colors: [colors.blue, colors.green, colors.gray],
       dataLabels: {
         enabled: false
       },
@@ -108,11 +124,26 @@ export default {
       },
       legend: {
         position: 'top',
-        horizontalAlign: 'left'
+        horizontalAlign: 'left',
+        labels: {
+          colors: [colors.textColor]
+        }
       },
       xaxis: {
-        type: 'datetime'
+        type: 'datetime',
+        labels: {
+          style: {
+            colors: colors.textColor
+          }
+        }
       },
+      yaxis: {
+        labels: {
+          style: {
+            color: colors.textColor
+          }
+        }
+      }
     }
   },
   column: {
@@ -121,16 +152,19 @@ export default {
       data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
     }],
     options: {
-      colors: ['#547fff'],
+      colors: [colors.blue],
       chart: {
-        foreColor: "#ffffff",
+        offsetY: 40,
         height: 350,
         type: 'bar',
+      },
+      tooltip: {
+        theme: 'dark'
       },
       plotOptions: {
         bar: {
           dataLabels: {
-            position: 'top', // top, center, bottom
+            position: 'top', // top, center, bottom,
           },
         }
       },
@@ -142,16 +176,19 @@ export default {
         offsetY: -20,
         style: {
           fontSize: '12px',
-          colors: ["#304758"]
+          colors: [colors.textColor]
         }
       },
 
       xaxis: {
+        offsetY: -30,
         categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         position: 'top',
         labels: {
-          offsetY: -18,
-
+          style: {
+            colors: colors.textColor,
+            offsetY: -18,
+          }
         },
         axisBorder: {
           show: false
@@ -162,13 +199,6 @@ export default {
         crosshairs: {
           fill: {
             type: 'gradient',
-            gradient: {
-              colorFrom: '#D8E3F0',
-              colorTo: '#BED1E6',
-              stops: [0, 100],
-              opacityFrom: 0.4,
-              opacityTo: 0.5,
-            }
           }
         },
         tooltip: {
@@ -210,10 +240,10 @@ export default {
         offsetY: 320,
         align: 'center',
         style: {
-          color: '#444'
+          color: colors.textColor
         }
       }
-    },
+    }
   },
   bar: {
     series: [{
@@ -231,10 +261,9 @@ export default {
     ],
     options: {
       chart: {
-        foreColor: "#ffffff",
         stacked: true
       },
-      colors: ['#547fff', '#e54e9a'],
+      colors: [colors.blue, colors.pink],
       plotOptions: {
         bar: {
           horizontal: true,
@@ -245,9 +274,14 @@ export default {
       dataLabels: {
         enabled: false
       },
+      legend: {
+        labels: {
+          colors: [colors.textColor]
+        }
+      },
       stroke: {
         width: 1,
-        colors: ["#fff"]
+        colors: [colors.textColor]
       },
 
       grid: {
@@ -259,10 +293,18 @@ export default {
         min: -5,
         max: 5,
         title: {
-          // text: 'Age',
+          style: {
+            color: colors.textColor
+          }
         },
+        labels: {
+          style: {
+            color: colors.textColor
+          }
+        }
       },
       tooltip: {
+        theme: 'dark',
         shared: false,
         x: {
           formatter: function (val) {
@@ -276,19 +318,22 @@ export default {
         }
       },
       title: {
-        text: 'Mauritius population pyramid 2011'
+        text: 'Mauritius population pyramid 2011',
+        style: {
+          color: colors.textColor
+        }
       },
       xaxis: {
         categories: ['85+', '80-84', '75-79', '70-74', '65-69', '60-64', '55-59', '50-54',
           '45-49', '40-44', '35-39', '30-34', '25-29', '20-24', '15-19', '10-14', '5-9',
           '0-4'
         ],
-        title: {
-          text: 'Percent'
-        },
         labels: {
           formatter: function (val) {
             return Math.abs(Math.round(val)) + "%"
+          },
+          style: {
+            colors: colors.textColor
           }
         }
       },
@@ -309,23 +354,28 @@ export default {
       data: [20, 29, 37, 36, 44, 45, 50, 58]
     }],
     options: {
-      chart: {
-        foreColor: "#ffffff",
-      },
       dataLabels: {
         enabled: false
       },
-      colors: ['#547fff', '#3abf94', '#ffc247'],
+      colors: [colors.blue, colors.green, colors.orange],
       stroke: {
         width: [1, 1, 4]
       },
       title: {
         text: 'XYZ - Stock Analysis (2009 - 2016)',
         align: 'left',
-        offsetX: 110
+        offsetX: 110,
+        style: {
+          color: colors.textColor
+        }
       },
       xaxis: {
         categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016],
+        labels: {
+          style: {
+            colors: colors.textColor
+          }
+        }
       },
       yaxis: [{
         axisTicks: {
@@ -333,17 +383,17 @@ export default {
         },
         axisBorder: {
           show: true,
-          color: '#547fff'
+          color: colors.blue
         },
         labels: {
           style: {
-            color: '#547fff',
+            color: colors.blue,
           }
         },
         title: {
           text: "Income (thousand crores)",
           style: {
-            color: '#547fff',
+            color: colors.blue,
           }
         },
         tooltip: {
@@ -359,17 +409,17 @@ export default {
           },
           axisBorder: {
             show: true,
-            color: '#3abf94'
+            color: colors.green
           },
           labels: {
             style: {
-              color: '#3abf94',
+              color: colors.green,
             }
           },
           title: {
             text: "Operating Cashflow (thousand crores)",
             style: {
-              color: '#3abf94',
+              color: colors.green,
             }
           },
         },
@@ -381,22 +431,23 @@ export default {
           },
           axisBorder: {
             show: true,
-            color: '#ffc247'
+            color: colors.orange
           },
           labels: {
             style: {
-              color: '#ffc247',
+              color: colors.orange,
             },
           },
           title: {
             text: "Revenue (thousand crores)",
             style: {
-              color: '#ffc247',
+              color: colors.orange,
             }
           }
         },
       ],
       tooltip: {
+        theme: 'dark',
         fixed: {
           enabled: true,
           position: 'topLeft', // topRight, topLeft, bottomRight, bottomLeft
@@ -406,15 +457,23 @@ export default {
       },
       legend: {
         horizontalAlign: 'left',
-        offsetX: 40
+        offsetX: 40,
+        labels: {
+          colors: [colors.textColor]
+        }
       }
     }
   },
   pie: {
     series: [44, 55, 13, 43, 22],
     options: {
-      chart: {
-        foreColor: "#ffffff",
+      tooltip: {
+        theme: 'dark'
+      },
+      legend: {
+        labels: {
+          colors: [colors.textColor]
+        }
       },
       labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
       responsive: [{
@@ -424,18 +483,23 @@ export default {
             width: 200
           },
           legend: {
-            position: 'bottom'
+            position: 'bottom',
           }
         }
       }],
-      colors: ['#547fff', '#3abf94', '#ffc247', '#f55d5d', '#9964e3'],
+      colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple],
     }
   },
   donut: {
     series: [44, 55, 41, 17, 15],
     options: {
-      chart: {
-        foreColor: "#ffffff",
+      tooltip: {
+        theme: 'dark'
+      },
+      legend: {
+        labels: {
+          colors: [colors.textColor]
+        }
       },
       responsive: [{
         breakpoint: 480,
@@ -444,24 +508,37 @@ export default {
             width: 200
           },
           legend: {
-            position: 'bottom'
+            position: 'bottom',
           }
         }
       }],
-      colors: ['#547fff', '#3abf94', '#ffc247', '#f55d5d', '#9964e3'],
+      colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple],
     }
   },
   radial: {
     series: [76, 67, 61, 90],
     options: {
-      chart: {
-        foreColor: "#ffffff",
-      },
       labels: ['January', 'February', 'March', 'April', 'May', 'June'],
       title: {
-        text: 'Basic Radial Chart'
+        text: 'Basic Radial Chart',
+        style: {
+          color: colors.textColor
+        }
       },
-      colors: ['#547fff', '#3abf94', '#ffc247', '#f55d5d'],
+      colors: [colors.blue, colors.green, colors.orange, colors.red],
+      plotOptions: {
+        radialBar: {
+          dataLabels: {
+            value: {
+              color: colors.textColor
+            }
+          },
+          track: {
+            background: '#000000',
+            opacity: 0.24
+          }
+        }
+      }
     }
   },
   heatmap: {
@@ -530,8 +607,27 @@ export default {
       }
     ],
     options: {
-      chart: {
-        foreColor: "#ffffff",
+      tooltip: {
+        theme: 'dark'
+      },
+      legend: {
+        labels: {
+          colors: [colors.textColor]
+        }
+      },
+      xaxis: {
+        labels: {
+          style: {
+            colors: colors.textColor
+          }
+        }
+      },
+      yaxis: {
+        labels: {
+          style: {
+            color: colors.textColor
+          }
+        }
       },
       plotOptions: {
         heatmap: {
@@ -542,25 +638,25 @@ export default {
               from: -30,
               to: 5,
               name: 'low',
-              color: '#3abf94'
+              color: colors.green
             },
               {
                 from: 6,
                 to: 20,
                 name: 'medium',
-                color: '#547fff'
+                color: colors.blue
               },
               {
                 from: 21,
                 to: 45,
                 name: 'high',
-                color: '#ffc247'
+                color: colors.orange
               },
               {
                 from: 46,
                 to: 55,
                 name: 'extreme',
-                color: '#f55d5d'
+                color: colors.red
               }
             ]
           }
@@ -571,7 +667,10 @@ export default {
       },
 
       title: {
-        text: 'HeatMap Chart with Color Range'
+        text: 'HeatMap Chart with Color Range',
+        style: {
+          color: colors.textColor
+        }
       }
     }
   }

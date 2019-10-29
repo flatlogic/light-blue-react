@@ -14,12 +14,40 @@ export default class RevenueChart extends PureComponent {
     data: [],
     isReceiving: false
   };
-
-  data = this.props.data.map(arr => {
-    return arr.map(item => {
-      return item[1]
+  chartData = () => {
+    let data = this.props.data.map(arr => {
+      return arr.map(item => {
+        return item[1]
+      });
     });
-  })
+    return {
+      ...this.ticks,
+      ...this.chartOptions,
+      series: [
+        {
+          name: 'Light Blue',
+          data: data[0],
+          color: '#E2E1FF',
+          type: 'areaspline',
+          fillOpacity: 0.5,
+          lineWidth: 0
+        },
+        {
+          type: 'spline',
+          name: 'RNS App',
+          data: data[1],
+          color: '#3abf94',
+          dashStyle: 'Dash'
+        },
+        {
+          type: 'spline',
+          name: 'Sing App',
+          data: data[2],
+          color: '#ffc247'
+        }
+      ]
+    }
+  }
 
   chartOptions = {
     credits: {
@@ -82,40 +110,6 @@ export default class RevenueChart extends PureComponent {
     'Jan 20', 'Jan 27', 'Jan 30', 'Feb 2', 'Feb 8', 'Feb 15',
     'Feb 22', 'Feb 28', 'Mar 7', 'Mar 17']
 
-  state = {
-      chartData: {
-      ...this.ticks,
-      ...this.chartOptions,
-      series: [
-        {
-          name: 'Light Blue',
-          data: this.data[0],
-          color: '#E2E1FF',
-          type: 'areaspline',
-          fillOpacity: 0.5,
-          lineWidth: 0
-        },
-        {
-          type: 'spline',
-          name: 'RNS App',
-          data: this.data[1],
-          color: '#3abf94',
-          dashStyle: 'Dash'
-        },
-        {
-          type: 'spline',
-          name: 'Sing App',
-          data: this.data[2],
-          color: '#ffc247'
-        }
-      ]
-    }
-  }
-
-  componentDidMount() {
-    console.log(this.state)
-  }
-
   render() {
 
     const { isReceiving } = this.props;
@@ -140,7 +134,7 @@ export default class RevenueChart extends PureComponent {
           </Row>
         }
       >
-       <HighchartsReact options={this.state.chartData} />
+       <HighchartsReact options={this.chartData()} />
       </Widget>
     );
   }

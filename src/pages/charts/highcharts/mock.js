@@ -2,6 +2,9 @@ import Highcharts from 'highcharts';
 import usdeur from './usdeur';
 import sunburstData from './sunburstData';
 
+import config from '../config';
+const colors = config.chartColors;
+
 let wordCloudText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum erat ac justo sollicitudin, quis lacinia ligula fringilla. Pellentesque hendrerit, nisi vitae posuere condimentum, lectus urna accumsan libero, rutrum commodo mi lacus pretium erat. Phasellus pretium ultrices mi sed semper.';
 let wordCloudLines = wordCloudText.split(/[,. ]+/g),
   wordCloudData = Highcharts.reduce(wordCloudLines, function (arr, word) {
@@ -47,30 +50,39 @@ export default {
     credits: {
       enabled: false
     },
- 
-    colors: ['#547fff'],
+    colors: [colors.blue],
     chart: {
-      backgroundColor: 'rgba(0,0,0,0)',
       zoomType: 'x',
+      backgroundColor: 'transparent'
     },
     title: {
       text: 'USD to EUR exchange rate over time',
       style: {
-        color: "#ffffff"
+        color: colors.textColor
+      }
+    },
+    exporting: {
+      buttons: {
+        contextButton: {
+          symbolStroke: colors.textColor,
+          theme: {
+            fill: 'transparent'
+          }
+        }
       }
     },
     subtitle: {
       text: document.ontouchstart === undefined ?
         'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in',
       style: {
-        color: "#ffffff"
+        color: colors.textColor
       }
     },
     xAxis: {
       type: 'datetime',
       labels: {
         style: {
-          color: "#ffffff"
+          color: colors.textColor
         }
       }
     },
@@ -78,12 +90,12 @@ export default {
       title: {
         text: 'Exchange rate',
         style: {
-          color: "#ffffff"
+          color: colors.textColor
         }
       },
       labels: {
         style: {
-          color: "#ffffff"
+          color: colors.textColor
         }
       }
     },
@@ -121,34 +133,7 @@ export default {
       type: 'area',
       name: 'USD to EUR',
       data: usdeur
-    }],
-
-    navigation: {
-      buttonOptions: {
-        symbolSize: 15,
-        symbolX: 15,
-        symbolStrokeWidth: 2,
-        symbolStroke: '#fff',
-        symbolFill: 'none',
-        'stroke-linecap': 'square',
-        theme: {
-          'stroke-width': 0,
-          stroke: 'none',
-          fill: 'none',
-          r: 0, // border radius
-          states: {
-            hover: {
-              fill: 'none',
-              stroke: 'none'
-            },
-            select: {
-              fill: 'none',
-              stroke: 'none'
-            }
-          }
-        }
-      }
-    },
+    }]
   },
   pie: {
     credits: {
@@ -156,7 +141,17 @@ export default {
     },
     chart: {
       type: 'variablepie',
-      backgroundColor: 'rgba(0,0,0,0)',
+      backgroundColor: 'transparent'
+    },
+    exporting: {
+      buttons: {
+        contextButton: {
+          symbolStroke: colors.textColor,
+          theme: {
+            fill: 'transparent'
+          }
+        }
+      }
     },
     accessibility: {
       description: 'A variable radius pie chart compares the population density and total land mass for seven European nations: Spain, France, Poland, the Czech Republic, Italy, Switzerland and Germany. The chart visualizes the data by using the width of each section to represent total area and the depth of the section to represent population density. Each section is color-coded according to the country and the chart is interactive: by hovering over each section the data points are exposed in a call-out box. The chart is organized by population density in a counterclockwise direction. Germany has the highest population density at 235.6 people per square kilometer, followed by Switzerland, Italy, the Czech Republic, Poland, France and Spain. France has the largest land mass at 551,500 square kilometers. Spain is the second largest country at 505,370 square kilometers but has the lowest population density at 92.9 people per square kilometer. Switzerland is the smallest nation by land mass at 41,277 square kilometers but it has the second highest population density at 214.5 people per square kilometer.'
@@ -164,7 +159,7 @@ export default {
     title: {
       text: 'Countries compared by population density and total area.',
       style: {
-        color: "#ffffff"
+        color: colors.textColor
       }
     },
     tooltip: {
@@ -173,7 +168,7 @@ export default {
         'Area (square km): <b>{point.y}</b><br/>' +
         'Population density (people per square km): <b>{point.z}</b><br/>'
     },
-    colors: ['#547fff', '#3abf94', '#ffc247', '#f55d5d', '#9964e3', '#3c484f', '#17a2b8'],
+    colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.dark, colors.teal],
     series: [{
       minPointSize: 10,
       innerSize: '20%',
@@ -208,42 +203,16 @@ export default {
         y: 357022,
         z: 235.6
       }]
-    }],
-    navigation: {
-      buttonOptions: {
-        symbolSize: 15,
-        symbolX: 15,
-        symbolStrokeWidth: 2,
-        symbolStroke: '#fff',
-        symbolFill: 'none',
-        'stroke-linecap': 'square',
-        theme: {
-          'stroke-width': 0,
-          stroke: 'none',
-          fill: 'none',
-          r: 0, // border radius
-          states: {
-            hover: {
-              fill: 'none',
-              stroke: 'none'
-            },
-            select: {
-              fill: 'none',
-              stroke: 'none'
-            }
-          }
-        }
-      }
-    },
+    }]
   },
   column3D: {
     credits: {
       enabled: false
     },
-    colors: ['#f55d5d'],
+    colors: [colors.red],
     chart: {
+      backgroundColor: 'transparent',
       type: 'column',
-      backgroundColor: 'rgba(0,0,0,0)',
       options3d: {
         enabled: true,
         alpha: 10,
@@ -251,16 +220,31 @@ export default {
         depth: 70
       }
     },
+    exporting: {
+      buttons: {
+        contextButton: {
+          symbolStroke: colors.textColor,
+          theme: {
+            fill: 'transparent'
+          }
+        }
+      }
+    },
     title: {
       text: '3D chart with null values',
       style: {
-        color: "#ffffff"
+        color: colors.textColor
+      }
+    },
+    legend: {
+      itemStyle: {
+        color: colors.textColor
       }
     },
     subtitle: {
       text: 'Notice the difference between a 0 value and a null point',
       style: {
-        color: "#ffffff"
+        color: colors.textColor
       }
     },
     plotOptions: {
@@ -274,7 +258,7 @@ export default {
         skew3d: true,
         style: {
           fontSize: '16px',
-          color: "#ffffff",
+          color: colors.textColor
         }
       }
     },
@@ -283,44 +267,10 @@ export default {
         text: null
       }
     },
-    legend: {
-      itemStyle: {
-        color: "#ffffff"
-      },
-      itemHoverStyle: {
-        color: "#cccccc"
-      },
-    },
     series: [{
       name: 'Sales',
       data: [2, 3, null, 4, 0, 5, 1, 4, 6, 3]
-    }],
-    navigation: {
-      buttonOptions: {
-        symbolSize: 15,
-        symbolX: 15,
-        symbolStrokeWidth: 2,
-        symbolStroke: '#fff',
-        symbolFill: 'none',
-        'stroke-linecap': 'square',
-        theme: {
-          'stroke-width': 0,
-          stroke: 'none',
-          fill: 'none',
-          r: 0, // border radius
-          states: {
-            hover: {
-              fill: 'none',
-              stroke: 'none'
-            },
-            select: {
-              fill: 'none',
-              stroke: 'none'
-            }
-          }
-        }
-      }
-    },
+    }]
   },
   sunburst: {
     credits: {
@@ -328,19 +278,31 @@ export default {
     },
     chart: {
       height: '100%',
-      backgroundColor: 'rgba(0,0,0,0)',
+      backgroundColor: 'transparent'
     },
-
+    exporting: {
+      buttons: {
+        contextButton: {
+          symbolStroke: colors.textColor,
+          theme: {
+            fill: 'transparent'
+          }
+        }
+      }
+    },
     title: {
       text: 'World population 2017',
       style: {
-        color: "#ffffff"
+        color: colors.textColor
       }
     },
     subtitle: {
-      text: 'Source <href="https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)">Wikipedia</a>'
+      text: 'Source <href="https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)">Wikipedia</a>',
+      style: {
+        color: colors.textColor
+      }
     },
-    colors: ['#547fff', '#3abf94', '#ffc247', '#f55d5d', '#9964e3', '#3c484f', '#17a2b8'],
+    colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.dark, colors.teal],
     series: [{
       type: "sunburst",
       data: sunburstData,
@@ -386,49 +348,29 @@ export default {
     tooltip: {
       headerFormat: "",
       pointFormat: 'The population of <b>{point.name}</b> is <b>{point.value}</b>'
-    },
-    navigation: {
-      buttonOptions: {
-        symbolSize: 15,
-        symbolX: 15,
-        symbolStrokeWidth: 2,
-        symbolStroke: '#fff',
-        symbolFill: 'none',
-        'stroke-linecap': 'square',
-        theme: {
-          'stroke-width': 0,
-          stroke: 'none',
-          fill: 'none',
-          r: 0, // border radius
-          states: {
-            hover: {
-              fill: 'none',
-              stroke: 'none'
-            },
-            select: {
-              fill: 'none',
-              stroke: 'none'
-            }
-          }
-        }
-      }
-    },
+    }
   },
   vector: {
+    chart: {
+      backgroundColor: 'transparent'
+    },
     credits: {
       enabled: false
     },
-    chart: {
-      backgroundColor: 'rgba(0,0,0,0)',
-      style: {
-        color: '#FFF',
-     }
-    },
-    colors: ['#495057'],
     title: {
       text: 'Highcharts Vector plot',
       style: {
-        color: "#ffffff"
+        color: colors.textColor
+      }
+    },
+    exporting: {
+      buttons: {
+        contextButton: {
+          symbolStroke: colors.textColor,
+          theme: {
+            fill: 'transparent'
+          }
+        }
       }
     },
     xAxis: {
@@ -437,74 +379,54 @@ export default {
       gridLineWidth: 1,
       labels: {
         style: {
-           color: '#ffffff',
+          color: colors.textColor
         }
-      },
+      }
     },
     yAxis: {
       min: 0,
       max: 100,
-      labels: {
+      title: {
         style: {
-           color: '#ffffff',
+          color: colors.textColor
         }
       },
-      title: {
-        text: "Values",
+      labels: {
         style: {
-          color: "#ffffff"
+          color: colors.textColor
         }
+      }
+    },
+    legend: {
+      itemStyle: {
+        color: colors.textColor
       }
     },
     series: [{
       type: 'vector',
       name: 'Sample vector field',
-      color: "#ffffff",
+      color: colors.textColor,
       data: generateVectorData()
-    }],
-    legend: {
-      itemStyle: {
-        color: "#ffffff"
-      },
-      itemHoverStyle: {
-        color: "#cccccc"
-      },
+    }]
+  },
+  wordCloud: {
+    chart: {
+      backgroundColor: 'transparent'
     },
-    navigation: {
-      buttonOptions: {
-        symbolSize: 15,
-        symbolX: 15,
-        symbolStrokeWidth: 2,
-        symbolStroke: '#fff',
-        symbolFill: 'none',
-        'stroke-linecap': 'square',
-        theme: {
-          'stroke-width': 0,
-          stroke: 'none',
-          fill: 'none',
-          r: 0, // border radius
-          states: {
-            hover: {
-              fill: 'none',
-              stroke: 'none'
-            },
-            select: {
-              fill: 'none',
-              stroke: 'none'
-            }
+    credits: {
+      enabled: false
+    },
+    colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.dark, colors.teal],
+    exporting: {
+      buttons: {
+        contextButton: {
+          symbolStroke: colors.textColor,
+          theme: {
+            fill: 'transparent'
           }
         }
       }
     },
-  },
-  wordCloud: {
-    credits: {
-      enabled: false
-    },
-    chart: {
-      backgroundColor: 'rgba(0,0,0,0)',
-    },
-    colors: ['#547fff', '#3abf94', '#ffc247', '#f55d5d', '#9964e3', '#cccccc', '#17a2b8'],
     series: [{
       type: 'wordcloud',
       data: wordCloudData,
@@ -513,34 +435,8 @@ export default {
     title: {
       text: 'Wordcloud of Lorem Ipsum',
       style: {
-        color: "#ffffff"
+        color: colors.textColor
       }
-    },
-    navigation: {
-      buttonOptions: {
-        symbolSize: 15,
-        symbolX: 15,
-        symbolStrokeWidth: 2,
-        symbolStroke: '#fff',
-        symbolFill: 'none',
-        'stroke-linecap': 'square',
-        theme: {
-          'stroke-width': 0,
-          stroke: 'none',
-          fill: 'none',
-          r: 0, // border radius
-          states: {
-            hover: {
-              fill: 'none',
-              stroke: 'none'
-            },
-            select: {
-              fill: 'none',
-              stroke: 'none'
-            }
-          }
-        }
-      }
-    },
+    }
   }
 }

@@ -41,7 +41,7 @@ class Analytics extends Component {
       let series = [
         {
           name: 'Revenue',
-          data: mock.backendData.revenue.map(s => {
+          data: this.props.revenue.map(s => {
             return {
               name: s.label,
               y: s.data
@@ -84,7 +84,6 @@ class Analytics extends Component {
           itemStyle: {
             color: '#ffffff',
             fontWeight: 400,
-            fontFamily: 'Montserrat'
           },
           itemHoverStyle: {
             color: "#cccccc"
@@ -105,7 +104,7 @@ class Analytics extends Component {
     }
 
   render() {
-        const { visits, isReceiving, performance, server } = this.props;
+    const { visits, isReceiving, performance, server, mainChart } = this.props;
     return (
       <div>
         <h1 className="page-title">Analytics</h1>
@@ -226,7 +225,7 @@ class Analytics extends Component {
                 </div>
               </Col>
               <Col lg={12} xs={12}>
-                  <MainChart data={mock.backendData.mainChart} isReceiving={isReceiving} />
+                  <MainChart data={mainChart} isReceiving={isReceiving} />
               </Col>
               <Col xs={12} lg={6} xl={4}>
                 <BigStat {...mock.bigStat[0]} />
