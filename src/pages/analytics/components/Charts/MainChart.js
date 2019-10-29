@@ -35,14 +35,28 @@ export default class RevenueChart extends PureComponent {
     },
     legend: {
       verticalAlign: 'top',
+      itemStyle: {
+        color: "#ffffff"
+      },
+      itemHoverStyle: {
+        color: "#cccccc"
+      }
     },
     yAxis: {
-      title: false
+      title: false,
+      labels: {
+        style: {
+          color: "#ffffff"
+        }
+      }
     },
     xAxis: {
       type: 'datetime',
       labels: {
-        overflow: 'justify'
+        overflow: 'justify',
+        style: {
+          color: "#ffffff"
+        }
       }
     },
     annotations: {
@@ -56,7 +70,11 @@ export default class RevenueChart extends PureComponent {
         },
         pointInterval: 3600000 * 25, // every day
         pointStart: Date.UTC(2018, 12, 19, 0, 0, 0),
-
+        tooltip: {
+          pointFormatter() {
+            return `<span style="color: ${this.color}">${this.series.name} at ${this.y.toFixed(2)}</span>`;
+          }
+        }
       },
     }
   };
@@ -95,7 +113,7 @@ export default class RevenueChart extends PureComponent {
   }
 
   componentDidMount() {
-    console.log(this.props)
+    console.log(this.state)
   }
 
   render() {

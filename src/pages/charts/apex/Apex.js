@@ -133,7 +133,7 @@ class ApexCharts extends Component {
                   <ApexChart 
                     className="sparkline-chart"
                     type={"heatmap"}
-                    height={175}
+                    height={250}
                     series={cd.heatmap.series}
                     options={cd.heatmap.options}
                   />

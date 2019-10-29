@@ -286,7 +286,10 @@ export default {
     legend: {
       itemStyle: {
         color: "#ffffff"
-      }
+      },
+      itemHoverStyle: {
+        color: "#cccccc"
+      },
     },
     series: [{
       name: 'Sales',
@@ -462,7 +465,10 @@ export default {
     legend: {
       itemStyle: {
         color: "#ffffff"
-      }
+      },
+      itemHoverStyle: {
+        color: "#cccccc"
+      },
     },
     navigation: {
       buttonOptions: {

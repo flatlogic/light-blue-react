@@ -7,7 +7,11 @@ var scatterDays = ['Saturday', 'Friday', 'Thursday',
   'Wednesday', 'Tuesday', 'Monday', 'Sunday'];
 export default {
   bar: {
-    legend: {},
+    legend: {
+      textStyle: {
+        color: "#ffffff"
+      }
+    },
     tooltip: {},
     dataset: {
       source: [
@@ -18,8 +22,31 @@ export default {
         ['Walnut Brownie', ...randomize()]
       ]
     },
-    xAxis: {type: 'category'},
-    yAxis: {},
+    xAxis: {
+      type: 'category',
+      axisLabel: {
+        textStyle: {
+          color: "#ffffff"
+        }
+      },
+      axisLine: {
+        lineStyle: {
+          color: "#B1B1B1"
+        }
+      },
+    },
+    yAxis: {
+      axisLabel: {
+        textStyle: {
+          color: "#ffffff"
+        }
+      },
+      axisLine: {
+        lineStyle: {
+          color: "#B1B1B1"
+        }
+      },
+    },
     series: [{type: 'bar'}, {type: 'bar'}, {type: 'bar'}],
     color: ['#547fff', '#3abf94', '#f55d5d', '#3c484f', ]
   },
@@ -29,6 +56,9 @@ export default {
       formatter: '{a} <br/>{b} : {c} ({d}%)'
     },
     legend: {
+      textStyle: {
+        color: "#ffffff"
+      },
       orient: 'vertical',
       left: 'left',
       data: ['Direct interview', 'Email marketing', 'Alliance advertising', 'Video ad', 'Search engine']
@@ -59,6 +89,9 @@ export default {
   },
   polar: {
     legend: {
+      textStyle: {
+        color: "#ffffff"
+      },
       data: ['line']
     },
     polar: {
@@ -72,10 +105,15 @@ export default {
     },
     angleAxis: {
       type: 'value',
-      startAngle: 0
+      startAngle: 0,
+      axisLine: {
+        lineStyle: {
+          color: "#B1B1B1"
+        }
+      },
     },
     radiusAxis: {
-      min: 0
+      min: 0,
     },
     series: [
       {
@@ -94,7 +132,10 @@ export default {
       trigger: 'axis'
     },
     legend: {
-      data: ['Step Start', 'Step Middle', 'Step End']
+      data: ['Step Start', 'Step Middle', 'Step End'],
+      textStyle: {
+        color: "#ffffff"
+      },
     },
     grid: {
       left: '3%',
@@ -109,10 +150,20 @@ export default {
     },
     xAxis: {
       type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      axisLine: {
+        lineStyle: {
+          color: "#ffffff"
+        }
+      },
     },
     yAxis: {
-      type: 'value'
+      type: 'value',
+      axisLine: {
+        lineStyle: {
+          color: "#ffffff"
+        }
+      },
     },
     series: [
       {
@@ -141,11 +192,17 @@ export default {
   scatter: {
     title: {
       text: 'Punch Card of Github',
-      link: 'https://github.com/pissang/echarts-next/graphs/punch-card'
+      link: 'https://github.com/pissang/echarts-next/graphs/punch-card',
+      textStyle: {
+        color: "#ffffff"
+      }
     },
     legend: {
       data: ['Punch Card'],
-      left: 'right'
+      left: 'right',
+      textStyle: {
+        color: "#ffffff"
+      }
     },
     tooltip: {
       position: 'top',
@@ -166,20 +223,29 @@ export default {
       splitLine: {
         show: true,
         lineStyle: {
-          color: '#999',
+          color: '#ffffff',
           type: 'dashed'
         }
       },
       axisLine: {
         show: false
-      }
+      },
+      axisLine: {
+        lineStyle: {
+          show: false,
+          color: "#ffffff"
+        }
+      },
     },
     yAxis: {
       type: 'category',
       data: scatterDays,
       axisLine: {
-        show: false
-      }
+        lineStyle: {
+          show: false,
+          color: "#ffffff"
+        }
+      },
     },
     series: [{
       color: ["#f55d5d"],
@@ -197,6 +263,11 @@ export default {
     }]
   },
   gauge: {
+    legend: {
+      textStyle: {
+        color: "#ffffff"
+      }
+    },
     tooltip: {
       formatter: "{a} <br/>{b} : {c}%"
     },

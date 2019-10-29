@@ -70,6 +70,10 @@ export const chartData = {
         }
       },
       legend: {
+        textStyle: {
+          color: "#ffffff"
+        },
+        
         data: ['2015 Precipitation', '2016 Precipitation']
       },
       grid: {
@@ -122,7 +126,12 @@ export const chartData = {
       ],
       yAxis: [
         {
-          type: 'value'
+          type: 'value',
+          axisLine: {
+            lineStyle: {
+              color: "#ffffff"
+            }
+          },
         }
       ],
       series: [
@@ -190,7 +199,7 @@ export const chartData = {
         axisPointer: {
           type: 'line',
           lineStyle: {
-            color: 'rgba(0,0,0,0.2)',
+            color: '#ffffff',
             width: 1,
             type: 'solid'
           }
@@ -198,7 +207,10 @@ export const chartData = {
       },
 
       legend: {
-        data: ['DQ', 'TY', 'SS', 'QG', 'SY', 'DD']
+        data: ['DQ', 'TY', 'SS', 'QG', 'SY', 'DD'],
+        textStyle: {
+          color: "#ffffff"
+        }
       },
       color: ['#547fff', '#3abf94', '#ffc247', '#f55d5d', '#9964e3', '#3c484f'],
       singleAxis: {
@@ -206,7 +218,10 @@ export const chartData = {
         bottom: 50,
         axisTick: {},
         axisLabel: {
-          color: "#ffffff"
+          color: "#ffffff",
+          lineStyle: {
+            color: "#ffffff"
+          }
         },
         type: 'time',
         axisPointer: {
@@ -229,7 +244,7 @@ export const chartData = {
       series: [
         {
           label: {
-            color: "#ffffff"
+            color: "#fff"
           },
           type: 'themeRiver',
           itemStyle: {

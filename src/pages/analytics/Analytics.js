@@ -82,9 +82,12 @@ class Analytics extends Component {
           verticalAlign: 'middle',
           layout: 'vertical',
           itemStyle: {
-            color: '#495057',
-            fontWeight: 100,
+            color: '#ffffff',
+            fontWeight: 400,
             fontFamily: 'Montserrat'
+          },
+          itemHoverStyle: {
+            color: "#cccccc"
           },
           itemMarginBottom: 5,
           symbolRadius: 0
@@ -102,7 +105,7 @@ class Analytics extends Component {
     }
 
   render() {
-        const { visits, isReceiving, performance, server, revenue, mainChart } = this.props;
+        const { visits, isReceiving, performance, server } = this.props;
     return (
       <div>
         <h1 className="page-title">Analytics</h1>
@@ -214,7 +217,7 @@ class Analytics extends Component {
                   </Widget>
                 </div>
               </Col>
-              <Col xs={12}>
+              <Col lg={12} xs={12}>
                   <MainChart data={mock.backendData.mainChart} isReceiving={isReceiving} />
               </Col>
               <Col xs={12} lg={6} xl={4}>
