@@ -217,6 +217,11 @@ export const chartData = {
         top: 50,
         bottom: 50,
         axisTick: {},
+        axisLine: {
+          lineStyle: {
+            color: "#ffffff"
+          }
+        },
         axisLabel: {
           color: "#ffffff",
           lineStyle: {
@@ -246,7 +251,7 @@ export const chartData = {
           label: {
             color: "#fff"
           },
-          type: 'themeRiver',
+          type: 'themeRiver',       
           itemStyle: {
             emphasis: {
               shadowBlur: 20,

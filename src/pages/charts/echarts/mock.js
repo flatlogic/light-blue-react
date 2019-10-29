@@ -228,9 +228,6 @@ export default {
         }
       },
       axisLine: {
-        show: false
-      },
-      axisLine: {
         lineStyle: {
           show: false,
           color: "#ffffff"
