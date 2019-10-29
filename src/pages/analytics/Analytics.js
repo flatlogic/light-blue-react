@@ -205,13 +205,21 @@ class Analytics extends Component {
                     <div className="d-flex justify-content-between flex-wrap mb-sm">
                       <p className="width-150"><small>{server[1]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[1]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[1]?.frequency} Ghz</small></p>
                       <div className={s.sparklineWrapper}>
-                        <LineChart color="#ffc247" />
+                        <LineChart 
+                          data={mock.serverOverview[0].data} 
+                          height={mock.serverOverview[0].height} 
+                          width={mock.serverOverview[0].width} 
+                          options={mock.serverOverview[0].options} />
                       </div>
                     </div>
                     <div className="d-flex justify-content-between flex-wrap mb-sm">
                       <p className="width-150"><small>{server[2]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.frequency} Ghz</small></p>
                       <div className={s.sparklineWrapper}>
-                        <LineChart color="#9964e3" />
+                        <LineChart 
+                          data={mock.serverOverview[1].data} 
+                          height={mock.serverOverview[1].height} 
+                          width={mock.serverOverview[1].width} 
+                          options={mock.serverOverview[1].options} />
                       </div>
                     </div>
                   </Widget>

@@ -1,4 +1,72 @@
 export default {
+  serverOverview: [
+    {
+      data: [{
+        data: [4, 6, 5, 7, 5],
+      }],
+      width: '100%',
+      height: 30,
+      options: {
+        stroke: {
+          width: 1
+        },
+        markers: {
+          size: 4,
+          colors: '#57B955',
+          shape: "circle",
+          strokeWidth: 0,
+          hover: {
+            size: 5,
+            colors: '#fff',
+          }
+        },
+        colors: [
+          '#4E85BD'
+        ],
+        grid: {
+          padding: {
+            left: 10,
+            right: 10,
+            top: 10,
+            bottom: 10
+          }
+        }
+      }
+    },
+    {
+      data: [{
+        data: [2, 3, 1, 4, 4],
+      }],
+      width: '100%',
+      height: 30,
+      options: {
+        stroke: {
+          width: 1
+        },
+        markers: {
+          size: 4,
+          colors: '#57B955',
+          shape: "circle",
+          strokeWidth: 0,
+          hover: {
+            size: 5,
+            colors: '#fff',
+          }
+        },
+        colors: [
+          '#4E85BD'
+        ],
+        grid: {
+          padding: {
+            left: 10,
+            right: 10,
+            top: 10,
+            bottom: 10
+          }
+        }
+      }
+    }
+  ],
   tasks: [
     {
       id: 0,
