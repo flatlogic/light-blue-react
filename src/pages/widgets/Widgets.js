@@ -4,9 +4,9 @@ import {
   Col,
   Progress,
 } from 'reactstrap';
+import Slider from "react-slick";
 
 import Widget from '../../components/Widget';
-import LiveTile from './components/live-tile/LiveTile';
 import ChangesChart from './components/changes-chart/ChangesChart';
 import RealtimeTraffic from './components/realtime-traffic/RealtimeTraffic';
 import YearsMap from './components/years-map/YearsMap';
@@ -14,6 +14,8 @@ import FlotCharts from './components/flot-charts/FlotCharts';
 import NasdaqSparkline from './components/nasdaq-sparkline-widget/nasdaqSparkline';
 import Skycon from '../../components/Skycon/Skycon';
 import { Input, InputGroup, InputGroupAddon, Button } from 'reactstrap';
+
+import s from './WidgetsMetro.module.scss';
 import './Widgets.scss';
 
 import peopleA1 from '../../images/people/a1.jpg';
@@ -28,10 +30,23 @@ import img17 from '../../images/pictures/17.jpg';
 class Widgets extends React.Component {
 
   render() {
+    let settings = {
+      dots: false,
+      infinite: true,
+      vertical: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      adaptiveHeight: true,
+      arrows: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      draggable: false,
+    };
+
     return (
       <div className="root">
         <Row>
-          <Col lg={3} md={6} xs={12}>
+          <Col xl={3} lg={4} md={6} xs={12}>
             <Widget>
               <div className="clearfix">
                 <Row className="flex-nowrap">
@@ -58,7 +73,7 @@ class Widgets extends React.Component {
               </div>
             </Widget>
           </Col>
-          <Col lg={3} md={6} xs={12}>
+          <Col xl={3} lg={4} md={6}  xs={12}>
             <Widget>
               <div className="clearfix">
                 <Row className="flex-nowrap">
@@ -67,11 +82,8 @@ class Widgets extends React.Component {
                       <i className="fi flaticon-magic-wand text-info" />
                     </span>
                   </Col>
-                  <Col xs="9">
-                    <LiveTile
-                      data-mode="carousel" data-speed="750" data-delay="3000"
-                      data-height="57"
-                    >
+                  <Col xs="9">   
+                    <Slider {...settings} className={`${s.hideOverflow} ${s.itemMinWidth}`}>
                       <div>
                         <h6 className="m-0">VISITS TODAY</h6>
                         <p className="h2 m-0 fw-normal">12,324</p>
@@ -80,49 +92,40 @@ class Widgets extends React.Component {
                         <h6 className="m-0">VISITS YESTERDAY</h6>
                         <p className="h2 m-0 fw-normal">11,885</p>
                       </div>
-                    </LiveTile>
+                    </Slider> 
                   </Col>
                 </Row>
                 <Row className="flex-nowrap">
                   <Col xs="6">
                     <h6 className="m-0">New Visitors</h6>
-                    <LiveTile
-                      data-mode="carousel" data-speed="750" data-delay="3000"
-                      data-height="25"
-                    >
+                    <Slider {...settings}  className={s.hideOverflow}>
                       <div>
                         <p className="value5">1,332</p>
                       </div>
                       <div>
                         <p className="value5">20.1%</p>
                       </div>
-                    </LiveTile>
+                    </Slider>
                   </Col>
                   <Col xs="6">
                     <h6 className="m-0">Bounce Rate</h6>
-                    <LiveTile
-                      data-mode="carousel" data-speed="750" data-delay="3000"
-                      data-height="26"
-                    >
+                    <Slider {...settings}  className={s.hideOverflow}>
                       <div>
                         <p className="value5">217</p>
                       </div>
                       <div>
                         <p className="value5">2.3%</p>
                       </div>
-                    </LiveTile>
+                    </Slider>
                   </Col>
                 </Row>
               </div>
             </Widget>
           </Col>
-          <Col lg={3} md={6} xs={12}>
+          <Col xl={3} lg={4}  md={6} xs={12}>
             <Widget>
               <div className="clearfix">
-                <LiveTile
-                  data-mode="flip" data-speed="750" data-delay="4000"
-                  data-height="104"
-                >
+                <Slider {...settings}  className={`${s.hideOverflow} ${s.itemMinWidth}`}>
                   <div className="text-white">
                     <Row className="flex-nowrap">
                       <Col xs={3}>
@@ -169,11 +172,11 @@ class Widgets extends React.Component {
                       </Col>
                     </Row>
                   </div>
-                </LiveTile>
+                </Slider>
               </div>
             </Widget>
           </Col>
-          <Col lg={3} md={6} xs={12}>
+          <Col xl={3} lg={4}  md={6} xs={12}>
             <Widget>
               <div className="clearfix">
                 <Row className="flex-nowrap">
@@ -597,130 +600,128 @@ class Widgets extends React.Component {
         </Row>
 
         <Row>
-          <Col lg={3} xs={12}>
+          <Col xl={3} lg={4} xs={12}>
             <Widget className="widget-padding-md">
               <div className="clearfix">
-                <LiveTile
-                  data-mode="carousel" data-speed="750" data-delay="3000"
-                  data-height="313"
-                >
-                  <div>
+                <Slider {...settings} className={s.hideOverflow}>
+                  <div className={s.slideWrap}>
                     <h3>Basic & <span className="fw-semi-bold">Advanced</span> Features</h3>
-                    <p className="value4 mt-lg">All you need in one app</p>
+                    <p className={`value4 mt-lg ${s.smallSite}`}>All you need in one app</p>
                     <div className="h5 mt-lg mb-lg">
                       <i className="fa fa-quote-left opacity-50" />
                       &nbsp;That&apos;s awesome!  &nbsp;
                       <i className="fa fa-quote-right opacity-50" />
                     </div>
-                    <div className="widget-footer-bottom">
-                      <p>Attention to what&apos;s really important</p>
-                      <button className="btn btn-info btn-block mt">Order Now!</button>
+                    <div>
+                      <p className={s.positionDescriptionText}>Attention to what&apos;s really important</p>
+                      <button className={`${s.positionElementBottom} btn btn-info btn-block mt`}>Order Now!</button>
                     </div>
                   </div>
-                  <div>
+                  <div className={s.slideWrap}>
                     <h3>Beautiful <span className="fw-semi-bold">Thing</span></h3>
-                    <p className="value4 mt-lg">Life-time package support</p>
+                    <p className={`value4 mt-lg ${s.smallSite}`}>Life-time package support</p>
                     <div className="h5 mt-lg mb-lg">
                       <i className="fa fa-quote-left opacity-50" />
                       &nbsp;That&apos;s awesome!  &nbsp;
                       <i className="fa fa-quote-right opacity-50" />
                     </div>
-                    <div className="widget-footer-bottom">
-                      <p>Attention to what&apos;s really important</p>
-                      <button className="btn btn-inverse btn-block mt"><span
+                    <div>
+                      <p className={s.positionDescriptionText}>Attention to what&apos;s really important</p>
+                      <button className={`${s.positionElementBottom} btn btn-inverse btn-block mt`} ><span
                         className="fw-semi-bold text-warning"
                       >Ready?</span>
                       </button>
                     </div>
                   </div>
-                </LiveTile>
+                </Slider>
               </div>
             </Widget>
           </Col>
 
-          <Col lg={3} xs={12}>
+          <Col xl={3} lg={4} xs={12}>
             <Widget className="widget-chart-changes" close refresh bodyClass="mt-0">
               <ChangesChart />
             </Widget>
           </Col>
 
-          <Col lg={3} xs={12}>
+          <Col xl={3} lg={4} xs={12}>
             <Widget className="widget-padding-md bg-primary text-white">
               <div className="clearfix">
-                <LiveTile data-mode="carousel" data-speed="300" data-delay="3000" data-height="313">
-                  <div>
-                    <p className="h4 mt-xs">
+              <Slider {...settings} className={s.hideOverflow}>
+                  <div className={s.slideWrap}>
+                    <p className="h4">
                       <i className="fa fa-quote-left opacity-50" />
                       &nbsp;Thanks for the awesome support. That&apos;s awesome!&nbsp;
                       <i className="fa fa-quote-right opacity-50" />
                     </p>
-                    <div className="widget-footer-bottom">
+                    <div className={s.positionElementBottom}>
                       <span className="thumb pull-left mr">
                         <img className="rounded-circle" src={peopleA4} alt="..." />
                       </span>
-                      <h4 className="m-0 mb-xs"><span className="fw-semi-bold">Miha</span> Koshir</h4>
-                      <p className="text-light">@miha</p>
+                      <h4 className={`${s.wideName} m-0`}><span className="fw-semi-bold">Miha </span>Koshir</h4>
+                      <p className="text-light m-0">@miha</p>
                     </div>
                   </div>
-                  <div>
-                    <div className="clearfix mt-xs">
+                  <div  className={s.slideWrap}> 
+                    <div className="clearfix">
                       <span className="thumb pull-left mr">
                         <img className="rounded-circle" src={peopleA3} alt="..." />
                       </span>
-                      <h4 className="m-0 mb-xs"><span className="fw-semi-bold">Maryna</span> Ess</h4>
-                      <p className="text-light">@ess</p>
+                      <h4 className="m-0"><span className="fw-semi-bold">Maryna</span> Ess</h4>
+                      <p className="text-light m-0">@ess</p>
                     </div>
-                    <div className="widget-footer-bottom">
-                      <p className="h4">
+                    <div>
+                      <p className={`h4 ${s.positionElementBottom}`}>
                         <i className="fa fa-quote-left opacity-50" />
                         &nbsp;Could have never imagined it would be so great!&nbsp;
                         <i className="fa fa-quote-right opacity-50" />
                       </p>
                     </div>
                   </div>
-                </LiveTile>
+                </Slider>
               </div>
             </Widget>
+            
           </Col>
 
-          <Col lg={3} xs={12} className="col-lg-3 col-12">
-            <LiveTile
-              data-mode="flip" data-direction="horizontal"
-              data-speed="600" data-delay="3000" data-height="373" data-play-onhover="true"
-            >
-              <div>
-                <Widget
-                  fullscreen={false}
-                  className="widget-padding-md bg-widget-transparent-dark text-white"
-                  bodyClass="widget-body-container"
-                >
-                  <div className="text-center">
-                    <i className="fa fa-child text-warning fa-5x" />
-                  </div>
-                  <h3 className="fw-normal">Light Blue Web App</h3>
-                  <div>
-                    <div className="mb-sm set-margin">Cutting-edge tech and design delivered</div>
-                    <p>
-                      <button className="btn btn-default btn-block">Hover over me!</button>
-                    </p>
-                  </div>
-                </Widget>
-              </div>
-              <div>
-                <Widget fullscreen={false} className="widget-padding-md " bodyClass="widget-body-container">
+          <Col xl={3} lg={4} xs={12} className="col-lg-3 col-12">
+              <div className={s.flipCard}>
+                <div className={s.flipCardInner}>
+                  <div className={s.flipCardFront}>
+                    <Widget
+                      fullscreen={false}
+                      className={`widget-padding-md bg-widget-transparent-dark text-white ${s.slideWrap}`}
+                      bodyClass="widget-body-container"
+                    >
+                      <div className="text-center">
+                        <i className="fa fa-child text-warning fa-5x" />
+                      </div>
+                      <h3 className="fw-normal">Light Blue Web App</h3>
+                      <div className={s.postitionGroupElements}>
+                        <div className="mb-sm">Cutting-edge tech and design delivered</div>
+                        <p>
+                          <button className="btn btn-default btn-block">Hover over me!</button>
+                        </p>
+                      </div>
+                    </Widget>
+                </div>
+              
+              <div className={s.flipCardBack}>
+                <Widget fullscreen={false} className={`widget-padding-md ${s.slideWrap}`}  bodyClass="widget-body-container">
                   <div className="text-center">
                     <i className="fa fa-globe text-primary fa-5x" />
                   </div>
                   <h3 className="fw-normal">Join The Web Now!</h3>
-                  <div>
-                    <div className="mb-sm set-margin">Cutting-edge tech and design delivered</div>
+                  <div className={s.postitionGroupElements}>
+                    <div className="mb-sm">Cutting-edge tech and design delivered</div>
                     <p>
                       <button className="btn btn-gray btn-block">Join now!</button>
                     </p>
                   </div>
                 </Widget>
+                </div>
+                </div>
               </div>
-            </LiveTile>
           </Col>
         </Row>
       </div>
