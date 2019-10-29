@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import { Row, Col, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/prism';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
-import ReactBootstrapSlider from 'react-bootstrap-slider';
+//import ReactBootstrapSlider from 'react-bootstrap-slider';
 import {Sparklines, SparklinesBars} from "react-sparklines";
 import ColorPiker from 'rc-color-picker';
 import TextareaAutosize from 'react-autosize-textarea';
 import DateTime from 'react-datetime';
 import { Editor } from 'react-draft-wysiwyg';
 import MaskedInput from 'react-maskedinput'
-import Select2 from 'react-select2-wrapper';
+//import Select2 from 'react-select2-wrapper';
 import Scrollspy from './ScrollSpyComponent';
 import { Link } from 'react-router-dom';
 
@@ -31,7 +31,7 @@ export default class Libs extends Component {
   render() {
     return (
       <Row className={s.root}>
-        <Col md={10}>
+        {/* <Col md={10}>
           <Breadcrumb>
             <BreadcrumbItem>YOU ARE HERE</BreadcrumbItem>
             <BreadcrumbItem>Documentation</BreadcrumbItem>
@@ -400,7 +400,7 @@ export default class Libs extends Component {
             'Rickshaw',
             'Skycons',
           ]} />
-        </Col>
+        </Col> */}
       </Row>
     )
   }

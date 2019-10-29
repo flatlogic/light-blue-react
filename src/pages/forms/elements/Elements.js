@@ -18,11 +18,11 @@ import {
 } from 'reactstrap';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
-import Select2 from 'react-select2-wrapper';
+//import Select2 from 'react-select2-wrapper';
 import Datetime from 'react-datetime';
 import ColorPicker from 'rc-color-picker';
 import MaskedInput from 'react-maskedinput';
-import ReactBootstrapSlider from 'react-bootstrap-slider';
+//import ReactBootstrapSlider from 'react-bootstrap-slider';
 import Dropzone from 'react-dropzone';
 import TextareaAutosize from 'react-autosize-textarea';
 import ReactMde, { ReactMdeCommands } from 'react-mde';
@@ -226,7 +226,7 @@ class Elements extends React.Component {
         <h1 className="page-title">Form - <span className="fw-semi-bold">Inputs & Controls</span>
         </h1>
 
-        <Row>
+        {/* <Row>
           {/* Horizontal form */}
           <Col lg={6} md={12}>
             <Widget title={<h6> Inputs </h6>} settings refresh close>
@@ -362,6 +362,7 @@ class Elements extends React.Component {
           </Col>
 
           {/* Default form */}
+          {/*
           <Col lg={6} md={12}>
             <Widget title={<h6> Prepended and appended inputs </h6>} settings refresh close>
               <FormGroup>
@@ -1380,8 +1381,8 @@ class Elements extends React.Component {
           </Col>
 
         </Row>
-
-      </div>
+*/}
+      </div> 
     );
   }
 }
