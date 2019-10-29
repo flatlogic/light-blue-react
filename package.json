@@ -142,6 +142,7 @@
     "react-tagsinput": "^3.19.0",
     "react-toastify": "^5.4.0",
     "react-transition-group": "^2.5.2",
+    "react-trend": "^1.2.5",
     "reactstrap": "7.1.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",

@@ -5,7 +5,7 @@ import cx from 'classnames';
 import { Col, Row, Progress } from 'reactstrap';
 
 import Widget from '../../components/Widget';
-import LineChart from './components/Charts/LineChart';
+import Trend from 'react-trend';
 import MainChart from './components/Charts/MainChart';
 import TaskContainer from './components/TaskContainer/TaskContainer';
 import BigStat from './components/BigStat/BigStat';
@@ -36,6 +36,14 @@ class Analytics extends Component {
         mainChart: [],
         isReceiving: false
     };
+
+    getRandomData = () => {
+      const arr = [];
+      for (let i = 0; i < 25; i += 1) {
+        arr.push(Math.random().toFixed(1) * 10);
+      }
+      return arr;
+    }
 
     donut = () => {
       let series = [
@@ -125,19 +133,19 @@ class Analytics extends Component {
                           <i className="la la-arrow-right text-success rotate-315"/>
                       </div>
                       <div className="d-flex flex-wrap justify-content-between">
-                          <div className={cx('mt', s.visitElement)}>
+                          <div className={cx('mt')}>
                               <h6>+{visits.logins}</h6>
                               <p className="text-muted mb-0 mr">
                                   <small>Logins</small>
                               </p>
                           </div>
-                          <div className={cx('mt', s.visitElement)}>
+                          <div className={cx('mt')}>
                               <h6>{visits.sign_out_pct}%</h6>
                               <p className="text-muted mb-0">
                                   <small>Sign Out</small>
                               </p>
                           </div>
-                          <div className={cx('mt', s.visitElement)}>
+                          <div className={cx('mt')}>
                               <h6>{visits.rate_pct}%</h6>
                               <p className="text-muted mb-0 mr">
                                   <small>Rate</small>
@@ -201,24 +209,37 @@ class Analytics extends Component {
                     fetchingData={isReceiving}
                     title={<h5>Server Overview</h5>}
                   >
-                    <div className="d-flex justify-content-between flex-wrap mb-sm">
-                      <p className="width-150"><small>{server[1]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[1]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[1]?.frequency} Ghz</small></p>
+                    <div className="d-flex justify-content-between mb-sm">
+                      <p><small>{server[1]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[1]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[1]?.frequency} Ghz</small></p>
                       <div className={s.sparklineWrapper}>
-                        <LineChart 
-                          data={mock.serverOverview[0].data} 
-                          height={mock.serverOverview[0].height} 
-                          width={mock.serverOverview[0].width} 
-                          options={mock.serverOverview[0].options} />
+                        <Trend 
+                          gradient={['#ffc247']}
+                          height={30}
+                          smooth
+                          data={this.getRandomData()}
+                        />
                       </div>
                     </div>
-                    <div className="d-flex justify-content-between flex-wrap mb-sm">
-                      <p className="width-150"><small>{server[2]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.frequency} Ghz</small></p>
+                    <div className="d-flex justify-content-between mb-sm">
+                      <p><small>{server[2]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.frequency} Ghz</small></p>
                       <div className={s.sparklineWrapper}>
-                        <LineChart 
-                          data={mock.serverOverview[1].data} 
-                          height={mock.serverOverview[1].height} 
-                          width={mock.serverOverview[1].width} 
-                          options={mock.serverOverview[1].options} />
+                        <Trend 
+                          gradient={['#F55D5D']}
+                          height={30}
+                          smooth
+                          data={this.getRandomData()}
+                        />
+                      </div>
+                    </div>
+                    <div className="d-flex justify-content-between mb-sm">
+                      <p><small>{server[2]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.frequency} Ghz</small></p>
+                      <div className={s.sparklineWrapper}>
+                        <Trend 
+                          gradient={['#3abf94']}
+                          height={30}
+                          smooth
+                          data={this.getRandomData()}
+                        />
                       </div>
                     </div>
                   </Widget>

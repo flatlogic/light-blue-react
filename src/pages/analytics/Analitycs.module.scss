@@ -47,9 +47,7 @@
 }
 
 .sparklineWrapper {
-  display: flex;
-  justify-content: center;
-  min-width: calc(100% - 150px);
+  width: calc(100% - 150px);
 }
 
 .notifications {
