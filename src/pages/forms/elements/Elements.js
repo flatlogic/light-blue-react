@@ -1132,7 +1132,7 @@ class Elements extends React.Component {
                   <p>Light Blue extends Bootstrap Slider and provides different color options:</p>
                   <Form>
                     <Row>
-                      <Col md={8}>
+                      <Col lg={10} md={8}>
                         <div className="mb-sm">
                           <SliderWithTooltip  
                             tipFormatter={this.valueFormatter}
@@ -1173,7 +1173,7 @@ class Elements extends React.Component {
                   </Form>
                 </Col>
 
-                <Col lg="4">
+                <Col lg={4}>
                   <h4>Slider Orientation</h4>
                   <p>
                     Vertical orientation is also possible. Simply changing <strong>
@@ -1181,8 +1181,8 @@ class Elements extends React.Component {
                     attribute does the thing.
                   </p>
                   <Row>
-                    <Col md="8">
-                      <span className="">
+                    <Col lg={10}>
+                      <span>
                         <SliderWithTooltip  
                           tipFormatter={this.valueFormatter} 
                           className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
@@ -1191,7 +1191,7 @@ class Elements extends React.Component {
                         />
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <span className="slider-inverse">
+                      <span>
                         <SliderWithTooltip  
                           tipFormatter={this.valueFormatter} 
                           className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderGrey}`}
@@ -1200,7 +1200,7 @@ class Elements extends React.Component {
                         />
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <span className="">
+                      <span>
                         <SliderWithTooltip  
                           tipFormatter={this.valueFormatter} 
                           className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
@@ -1209,7 +1209,7 @@ class Elements extends React.Component {
                         />
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <span className="slider-inverse">
+                      <span>
                         <SliderWithTooltip  
                           tipFormatter={this.valueFormatter} 
                           className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderGrey}`}
@@ -1218,7 +1218,7 @@ class Elements extends React.Component {
                         />
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <span className="">
+                      <span>
                         <SliderWithTooltip  
                           tipFormatter={this.valueFormatter} 
                           className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
