@@ -1129,7 +1129,7 @@ class Elements extends React.Component {
               <Row>
                 <Col lg="4">
                   <h4>Color Options</h4>
-                  <p>Light Blue extends Bootstrap Slider and provides different color options:</p>
+                  <p>Light Blue extends rc-slider and provides different color options:</p>
                   <Form>
                     <Row>
                       <Col lg={10} md={8}>
@@ -1176,9 +1176,9 @@ class Elements extends React.Component {
                 <Col lg={4}>
                   <h4>Slider Orientation</h4>
                   <p>
-                    Vertical orientation is also possible. Simply changing <strong>
-                    data-slider-orientation </strong>
-                    attribute does the thing.
+                    Vertical orientation is also possible. Simply by adding <strong>
+                    verical prop </strong>
+                    to slider component.
                   </p>
                   <Row>
                     <Col lg={10}>
