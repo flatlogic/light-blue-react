@@ -20,7 +20,7 @@ class NasdaqSparkline extends React.Component {
         strokeWidth: 0,
         hover: {
           size: 5,
-          colors: '#fff',
+          colors: '#000',
         }
       },
       colors: [
