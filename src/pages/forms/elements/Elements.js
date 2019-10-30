@@ -1236,7 +1236,7 @@ class Elements extends React.Component {
                     attribute as
                     an array. Price range selector:</p>
                   <Row>
-                    <Col md={8}>
+                    <Col md={10}>
                       <span className="slider-warning">
                         <RangeTooltip 
                           allowCross={false}
