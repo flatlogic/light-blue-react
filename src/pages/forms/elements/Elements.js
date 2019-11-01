@@ -162,12 +162,6 @@ class Elements extends React.Component {
     this.setState({ simpleSelectDropdownValue: e.currentTarget.textContent });
   }
 
-  defaultSelectChange = (e) => {
-    this.setState({
-      defaultSelectVal: e,
-    });
-  }
-
   changeColorValue = (colors) => {
     this.setState({
       colorpickerValue: colors.color,
@@ -650,10 +644,10 @@ class Elements extends React.Component {
                 <FormGroup row>
                   <Label md="4" for="grouped-select">Select with search & groups</Label>
                   <Col md="6" className={s.select2}>
-                  <Select 
-                    className="selectCustomization"
-                    options={this.state.selectGroupData}
-                  />
+                    <Select 
+                      className="selectCustomization"
+                      options={this.state.selectGroupData}
+                    />
                   </Col>
                 </FormGroup>
               </Form>
