@@ -10,11 +10,9 @@ import {
 
 import Widget from '../../components/Widget';
 
-/* eslint-disable */
 import Calendar from './components/calendar/Calendar';
 import Map from './components/am4chartMap/am4chartMap';
 import Rickshaw from './components/rickshaw/Rickshaw';
-/* eslint-enable */
 
 import AnimateNumber from 'react-animated-number';
 

@@ -124,7 +124,7 @@ class Header extends React.Component {
           <InputGroup className={`${s.navbarForm} ${this.state.searchFocused ? s.navbarFormFocused : ''}`}>
             <InputGroupAddon addonType="prepend" className={s.inputAddon}><InputGroupText><i className="fa fa-search" /></InputGroupText></InputGroupAddon>
             <Input
-              id="search-input" placeholder="Search..." className="input-transparent"
+              id="search-input-2" placeholder="Search..." className="input-transparent"
               onFocus={() => this.setState({ searchFocused: true })}
               onBlur={() => this.setState({ searchFocused: false })}
             />

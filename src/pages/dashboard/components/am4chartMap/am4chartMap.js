@@ -8,7 +8,7 @@ import am4geodata_usaHigh from "@amcharts/amcharts4-geodata/usaHigh";
 import AnimateNumber from 'react-animated-number';
 import s from './am4chartMap.module.scss';
   
-  class MapaelMap extends Component {
+  class Am4chartMap extends Component {
   
   componentDidMount() {
     let map = am4core.create("map", am4maps.MapChart);
@@ -98,4 +98,4 @@ import s from './am4chartMap.module.scss';
   }
 }
 
-export default MapaelMap;
+export default Am4chartMap;

@@ -1,9 +1,5 @@
 @import '../../../styles/app';
 
-:global {
-  @import '../../../../node_modules/fullcalendar/dist/fullcalendar';
-}
-
 .calendarModalInput {
   border: 1px solid #e9ecef;
   margin-top: 10px;
