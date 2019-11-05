@@ -20,8 +20,8 @@
       }
 
       &:last-child {
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: $widget-border-radius;
+        border-bottom-right-radius: $widget-border-radius;
       }
     }
 

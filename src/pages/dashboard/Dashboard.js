@@ -366,7 +366,7 @@ class Dashboard extends React.Component {
           </Col>
 
           <Col lg={4} xs={12}>
-            <Widget title={<h6>Calendar</h6>} settings close bodyClass="reset-padding">
+            <Widget title={<h6>Calendar</h6>} settings close bodyClass={s.resetPadding}>
               <Calendar />
               <div className="list-group fs-mini">
                 <button className="list-group-item text-ellipsis">
