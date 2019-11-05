@@ -1,7 +1,7 @@
 import React from 'react';
 import Rickshaw from 'rickshaw';
 import PropTypes from 'prop-types';
-
+import { connect } from 'react-redux';
 
 class RickshawGraph extends React.Component {
 
@@ -25,6 +25,12 @@ class RickshawGraph extends React.Component {
   componentDidMount() {
     this.initRickshaw();
     window.addEventListener('resize', this.onResizeRickshaw);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.sidebarVisibility !== prevProps.sidebarVisibility) {
+      this.onResizeRickshaw()
+    }
   }
 
   componentWillUnmount() {
@@ -87,4 +93,10 @@ class RickshawGraph extends React.Component {
   }
 }
 
-export default RickshawGraph;
+function mapStateToProps(store) {
+  return {
+    sidebarVisibility: store.navigation.sidebarVisibility,
+  };
+}
+
+export default connect(mapStateToProps)(RickshawGraph);
