@@ -258,19 +258,19 @@ class Header extends React.Component {
                 <span className="text-white">Philip Daineka</span>
               </section>
               <DropdownItem>
-                <NavLink href="/profile">
+                <NavLink href="/#/app/profile">
                   <i className="fa fa-user fa-fw" />
                   Profile
                 </NavLink>
               </DropdownItem>
               <DropdownItem>
-                <NavLink href="/calendar">
+                <NavLink href="/#/app/extra/calendar">
                   <i className="fa fa-calendar fa-fw" />
                   Calendar
                 </NavLink>
               </DropdownItem>
               <DropdownItem>
-                <NavLink href="/inbox">
+                <NavLink href="/#/app/inbox">
                   <i className="fa fa-inbox fa-fw" />
                   Inbox
                 </NavLink>

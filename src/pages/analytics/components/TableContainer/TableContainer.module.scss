@@ -16,3 +16,10 @@
     background-color: rgba($widget-bg-color, 0.1);
   }
 }
+
+:global {
+  .table-responsive {
+    border-bottom-left-radius: $widget-border-radius;
+    border-bottom-right-radius: $widget-border-radius;    
+  }
+}

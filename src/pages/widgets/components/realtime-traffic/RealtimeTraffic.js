@@ -3,6 +3,7 @@ import {
   Progress,
 } from 'reactstrap';
 import Rickshaw from 'rickshaw';
+import { connect } from 'react-redux';
 
 
 class RealtimeTraffic extends React.Component {
@@ -15,6 +16,12 @@ class RealtimeTraffic extends React.Component {
   componentDidMount() {
     this.initChart();
     window.addEventListener('resize', this.onResizeRickshaw);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.sidebarVisibility !== prevProps.sidebarVisibility) {
+      this.onResizeRickshaw()
+    }
   }
 
   componentWillUnmount() {
@@ -98,4 +105,10 @@ class RealtimeTraffic extends React.Component {
   }
 }
 
-export default RealtimeTraffic;
+function mapStateToProps(store) {
+  return {
+    sidebarVisibility: store.navigation.sidebarVisibility,
+  };
+}
+
+export default connect(mapStateToProps)(RealtimeTraffic);

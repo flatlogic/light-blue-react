@@ -20,7 +20,8 @@
       }
 
       &:last-child {
-        margin-bottom: -10px;
+        border-bottom-left-radius: $widget-border-radius;
+        border-bottom-right-radius: $widget-border-radius;
       }
     }
 
@@ -74,6 +75,6 @@
   }
 }
 
-.custom-gray-bg {
-  background-color: #495057;
+.customGrayBg {
+  background-color: $gray-700;
 }

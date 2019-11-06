@@ -3,6 +3,7 @@ import Rickshaw from 'rickshaw';
 import {
   Row, Col,
 } from 'reactstrap';
+import { connect } from 'react-redux';
 
 import Sparklines from '../../../../components/Sparklines';
 import s from './ChangesChart.module.scss';
@@ -26,6 +27,12 @@ class ChangesChart extends React.Component {
   componentDidMount() {
     this.initRickshaw();
     window.addEventListener('resize', this.onResizeRickshaw);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.sidebarVisibility !== prevProps.sidebarVisibility) {
+      this.onResizeRickshaw()
+    }
   }
 
   componentWillUnmount() {
@@ -134,4 +141,10 @@ class ChangesChart extends React.Component {
   }
 }
 
-export default ChangesChart;
+function mapStateToProps(store) {
+  return {
+    sidebarVisibility: store.navigation.sidebarVisibility,
+  };
+}
+
+export default connect(mapStateToProps)(ChangesChart);

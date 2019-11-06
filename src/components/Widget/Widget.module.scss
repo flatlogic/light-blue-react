@@ -107,9 +107,7 @@
   }
 
   :global {
-    .reset-padding {
-      padding: 15px 0 0;
-    }
+    
     .loader {
       position: absolute;
       top: 0;
@@ -126,7 +124,7 @@
         text-align: center;
       }
     }
-    .widget-body.p-0 {
+    .widget-body.undo_padding {
       margin: $widget-padding-vertical (-$widget-padding-horizontal) (-$widget-padding-vertical);
       
 
