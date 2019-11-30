@@ -27,7 +27,18 @@ export default class RevenueChart extends PureComponent {
         {
           name: 'Light Blue',
           data: data[0],
-          color: '#E2E1FF',
+          color: {
+            linearGradient: {
+              x1: 0,
+              x2: 0,
+              y1: 0,
+              y2: 1
+            },
+            stops: [
+              [0, '#F45722'],
+              [1, '#d04f4f']
+            ]
+          },
           type: 'areaspline',
           fillOpacity: 0.5,
           lineWidth: 0
@@ -36,14 +47,14 @@ export default class RevenueChart extends PureComponent {
           type: 'spline',
           name: 'RNS App',
           data: data[1],
-          color: '#3abf94',
+          color: '#58D777',
           dashStyle: 'Dash'
         },
         {
           type: 'spline',
           name: 'Sing App',
           data: data[2],
-          color: '#ffc247'
+          color: '#1870DC'
         }
       ]
     }
@@ -64,10 +75,10 @@ export default class RevenueChart extends PureComponent {
     legend: {
       verticalAlign: 'top',
       itemStyle: {
-        color: "#ffffff"
+        color: "rgba(244, 244, 245, 0.9)"
       },
       itemHoverStyle: {
-        color: "#cccccc"
+        color: "rgba(244, 244, 245, 0.6)"
       }
     },
     yAxis: {

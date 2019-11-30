@@ -15,7 +15,7 @@ class Calendar extends Component {
         {
           title: "The flower bed",
           info: "Contents here",
-          itemStyle: "#5d8fc2",
+          itemStyle: "#1870dc",
           date: moment(`${moment().year()}${moment().month()+1}02`, "YYYYMMDD"),
         },
         {
@@ -27,13 +27,13 @@ class Calendar extends Component {
         {
           title: "Light Blue 2.2 release",
           info: "Some contents here",
-          itemStyle: "#64bd63",
+          itemStyle: "#58d777",
           date: moment(`${moment().year()}${moment().month()+1}18`, "YYYYMMDD"),
         },
         {
           title: "A link",
           info: "",
-          itemStyle: "#dd5826",
+          itemStyle: "#f45722",
           link: "http://www.flatlogic.com",
           date: moment(`${moment().year()}${moment().month()+1}29`, "YYYYMMDD"),
         },

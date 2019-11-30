@@ -60,15 +60,15 @@ class Notifications extends React.Component {
         break;
     }
     return (
-      <section className={`${s.notifications} card navbar-notifications`}>
+      <section className={`${s.notifications} navbar-notifications`}>
         <header className={[s.cardHeader, 'card-header'].join(' ')}>
           <div className="text-center mb-sm">
             <strong>You have 13 notifications</strong>
           </div>
-          <ButtonGroup id="notification-buttons">
-            <Button color="secondary" onClick={() => this.changeNotificationsTab(1)} active={this.state.notificationsTabSelected === 1}>Notifications</Button>
-            <Button color="secondary" onClick={() => this.changeNotificationsTab(2)} active={this.state.notificationsTabSelected === 2}>Messages</Button>
-            <Button color="secondary" onClick={() => this.changeNotificationsTab(3)} active={this.state.notificationsTabSelected === 3}>Progress</Button>
+          <ButtonGroup className={s.notificationButtons}>
+            <Button outline color="default" size="sm" className={s.notificationButton} onClick={() => this.changeNotificationsTab(1)} active={this.state.notificationsTabSelected === 1}>Notifications</Button>
+            <Button outline color="default" size="sm" className={s.notificationButton} onClick={() => this.changeNotificationsTab(2)} active={this.state.notificationsTabSelected === 2}>Messages</Button>
+            <Button outline color="default" size="sm" className={s.notificationButton} onClick={() => this.changeNotificationsTab(3)} active={this.state.notificationsTabSelected === 3}>Progress</Button>
           </ButtonGroup>
         </header>
         {this.state.newNotifications || notificationsTab}

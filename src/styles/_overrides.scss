@@ -82,7 +82,8 @@
   font-family: $font-family-base;
   box-shadow: none;
   transition: border-color ease-in-out 0.15s, background-color ease-in-out 0.15s;
-
+  background: $subtle-blue;
+  border: none;
   &:focus {
     box-shadow: none;
   }
@@ -1016,7 +1017,7 @@ ul.messenger.messenger-spinner-active .messenger-spinner .messenger-spinner {
 
 .circle {
   .fa {
-    vertical-align: middle;
+    vertical-align: baseline;
   }
 }
 

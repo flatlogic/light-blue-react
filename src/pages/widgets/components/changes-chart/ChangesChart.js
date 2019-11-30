@@ -59,7 +59,7 @@ class ChangesChart extends React.Component {
       series: [{
         name: 'pop',
         data: seriesData.shift().map(d => ({ x: d.x, y: d.y })),
-        color: '#7bd47a', // (#64bd63, 0.9)
+        color: '#33B252', // (#64bd63, 0.9)
         renderer: 'bar',
         gapSize: 2,
         min: 'auto',

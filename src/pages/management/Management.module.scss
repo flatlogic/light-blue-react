@@ -1,3 +1,17 @@
+@import '../../styles/app';
+
+:global {
+  .react-bootstrap-table-page-btns-ul {
+    .page-link {
+      border: 1px solid $subtle-blue!important;  
+      background-color: transparent;
+      &:hover {
+
+      }   
+    }
+  }
+}
+
 .bootstrapTable {
   border: none;
 

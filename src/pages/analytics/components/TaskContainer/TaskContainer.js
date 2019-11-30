@@ -37,7 +37,7 @@ export default class TasksContainer extends Component {
 
   render() {
     const { tasks } = this.state;
-    const totalComplited = tasks.filter(i => i.complited).length;
+    const totalCompleted = tasks.filter(i => i.complited).length;
     return (
       <Widget
         className="mb-xlg pb-2"
@@ -45,7 +45,7 @@ export default class TasksContainer extends Component {
         title={
           <div>
             <h4>Today&apos;s Tasks <span className="badge badge-pill badge-success fw-normal pull-right mt-xs">{tasks.length}</span></h4>
-            <p className="text-primary mb-0"><small>{totalComplited} of {tasks.length} complited</small></p>
+            <p className="text-primary mb-0"><small>{totalCompleted} of {tasks.length} completed</small></p>
           </div>
         }
       >

@@ -97,7 +97,7 @@ class Management extends React.Component {
     apiFormatter(cell, row) {
         return (
             <ButtonToolbar>
-                <Button color="info" size="xs" onClick={()=> this.props.history.push('/app/ecommerce/management/' + row.id)}>
+                <Button color="primary" size="xs" onClick={()=> this.props.history.push('/app/ecommerce/management/' + row.id)}>
                     <span className="d-none d-md-inline-block">Edit</span>
                     <span className="d-md-none"><i className='la la-edit'/></span>
                 </Button>
@@ -137,7 +137,7 @@ class Management extends React.Component {
 
         return (
             <Dropdown isOpen={props.open} toggle={props.toggleDropDown}>
-                <DropdownToggle color="default" caret>
+                <DropdownToggle color="warning" caret>
                     {props.currSizePerPage}
                 </DropdownToggle>
                 <DropdownMenu>

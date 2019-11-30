@@ -1,0 +1,13 @@
+
+@import '../../../styles/app';
+
+.customNavItem {
+  :global {
+    a.nav-link {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.24);
+        border: none;
+      }  
+    }
+  }
+}

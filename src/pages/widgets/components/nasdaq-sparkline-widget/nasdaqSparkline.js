@@ -15,7 +15,7 @@ class NasdaqSparkline extends React.Component {
       },
       markers: {
         size: 4,
-        colors: '#57B955',
+        colors: '#58D777',
         shape: "circle",
         strokeWidth: 0,
         hover: {
@@ -24,7 +24,7 @@ class NasdaqSparkline extends React.Component {
         }
       },
       colors: [
-        '#4E85BD'
+        '#1870DC'
       ],
       grid: {
         padding: {

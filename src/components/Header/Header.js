@@ -23,12 +23,15 @@ import {
   Form,
   FormGroup,
 } from 'reactstrap';
+import Notifications from '../Notifications';
 import { logoutUser } from '../../actions/user';
 import { openSidebar, closeSidebar, changeSidebarPosition, changeSidebarVisibility } from '../../actions/navigation';
 
 import sender1 from '../../images/1.png';
 import sender2 from '../../images/2.png';
 import sender3 from '../../images/3.png';
+
+import avatar from '../../images/people/a5.jpg';
 
 import s from './Header.module.scss';
 
@@ -57,7 +60,14 @@ class Header extends React.Component {
       settingsOpen: false,
       searchFocused: false,
       searchOpen: false,
+      notificationsOpen: false
     };
+  }
+
+  toggleNotifications = () => {
+    this.setState({
+      notificationsOpen: !this.state.notificationsOpen,
+    });
   }
 
   onDismiss() {
@@ -140,12 +150,25 @@ class Header extends React.Component {
             </InputGroup>
           </FormGroup>
         </Form>
+  
         <Nav className="ml-md-0">
           <NavItem className="d-md-none">
             <NavLink onClick={this.toggleSearchOpen} className={s.navItem} href="#">
               <i className="glyphicon glyphicon-search" />
             </NavLink>
           </NavItem>
+          <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu} d-sm-down-none`}>
+            <DropdownToggle nav caret style={{color: "#f4f4f5"}}>
+              <span className={`${s.avatar} rounded-circle thumb-sm float-left mr-2`}>
+                <img src={avatar} alt="..."/>
+              </span>
+              <span className={`small ${s.accountCheck}`}>Philip smith</span>
+              <Badge className={s.badge} color="primary">13</Badge>
+            </DropdownToggle>
+            <DropdownMenu right className={`${s.notificationsWrapper} py-0 animated animated-fast fadeInUp`}>
+              <Notifications />
+            </DropdownMenu>
+          </Dropdown>
           <Dropdown nav isOpen={this.state.messagesOpen} toggle={this.toggleMessagesDropdown}>
             <DropdownToggle nav className={s.navItem}>
               <i className="glyphicon glyphicon-comments" />
@@ -184,6 +207,24 @@ class Header extends React.Component {
                   See all messages <i className="fa fa-arrow-right" />
                 </a>
               </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          <NavItem className={s.divider} />
+          <Dropdown nav isOpen={this.state.settingsOpen} toggle={this.toggleSettingsDropdown} className="d-none d-md-block">
+            <DropdownToggle nav className={s.navItem}>
+              <i className="glyphicon glyphicon-cog" />
+            </DropdownToggle>
+            <DropdownMenu className={`${s.dropdownMenu} ${s.settings}`}>
+              <h6>Sidebar on the</h6>
+              <ButtonGroup size="sm">
+                <Button color="dark" onClick={() => this.moveSidebar('left')} className={this.props.sidebarPosition === 'left' ? 'active' : ''}>Left</Button>
+                <Button color="dark" onClick={() => this.moveSidebar('right')} className={this.props.sidebarPosition === 'right' ? 'active' : ''}>Right</Button>
+              </ButtonGroup>
+              <h6 className="mt-2">Sidebar</h6>
+              <ButtonGroup size="sm">
+                <Button color="dark" onClick={() => this.toggleVisibilitySidebar('show')} className={this.props.sidebarVisibility === 'show' ? 'active' : ''}>Show</Button>
+                <Button color="dark" onClick={() => this.toggleVisibilitySidebar('hide')} className={this.props.sidebarVisibility === 'hide' ? 'active' : ''}>Hide</Button>
+              </ButtonGroup>
             </DropdownMenu>
           </Dropdown>
           <Dropdown nav isOpen={this.state.supportOpen} toggle={this.toggleSupportDropdown}>
@@ -227,53 +268,6 @@ class Header extends React.Component {
                <a href="#" className="text-white">
                   See all tickets <i className="fa fa-arrow-right" />
                 </a>
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          <NavItem className={s.divider} />
-          <Dropdown nav isOpen={this.state.settingsOpen} toggle={this.toggleSettingsDropdown} className="d-none d-md-block">
-            <DropdownToggle nav className={s.navItem}>
-              <i className="glyphicon glyphicon-cog" />
-            </DropdownToggle>
-            <DropdownMenu className={`${s.dropdownMenu} ${s.settings}`}>
-              <h6>Sidebar on the</h6>
-              <ButtonGroup size="sm">
-                <Button color="dark" onClick={() => this.moveSidebar('left')} className={this.props.sidebarPosition === 'left' ? 'active' : ''}>Left</Button>
-                <Button color="dark" onClick={() => this.moveSidebar('right')} className={this.props.sidebarPosition === 'right' ? 'active' : ''}>Right</Button>
-              </ButtonGroup>
-              <h6 className="mt-2">Sidebar</h6>
-              <ButtonGroup size="sm">
-                <Button color="dark" onClick={() => this.toggleVisibilitySidebar('show')} className={this.props.sidebarVisibility === 'show' ? 'active' : ''}>Show</Button>
-                <Button color="dark" onClick={() => this.toggleVisibilitySidebar('hide')} className={this.props.sidebarVisibility === 'hide' ? 'active' : ''}>Hide</Button>
-              </ButtonGroup>
-            </DropdownMenu>
-          </Dropdown>
-          <Dropdown isOpen={this.state.accountOpen} toggle={this.toggleAccountDropdown} className="d-none d-md-block">
-            <DropdownToggle nav className={s.navItem}>
-              <i className="glyphicon glyphicon-user" />
-            </DropdownToggle>
-            <DropdownMenu right className={`${s.dropdownMenu} ${s.account}`}>
-              <section>
-                <img src={sender1} alt="" className={s.imageAccount} />
-                <span className="text-white">Philip Daineka</span>
-              </section>
-              <DropdownItem>
-                <NavLink href="/#/app/profile">
-                  <i className="fa fa-user fa-fw" />
-                  Profile
-                </NavLink>
-              </DropdownItem>
-              <DropdownItem>
-                <NavLink href="/#/app/extra/calendar">
-                  <i className="fa fa-calendar fa-fw" />
-                  Calendar
-                </NavLink>
-              </DropdownItem>
-              <DropdownItem>
-                <NavLink href="/#/app/inbox">
-                  <i className="fa fa-inbox fa-fw" />
-                  Inbox
-                </NavLink>
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>

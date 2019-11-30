@@ -48,7 +48,7 @@ class BigStat extends Component {
               </h4>
               <UncontrolledButtonDropdown>
                 <DropdownToggle
-                  caret color="default"
+                  caret color="warning"
                   className="dropdown-toggle-split mr-xs btn-sm"
                 >
                   {this.state.simpleSelectDropdownValue}&nbsp;&nbsp;
@@ -69,9 +69,9 @@ class BigStat extends Component {
           }
         >
           <h4 className="fw-semi-bold mb-lg px-4">{total}</h4>
-          <div className="d-flex border-top">
-            <div className="w-50 border-right py-3 pr-2 pl-4">
-              <div className="d-flex align-items-start">
+          <div className={`d-flex ${s.borderTop}`}>
+            <div className={`w-50 ${s.borderRight} py-3 pr-2 pl-4`}>
+              <div className="d-flex align-items-start h3">
                 <h6>+{registrations.value}</h6>
                 <i
                   className={`la la-arrow-right ml-sm text-${registrations.profit ? 'success' : 'danger'}
@@ -81,7 +81,7 @@ class BigStat extends Component {
               <p className="text-muted mb-0 mr"><small>Registrations</small></p>
             </div>
             <div className="w-50 py-3 pl-2">
-              <div className="d-flex align-items-start">
+              <div className="d-flex align-items-start h3">
                 <h6>{bounce.value}%</h6>
                 <i
                   className={`la la-arrow-right ml-sm text-${bounce.profit ? 'success' : 'danger'}

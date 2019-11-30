@@ -233,7 +233,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 @include text-emphasis-variant('.text-warning', theme-color('warning'));
 @include text-emphasis-variant('.text-danger', theme-color('danger'));
 @include text-emphasis-variant('.text-link', $link-color);
-@include text-emphasis-variant('.text-white', $white);
+@include text-emphasis-variant('.text-white', rgba($white,.9));
 @include text-emphasis-variant('.text-gray', $gray-700);
 @include text-emphasis-variant('.text-gray-dark', $gray-800);
 @include text-emphasis-variant('.text-gray-light', $gray-600);
@@ -553,4 +553,13 @@ $i: 0;
   transition: opacity 200ms ease-in, -webkit-transform 200ms ease-in, transform 200ms ease-in;
   -webkit-transform: translate3d(0, 0, 0) scale(1);
   transform: translate3d(0, 0, 0) scale(1);
+}
+
+.bg-custom-dark {
+  background: $bg-custom-dark !important;
+}
+
+.btn-custom-dark {
+  background: $bg-custom-dark !important;
+  color: $content-color;
 }

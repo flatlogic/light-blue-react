@@ -26,6 +26,10 @@
 }
 
 .form-control {
+  color: $content-color;
+  &:focus,&:active {
+    color: $content-color;
+  }
   &.input-transparent {
     border: none;
     color: $text-color;

@@ -153,6 +153,7 @@ class Sidebar extends React.Component {
             index="documentation"
             label="new"
             target="_blank"
+            labelColor="success"
           />
           <h5 className={[s.navTitle, s.groupTitle].join(' ')}>TEMPLATE</h5>
           <LinksGroup
@@ -409,13 +410,13 @@ class Sidebar extends React.Component {
         <ul className={s.sidebarLabels}>
           <li>
             <a href="#">
-              <i className="fa fa-circle text-warning mr-2" />
+              <i className="fa fa-circle text-success mr-2" />
               <span className={s.labelName}>My Recent</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <i className="fa fa-circle text-gray mr-2" />
+              <i className="fa fa-circle text-primary mr-2" />
               <span className={s.labelName}>Starred</span>
             </a>
           </li>
@@ -439,7 +440,7 @@ class Sidebar extends React.Component {
               toggle={() => { this.dismissAlert(alert.id); }}
             >
               <span>{alert.title}</span><br />
-              <Progress className={`${s.sidebarProgress} progress-xs mt-1`} color={alert.color} value={alert.value} />
+              <Progress className={`bg-custom-dark progress-xs mt-1`} color={alert.color} value={alert.value} />
               <small>{alert.footer}</small>
             </Alert>,
           )}
