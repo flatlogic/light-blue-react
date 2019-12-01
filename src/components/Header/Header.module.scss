@@ -131,12 +131,11 @@
 .divider {
   display: block;
   width: 1px;
-  margin: 0 20px;
-  background: linear-gradient(rgba($text-transparent, 0), $text-transparent, rgba($gray-600, 0));
+  margin: 10px 20px;
+  background: $white;
 }
 
 .navItem {
-  color: $text-transparent;
   font-size: 1.5rem;
   outline: 0;
   text-align: center;

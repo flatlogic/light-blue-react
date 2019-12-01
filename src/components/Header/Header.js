@@ -170,7 +170,7 @@ class Header extends React.Component {
             </DropdownMenu>
           </Dropdown>
           <Dropdown nav isOpen={this.state.messagesOpen} toggle={this.toggleMessagesDropdown}>
-            <DropdownToggle nav className={s.navItem}>
+            <DropdownToggle nav className={`${s.navItem} text-white`}>
               <i className="glyphicon glyphicon-comments" />
             </DropdownToggle>
             <DropdownMenu className={`${s.dropdownMenu} ${s.messages}`}>
@@ -209,9 +209,9 @@ class Header extends React.Component {
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
-          <NavItem className={s.divider} />
+          <NavItem className={`${s.divider} text-white`} />
           <Dropdown nav isOpen={this.state.settingsOpen} toggle={this.toggleSettingsDropdown} className="d-none d-md-block">
-            <DropdownToggle nav className={s.navItem}>
+            <DropdownToggle nav className={`${s.navItem} text-white`}>
               <i className="glyphicon glyphicon-cog" />
             </DropdownToggle>
             <DropdownMenu className={`${s.dropdownMenu} ${s.settings}`}>
@@ -228,7 +228,7 @@ class Header extends React.Component {
             </DropdownMenu>
           </Dropdown>
           <Dropdown nav isOpen={this.state.supportOpen} toggle={this.toggleSupportDropdown}>
-            <DropdownToggle nav className={s.navItem}>
+            <DropdownToggle nav className={`${s.navItem} text-white`}>
               <i className="glyphicon glyphicon-globe" />
               <span className={s.count}>8</span>
             </DropdownToggle>
@@ -272,12 +272,12 @@ class Header extends React.Component {
             </DropdownMenu>
           </Dropdown>
           <NavItem className="d-none d-md-block">
-            <NavLink onClick={this.doLogout} className={s.navItem} href="#">
+            <NavLink onClick={this.doLogout} className={`${s.navItem} text-white`} href="#">
               <i className="glyphicon glyphicon-off" />
             </NavLink>
           </NavItem>
           <NavItem className="d-md-none">
-            <NavLink onClick={this.toggleSidebar} className={s.navItem} href="#">
+            <NavLink onClick={this.toggleSidebar} className={`${s.navItem} text-white`} href="#">
               <i className="fa fa-bars" />
             </NavLink>
           </NavItem>
