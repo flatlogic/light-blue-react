@@ -9,7 +9,7 @@ import s from './General.module.scss';
 const General = ({ rating, title, subtitle, price }) => (
   <div className={s.general}>
     <div className={s.ratingWrapper}>
-      <Rating rating={rating} />
+      <Rating className="text-success" rating={rating} />
     </div>
     <div className={s.dataWrapper}>
       <span className={cx(s.title, 'title')}>{title}</span>

@@ -555,11 +555,20 @@ $i: 0;
   transform: translate3d(0, 0, 0) scale(1);
 }
 
+.btn-custom-dark {
+  background: $bg-custom-dark !important;
+  color: $content-color;
+}
+
 .bg-custom-dark {
   background: $bg-custom-dark !important;
 }
 
-.btn-custom-dark {
-  background: $bg-custom-dark !important;
+.bg-subtle-blue {
+  background: $subtle-blue !important;
+}
+
+.btn-subtle-blue {
+  background: $subtle-blue !important;
   color: $content-color;
 }

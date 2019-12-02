@@ -147,7 +147,7 @@ const Profile = () => (
                 </span>
               </div>
               <ul className="post-comments mt-sm">
-                <li>
+                <li className={s.borderTop}>
                   <span className="thumb-xs avatar pull-left mr-sm">
                     <img className="rounded-circle" src={a1} alt="..." />
                   </span>
@@ -156,7 +156,7 @@ const Profile = () => (
                     <p>Hey, have you heard anything about that?</p>
                   </div>
                 </li>
-                <li>
+                <li className={s.borderTop}>
                   <span className="thumb-xs avatar pull-left mr-sm">
                     <img className="rounded-circle" src={avatar} alt="..." />
                   </span>
@@ -174,10 +174,10 @@ const Profile = () => (
             </FormGroup>
             <div className="btn-toolbar">
               <div className="btn-group">
-                <button className="btn btn-sm btn-default">
+                <button className="btn btn-sm btn-subtle-blue">
                   <i className="fa fa-camera fa-lg" />
                 </button>
-                <button className="btn btn-sm btn-default">
+                <button className="btn btn-sm btn-subtle-blue">
                   <i className="fa fa-map-marker fa-lg" />
                 </button>
               </div>

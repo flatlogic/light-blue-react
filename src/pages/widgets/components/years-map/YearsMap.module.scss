@@ -30,8 +30,8 @@
     bottom: 0;
     left: 0;
     right: 0;
-    border-top: 1px solid #bbb;
-    background: $gray-700;
+    border-top: 1px solid $subtle-blue;
+    background: #040620;
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
   
@@ -41,7 +41,7 @@
       color: $text-color;
   
       &:hover {
-        background-color: rgba(51,51,51,.85);
+        background-color: $subtle-blue;
         color: $text-color;
       }
     }
@@ -49,7 +49,7 @@
     > .nav-item > .nav-link.active {
       &,
       &:hover {
-        background-color: rgba(51,51,51,.85);
+        background-color: $subtle-blue;
         color: $text-color;
         font-weight: $font-weight-bold;
       }

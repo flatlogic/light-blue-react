@@ -82,10 +82,11 @@
   font-family: $font-family-base;
   box-shadow: none;
   transition: border-color ease-in-out 0.15s, background-color ease-in-out 0.15s;
-  background: $subtle-blue;
+  background: $bg-custom-dark;
   border: none;
   &:focus {
     box-shadow: none;
+    background: $bg-custom-dark;
   }
 
   &.no-border {
@@ -696,8 +697,8 @@ h6,
 
 code {
   font-size: 85%;
-  background-color: theme-color('danger-light');
-  color: $pink;
+  background-color: rgba($primary,.3);
+  color: $success;
   padding: 2px;
   border-radius: $border-radius;
 }
@@ -1178,4 +1179,12 @@ div.abc-radio label {
 //// Highcharts Width fix ////
 .highcharts-container, .highcharts-root {
   width:100% !important;
+}
+
+.breadcrumb > .active {
+  color: $text-color;
+}
+
+.btn-link {
+  color: $primary
 }

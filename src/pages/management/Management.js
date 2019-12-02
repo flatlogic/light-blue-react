@@ -69,9 +69,15 @@ class Management extends React.Component {
         )
     }
 
+    priceFormatter = (cell) => {
+        return (
+            <span className="text-success">{cell}</span>
+        )
+    }
+
     titleFormatter(cell, row) {
         return cell ? (
-            <Link to={'/app/ecommerce/product/' + row.id}>
+            <Link className="text-success" to={'/app/ecommerce/product/' + row.id}>
                {cell[0].toUpperCase() + cell.slice(1)}
             </Link>
         ) : ""
@@ -137,7 +143,7 @@ class Management extends React.Component {
 
         return (
             <Dropdown isOpen={props.open} toggle={props.toggleDropDown}>
-                <DropdownToggle color="warning" caret>
+                <DropdownToggle color="subtle-blue" caret>
                     {props.currSizePerPage}
                 </DropdownToggle>
                 <DropdownMenu>
@@ -195,7 +201,7 @@ class Management extends React.Component {
                             </TableHeaderColumn>
                         )}
                         {window.innerWidth >= 768 && (
-                            <TableHeaderColumn dataField="price">
+                            <TableHeaderColumn dataField="price" dataFormat={this.priceFormatter}>
                                 <span className="fs-sm">Price($)</span>
                             </TableHeaderColumn>
                         )}

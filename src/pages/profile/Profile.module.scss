@@ -4,6 +4,10 @@
   // some styles
 }
 
+.borderTop {
+  border-top: 1px solid $bg-custom-dark !important;
+}
+
 .profileContactContainer {
   margin-top: -75px;
 }

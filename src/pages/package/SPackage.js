@@ -31,7 +31,7 @@ class SPackage extends React.Component {
               <p className="text-muted">We spent another <span className="fw-semi-bold">500</span> man-hours
                 developing and designing
                 React version, to save you time and money.</p>
-              <p><a href="https://reactjs.org/" rel="nofollow noopener noreferrer" target="_blank">React</a> is
+              <p><a className="text-primary" href="https://reactjs.org/" rel="nofollow noopener noreferrer" target="_blank">React</a> is
                 the most trendy and advanced
                 component-based JavaScript library for building user interfaces. Our React
                 version follows latest industry
@@ -42,7 +42,7 @@ class SPackage extends React.Component {
               <p>This version is a great choice when you want to be in control
                 of your own codebase and
                 decide on development approaches that are the best for your project.
-                <a href="https://webpack.js.org/">Webpack</a> Module Bundler and Yarn as a package
+                <a className="text-primary" href="https://webpack.js.org/">Webpack</a> Module Bundler and Yarn as a package
                 manager are under the hood.</p>
               <button className="btn btn-transparent btn-lg btn-block disabled">(You are here)</button>
             </Widget>
@@ -58,7 +58,7 @@ class SPackage extends React.Component {
               <p className="text-muted">We spent around <span className="fw-semi-bold">500</span> man-hours
                 developing and designing
                 Angular version, to match high engineering requirements.</p>
-              <p><a href="https://angular.io" rel="nofollow noopener noreferrer" target="_blank">Angular</a> is the
+              <p><a className="text-primary" href="https://angular.io" rel="nofollow noopener noreferrer" target="_blank">Angular</a> is the
                 most mature and wide spread
                 front-end framework created by Google and used by many established enterprises.
                 It is a very good choice when
@@ -67,7 +67,7 @@ class SPackage extends React.Component {
                 with Java or .NET ecosystems Angular is definitely your choice.
               </p>
               <p>Our app is built on top of latest <strong>Angular 5.0</strong> version and
-                uses <a href="https://webpack.js.org/">Webpack</a> Module Bundler and NPM as a package manager,
+                uses <a className="text-primary" href="https://webpack.js.org/">Webpack</a> Module Bundler and NPM as a package manager,
                 so everything
                 works out of the box! <br /><br /></p>
               <a

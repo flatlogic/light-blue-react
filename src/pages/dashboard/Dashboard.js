@@ -86,7 +86,7 @@ class Dashboard extends React.Component {
             >
               <p>Status: <strong>Live</strong></p>
               <p>
-                <span className="circle bg-warning text-white"><i className="fa fa-map-marker" /></span> &nbsp;
+                <span className="circle bg-subtle-blue text-white"><i className="fa fa-map-marker" /></span> &nbsp;
                 146 Countries, 2759 Cities
               </p>
               <div className="row progress-stats">
@@ -96,7 +96,7 @@ class Dashboard extends React.Component {
                   <Progress color="primary" value="60" className="bg-custom-dark progress-xs" />
                 </div>
                 <div className="col-md-3 col-12 text-center">
-                  <span className="status rounded rounded-lg bg-warning text-light">
+                  <span className="status rounded rounded-lg bg-subtle-blue text-light">
                     <small><AnimateNumber value={75} />%</small>
                   </span>
                 </div>
@@ -108,7 +108,7 @@ class Dashboard extends React.Component {
                   <Progress color="danger" value="39" className="bg-custom-dark progress-xs" />
                 </div>
                 <div className="col-md-3 col-12 text-center">
-                  <span className="status rounded rounded-lg bg-warning text-light">
+                  <span className="status rounded rounded-lg bg-subtle-blue text-light">
                     <small><AnimateNumber value={84} />%</small>
                   </span>
                 </div>
@@ -120,7 +120,7 @@ class Dashboard extends React.Component {
                   <Progress color="success" value="80" className="bg-custom-dark progress-xs" />
                 </div>
                 <div className="col-md-3 col-12 text-center">
-                  <span className="status rounded rounded-lg bg-warning text-light">
+                  <span className="status rounded rounded-lg bg-subtle-blue text-light">
                     <small><AnimateNumber value={92} />%</small>
                   </span>
                 </div>
@@ -128,13 +128,13 @@ class Dashboard extends React.Component {
               <h6 className="fw-semi-bold mt">Map Distributions</h6>
               <p>Tracking: <strong>Active</strong></p>
               <p>
-                <span className="circle bg-warning text-white"><i className="fa fa-cog" /></span>
+                <span className="circle bg-subtle-blue text-white"><i className="fa fa-cog" /></span>
                 &nbsp; 391 elements installed, 84 sets
               </p>
               <div className="input-group mt">
-                <input type="text" className="form-control bg-warning border-0" placeholder="Search Map" />
+                <input type="text" className="form-control bg-custom-dark border-0" placeholder="Search Map" />
                 <span className="input-group-btn">
-                  <button type="submit" className="btn btn-warning">
+                  <button type="submit" className={`btn btn-subtle-blue ${s.searchBtn}`}>
                     <i className="fa fa-search text-light" />
                   </button>
                 </span>
@@ -168,7 +168,7 @@ class Dashboard extends React.Component {
               <Progress color="success" value="60" className="bg-custom-dark progress-xs" />
               <p>
                 <small>
-                  <span className="circle bg-warning text-white">
+                  <span className="circle bg-subtle-blue text-white">
                     <i className="fa fa-chevron-up" />
                   </span>
                 </small>
@@ -198,7 +198,7 @@ class Dashboard extends React.Component {
               </div>
               <Progress color="danger" value="60" className="bg-custom-dark progress-xs" />
               <p>
-                <small><span className="circle bg-warning text-white"><i className="fa fa-chevron-down" /></span></small>
+                <small><span className="circle bg-subtle-blue text-white"><i className="fa fa-chevron-down" /></span></small>
                 <span className="fw-semi-bold">&nbsp;8% lower</span>
                 &nbsp;than last month
               </p>
@@ -225,7 +225,7 @@ class Dashboard extends React.Component {
               </div>
               <Progress color="bg-primary" value="60" className="bg-custom-dark progress-xs" />
               <p>
-                <small><span className="circle bg-warning text-white"><i className="fa fa-plus" /></span></small>
+                <small><span className="circle bg-subtle-blue text-white"><i className="fa fa-plus" /></span></small>
                 <span className="fw-semi-bold">&nbsp;8 734 higher</span>
                 &nbsp;than last month
               </p>
@@ -266,7 +266,7 @@ class Dashboard extends React.Component {
                   <button className="list-group-item text-left">
                     <span className="thumb-sm float-left mr">
                       <img className="rounded-circle" src={peopleA1} alt="..." />
-                      <i className="status status-bottom bg-warning" />
+                      <i className="status status-bottom bg-subtle-blue" />
                     </span>
                     <div>
                       <h6 className="m-0">Livia Walsh</h6>
@@ -286,7 +286,7 @@ class Dashboard extends React.Component {
                 </div>
               </div>
               <footer className="bg-widget-transparent mt">
-                <input type="search" className="form-control form-control-sm bg-warning border-0" placeholder="Search" />
+                <input type="search" className="form-control form-control-sm bg-custom-dark border-0" placeholder="Search" />
               </footer>
 
             </Widget>

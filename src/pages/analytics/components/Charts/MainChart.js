@@ -27,7 +27,8 @@ export default class RevenueChart extends PureComponent {
         {
           name: 'Light Blue',
           data: data[0],
-          color: {
+          color: '#F45722',
+          fillColor: {
             linearGradient: {
               x1: 0,
               x2: 0,
@@ -35,13 +36,13 @@ export default class RevenueChart extends PureComponent {
               y2: 1
             },
             stops: [
-              [0, '#F45722'],
-              [1, '#d04f4f']
+              [0, 'rgba(244,87,34,.8)'],
+              [1, 'rgba(244,87,34, 0)']
             ]
           },
           type: 'areaspline',
-          fillOpacity: 0.5,
-          lineWidth: 0
+          fillOpacity: 1,
+          lineWidth: 2
         },
         {
           type: 'spline',

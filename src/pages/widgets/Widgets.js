@@ -135,7 +135,7 @@ class Widgets extends React.Component {
                         </span>
                       </Col>
                       <Col xs="9">
-                        <h6 className="m-0 text-white text-white">ORDERS</h6>
+                        <h6 className="m-0 text-white">ORDERS</h6>
                         <p className="h2 m-0 fw-normal">82,765</p>
                       </Col>
                     </Row>
@@ -150,7 +150,7 @@ class Widgets extends React.Component {
                       </Col>
                     </Row>
                   </div>
-                  <div className="text-white">
+                  <div>
                     <Row className="flex-nowrap">
                       <Col xs={3}>
                         <span className="widget-icon">
@@ -214,7 +214,7 @@ class Widgets extends React.Component {
                   Dashboard
                   Template</h3>
                 <ul className="tags text-white pull-right">
-                  <li><button className="btn-link">features</button></li>
+                  <li><button className="btn-link text-white">features</button></li>
                 </ul>
               </div>
               <div className="post-user mt-negative-lg">
@@ -241,7 +241,7 @@ class Widgets extends React.Component {
                   <li><button className="btn-link">Comment</button></li>
                 </ul>
                 <ul className="post-comments mb-0 mt-2">
-                  <li>
+                  <li className={s.borderTop}>
                     <span className="thumb-xs avatar pull-left mr-sm">
                       <img className="rounded-circle" src={peopleA1} alt="..." />
                     </span>
@@ -252,15 +252,15 @@ class Widgets extends React.Component {
                       <p className="fs-mini">Hey, have you heard anything about that?</p>
                     </div>
                   </li>
-                  <li>
+                  <li className={s.borderTop}>
                     <span className="thumb-xs avatar pull-left mr-sm">
                       <img className="rounded-circle" src={avatar} alt="..." />
                     </span>
                     <div className="comment-body">
-                      <input
-                        className="form-control form-control-sm" type="text"
-                        placeholder="Write your comment..."
-                      />
+                      <InputGroup size="sm">
+                        <Input className="form-control bg-custom-dark border-0" placeholder="Your comment" />
+                        <InputGroupAddon addonType="append"><Button color="subtle-blue">Send</Button></InputGroupAddon>
+                      </InputGroup>
                     </div>
                   </li>
                 </ul>
@@ -273,8 +273,8 @@ class Widgets extends React.Component {
                 <div className="widget-top-overflow text-white">
                   <img src={img17} alt="..." />
                   <ul className="tags text-white pull-right">
-                    <li><button className="btn-link">design</button></li>
-                    <li><button className="btn-link">white</button></li>
+                    <li><button className="btn-link text-white">design </button></li>
+                    <li><button className="btn-link text-white"> white</button></li>
                   </ul>
                 </div>
                 <div className="post-user mt-sm">
@@ -318,7 +318,7 @@ class Widgets extends React.Component {
                     Dashboard
                     Template</h3>
                   <ul className="tags text-white pull-right">
-                    <li><button className="btn-link">design</button></li>
+                    <li><button className="btn-link text-white">design</button></li>
                   </ul>
                 </div>
                 <p className="text-light fs-mini mt-sm">Lots of cool stuff is happening around you. Just calm down for
@@ -587,8 +587,8 @@ class Widgets extends React.Component {
               </div>
               <footer className="bg-widget-transparent bt">
                   <InputGroup size="sm">
-                      <Input placeholder="Your message" />
-                      <InputGroupAddon addonType="append"><Button color="warning">Send</Button></InputGroupAddon>
+                      <Input className="form-control bg-custom-dark border-0" placeholder="Your message" />
+                      <InputGroupAddon addonType="append"><Button color="subtle-blue">Send</Button></InputGroupAddon>
                   </InputGroup>
               </footer>
             </Widget>
