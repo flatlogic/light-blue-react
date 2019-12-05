@@ -52,6 +52,8 @@ $purple:     #a700ae !default;
 $brown:      #a05000 !default;
 $teal:       #4ebfbb !default;
 $subtle-blue:#474D84 !default;
+$gray:       #595D78 !default;
+$inverse:    #30314E !default;
 
 $theme-colors: (
   primary: $blue,
@@ -61,10 +63,10 @@ $theme-colors: (
   warning: $orange,
   danger: $red,
   dark: $gray-700,
-  inverse: $gray-100,
-  gray: $gray-300,
+  inverse: $inverse,
+  gray: $gray,
   light: $gray-100,
-  default: #e9ecef,
+  default: $subtle-blue,
   primary-light: #dee4ee,
   success-light: #ecfaec,
   info-light: #f2fafa,
@@ -72,7 +74,7 @@ $theme-colors: (
   danger-light: #fff2ef,
 );
 
-$link-color: #62c9ff;
+$link-color: #1870DC;
 
 $text-color: rgba($white,.9) !default;
 $content-color: rgba($white,.6) !default;

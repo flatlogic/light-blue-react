@@ -241,7 +241,7 @@ small {
 
 .btn-secondary {
   border-color: $gray-400;
-  color: $gray-800;
+  color: $white;
 }
 
 .btn-success,
@@ -255,13 +255,13 @@ small {
 }
 
 .btn-gray {
-  border-color: $gray-400;
-  color: $gray-700;
+  border-color: $gray;
+  color: $white;
 }
 
 .btn-default {
-  border-color: $gray-400;
-  color: $gray-800;
+  border-color: $subtle-blue;
+  color: $white;
 }
 
 .btn-xs {
@@ -1187,4 +1187,8 @@ div.abc-radio label {
 
 .btn-link {
   color: $primary
+}
+
+pre code {
+  color: $content-color;
 }

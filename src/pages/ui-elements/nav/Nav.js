@@ -44,7 +44,7 @@ class NavExamples extends Component {
                 from the base .nav class to the active and disabled states. Swap
                 modifier classes to switch between each style.
               </p>
-              <div className="bg-light p-3">
+              <div className="bg-custom-dark p-3">
                 <Nav>
                   <NavItem>
                     <NavLink href="#">Link</NavLink>
@@ -59,7 +59,7 @@ class NavExamples extends Component {
                     <NavLink disabled href="#">Disabled Link</NavLink>
                   </NavItem>
                 </Nav>
-                <pre className="bg-light border-0 w-100 h-100">
+                <pre className="bg-custom-dark border-0 w-100 h-100">
                   <code className="text-danger">{'<Nav>\n'}</code>
                   <code className="text-info">{'  <NavItem>\n'}</code>
                   <code className="text-warning">{'    <NavLink href="#">\n'}</code>
@@ -88,7 +88,7 @@ class NavExamples extends Component {
                 </pre>
               </div>
               <h5 className="mt">With dropdown</h5>
-              <Nav className="bg-light p-2">
+              <Nav className="bg-custom-dark p-2">
                 <NavItem>
                   <NavLink href="#">Link</NavLink>
                 </NavItem>
@@ -123,7 +123,7 @@ class NavExamples extends Component {
                 tabbed interface. Use them to create tabbable regions with our tab
                 JavaScript plugin.
               </p>
-              <div className="bg-light p-3">
+              <div className="bg-custom-dark p-3">
                 <Nav tabs>
                   <NavItem>
                     <NavLink href="#" active>Link</NavLink>
@@ -138,7 +138,7 @@ class NavExamples extends Component {
                     <NavLink disabled href="#">Disabled Link</NavLink>
                   </NavItem>
                 </Nav>
-                <pre className="bg-light border-0 w-100 h-100">
+                <pre className="bg-custom-dark border-0 w-100 h-100">
                   <code className="text-danger">{'<Nav tabs>\n'}</code>
                   <code className="text-info">{'  <NavItem>\n'}</code>
                   <code className="text-warning">{'    <NavLink href="#">\n'}</code>
@@ -167,7 +167,7 @@ class NavExamples extends Component {
                 </pre>
               </div>
               <p className="mt">Do the same thing with the <code>pills</code> property.</p>
-              <div className="bg-light p-3">
+              <div className="bg-custom-dark p-3">
                 <Nav pills>
                   <NavItem>
                     <NavLink href="#" active>Link</NavLink>

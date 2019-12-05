@@ -291,8 +291,8 @@ class Calendar extends React.Component {
       <Modal isOpen={modalEvent} toggle={this.toggleModalEvent} id="news-close-modal">
         <ModalHeader toggle={this.toggleModalEvent} id="news-close-modal-label">{event.title}</ModalHeader>
         <ModalBody className="bg-white">
-        <p class="text-muted">
-            <i class="la la-calendar"></i>
+        <p className="text-muted">
+            <i className="la la-calendar"></i>
             {this.getFormattedDate(event.start)}
           </p>
           <p>{event.extendedProps && event.extendedProps.description}</p>

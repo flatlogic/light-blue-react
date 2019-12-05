@@ -75,9 +75,9 @@ class ModalExample extends React.Component {
                 Utilize the Bootstrap grid system within a modal by nesting <code>&lt;Container fluid&gt;</code> within
                 the <code>&lt;ModalBody&gt;</code>. Then, use the normal grid system classes as you would anywhere else.
               </p>
-              <div className="bg-light p-3">
+              <div className="bg-custom-dark p-3">
                 <Button color="primary" onClick={() => this.toggle('launch')}>Launch</Button>
-                <pre className="bg-light border-0 w-100 h-100">
+                <pre className="bg-custom-dark border-0 w-100 h-100">
                   <code className="text-danger">{'<Container fluid>\n'}</code>
                   <code className="text-success">{'  <Row>\n'}</code>
                   <code className="text-info">{'    <Col md={4}>\n'}</code>
