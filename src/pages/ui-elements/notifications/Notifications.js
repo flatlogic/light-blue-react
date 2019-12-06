@@ -47,7 +47,7 @@ class Notifications extends React.Component {
     toast.info( 
     <div>
       Launching thermonuclear war...
-      <Button onClick={() => this.launchNotification(id)} outline color="default" size="xs" className="width-100 mb-xs mr-xs mt-1">Cancel launch</Button>
+      <Button onClick={() => this.launchNotification(id)} outline color="info" size="xs" className="width-100 mb-xs mr-xs mt-1">Cancel launch</Button>
     </div>, 
     {...this.state.options,toastId: id},
     );
@@ -59,7 +59,7 @@ class Notifications extends React.Component {
     let id = uuid();
     toast.error(
     <div>
-      Error destroying alien planet
+      Error destroying alien planet <br/>
       <Button onClick={() => this.retryNotification(id)} outline color="default" size="xs" className="width-100 mb-xs mr-xs mt-1">Retry</Button>
     </div>, 
     {...this.state.options,toastId: id}
