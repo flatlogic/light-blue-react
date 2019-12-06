@@ -137,9 +137,9 @@ class Notifications extends React.Component {
               <h5 className="m-t-1">Dead Simple Usage</h5>
               <p>Just few lines of code to instantiate a notifications object. Does not require
                 passing any options:</p>
-              <pre><code>{'toast("Thanks for checking out Messenger!");'}</code></pre>
+              <pre className={s.notificationsCode}><code>{'toast("Thanks for checking out Messenger!");'}</code></pre>
               <p>More complex example:</p>
-              <pre>
+              <pre className={s.notificationsCode}>
                 <code>{'\ntoast.success( \'There was an explosion while processing your request.\', { \n position: location,\n autoClose: 5000, \n hideProgressBar: false, \n closeOnClick: true,\n pauseOnHover: true, \n draggable: true \n});\n\n'}
                 </code>
               </pre>

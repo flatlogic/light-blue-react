@@ -13,7 +13,7 @@
 
   > li {
     padding: 10px;
-    border-top: 1px solid #e7e7e7;
+    border-top: 1px solid $bg-custom-dark;
     list-style: none;
 
     @include clearfix();

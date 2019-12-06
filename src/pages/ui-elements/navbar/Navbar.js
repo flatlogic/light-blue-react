@@ -125,7 +125,7 @@ class NavbarExamples extends Component {
                   </Nav>
                 </Collapse>
               </Navbar>
-              <Navbar className="px-2 mt-lg" color="light" light expand="md">
+              <Navbar className="px-2 mt-lg" color="success" dark expand="md">
                 <NavbarBrand href="/">Navbar</NavbarBrand>
                 <NavbarToggler className="ml-auto" onClick={() => this.toggle(3)} />
                 <Collapse isOpen={this.state.navs[3]} navbar>

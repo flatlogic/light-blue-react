@@ -1192,3 +1192,16 @@ div.abc-radio label {
 pre code {
   color: $content-color;
 }
+
+.modal {
+  .modal-body, .modal-header, .modal-footer {
+    background: #1b1e3c;
+    color: $content-color
+  }
+  .modal-header {
+    border-bottom: 1px solid $bg-custom-dark;
+  }
+  .modal-footer {
+    border-top: 1px solid $bg-custom-dark;
+  }
+}

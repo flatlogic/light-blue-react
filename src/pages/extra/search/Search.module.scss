@@ -90,3 +90,20 @@
     }
   }
 }
+
+:global {
+  .pagination {
+    .page-item a, .page-item.disabled a {
+      background-color: transparent;
+      border: 1px solid $subtle-blue !important;
+      color: $subtle-blue
+    }
+    .page-item:not(.disabled) a {
+      &:hover {
+        background-color: $subtle-blue;
+        color: $content-color;
+        transition: all .35s ease;
+      }
+    }
+  }
+}

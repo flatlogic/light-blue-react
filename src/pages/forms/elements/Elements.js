@@ -226,7 +226,7 @@ class Elements extends React.Component {
                       <span className="help-block">Some help text</span>
                     </Label>
                     <Col md={7}>
-                      <Input className="input-transparent" type="text" name="password" id="hint-field" />
+                      <Input type="text" name="password" id="hint-field" />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -465,7 +465,7 @@ class Elements extends React.Component {
                         </Label>
                         <Input
                           type="text" placeholder="Search Dashboard" id="no-borders-input"
-                          className="input-no-border bg-gray-lighter"
+                          className="input-no-border bg-default"
                         />
                         <p className="help-block">
                           With <code>.bg-gray-lighter</code>. White by default.
@@ -475,7 +475,7 @@ class Elements extends React.Component {
                   </Row>
 
                   <FormGroup className="form-action bg-widget-transparent">
-                    <Button color="inverse" type="submit" className="mr-xs">
+                    <Button color="primary" type="submit" className="mr-xs">
                       Save Changes
                     </Button>
                     <Button color="default">Cancel</Button>
