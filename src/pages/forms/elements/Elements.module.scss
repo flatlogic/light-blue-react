@@ -363,6 +363,13 @@
     }
   }
 }
+.sliderInfo {
+  :global {
+    .rc-slider-track {
+      background-color: $info;
+    }
+  }
+}
 .sliderRed {
   :global {
     .rc-slider-track {

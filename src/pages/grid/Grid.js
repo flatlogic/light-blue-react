@@ -10,6 +10,7 @@ import {
 import Sortable from 'react-sortablejs'
 
 import Widget from '../../components/Widget';
+import s from './Grid.module.scss';
 
 import mock from './mock';
 

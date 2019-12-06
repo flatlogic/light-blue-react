@@ -1158,7 +1158,7 @@ class Elements extends React.Component {
                         <div className="slider-inverse mb-sm">
                           <SliderWithTooltip  
                             tipFormatter={this.valueFormatter}
-                            className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderGrey}`} 
+                            className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderInfo}`} 
                             defaultValue={40}
                           />
                         </div>
@@ -1188,7 +1188,7 @@ class Elements extends React.Component {
                       <span>
                         <SliderWithTooltip  
                           tipFormatter={this.valueFormatter} 
-                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderGrey}`}
+                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
                           vertical
                           defaultValue={70}
                         />
@@ -1206,7 +1206,7 @@ class Elements extends React.Component {
                       <span>
                         <SliderWithTooltip  
                           tipFormatter={this.valueFormatter} 
-                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderGrey}`}
+                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
                           vertical
                           defaultValue={30}
                         />
