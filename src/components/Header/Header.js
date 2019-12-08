@@ -158,7 +158,7 @@ class Header extends React.Component {
             </NavLink>
           </NavItem>
           <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu} d-sm-down-none`}>
-            <DropdownToggle nav caret style={{color: "#f4f4f5"}}>
+            <DropdownToggle nav caret style={{color: "#f4f4f5", padding: 0}}>
               <span className={`${s.avatar} rounded-circle thumb-sm float-left mr-2`}>
                 <img src={avatar} alt="..."/>
               </span>

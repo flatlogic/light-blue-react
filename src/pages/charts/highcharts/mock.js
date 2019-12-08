@@ -62,14 +62,7 @@ export default {
       }
     },
     exporting: {
-      buttons: {
-        contextButton: {
-          symbolStroke: colors.textColor,
-          theme: {
-            fill: 'transparent'
-          }
-        }
-      }
+      enabled: false
     },
     subtitle: {
       text: document.ontouchstart === undefined ?
@@ -84,7 +77,9 @@ export default {
         style: {
           color: colors.textColor
         }
-      }
+      },
+      lineWidth: 0,
+      tickWidth: 0
     },
     yAxis: {
       title: {
@@ -97,7 +92,8 @@ export default {
         style: {
           color: colors.textColor
         }
-      }
+      },
+      gridLineColor: colors.gridLineColor
     },
     legend: {
       enabled: false
@@ -112,8 +108,8 @@ export default {
             y2: 1
           },
           stops: [
-            [0, Highcharts.getOptions().colors[0]],
-            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+            [0, colors.blue],
+            [1, Highcharts.Color(colors.blue).setOpacity(0).get('rgba')]
           ]
         },
         marker: {
@@ -144,14 +140,7 @@ export default {
       backgroundColor: 'transparent'
     },
     exporting: {
-      buttons: {
-        contextButton: {
-          symbolStroke: colors.textColor,
-          theme: {
-            fill: 'transparent'
-          }
-        }
-      }
+      enabled: false
     },
     accessibility: {
       description: 'A variable radius pie chart compares the population density and total land mass for seven European nations: Spain, France, Poland, the Czech Republic, Italy, Switzerland and Germany. The chart visualizes the data by using the width of each section to represent total area and the depth of the section to represent population density. Each section is color-coded according to the country and the chart is interactive: by hovering over each section the data points are exposed in a call-out box. The chart is organized by population density in a counterclockwise direction. Germany has the highest population density at 235.6 people per square kilometer, followed by Switzerland, Italy, the Czech Republic, Poland, France and Spain. France has the largest land mass at 551,500 square kilometers. Spain is the second largest country at 505,370 square kilometers but has the lowest population density at 92.9 people per square kilometer. Switzerland is the smallest nation by land mass at 41,277 square kilometers but it has the second highest population density at 214.5 people per square kilometer.'
@@ -167,6 +156,17 @@ export default {
       pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
         'Area (square km): <b>{point.y}</b><br/>' +
         'Population density (people per square km): <b>{point.z}</b><br/>'
+    },
+    plotOptions: {
+      variablepie: {
+        borderColor: null,
+        dataLabels: {
+          style: {
+            color: colors.textColor,
+            textOutline: null
+          }
+        }
+      }
     },
     colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.dark, colors.teal],
     series: [{
@@ -221,14 +221,7 @@ export default {
       }
     },
     exporting: {
-      buttons: {
-        contextButton: {
-          symbolStroke: colors.textColor,
-          theme: {
-            fill: 'transparent'
-          }
-        }
-      }
+      enabled: false
     },
     title: {
       text: '3D chart with null values',
@@ -260,12 +253,14 @@ export default {
           fontSize: '16px',
           color: colors.textColor
         }
-      }
+      },
+      gridLineColor: colors.gridLineColor
     },
     yAxis: {
       title: {
         text: null
-      }
+      },
+      gridLineColor: colors.gridLineColor
     },
     series: [{
       name: 'Sales',
@@ -281,14 +276,7 @@ export default {
       backgroundColor: 'transparent'
     },
     exporting: {
-      buttons: {
-        contextButton: {
-          symbolStroke: colors.textColor,
-          theme: {
-            fill: 'transparent'
-          }
-        }
-      }
+      enabled: false
     },
     title: {
       text: 'World population 2017',
@@ -300,6 +288,16 @@ export default {
       text: 'Source <href="https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)">Wikipedia</a>',
       style: {
         color: colors.textColor
+      }
+    },
+    plotOptions: {
+      sunburst: {
+        dataLabels: {
+          style: {
+            color: colors.textColor,
+            textOutline: null
+          }
+        }
       }
     },
     colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.dark, colors.teal],
@@ -364,14 +362,7 @@ export default {
       }
     },
     exporting: {
-      buttons: {
-        contextButton: {
-          symbolStroke: colors.textColor,
-          theme: {
-            fill: 'transparent'
-          }
-        }
-      }
+      enabled: false
     },
     xAxis: {
       min: 0,
@@ -381,7 +372,10 @@ export default {
         style: {
           color: colors.textColor
         }
-      }
+      },
+      gridLineColor: colors.gridLineColor,
+      lineWidth: 0,
+      tickWidth: 0
     },
     yAxis: {
       min: 0,
@@ -395,7 +389,8 @@ export default {
         style: {
           color: colors.textColor
         }
-      }
+      },
+      gridLineColor: colors.gridLineColor
     },
     legend: {
       itemStyle: {
@@ -418,14 +413,7 @@ export default {
     },
     colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.dark, colors.teal],
     exporting: {
-      buttons: {
-        contextButton: {
-          symbolStroke: colors.textColor,
-          theme: {
-            fill: 'transparent'
-          }
-        }
-      }
+      enabled: false
     },
     series: [{
       type: 'wordcloud',

@@ -31,6 +31,9 @@ function generateHeatMapData(count, yrange) {
   return series;
 }
 
+const actualDate = new Date();
+const actualYear = actualDate.getFullYear();
+
 export default {
   line: {
     series: [{
@@ -63,6 +66,12 @@ export default {
           style: {
             colors: colors.textColor
           }
+        },
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
         }
       },
       yaxis: {
@@ -74,6 +83,9 @@ export default {
       },
       tooltip: {
         theme: 'dark'
+      },
+      grid: {
+        borderColor: colors.gridLineColor
       },
       colors: [colors.blue]
     }
@@ -108,7 +120,7 @@ export default {
       tooltip: {
         theme: 'dark'
       },
-      colors: [colors.blue, colors.green, colors.gray],
+      colors: [colors.blue, colors.green, colors.red],
       dataLabels: {
         enabled: false
       },
@@ -135,6 +147,12 @@ export default {
           style: {
             colors: colors.textColor
           }
+        },
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
         }
       },
       yaxis: {
@@ -143,6 +161,9 @@ export default {
             color: colors.textColor
           }
         }
+      },
+      grid: {
+        borderColor: colors.gridLineColor
       }
     }
   },
@@ -154,7 +175,6 @@ export default {
     options: {
       colors: [colors.blue],
       chart: {
-        offsetY: 40,
         height: 350,
         type: 'bar',
       },
@@ -181,7 +201,6 @@ export default {
       },
 
       xaxis: {
-        offsetY: -30,
         categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         position: 'top',
         labels: {
@@ -242,6 +261,9 @@ export default {
         style: {
           color: colors.textColor
         }
+      },
+      grid: {
+        borderColor: colors.gridLineColor
       }
     }
   },
@@ -263,7 +285,7 @@ export default {
       chart: {
         stacked: true
       },
-      colors: [colors.blue, colors.pink],
+      colors: [colors.blue, colors.red],
       plotOptions: {
         bar: {
           horizontal: true,
@@ -280,11 +302,11 @@ export default {
         }
       },
       stroke: {
-        width: 1,
-        colors: [colors.textColor]
+        width: 0,
       },
 
       grid: {
+        borderColor: colors.gridLineColor,
         xaxis: {
           showLines: false
         }
@@ -335,6 +357,12 @@ export default {
           style: {
             colors: colors.textColor
           }
+        },
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
         }
       },
     }
@@ -357,7 +385,7 @@ export default {
       dataLabels: {
         enabled: false
       },
-      colors: [colors.blue, colors.green, colors.orange],
+      colors: [colors.blue, colors.green, colors.red],
       stroke: {
         width: [1, 1, 4]
       },
@@ -370,11 +398,17 @@ export default {
         }
       },
       xaxis: {
-        categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016],
+        categories: [actualYear-7, actualYear-6, actualYear-5, actualYear-4, actualYear-3, actualYear-2, actualYear-1, actualYear],
         labels: {
           style: {
             colors: colors.textColor
           }
+        },
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
         }
       },
       yaxis: [{
@@ -461,6 +495,9 @@ export default {
         labels: {
           colors: [colors.textColor]
         }
+      },
+      grid: {
+        borderColor: colors.gridLineColor
       }
     }
   },
@@ -487,6 +524,10 @@ export default {
           }
         }
       }],
+      stroke: {
+        show: false,
+        width: 0
+      },
       colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple],
     }
   },
@@ -512,6 +553,10 @@ export default {
           }
         }
       }],
+      stroke: {
+        show: false,
+        width: 0
+      },
       colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple],
     }
   },
@@ -620,6 +665,12 @@ export default {
           style: {
             colors: colors.textColor
           }
+        },
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
         }
       },
       yaxis: {
@@ -632,7 +683,7 @@ export default {
       plotOptions: {
         heatmap: {
           shadeIntensity: 0.5,
-
+          radius: 0,
           colorScale: {
             ranges: [{
               from: -30,
@@ -671,6 +722,13 @@ export default {
         style: {
           color: colors.textColor
         }
+      },
+      stroke: {
+        show: false,
+        width: 0
+      },
+      grid: {
+        show: false
       }
     }
   }
