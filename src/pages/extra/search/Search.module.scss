@@ -3,12 +3,12 @@
 .root {
   .searchResultCategories {
     > li > a {
-      color: $white;
+      color: $content-color;
       font-weight: $font-weight-normal;
 
       &:hover {
-        color: $gray-700;
-        background-color: $gray-400;
+        color: $content-color;
+        background-color: $subtle-blue;
       }
     }
   }

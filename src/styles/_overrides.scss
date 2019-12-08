@@ -154,7 +154,7 @@ legend {
 }
 
 .badge-default {
-  @include badge-variant($gray-300);
+  @include badge-variant($subtle-blue);
 }
 
 .badge {

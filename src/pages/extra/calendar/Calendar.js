@@ -277,10 +277,10 @@ class Calendar extends React.Component {
 
       <Modal isOpen={modal} toggle={this.toggleModal} id="news-close-modal">
         <ModalHeader toggle={this.toggleModal} id="news-close-modal-label">Create New Event</ModalHeader>
-        <ModalBody className="bg-white">
+        <ModalBody>
         Just enter event name to create a new one
 
-        <Input onChange={this.handleChange} className={s.calendarModalInput} value={event.title} type="text" name="title" placeholder="Title" />
+        <Input onChange={this.handleChange} className={`${s.calendarModalInput} border-0`} value={event.title} type="text" name="title" placeholder="Title" />
         </ModalBody>
         <ModalFooter>
           <Button color="default" onClick={this.toggleModal} data-dismiss="modal">Close</Button>{' '}
@@ -290,7 +290,7 @@ class Calendar extends React.Component {
 
       <Modal isOpen={modalEvent} toggle={this.toggleModalEvent} id="news-close-modal">
         <ModalHeader toggle={this.toggleModalEvent} id="news-close-modal-label">{event.title}</ModalHeader>
-        <ModalBody className="bg-white">
+        <ModalBody>
         <p className="text-muted">
             <i className="la la-calendar"></i>
             {this.getFormattedDate(event.start)}
