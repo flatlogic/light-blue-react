@@ -438,7 +438,7 @@ class Elements extends React.Component {
                                 caret color="primary"
                                 className="dropdown-toggle-split"
                               >
-                                {this.state.dropDownValue}
+                                {this.state.dropDownValue}&nbsp;
                               </DropdownToggle>
                               <DropdownMenu>
                                 <DropdownItem onClick={this.changeValueDropdown}>
@@ -635,6 +635,7 @@ class Elements extends React.Component {
                   <Label md="4" for="default-select">Default select</Label>
                   <Col md="6" className={s.select2}>
                     <Select 
+                      classNamePrefix="react-select"
                       className="selectCustomization"
                       options={this.state.selectDefaultData}
                       defaultValue={this.state.selectDefaultData[1]}
@@ -645,6 +646,7 @@ class Elements extends React.Component {
                   <Label md="4" for="grouped-select">Select with search & groups</Label>
                   <Col md="6" className={s.select2}>
                     <Select 
+                      classNamePrefix="react-select"
                       className="selectCustomization"
                       options={this.state.selectGroupData}
                     />
@@ -662,7 +664,7 @@ class Elements extends React.Component {
                         caret color="default"
                         className="dropdown-toggle-split mr-xs"
                       >
-                        {this.state.simpleSelectDropdownValue}
+                        {this.state.simpleSelectDropdownValue}&nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem onClick={this.changeSelectDropdownSimple}>
@@ -691,7 +693,7 @@ class Elements extends React.Component {
                         caret color="danger"
                         className="dropdown-toggle-split mr-xs"
                       >
-                        {this.state.redSelectDropdownValue}
+                        {this.state.redSelectDropdownValue}&nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem onClick={this.changeSelectDropdownRed}>
@@ -710,7 +712,7 @@ class Elements extends React.Component {
                         caret color="warning"
                         className="dropdown-toggle-split mr-xs"
                       >
-                        {this.state.orangeSelectDropdownValue}
+                        {this.state.orangeSelectDropdownValue}&nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem onClick={this.changeSelectDropdownOrange}>
@@ -729,7 +731,7 @@ class Elements extends React.Component {
                         caret color="success"
                         className="dropdown-toggle-split"
                       >
-                        {this.state.greenSelectDropdownValue}
+                        {this.state.greenSelectDropdownValue}&nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem onClick={this.changeSelectDropdownGreen}>

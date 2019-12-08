@@ -402,6 +402,15 @@
       background: $bg-custom-dark;
       border: 1px solid $bg-custom-dark;
     }
+    .react-select__single-value {
+      color: $content-color;
+    }
+    .react-select__option--is-focused {
+      background: $subtle-blue;
+    }
+    .react-select__option--is-selected {
+      background: rgba($subtle-blue,.6);
+    }
   } 
   .mde-text textarea {
     background: $bg-custom-dark;
