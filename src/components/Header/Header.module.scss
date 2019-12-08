@@ -6,6 +6,10 @@
     margin-bottom: 50px;
   }
 
+  ul > li > a {
+    padding: 0.5rem 0.5rem
+  }
+
   :global {
     .alert {
       width: 265px;
@@ -303,6 +307,12 @@
     left: auto !important;
     right: 0 !important;
     top: $navbar-height !important;
+  }
+
+  @media(max-width: 580px) {
+    :global .dropdown-menu {
+      right: -50% !important;
+    }
   }
 }
 

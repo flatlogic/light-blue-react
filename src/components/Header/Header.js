@@ -126,7 +126,7 @@ class Header extends React.Component {
   render() {
     return (
       <Navbar className={`d-print-none ${s.root}`}>
-        <UncontrolledAlert className={`${s.alert} mr-3`}>
+        <UncontrolledAlert className={`${s.alert} mr-3 d-lg-down-none`}>
           <i className="fa fa-info-circle mr-1" /> Check out Light Blue <button className="btn-link" onClick={() => this.setState({ settingsOpen: true })}>settings</button> on
           the right!
         </UncontrolledAlert>
@@ -140,7 +140,7 @@ class Header extends React.Component {
             />
           </InputGroup>
         </Collapse>
-        <Form className="d-sm-down-none mr-3 ml-3" inline>
+        <Form className="d-md-down-none mr-3 ml-3" inline>
           <FormGroup>
             <InputGroup className="input-group-no-border">
               <InputGroupAddon addonType="prepend">
@@ -152,12 +152,7 @@ class Header extends React.Component {
         </Form>
   
         <Nav className="ml-md-0">
-          <NavItem className="d-md-none">
-            <NavLink onClick={this.toggleSearchOpen} className={s.navItem} href="#">
-              <i className="glyphicon glyphicon-search" />
-            </NavLink>
-          </NavItem>
-          <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu} d-sm-down-none`}>
+          <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu}`}>
             <DropdownToggle nav caret style={{color: "#f4f4f5", padding: 0}}>
               <span className={`${s.avatar} rounded-circle thumb-sm float-left mr-2`}>
                 <img src={avatar} alt="..."/>
@@ -169,6 +164,11 @@ class Header extends React.Component {
               <Notifications />
             </DropdownMenu>
           </Dropdown>
+          <NavItem className="d-lg-none d-md-block">
+            <NavLink onClick={this.toggleSearchOpen} className={s.navItem} href="#">
+              <i className="glyphicon glyphicon-search text-white" />
+            </NavLink>
+          </NavItem>
           <Dropdown nav isOpen={this.state.messagesOpen} toggle={this.toggleMessagesDropdown}>
             <DropdownToggle nav className={`${s.navItem} text-white`}>
               <i className="glyphicon glyphicon-comments" />
@@ -210,7 +210,7 @@ class Header extends React.Component {
             </DropdownMenu>
           </Dropdown>
           <NavItem className={`${s.divider} text-white`} />
-          <Dropdown nav isOpen={this.state.settingsOpen} toggle={this.toggleSettingsDropdown} className="d-none d-md-block">
+          <Dropdown nav isOpen={this.state.settingsOpen} toggle={this.toggleSettingsDropdown}>
             <DropdownToggle nav className={`${s.navItem} text-white`}>
               <i className="glyphicon glyphicon-cog" />
             </DropdownToggle>
@@ -271,7 +271,7 @@ class Header extends React.Component {
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
-          <NavItem className="d-none d-md-block">
+          <NavItem>
             <NavLink onClick={this.doLogout} className={`${s.navItem} text-white`} href="#">
               <i className="glyphicon glyphicon-off" />
             </NavLink>

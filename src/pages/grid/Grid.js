@@ -10,8 +10,9 @@ import {
 import Sortable from 'react-sortablejs'
 
 import Widget from '../../components/Widget';
+/* eslint-disable */
 import s from './Grid.module.scss';
-
+/* eslint-enable */
 import mock from './mock';
 
 const tooltipPlacement = 'bottom';
