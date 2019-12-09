@@ -72,6 +72,7 @@ class Analytics extends Component {
             dataLabels: {
               enabled: false
             },
+            borderWidth: 0,
             showInLegend: true,
             innerSize: 80,
             size: 100,
@@ -84,13 +85,13 @@ class Analytics extends Component {
             }
           }
         },
-        colors: ['#ffc247', '#f55d5d', '#9964e3'],
+        colors: ['#58D777', '#1870DC', '#F45722'],
         legend: {
           align: 'right',
           verticalAlign: 'middle',
           layout: 'vertical',
           itemStyle: {
-            color: '#ffffff',
+            color: 'rgba(244, 244, 245, 0.6)',
             fontWeight: 400,
           },
           itemHoverStyle: {
@@ -128,7 +129,7 @@ class Analytics extends Component {
                     fetchingData={isReceiving}
                     title={<h5>Visits Today</h5>}
                   >
-                      <div className="d-flex justify-content-between align-items-center mb">
+                      <div className="d-flex justify-content-between align-items-center mb h3">
                           <h2 style={{fontSize: '2.1rem'}}>{visits.count}</h2>
                           <i className="la la-arrow-right text-success rotate-315"/>
                       </div>
@@ -183,19 +184,19 @@ class Analytics extends Component {
                         This Period
                       </small>
                       <small className="mr-lg d-flex align-items-center">
-                        <span className="circle bg-warning text-warning mr-xs" style={{ fontSize: '4px' }}>.</span>
+                        <span className="circle bg-primary text-primary mr-xs" style={{ fontSize: '4px' }}>.</span>
                         Last Period
                       </small>
                     </p>
                     <h6 className="fs-sm text-muted">SDK</h6>
                       <Progress color="success" className="progress-sm" style={{height: '3px', marginBottom: '5px'}}
                                 value={performance.sdk?.this_period_pct}/>
-                      <Progress color="info" className="progress-sm" style={{height: '3px'}}
+                      <Progress color="primary" className="progress-sm" style={{height: '3px'}}
                                 value={performance.sdk?.last_period_pct}/>
                     <h6 className="mt fs-sm text-muted">Integration</h6>
                       <Progress color="success" className="progress-sm" style={{height: '3px', marginBottom: '5px'}}
                                 value={performance.integration?.this_period_pct}/>
-                      <Progress color="info" className="progress-sm" style={{height: '3px'}}
+                      <Progress color="primary" className="progress-sm" style={{height: '3px'}}
                                 value={performance.integration?.last_period_pct}/>
                   </Widget>
                 </div>
@@ -213,7 +214,7 @@ class Analytics extends Component {
                       <p><small>{server[1]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[1]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[1]?.frequency} Ghz</small></p>
                       <div className={s.sparklineWrapper}>
                         <Trend 
-                          gradient={['#ffc247']}
+                          gradient={['#F45722']}
                           height={30}
                           smooth
                           data={this.getRandomData()}
@@ -224,7 +225,7 @@ class Analytics extends Component {
                       <p><small>{server[2]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.frequency} Ghz</small></p>
                       <div className={s.sparklineWrapper}>
                         <Trend 
-                          gradient={['#F55D5D']}
+                          gradient={['#58D777']}
                           height={30}
                           smooth
                           data={this.getRandomData()}
@@ -235,7 +236,7 @@ class Analytics extends Component {
                       <p><small>{server[2]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.frequency} Ghz</small></p>
                       <div className={s.sparklineWrapper}>
                         <Trend 
-                          gradient={['#3abf94']}
+                          gradient={['#1870DC']}
                           height={30}
                           smooth
                           data={this.getRandomData()}

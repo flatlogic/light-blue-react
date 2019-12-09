@@ -51,7 +51,7 @@ class Calendar extends React.Component {
             {
               title: 'All Day Event',
               start: new Date(y, m, 1),
-              backgroundColor: '#79A5F0',
+              backgroundColor: '#F45722',
               textColor: '#fff',
               description: 'Will be busy throughout the whole day',
             },
@@ -59,7 +59,8 @@ class Calendar extends React.Component {
               title: 'Long Event',
               start: new Date(y, m, d + 5),
               end: new Date(y, m, d + 7),
-              textColor: '#333',
+              backgroundColor: '#58D777',
+              textColor: '#f4f4f5',
               description: 'This conference should be worse visiting',
             },
             {
@@ -67,7 +68,8 @@ class Calendar extends React.Component {
               title: 'Blah Blah Car',
               start: new Date(y, m, d - 3, 16, 0),
               allDay: false,
-              textColor: '#333',
+              backgroundColor: '#f0af03',
+              textColor: '#f4f4f5',
               description: 'Agree with this guy on arrival time',
             },
             {
@@ -75,8 +77,8 @@ class Calendar extends React.Component {
               title: 'Buy this template',
               start: new Date(y, m, d + 3, 12, 0),
               allDay: false,
-              backgroundColor: '#555',
-              textColor: '#fff',
+              backgroundColor: '#4ebfbb',
+              textColor: '#f4f4f5',
               description: 'Make sure everything is consistent first',
             },
             {
@@ -277,10 +279,10 @@ class Calendar extends React.Component {
 
       <Modal isOpen={modal} toggle={this.toggleModal} id="news-close-modal">
         <ModalHeader toggle={this.toggleModal} id="news-close-modal-label">Create New Event</ModalHeader>
-        <ModalBody className="bg-white">
+        <ModalBody>
         Just enter event name to create a new one
 
-        <Input onChange={this.handleChange} className={s.calendarModalInput} value={event.title} type="text" name="title" placeholder="Title" />
+        <Input onChange={this.handleChange} className={`${s.calendarModalInput} border-0`} value={event.title} type="text" name="title" placeholder="Title" />
         </ModalBody>
         <ModalFooter>
           <Button color="default" onClick={this.toggleModal} data-dismiss="modal">Close</Button>{' '}
@@ -290,9 +292,9 @@ class Calendar extends React.Component {
 
       <Modal isOpen={modalEvent} toggle={this.toggleModalEvent} id="news-close-modal">
         <ModalHeader toggle={this.toggleModalEvent} id="news-close-modal-label">{event.title}</ModalHeader>
-        <ModalBody className="bg-white">
-        <p class="text-muted">
-            <i class="la la-calendar"></i>
+        <ModalBody>
+        <p className="text-muted">
+            <i className="la la-calendar"></i>
             {this.getFormattedDate(event.start)}
           </p>
           <p>{event.extendedProps && event.extendedProps.description}</p>

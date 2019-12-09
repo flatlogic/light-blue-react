@@ -46,11 +46,11 @@ class RealtimeTraffic extends React.Component {
       realtime: true,
       series: [
         {
-          color: '#343434', // 'gray-dark'
+          color: '#58D777', // 'green'
           data: seriesData[0],
           name: 'Uploads',
         }, {
-          color: '#666', // gray,
+          color: '#1870DC', // blue,
           data: seriesData[1],
           name: 'Downloads',
         },
@@ -78,10 +78,10 @@ class RealtimeTraffic extends React.Component {
       <div>
         <h4 className="mb-lg">Recent <span className="fw-semi-bold">Update</span></h4>
         <h6>Node.js <span className="fw-semi-bold">4.0.1 distribution</span></h6>
-        <Progress className="bg-gray-lighter progress-xs" color="danger" value="77" />
+        <Progress className="bg-custom-dark progress-xs" color="danger" value="77" />
         <p className="mt-sm mb fs-mini ">
-          <small><span className="circle bg-warning text-gray-dark"><i
-            className="glyphicon glyphicon-chevron-up"
+          <small><span className="circle bg-default text-gray-dark"><i
+            className="glyphicon glyphicon-chevron-up align-baseline"
           /></span></small>
           <strong className="px-1">17% higher</strong>
           than last month

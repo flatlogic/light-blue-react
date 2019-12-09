@@ -27,8 +27,8 @@
       color: $text-color;
     }
 
-    .fc-today {
-      background-color: #fff1b8;
+    .fc-unthemed td.fc-today {
+      background-color: rgba($subtle-blue, .6);
     }
 
     a.fc-event {

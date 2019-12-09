@@ -45,7 +45,7 @@ const Typography = () => (
                 </div>
               </Col>
             </Row>
-            <pre className="bg-light border-0 w-100 h-100">
+            <pre className="bg-custom-dark border-0 w-100 h-100">
               <code className="text-danger">{'<Container>\n'}</code>
               <code className="text-success">{'  <Row>\n'}</code>
               <code className="text-info">{'    <Col xs={4}>\n'}</code>
@@ -86,7 +86,7 @@ const Typography = () => (
                 </div>
               </Col>
             </Row>
-            <pre className="bg-light border-0 w-100 h-100">
+            <pre className="bg-custom-dark border-0 w-100 h-100">
               <code className="text-danger">{'<Container>\n'}</code>
               <code className="text-success">{'  <Row>\n'}</code>
               <code className="text-info">{'    <Col>\n'}</code>
@@ -204,7 +204,7 @@ const Typography = () => (
                 </div>
               </Col>
             </Row>
-            <pre className="bg-light border-0 w-100 h-100">
+            <pre className="bg-custom-dark border-0 w-100 h-100">
               <code className="text-danger">{'<Container>\n'}</code>
               <code className="text-success">{'  <Row>\n'}</code>
               <code className="text-info">{'    <Col className="align-self-start">\n'}</code>
@@ -270,7 +270,7 @@ const Typography = () => (
                 </div>
               </Col>
             </Row>
-            <pre className="bg-light border-0 w-100 h-100">
+            <pre className="bg-custom-dark border-0 w-100 h-100">
               <code className="text-danger">{'<Container>\n'}</code>
               <code className="text-success">{'  <Row className="justify-content-end">\n'}</code>
               <code className="text-info">{'    <Col>\n'}</code>

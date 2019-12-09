@@ -33,7 +33,7 @@ class YearsMap extends React.Component {
     this.polygonSeries.useGeodata = true;
     this.polygonSeries.exclude = ["AQ"];
     this.polygonSeries.data = fakeWorldData[this.state.activeYear].areas;
-    this.polygonSeries.tooltip.background.fill = am4core.color("#fff");
+    this.polygonSeries.tooltip.background.fill = am4core.color("#C7D0FF");
     this.polygonSeries.tooltip.getFillFromObject = false;
     this.polygonSeries.tooltip.label.fill = am4core.color("#495057");
     this.polygonSeries.tooltip.autoTextColor = false;
@@ -43,10 +43,10 @@ class YearsMap extends React.Component {
     map.zoomControl.dx = 2;
     map.zoomControl.dy = -21;
     map.zoomControl.layout = 'horizontal';
-    map.zoomControl.minusButton.background.fill = am4core.color("rgba(51,51,51,.85)");
-    map.zoomControl.plusButton.background.fill = am4core.color("rgba(51,51,51,.85)");
-    map.zoomControl.minusButton.background.stroke = am4core.color("#ccc");
-    map.zoomControl.plusButton.background.stroke = am4core.color("#ccc");
+    map.zoomControl.minusButton.background.fill = am4core.color("C7D0FF");
+    map.zoomControl.plusButton.background.fill = am4core.color("C7D0FF");
+    map.zoomControl.minusButton.background.stroke = am4core.color("#6979C9");
+    map.zoomControl.plusButton.background.stroke = am4core.color("#6979C9");
     map.zoomControl.plusButton.background.cornerRadius(3,3,3,3);
     map.zoomControl.minusButton.background.cornerRadius(3,3,3,3);
     map.zoomControl.plusButton.dx = 5;
@@ -60,16 +60,16 @@ class YearsMap extends React.Component {
     minusButtonHoverState.properties.fill = am4core.color("#020202");
     let polygonTemplate = this.polygonSeries.mapPolygons.template;
     polygonTemplate.tooltipHTML = "{tooltip}";
-    polygonTemplate.fill = am4core.color("#eee");
-    polygonTemplate.stroke = am4core.color("#666");
+    polygonTemplate.fill = am4core.color("#474D84");
+    polygonTemplate.stroke = am4core.color("#6979C9");
     polygonTemplate.strokeWidth = 0.1;
     let hs = polygonTemplate.states.create("hover");
-    hs.properties.fill = am4core.color("#999");
+    hs.properties.fill = am4core.color("#354D84");
     this.polygonSeries.heatRules.push({
       "property": "fill",
       "target": polygonTemplate,
-      "min": am4core.color("#eee"),
-      "max": am4core.color("#aaa")
+      "min": am4core.color("#474D84"),
+      "max": am4core.color("#6979C9")
     });
   }
 
@@ -93,7 +93,7 @@ class YearsMap extends React.Component {
         <div className={s.stats}>
           <h6>YEARLY <span className="fw-semi-bold">DISTRIBUTIONS</span></h6>
           <span className="pull-left mr-xs">
-            <small><span className="circle bg-warning text-gray-dark">
+            <small><span className="circle bg-success text-gray-dark">
               <i className="fa fa-plus" /></span></small>
           </span>
           <p className="h4 m-0">

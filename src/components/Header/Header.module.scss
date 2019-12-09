@@ -6,6 +6,10 @@
     margin-bottom: 50px;
   }
 
+  ul > li > a {
+    padding: 0.5rem 0.5rem
+  }
+
   :global {
     .alert {
       width: 265px;
@@ -56,6 +60,8 @@
   &:focus {
     color: $white;
   }
+
+
 
   @media (max-width: breakpoint-max(sm)) {
     top: 10px;
@@ -129,12 +135,11 @@
 .divider {
   display: block;
   width: 1px;
-  margin: 0 20px;
-  background: linear-gradient(rgba($text-transparent, 0), $text-transparent, rgba($gray-600, 0));
+  margin: 10px 20px;
+  background: $white;
 }
 
 .navItem {
-  color: $text-transparent;
   font-size: 1.5rem;
   outline: 0;
   text-align: center;
@@ -162,7 +167,9 @@
 }
 
 .dropdownMenu {
-  background: rgba(51,51,51,.85) !important;
+  background: $main-gradient !important;
+  box-shadow: 0 0px 40px 2px rgba(#020202,.5);
+  border: none;
   color: $white;
 
   @media (max-width: breakpoint-max(xs)) {
@@ -289,4 +296,48 @@
   line-height: 1em;
   padding: 2px 4px;
   border-radius: 10px;
+}
+
+.notificationsMenu {
+  > a {
+    background-color: transparent!important;    
+  }
+
+  :global .dropdown-menu {
+    left: auto !important;
+    right: 0 !important;
+    top: $navbar-height !important;
+  }
+
+  @media(max-width: 580px) {
+    :global .dropdown-menu {
+      right: -50% !important;
+    }
+  }
+}
+
+.accountCheck {
+  color: $text-color
+}
+
+.notificationsWrapper {
+  width: min-content;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 40px;
+  width: 40px;
+  background: $blue;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.badge {
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 10px
 }

@@ -61,8 +61,8 @@ class Search extends React.Component {
           </div>
 
           <ButtonGroup>
-            <Button color="gray" className="active"><i className="fa fa-th-list" /></Button>
-            <Button color="gray"><i className="fa fa-th-large" /></Button>
+            <Button color="subtle-blue" className="active"><i className="fa fa-th-list" /></Button>
+            <Button color="subtle-blue"><i className="fa fa-th-large" /></Button>
           </ButtonGroup>
         </div>
         <Row className="mt-3 d-block">

@@ -17,6 +17,8 @@ import {
 } from 'reactstrap';
 import classnames from 'classnames';
 
+import s from './TabsAccordion.module.scss'
+
 class TabsAccordion extends React.Component {
 
   constructor(props) {
@@ -130,7 +132,7 @@ class TabsAccordion extends React.Component {
             <div className="clearfix">
 
               <Nav tabs className="float-leftt">
-                <NavItem>
+                <NavItem className={s.customNavItem}>
                   <NavLink
                     className={classnames({ active: this.state.activeFirstTab === 'tab11' })}
                     onClick={() => { this.toggleFirstTabs('tab11'); }}
@@ -138,7 +140,7 @@ class TabsAccordion extends React.Component {
                     <span>Basic</span>
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                <NavItem className={s.customNavItem}>
                   <NavLink
                     className={classnames({ active: this.state.activeFirstTab === 'tab12' })}
                     onClick={() => { this.toggleFirstTabs('tab12'); }}
@@ -146,12 +148,12 @@ class TabsAccordion extends React.Component {
                     <span>Assumtion</span>
                   </NavLink>
                 </NavItem>
-                <UncontrolledDropdown>
+                <UncontrolledDropdown className={`${s.customNavItem} nav-item`}>
                   <DropdownToggle nav caret
                                   className={classnames({
                                     active: this.state.activeFirstTab === 'tab13' ||
                                     this.state.activeFirstTab === 'tab14'
-                                  })}>
+                                  }), s.tabsDropDown}>
                     Dropdown
                   </DropdownToggle>
                   <DropdownMenu>
@@ -230,7 +232,7 @@ class TabsAccordion extends React.Component {
             <Row>
               <Col xs="12" className="mb-5">
                 <Nav tabs>
-                  <NavItem>
+                  <NavItem className={s.customNavItem}>
                     <NavLink
                       className={classnames({ active: this.state.activeSecondTab === 'tab21' })}
                       onClick={() => { this.toggleSecondTabs('tab21'); }}
@@ -238,7 +240,7 @@ class TabsAccordion extends React.Component {
                       <span>Basic</span>
                     </NavLink>
                   </NavItem>
-                  <NavItem>
+                  <NavItem className={s.customNavItem}>
                     <NavLink
                       className={classnames({ active: this.state.activeSecondTab === 'tab22' })}
                       onClick={() => { this.toggleSecondTabs('tab22'); }}
@@ -246,7 +248,7 @@ class TabsAccordion extends React.Component {
                       <span>Assumtion</span>
                     </NavLink>
                   </NavItem>
-                  <NavItem>
+                  <NavItem className={s.customNavItem}>
                     <NavLink
                       className={classnames({ active: this.state.activeSecondTab === 'tab23' })}
                       onClick={() => { this.toggleSecondTabs('tab23'); }}
@@ -302,7 +304,7 @@ class TabsAccordion extends React.Component {
             <Row>
               <Col xs="12">
                 <Nav tabs>
-                  <NavItem>
+                  <NavItem className={s.customNavItem}>
                     <NavLink
                       className={classnames({ active: this.state.activeThirdTab === 'tab31' })}
                       onClick={() => { this.toggleThirdTabs('tab31'); }}
@@ -310,7 +312,7 @@ class TabsAccordion extends React.Component {
                       <span>Basic</span>
                     </NavLink>
                   </NavItem>
-                  <NavItem>
+                  <NavItem className={s.customNavItem}>
                     <NavLink
                       className={classnames({ active: this.state.activeThirdTab === 'tab32' })}
                       onClick={() => { this.toggleThirdTabs('tab32'); }}
@@ -318,7 +320,7 @@ class TabsAccordion extends React.Component {
                       <span>Assumtion</span>
                     </NavLink>
                   </NavItem>
-                  <NavItem>
+                  <NavItem className={s.customNavItem}>
                     <NavLink
                       className={classnames({ active: this.state.activeThirdTab === 'tab33' })}
                       onClick={() => { this.toggleThirdTabs('tab33'); }}

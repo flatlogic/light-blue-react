@@ -26,8 +26,8 @@ class Filters extends Component {
     ];
     const quickViewButton = [
       { id: 0, title: 'Work', colour: 'danger' },
-      { id: 1, title: 'Private', colour: 'white' },
-      { id: 2, title: 'Saved', colour: '' },
+      { id: 1, title: 'Private', colour: 'success' },
+      { id: 2, title: 'Saved', colour: 'primary' },
     ];
     const { activeButtonId } = this.state;
     const { compose } = this.props;

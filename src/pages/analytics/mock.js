@@ -110,7 +110,7 @@ export default {
     {
       product: 'Sing App',
       total: '754',
-      color: 'warning',
+      color: 'success',
       registrations: {
         value: 30,
         profit: true,
@@ -123,7 +123,7 @@ export default {
     {
       product: 'RNS',
       total: '1,025',
-      color: 'info',
+      color: 'danger',
       registrations: {
         value: 230,
         profit: true,

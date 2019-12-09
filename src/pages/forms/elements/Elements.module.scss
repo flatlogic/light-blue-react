@@ -15,28 +15,58 @@
 }
 
 .wysiwygWrapper {
-  border: 1px solid #ccc !important;
+  border: 1px solid $bg-custom-dark !important;
   overflow: visible;
   height: 270px;
 }
 
 .wysiwygToolbar {
   color: $gray-800 !important;
-  background-color: #ddd !important;
+  background-color: $subtle-blue !important;
   border-color: transparent !important;
 
   :global {
+    .rdw-dropdown-optionwrapper {
+      background: $bg-custom-dark;
+      border: 1px solid $bg-custom-dark;
+    }
+    .rdw-dropdown-optionwrapper-highlighted {
+      background: $bg-custom-dark!important;
+      border: 1px solid $bg-custom-dark;
+    }
+    .rdw-dropdownoption-highlighted {
+      background: $subtle-blue;
+    }
+    .rdw-dropdownoption-active {
+      background: $subtle-blue;
+    }
+    .rdw-dropdown-optionwrapper:hover {
+      background: $bg-custom-dark;
+    }
     .rdw-option-wrapper {
       font-family: 'Open Sans', sans-serif;
       font-size: 14px;
       height: 30px;
       min-width: 30px;
-      margin: 0;
-      background: #f8f8f8;
+      margin: 0 3px 0 0;
+      background: $subtle-blue;
+      color: $content-color;
+      box-shadow: none;
+      border: 1px solid $bg-custom-dark;
+      &:hover, &:focus {
+        box-shadow: none;
+      }
     }
 
     .rdw-dropdown-wrapper {
-      background: #f8f8f8;
+      background: $subtle-blue;
+      color: $content-color;
+      border: 1px solid $bg-custom-dark;
+      &:hover, &:focus {
+        background: $subtle-blue;
+        color: $content-color;
+        box-shadow: none;
+      }
     }
   }
 }
@@ -216,7 +246,7 @@
       padding: ($spacer / 2) $spacer;
       margin-bottom: $spacer;
       font-size: $blockquote-font-size;
-      border-left: 0.25rem solid $gray-300;
+      border-left: 0.25rem solid $green;
     }
 
     .blockquote footer {
@@ -233,7 +263,7 @@
       padding-right: $spacer;
       padding-left: 0;
       text-align: right;
-      border-right: 0.25rem solid $gray-300;
+      border-right: 0.25rem solid $green;
       border-left: 0;
     }
 
@@ -280,10 +310,7 @@
 .sliderCustomization {
   :global {
     .rc-slider-rail {
-      background-image: linear-gradient(180deg,#eee 0,#f8f8f8);
-      background-repeat: repeat-x;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
-      border-radius: .3rem;
+      background: #040620;
     }
     .rc-slider-handle {
       position: absolute;
@@ -325,35 +352,42 @@
 .sliderGrey {
   :global {
     .rc-slider-track {
-      background-color: #636C72;
+      background-color: $gray;
     }
   }
 }
 .sliderBlue {
   :global {
     .rc-slider-track {
-      background-color: #196EFF;
+      background-color: $blue;
+    }
+  }
+}
+.sliderInfo {
+  :global {
+    .rc-slider-track {
+      background-color: $info;
     }
   }
 }
 .sliderRed {
   :global {
     .rc-slider-track {
-      background-color: #FF0115;
+      background-color: $red;
     }
   }
 }
 .sliderYellow {
   :global {
     .rc-slider-track {
-      background-color: #FFC107;
+      background-color: $yellow;
     }
   }
 }
 .sliderGreen {
   :global {
     .rc-slider-track {
-      background-color: #2ADA7A;
+      background-color: $green;
     }
   }
 }
@@ -364,8 +398,29 @@
 
 :global {
   .selectCustomization {
-    color: #000;
+    > div {
+      background: $bg-custom-dark;
+      border: 1px solid $bg-custom-dark;
+    }
+    .react-select__single-value {
+      color: $content-color;
+    }
+    .react-select__option--is-focused {
+      background: $subtle-blue;
+    }
+    .react-select__option--is-selected {
+      background: rgba($subtle-blue,.6);
+    }
   } 
+  .mde-text textarea {
+    background: $bg-custom-dark;
+  }
+  .rc-slider-handle {
+    background: $subtle-blue !important;
+  }
+  legend {
+    border-bottom: 1px solid $bg-custom-dark;
+  }
 }
 
 /* react-select end */

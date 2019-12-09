@@ -1,0 +1,19 @@
+
+@import '../../../styles/app';
+
+.customNavItem {
+  :global {
+    a.nav-link {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.24)!important;
+        height: 100%;
+      }
+      &:focus {
+        border-color: transparent;
+      }
+    }
+    .dropdown-toggle.nav-link{
+      background-color: rgba(0, 0, 0, 0.24)!important;
+    }
+  }
+}

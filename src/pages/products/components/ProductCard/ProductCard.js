@@ -31,7 +31,7 @@ class ProductCard extends Component {
     return (
       <div className={[s.productCard, 'product-card'].join(' ')}>
         <div onClick={() => {this.openProduct(id)}} className={s.productCardPhoto} style={{ backgroundImage: `url(${img})` }}>
-          {label && <div className={cx(s.label, label === 'Sale' ? 'bg-danger' : 'bg-success')}>{label}</div>}
+          {label && <div className={cx(s.label, label === 'Sale' ? 'bg-primary' : 'bg-success')}>{label}</div>}
           <button className={s.star} onClick={() => this.changeFavourite()}>
             <img src={favourite ? starFilled : star} alt="star" />
           </button>

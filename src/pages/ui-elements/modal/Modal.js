@@ -75,9 +75,9 @@ class ModalExample extends React.Component {
                 Utilize the Bootstrap grid system within a modal by nesting <code>&lt;Container fluid&gt;</code> within
                 the <code>&lt;ModalBody&gt;</code>. Then, use the normal grid system classes as you would anywhere else.
               </p>
-              <div className="bg-light p-3">
+              <div className="bg-custom-dark p-3">
                 <Button color="primary" onClick={() => this.toggle('launch')}>Launch</Button>
-                <pre className="bg-light border-0 w-100 h-100">
+                <pre className="bg-custom-dark border-0 w-100 h-100">
                   <code className="text-danger">{'<Container fluid>\n'}</code>
                   <code className="text-success">{'  <Row>\n'}</code>
                   <code className="text-info">{'    <Col md={4}>\n'}</code>
@@ -110,7 +110,7 @@ class ModalExample extends React.Component {
         {/* Modals */}
         <Modal isOpen={demo} toggle={() => this.toggle('demo')}>
           <ModalHeader toggle={() => this.toggle('demo')}>Modal title</ModalHeader>
-          <ModalBody className="bg-white">
+          <ModalBody>
             ...
           </ModalBody>
           <ModalFooter>
@@ -121,7 +121,7 @@ class ModalExample extends React.Component {
 
         <Modal isOpen={scrollingLong} toggle={() => this.toggle('scrollingLong')}>
           <ModalHeader toggle={() => this.toggle('scrollingLong')}>Long content</ModalHeader>
-          <ModalBody className="bg-white">
+          <ModalBody>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,
@@ -181,7 +181,7 @@ class ModalExample extends React.Component {
 
         <Modal size="lg" isOpen={large} toggle={() => this.toggle('large')}>
           <ModalHeader toggle={() => this.toggle('large')}>Large modal</ModalHeader>
-          <ModalBody className="bg-white">
+          <ModalBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. In, illum harum?
             Quidem, quisquam, natus repellat debitis veniam quia facilis magni tempora
             cupiditate odio vitae? Eligendi nisi consequuntur vero tenetur nemo!
@@ -194,7 +194,7 @@ class ModalExample extends React.Component {
 
         <Modal size="sm" isOpen={small} toggle={() => this.toggle('small')}>
           <ModalHeader toggle={() => this.toggle('small')}>Small modal</ModalHeader>
-          <ModalBody className="bg-white">
+          <ModalBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. In, illum harum?
             Quidem, quisquam, natus repellat debitis veniam quia facilis magni tempora
             cupiditate odio vitae? Eligendi nisi consequuntur vero tenetur nemo!
@@ -207,7 +207,7 @@ class ModalExample extends React.Component {
 
         <Modal isOpen={launch} toggle={() => this.toggle('launch')}>
           <ModalHeader toggle={() => this.toggle('launch')}>Small modal</ModalHeader>
-          <ModalBody className="bg-white text-white">
+          <ModalBody>
             <Container fluid>
               <Row>
                 <Col md={4}><div className="h-100 w-100 bg-primary p-2">.col-md-4</div></Col>

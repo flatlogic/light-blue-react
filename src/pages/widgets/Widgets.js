@@ -30,6 +30,7 @@ import img17 from '../../images/pictures/17.jpg';
 class Widgets extends React.Component {
 
   render() {
+
     let settings = {
       dots: false,
       infinite: true,
@@ -56,17 +57,17 @@ class Widgets extends React.Component {
                     </span>
                   </Col>
                   <Col xs="9">
-                    <h6 className="m-0">USERS GROWTH</h6>
+                    <h6 className="m-0 text-white">USERS GROWTH</h6>
                     <p className="h2 m-0 fw-normal">4,332</p>
                   </Col>
                 </Row>
                 <Row className="flex-nowrap">
                   <Col xs={6}>
-                    <h6 className="m-0">Registrations</h6>
+                    <h6 className="m-0 text-white">Registrations</h6>
                     <p className="value5">+830</p>
                   </Col>
                   <Col xs="6">
-                    <h6 className="m-0">Bounce Rate</h6>
+                    <h6 className="m-0 text-white">Bounce Rate</h6>
                     <p className="value5">4.5%</p>
                   </Col>
                 </Row>
@@ -79,17 +80,17 @@ class Widgets extends React.Component {
                 <Row className="flex-nowrap">
                   <Col xs="3">
                     <span className="widget-icon">
-                      <i className="fi flaticon-magic-wand text-info" />
+                      <i className="fi flaticon-magic-wand text-success" />
                     </span>
                   </Col>
                   <Col xs="9">   
                     <Slider {...settings} className={`${s.hideOverflow} ${s.itemMinWidth}`}>
                       <div>
-                        <h6 className="m-0">VISITS TODAY</h6>
+                        <h6 className="m-0 text-white">VISITS TODAY</h6>
                         <p className="h2 m-0 fw-normal">12,324</p>
                       </div>
                       <div>
-                        <h6 className="m-0">VISITS YESTERDAY</h6>
+                        <h6 className="m-0 text-white">VISITS YESTERDAY</h6>
                         <p className="h2 m-0 fw-normal">11,885</p>
                       </div>
                     </Slider> 
@@ -97,7 +98,7 @@ class Widgets extends React.Component {
                 </Row>
                 <Row className="flex-nowrap">
                   <Col xs="6">
-                    <h6 className="m-0">New Visitors</h6>
+                    <h6 className="m-0 text-white">New Visitors</h6>
                     <Slider {...settings}  className={s.hideOverflow}>
                       <div>
                         <p className="value5">1,332</p>
@@ -108,7 +109,7 @@ class Widgets extends React.Component {
                     </Slider>
                   </Col>
                   <Col xs="6">
-                    <h6 className="m-0">Bounce Rate</h6>
+                    <h6 className="m-0 text-white">Bounce Rate</h6>
                     <Slider {...settings}  className={s.hideOverflow}>
                       <div>
                         <p className="value5">217</p>
@@ -126,48 +127,48 @@ class Widgets extends React.Component {
             <Widget>
               <div className="clearfix">
                 <Slider {...settings}  className={`${s.hideOverflow} ${s.itemMinWidth}`}>
-                  <div className="text-white">
+                  <div>
                     <Row className="flex-nowrap">
                       <Col xs={3}>
                         <span className="widget-icon">
-                          <i className="fi flaticon-notebook-4" />
+                          <i className="fi flaticon-notebook-4 text-white" />
                         </span>
                       </Col>
                       <Col xs="9">
-                        <h6 className="m-0">ORDERS</h6>
+                        <h6 className="m-0 text-white">ORDERS</h6>
                         <p className="h2 m-0 fw-normal">82,765</p>
                       </Col>
                     </Row>
                     <Row className="flex-nowrap">
                       <Col xs={6}>
-                        <h6 className="m-0">Avg. Time</h6>
+                        <h6 className="m-0 text-white">Avg. Time</h6>
                         <p className="value5">2:56</p>
                       </Col>
                       <Col xs={6}>
-                        <h6 className="m-0">Last Week</h6>
+                        <h6 className="m-0 text-white">Last Week</h6>
                         <p className="value5">374</p>
                       </Col>
                     </Row>
                   </div>
-                  <div className="text-white">
+                  <div>
                     <Row className="flex-nowrap">
                       <Col xs={3}>
                         <span className="widget-icon">
-                          <i className="fi flaticon-shuffle" />
+                          <i className="fi flaticon-shuffle text-white" />
                         </span>
                       </Col>
                       <Col xs={9}>
-                        <h6 className="m-0">PICKED ORDERS</h6>
+                        <h6 className="m-0 text-white">PICKED ORDERS</h6>
                         <p className="h2 m-0 fw-normal">13.8%</p>
                       </Col>
                     </Row>
                     <Row className="flex-nowrap">
                       <Col xs={6}>
-                        <h6 className="m-0">Basic</h6>
+                        <h6 className="m-0 text-white">Basic</h6>
                         <p className="value5">3,692</p>
                       </Col>
                       <Col xs="6">
-                        <h6 className="m-0">Advanced</h6>
+                        <h6 className="m-0 text-white">Advanced</h6>
                         <p className="value5">1,441</p>
                       </Col>
                     </Row>
@@ -182,7 +183,7 @@ class Widgets extends React.Component {
                 <Row className="flex-nowrap">
                   <Col xs={3}>
                     <span className="widget-icon">
-                      <i className="fi flaticon-diamond text-success" />
+                      <i className="fi flaticon-diamond text-danger" />
                     </span>
                   </Col>
                   <Col xs={9}>
@@ -208,12 +209,12 @@ class Widgets extends React.Component {
         <Row>
           <Col lg={4} xs={12}>
             <Widget refresh close bodyClass="mt-0" >
-              <div className="widget-top-overflow widget-padding-md clearfix bg-warning text-white">
+              <div className="widget-top-overflow widget-padding-md clearfix bg-primary text-white">
                 <h3 className="mt-lg mb-lg">Light Blue - <span className="fw-semi-bold">Next Generation</span> Admin
                   Dashboard
                   Template</h3>
                 <ul className="tags text-white pull-right">
-                  <li><button className="btn-link">features</button></li>
+                  <li><button className="btn-link text-white">features</button></li>
                 </ul>
               </div>
               <div className="post-user mt-negative-lg">
@@ -221,7 +222,7 @@ class Widgets extends React.Component {
                   <img className="rounded-circle" src={peopleA4} alt="..." />
                 </span>
                 <h6 className="m-b-1 fw-normal text-white">Jeremy &nbsp;
-                  <small className="text-white text-light">@sing</small>
+                  <small className="text-white">@sing</small>
                 </h6>
                 <p className="fs-mini text-muted">
                   <time>25 mins</time>
@@ -240,7 +241,7 @@ class Widgets extends React.Component {
                   <li><button className="btn-link">Comment</button></li>
                 </ul>
                 <ul className="post-comments mb-0 mt-2">
-                  <li>
+                  <li className={s.borderTop}>
                     <span className="thumb-xs avatar pull-left mr-sm">
                       <img className="rounded-circle" src={peopleA1} alt="..." />
                     </span>
@@ -251,15 +252,15 @@ class Widgets extends React.Component {
                       <p className="fs-mini">Hey, have you heard anything about that?</p>
                     </div>
                   </li>
-                  <li>
+                  <li className={s.borderTop}>
                     <span className="thumb-xs avatar pull-left mr-sm">
                       <img className="rounded-circle" src={avatar} alt="..." />
                     </span>
                     <div className="comment-body">
-                      <input
-                        className="form-control form-control-sm" type="text"
-                        placeholder="Write your comment..."
-                      />
+                      <InputGroup size="sm">
+                        <Input className="form-control bg-custom-dark border-0" placeholder="Your comment" />
+                        <InputGroupAddon addonType="append"><Button color="subtle-blue">Send</Button></InputGroupAddon>
+                      </InputGroup>
                     </div>
                   </li>
                 </ul>
@@ -272,8 +273,8 @@ class Widgets extends React.Component {
                 <div className="widget-top-overflow text-white">
                   <img src={img17} alt="..." />
                   <ul className="tags text-white pull-right">
-                    <li><button className="btn-link">design</button></li>
-                    <li><button className="btn-link">white</button></li>
+                    <li><button className="btn-link text-white">design </button></li>
+                    <li><button className="btn-link text-white"> white</button></li>
                   </ul>
                 </div>
                 <div className="post-user mt-sm">
@@ -317,7 +318,7 @@ class Widgets extends React.Component {
                     Dashboard
                     Template</h3>
                   <ul className="tags text-white pull-right">
-                    <li><button className="btn-link">design</button></li>
+                    <li><button className="btn-link text-white">design</button></li>
                   </ul>
                 </div>
                 <p className="text-light fs-mini mt-sm">Lots of cool stuff is happening around you. Just calm down for
@@ -374,7 +375,7 @@ class Widgets extends React.Component {
                     </div>
                     <div className="col-3 col-md-2 p-0">
                       <h6 className="m-0">WED</h6>
-                      <Skycon className="mt-1" icon="CLEAR_DAY" color="#f0b518" width="28" height="28" />
+                      <Skycon className="mt-1" icon="CLEAR_DAY" color="white" width="28" height="28" />
                       <p className="m-0 fw-semi-bold">28&deg;</p>
                     </div>
                     <div className="col-3 col-md-2 p-0">
@@ -546,7 +547,7 @@ class Widgets extends React.Component {
                         <img className="rounded-circle" src={peopleA6} alt="..." />
                       </span>
                       <div className="message">
-                        <h6 className="sender">Chris Gray</h6>
+                        <h6 className="sender text-white">Chris Gray</h6>
                         <p className="body">Hey! What&apos;s up? So much time since we saw each other there</p>
                         <time className="time">10 sec ago</time>
                       </div>
@@ -556,7 +557,7 @@ class Widgets extends React.Component {
                         <img className="rounded-circle" src={avatar} alt="..." />
                       </span>
                       <div>
-                        <h6 className="sender">John Doe</h6>
+                        <h6 className="sender text-white">John Doe</h6>
                         <p className="body">True! Totally makes sense. But how do we find that?</p>
                         <time className="time">10 sec ago</time>
                       </div>
@@ -566,7 +567,7 @@ class Widgets extends React.Component {
                         <img className="rounded-circle" src={peopleA6} alt="..." />
                       </span>
                       <div>
-                        <h6 className="sender">Chris Gray</h6>
+                        <h6 className="sender text-white">Chris Gray</h6>
                         <p className="body">OK, but so now what? What should we do now? Not sure actually.</p>
                         <time className="time">10 sec ago</time>
                       </div>
@@ -576,7 +577,7 @@ class Widgets extends React.Component {
                         <img className="rounded-circle" src={avatar} alt="..." />
                       </span>
                       <div>
-                        <h6 className="sender">John Doe</h6>
+                        <h6 className="sender text-white">John Doe</h6>
                         <p className="body">Hey guys, didn&apos;t you notice this conversation is sort of jubberish?</p>
                         <time className="time">10 sec ago</time>
                       </div>
@@ -586,8 +587,8 @@ class Widgets extends React.Component {
               </div>
               <footer className="bg-widget-transparent bt">
                   <InputGroup size="sm">
-                      <Input placeholder="Your message" />
-                      <InputGroupAddon addonType="append"><Button color="default">Send</Button></InputGroupAddon>
+                      <Input className="form-control bg-custom-dark border-0" placeholder="Your message" />
+                      <InputGroupAddon addonType="append"><Button color="subtle-blue">Send</Button></InputGroupAddon>
                   </InputGroup>
               </footer>
             </Widget>
@@ -614,7 +615,7 @@ class Widgets extends React.Component {
                     </div>
                     <div>
                       <p className={s.positionDescriptionText}>Attention to what&apos;s really important</p>
-                      <button className={`${s.positionElementBottom} btn btn-info btn-block mt`}>Order Now!</button>
+                      <button className={`${s.positionElementBottom} btn btn-primary btn-block mt`}>Order Now!</button>
                     </div>
                   </div>
                   <div className={s.slideWrap}>
@@ -694,7 +695,7 @@ class Widgets extends React.Component {
                       bodyClass="widget-body-container"
                     >
                       <div className="text-center">
-                        <i className="fa fa-child text-warning fa-5x" />
+                        <i className="fa fa-child text-success fa-5x" />
                       </div>
                       <h3 className="fw-normal">Light Blue Web App</h3>
                       <div className={s.postitionGroupElements}>

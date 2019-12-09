@@ -207,8 +207,7 @@ class Buttons extends React.Component {
               <div>
                 <p className="fs-mini text-muted">
                   Create block level buttons - those that span the full width
-                  of a parent— by adding <code>block</code>
-                  to <code>&lt;Button&gt;</code> component.
+                  of a parent— by adding <code>block</code> to <code>&lt;Button&gt;</code> component.
                   Great for menu & social buttons.
                 </p>
                 <Button color="info" block>Block Button</Button>

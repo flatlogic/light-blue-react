@@ -13,3 +13,14 @@
 .rotatedArrow {
   transform: rotate(180deg);
 }
+
+:global {
+  .ReactTable .rt-thead.-filters input, .ReactTable .rt-thead.-filters select {
+    background: $bg-custom-dark;
+    color: $content-color;      
+  }
+  .ReactTable .-pagination input, .ReactTable .-pagination select {
+    background: $bg-custom-dark;
+    color: $content-color;   
+  }
+}

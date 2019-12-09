@@ -70,6 +70,7 @@ const StepsComponents = {
         <FormGroup>
           <Label for="country-select">Destination Country</Label>
             <Select
+              classNamePrefix="react-select"
               className="selectCustomization"
               options={select2CountriesData}
             />
@@ -78,6 +79,7 @@ const StepsComponents = {
         <FormGroup>
           <Label for="courier">Choose shipping option</Label>
             <Select
+              classNamePrefix="react-select"
               className="selectCustomization"
               options={select2ShipmentData}
             />
@@ -108,7 +110,8 @@ const StepsComponents = {
         </FormGroup>
         <FormGroup>
           <Label for="credit-card-type">Choose shipping option</Label>
-            <Select 
+            <Select
+              classNamePrefix="react-select"
               className="selectCustomization"
               options={cardTypesData}
             />

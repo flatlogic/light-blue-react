@@ -82,9 +82,11 @@
   font-family: $font-family-base;
   box-shadow: none;
   transition: border-color ease-in-out 0.15s, background-color ease-in-out 0.15s;
-
+  background: $bg-custom-dark;
+  border: none;
   &:focus {
     box-shadow: none;
+    background: $bg-custom-dark;
   }
 
   &.no-border {
@@ -152,7 +154,7 @@ legend {
 }
 
 .badge-default {
-  @include badge-variant($gray-300);
+  @include badge-variant($subtle-blue);
 }
 
 .badge {
@@ -239,7 +241,7 @@ small {
 
 .btn-secondary {
   border-color: $gray-400;
-  color: $gray-800;
+  color: $white;
 }
 
 .btn-success,
@@ -253,13 +255,13 @@ small {
 }
 
 .btn-gray {
-  border-color: $gray-400;
-  color: $gray-700;
+  border-color: $gray;
+  color: $white;
 }
 
 .btn-default {
-  border-color: $gray-400;
-  color: $gray-800;
+  border-color: $subtle-blue;
+  color: $white;
 }
 
 .btn-xs {
@@ -695,8 +697,8 @@ h6,
 
 code {
   font-size: 85%;
-  background-color: theme-color('danger-light');
-  color: $pink;
+  background-color: rgba($primary,.3);
+  color: $success;
   padding: 2px;
   border-radius: $border-radius;
 }
@@ -1016,7 +1018,7 @@ ul.messenger.messenger-spinner-active .messenger-spinner .messenger-spinner {
 
 .circle {
   .fa {
-    vertical-align: middle;
+    vertical-align: baseline;
   }
 }
 
@@ -1177,4 +1179,29 @@ div.abc-radio label {
 //// Highcharts Width fix ////
 .highcharts-container, .highcharts-root {
   width:100% !important;
+}
+
+.breadcrumb > .active {
+  color: $text-color;
+}
+
+.btn-link {
+  color: $primary
+}
+
+pre code {
+  color: $content-color;
+}
+
+.modal {
+  .modal-body, .modal-header, .modal-footer {
+    background: #1b1e3c;
+    color: $content-color
+  }
+  .modal-header {
+    border-bottom: 1px solid $bg-custom-dark;
+  }
+  .modal-footer {
+    border-top: 1px solid $bg-custom-dark;
+  }
 }

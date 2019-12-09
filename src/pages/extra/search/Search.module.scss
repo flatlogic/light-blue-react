@@ -3,12 +3,12 @@
 .root {
   .searchResultCategories {
     > li > a {
-      color: $white;
+      color: $content-color;
       font-weight: $font-weight-normal;
 
       &:hover {
-        color: $gray-700;
-        background-color: $gray-400;
+        color: $content-color;
+        background-color: $subtle-blue;
       }
     }
   }
@@ -86,6 +86,23 @@
 
       @include media-breakpoint-up(md) {
         margin: 0;
+      }
+    }
+  }
+}
+
+:global {
+  .pagination {
+    .page-item a, .page-item.disabled a {
+      background-color: transparent;
+      border: 1px solid $subtle-blue !important;
+      color: $subtle-blue
+    }
+    .page-item:not(.disabled) a {
+      &:hover {
+        background-color: $subtle-blue;
+        color: $content-color;
+        transition: all .35s ease;
       }
     }
   }

@@ -11,7 +11,7 @@ export default [
     description: 'Trainers In White',
     price: 76,
     favourite: true,
-    label: false,
+    label: 'New',
   },
   {
     id: 1,

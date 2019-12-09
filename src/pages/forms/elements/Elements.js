@@ -226,7 +226,7 @@ class Elements extends React.Component {
                       <span className="help-block">Some help text</span>
                     </Label>
                     <Col md={7}>
-                      <Input className="input-transparent" type="text" name="password" id="hint-field" />
+                      <Input type="text" name="password" id="hint-field" />
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -438,7 +438,7 @@ class Elements extends React.Component {
                                 caret color="primary"
                                 className="dropdown-toggle-split"
                               >
-                                {this.state.dropDownValue}
+                                {this.state.dropDownValue}&nbsp;
                               </DropdownToggle>
                               <DropdownMenu>
                                 <DropdownItem onClick={this.changeValueDropdown}>
@@ -465,7 +465,7 @@ class Elements extends React.Component {
                         </Label>
                         <Input
                           type="text" placeholder="Search Dashboard" id="no-borders-input"
-                          className="input-no-border bg-gray-lighter"
+                          className="input-no-border bg-default"
                         />
                         <p className="help-block">
                           With <code>.bg-gray-lighter</code>. White by default.
@@ -475,7 +475,7 @@ class Elements extends React.Component {
                   </Row>
 
                   <FormGroup className="form-action bg-widget-transparent">
-                    <Button color="inverse" type="submit" className="mr-xs">
+                    <Button color="primary" type="submit" className="mr-xs">
                       Save Changes
                     </Button>
                     <Button color="default">Cancel</Button>
@@ -635,6 +635,7 @@ class Elements extends React.Component {
                   <Label md="4" for="default-select">Default select</Label>
                   <Col md="6" className={s.select2}>
                     <Select 
+                      classNamePrefix="react-select"
                       className="selectCustomization"
                       options={this.state.selectDefaultData}
                       defaultValue={this.state.selectDefaultData[1]}
@@ -645,6 +646,7 @@ class Elements extends React.Component {
                   <Label md="4" for="grouped-select">Select with search & groups</Label>
                   <Col md="6" className={s.select2}>
                     <Select 
+                      classNamePrefix="react-select"
                       className="selectCustomization"
                       options={this.state.selectGroupData}
                     />
@@ -662,7 +664,7 @@ class Elements extends React.Component {
                         caret color="default"
                         className="dropdown-toggle-split mr-xs"
                       >
-                        {this.state.simpleSelectDropdownValue}
+                        {this.state.simpleSelectDropdownValue}&nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem onClick={this.changeSelectDropdownSimple}>
@@ -691,7 +693,7 @@ class Elements extends React.Component {
                         caret color="danger"
                         className="dropdown-toggle-split mr-xs"
                       >
-                        {this.state.redSelectDropdownValue}
+                        {this.state.redSelectDropdownValue}&nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem onClick={this.changeSelectDropdownRed}>
@@ -710,7 +712,7 @@ class Elements extends React.Component {
                         caret color="warning"
                         className="dropdown-toggle-split mr-xs"
                       >
-                        {this.state.orangeSelectDropdownValue}
+                        {this.state.orangeSelectDropdownValue}&nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem onClick={this.changeSelectDropdownOrange}>
@@ -729,7 +731,7 @@ class Elements extends React.Component {
                         caret color="success"
                         className="dropdown-toggle-split"
                       >
-                        {this.state.greenSelectDropdownValue}
+                        {this.state.greenSelectDropdownValue}&nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem onClick={this.changeSelectDropdownGreen}>
@@ -1158,7 +1160,7 @@ class Elements extends React.Component {
                         <div className="slider-inverse mb-sm">
                           <SliderWithTooltip  
                             tipFormatter={this.valueFormatter}
-                            className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderGrey}`} 
+                            className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderInfo}`} 
                             defaultValue={40}
                           />
                         </div>
@@ -1188,7 +1190,7 @@ class Elements extends React.Component {
                       <span>
                         <SliderWithTooltip  
                           tipFormatter={this.valueFormatter} 
-                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderGrey}`}
+                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
                           vertical
                           defaultValue={70}
                         />
@@ -1206,7 +1208,7 @@ class Elements extends React.Component {
                       <span>
                         <SliderWithTooltip  
                           tipFormatter={this.valueFormatter} 
-                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderGrey}`}
+                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
                           vertical
                           defaultValue={30}
                         />

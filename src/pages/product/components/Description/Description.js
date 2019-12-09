@@ -61,7 +61,7 @@ class Description extends Component {
                     <Rating rating={data.rating}/>
                     32 Reviews
                     {/* eslint-disable */}
-                    <a href="#">Read all</a>
+                    <a className="text-primary" href="#">Read all</a>
                     {/* eslint-enable */}
                 </div>
             </div>
@@ -115,7 +115,7 @@ class Description extends Component {
                   <Collapse className="panel-body" isOpen={this.state.accordion[2]}>
                       <div className="card-body">
                           {/* eslint-disable */}
-                          Share photo with a tag <a href="#">#{data.hashtag}</a>
+                          Share photo with a tag <a className="text-primary" href="#">#{data.hashtag}</a>
                           {/* eslint-enable */}
                           <div className={s.socialList}>
                               <div><i className="fa fa-facebook"/></div>

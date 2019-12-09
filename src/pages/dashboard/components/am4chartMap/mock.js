@@ -4,6 +4,7 @@ export default [
     longitude: -74.00116,
     size: 6,
     tooltip: 'New York',
+    fill: "#F00"
   },
   {
     latitude: 33.145235,

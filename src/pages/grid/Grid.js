@@ -10,8 +10,9 @@ import {
 import Sortable from 'react-sortablejs'
 
 import Widget from '../../components/Widget';
+/* eslint-disable */
 import s from './Grid.module.scss';
-
+/* eslint-enable */
 import mock from './mock';
 
 const tooltipPlacement = 'bottom';
@@ -156,7 +157,7 @@ class Grid extends React.Component {
                   <p>
                     To make a widget automatically load it's content you just need to set <strong>autoload</strong> attribute and provide an api to update the widget content.
                   </p>
-                  <pre><code>&lt;Widget updateWidgetData={"{this.updateWidgetData}"} /&gt;</code></pre>
+                  <pre className="bg-custom-dark border-0"><code>&lt;Widget updateWidgetData={"{this.updateWidgetData}"} /&gt;</code></pre>
                   <p>
                     <strong>autoload</strong> may be set to an integer value. If set, for example, to 2000 will refresh widget every 2 seconds.
                   </p>
@@ -249,7 +250,7 @@ class Grid extends React.Component {
             </Widget>
 
             <Widget
-              className={s.customGrayBg}
+              className="bg-default"
               customBody={true}
             >
             </Widget>

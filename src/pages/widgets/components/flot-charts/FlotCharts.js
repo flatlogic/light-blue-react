@@ -110,15 +110,15 @@ class FlotCharts extends React.PureComponent {
                 results in nearest future. The only thing we can hope for is pressing one of these two buttons:
               </p>
             <div className="btn-toolbar">
-              <Button color="success" size="xs">Accept</Button>
+              <Button color="primary" size="xs">Accept</Button>
               <Button color="default" size="xs">Reject</Button>
             </div>
           </div>
           <div className={`${s.chart}`}>
             <HighchartsReact options={{...options, series: this.generateRandomData([{
-                name: 'Visitors', color: '#777',
+                name: 'Visitors', color: '#1870DC',
               }, {
-                name: 'Charts', color: '#dd5826',
+                name: 'Charts', color: '#58D777',
               }])}} />
           </div>
         </Widget>
@@ -169,9 +169,9 @@ class FlotCharts extends React.PureComponent {
             <HighchartsReact options={{
               ...options,
               series: this.generateRandomData([{
-                name: 'Controllers', color: '#777',
+                name: 'Controllers', color: '#58D777',
               }, {
-                name: 'Scopes', color: '#f0b518',
+                name: 'Scopes', color: '#F45722',
               }])
             }} />
           </div>

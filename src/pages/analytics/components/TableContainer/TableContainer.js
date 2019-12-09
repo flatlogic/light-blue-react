@@ -6,7 +6,7 @@ import { Table, Button } from 'reactstrap';
 import s from './TableContainer.module.scss';
 
 const states = {
-  sent: 'info',
+  sent: 'primary',
   pending: 'success',
   declined: 'danger',
 };

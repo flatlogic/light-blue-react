@@ -5,7 +5,7 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  color: #ffffff;
+  color: $content-color;
   font-size: .9rem;
   overflow: visible;
 
@@ -27,7 +27,7 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    color: #fff;
+    color: $content-color;
 
     .titleHeader {
       width: 100%;
@@ -54,7 +54,7 @@
         }
         .monthLabel {
           flex: 3;
-          color: #d6dee5;
+          color: $content-color;
           font-size: 0.9rem;
         }
       }
@@ -66,7 +66,7 @@
       background-color: transparent;
 
       .dayName {
-        color: #d6dee5;
+        color: $content-color;
       }
     }
 
@@ -126,7 +126,7 @@
     cursor: pointer;
     display: flex;
     margin: 3px 0;
-    color: #ffffff;
+    color: $content-color;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
@@ -137,7 +137,7 @@
   &.hasEvents {
     .dayNumber {
       position: relative;
-      color: #ffffff;
+      color: $content-color;
       background-color: rgba(0,0,0,.15);
       border-radius: 50%;
       font-weight: bold;

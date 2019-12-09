@@ -24,14 +24,14 @@ class FilterElement extends Component {
   }
 
   render() {
-    const { options, defaultLable } = this.props;
+    const { options, defaultLable, color } = this.props;
     const { currentOption } = this.state;
     return (
       <div className={s.filterElement}>
         <div className={s.filterElementLable}>{defaultLable}</div>
         <UncontrolledButtonDropdown>
           <DropdownToggle
-            caret color="default"
+            caret color={color}
             className="dropdown-toggle-split mr-xs"
           >
             {currentOption}&nbsp;&nbsp;

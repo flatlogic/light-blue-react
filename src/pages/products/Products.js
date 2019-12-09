@@ -92,9 +92,9 @@ class ProductList extends Component {
             <div className={s.productsListFilters}>
               {filtersData.map(item =>
                 (typeof item.data[0] === 'string'
-                  ? <FilterElement defaultLable={item.title} options={item.data} key={item.id} />
+                  ? <FilterElement color="subtle-blue" defaultLable={item.title} options={item.data} key={item.id} />
                   : item.data.map(i =>
-                    <FilterElement defaultLable={i.label} options={i.options} key={i.id} />)),
+                    <FilterElement color="subtle-blue" defaultLable={i.label} options={i.options} key={i.id} />)),
               )}
             </div>
             <div className={s.mobileFilterButtons}>

@@ -1,3 +1,5 @@
+@import '../../styles/app';
+
 .hideOverflow {
   overflow: hidden;
 }
@@ -113,5 +115,6 @@
   }
 }
 
-
-
+.borderTop {
+  border-top: 1px solid $bg-custom-dark!important;
+}

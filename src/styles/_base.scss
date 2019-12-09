@@ -1,5 +1,5 @@
 .page-title {
-  color: $white;
+  color: $text-color;
   font-weight: 300;
   line-height: 1;
   /* stylelint-disable-next-line */
@@ -26,6 +26,10 @@
 }
 
 .form-control {
+  color: $content-color;
+  &:focus,&:active {
+    color: $content-color;
+  }
   &.input-transparent {
     border: none;
     color: $text-color;
@@ -35,7 +39,7 @@
 
     &:active,
     &:focus {
-      background-color: $widget-bg-color !important;
+      background-color: $bg-custom-dark !important;
 
       @include box-shadow(inset 0 1px 1px rgba(0,0,0,0.2));
     }
