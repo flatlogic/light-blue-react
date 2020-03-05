@@ -146,7 +146,7 @@ legend {
 .badge-info,
 .badge-warning,
 .badge-danger {
-  color: $white;
+  color: $violet_deep;
 }
 
 .badge-white {
@@ -221,6 +221,13 @@ small {
 }
 
 ///////// Buttons //////////
+
+.btn.btn-success,
+.btn.btn-info,
+.btn.btn-warning,
+.btn.btn-danger {
+  color: $violet_deep;
+}
 
 .dropdown-toggle::after {
   font-family: LineAwesome, sans-serif;
