@@ -1,14 +1,29 @@
-# Change Log
-All notable changes to this project will be documented in this file.
+# Changelog
 
-### v7.1.0
+## 2 [7.1.0]
+
+### New Features
+
 - New color scheme
 
-### v7.0.1
+## [7.0.1]
+
+### Fixed
+
 - Fix bugs and css improvements
 
-### v7.0.0
-- Removed Jquery from core layout, new charts
+## [7.0.0]
 
-### v6.1.0
-- make an api stub for non-backend mode
+### Updated
+
+- Removed Jquery from core layout
+
+### New Features
+
+- New charts
+
+## [6.1.0]
+
+### New Features
+
+- Make an api stub for non-backend mode
