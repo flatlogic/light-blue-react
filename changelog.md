@@ -1,5 +1,11 @@
 # Changelog
 
+## [7.1.1]
+
+### Fixed
+
+- Added css fixes
+
 ## [7.1.0]
 
 ### New Features
