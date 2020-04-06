@@ -5,10 +5,9 @@ import General from '../General/General';
 import Selects from '../Selects/Selects';
 import Bag from '../Bag/Bag';
 
-import mastercard from '../../../../images/payments/mastercard.svg';
-import visa from '../../../../images/payments/visa.svg';
-import aexpress from '../../../../images/payments/aexpress.svg';
-import paypal from '../../../../images/payments/paypal.svg';
+import mastercard from '../../../../images/payments/master.png';
+import visa from '../../../../images/payments/visa.png';
+import paypal from '../../../../images/payments/paypal.png';
 
 import s from './Banner.module.scss';
 
@@ -23,7 +22,6 @@ const Banner = ({ data }) => (
       <div className={s.payments}>
         <div style={{ backgroundImage: `url(${visa})` }} />
         <div style={{ backgroundImage: `url(${mastercard})` }} />
-        <div style={{ backgroundImage: `url(${aexpress})` }} />
         <div style={{ backgroundImage: `url(${paypal})` }} />
       </div>
       <span className={s.delivery}>FREE Delivery & Returns</span>
