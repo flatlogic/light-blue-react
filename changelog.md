@@ -1,5 +1,11 @@
 # Changelog
 
+## [7.1.2]
+
+### Fixed
+
+- Fixed small calendar events
+
 ## [7.1.1]
 
 ### Fixed
