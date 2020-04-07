@@ -1,8 +1,5 @@
 import React from 'react';
 import {
-  Breadcrumb, BreadcrumbItem
-} from 'reactstrap'
-import {
   withGoogleMap,
   withScriptjs,
   GoogleMap,
@@ -26,10 +23,6 @@ class Maps extends React.Component {
   render() {
     return (
       <div>
-        <Breadcrumb>
-          <BreadcrumbItem>YOU ARE HERE</BreadcrumbItem>
-          <BreadcrumbItem active>Google Maps</BreadcrumbItem>
-        </Breadcrumb>
         <h1 className="page-title">
           Google <span className="fw-semi-bold">Maps</span>
         </h1>

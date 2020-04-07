@@ -26,7 +26,7 @@ import githubLogo from '../images/documentation/github-logo.svg';
 class Header extends React.Component {
   static propTypes = {
     sidebarOpened: PropTypes.bool.isRequired,
-    sidebarStatic: PropTypes.bool.isRequired,
+    sidebarStatic: PropTypes.bool,
     dispatch: PropTypes.func.isRequired,
     location: PropTypes.shape({
       pathname: PropTypes.string,

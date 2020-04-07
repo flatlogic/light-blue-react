@@ -89,7 +89,7 @@ class Layout extends React.Component {
         <Header />
         <div>
           <Hammer onSwipe={this.handleSwipe}>
-            <main className={classnames(s.content, sd.content)}>
+            <main className={classnames(s.content, sd.content, 'documentationPage')}>
               <div className="container">
                 <div className="row">
                   <Sidebar width={this.state.width} />

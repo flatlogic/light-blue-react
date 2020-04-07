@@ -1,5 +1,11 @@
 # Changelog
 
+## [7.2.0]
+
+### New Features
+
+- Added re-usable breadcrumbs component
+
 ## [7.1.2]
 
 ### Fixed

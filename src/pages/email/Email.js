@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  Alert,
-} from 'reactstrap';
+import { Alert } from 'reactstrap';
 
 import Filters from './components/Filters/Filters';
 import MessageTable from './components/MessageTable/MessageTable';
@@ -64,10 +60,6 @@ class Email extends Component {
     } = this.state;
     return (
       <div>
-        <Breadcrumb>
-          <BreadcrumbItem>YOU ARE HERE</BreadcrumbItem>
-          <BreadcrumbItem active>Email</BreadcrumbItem>
-        </Breadcrumb>
         <div className={s.pageTopLine}>
           <h1 className="page-title">Email - <span className="fw-semi-bold">Inbox</span></h1>
           <Alert

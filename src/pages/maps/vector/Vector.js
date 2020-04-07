@@ -3,10 +3,6 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 
-import {
-  Breadcrumb, BreadcrumbItem
-} from 'reactstrap'
-
 import places from "./mock";
 
 import Widget from '../../../components/Widget';
@@ -65,10 +61,6 @@ class VectorMap extends React.Component {
   render() {
     return (
       <div>
-        <Breadcrumb>
-          <BreadcrumbItem>YOU ARE HERE</BreadcrumbItem>
-          <BreadcrumbItem active>Vector Maps</BreadcrumbItem>
-        </Breadcrumb>
 
         <header className="page-title">
           <h1 className="m-0 mb-sm">Vector <span className="fw-semi-bold">Maps</span></h1>
