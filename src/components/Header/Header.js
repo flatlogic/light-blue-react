@@ -24,14 +24,14 @@ import {
   FormGroup,
 } from 'reactstrap';
 import Notifications from '../Notifications';
-import { logoutUser } from '../../actions/user';
+import { logoutUser } from '../../actions/auth';
 import { openSidebar, closeSidebar, changeSidebarPosition, changeSidebarVisibility } from '../../actions/navigation';
 
 import sender1 from '../../images/1.png';
 import sender2 from '../../images/2.png';
 import sender3 from '../../images/3.png';
 
-import avatar from '../../images/people/a5.jpg';
+import adminDefault from '../../images/chat/chat2.png';
 
 import s from './Header.module.scss';
 
@@ -124,6 +124,11 @@ class Header extends React.Component {
   }
 
   render() {
+    const user = this.props.currentUser;
+    console.log(user)
+    const avatar = user && user.avatar && user.avatar.length && user.avatar[0].publicUrl;
+
+    const firstUserLetter = user && (user.firstName|| user.email)[0].toUpperCase();
     return (
       <Navbar className={`d-print-none ${s.root}`}>
         <UncontrolledAlert className={`${s.alert} mr-3 d-lg-down-none`}>
@@ -154,10 +159,15 @@ class Header extends React.Component {
         <Nav className="ml-md-0">
           <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu}`}>
             <DropdownToggle nav caret style={{color: "#f4f4f5", padding: 0}}>
-              <span className={`${s.avatar} rounded-circle thumb-sm float-left mr-2`}>
-                <img src={avatar} alt="..."/>
-              </span>
-              <span className={`small ${s.accountCheck}`}>Philip smith</span>
+            <span className={`${s.avatar} rounded-circle thumb-sm float-left mr-2`}>
+              {avatar ? (
+                <img src={avatar} onError={e => e.target.src = adminDefault} alt="..." title={user && (user.firstName || user.email)} />
+              ) : user && user.role === 'admin' ? (
+                <img src={adminDefault} onError={e => e.target.src = adminDefault} alt="..." title={user && (user.firstName || user.email)} />
+              ) : <span title={user && (user.firstName || user.email)}>{firstUserLetter}</span>
+              }
+            </span>
+              <span className={`small d-sm-down-none ${this.props.sidebarStatic ? s.adminEmail : ''}`}>{user ? (user.firstName || user.email) : "Philip smith"}</span>
               <Badge className={s.badge} color="primary">13</Badge>
             </DropdownToggle>
             <DropdownMenu right className={`${s.notificationsWrapper} py-0 animated animated-fast fadeInUp`}>
@@ -292,6 +302,7 @@ function mapStateToProps(store) {
     isSidebarOpened: store.navigation.sidebarOpened,
     sidebarVisibility: store.navigation.sidebarVisibility,
     sidebarPosition: store.navigation.sidebarPosition,
+    currentUser: store.auth.currentUser,
   };
 }
 

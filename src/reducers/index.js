@@ -3,14 +3,17 @@ import auth from './auth';
 import navigation from './navigation';
 import alerts from './alerts';
 import products from './products';
-import register from './register';
 import analytics from './analytics';
+import users from './usersReducers';
+import { connectRouter } from 'connected-react-router';
 
-export default combineReducers({
-  alerts,
-  auth,
-  navigation,
-  products,
-  register,
-  analytics,
+export default (history) =>
+  combineReducers({
+    router: connectRouter(history),
+    alerts,
+    auth,
+    navigation,
+    products,
+    analytics,
+    users,
 });

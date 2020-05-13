@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Container, Alert, Button, FormGroup, InputGroup, InputGroupAddon, InputGroupText, Input, Label } from 'reactstrap';
 import Widget from '../../components/Widget';
 import { registerUser, registerError } from '../../actions/register';
-import { loginUser } from '../../actions/user';
+import { loginUser } from '../../actions/auth';
 import microsoft from '../../images/microsoft.png';
 import Login from '../login';
 
