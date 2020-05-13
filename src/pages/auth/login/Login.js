@@ -4,6 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { Container, Alert, Button, FormGroup, Label, InputGroup, InputGroupAddon, Input, InputGroupText } from 'reactstrap';
+import config from '../../../config';
 import Widget from '../../../components/Widget';
 import { loginUser, receiveToken, doInit } from '../../../actions/auth';
 import jwt from "jsonwebtoken";
@@ -16,6 +17,7 @@ class Login extends React.Component {
 
     static isAuthenticated() {
       const token = localStorage.getItem('token');
+      if (!config.isBackend && token) return true;
       if (!token) return;
       const date = new Date().getTime() / 1000;
       const data = jwt.decode(token);
