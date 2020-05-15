@@ -125,7 +125,6 @@ class Header extends React.Component {
 
   render() {
     const user = this.props.currentUser;
-    console.log(user)
     const avatar = user && user.avatar && user.avatar.length && user.avatar[0].publicUrl;
 
     const firstUserLetter = user && (user.firstName|| user.email)[0].toUpperCase();

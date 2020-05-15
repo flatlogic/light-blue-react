@@ -3,7 +3,7 @@
   "version": "5.0.1",
   "private": true,
   "scripts": {
-    "build": "REACT_APP_BACKEND=true PUBLIC_URL='/light-blue-react' node scripts/build.js",
+    "build": "cross-env REACT_APP_BACKEND=true cross-env PUBLIC_URL='/light-blue-react' node scripts/build.js",
     "start": "node scripts/start.js",
     "start:backend": "REACT_APP_BACKEND=true node scripts/start.js",
     "test": "node scripts/test.js"
@@ -69,6 +69,7 @@
     "bootstrap_calendar": "https://github.com/xero/bootstrap_calendar.git#1.0.1",
     "classnames": "^2.2.6",
     "connected-react-router": "6.3.1",
+    "cross-env": "^7.0.2",
     "draft-js": "^0.10.5",
     "echarts": "^4.4.0",
     "echarts-for-react": "^2.0.15-beta.1",
