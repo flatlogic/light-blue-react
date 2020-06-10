@@ -158,7 +158,7 @@ class Header extends React.Component {
         <Nav className="ml-md-0">
           <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu}`}>
             <DropdownToggle nav caret style={{color: "#f4f4f5", padding: 0}}>
-            <span className={`${s.avatar} rounded-circle thumb-sm float-left mr-2`}>
+            <span className={`${s.avatar} rounded-circle float-left mr-2`}>
               {avatar ? (
                 <img src={avatar} onError={e => e.target.src = adminDefault} alt="..." title={user && (user.firstName || user.email)} />
               ) : user && user.role === 'admin' ? (
