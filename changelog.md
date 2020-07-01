@@ -1,5 +1,12 @@
 # Changelog
 
+
+## [8.0.1]
+
+### Fixed bug
+
+- Fixed sidebar caret for Safari
+
 ## [8.0.1]
 
 ### New Features
