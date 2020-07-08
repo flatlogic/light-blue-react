@@ -1,6 +1,10 @@
 # Changelog
 
 
+## [8.0.3]
+
+- Updated line-awesome package
+
 ## [8.0.2]
 
 ### Fixed bug
