@@ -1,5 +1,10 @@
 # Changelog
 
+## [8.0.4]
+
+- Add animation to alert in header
+- Fix animated classes
+- Fix colors in notifications, chart dropdown menu, tables
 
 ## [8.0.3]
 
