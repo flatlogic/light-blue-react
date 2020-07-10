@@ -110,7 +110,7 @@ class Header extends React.Component {
   }
 
   toggleSidebar() {
-    this.props.isSidebarOpened 
+    this.props.isSidebarOpened
       ? this.props.dispatch(closeSidebar())
       : this.props.dispatch(openSidebar())
   }
@@ -130,7 +130,7 @@ class Header extends React.Component {
     const firstUserLetter = user && (user.firstName|| user.email)[0].toUpperCase();
     return (
       <Navbar className={`d-print-none ${s.root}`}>
-        <UncontrolledAlert className={`${s.alert} mr-3 d-lg-down-none`}>
+        <UncontrolledAlert className={`${s.alert} mr-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
           <i className="fa fa-info-circle mr-1" /> Check out Light Blue <button className="btn-link" onClick={() => this.setState({ settingsOpen: true })}>settings</button> on
           the right!
         </UncontrolledAlert>
@@ -154,9 +154,9 @@ class Header extends React.Component {
             </InputGroup>
           </FormGroup>
         </Form>
-  
+
         <Nav className="ml-md-0">
-          <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu}`}>
+          <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu}`} >
             <DropdownToggle nav caret style={{color: "#f4f4f5", padding: 0}}>
             <span className={`${s.avatar} rounded-circle float-left mr-2`}>
               {avatar ? (
@@ -169,7 +169,7 @@ class Header extends React.Component {
               <span className={`small d-sm-down-none ${this.props.sidebarStatic ? s.adminEmail : ''}`}>{user ? (user.firstName || user.email) : "Philip smith"}</span>
               <Badge className={s.badge} color="primary">13</Badge>
             </DropdownToggle>
-            <DropdownMenu right className={`${s.notificationsWrapper} py-0 animated animated-fast fadeInUp`}>
+            <DropdownMenu right className={`${s.notificationsWrapper} py-0 animate__animated animate__faster animate__fadeInUp`}>
               <Notifications />
             </DropdownMenu>
           </Dropdown>

@@ -994,6 +994,16 @@ ul.messenger.messenger-spinner-active .messenger-spinner .messenger-spinner {
     float: left;
   }
 }
+.table-hover tbody tr:hover {
+  color: $white;
+}
+
+.widget table {
+  color: $white;
+}
+.react-bs-table table {
+  color: $white;
+}
 
 .react-bs-table-sizePerPage-dropdown {
   .caret {
@@ -1161,14 +1171,24 @@ div.abc-radio label {
 
     &-body {
       text-align: center;
+      color: $violet_deep;
+
+      button {
+        border-color: $violet_deep;
+        color: $violet_deep;
+        &:hover {
+          border-color: transparent;
+        }
+      }
     }
   }
 
-  .notification-close {
+  .notifications-close {
     height: $font-size-base;
+    color: $violet_deep;
 
     &:hover {
-      color: darken($white, 10%);
+      color: lighten($violet_deep, 10%);
     }
   }
 }
