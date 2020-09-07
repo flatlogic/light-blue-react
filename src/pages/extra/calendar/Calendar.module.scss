@@ -23,8 +23,9 @@
     .fc-event {
       border: none;
       font-weight: $font-weight-normal;
-      background-color: $gray-200;
+      border: 1px solid $text-color;
       color: $text-color;
+      margin-left: 0!important;
     }
 
     .fc .fc-today {

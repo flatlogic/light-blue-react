@@ -21,11 +21,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin, {Draggable} from "@fullcalendar/interaction";
 
-import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
-
-
 
 class Calendar extends React.Component {
     constructor(props) {
@@ -42,16 +39,16 @@ class Calendar extends React.Component {
         currentMonth: moment().format('MMM YYYY'),
         currentDay: moment().format('dddd'),
         calendarOptions: {
-          header: {
+          headerToolbar: {
             left: '',
-            center: '',
-            right: '',
+            center: 'title',
+            right: ''
           },
           events: [
             {
               title: 'All Day Event',
               start: new Date(y, m, 1),
-              backgroundColor: '#F45722',
+              color: '#F45722',
               textColor: '#fff',
               description: 'Will be busy throughout the whole day',
             },
@@ -59,7 +56,7 @@ class Calendar extends React.Component {
               title: 'Long Event',
               start: new Date(y, m, d + 5),
               end: new Date(y, m, d + 7),
-              backgroundColor: '#58D777',
+              color: '#58D777',
               textColor: '#f4f4f5',
               description: 'This conference should be worse visiting',
             },
@@ -68,7 +65,7 @@ class Calendar extends React.Component {
               title: 'Blah Blah Car',
               start: new Date(y, m, d - 3, 16, 0),
               allDay: false,
-              backgroundColor: '#f0af03',
+              color: '#f0af03',
               textColor: '#f4f4f5',
               description: 'Agree with this guy on arrival time',
             },
@@ -77,7 +74,7 @@ class Calendar extends React.Component {
               title: 'Buy this template',
               start: new Date(y, m, d + 3, 12, 0),
               allDay: false,
-              backgroundColor: '#4ebfbb',
+              color: '#4ebfbb',
               textColor: '#f4f4f5',
               description: 'Make sure everything is consistent first',
             },
@@ -85,7 +82,7 @@ class Calendar extends React.Component {
               title: 'Got to school',
               start: new Date(y, m, d + 16, 12, 0),
               end: new Date(y, m, d + 16, 13, 0),
-              backgroundColor: '#64bd63',
+              color: '#64bd63',
               textColor: '#fff',
               description: 'Time to go back',
             },
@@ -93,7 +90,7 @@ class Calendar extends React.Component {
               title: 'Study some Node',
               start: new Date(y, m, d + 18, 12, 0),
               end: new Date(y, m, d + 18, 13, 0),
-              backgroundColor: '#79A5F0',
+              color: '#79A5F0',
               textColor: '#fff',
               description: 'Node.js is a platform built '
               + 'on Chrome\'s JavaScript runtime for easily'

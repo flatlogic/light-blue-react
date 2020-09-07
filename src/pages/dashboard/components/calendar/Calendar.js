@@ -48,6 +48,9 @@ class Calendar extends Component {
   }
 
   next = () =>  {
+    console.log('HEHEHE');
+    console.log(this.state.selectedMonthEvents, this.state.selectedMonth.add(1, "month"));
+    console.log('HEHEHE');
     this.setState({
       selectedMonth: this.state.selectedMonth.add(1, "month")
     });
@@ -61,9 +64,6 @@ class Calendar extends Component {
     );
   }
 
-
-
-  
   renderWeeks = () =>  {
     const currentMonthView = this.state.selectedMonth;
     const currentSelectedDay = this.state.selectedDay;
@@ -94,7 +94,6 @@ class Calendar extends Component {
     }
     return weeks;
   }
-
 
   render() {
 
