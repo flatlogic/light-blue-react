@@ -1,5 +1,9 @@
 # Changelog
 
+## [8.0.5]
+
+- Updated fullcalendar package to v5.3.0
+
 ## [8.0.4]
 
 - Add animation to alert in header

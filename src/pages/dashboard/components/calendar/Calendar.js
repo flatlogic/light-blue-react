@@ -48,9 +48,6 @@ class Calendar extends Component {
   }
 
   next = () =>  {
-    console.log('HEHEHE');
-    console.log(this.state.selectedMonthEvents, this.state.selectedMonth.add(1, "month"));
-    console.log('HEHEHE');
     this.setState({
       selectedMonth: this.state.selectedMonth.add(1, "month")
     });

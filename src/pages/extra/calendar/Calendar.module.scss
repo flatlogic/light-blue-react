@@ -20,6 +20,15 @@
       padding: 0;
     }
 
+    .fc .fc-list-sticky .fc-list-day > * {
+      background: $gray-900;
+    }
+
+    .fc .fc-list-event:hover td {
+      background-color: $violet_deep;
+      cursor: pointer;
+    }
+
     .fc-event {
       border: none;
       font-weight: $font-weight-normal;
