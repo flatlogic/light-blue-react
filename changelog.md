@@ -1,5 +1,9 @@
 # Changelog
 
+## [8.1.0]
+
+- Updated all dependencies, cleaned up dependency tree
+
 ## [8.0.5]
 
 - Updated fullcalendar package to v5.3.0

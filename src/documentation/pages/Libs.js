@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Row, Col, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/prism';
-import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
+import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import {Sparklines, SparklinesBars} from "react-sparklines";
 import ColorPiker from 'rc-color-picker';
 import TextareaAutosize from 'react-autosize-textarea';

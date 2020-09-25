@@ -76,6 +76,14 @@ a.headerLinkActive {
   font-weight: bold;
 }
 
+.accordionToggle {
+  position: relative;
+}
+
+.accordionToggle > .caret {
+  top: 11px;
+}
+
 .accordionToggle:focus {
   background-color: $sidebar-item-hover-bg-color;
 }

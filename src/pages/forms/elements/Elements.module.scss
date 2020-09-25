@@ -414,12 +414,31 @@
   } 
   .mde-text textarea {
     background: $bg-custom-dark;
+    width: 100%;
+    color: $gray;
   }
   .rc-slider-handle {
     background: $subtle-blue !important;
   }
   legend {
     border-bottom: 1px solid $bg-custom-dark;
+  }
+  .rdw-editor-main {
+    height: auto!important;
+  }
+  .mde-text {
+    color: $white;
+  }
+  .mde-preview, .mde-text, .react-mde .grip {
+    background-color: $bg-custom-dark;
+    border-color: $subtle-blue;
+  }
+  .mde-header {
+    background: $subtle-blue;
+    border-color: $subtle-blue;
+  }
+  .react-mde {
+    border-color: $subtle-blue;
   }
 }
 

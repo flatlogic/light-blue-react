@@ -5,7 +5,7 @@ import s from './Widget.module.scss';
 import classNames from 'classnames';
 import Loader from '../Loader'; // eslint-disable-line css-modules/no-unused-class
 import AnimateHeight from 'react-animate-height';
-import uuidv4 from 'uuid/v4'
+import { v4 as uuid } from 'uuid'
 import {
   DropdownToggle,
   DropdownMenu,
@@ -71,7 +71,7 @@ class Widget extends React.Component {
     super(props);
 
     this.state = {
-      randomId: uuidv4(),
+      randomId: uuid(),
       hideWidget: false,
       collapseWidget: !!props.collapsed,
       height:  props.collapsed ? 0 : 'auto',

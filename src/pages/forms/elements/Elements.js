@@ -24,10 +24,9 @@ import MaskedInput from 'react-maskedinput';
 import Slider, { Range, createSliderWithTooltip } from 'rc-slider';
 import Dropzone from 'react-dropzone';
 import TextareaAutosize from 'react-autosize-textarea';
-import ReactMde, { ReactMdeCommands } from 'react-mde';
 import Select from 'react-select';
 
-
+import MarkdownEditorComp from './Markdown';
 import Widget from '../../../components/Widget';
 
 import s from './Elements.module.scss';
@@ -36,6 +35,7 @@ import 'rc-slider/assets/index.css';
 
 const SliderWithTooltip = createSliderWithTooltip(Slider);
 const RangeTooltip = createSliderWithTooltip(Range);
+
 
 class Elements extends React.Component {
 
@@ -91,9 +91,6 @@ class Elements extends React.Component {
       dropFiles: [],
       inputFiles: [],
       imageFiles: [],
-      reactMdeValue: {
-        text: '',
-        selection: null },
     };
   }
 
@@ -132,10 +129,6 @@ class Elements extends React.Component {
       });
     };
     reader.readAsDataURL(e.target.files[0]);
-  }
-
-  handleValueChange = (value) => {
-    this.setState({ reactMdeValue: value });
   }
 
   changeValueDropdown = (e) => {
@@ -604,15 +597,8 @@ class Elements extends React.Component {
                   </Label>
                   <Col md={9}>
 
-                    <ReactMde
-                      textAreaProps={{
-                        id: 'ta1',
-                        name: 'ta1',
-                      }}
-                      value={this.state.reactMdeValue}
-                      onChange={this.handleValueChange}
-                      commands={ReactMdeCommands.getDefaultCommands()}
-                    />
+                    <MarkdownEditorComp />
+
                   </Col>
                 </FormGroup>
               </Form>
@@ -1338,20 +1324,16 @@ class Elements extends React.Component {
           <Col lg="6" md={12}>
             <Widget title={<h6><strong>Drop</strong> Zone</h6>} settingsInverse refresh close>
               <div>
-                <Dropzone
-                  onDrop={this.onDrop} accept="image/*"
-                  className={`${s.dropzone} dropzone`}
-                >
-                  {this.state.dropFiles.length > 0 ? <div>
-                    {this.state.dropFiles.map((file, idx) => (
-                      <div className="display-inline-block mr-xs mb-xs" key={`drop-id-${idx.toString()}`}>
-                        <img alt="..." src={file.preview} width={100} />
-                        <div>{file.name}</div>
-                      </div>
-                    ))}
-                  </div> : <p>This dropzone accepts only images.
-                    Try dropping some here, or click to select files to upload.</p>}
-                </Dropzone>
+              <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+                {({getRootProps, getInputProps}) => (
+                  <section className={s.dropzone}>
+                    <div {...getRootProps()}>
+                      <input {...getInputProps()} />
+                      <p>Drag 'n' drop some files here, or click to select files</p>
+                    </div>
+                  </section>
+                )}
+              </Dropzone>
 
               </div>
             </Widget>
