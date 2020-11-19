@@ -137,9 +137,10 @@ legend {
 /*  Badge */
 // Add colors for badges
 .badge {
-  padding: 4px;
-  font-weight: $font-weight-bold;
-  font-size: 11px;
+  padding: 4px 8px;
+  font-weight: $font-weight-semi-bold;
+  font-size: 14px;
+  line-height: 19px;
 }
 
 .badge-success,
@@ -160,7 +161,7 @@ legend {
 .badge {
   &.badge-pill {
     padding: 0.4em 0.6em;
-    font-weight: 700;
+    font-weight: $font-weight-semi-bold;
   }
 
   .list-group-item > & {
@@ -239,6 +240,8 @@ small {
   opacity: .8;
   font-size: 85%;
   font-weight: 600;
+  padding-left: 16px;
+  padding-right: 4px;
 }
 
 .btn-link {
@@ -285,7 +288,6 @@ small {
 
 .btn {
   font-family: $font-family-sans-serif;
-
   .glyphicon {
     top: 3px;
   }
