@@ -182,7 +182,7 @@ class Header extends React.Component {
             <DropdownToggle nav className={`${s.navItem} text-white`}>
               <i className="glyphicon glyphicon-comments" />
             </DropdownToggle>
-            <DropdownMenu className={`${s.dropdownMenu} ${s.messages}`}>
+            <DropdownMenu right className={`${s.dropdownMenu} ${s.messages}`}>
               <DropdownItem>
                 <img className={s.image} src={sender1} alt="" />
                 <div className={s.details}>
