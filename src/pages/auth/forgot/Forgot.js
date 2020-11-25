@@ -68,7 +68,7 @@ class Forgot extends React.Component {
             </Widget>
           </Container>
           <footer className="auth-footer">
-            {new Date().getFullYear()} &copy; Light Blue React.
+            {new Date().getFullYear()} &copy; Light Blue - React Admin Dashboard Template. Made by <a href="https://flatlogic.com" rel="noopener noreferrer" target="_blank">Flatlogic LLC</a>
           </footer>
         </div>
       );
