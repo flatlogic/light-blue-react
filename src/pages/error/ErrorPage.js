@@ -35,7 +35,11 @@ class ErrorPage extends React.Component {
             </Form>
           </div>
           <footer className={s.pageFooter}>
+<<<<<<< HEAD
             2020 &copy; Light Blue - React Admin Dashboard Template.
+=======
+          {new Date().getFullYear()} &copy; Light Blue - React Admin Dashboard Template. Made by <a href="https://flatlogic.com" rel="noopener noreferrer" target="_blank">Flatlogic LLC</a>
+>>>>>>> 9e9aa184c64f1550cc100a583c8251a056bf1742
           </footer>
         </Container>
       </div>

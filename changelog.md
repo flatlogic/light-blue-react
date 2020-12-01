@@ -1,5 +1,9 @@
 # Changelog
 
+## [8.1.1]
+
+- Added link to flatlogic on login page
+
 ## [8.1.0]
 
 - Updated all dependencies, cleaned up dependency tree
