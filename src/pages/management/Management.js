@@ -77,7 +77,7 @@ class Management extends React.Component {
 
     titleFormatter(cell, row) {
         return cell ? (
-            <Link className="text-success" to={'/app/ecommerce/product/' + row.id}>
+            <Link className="text-primary" to={'/app/ecommerce/product/' + row.id}>
                {cell[0].toUpperCase() + cell.slice(1)}
             </Link>
         ) : ""
@@ -175,11 +175,11 @@ class Management extends React.Component {
                         This page is only available in <a className="text-white font-weight-bold" rel="noreferrer noopener" href="https://flatlogic.com/admin-dashboards/light-blue-react-node-js" target="_blank">Light Blue React with Node.js</a> integration!
                     </Alert>
                 </div>
-                <Widget title="List of Products" collapse close
+                <Widget title="List of Products" collapse close className="overflow-auto"
                         fetchingData={this.props.isReceiving}
                 >
                     <Button color="success" onClick={() => this.createNewProduct()}>Create Product</Button>
-                    <BootstrapTable data={this.props.products} version="4" pagination options={options} search
+                    <BootstrapTable className="table-responsive" data={this.props.products} version="4" pagination options={options} search
                                     tableContainerClass={`table-striped ${s.bootstrapTable}`}>
                         <TableHeaderColumn dataField="id" isKey={true} className="width-50"
                                            columnClassName="width-50">

@@ -184,7 +184,7 @@ class TabsAccordion extends React.Component {
                   it appears in your mind you should go and make a first step to implement
                   it. </p>
                 <div className="float-right">
-                  <Button color="inverse" className="mr-xs">Cancel</Button>
+                  <Button color="inverse" className="mr-md">Cancel</Button>
                   <Button color="primary">Some button</Button>
                 </div>
                 <div className="clearfix"/>
@@ -278,8 +278,8 @@ class TabsAccordion extends React.Component {
                       easy to understand if text is lore ipsum.`}</p>
                     <div className="clearfix">
                       <div className="btn-toolbar">
-                        <Button color="danger">&nbsp;&nbsp;Check&nbsp;&nbsp;</Button>
-                        <Button color="default">&nbsp;&nbsp;Dance?&nbsp;&nbsp;</Button>
+                        <Button color="danger" className="mr-md ml-0">&nbsp;&nbsp;Check&nbsp;&nbsp;</Button>
+                        <Button color="default" className="mr-md ml-0">&nbsp;&nbsp;Dance?&nbsp;&nbsp;</Button>
                       </div>
                     </div>
                   </TabPane>

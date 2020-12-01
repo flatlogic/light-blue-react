@@ -233,7 +233,7 @@ class Wizard extends React.Component {
                   </NavLink>
                 </NavItem>
               </Nav>
-              <Progress value={this.state.progress} color="gray-light" className="progress-xs" />
+              <Progress value={this.state.progress} color="success" className="progress-xs" />
               <div className="tab-content">
                 <div className={s.stepBody}>
                   <Formsy.Form>
@@ -248,11 +248,25 @@ class Wizard extends React.Component {
                 <div className="description">
                   <ul className="pager wizard">
                     <li className="previous">
-                      <Button disabled={currentStep === 1} color="primary" onClick={this.previousStep}><i
+                      <Button hidden={currentStep === 1} color="primary" onClick={this.previousStep}><i
                         className="fa fa-caret-left"
                       />
                         &nbsp;Previous</Button>
                     </li>
+                    {/* {currentStep > 1 
+                      ? <li className="previous">
+                          <Button color="primary" onClick={this.previousStep}><i 
+                            className="fa fa-caret-left"
+                        />
+                          &nbsp;Previous</Button>
+                        </li>
+                      : <li className="previous">
+                          <Button hidden="true" color="primary" onClick={this.previousStep}><i 
+                           className="fa fa-caret-left"
+                        />
+                          &nbsp;Previous</Button>
+                        </li>
+                    } */}
                     {currentStep < count &&
                     <li className="next">
                       <Button color="primary" onClick={this.nextStep}>Next <i className="fa fa-caret-right" /></Button>

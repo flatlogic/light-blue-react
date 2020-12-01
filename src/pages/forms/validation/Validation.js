@@ -21,7 +21,7 @@ class Validation extends React.Component {
         </h1>
 
         <Row>
-          <Col lg={{size: 8, offset: 1}} xs={{size: 12, offset: 0}}>
+          <Col lg={{size: 9, offset: 0}} xs={{size: 12, offset: 0}}>
             <Widget
               title={<h5> Dead simple validation
               <small> No JS needed to tune-up</small>
@@ -167,14 +167,14 @@ class Validation extends React.Component {
                   </FormGroup>
                 </fieldset>
 
-                <div className="form-action bg-widget-transparent">
+                <div className="form-action bg-transparent pl-0 pr-0">
                   <Button type="submit" color="danger" className="btn-rounded float-right">Validate & Submit</Button>
                   <Button type="button" color="default" className="btn-rounded">Cancel</Button>
                 </div>
               </Formsy.Form>
             </Widget>
           </Col>
-          <Col lg={{size: 8, offset: 1}} xs={{size: 12, offset: 0}}>
+          <Col lg={{size: 9, offset: 0}} xs={{size: 12, offset: 0}}>
             <Widget title={<h5> Dead simple formik</h5>} close collapse>
               <Formik />
             </Widget>

@@ -47,7 +47,7 @@ const Colors = () => (
     <Row>
       <Col>
         <Widget
-          title={<h5>States <span className="fw-semi-bold">Colors</span></h5>}
+          className="table-responsive" title={<h5>States <span className="fw-semi-bold">Colors</span></h5>}
           close collapse
         >
           <p>Light Blue comes with a number of state colors that can be applied to
@@ -89,7 +89,7 @@ const Colors = () => (
             <h3 className="text-success">h3. Heading</h3>
             <h4 className="text-primary">h4. Heading</h4>
             <h5 className="text-info">h5. Heading</h5>
-            <h6 className="text-inverse">h6. Heading</h6>
+            <h6 className="text-secondary">h6. Heading</h6>
           </div>
         </Widget>
       </Col>
@@ -100,14 +100,14 @@ const Colors = () => (
         >
           <p>Use any of the available button classes to quickly create a styled button.
             Semantically distinguishable beauty.</p>
-          <Button className="width-100 mb-xs mr-xs" color="default">Default</Button>
-          <Button className="width-100 mb-xs mr-xs" color="primary">Primary</Button>
-          <Button className="width-100 mb-xs mr-xs" color="info">Info</Button>
-          <Button className="width-100 mb-xs mr-xs" color="success">Success</Button>
-          <Button className="width-100 mb-xs mr-xs" color="warning">Warning</Button>
-          <Button className="width-100 mb-xs mr-xs" color="danger">Danger</Button>
-          <Button className="width-100 mb-xs mr-xs" color="gray">Gray</Button>
-          <Button className="width-100 mb-xs mr-xs" color="inverse">Inverse</Button>
+          <Button className="width-100 mb-3 mr-3" color="default">Default</Button>
+          <Button className="width-100 mb-3 mr-3" color="primary">Primary</Button>
+          <Button className="width-100 mb-3 mr-3" color="info">Info</Button>
+          <Button className="width-100 mb-3 mr-3" color="success">Success</Button>
+          <Button className="width-100 mb-3 mr-3" color="warning">Warning</Button>
+          <Button className="width-100 mb-3 mr-3" color="danger">Danger</Button>
+          <Button className="width-100 mb-3 mr-3" color="gray">Gray</Button>
+          <Button className="width-100 mb-3 mr-3" color="inverse">Inverse</Button>
         </Widget>
       </Col>
     </Row>

@@ -32,6 +32,7 @@ import Widget from '../../../components/Widget';
 import s from './Elements.module.scss';
 
 import 'rc-slider/assets/index.css';
+import imageUpload from '../../../images/image-upload.svg';
 
 const SliderWithTooltip = createSliderWithTooltip(Slider);
 const RangeTooltip = createSliderWithTooltip(Range);
@@ -317,11 +318,11 @@ class Elements extends React.Component {
                     </Col>
                   </FormGroup>
 
-                  <FormGroup row className="form-action bg-widget-transparent">
+                  <FormGroup row className="form-action bg-transparent pl-0">
                     <Label md={4} />
                     <Col md={7}>
-                      <Button color="primary" type="submit" className="mr-xs">Save Changes</Button>
-                      <Button color="inverse">Cancel</Button>
+                      <Button color="primary" type="submit" className="mr-md">Save Changes</Button>
+                      <Button color="default">Cancel</Button>
                     </Col>
                   </FormGroup>
                 </Form>
@@ -337,7 +338,7 @@ class Elements extends React.Component {
                 <Form>
                   <legend><strong>Default</strong> Form</legend>
                   <Row>
-                    <Col md={8}>
+                    <Col md={12}>
                       <FormGroup>
                         <Label for="search-input1">
                           Search type input
@@ -463,8 +464,8 @@ class Elements extends React.Component {
                     </Col>
                   </Row>
 
-                  <FormGroup className="form-action bg-widget-transparent">
-                    <Button color="primary" type="submit" className="mr-xs">
+                  <FormGroup className="form-action bg-transparent pl-0">
+                    <Button color="primary" type="submit" className="mr-md">
                       Save Changes
                     </Button>
                     <Button color="default">Cancel</Button>
@@ -585,7 +586,7 @@ class Elements extends React.Component {
                       toolbarClassName={s.wysiwygToolbar}
                     />
                     <div className="text-md-right mt-xs">
-                      <Button color="danger" className="mr-xs">Save</Button>
+                      <Button color="danger" className="mr-md">Save</Button>
                       <Button color="default">Clear</Button>
                     </div>
                   </Col>
@@ -673,7 +674,7 @@ class Elements extends React.Component {
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
                         caret color="danger"
-                        className="dropdown-toggle-split mr-xs"
+                        className="dropdown-toggle-split mr-md"
                       >
                         {this.state.redSelectDropdownValue}&nbsp;
                       </DropdownToggle>
@@ -692,7 +693,7 @@ class Elements extends React.Component {
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
                         caret color="warning"
-                        className="dropdown-toggle-split mr-xs"
+                        className="dropdown-toggle-split mr-md"
                       >
                         {this.state.orangeSelectDropdownValue}&nbsp;
                       </DropdownToggle>
@@ -1305,7 +1306,8 @@ class Elements extends React.Component {
                             <img alt="..." src={file.preview} key={`img-id-${idx.toString()}`} />))}
                         </div> : <img
                           alt="..."
-                          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTEiIGhlaWdodD0iMTQxIj48cmVjdCB3aWR0aD0iMTkxIiBoZWlnaHQ9IjE0MSIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijk1LjUiIHk9IjcwLjUiIHN0eWxlPSJmaWxsOiNhYWE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LXNpemU6MTJweDtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4xOTF4MTQxPC90ZXh0Pjwvc3ZnPg=="
+                          src={imageUpload}
+                   //       src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTEiIGhlaWdodD0iMTQxIj48cmVjdCB3aWR0aD0iMTkxIiBoZWlnaHQ9IjE0MSIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijk1LjUiIHk9IjcwLjUiIHN0eWxlPSJmaWxsOiNhYWE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LXNpemU6MTJweDtmb250LWZhbWlseTpBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZjtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4xOTF4MTQxPC90ZXh0Pjwvc3ZnPg=="
                         />}
                       </div>
                     </div>

@@ -51,7 +51,7 @@ class UsersForm extends Component {
 
                 <div className="form-buttons">
                   <button
-                    className="btn btn-primary"
+                    className="btn btn-primary mr-md"
                     disabled={saveLoading}
                     type="button"
                     onClick={form.handleSubmit}

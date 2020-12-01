@@ -144,7 +144,7 @@ class Static extends React.Component {
         <h2 className="page-title">Tables - <span className="fw-semi-bold">Static</span></h2>
         <Row>
           <Col>
-            <Widget
+            <Widget className="table-responsive"
               title={<h5>
                 Table <span className="fw-semi-bold">Styles</span>
               </h5>} settings close
@@ -211,7 +211,7 @@ class Static extends React.Component {
               </Table>
               <div className="clearfix">
                 <div className="float-right">
-                  <Button color="default" className="mr-xs" size="sm">Send to...</Button>
+                  <Button color="default" className="mr-md" size="sm">Send to...</Button>
                   <UncontrolledButtonDropdown>
                     <DropdownToggle color="inverse" className="mr-xs" size="sm" caret>Clear</DropdownToggle>
                     <DropdownMenu>
@@ -236,7 +236,7 @@ class Static extends React.Component {
               <h3>Stripped <span className="fw-semi-bold">Table</span></h3>
 
               <p>Each row is highlighted. You will never lost there. Just <code>.table-striped</code> it.</p>
-              <Table className="table-striped">
+              <Table className="table-striped table-responsive">
                 <thead>
                   <tr>
                     <th>
@@ -388,7 +388,7 @@ class Static extends React.Component {
                     <td className="text-right">$25 224.2</td>
                     <td className="text-center">
                       <Sparklines data={[13, 14, 16, 15, 4, 14, 20]} style={{ width: '35px', height: '20px' }}>
-                        <SparklinesBars style={{ stroke: 'white', fill: '#1870DC' }} />
+                        <SparklinesBars style={{ fill: '#1870DC' }} />
                       </Sparklines>
                     </td>
                   </tr>
@@ -406,7 +406,7 @@ class Static extends React.Component {
                     <td className="text-right">$87 346.1</td>
                     <td className="text-center">
                       <Sparklines data={[14, 12, 16, 11, 17, 19, 16]} style={{ width: '35px', height: '20px' }}>
-                        <SparklinesBars style={{ stroke: 'white', fill: '#58D777' }} />
+                        <SparklinesBars style={{ fill: '#58D777' }} />
                       </Sparklines>
                     </td>
                   </tr>
@@ -424,7 +424,7 @@ class Static extends React.Component {
                     <td className="text-right">$57 944.6</td>
                     <td className="text-center">
                       <Sparklines data={[11, 17, 19, 16, 14, 12, 16]} style={{ width: '35px', height: '20px' }}>
-                        <SparklinesBars style={{ stroke: 'white', fill: '#f0af03' }} />
+                        <SparklinesBars style={{ fill: '#f0af03' }} />
                       </Sparklines>
                     </td>
                   </tr>
@@ -442,7 +442,7 @@ class Static extends React.Component {
                     <td className="text-right">$118 533.1</td>
                     <td className="text-center">
                       <Sparklines data={[13, 14, 20, 16, 15, 4, 14]} style={{ width: '35px', height: '20px' }}>
-                        <SparklinesBars style={{ stroke: 'white', fill: '#F45722' }} />
+                        <SparklinesBars style={{ fill: '#F45722' }} />
                       </Sparklines>
                     </td>
                   </tr>
@@ -460,7 +460,7 @@ class Static extends React.Component {
                     <td className="text-right">$72 854.5</td>
                     <td className="text-center">
                       <Sparklines data={[16, 15, 4, 14, 13, 14, 20]} style={{ width: '35px', height: '20px' }}>
-                        <SparklinesBars style={{ stroke: 'white', fill: '#4ebfbb' }} />
+                        <SparklinesBars style={{ fill: '#4ebfbb' }} />
                       </Sparklines>
                     </td>
                   </tr>
@@ -510,7 +510,7 @@ class Static extends React.Component {
                       <td className="text-right">$25 224.2</td>
                       <td className="text-center">
                         <Sparklines data={[13, 14, 16, 15, 4, 14, 20]} style={{ width: '35px', height: '20px' }}>
-                          <SparklinesBars style={{ stroke: 'white', fill: '#1870DC' }} />
+                          <SparklinesBars style={{ fill: '#1870DC' }} />
                         </Sparklines>
                       </td>
                     </tr>
@@ -528,7 +528,7 @@ class Static extends React.Component {
                       <td className="text-right">$87 346.1</td>
                       <td className="text-center">
                         <Sparklines data={[14, 12, 16, 11, 17, 19, 16]} style={{ width: '35px', height: '20px' }}>
-                          <SparklinesBars style={{ stroke: 'white', fill: '#F45722' }} />
+                          <SparklinesBars style={{ fill: '#F45722' }} />
                         </Sparklines>
                       </td>
                     </tr>
@@ -546,7 +546,7 @@ class Static extends React.Component {
                       <td className="text-right">$57 944.6</td>
                       <td className="text-center">
                         <Sparklines data={[11, 17, 19, 16, 14, 12, 16]} style={{ width: '35px', height: '20px' }}>
-                          <SparklinesBars style={{ stroke: 'white', fill: '#f0af03' }} />
+                          <SparklinesBars style={{ fill: '#f0af03' }} />
                         </Sparklines>
                       </td>
                     </tr>
@@ -564,7 +564,7 @@ class Static extends React.Component {
                       <td className="text-right">$118 533.1</td>
                       <td className="text-center">
                         <Sparklines data={[13, 14, 20, 16, 15, 4, 14]} style={{ width: '35px', height: '20px' }}>
-                          <SparklinesBars style={{ stroke: 'white', fill: '#58D777' }} />
+                          <SparklinesBars style={{ fill: '#58D777' }} />
                         </Sparklines>
                       </td>
                     </tr>
@@ -582,7 +582,7 @@ class Static extends React.Component {
                       <td className="text-right">$72 854.5</td>
                       <td className="text-center">
                         <Sparklines data={[16, 15, 4, 14, 13, 14, 20]} style={{ width: '35px', height: '20px' }}>
-                          <SparklinesBars style={{ stroke: 'white', fill: '#4ebfbb' }} />
+                          <SparklinesBars style={{ fill: '#4ebfbb' }} />
                         </Sparklines>
                       </td>
                     </tr>

@@ -43,7 +43,7 @@ const Profile = () => (
                 </span>
                 <h5 className="fw-normal">Adam <span className="fw-semi-bold">Johns</span></h5>
                 <p>UI/UX designer</p>
-                <button className="btn btn-danger btn-sm mb-3">
+                <button className="btn btn-success btn-sm mb-3">
                   &nbsp;Send
                   <i className="fa fa-envelope ml-2" />&nbsp;
                 </button>
@@ -72,9 +72,9 @@ const Profile = () => (
                 </div>
               </div>
               <p>
-                <button className="btn-link badge badge-warning rounded-0"> UI/UX </button>
-                <button className="btn-link badge badge-danger rounded-0 ml-2"> Web Design </button>
-                <button className="btn-link badge badge-default rounded-0 ml-2"> Mobile Apps </button>
+                <a href="#" class="badge badge-info rounded-0 mb-2 mr-2">UI/UX</a>
+                <a href="#" class="badge badge-primary rounded-0 mr-2"> Web Design </a>
+                <a href="#" class="badge badge-default rounded-0"> Mobile Apps </a>
               </p>
               <p className="lead mt-xlg">
                 My name is Adam Johns and here is my new Light Blue user profile page.
@@ -161,14 +161,14 @@ const Profile = () => (
               </ul>
             </footer>
           </section>
-          <Form className="mt mb-4" action="#">
+          <Form className="mt mb-5" action="#">
             <FormGroup className="mb-2">
               <Label className="sr-only" for="new-event">New event</Label>
               <Input type="textarea" id="new-event" placeholder="Post something..." rows="3" />
             </FormGroup>
             <div className="btn-toolbar">
               <div className="btn-group">
-                <button className="btn btn-sm btn-subtle-blue">
+                <button className="btn btn-sm btn-subtle-blue ml-0">
                   <i className="fa fa-camera fa-lg" />
                 </button>
                 <button className="btn btn-sm btn-subtle-blue">

@@ -128,11 +128,12 @@ export default {
         curve: 'smooth'
       },
       fill: {
-        type: 'gradient',
-        gradient: {
-          opacityFrom: 0.6,
-          opacityTo: 0.8,
-        }
+        type: 'solid',
+        opacity: 1,
+        // gradient: {
+        //   opacityFrom: 0.6,
+        //   opacityTo: 0.8,
+        // }
       },
       legend: {
         position: 'top',
@@ -175,6 +176,7 @@ export default {
     options: {
       colors: [colors.blue],
       chart: {
+      //  height: 450,
         height: 350,
         type: 'bar',
       },
@@ -255,9 +257,7 @@ export default {
       },
       title: {
         text: 'Monthly Inflation in Argentina, 2002',
-        floating: true,
-        offsetY: 320,
-        align: 'center',
+        align: 'top',
         style: {
           color: colors.textColor
         }

@@ -40,7 +40,7 @@ class Grid extends React.Component {
     
         <Row> 
 
-          <Col xl={7}>
+          <Col xl={12}>
             <Widget
               title={<h5>Draggable Grid &nbsp;<span className="badge badge-danger fw-normal">since 2.1</span></h5>}
             >
@@ -159,8 +159,8 @@ class Grid extends React.Component {
                   </p>
                   <div className="clearfix">
                     <div className="btn-toolbar float-right">
-                      <button type="button" className="btn btn-transparent">Cancel</button>
-                      <button type="button" className="btn btn-success">&nbsp;Submit&nbsp;</button>
+                      <button type="button" className="btn btn-default">Cancel</button>
+                      <button type="button" className="btn btn-success ml-3">&nbsp;Submit&nbsp;</button>
                     </div>
                   </div>
                 </Form>
@@ -203,7 +203,7 @@ class Grid extends React.Component {
               customCollapse={true}
               customFullscreen={true}
               customReload={true}
-              bodyClass={"pt-3 px-0 py-0"}
+              bodyClass={"pt-3 px-2 py-0"}
             >
               <ul className={'news-list stretchable'}>
                 {this.state.gridData.news.map(item => (
@@ -246,7 +246,6 @@ class Grid extends React.Component {
             </Widget>
 
             <Widget
-              className="bg-default"
               customBody={true}
             >
             </Widget>

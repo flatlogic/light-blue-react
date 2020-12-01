@@ -168,7 +168,7 @@ export default {
         }
       }
     },
-    colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.dark, colors.teal],
+    colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.pink, colors.teal],
     series: [{
       minPointSize: 10,
       innerSize: '20%',
@@ -411,7 +411,7 @@ export default {
     credits: {
       enabled: false
     },
-    colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.dark, colors.teal],
+    colors: [colors.blue, colors.green, colors.orange, colors.red, colors.purple, colors.pink, colors.teal],
     exporting: {
       enabled: false
     },

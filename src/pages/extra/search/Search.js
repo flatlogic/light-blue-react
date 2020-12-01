@@ -31,10 +31,10 @@ class Search extends React.Component {
     return (
       <div className={s.root}>
         <h1 className="page-title">Matching - <span className="fw-semi-bold">Results</span></h1>
-        <div className="btn-toolbar justify-content-between">
-          <div className="d-inline-flex">
+        <div className="btn-toolbar justify-content-between col-md-12 col-xl-9 pl-0 pr-3">
+          <div className="d-inline-flex mb-2">
             <UncontrolledButtonDropdown>
-              <DropdownToggle color="default" caret>
+              <DropdownToggle  className="ml-0" color="default" caret>
                 Popular
               </DropdownToggle>
               <DropdownMenu>
@@ -56,9 +56,9 @@ class Search extends React.Component {
             </UncontrolledButtonDropdown>
           </div>
 
-          <ButtonGroup>
-            <Button color="subtle-blue" className="active"><i className="fa fa-th-list" /></Button>
-            <Button color="subtle-blue"><i className="fa fa-th-large" /></Button>
+          <ButtonGroup className="d-inline-block">
+            <Button color="subtle-blue" className="disabled"><i className="fa fa-th-list" /></Button>
+            <Button color="subtle-blue" className="active"><i className="fa fa-th-large" /></Button>
           </ButtonGroup>
         </div>
         <Row className="mt-3 d-block">

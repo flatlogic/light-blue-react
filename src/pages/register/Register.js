@@ -218,7 +218,7 @@ class Register extends React.Component {
                     {/*</Widget>*/}
                 </Container>
                 <footer className="auth-footer">
-                    2019 &copy; Sing App - React Admin Dashboard Template.
+                    2020 &copy; Sing App - React Admin Dashboard Template.
                 </footer>
             </div>
         );
