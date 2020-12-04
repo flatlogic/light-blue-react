@@ -1,8 +1,8 @@
-import * as dataFormat from 'components/Users/list/UsersDataFormatters';
-import actions from '../../../actions/usersListActions';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { push } from 'connected-react-router';
+import * as dataFormat from "components/Users/list/UsersDataFormatters";
+import actions from "../../../actions/usersListActions";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { push } from "connected-react-router";
 
 import {
   Dropdown,
@@ -14,22 +14,19 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-} from 'reactstrap';
+} from "reactstrap";
 
-import {
-  BootstrapTable,
-  TableHeaderColumn,
-} from 'react-bootstrap-table';
+import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
 
-import Widget from 'components/Widget';
+import Widget from "components/Widget";
 
-import s from '../Users.module.scss';
+import s from "../Users.module.scss";
 
 class UsersListTable extends Component {
   state = {
     modalOpen: false,
     idToDelete: null,
-  }
+  };
 
   handleDelete() {
     const userId = this.props.idToDelete;
@@ -51,7 +48,6 @@ class UsersListTable extends Component {
         <Button
           className={s.controBtn}
           color="info"
-          size="xs"
           onClick={() => this.props.dispatch(push(`/admin/users/${cell}`))}
         >
           View
@@ -59,7 +55,6 @@ class UsersListTable extends Component {
         <Button
           className={s.controBtn}
           color="success"
-          size="xs"
           onClick={() => this.props.dispatch(push(`/admin/users/${cell}/edit`))}
         >
           Edit
@@ -67,13 +62,12 @@ class UsersListTable extends Component {
         <Button
           className={s.controBtn}
           color="danger"
-          size="xs"
           onClick={() => this.openModal(cell)}
         >
           Delete
         </Button>
       </div>
-     )
+    );
   }
 
   componentDidMount() {
@@ -84,25 +78,28 @@ class UsersListTable extends Component {
   renderSizePerPageDropDown = (props) => {
     const limits = [];
     props.sizePerPageList.forEach((limit) => {
-      limits.push(<DropdownItem key={limit} onClick={() => props.changeSizePerPage(limit)}>{ limit }</DropdownItem>);
+      limits.push(
+        <DropdownItem
+          key={limit}
+          onClick={() => props.changeSizePerPage(limit)}
+        >
+          {limit}
+        </DropdownItem>
+      );
     });
 
     return (
       <Dropdown isOpen={props.open} toggle={props.toggleDropDown}>
         <DropdownToggle color="default" caret>
-          { props.currSizePerPage }
+          {props.currSizePerPage}
         </DropdownToggle>
-        <DropdownMenu>
-          { limits }
-        </DropdownMenu>
+        <DropdownMenu>{limits}</DropdownMenu>
       </Dropdown>
     );
   };
 
   render() {
-    const {
-      rows
-    } = this.props;
+    const { rows } = this.props;
 
     const options = {
       sizePerPage: 10,
@@ -111,57 +108,86 @@ class UsersListTable extends Component {
     };
 
     return (
-        <div>
-          <Widget title="Users" collapse close>
-            <div className={s.usersTableWrapper}>
-              <BootstrapTable bordered={false} data={rows} version="4" pagination options={options} search tableContainerClass={`table-responsive table-striped table-hover ${s.usersListTableMobile}`}>
-                <TableHeaderColumn dataField="avatars" dataSort dataFormat={dataFormat.imageFormatter}>
-                  <span className="fs-sm">Avatar</span>
-                </TableHeaderColumn>
+      <div>
+        <Widget title="Users" collapse close>
+          <div className={s.usersTableWrapper}>
+            <BootstrapTable
+              bordered={false}
+              data={rows}
+              version="4"
+              pagination
+              options={options}
+              search
+              tableContainerClass={`table-responsive table-striped table-hover ${s.usersListTableMobile}`}
+            >
+              <TableHeaderColumn
+                dataField="avatars"
+                dataSort
+                dataFormat={dataFormat.imageFormatter}
+              >
+                <span className="fs-sm">Avatar</span>
+              </TableHeaderColumn>
 
-                <TableHeaderColumn dataField="firstName" dataSort>
-                  <span className="fs-sm">First Name</span>
-                </TableHeaderColumn>
+              <TableHeaderColumn dataField="firstName" dataSort>
+                <span className="fs-sm">First Name</span>
+              </TableHeaderColumn>
 
-                <TableHeaderColumn dataField="lastName" dataSort>
-                  <span className="fs-sm">Last Name</span>
-                </TableHeaderColumn>
+              <TableHeaderColumn dataField="lastName" dataSort>
+                <span className="fs-sm">Last Name</span>
+              </TableHeaderColumn>
 
-                <TableHeaderColumn dataField="phoneNumber" dataSort>
-                  <span className="fs-sm">Phone Number</span>
-                </TableHeaderColumn>
+              <TableHeaderColumn dataField="phoneNumber" dataSort>
+                <span className="fs-sm">Phone Number</span>
+              </TableHeaderColumn>
 
-                <TableHeaderColumn dataField="email" dataSort>
-                  <span className="fs-sm">E-mail</span>
-                </TableHeaderColumn>
+              <TableHeaderColumn dataField="email" dataSort>
+                <span className="fs-sm">E-mail</span>
+              </TableHeaderColumn>
 
-                <TableHeaderColumn dataField="role" dataSort>
-                  <span className="fs-sm">Role</span>
-                </TableHeaderColumn>
+              <TableHeaderColumn dataField="role" dataSort>
+                <span className="fs-sm">Role</span>
+              </TableHeaderColumn>
 
-                <TableHeaderColumn dataField="disabled" dataSort dataFormat={dataFormat.booleanFormatter}>
-                  <span className="fs-sm">Disabled</span>
-                </TableHeaderColumn>
+              <TableHeaderColumn
+                dataField="disabled"
+                dataSort
+                dataFormat={dataFormat.booleanFormatter}
+              >
+                <span className="fs-sm">Disabled</span>
+              </TableHeaderColumn>
 
-                <TableHeaderColumn isKey dataField="id" dataFormat={this.actionFormatter.bind(this)}>
-                  <span className="fs-sm">Actions</span>
-                </TableHeaderColumn>
-              </BootstrapTable>
-            </div>
-          </Widget>
+              <TableHeaderColumn
+                isKey
+                dataField="id"
+                dataFormat={this.actionFormatter.bind(this)}
+              >
+                <span className="fs-sm">Actions</span>
+              </TableHeaderColumn>
+            </BootstrapTable>
+          </div>
+        </Widget>
 
-          <Modal size="sm" isOpen={this.props.modalOpen} toggle={() => this.closeModal()}>
-            <ModalHeader toggle={() => this.closeModal()}>Confirm delete</ModalHeader>
-            <ModalBody className="bg-white">
-              Are you sure you want to delete this item?
-            </ModalBody>
-            <ModalFooter>
-              <Button color="secondary" onClick={() => this.closeModal()}>Cancel</Button>
-              <Button color="primary" onClick={() => this.handleDelete()}>Delete</Button>
-            </ModalFooter>
-          </Modal>
-
-        </div>
+        <Modal
+          size="sm"
+          isOpen={this.props.modalOpen}
+          toggle={() => this.closeModal()}
+        >
+          <ModalHeader toggle={() => this.closeModal()}>
+            Confirm delete
+          </ModalHeader>
+          <ModalBody>
+            Are you sure you want to delete this item?
+          </ModalBody>
+          <ModalFooter>
+            <Button color="default" onClick={() => this.closeModal()}>
+              Cancel
+            </Button>
+            <Button color="primary" onClick={() => this.handleDelete()}>
+              Delete
+            </Button>
+          </ModalFooter>
+        </Modal>
+      </div>
     );
   }
 }

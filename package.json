@@ -1,9 +1,9 @@
 {
   "name": "light-blue-react",
-  "version": "5.0.1",
+  "version": "8.1.2",
   "private": true,
   "scripts": {
-    "build": "cross-env REACT_APP_BACKEND=true cross-env PUBLIC_URL='/light-blue-react' node scripts/build.js",
+    "build": "cross-env REACT_APP_BACKEND=true cross-env PUBLIC_URL='./' node scripts/build.js",
     "start": "node scripts/start.js",
     "start:backend": "cross-env REACT_APP_BACKEND=true node scripts/start.js",
     "test": "node scripts/test.js"

@@ -161,8 +161,8 @@
       .thumbnail {
         padding: $thumbnail-padding;
         line-height: $line-height-base;
-        background-color: $thumbnail-bg;
-        border: $thumbnail-border-width solid $thumbnail-border-color;
+        background-color: $inverse;
+        border: $thumbnail-border-width solid $gray;
         border-radius: $thumbnail-border-radius;
         transition: all 0.2s ease-in-out;
 

@@ -55,11 +55,11 @@ class RickshawGraph extends React.Component {
       height: this.props.height,
       series: [
         {
-          color: '#1870DC',
+          color: '#2477ff',
           data: seriesData[0],
           name: 'Uploads',
         }, {
-          color: '#58D777',
+          color: '#2d8515',
           data: seriesData[1],
           name: 'Downloads',
         },

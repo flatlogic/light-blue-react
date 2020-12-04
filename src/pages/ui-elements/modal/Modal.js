@@ -43,7 +43,7 @@ class ModalExample extends React.Component {
                 Toggle a working modal demo by clicking the button below. It
                 will slide down and fade in from the top of the page.
               </p>
-              <Button className="mr-sm" color="primary" onClick={() => this.toggle('demo')}>Demo</Button>
+              <Button className="mr-3" color="primary" onClick={() => this.toggle('demo')}>Demo</Button>
               <Button color="primary" onClick={() => this.toggle('scrollingLong')}>Scrolling long content</Button>
             </Widget>
             <Widget
@@ -55,7 +55,7 @@ class ModalExample extends React.Component {
               classes to be placed on a .modal-dialog. These sizes kick in at certain
               breakpoints to avoid horizontal scrollbars on narrower viewports.
               </p>
-              <Button className="mr-sm" color="primary" onClick={() => this.toggle('large')}>Large modal</Button>
+              <Button className="mr-3" color="primary" onClick={() => this.toggle('large')}>Large modal</Button>
               <Button color="primary" onClick={() => this.toggle('small')}>Small modal</Button>
             </Widget>
           </Col>

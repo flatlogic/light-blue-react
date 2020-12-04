@@ -1,4 +1,17 @@
 # Changelog
+## [8.1.2]
+
+### Fixed bugs and layout issues
+
+- Add new images to Documentation and LB Package pages
+- Change progress bars bg color
+- Update main colors
+- Badges and buttons: fix margins, change font colors
+- Dropdowns: change paddings
+- Header component: change dropdown hover states
+- Charts: fix charts issues
+- Fix adaptive and layout issues on pages
+- Charts: fix label colors, apex dropdown text
 
 ## [8.1.1]
 

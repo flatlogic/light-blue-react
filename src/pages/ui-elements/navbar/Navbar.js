@@ -48,19 +48,19 @@ class NavbarExamples extends Component {
                 <li>Navbars are hidden by default when printing. Force them to be printed by adding <code>.d-print</code>
                 to the <code>.navbar</code>. See the display utility class.</li>
               </ul>
-              <Navbar className="px-2 mt-lg" color="light" light expand="md">
+              <Navbar className="pa-2 mt-lg" color="default" dark expand="md">
                 <NavbarBrand href="/">Navbar</NavbarBrand>
                 <NavbarToggler className="ml-auto" onClick={() => this.toggle(0)} />
                 <Collapse isOpen={this.state.navs[0]} navbar>
                   <Nav className="ml-auto" navbar>
                     <NavItem>
-                      <NavLink>Home</NavLink>
+                      <NavLink className="text-white">Home</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink>Features</NavLink>
+                      <NavLink className="text-white">Features</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink>Pricing</NavLink>
+                      <NavLink className="text-white">Pricing</NavLink>
                     </NavItem>
                     <NavItem>
                       <NavLink disabled>Disabled</NavLink>
@@ -79,19 +79,19 @@ class NavbarExamples extends Component {
                 theming classes and background-color utilities. Choose from <code>color=&quot;light&quot;</code>
                 for use with light background colors, or <code>color=&quot;dark&quot;</code> for dark background
                 colors. Then, customize with <code>.bg-*</code> utilities.</p>
-              <Navbar className="px-2 mt-lg" color="light" light expand="md">
-                <NavbarBrand href="/">Navbar</NavbarBrand>
+              <Navbar className="pa-2 mt-lg" color="inverse" dark expand="md">
+                <NavbarBrand href="/" className="text-white">Navbar</NavbarBrand>
                 <NavbarToggler className="ml-auto" onClick={() => this.toggle(1)} />
                 <Collapse isOpen={this.state.navs[1]} navbar>
                   <Nav className="ml-auto" navbar>
                     <NavItem>
-                      <NavLink>Home</NavLink>
+                      <NavLink className="text-white">Home</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink>Features</NavLink>
+                      <NavLink className="text-white">Features</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink>Pricing</NavLink>
+                      <NavLink className="text-white">Pricing</NavLink>
                     </NavItem>
                     <NavItem>
                       <NavLink disabled>Disabled</NavLink>
@@ -99,19 +99,19 @@ class NavbarExamples extends Component {
                   </Nav>
                 </Collapse>
               </Navbar>
-              <Navbar className="px-2 mt-lg" color="primary" dark expand="md">
+              <Navbar className="pa-2 mt-lg" color="primary" dark expand="md">
                 <NavbarBrand href="/">Navbar</NavbarBrand>
                 <NavbarToggler className="ml-auto" onClick={() => this.toggle(2)} />
                 <Collapse isOpen={this.state.navs[2]} navbar>
                   <Nav className="ml-auto" navbar>
                     <NavItem>
-                      <NavLink>Home</NavLink>
+                      <NavLink className="text-white">Home</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink>Features</NavLink>
+                      <NavLink className="text-white">Features</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink>Pricing</NavLink>
+                      <NavLink className="text-white">Pricing</NavLink>
                     </NavItem>
                     <NavItem>
                       <NavLink disabled>Disabled</NavLink>
@@ -119,19 +119,19 @@ class NavbarExamples extends Component {
                   </Nav>
                 </Collapse>
               </Navbar>
-              <Navbar className="px-2 mt-lg" color="success" dark expand="md">
+              <Navbar className="pa-2 mt-lg" color="success" dark expand="md">
                 <NavbarBrand href="/">Navbar</NavbarBrand>
                 <NavbarToggler className="ml-auto" onClick={() => this.toggle(3)} />
                 <Collapse isOpen={this.state.navs[3]} navbar>
                   <Nav className="ml-auto" navbar>
                     <NavItem>
-                      <NavLink>Home</NavLink>
+                      <NavLink className="text-white">Home</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink>Features</NavLink>
+                      <NavLink className="text-white">Features</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink>Pricing</NavLink>
+                      <NavLink className="text-white">Pricing</NavLink>
                     </NavItem>
                     <NavItem>
                       <NavLink disabled>Disabled</NavLink>

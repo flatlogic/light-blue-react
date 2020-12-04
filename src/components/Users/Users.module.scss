@@ -1,17 +1,17 @@
-@import '../../styles/app';
+@import "../../styles/app";
 
 .avatar {
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   background: $warning;
   font-weight: 600;
   font-size: 18px;
   img {
-    height: 60px;
+    height: 40px;
   }
 }
 
@@ -26,7 +26,7 @@
 }
 
 .controBtn {
-  padding: 1px 3px;
+  padding: 2px 3px;
   font-size: 11px;
 }
 

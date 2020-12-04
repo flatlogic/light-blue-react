@@ -115,7 +115,7 @@ class Dynamic extends React.Component {
     return (
       <div>
         <h2 className="page-title">Tables - <span className="fw-semi-bold">Dynamic</span></h2>
-        <Widget title={<h4>The <span className="fw-semi-bold">React</span> Way</h4>} collapse close>
+        <Widget className="table-responsive" title={<h4>The <span className="fw-semi-bold">React</span> Way</h4>} collapse close>
           <p>
             Fully customizable Table. Built with <a href="https://allenfang.github.io/react-bootstrap-table/" target="_blank" rel="noopener noreferrer">react-bootstrap-table</a>
           </p>
@@ -156,8 +156,8 @@ class Dynamic extends React.Component {
               props => (
                 <div>
                   <h3>Input something at below input field:</h3>
-                  <Row className="mb-lg">
-                    <Col lg={{ size: 4, offset: 8 }} md={{ size: 5, offset: 7 }} sm={{ size: 6, offset: 6 }} xs={12}>
+                  <Row className="mb-lg float-right">
+                    <Col>
                       <SearchBar { ...props.searchProps } />
                     </Col>
                   </Row>

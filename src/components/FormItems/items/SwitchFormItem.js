@@ -24,18 +24,7 @@ export class SwitchFormItemNotFast extends Component {
       }[size] || '';
 
     return (
-      <div className="form-group">
-        {!!label && (
-          <label
-            className={`col-form-label ${
-              required ? 'required' : null
-            } ${sizeLabelClassName}`}
-            htmlFor={name}
-          >
-            {label}
-          </label>
-        )}
-
+      <div className="form-group d-flex align-items-baseline">
         <div>
           <input
             type="checkbox"
@@ -58,6 +47,17 @@ export class SwitchFormItemNotFast extends Component {
             &#160;
           </label>
         </div>
+
+        {!!label && (
+          <label
+            className={`col-form-label ${
+              required ? 'required' : null
+            } ${sizeLabelClassName}`}
+            htmlFor={name}
+          >
+            {label}
+          </label>
+        )}
 
         <div className="invalid-feedback">
           {FormErrors.displayableError(

@@ -9,6 +9,7 @@ import s from './SPackage.module.scss';
 import reactLogo from '../../images/react-logo.svg';
 import angularLogo from '../../images/angularjs-logo.svg';
 import jsLogo from '../../images/js-logo.svg';
+import vueLogo from '../../images/vue-logo.svg';
 
 class SPackage extends React.Component {
 
@@ -71,8 +72,8 @@ class SPackage extends React.Component {
                 so everything
                 works out of the box! <br /><br /></p>
               <a
-                className="btn btn-transparent btn-lg btn-block"
-                href="https://demo.flatlogic.com/4.0.1/angular/#/app/dashboard"
+                className="btn btn-default btn-lg btn-block"
+                href="https://flatlogic.com/templates/light-blue-angular/demo"
               >
                 Go to Demo
               </a>
@@ -103,8 +104,33 @@ class SPackage extends React.Component {
               <p>Moreover, this version comes with three different color
                 schemes which you can easily switch based on your choice.</p>
               <a
-                className="btn btn-transparent btn-lg btn-block"
-                href="https://demo.flatlogic.com/4.0.1/dark/"
+                className="btn btn-default btn-lg btn-block"
+                href="https://flatlogic.com/templates/light-blue-html5/demo"
+              >
+                Go to Demo
+              </a>
+            </Widget>
+          </Col>
+          <Col lg={5} md={6} xs={12}>
+            <Widget
+              title={
+                <h6>VUE JS Version</h6>
+              } settings collapse close
+            >
+              <img className={['pull-left mb-1 mr-3', s.image].join(' ')} src={vueLogo} width="80" alt="" />
+              <h3>VUE JS Version</h3>
+              <p className="text-muted">We spent around <span className="fw-semi-bold">500</span> man-hours
+                developing and designing
+                Vue version, to match high engineering requirements.</p>
+              <p><a className="text-primary" href="https://vuejs.org/" rel="nofollow noopener noreferrer" target="_blank">Vue</a> is a
+               an open-source progressive JavaScript framework for building user interfaces. 
+               Vue is designed to be incrementally adoptable meaning that adding new libraries is 
+               made incredibly easy. Creating Vue JS version is a main priority of Flatlogic for next 
+               months, so seed version will ready really soon!
+              </p>
+              <a
+                className="btn btn-default btn-lg btn-block"
+                href="https://flatlogic.com/templates/light-blue-vue-lite/demo"
               >
                 Go to Demo
               </a>

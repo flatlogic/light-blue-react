@@ -21,7 +21,7 @@ const Typography = () => (
             and align content. It’s built with flexbox and is fully responsive. Below is an
             example and an in-depth look at how the grid comes together.
           </p>
-          <div className="p-3">
+          <div className="p-1">
             <Row className="mb-lg">
               <Col xs={4}>
                 <div className="py-4 bg-primary text-center text-white">

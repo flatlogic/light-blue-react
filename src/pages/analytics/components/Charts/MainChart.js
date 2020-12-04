@@ -27,7 +27,7 @@ export default class RevenueChart extends PureComponent {
         {
           name: 'Light Blue',
           data: data[0],
-          color: '#F45722',
+          color: '#db2a34',
           fillColor: {
             linearGradient: {
               x1: 0,
@@ -48,14 +48,14 @@ export default class RevenueChart extends PureComponent {
           type: 'spline',
           name: 'RNS App',
           data: data[1],
-          color: '#58D777',
+          color: '#2d8515',
           dashStyle: 'Dash'
         },
         {
           type: 'spline',
           name: 'Sing App',
           data: data[2],
-          color: '#1870DC'
+          color: '#2477ff'
         }
       ]
     }

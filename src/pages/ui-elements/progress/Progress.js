@@ -63,9 +63,9 @@ const ProgressExamples = () => (
           We only set a height value on the <code>&lt;Progress&gt;</code>, so if you change that value the inner
           bar will automatically resize accordingly. Also <code>.progress-sm</code> is available.
           </p>
-          <Progress className="progress-sm mb-sm" value="25" color="default">25%</Progress>
-          <Progress className="mb-sm" value="50" color="default">50%</Progress>
-          <Progress value="75" color="default" style={{ height: '30px' }}>75%</Progress>
+          <Progress className="progress-sm mb-sm" value="25" color="primary">25%</Progress>
+          <Progress className="mb-sm" value="50" color="danger">50%</Progress>
+          <Progress className="progress-md" value="75" color="success">75%</Progress>
         </Widget>
       </Col>
       <Col xs={12}>

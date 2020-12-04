@@ -23,4 +23,8 @@
     background: $bg-custom-dark;
     color: $content-color;   
   }
+  .ReactTable .-pagination .-btn {
+    background: $subtle-blue;
+    color: $white;
+  }
 }

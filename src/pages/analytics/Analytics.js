@@ -85,7 +85,7 @@ class Analytics extends Component {
             }
           }
         },
-        colors: ['#58D777', '#1870DC', '#F45722'],
+        colors: ['#2d8515', '#2477ff', '#db2a34'],
         legend: {
           align: 'right',
           verticalAlign: 'middle',
@@ -189,14 +189,14 @@ class Analytics extends Component {
                       </small>
                     </p>
                     <h6 className="fs-sm text-muted">SDK</h6>
-                      <Progress color="success" className="progress-sm" style={{height: '3px', marginBottom: '5px'}}
+                      <Progress color="success" className="progress-sm" style={{height: '10px', marginBottom: '5px'}}
                                 value={performance.sdk?.this_period_pct}/>
-                      <Progress color="primary" className="progress-sm" style={{height: '3px'}}
+                      <Progress color="primary" className="progress-sm" style={{height: '10px'}}
                                 value={performance.sdk?.last_period_pct}/>
                     <h6 className="mt fs-sm text-muted">Integration</h6>
-                      <Progress color="success" className="progress-sm" style={{height: '3px', marginBottom: '5px'}}
+                      <Progress color="success" className="progress-sm" style={{height: '10px', marginBottom: '5px'}}
                                 value={performance.integration?.this_period_pct}/>
-                      <Progress color="primary" className="progress-sm" style={{height: '3px'}}
+                      <Progress color="primary" className="progress-sm" style={{height: '10px'}}
                                 value={performance.integration?.last_period_pct}/>
                   </Widget>
                 </div>
@@ -214,8 +214,9 @@ class Analytics extends Component {
                       <p><small>{server[1]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[1]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[1]?.frequency} Ghz</small></p>
                       <div className={s.sparklineWrapper}>
                         <Trend 
-                          gradient={['#F45722']}
+                          gradient={['#db2a34']}
                           height={30}
+                          strokeWidth={6}
                           smooth
                           data={this.getRandomData()}
                         />
@@ -225,8 +226,9 @@ class Analytics extends Component {
                       <p><small>{server[2]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.frequency} Ghz</small></p>
                       <div className={s.sparklineWrapper}>
                         <Trend 
-                          gradient={['#58D777']}
+                          gradient={['#2d8515']}
                           height={30}
+                          strokeWidth={6}
                           smooth
                           data={this.getRandomData()}
                         />
@@ -236,8 +238,9 @@ class Analytics extends Component {
                       <p><small>{server[2]?.pct}% <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.temp}°С <span style={{ color: '#a3aeb7' }}>/</span> {server[2]?.frequency} Ghz</small></p>
                       <div className={s.sparklineWrapper}>
                         <Trend 
-                          gradient={['#1870DC']}
+                          gradient={['#2477ff']}
                           height={30}
+                          strokeWidth={6}
                           smooth
                           data={this.getRandomData()}
                         />

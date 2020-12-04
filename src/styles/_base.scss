@@ -24,7 +24,15 @@
     margin-left: 25px;
   }
 }
-
+.form-group {
+  .form-control-plaintext {
+    padding: $input-btn-padding-x $input-btn-padding-y;
+    border-radius: $border-radius;
+    border: none;
+    background-color: $bg-custom-dark;
+    color: $content-color;
+  }
+}
 .form-control {
   color: $content-color;
   &:focus,&:active {
@@ -33,7 +41,7 @@
   &.input-transparent {
     border: none;
     color: $text-color;
-    background-color: $widget-bg-color;
+   // background-color: $widget-bg-color;
 
     @include placeholder(rgba(#eee, 0.76));
 
@@ -48,7 +56,7 @@
     &[disabled],
     &[readonly],
     fieldset[disabled] & {
-      background-color: lighten($widget-bg-color, 10%);
+      background-color: $widget-bg-color ;
     }
   }
 }
@@ -200,10 +208,10 @@ table > thead > tr > th {
 
 .stat-item {
   display: inline-block;
-  padding-right: 1.25rem;
+  padding-right: 1.35rem;
 
   & + .stat-item {
-    padding-left: 1.25rem;
+    padding-left: 0.5rem;
     border-left: 1px solid $hr-border-color;
   }
 

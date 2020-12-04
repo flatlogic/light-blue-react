@@ -36,7 +36,7 @@ class ErrorPage extends React.Component {
           </div>
           <footer className={s.pageFooter}>
           {new Date().getFullYear()} &copy; Light Blue - React Admin Dashboard Template. Made by <a href="https://flatlogic.com" rel="noopener noreferrer" target="_blank">Flatlogic LLC</a>
-          </footer>
+k          </footer>
         </Container>
       </div>
     );

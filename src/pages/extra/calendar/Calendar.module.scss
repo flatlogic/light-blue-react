@@ -61,6 +61,12 @@
     .calendar-external-events {
       margin-top: 20px;
     }
+    .external-event {
+      background-color: $widget-bg-color;
+      border-radius: $border-radius;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+    }
 
     .widget-calendar {
       @include media-breakpoint-up(xl) {
@@ -71,11 +77,11 @@
 }
 
 .customExternalEvent {
-  margin: 10px 0;
-  padding: 6px;
+//  margin: 10px 0;
+//  padding: 6px;
   font-size: $font-size-mini;
   cursor: pointer;
-  border-radius: $border-radius;
-  border: 1px solid #ccc;
+ // border-radius: $border-radius;
+ // border: 1px solid #ccc;
   box-shadow: $widget-shadow;
 }

@@ -206,8 +206,8 @@ class Timeline extends React.Component {
               <span className={s.date}>yesterday</span>
               <span className={s.time}>9:03 <span className="fw-semi-bold">am</span></span>
             </time>
-            <span className={s.eventIcon}>
-              <img className="rounded-circle" src={avatar} alt="..." />
+            <span className={`${s.eventIcon} ${s.eventIconInfo}`}>
+              <i className="glyphicon glyphicon-user"/>
             </span>
             <section className={s.event}>
               <span className={`thumb-xs ${s.avatar} pull-left mr-sm`}>
