@@ -72,8 +72,11 @@ const Profile = () => (
                 </div>
               </div>
               <p>
+               {/* eslint-disable-next-line */}
                 <a href="#" class="badge badge-info rounded-0 mb-2 mr-2">UI/UX</a>
+               {/* eslint-disable-next-line */}
                 <a href="#" class="badge badge-primary rounded-0 mr-2"> Web Design </a>
+               {/* eslint-disable-next-line */}
                 <a href="#" class="badge badge-default rounded-0"> Mobile Apps </a>
               </p>
               <p className="lead mt-xlg">
