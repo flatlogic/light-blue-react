@@ -77,10 +77,10 @@ export default {
       yaxis: {
         labels: {
           style: {
-            color: colors.textColor
+            colors: colors.textColor
           }
         }
-      },
+      },     
       tooltip: {
         theme: 'dark'
       },
@@ -159,7 +159,7 @@ export default {
       yaxis: {
         labels: {
           style: {
-            color: colors.textColor
+            colors: colors.textColor
           }
         }
       },
@@ -316,12 +316,12 @@ export default {
         max: 5,
         title: {
           style: {
-            color: colors.textColor
+            colors: colors.textColor
           }
         },
         labels: {
           style: {
-            color: colors.textColor
+            colors: colors.textColor
           }
         }
       },
@@ -421,7 +421,7 @@ export default {
         },
         labels: {
           style: {
-            color: colors.blue,
+            colors: colors.blue,
           }
         },
         title: {
@@ -447,7 +447,7 @@ export default {
           },
           labels: {
             style: {
-              color: colors.green,
+              colors: colors.green,
             }
           },
           title: {
@@ -469,7 +469,7 @@ export default {
           },
           labels: {
             style: {
-              color: colors.orange,
+              colors: colors.orange,
             },
           },
           title: {

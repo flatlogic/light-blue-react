@@ -257,6 +257,11 @@ export default {
       gridLineColor: colors.gridLineColor
     },
     yAxis: {
+      labels: {
+        style: {
+          color: colors.textColor
+        }
+      },
       title: {
         text: null
       },
