@@ -172,7 +172,7 @@ class Management extends React.Component {
                         color="success"
                         className={cx(s.promoAlert, {[s.showAlert]: this.state.promoAlert})}
                     >
-                        This page is only available in <a className="text-white font-weight-bold" rel="noreferrer noopener" href="https://flatlogic.com/admin-dashboards/light-blue-react-node-js" target="_blank">Light Blue React with Node.js</a> integration!
+                        This page is only available in <a className="text-white font-weight-bold" rel="noreferrer noopener" href="https://flatlogic.com/templates/light-blue-react-node-js" target="_blank">Light Blue React with NodeJS/.NET</a> integration!
                     </Alert>
                 </div>
                 <Widget title="List of Products" collapse close className="overflow-auto"

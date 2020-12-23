@@ -1,4 +1,12 @@
 # Changelog
+
+## [8.1.3]
+
+### Fixed 
+
+- Change badge text in the sidebar
+- Change alert text in the usermanager/ecommerce
+
 ## [8.1.2]
 
 ### Fixed bugs and layout issues

@@ -126,7 +126,7 @@ class Sidebar extends React.Component {
                 iconName="flaticon-diamond"
                 link="/app/ecommerce"
                 index="ecommerce"
-                label="NodeJS"
+                label="NodeJS/.NET"
                 labelColor="danger"
                 exact={false}
                 childrenLinks={[

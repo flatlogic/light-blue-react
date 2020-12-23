@@ -146,10 +146,10 @@ class TabsAccordion extends React.Component {
                 </NavItem>
                 <UncontrolledDropdown className={`${s.customNavItem} nav-item`}>
                   <DropdownToggle nav caret
-                                  className={classnames({
-                                    active: this.state.activeFirstTab === 'tab13' ||
-                                    this.state.activeFirstTab === 'tab14'
-                                  }), s.tabsDropDown}>
+                    className={classnames({
+                      active: this.state.activeFirstTab === 'tab13' ||
+                      this.state.activeFirstTab === 'tab14'
+                    }, s.tabsDropDown)}>
                     Dropdown
                   </DropdownToggle>
                   <DropdownMenu>
