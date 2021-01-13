@@ -102,6 +102,7 @@ class Layout extends React.Component {
           s.root,
           'sidebar-' + this.props.sidebarPosition,
           'sidebar-' + this.props.sidebarVisibility,
+            `dashboard-${this.props.dashboardTheme}`
         ].join(' ')}
       >
         <div className={s.wrap}>
@@ -201,6 +202,7 @@ function mapStateToProps(store) {
     sidebarOpened: store.navigation.sidebarOpened,
     sidebarPosition: store.navigation.sidebarPosition,
     sidebarVisibility: store.navigation.sidebarVisibility,
+    dashboardTheme: store.navigation.dashboardTheme
   };
 }
 
