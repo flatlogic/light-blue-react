@@ -197,8 +197,8 @@ class TabsAccordion extends React.Component {
                   easy to understand if text is lore ipsum.`}</p>
                 <div className="clearfix">
                   <div className="btn-toolbar">
-                    <a className="btn btn-default">&nbsp;&nbsp;Check&nbsp;&nbsp;</a>
-                    <a className="btn btn-primary">&nbsp;&nbsp;Dance?&nbsp;&nbsp;</a>
+                    <Button color="default" className="mr-md ml-0">&nbsp;&nbsp;Check&nbsp;&nbsp;</Button>
+                    <Button color="primary" className="mr-md ml-0">&nbsp;&nbsp;Dance?&nbsp;&nbsp;</Button>
                   </div>
                 </div>
               </TabPane>
@@ -350,8 +350,8 @@ class TabsAccordion extends React.Component {
                       easy to understand if text is lore ipsum.`}</p>
                     <div className="clearfix">
                       <div className="btn-toolbar">
-                        <Button color="danger">&nbsp;&nbsp;Check&nbsp;&nbsp;</Button>
-                        <Button color="default">&nbsp;&nbsp;Dance?&nbsp;&nbsp;</Button>
+                        <Button color="danger" className="mr-md ml-0">&nbsp;&nbsp;Check&nbsp;&nbsp;</Button>
+                        <Button color="default" className="mr-md ml-0">&nbsp;&nbsp;Dance?&nbsp;&nbsp;</Button>
                       </div>
                     </div>
                   </TabPane>
