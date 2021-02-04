@@ -457,7 +457,7 @@ class Sidebar extends React.Component {
               toggle={() => { this.dismissAlert(alert.id); }}
             >
               <span>{alert.title}</span><br />
-              <Progress className={`bg-custom-dark progress-xs mt-1`} color={alert.color} value={alert.value} />
+              <Progress className={`bg-subtle-blue progress-xs mt-1`} color={alert.color} value={alert.value} />
               <small>{alert.footer}</small>
             </Alert>,
           )}

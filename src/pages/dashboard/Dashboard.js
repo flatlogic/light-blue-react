@@ -93,7 +93,7 @@ class Dashboard extends React.Component {
                 <div className="col-md-9 col-12">
                   <h6 className="name fw-semi-bold">Foreign Visits</h6>
                   <p className="description deemphasize mb-xs text-white">Some Cool Text</p>
-                  <Progress color="primary" value="60" className="bg-custom-dark progress-xs" />
+                  <Progress color="primary" value="60" className="bg-subtle-blue progress-xs" />
                 </div>
                 <div className="col-md-3 col-12 text-center">
                   <span className="status rounded rounded-lg bg-default text-light">
@@ -105,7 +105,7 @@ class Dashboard extends React.Component {
                 <div className="col-md-9 col-12">
                   <h6 className="name fw-semi-bold">Local Visits</h6>
                   <p className="description deemphasize mb-xs text-white">P. to C. Conversion</p>
-                  <Progress color="danger" value="39" className="bg-custom-dark progress-xs" />
+                  <Progress color="danger" value="39" className="bg-subtle-blue progress-xs" />
                 </div>
                 <div className="col-md-3 col-12 text-center">
                   <span className="status rounded rounded-lg bg-default text-light">
@@ -117,7 +117,7 @@ class Dashboard extends React.Component {
                 <div className="col-md-9 col-12">
                   <h6 className="name fw-semi-bold">Sound Frequencies</h6>
                   <p className="description deemphasize mb-xs text-white">Average Bitrate</p>
-                  <Progress color="success" value="80" className="bg-custom-dark progress-xs" />
+                  <Progress color="success" value="80" className="bg-subtle-blue progress-xs" />
                 </div>
                 <div className="col-md-3 col-12 text-center">
                   <span className="status rounded rounded-lg bg-default text-light">
@@ -165,7 +165,7 @@ class Dashboard extends React.Component {
                   <p className="value">3.38%</p>
                 </div>
               </div>
-              <Progress color="success" value="60" className="bg-custom-dark progress-xs" />
+              <Progress color="success" value="60" className="bg-subtle-blue progress-xs" />
               <p>
                 <small>
                   <span className="circle bg-default text-white mr-2">
@@ -196,7 +196,7 @@ class Dashboard extends React.Component {
                   <p className="value">9 695</p>
                 </div>
               </div>
-              <Progress color="danger" value="60" className="bg-custom-dark progress-xs" />
+              <Progress color="danger" value="60" className="bg-subtle-blue progress-xs" />
               <p>
                 <small><span className="circle bg-default text-white mr-2"><i className="fa fa-chevron-down" /></span></small>
                 <span className="fw-semi-bold">&nbsp;8% lower</span>
@@ -223,7 +223,7 @@ class Dashboard extends React.Component {
                   <p className="value">7,211M</p>
                 </div>
               </div>
-              <Progress color="bg-primary" value="60" className="bg-custom-dark progress-xs" />
+              <Progress color="bg-primary" value="60" className="bg-subtle-blue progress-xs" />
               <p>
                 <small><span className="circle bg-default text-white mr-2"><i className="fa fa-plus" /></span></small>
                 <span className="fw-semi-bold">&nbsp;8 734 higher</span>

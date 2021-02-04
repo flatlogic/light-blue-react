@@ -208,10 +208,10 @@ table > thead > tr > th {
 
 .stat-item {
   display: inline-block;
-  padding-right: 1.35rem;
+  padding-right: 1.25rem;
 
   & + .stat-item {
-    padding-left: 0.5rem;
+    padding-left: 1.25rem;
     border-left: 1px solid $hr-border-color;
   }
 

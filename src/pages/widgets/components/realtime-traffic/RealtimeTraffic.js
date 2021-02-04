@@ -78,7 +78,7 @@ class RealtimeTraffic extends React.Component {
       <div>
         <h4 className="mb-lg">Recent <span className="fw-semi-bold">Update</span></h4>
         <h6>Node.js <span className="fw-semi-bold">4.0.1 distribution</span></h6>
-        <Progress className="bg-custom-dark progress-xs" color="danger" value="77" />
+        <Progress className="bg-subtle-blue progress-xs" color="danger" value="77" />
         <p className="mt-sm mb fs-mini ">
           <small><span className="circle bg-default text-gray-dark"><i
             className="glyphicon glyphicon-chevron-up align-baseline"

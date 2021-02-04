@@ -5,7 +5,7 @@ const defaultState = {
     {
       id: 0,
       title: 'Sales Report',
-      value: 16,
+      value: 65,
       color: 'primary',
       footer: 'Calculating x-axis bias... 65%',
     },
