@@ -15,19 +15,19 @@ class Calendar extends Component {
         {
           title: "The flower bed",
           info: "Contents here",
-          itemStyle: "#1870dc",
+          itemStyle: "#2477ff",
           date: moment(`${moment().year()}-${moment().month() + 1}-02`, "YYYYMMDD"),
         },
         {
           title: "Stop world water pollution",
           info: "Have a kick off meeting with .inc company",
-          itemStyle: "#f0b518",
+          itemStyle: "#e49400",
           date: moment(`${moment().year()}-${moment().month() + 1}-05`, "YYYYMMDD"),
         },
         {
           title: "Light Blue 2.2 release",
           info: "Some contents here",
-          itemStyle: "#58d777",
+          itemStyle: "#2d8515",
           date: moment(`${moment().year()}-${moment().month() + 1}-18`, "YYYYMMDD"),
         },
         {

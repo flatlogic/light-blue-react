@@ -266,7 +266,7 @@ class Dashboard extends React.Component {
                   <button className="list-group-item text-left">
                     <span className="thumb-sm float-left mr">
                       <img className="rounded-circle" src={peopleA1} alt="..." />
-                      <i className="status status-bottom bg-default" />
+                      <i className="status status-bottom bg-primary" />
                     </span>
                     <div>
                       <h6 className="m-0">Livia Walsh</h6>

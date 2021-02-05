@@ -397,6 +397,10 @@ small {
   }
 }
 
+.alert-dismissible {
+  padding-right: 1rem;
+}
+
 .alert-white button.close {
   color: $gray-600;
 }
