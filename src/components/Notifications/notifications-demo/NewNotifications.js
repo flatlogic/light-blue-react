@@ -34,7 +34,7 @@ class NewNotificationsDemo extends React.Component {
             <img className="rounded-circle" src={a6} alt="..." />
           </span>
           <p className="m-0 overflow-hidden">
-            <button className="btn-link">Jeniffer Willington</button>has just endorsed you with 50 points!
+            <button className="btn-link color-primary">Jeniffer Willington</button>has just endorsed you with 50 points!
             <time className="help-block m-0">
               30 sec ago
             </time>

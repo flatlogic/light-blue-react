@@ -12,7 +12,7 @@ class LinksGroup extends Component {
     header: PropTypes.node.isRequired,
     link: PropTypes.string.isRequired,
     childrenLinks: PropTypes.array,
-    iconName: PropTypes.string,
+    iconName: PropTypes.object,
     className: PropTypes.string,
     badge: PropTypes.string,
     label: PropTypes.string,
@@ -73,10 +73,10 @@ class LinksGroup extends Component {
               target={this.props.target}
             >
               <span className={s.icon}>
-                <i className={`fi ${this.props.iconName}`} />
+                {this.props.iconName}
               </span>
               {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'}`}>{this.props.label}</sup>}
-              {this.props.badge && <Badge className={s.badge} color="primary" pill>9</Badge>}
+              {this.props.badge && <Badge className={s.badge} color="danger" pill>9</Badge>}
             </NavLink>
           </li>
         );
@@ -86,7 +86,7 @@ class LinksGroup extends Component {
           <NavLink
             to={this.props.link}
             activeClassName={s.headerLinkActive}
-            style={{ paddingLeft: `${36 + (10 * (this.props.deep - 1))}px` }}
+            style={{ paddingLeft: `${45 + (10 * (this.props.deep - 1))}px` }}
             onClick={(e) => {
               // able to go to link is not available(for Demo)
               if (this.props.link.includes('menu')) {
@@ -109,17 +109,17 @@ class LinksGroup extends Component {
           return (
             <li className={classnames({ [s.headerLink]: this.props.isHeader }, this.props.className)}>
               <a className={classnames(s.accordionToggle, { [s.headerLinkActive]: match }, { [s.collapsed]: isOpen }, "d-flex")}
-                style={{ paddingLeft: `${this.props.deep == 0 ? 20 : 35 + 10 * (this.props.deep - 1)}px` }}
+                style={{ paddingLeft: `${this.props.deep == 0 ? 5 : 35 + 10 * (this.props.deep - 1)}px` }}
                 onClick={(e) => this.togglePanelCollapse(this.props.link, e)}
                 href="#"
               >
                 {this.props.isHeader ?
                   <span className={s.icon}>
-                    <i className={`fi ${this.props.iconName}`} />
+                    {this.props.iconName}
                   </span> : null
                 }
                 {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'} ml-1`}>{this.props.label}</sup>}
-                <b className={['fa fa-angle-left', s.caret].join(' ')} />
+                <b className={['fa fa-angle-right', s.caret].join(' ')} />
               </a>
               {/* eslint-enable */}
               <Collapse className={s.panel} isOpen={isOpen}>

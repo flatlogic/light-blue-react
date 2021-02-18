@@ -8,6 +8,22 @@ import { dismissAlert } from '../../actions/alerts';
 import s from './Sidebar.module.scss';
 import LinksGroup from './LinksGroup';
 
+import DashboardIcon from '../Icons/SidebarIcons/DashboardIcon';
+import UserIcon from '../Icons/SidebarIcons/UserIcon';
+import EcommerceIcon from '../Icons/SidebarIcons/EcommerceIcon';
+import LBPackageIcon from '../Icons/SidebarIcons/LBPackageIcon';
+import EmailIcon from '../Icons/SidebarIcons/EmailIcon';
+import DocumentationIcon from '../Icons/SidebarIcons/DocumentationIcon';
+import CoreIcon from '../Icons/SidebarIcons/CoreIcon';
+import UIElementsIcon from '../Icons/SidebarIcons/UIElementsIcon';
+import GridIcon from '../Icons/SidebarIcons/GridIcon';
+import FormsIcon from '../Icons/SidebarIcons/FormsIcon';
+import ChartsIcon from '../Icons/SidebarIcons/ChartsIcon';
+import TablesIcon from '../Icons/SidebarIcons/TablesIcon';
+import MapsIcon from '../Icons/SidebarIcons/MapsIcon';
+import ExtraIcon from '../Icons/SidebarIcons/ExtraIcon';
+import MenuIcon from '../Icons/SidebarIcons/MenuIcon';
+
 import { changeActiveSidebarItem } from '../../actions/navigation';
 import { logoutUser } from '../../actions/auth';
 
@@ -72,12 +88,13 @@ class Sidebar extends React.Component {
           <a href="https://demo.flatlogic.com/light-blue-react/">Light <span className="fw-bold">Blue</span></a>
         </header>
         <ul className={s.nav}>
+          <h5 className={[s.navTitle, s.groupTitle].join(' ')}>APP</h5>
           <LinksGroup
             onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
             activeItem={this.props.activeItem}
             header="Dashboard"
             isHeader
-            iconName="flaticon-home"
+            iconName={<DashboardIcon className={s.menuIcon}/>}
             link="/app/main"
             index="main"
             childrenLinks={[
@@ -98,7 +115,7 @@ class Sidebar extends React.Component {
             header="Users"
             isHeader
             labelColor="danger"
-            iconName="flaticon-user"
+            iconName={<UserIcon className={s.menuIcon} />}
             link="/admin"
             index="admin"
             label="Real App"
@@ -123,7 +140,7 @@ class Sidebar extends React.Component {
                 activeItem={this.props.activeItem}
                 header="E-commerce"
                 isHeader
-                iconName="flaticon-diamond"
+                iconName={<EcommerceIcon className={s.menuIcon}/>}
                 link="/app/ecommerce"
                 index="ecommerce"
                 label="NodeJS/.NET"
@@ -147,7 +164,7 @@ class Sidebar extends React.Component {
             header="LB Package"
             link="/app/package"
             isHeader
-            iconName="flaticon-database-1"
+            iconName={<LBPackageIcon className={s.menuIcon}/>}
             index="packages"
           />
           <LinksGroup
@@ -156,7 +173,7 @@ class Sidebar extends React.Component {
             header="Email"
             link="/app/inbox"
             isHeader
-            iconName="flaticon-paper-plane"
+            iconName={<EmailIcon className={s.menuIcon}/>}
             index="inbox"
             badge="9"
           />
@@ -166,7 +183,7 @@ class Sidebar extends React.Component {
             header="Documentation"
             link="/documentation"
             isHeader
-            iconName="flaticon-file"
+            iconName={<DocumentationIcon className={s.menuIcon}/>}
             index="documentation"
             label="new"
             target="_blank"
@@ -178,7 +195,7 @@ class Sidebar extends React.Component {
             activeItem={this.props.activeItem}
             header="Core"
             isHeader
-            iconName="flaticon-network"
+            iconName={<CoreIcon className={s.menuIcon}/>}
             link="/app/core"
             index="core"
             childrenLinks={[
@@ -198,7 +215,7 @@ class Sidebar extends React.Component {
             activeItem={this.props.activeItem}
             header="UI Elements"
             isHeader
-            iconName="flaticon-layers"
+            iconName={<UIElementsIcon className={s.menuIcon} />}
             link="/app/ui"
             index="ui"
             childrenLinks={[
@@ -257,7 +274,7 @@ class Sidebar extends React.Component {
             activeItem={this.props.activeItem}
             header="Forms"
             isHeader
-            iconName="flaticon-list"
+            iconName={<FormsIcon className={s.menuIcon} />}
             link="/app/forms"
             index="forms"
             childrenLinks={[
@@ -278,7 +295,7 @@ class Sidebar extends React.Component {
             header="Charts"
             link="/app/charts"
             isHeader
-            iconName="flaticon-controls"
+            iconName={<ChartsIcon className={s.menuIcon} />}
             index="charts"
             childrenLinks={[
               {
@@ -299,14 +316,14 @@ class Sidebar extends React.Component {
             header="Grid"
             link="/app/grid"
             isHeader
-            iconName="flaticon-menu-4"
+            iconName={<GridIcon className={s.menuIcon} />}
           />
           <LinksGroup
             onActiveSidebarItemChange={t => this.props.dispatch(changeActiveSidebarItem(t))}
             activeItem={this.props.activeItem}
             header="Tables"
             isHeader
-            iconName="flaticon-map-location"
+            iconName={<TablesIcon className={s.menuIcon} />}
             link="/app/tables"
             index="tables"
             childrenLinks={[
@@ -323,7 +340,7 @@ class Sidebar extends React.Component {
             activeItem={this.props.activeItem}
             header="Maps"
             isHeader
-            iconName="flaticon-equal-1"
+            iconName={<MapsIcon className={s.menuIcon} />}
             link="/app/maps"
             index="maps"
             childrenLinks={[
@@ -340,7 +357,7 @@ class Sidebar extends React.Component {
             activeItem={this.props.activeItem}
             header="Extra"
             isHeader
-            iconName="flaticon-star"
+            iconName={<ExtraIcon className={s.menuIcon} />}
             link="/app/extra"
             index="extra"
             childrenLinks={[
@@ -372,7 +389,7 @@ class Sidebar extends React.Component {
             activeItem={this.props.activeItem}
             header="Menu Levels"
             isHeader
-            iconName="flaticon-folder-10"
+            iconName={<MenuIcon className={s.menuIcon} />}
             link="/app/menu"
             index="menu"
             childrenLinks={[
@@ -416,12 +433,9 @@ class Sidebar extends React.Component {
             ]}
           />
         </ul>
-        <h5 className={s.navTitle}>
+        <h5 className={[s.navTitle, s.groupTitle].join(' ')}>
           LABELS
           {/* eslint-disable-next-line */}
-          <a className={s.actionLink}>
-            <i className={`${s.glyphiconSm} glyphicon glyphicon-plus float-right`} />
-          </a>
         </h5>
         {/* eslint-disable */}
         <ul className={s.sidebarLabels}>
@@ -445,7 +459,7 @@ class Sidebar extends React.Component {
           </li>
         </ul>
         {/* eslint-enable */}
-        <h5 className={s.navTitle}>
+        <h5 className={[s.navTitle, s.groupTitle].join(' ')}>
           PROJECTS
         </h5>
         <div className={s.sidebarAlerts}>

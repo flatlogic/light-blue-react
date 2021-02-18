@@ -313,11 +313,11 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 
 @include keyframes('bg-attention') {
   0% {
-    background-color: lighten(theme-color('warning'), 43%);
+    background-color: lighten(theme-color('primary'), 43%);
   }
 
   5% {
-    background-color: lighten(theme-color('warning'), 33%);
+    background-color: lighten(theme-color('primary'), 33%);
   }
 
   0% {
@@ -326,7 +326,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 }
 
 .bg-attention {
-  animation: bg-attention 10s;
+  animation: bg-attention 2s;
 }
 
 .thin-scroll {
