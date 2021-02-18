@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.1.4]
+
+### Updated 
+
+- Updated sidebar and header icons
+- Updated sidebar and header layout
+
 ## [8.1.3]
 
 ### Fixed 
