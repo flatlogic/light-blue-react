@@ -50,7 +50,7 @@ const MessageTableHeader = (props) => {
         <UncontrolledButtonDropdown size="sm">
           <DropdownToggle
             caret color="subtle-blue"
-            className="dropdown-toggle-split mr-xs"
+            className="dropdown-toggle-split mr-xs mb-2"
           >
             Actions
         </DropdownToggle>

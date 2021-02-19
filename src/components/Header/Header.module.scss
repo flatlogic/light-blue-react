@@ -7,7 +7,10 @@
   }
 
   ul > li > a {
-    padding: 0.5rem 0.75rem
+    padding: 0.5rem 12px;
+    @media(max-width: 580px) {
+      padding: 0.5rem 6px;
+    }
   }
 
   :global {
@@ -140,7 +143,7 @@
 .divider {
   display: block;
   width: 1px;
-  margin: 10px 5px;
+  margin: 10px 4px;
   background: $content-color;
 }
 
@@ -176,7 +179,7 @@
 }
 
 .dropdownMenu {
-  background: $main-gradient !important;
+  background: $main-background !important;
   box-shadow: 0 0 40px 2px rgba(#020202,.5);
   border: none;
   color: $white;
@@ -304,15 +307,18 @@
   width: 6px;
   height: 6px;
   bottom: 8px;
-  right: 5px;
+  right: 11px;
   background: $green; 
   border-radius: 50%;
 }
 
 .notificationsMenu {
-  padding: 0 0.75rem;
+  padding: 0 12px;
   > a {
     background-color: transparent!important;
+  }
+  @media(max-width: 580px) {
+    padding: 0;
   }
 
   :global .dropdown-menu {
@@ -322,7 +328,8 @@
   }
 
   ::after {
-    padding-left: 0;
+    padding: 0;
+    margin: 0;
   }
 
   @media(max-width: 580px) {
@@ -358,11 +365,16 @@
 }
 
 .badge {
-  margin-left: 6px;
-  margin-right: 3px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin: auto 6px;
   border-radius: 50%;
-  font-size: $font-size-mini;
+  font-size: 12px;
   font-weight: $font-weight-bold;
+  color: $main-background;
 }
 
 .headerIcon {

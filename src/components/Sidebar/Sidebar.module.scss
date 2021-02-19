@@ -96,7 +96,7 @@
 
 .navTitle {
   margin: 25px 0 0 10px;
-  font-size: $font-size-mini;
+  font-size: 13px;
   font-weight: $font-weight-bold;
   color: #474E80;
   transition: opacity $sidebar-transition-time ease-in-out;
@@ -201,7 +201,7 @@
   background: transparent;
   margin-bottom: 0;
   margin-right: 2px;
-  padding: 0.5rem 11px 0.5rem 20px !important;
+  padding: 0.5rem 11px 0.5rem 10px !important;
   padding-right: 15px;
   
   button > span {

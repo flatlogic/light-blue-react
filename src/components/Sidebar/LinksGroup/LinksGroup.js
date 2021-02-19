@@ -86,7 +86,7 @@ class LinksGroup extends Component {
           <NavLink
             to={this.props.link}
             activeClassName={s.headerLinkActive}
-            style={{ paddingLeft: `${45 + (10 * (this.props.deep - 1))}px` }}
+            style={{ paddingLeft: `${40 + (10 * (this.props.deep - 1))}px` }}
             onClick={(e) => {
               // able to go to link is not available(for Demo)
               if (this.props.link.includes('menu')) {
@@ -109,7 +109,7 @@ class LinksGroup extends Component {
           return (
             <li className={classnames({ [s.headerLink]: this.props.isHeader }, this.props.className)}>
               <a className={classnames(s.accordionToggle, { [s.headerLinkActive]: match }, { [s.collapsed]: isOpen }, "d-flex")}
-                style={{ paddingLeft: `${this.props.deep == 0 ? 5 : 35 + 10 * (this.props.deep - 1)}px` }}
+                style={{ paddingLeft: `${this.props.deep == 0 ? 0 : 35 + 10 * (this.props.deep - 1)}px` }}
                 onClick={(e) => this.togglePanelCollapse(this.props.link, e)}
                 href="#"
               >

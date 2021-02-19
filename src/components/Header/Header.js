@@ -138,6 +138,9 @@ class Header extends React.Component {
     const firstUserLetter = user && (user.firstName|| user.email)[0].toUpperCase();
     return (
       <Navbar className={`d-print-none ${s.root}`}>
+        <NavLink onClick={this.toggleSidebar} className={`d-md-none ${s.navItem} text-white`} href="#">
+          <BurgerIcon className={s.headerIcon} />
+        </NavLink>
         <div className={s.alertPosition}>
           <UncontrolledAlert className={`${s.alert} mr-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
             Check out Light Blue 
@@ -176,7 +179,7 @@ class Header extends React.Component {
         </Form>
 
         <Nav className="ml-md-0">
-          <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`d-none d-sm-block ${s.notificationsMenu}`} >
+          <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu}`} >
             <DropdownToggle nav caret style={{color: "#3979F6", padding: 0}}>
             <span className={`${s.avatar} rounded-circle float-left`}>
               {avatar ? (
@@ -193,7 +196,7 @@ class Header extends React.Component {
               <Notifications />
             </DropdownMenu>
           </Dropdown>
-          <NavItem className="d-lg-none d-md-block d-sm-none">
+          <NavItem className="d-lg-none">
             <NavLink onClick={this.toggleSearchOpen} className={s.navItem} href="#">
               <SearchIcon className={s.headerIcon} />
             </NavLink>
@@ -300,11 +303,6 @@ class Header extends React.Component {
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
-          <NavItem className="d-md-none">
-            <NavLink onClick={this.toggleSidebar} className={`${s.navItem} text-white`} href="#">
-              <BurgerIcon className={s.headerIcon} />
-            </NavLink>
-          </NavItem>
           <NavItem>
             <NavLink onClick={this.doLogout} className={`${s.navItem} text-white`} href="#">
               <PowerIcon className={s.headerIcon} />

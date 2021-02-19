@@ -99,10 +99,10 @@ class Sidebar extends React.Component {
             index="main"
             childrenLinks={[
               {
-                header: 'Visits', link: '/app/main/dashboard',
+                header: 'Analytics', link: '/app/main/analytics',
               },
               {
-                header: 'Analytics', link: '/app/main/analytics',
+                header: 'Visits', link: '/app/main/dashboard',
               },
               {
                 header: 'Widgets', link: '/app/main/widgets',
@@ -143,7 +143,7 @@ class Sidebar extends React.Component {
                 iconName={<EcommerceIcon className={s.menuIcon}/>}
                 link="/app/ecommerce"
                 index="ecommerce"
-                label="NodeJS/.NET"
+                // label="NodeJS/.NET"
                 labelColor="danger"
                 exact={false}
                 childrenLinks={[

@@ -73,11 +73,11 @@ const Profile = () => (
               </div>
               <p>
                {/* eslint-disable-next-line */}
-                <a href="#" class="badge badge-info rounded-0 mb-2 mr-2">UI/UX</a>
+                <a href="#" className="badge badge-info rounded-0 mb-2 mr-2">UI/UX</a>
                {/* eslint-disable-next-line */}
-                <a href="#" class="badge badge-primary rounded-0 mr-2"> Web Design </a>
+                <a href="#" className="badge badge-primary rounded-0 mr-2"> Web Design </a>
                {/* eslint-disable-next-line */}
-                <a href="#" class="badge badge-default rounded-0"> Mobile Apps </a>
+                <a href="#" className="badge badge-default rounded-0"> Mobile Apps </a>
               </p>
               <p className="lead mt-xlg">
                 My name is Adam Johns and here is my new Light Blue user profile page.
