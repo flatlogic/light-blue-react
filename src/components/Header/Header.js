@@ -37,9 +37,9 @@ import ArrowIcon from "../Icons/HeaderIcons/ArrowIcon";
 import { logoutUser } from '../../actions/auth';
 import { openSidebar, closeSidebar, changeSidebarPosition, changeSidebarVisibility } from '../../actions/navigation';
 
-import sender1 from '../../images/1.png';
-import sender2 from '../../images/2.png';
-import sender3 from '../../images/3.png';
+import sender1 from '../../images/people/a1.jpg';
+import sender2 from '../../images/people/a5.jpg';
+import sender3 from '../../images/people/a4.jpg';
 
 import adminDefault from '../../images/chat/chat2.png';
 
