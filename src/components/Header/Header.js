@@ -31,6 +31,8 @@ import MessageIcon from "../Icons/HeaderIcons/MessageIcon";
 import BurgerIcon from "../Icons/HeaderIcons/BurgerIcon";
 import SearchIcon from "../Icons/HeaderIcons/SearchIcon";
 import SearchIconWhite from "../Icons/HeaderIcons/SearchIconWhite";
+import ArrowIcon from "../Icons/HeaderIcons/ArrowIcon";
+
 
 import { logoutUser } from '../../actions/auth';
 import { openSidebar, closeSidebar, changeSidebarPosition, changeSidebarVisibility } from '../../actions/navigation';
@@ -236,7 +238,7 @@ class Header extends React.Component {
               <DropdownItem>
                 {/* eslint-disable-next-line */}
                 <a href="#" className="text-white">
-                  See all messages <i className="fa fa-arrow-right" />
+                  See all messages <ArrowIcon className={s.headerIcon} maskName="messagesArrow" />
                 </a>
               </DropdownItem>
             </DropdownMenu>
@@ -298,8 +300,8 @@ class Header extends React.Component {
               <DropdownItem>
                {/* eslint-disable-next-line */}
                <a href="#" className="text-white">
-                  See all tickets <i className="fa fa-arrow-right" />
-                </a>
+                  See all tickets <ArrowIcon className={s.headerIcon} maskName="bellArrow" />
+               </a>
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
