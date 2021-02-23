@@ -1,5 +1,9 @@
 # Changelog
 
+## [8.1.5]
+
+- Updated documentation
+
 ## [8.1.4]
 
 ### Updated 
