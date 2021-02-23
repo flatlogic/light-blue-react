@@ -40,6 +40,7 @@ $gray-light: $gray-100 !default;
 
 $bg-custom-dark: #040620;
 $main-background: #1B1E3F;
+$main-gradient: radial-gradient(farthest-side ellipse at 10% 0, #333867 20%, #17193B);
 
 $lime:       #8cbf26 !default;
 $red:        #db2a34 !default;
@@ -56,6 +57,7 @@ $gray:       #595D78 !default;
 $inverse:    #30314E !default;
 $violet_deep:#1B1E3C !default;
 $icon-blue:  #3979F6 !default;
+$main-gray:  #C1C3CF !default;
 
 $theme-colors: (
   primary: $blue,
@@ -77,7 +79,7 @@ $theme-colors: (
 );
 
 $link-color: #1870DC;
-$icon-color: $icon-blue;
+$icon-color: $main-gray;
 
 $text-color: rgba($white,.9) !default;
 $content-color: rgba($white,.6) !default;

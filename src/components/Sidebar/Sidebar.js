@@ -114,7 +114,7 @@ class Sidebar extends React.Component {
             activeItem={this.props.activeItem}
             header="Users"
             isHeader
-            labelColor="danger"
+            labelColor="primary"
             iconName={<UserIcon className={s.menuIcon} />}
             link="/admin"
             index="admin"
@@ -472,7 +472,7 @@ class Sidebar extends React.Component {
             >
               <span>{alert.title}</span><br />
               <Progress className={`bg-subtle-blue progress-xs mt-1`} color={alert.color} value={alert.value} />
-              <small>{alert.footer}</small>
+              <span className={s.alertFooter}>{alert.footer}</span>
             </Alert>,
           )}
         </div>

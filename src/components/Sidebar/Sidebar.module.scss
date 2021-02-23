@@ -55,7 +55,7 @@
   width: 100%;
   font-weight: $font-weight-thin;
   text-align: center;
-  text-shadow: 4px 4px 15px rgba(57, 121, 246, 0.3);
+  // text-shadow: 4px 4px 15px rgba(57, 121, 246, 0.3);
   text-transform: uppercase;
 
   a {
@@ -98,7 +98,7 @@
   margin: 25px 0 0 10px;
   font-size: 13px;
   font-weight: $font-weight-bold;
-  color: #474E80;
+  color: #A5A7B850;
   transition: opacity $sidebar-transition-time ease-in-out;
 
   @media (min-width: breakpoint-min(lg)) {
@@ -125,7 +125,8 @@
 .labelName {
   font-size: 1rem;
   margin-left: 10px;
-  font-weight: $font-weight-normal;
+  font-weight: $font-weight-thin;
+  color: $main-gray;
   opacity: 1;
   transition: opacity $sidebar-transition-time ease-in-out;
 }
@@ -199,6 +200,7 @@
   font-size: $font-size-mini;
   font-weight: $font-weight-normal;
   background: transparent;
+  color: $main-gray;
   margin-bottom: 0;
   margin-right: 2px;
   padding: 0.5rem 11px 0.5rem 10px !important;
@@ -208,6 +210,10 @@
     color: $icon-color;
     font-weight: $font-weight-normal;
   }
+
+  .alertFooter {
+    color: #A5A7B850;
+  }  
 }
 
 .groupTitle {
