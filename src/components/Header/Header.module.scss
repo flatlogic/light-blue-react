@@ -33,15 +33,15 @@
       }
 
       button.close {
-        color: $icon-color;
+        color: $icon-blue;
         font-weight: normal;
         font-size: 18px !important;
-        right: 5px !important;
-        left: 5px im !important;
-        margin-top: 2px;
+        margin-top: 1px !important;
       }
+
       .btn-link > svg {
         vertical-align: bottom;
+        margin-left: 3px;
       }
     }
 
@@ -145,7 +145,7 @@
   display: block;
   width: 1px;
   margin: 10px 4px;
-  background: $content-color;
+  background: $header-gray;
 }
 
 .navItem {
@@ -380,7 +380,11 @@
 }
 
 .headerIcon {
-  fill: $icon-color;
+  fill: $header-gray;
+}
+
+.settingsIcon {
+  fill: $icon-blue;
 }
 
 .adminEmail {
@@ -395,4 +399,9 @@
 
 .alertPosition {
   margin: 0 auto;
+}
+
+.inputGroupText {
+  background: #12142B;
+  opacity: .8;
 }

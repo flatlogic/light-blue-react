@@ -30,7 +30,6 @@ import SettingsIcon from "../Icons/HeaderIcons/SettingsIcon";
 import MessageIcon from "../Icons/HeaderIcons/MessageIcon";
 import BurgerIcon from "../Icons/HeaderIcons/BurgerIcon";
 import SearchIcon from "../Icons/HeaderIcons/SearchIcon";
-import SearchIconWhite from "../Icons/HeaderIcons/SearchIconWhite";
 import ArrowIcon from "../Icons/HeaderIcons/ArrowIcon";
 
 
@@ -150,7 +149,7 @@ class Header extends React.Component {
               className="btn-link" 
               onClick={() => this.setState({ settingsOpen: true })}
             >
-              <SettingsIcon className={s.headerIcon} />
+              <SettingsIcon className={s.settingsIcon} />
             </button> on the right!
           </UncontrolledAlert>
         </div>
@@ -171,8 +170,8 @@ class Header extends React.Component {
           <FormGroup>
             <InputGroup className={`input-group-no-border ${s.searchForm}`} >
               <InputGroupAddon addonType="prepend">
-                <InputGroupText>
-                  <SearchIconWhite />
+                <InputGroupText className={s.inputGroupText}>
+                  <SearchIcon className={s.headerIcon} />
                 </InputGroupText>
               </InputGroupAddon>
               <Input id="search-input" className="input-transparent" placeholder="Search Dashboard" />
@@ -182,7 +181,7 @@ class Header extends React.Component {
 
         <Nav className="ml-md-0">
           <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu}`} >
-            <DropdownToggle nav caret style={{color: "#3979F6", padding: 0}}>
+            <DropdownToggle nav caret style={{color: "#4A4B60", padding: 0}}>
             <span className={`${s.avatar} rounded-circle float-left`}>
               {avatar ? (
                 <img src={avatar} onError={e => e.target.src = adminDefault} alt="..." title={user && (user.firstName || user.email)} />
