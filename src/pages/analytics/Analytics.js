@@ -252,13 +252,13 @@ class Analytics extends Component {
               <Col lg={12} xs={12}>
                   <MainChart data={mainChart} isReceiving={isReceiving} />
               </Col>
-              <Col xs={12} lg={6} xl={4}>
+              <Col xs={12} lg={6} >
                 <BigStat {...mock.bigStat[0]} />
               </Col>
-              <Col xs={12} lg={6} xl={4}>
+              <Col xs={12} lg={6} >
                 <BigStat {...mock.bigStat[1]} />
               </Col>
-              <Col xs={12} lg={6} xl={4}>
+              <Col xs={12} lg={6} >
                 <BigStat {...mock.bigStat[2]} />
               </Col>
               <Col xs={12} className="mb-lg">

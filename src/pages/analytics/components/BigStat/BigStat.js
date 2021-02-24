@@ -48,7 +48,7 @@ class BigStat extends Component {
               </h4>
               <UncontrolledButtonDropdown>
                 <DropdownToggle
-                  caret color="subtle-blue"
+                  caret color="default"
                   className="dropdown-toggle-split mr-xs btn-sm"
                 >
                   {this.state.simpleSelectDropdownValue}&nbsp;&nbsp;

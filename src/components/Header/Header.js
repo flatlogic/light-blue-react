@@ -139,20 +139,20 @@ class Header extends React.Component {
     const firstUserLetter = user && (user.firstName|| user.email)[0].toUpperCase();
     return (
       <Navbar className={`d-print-none ${s.root}`}>
-        <NavLink onClick={this.toggleSidebar} className={`d-md-none ${s.navItem} text-white`} href="#">
-          <BurgerIcon className={s.headerIcon} />
-        </NavLink>
-        <div className={s.alertPosition}>
-          <UncontrolledAlert className={`${s.alert} mr-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
-            Check out Light Blue 
-            <button 
-              className="btn-link" 
-              onClick={() => this.setState({ settingsOpen: true })}
-            >
-              <SettingsIcon className={s.settingsIcon} />
-            </button> on the right!
-          </UncontrolledAlert>
+        <div>
+          <NavLink onClick={this.toggleSidebar} className={`d-md-none ${s.navItem} text-white`} href="#">
+            <BurgerIcon className={s.headerIcon} />
+          </NavLink>
         </div>
+        <UncontrolledAlert className={`${s.alert} mr-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
+          Check out Light Blue 
+          <button 
+            className="btn-link" 
+            onClick={() => this.setState({ settingsOpen: true })}
+          >
+            <SettingsIcon className={s.settingsIcon} />
+          </button> on the right!
+        </UncontrolledAlert>
         <Collapse className={`${s.searchCollapse} ml-lg-0 mr-md-3`} isOpen={this.state.searchOpen}>
           <InputGroup className={`${s.navbarForm} ${this.state.searchFocused ? s.navbarFormFocused : ''}`}>
             <InputGroupAddon addonType="prepend" className={s.inputAddon}>
@@ -191,7 +191,7 @@ class Header extends React.Component {
               }
             </span>
               <span className={`small d-sm-down-none ${s.adminEmail}`}>{user ? (user.firstName || user.email) : "Philip Smith"}</span>
-              <Badge className={s.badge} color="danger">9</Badge>
+              <Badge className={`d-sm-down-none ${s.badge}`} color="danger">9</Badge>
             </DropdownToggle>
             <DropdownMenu right className={`${s.notificationsWrapper} py-0 animate__animated animate__faster animate__fadeInUp`}>
               <Notifications />
@@ -199,11 +199,11 @@ class Header extends React.Component {
           </Dropdown>
           <NavItem className="d-lg-none">
             <NavLink onClick={this.toggleSearchOpen} className={s.navItem} href="#">
-              <SearchIcon className={s.headerIcon} />
+              <SearchIcon addId='header-search' className={s.headerIcon} />
             </NavLink>
           </NavItem>
           <Dropdown nav isOpen={this.state.messagesOpen} toggle={this.toggleMessagesDropdown}>
-            <DropdownToggle nav className={`${s.navItem} text-white`}>
+            <DropdownToggle nav className={`d-sm-down-none ${s.navItem} text-white`}>
               <MessageIcon className={s.headerIcon} />
             </DropdownToggle>
             <DropdownMenu right className={`${s.dropdownMenu} ${s.messages}`}>
