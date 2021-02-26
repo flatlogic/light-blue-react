@@ -69,15 +69,15 @@ class Header extends React.Component {
       <Navbar className={classnames(s.root, sd.header, 'd-print-none')}>
         <div className="container">
           <div className="row w-100 d-flex align-items-center">
-            <Nav>
+            <Nav className={sd.logoNav}>
               <NavItem>
-                <NavLink className={classnames(s.logo, sd.logo, 'px-4')} href={'/documentation'}>
+                <div className={classnames(sd.logo, 'px-4')}>
                   <span className={'fw-semi-bold'}>Light Blue React</span> &nbsp;  Documentation
-                </NavLink>
+                </div>
               </NavItem>
             </Nav>
 
-            <Nav className="ml-auto">
+            <Nav className={sd.docsNav}>
               <NavItem className="d-flex alight-items-center d-md-down-none">
                 <NavLink href="https://twitter.com/flatlogic" className="mr-1">
                   <img src={twitterLogo} alt="twitter" />
