@@ -1,6 +1,7 @@
 @import '../../styles/app';
 
 .root {
+  display: flex;
   justify-content: flex-end !important;
   @media (max-width: breakpoint-max(sm)) {
     margin-bottom: 50px;
@@ -20,7 +21,7 @@
       display: block;
       margin: 0;
       transition: margin-top 0.2s ease;
-      background: #253259;
+      background: #12142B80;
       border: none;
       font-size: 1rem;
       line-height: 20px;
@@ -28,7 +29,7 @@
       color: rgba(255, 255, 255, 0.6);
       border-radius: 10px;
 
-      @media (max-width: breakpoint-max(sm)) {
+      @media (max-width: 1255px) {
         display: none !important;
       }
 
@@ -145,7 +146,7 @@
   display: block;
   width: 1px;
   margin: 10px 4px;
-  background: $header-gray;
+  background: $icon-color;
 }
 
 .navItem {
@@ -342,7 +343,7 @@
 }
 
 .accountCheck {
-  color: $text-color;
+  color: $icon-color;
   font-weight: $font-weight-normal;
 }
 
@@ -379,8 +380,13 @@
   color: $main-background;
 }
 
+.burger {
+  align-self: end;
+  padding-left: 0;
+}
+
 .headerIcon {
-  fill: $header-gray;
+  fill: $icon-color;
 }
 
 .settingsIcon {
