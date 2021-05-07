@@ -22,7 +22,9 @@ class LinksGroup extends Component {
     deep: PropTypes.number,
     onActiveSidebarItemChange: PropTypes.func,
     labelColor: PropTypes.string,
-    exact: PropTypes.bool
+    exact: PropTypes.bool, 
+    action: PropTypes.func, 
+    CustomClickEvent: PropTypes.func
   };
 
   static defaultProps = {
@@ -126,7 +128,11 @@ class LinksGroup extends Component {
                 <ul>
                   {this.props.childrenLinks &&
                     this.props.childrenLinks.map((child, ind) =>
+                    <div 
+                    key={ind}
+                    onClick={ child.action ? this.props.action : null }>
                       <LinksGroup
+                        doLogout={this.props.doLogout}
                         onActiveSidebarItemChange={this.props.onActiveSidebarItemChange}
                         activeItem={this.props.activeItem}
                         header={child.header}
@@ -134,8 +140,9 @@ class LinksGroup extends Component {
                         index={child.index}
                         childrenLinks={child.childrenLinks}
                         deep={this.props.deep + 1}
-                        key={ind} // eslint-disable-line
-                      />,
+                        // eslint-disable-line
+                      />
+                    </div>,
                     )}
                 </ul>
               </Collapse>

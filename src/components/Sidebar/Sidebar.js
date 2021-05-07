@@ -356,6 +356,7 @@ class Sidebar extends React.Component {
             onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
             activeItem={this.props.activeItem}
             header="Extra"
+            action={ this.doLogout}
             isHeader
             iconName={<ExtraIcon className={s.menuIcon} />}
             link="/app/extra"
@@ -368,7 +369,7 @@ class Sidebar extends React.Component {
                 header: 'Invoice', link: '/app/extra/invoice',
               },
               {
-                header: 'Login Page', link: '/login', onClick: this.doLogout,
+                header: 'Login Page', link: '/login', action: true,
               },
               {
                 header: 'Error Page', link: '/error',

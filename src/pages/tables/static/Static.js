@@ -236,68 +236,70 @@ class Static extends React.Component {
               <h3>Stripped <span className="fw-semi-bold">Table</span></h3>
 
               <p>Each row is highlighted. You will never lost there. Just <code>.table-striped</code> it.</p>
-              <Table className="table-striped table-responsive">
-                <thead>
-                  <tr>
-                    <th>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox1" type="checkbox" checked={this.state.checkboxes1[0]}
-                          onChange={event => this.checkAll(event, 'checkboxes1')}
-                        />
-                        <Label for="checkbox1" />
-                      </div>
-                    </th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Info</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox2" type="checkbox" checked={this.state.checkboxes1[1]}
-                          onChange={event => this.changeCheck(event, 'checkboxes1', 1)}
-                        />
-                        <Label for="checkbox2" />
-                      </div>
-                    </td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td><Badge color="danger">Online</Badge></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox3" type="checkbox" checked={this.state.checkboxes1[2]}
-                          onChange={event => this.changeCheck(event, 'checkboxes1', 2)}
-                        />
-                        <Label for="checkbox3" />
-                      </div>
-                    </td>
-                    <td>Jacob <Badge color="warning" className="text-gray-dark">ALERT!</Badge></td>
-                    <td>Thornton</td>
-                    <td><span className="badge bg-gray">Away</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="abc-checkbox">
-                        <Input
-                          id="checkbox4" type="checkbox" checked={this.state.checkboxes1[3]}
-                          onChange={event => this.changeCheck(event, 'checkboxes1', 3)}
-                        />
-                        <Label for="checkbox4" />
-                      </div>
-                    </td>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td><Badge color="danger">Construct</Badge></td>
-                  </tr>
-                </tbody>
-              </Table>
+              <div className={`widget-table-overflow ${s.overFlow}`}>
+                <Table className="table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        <div className="abc-checkbox">
+                          <Input
+                            id="checkbox1" type="checkbox" checked={this.state.checkboxes1[0]}
+                            onChange={event => this.checkAll(event, 'checkboxes1')}
+                          />
+                          <Label for="checkbox1" />
+                        </div>
+                      </th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Info</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div className="abc-checkbox">
+                          <Input
+                            id="checkbox2" type="checkbox" checked={this.state.checkboxes1[1]}
+                            onChange={event => this.changeCheck(event, 'checkboxes1', 1)}
+                          />
+                          <Label for="checkbox2" />
+                        </div>
+                      </td>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td><Badge color="danger">Online</Badge></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div className="abc-checkbox">
+                          <Input
+                            id="checkbox3" type="checkbox" checked={this.state.checkboxes1[2]}
+                            onChange={event => this.changeCheck(event, 'checkboxes1', 2)}
+                          />
+                          <Label for="checkbox3" />
+                        </div>
+                      </td>
+                      <td>Jacob <Badge color="warning" className="text-gray-dark">ALERT!</Badge></td>
+                      <td>Thornton</td>
+                      <td><span className="badge bg-gray">Away</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div className="abc-checkbox">
+                          <Input
+                            id="checkbox4" type="checkbox" checked={this.state.checkboxes1[3]}
+                            onChange={event => this.changeCheck(event, 'checkboxes1', 3)}
+                          />
+                          <Label for="checkbox4" />
+                        </div>
+                      </td>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td><Badge color="danger">Construct</Badge></td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </div>
               <br /><br />
               <h3>Hover <span className="fw-semi-bold">Table</span></h3>
               <p>{'Trace only what\'s really important. '}<code>.table-hover</code> is made for it.</p>

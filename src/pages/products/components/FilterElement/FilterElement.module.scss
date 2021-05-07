@@ -11,6 +11,16 @@
   }
 }
 
+.back {
+  background: #04071E !important;
+  border-radius: 4px;
+  padding: 10px 16px;
+  color: #FFFFFF;
+}
+.back:hover {
+  color: #FFFFFF;
+}
+
 .filterElementLable {
   margin-right: 10px;
   font-weight: $font-weight-normal;

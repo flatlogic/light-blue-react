@@ -4,6 +4,11 @@
 
 }
 
+.overFlow {
+  overflow-x: auto;
+  margin: 3%;
+}
+
 .mainTableWidget {
   :global {
     .table td {
