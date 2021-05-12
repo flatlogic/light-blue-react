@@ -12,7 +12,7 @@ const Badges = () => (
   <div>
     <h1 className="page-title">Badge</h1>
     <Row>
-      <Col xs={12} md={6} lg={6}>
+      <Col xs={12} md={6}>
         <Widget
           title={<h5>Badge <span className="fw-semi-bold">Example</span></h5>}
           close collapse
@@ -31,7 +31,7 @@ const Badges = () => (
           <Button color="primary">Notifications <Badge color="danger">4</Badge></Button>
         </Widget>
       </Col>
-      <Col xs={12} md={6} lg={6}>
+      <Col xs={12} md={6}>
         <Widget
           title={<h5>Pill <span className="fw-semi-bold">Badges</span></h5>}
           close collapse

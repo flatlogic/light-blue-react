@@ -364,7 +364,7 @@ class Buttons extends React.Component {
             >
               <Row>
                 {/* Checkboxes */}
-                <Col md={4} sm={6} xs={12}>
+                <Col md={12} sm={12} xs={12}>
                   <h4> Button <span className="fw-semi-bold">Checkboxes</span></h4>
                   <p className="fs-mini text-muted">
                     Do more with buttons. Control button states
@@ -410,7 +410,7 @@ class Buttons extends React.Component {
                 </Col>
 
                 {/* Radios */}
-                <Col md={4} sm={12} xs={12}>
+                <Col md={12} sm={12} xs={12}>
                   <h4> Button <span className="fw-semi-bold">Radios</span></h4>
                   <p className="fs-mini text-muted">
                     Do more with buttons. Control button states
@@ -453,7 +453,7 @@ class Buttons extends React.Component {
                 </Col>
 
                 {/* Buttons with Icons */}
-                <Col md={4} sm={12} xs={12}>
+                <Col md={12} sm={12} xs={12}>
                   <h4> Use with <span className="fw-semi-bold">Icons</span></h4>
                   <p className="fs-mini text-muted">
                     Fontawesome and Glyph- icons may be used in buttons,

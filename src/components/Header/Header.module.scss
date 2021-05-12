@@ -18,9 +18,9 @@
     .alert {
       width: 275px;
       height: 30px;
-      display: block;
-      margin-top: .5rem;
-      margin: 0;
+      display: flex;
+      align-items: center;
+      margin: auto;
       transition: margin-top 0.2s ease;
       background: #12142B80;
       border: none;

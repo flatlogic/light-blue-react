@@ -21,7 +21,7 @@ class SPackage extends React.Component {
         </h2>
         <p className="lead">Over 8,000 developers worldwide chose our bootstrap admin templates to build their web applications, SAAS and E-Commerce platforms faster. Jump in to burn through your gig too!</p>
         <Row>
-          <Col lg={6} md={6} sm={12}>
+          <Col sm={12} lg={6}>
             <Widget
               title={
                 <h6>React JS Version</h6>
@@ -48,7 +48,7 @@ class SPackage extends React.Component {
               <button className="btn btn-transparent btn-lg btn-block disabled">(You are here)</button>
             </Widget>
           </Col>
-          <Col lg={6} md={6} sm={12}>
+          <Col sm={12} lg={6}>
             <Widget
               title={
                 <h6>Angular Version</h6>
@@ -79,7 +79,7 @@ class SPackage extends React.Component {
               </a>
             </Widget>
           </Col>
-          <Col lg={6} md={6} sm={12}>
+          <Col sm={12} lg={6}>
             <Widget
               title={
                 <h6>Pure HTML5 Version</h6>
@@ -111,7 +111,7 @@ class SPackage extends React.Component {
               </a>
             </Widget>
           </Col>
-          <Col lg={6} md={6} sm={12}>
+          <Col sm={12} lg={6}>
             <Widget
               title={
                 <h6>VUE JS Version</h6>

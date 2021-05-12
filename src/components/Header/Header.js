@@ -145,14 +145,14 @@ class Header extends React.Component {
           </NavLink>
         </div>
         <div className={`d-print-none ${s.root}`}>
-          <UncontrolledAlert className={`${s.alert} mr-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
-              Check out Light Blue 
-              <button 
-                className="btn-link" 
-                onClick={() => this.setState({ settingsOpen: true })}
-              >
-                <SettingsIcon className={s.settingsIcon} />
-              </button> on the right!
+            <UncontrolledAlert className={`${s.alert} mr-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
+                Check out Light Blue 
+                <button 
+                  className="btn-link" 
+                  onClick={() => this.setState({ settingsOpen: true })}
+                >
+                  <SettingsIcon className={s.settingsIcon} />
+                </button> on the right!
             </UncontrolledAlert>
           <Collapse className={`${s.searchCollapse} ml-lg-0 mr-md-3`} isOpen={this.state.searchOpen}>
             <InputGroup className={`${s.navbarForm} ${this.state.searchFocused ? s.navbarFormFocused : ''}`}>
