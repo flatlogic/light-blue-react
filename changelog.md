@@ -1,13 +1,13 @@
 # Changelog
 
-## [8.1.6]
-updated blocks position in Typography, Form Validations, LB Packages, 
-Products Grid: Customize dropdowns in E-Commerce 
-Alerts:  Customize alerts notifications
-Dashboard: Fixed position pop-up alert in header
-Add function LoginOut in Login Page,   
-Following dependencies and devDependencies was updated to the recent versions
-"dependencies": {
+## [8.1.6] - 13.05.2021
+- Updated blocks position in Typography, Form Validations, LB Packages, 
+- Products Grid: Customize dropdowns in E-Commerce 
+- Alerts:  Customize alerts notifications
+- Dashboard: Fixed position pop-up alert in header
+- Add function LoginOut in Login Page,   
+- Following dependencies and devDependencies was updated to the recent versions
+###Dependencies:
     "@fullcalendar/core": "5.3.0" -> "5.6.0",
     "@fullcalendar/daygrid": "5.3.0" -> "5.6.0",
     "@fullcalendar/interaction":  "5.3.0" -> "5.6.0",
@@ -47,8 +47,8 @@ Following dependencies and devDependencies was updated to the recent versions
     "styled-components": "^5.1.1" -> "^5.3.0",
     "uuid": "^8.3.0" -> "^8.3.2",
     "yup": "^0.29.1" -> "^0.32.9"
-  },
-  "devDependencies": {
+  
+  ###DevDependencies:
     "@babel/core": "7.4.4" -> "7.14.0",
     "@babel/plugin-proposal-class-properties": "7.4.4" -> "7.13.0",
     "@babel/plugin-proposal-optional-chaining": "7.2.0" -> "^7.13.12",
@@ -85,7 +85,7 @@ Following dependencies and devDependencies was updated to the recent versions
     "webpack": "4.31.0" -> "4.44.0",
     "webpack-dev-server": "3.3.1" -> "3.11.2",
     "webpack-manifest-plugin": "2.0.4" -> "2.2.0",
-  }
+  
 ## [8.1.5]
 
 - Updated documentation
