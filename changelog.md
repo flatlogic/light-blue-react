@@ -1,5 +1,11 @@
 # Changelog
 
+## [8.1.7] 
+
+### Fixed
+
+- Fixed Sidebar Width
+
 ## [8.1.6]
 updated blocks position in Typography, Form Validations, LB Packages, 
 Products Grid: Customize dropdowns in E-Commerce 
@@ -86,6 +92,7 @@ Following dependencies and devDependencies was updated to the recent versions
     "webpack-dev-server": "3.3.1" -> "3.11.2",
     "webpack-manifest-plugin": "2.0.4" -> "2.2.0",
   }
+
 ## [8.1.5]
 
 - Updated documentation
