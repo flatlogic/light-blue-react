@@ -55,7 +55,7 @@ class SPackage extends React.Component {
               } settings collapse close
             >
               <img className={['pull-left mb-1 mr-3', s.image].join(' ')} src={angularLogo} width="80" alt="" />
-              <h3>Angular 2+ Version</h3>
+              <h3>Angular 11.2+ Version</h3>
               <p className="text-muted">We spent around <span className="fw-semi-bold">500</span> man-hours
                 developing and designing
                 Angular version, to match high engineering requirements.</p>

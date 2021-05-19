@@ -8,7 +8,6 @@
   bottom: 0;
   background-color: $sidebar-bg-color;
   color: $sidebar-color;
-  overflow-y: auto;
   margin-left: 15px;
   transition: height 1s;
   transform: translateX(-$sidebar-width-open);
@@ -50,12 +49,13 @@
 }
 
 .logo {
+  position: relative;
   margin: 20px 0 55px;
   font-size: 18px;
   width: 100%;
   font-weight: $font-weight-thin;
   text-align: center;
-  // text-shadow: 4px 4px 15px rgba(57, 121, 246, 0.3);
+  text-shadow: 4px 4px 15px rgba(57, 121, 246, 0.3);
   text-transform: uppercase;
 
   a {
