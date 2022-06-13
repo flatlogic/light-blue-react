@@ -31,7 +31,7 @@ const Profile = () => (
               <img className="img-fluid" src={p19} alt="..." />
             </div>
             <button className="btn btn-outline btn-sm mb-2">
-              <i className="fa fa-twitter mr-2" />
+              <i className="fa fa-twitter me-2" />
               Follow
             </button>
           </div>
@@ -45,13 +45,13 @@ const Profile = () => (
                 <p>UI/UX designer</p>
                 <button className="btn btn-success btn-sm mb-3">
                   &nbsp;Send
-                  <i className="fa fa-envelope ml-2" />&nbsp;
+                  <i className="fa fa-envelope ms-2" />&nbsp;
                 </button>
                 <div>
                   <ul className={cx(s.profileContacts, 'mt-sm')}>
-                    <li><i className="fa fa-lg fa-phone fa-fw mr-2" /><button className="btn-link"> +375 29 555-55-55</button></li>
-                    <li><i className="fa fa-lg fa-envelope fa-fw mr-2" /><button className="btn-link"> psmith@example.com</button></li>
-                    <li><i className="fa fa-lg fa-map-marker fa-fw mr-2" /><button className="btn-link"> Minsk, Belarus</button></li>
+                    <li><i className="fa fa-lg fa-phone fa-fw me-2" /><button className="btn-link"> +375 29 555-55-55</button></li>
+                    <li><i className="fa fa-lg fa-envelope fa-fw me-2" /><button className="btn-link"> psmith@example.com</button></li>
+                    <li><i className="fa fa-lg fa-map-marker fa-fw me-2" /><button className="btn-link"> Minsk, Belarus</button></li>
                   </ul>
                 </div>
               </div>
@@ -73,9 +73,9 @@ const Profile = () => (
               </div>
               <p>
                {/* eslint-disable-next-line */}
-                <a href="#" className="badge badge-info rounded-0 mb-2 mr-2">UI/UX</a>
+                <a href="#" className="badge badge-info rounded-0 mb-2 me-2">UI/UX</a>
                {/* eslint-disable-next-line */}
-                <a href="#" className="badge badge-primary rounded-0 mr-2"> Web Design </a>
+                <a href="#" className="badge badge-primary rounded-0 me-2"> Web Design </a>
                {/* eslint-disable-next-line */}
                 <a href="#" className="badge badge-default rounded-0"> Mobile Apps </a>
               </p>
@@ -92,7 +92,7 @@ const Profile = () => (
       </Col>
       <Col lg={6} xs={12}>
         <section className="activities">
-          <h2 className="ml-3">Activities</h2>
+          <h2 className="ms-3">Activities</h2>
           <section className={s.event}>
             <header>
               <span className={s.eventAvatar}>
@@ -145,7 +145,7 @@ const Profile = () => (
               </div>
               <ul className="post-comments mt-sm">
                 <li className={s.borderTop}>
-                  <span className="thumb-xs avatar pull-left mr-sm">
+                  <span className="thumb-xs avatar pull-left me-sm">
                     <img className="rounded-circle" src={a1} alt="..." />
                   </span>
                   <div className="comment-body">
@@ -154,7 +154,7 @@ const Profile = () => (
                   </div>
                 </li>
                 <li className={s.borderTop}>
-                  <span className="thumb-xs avatar pull-left mr-sm">
+                  <span className="thumb-xs avatar pull-left me-sm">
                     <img className="rounded-circle" src={avatar} alt="..." />
                   </span>
                   <div className="comment-body">
@@ -171,14 +171,14 @@ const Profile = () => (
             </FormGroup>
             <div className="btn-toolbar">
               <div className="btn-group">
-                <button className="btn btn-sm btn-subtle-blue ml-0">
+                <button className="btn btn-sm btn-subtle-blue ms-0">
                   <i className="fa fa-camera fa-lg" />
                 </button>
                 <button className="btn btn-sm btn-subtle-blue">
                   <i className="fa fa-map-marker fa-lg" />
                 </button>
               </div>
-              <button type="submit" className="btn btn-danger btn-sm ml-auto">Post</button>
+              <button type="submit" className="btn btn-danger btn-sm ms-auto">Post</button>
             </div>
           </Form>
         </section>

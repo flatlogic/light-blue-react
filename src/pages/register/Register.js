@@ -118,7 +118,7 @@ class Register extends React.Component {
                                             <i className="la la-user text-white"/>
                                         </InputGroupText>
                                     </InputGroupAddon>
-                                    <Input id="email" className="input-transparent pl-3" value={this.state.email}
+                                    <Input id="email" className="input-transparent ps-3" value={this.state.email}
                                            onChange={this.changeEmail} type="email"
                                            required name="email" placeholder="Email"/>
                                 </InputGroup>
@@ -131,7 +131,7 @@ class Register extends React.Component {
                                             <i className="la la-lock text-white"/>
                                         </InputGroupText>
                                     </InputGroupAddon>
-                                    <Input id="password" className="input-transparent pl-3" value={this.state.password}
+                                    <Input id="password" className="input-transparent ps-3" value={this.state.password}
                                            onChange={this.changePassword} type="password"
                                            required name="password" placeholder="Password"/>
                                 </InputGroup>
@@ -144,7 +144,7 @@ class Register extends React.Component {
                                             <i className="la la-lock text-white"/>
                                         </InputGroupText>
                                     </InputGroupAddon>
-                                    <Input id="confirmPassword" className="input-transparent pl-3" value={this.state.confirmPassword}
+                                    <Input id="confirmPassword" className="input-transparent ps-3" value={this.state.confirmPassword}
                                            onChange={this.changeConfirmPassword} onBlur={this.checkPassword} type="password"
                                            required name="confirmPassword" placeholder="Confirm"/>
                                 </InputGroup>

@@ -211,9 +211,9 @@ class Static extends React.Component {
               </Table>
               <div className="clearfix">
                 <div className="float-right">
-                  <Button color="default" className="mr-md" size="sm">Send to...</Button>
+                  <Button color="default" className="me-md" size="sm">Send to...</Button>
                   <UncontrolledButtonDropdown>
-                    <DropdownToggle color="inverse" className="mr-xs" size="sm" caret>Clear</DropdownToggle>
+                    <DropdownToggle color="inverse" className="me-xs" size="sm" caret>Clear</DropdownToggle>
                     <DropdownMenu>
                       <DropdownItem>Clear</DropdownItem>
                       <DropdownItem>Move ...</DropdownItem>

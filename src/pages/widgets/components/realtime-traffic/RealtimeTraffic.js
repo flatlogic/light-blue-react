@@ -87,7 +87,7 @@ class RealtimeTraffic extends React.Component {
           than last month
         </p>
         <p className="fs-sm text-gray-lighter mb-0">Remaining hours</p>
-        <button className="btn btn-xs btn-gray pull-right ml-xs">
+        <button className="btn btn-xs btn-gray pull-right ms-xs">
           <i className="fa fa-compress" /> track
         </button>
         <button className="btn btn-xs btn-gray pull-right">

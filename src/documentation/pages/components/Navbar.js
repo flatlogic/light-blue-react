@@ -94,7 +94,7 @@ class NavbarPage extends Component {
                 <NavbarBrand href="/">Sing</NavbarBrand>
                 <NavbarToggler />
                 <Collapse navbar>
-                  <Nav className="ml-auto" navbar>
+                  <Nav className="ms-auto" navbar>
                     <NavItem>
                       <NavLink href="#">Components</NavLink>
                     </NavItem>
@@ -127,7 +127,7 @@ class NavbarPage extends Component {
               '  <NavbarBrand href="/">Sing</NavbarBrand>\n' +
               '  <NavbarToggler />\n' +
               '  <Collapse navbar>\n' +
-              '    <Nav className="ml-auto" navbar>\n' +
+              '    <Nav className="ms-auto" navbar>\n' +
               '      <NavItem>\n' +
               '        <NavLink href="#">Components</NavLink>\n' +
               '      </NavItem>\n' +

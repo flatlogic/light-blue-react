@@ -145,7 +145,7 @@ class Header extends React.Component {
           </NavLink>
         </div>
         <div className={`d-print-none ${s.root}`}>
-            <UncontrolledAlert className={`${s.alert} mr-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
+            <UncontrolledAlert className={`${s.alert} me-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
                 Check out Light Blue 
                 <button 
                   className="btn-link" 
@@ -154,7 +154,7 @@ class Header extends React.Component {
                   <SettingsIcon className={s.settingsIcon} />
                 </button> on the right!
             </UncontrolledAlert>
-          <Collapse className={`${s.searchCollapse} ml-lg-0 mr-md-3`} isOpen={this.state.searchOpen}>
+          <Collapse className={`${s.searchCollapse} ms-lg-0 me-md-3`} isOpen={this.state.searchOpen}>
             <InputGroup className={`${s.navbarForm} ${this.state.searchFocused ? s.navbarFormFocused : ''}`}>
               <InputGroupAddon addonType="prepend" className={s.inputAddon}>
                 <InputGroupText><i className="fa fa-search" />
@@ -167,7 +167,7 @@ class Header extends React.Component {
               />
             </InputGroup>
           </Collapse>
-          <Form className="d-md-down-none mr-3 ml-3" inline>
+          <Form className="d-md-down-none me-3 ms-3" inline>
             <FormGroup>
               <InputGroup className={`input-group-no-border ${s.searchForm}`} >
                 <InputGroupAddon addonType="prepend">
@@ -180,7 +180,7 @@ class Header extends React.Component {
             </FormGroup>
           </Form>
 
-          <Nav className="ml-md-0">
+          <Nav className="ms-md-0">
             <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu}`} >
               <DropdownToggle nav caret style={{color: "#C1C3CF", padding: 0}}>
               <span className={`${s.avatar} rounded-circle float-left`}>

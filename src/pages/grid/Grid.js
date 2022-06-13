@@ -120,7 +120,7 @@ class Grid extends React.Component {
                     <h6 className="m-0">{item.name}</h6>
                     <small className="text-muted">{item.comment}</small>
                   </div>
-                  <i className={`fa fa-circle ml-auto text-${item.type}`} />
+                  <i className={`fa fa-circle ms-auto text-${item.type}`} />
                 </button>                
               ))}
 
@@ -160,7 +160,7 @@ class Grid extends React.Component {
                   <div className="clearfix">
                     <div className="btn-toolbar float-right">
                       <button type="button" className="btn btn-default">Cancel</button>
-                      <button type="button" className="btn btn-success ml-3">&nbsp;Submit&nbsp;</button>
+                      <button type="button" className="btn btn-success ms-3">&nbsp;Submit&nbsp;</button>
                     </div>
                   </div>
                 </Form>

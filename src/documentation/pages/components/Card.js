@@ -60,7 +60,7 @@ class Buttons extends Component {
               <Card className="border-0">
                 <CardBody>
                   <button className="btn-link fw-semi-bold text-success">Avg Rating</button>
-                  <button className="btn-link fw-semi-bold text-muted ml-sm">All Time</button>
+                  <button className="btn-link fw-semi-bold text-muted ms-sm">All Time</button>
                   <hr />
                   <div className="d-flex justify-content-between mb-lg">
                     <div className="text-warning">
@@ -84,7 +84,7 @@ class Buttons extends Component {
               <SyntaxHighlighter language='javascript' style={tomorrow}>{'<Card className="border-0">\n' +
               '  <CardBody>\n' +
               '    <button className="btn-link fw-semi-bold text-success">Avg Rating</button>\n' +
-              '    <button className="btn-link fw-semi-bold text-muted ml-sm">All Time</button>\n' +
+              '    <button className="btn-link fw-semi-bold text-muted ms-sm">All Time</button>\n' +
               '    <hr />\n' +
               '    <div className="d-flex justify-content-between mb-lg">\n' +
               '      <div className="text-warning">\n' +

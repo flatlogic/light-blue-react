@@ -110,14 +110,14 @@ class Buttons extends React.Component {
                   Semantically distinguishable beauty.
                 </p>
                 <p className="text-left">
-                  <Button color="default" className="width-100 mb-3 mr-3">Default</Button>
-                  <Button color="primary" className="width-100 mb-3 mr-3">Primary</Button>
-                  <Button color="info" className="width-100 mb-3 mr-3">Info</Button>
-                  <Button color="success" className="width-100 mb-3 mr-3">Success</Button>
-                  <Button color="warning" className="width-100 mb-3 mr-3">Warning</Button>
-                  <Button color="danger" className="width-100 mb-3 mr-3">Danger</Button>
-                  <Button color="gray" className="width-100 mb-3 mr-3">Gray</Button>
-                  <Button color="inverse" className="width-100 mb-3 mr-3">Dark</Button>
+                  <Button color="default" className="width-100 mb-3 me-3">Default</Button>
+                  <Button color="primary" className="width-100 mb-3 me-3">Primary</Button>
+                  <Button color="info" className="width-100 mb-3 me-3">Info</Button>
+                  <Button color="success" className="width-100 mb-3 me-3">Success</Button>
+                  <Button color="warning" className="width-100 mb-3 me-3">Warning</Button>
+                  <Button color="danger" className="width-100 mb-3 me-3">Danger</Button>
+                  <Button color="gray" className="width-100 mb-3 me-3">Gray</Button>
+                  <Button color="inverse" className="width-100 mb-3 me-3">Dark</Button>
                 </p>
               </div>
             </Widget>
@@ -260,7 +260,7 @@ class Buttons extends React.Component {
                 </ButtonGroup>
                 <ButtonToolbar className="mb-3">
                   <ButtonGroup className="mr-2 mt-3">
-                    <Button color="default" className="ml-0">1</Button>
+                    <Button color="default" className="ms-0">1</Button>
                     <Button color="default">2</Button>
                     <Button color="default">3</Button>
                     <Button color="default">4</Button>

@@ -6,7 +6,7 @@ import s from '../styles.module.scss';
 
 export default (props) => (
   <div
-    className="border-left pl-4 d-md-down-none"
+    className="border-left ps-4 d-md-down-none"
     style={{
       position: 'fixed',
       overflowY: 'auto',

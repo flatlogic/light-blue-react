@@ -40,14 +40,14 @@ const Badges = () => (
             Use the <code>pill</code> property to make badges more rounded
             (with a larger border-radius and additional horizontal padding).
           </p>
-          <Badge className="mr-md mb-md" color="primary" pill>Primary</Badge>
-          <Badge className="mr-md mb-md" color="info" pill>Info</Badge>
-          <Badge className="mr-md mb-md" color="warning" pill>Warning</Badge>
-          <Badge className="mr-md mb-md" color="success" pill>Success</Badge>
-          <Badge className="mr-md mb-md" color="danger" pill>Danger</Badge>
-          <Badge className="mr-md mb-md" color="secondary" pill>Secondary</Badge>
-          <Badge className="mr-md mb-md" color="light" pill>Light</Badge>
-          <Badge className="mr-md mb-md" color="dark" pill>Dark</Badge>
+          <Badge className="me-md mb-md" color="primary" pill>Primary</Badge>
+          <Badge className="me-md mb-md" color="info" pill>Info</Badge>
+          <Badge className="me-md mb-md" color="warning" pill>Warning</Badge>
+          <Badge className="me-md mb-md" color="success" pill>Success</Badge>
+          <Badge className="me-md mb-md" color="danger" pill>Danger</Badge>
+          <Badge className="me-md mb-md" color="secondary" pill>Secondary</Badge>
+          <Badge className="me-md mb-md" color="light" pill>Light</Badge>
+          <Badge className="me-md mb-md" color="dark" pill>Dark</Badge>
         </Widget>
         <Widget
           title={<h5>Pill <span className="fw-semi-bold">Badges</span></h5>}
@@ -57,10 +57,10 @@ const Badges = () => (
             Using the contextual <code>href=&quot;&#35;&quot;</code> classes on
             an <code>&lt;Badge&gt;</code> element quickly provide actionable badges with hover and focus states.
           </p>
-          <Badge className="mr-md mb-md" href="#" color="primary">Primary</Badge>
-          <Badge className="mr-md mb-md" href="#" color="info">Info</Badge>
-          <Badge className="mr-md mb-md" href="#" color="warning">Warning</Badge>
-          <Badge className="mr-md mb-md" href="#" color="success">Success</Badge>
+          <Badge className="me-md mb-md" href="#" color="primary">Primary</Badge>
+          <Badge className="me-md mb-md" href="#" color="info">Info</Badge>
+          <Badge className="me-md mb-md" href="#" color="warning">Warning</Badge>
+          <Badge className="me-md mb-md" href="#" color="success">Success</Badge>
           <Badge className="mr-md mb-md" href="#" color="danger">Danger</Badge>
           <Badge className="mr-md mb-md" href="#" color="secondary">Secondary</Badge>
           <Badge className="mr-md mb-md" href="#" color="light">Light</Badge>

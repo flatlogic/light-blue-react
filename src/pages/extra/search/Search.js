@@ -31,10 +31,10 @@ class Search extends React.Component {
     return (
       <div className={s.root}>
         <h1 className="page-title">Matching - <span className="fw-semi-bold">Results</span></h1>
-        <div className="btn-toolbar justify-content-between col-md-12 col-xl-9 pl-0 pr-3">
+        <div className="btn-toolbar justify-content-between col-md-12 col-xl-9 ps-0 pe-3">
           <div className="d-inline-flex mb-2">
             <UncontrolledButtonDropdown>
-              <DropdownToggle  className="ml-0" color="default" caret>
+              <DropdownToggle  className="ms-0" color="default" caret>
                 Popular
               </DropdownToggle>
               <DropdownMenu>
@@ -44,7 +44,7 @@ class Search extends React.Component {
                 <DropdownItem>Latest</DropdownItem>
               </DropdownMenu>
             </UncontrolledButtonDropdown>
-            <UncontrolledButtonDropdown className="ml-1">
+            <UncontrolledButtonDropdown className="ms-1">
               <DropdownToggle color="default" caret>
                 All Time
               </DropdownToggle>

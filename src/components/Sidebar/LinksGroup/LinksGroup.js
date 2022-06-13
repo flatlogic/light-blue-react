@@ -120,7 +120,7 @@ class LinksGroup extends Component {
                     {this.props.iconName}
                   </span> : null
                 }
-                {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'} ml-1`}>{this.props.label}</sup>}
+                {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'} ms-1`}>{this.props.label}</sup>}
                 <b className={['fa fa-angle-right', s.caret].join(' ')} />
               </a>
               {/* eslint-enable */}

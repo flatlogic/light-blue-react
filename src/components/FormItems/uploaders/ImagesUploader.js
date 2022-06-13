@@ -145,7 +145,7 @@ class ImagesUploader extends Component {
                     {!readonly && (
                       <button
                         type="button"
-                        className="btn btn-link ml-2"
+                        className="btn btn-link ms-2"
                         onClick={() =>
                           this.handleRemove(item.id)
                         }

@@ -318,10 +318,10 @@ class Elements extends React.Component {
                     </Col>
                   </FormGroup>
 
-                  <FormGroup row className="form-action bg-transparent pl-0">
+                  <FormGroup row className="form-action bg-transparent ps-0">
                     <Label md={4} />
                     <Col md={7}>
-                      <Button color="primary" type="submit" className="mr-md">Save Changes</Button>
+                      <Button color="primary" type="submit" className="me-md">Save Changes</Button>
                       <Button color="default">Cancel</Button>
                     </Col>
                   </FormGroup>
@@ -464,8 +464,8 @@ class Elements extends React.Component {
                     </Col>
                   </Row>
 
-                  <FormGroup className="form-action bg-transparent pl-0">
-                    <Button color="primary" type="submit" className="mr-md">
+                  <FormGroup className="form-action bg-transparent ps-0">
+                    <Button color="primary" type="submit" className="me-md">
                       Save Changes
                     </Button>
                     <Button color="default">Cancel</Button>
@@ -586,7 +586,7 @@ class Elements extends React.Component {
                       toolbarClassName={s.wysiwygToolbar}
                     />
                     <div className="text-md-right mt-xs">
-                      <Button color="danger" className="mr-md">Save</Button>
+                      <Button color="danger" className="me-md">Save</Button>
                       <Button color="default">Clear</Button>
                     </div>
                   </Col>
@@ -645,7 +645,7 @@ class Elements extends React.Component {
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
                         caret color="default"
-                        className="dropdown-toggle-split mr-xs"
+                        className="dropdown-toggle-split me-xs"
                       >
                         {this.state.simpleSelectDropdownValue}&nbsp;
                       </DropdownToggle>
@@ -674,7 +674,7 @@ class Elements extends React.Component {
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
                         caret color="danger"
-                        className="dropdown-toggle-split mr-md"
+                        className="dropdown-toggle-split me-md"
                       >
                         {this.state.redSelectDropdownValue}&nbsp;
                       </DropdownToggle>
@@ -693,7 +693,7 @@ class Elements extends React.Component {
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
                         caret color="warning"
-                        className="dropdown-toggle-split mr-md"
+                        className="dropdown-toggle-split me-md"
                       >
                         {this.state.orangeSelectDropdownValue}&nbsp;
                       </DropdownToggle>
@@ -748,7 +748,7 @@ class Elements extends React.Component {
                         caret color="default" size="lg"
                         className="dropdown-toggle-split"
                       >
-                        <span className="mr-5"> {this.state.bigSelectDropdownValue}</span>
+                        <span className="me-5"> {this.state.bigSelectDropdownValue}</span>
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem onClick={this.changeSelectDropdownBig}>

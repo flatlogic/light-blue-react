@@ -94,17 +94,17 @@ class Dynamic extends React.Component {
     }
 
     function sortableHeaderFormatter(column, index, components) {
-      let icon = (<div className={classnames(s.sortArrowsContainer, 'ml-sm')}>
+      let icon = (<div className={classnames(s.sortArrowsContainer, 'ms-sm')}>
         <span className={classnames('caret', 'mb-xs', s.rotatedArrow)} />
         <span className="caret"/>
       </div>);
 
       if (components.sortElement.props.order === 'asc') {
-        icon = (<div className="ml-sm">
+        icon = (<div className="ms-sm">
           <span className={classnames('caret', 'mb-xs', s.rotatedArrow)}/>
         </div>);
       } else if (components.sortElement.props.order === 'desc') {
-        icon = (<div className="ml-sm">
+        icon = (<div className="ms-sm">
           <span className="caret mb-xs"/>
         </div>);
       }

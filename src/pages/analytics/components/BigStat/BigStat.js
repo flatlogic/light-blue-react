@@ -43,13 +43,13 @@ class BigStat extends Component {
           title={
             <div className="d-flex justify-content-between flex-wrap">
               <h4 className={cx('d-flex align-items-center pb-1', s.bigStatTitle)}>
-                <span className={`circle bg-${color} mr-sm`} style={{ fontSize: '6px' }} />
-                  Statistic <span className="fw-normal ml-xs">{product}</span>
+                <span className={`circle bg-${color} me-sm`} style={{ fontSize: '6px' }} />
+                  Statistic <span className="fw-normal ms-xs">{product}</span>
               </h4>
               <UncontrolledButtonDropdown>
                 <DropdownToggle
                   caret color="default"
-                  className="dropdown-toggle-split mr-xs btn-sm"
+                  className="dropdown-toggle-split me-xs btn-sm"
                 >
                   {this.state.simpleSelectDropdownValue}&nbsp;&nbsp;
                 </DropdownToggle>
@@ -70,21 +70,21 @@ class BigStat extends Component {
         >
           <h4 className="fw-semi-bold mb-lg px-4">{total}</h4>
           <div className={`d-flex ${s.borderTop}`}>
-            <div className={`w-50 ${s.borderRight} py-3 pr-2 pl-4`}>
+            <div className={`w-50 ${s.borderRight} py-3 pe-2 ps-4`}>
               <div className="d-flex align-items-start h3">
                 <h6>+{registrations.value}</h6>
                 <i
-                  className={`la la-arrow-right ml-sm text-${registrations.profit ? 'success' : 'danger'}
+                  className={`la la-arrow-right ms-sm text-${registrations.profit ? 'success' : 'danger'}
                   rotate-${registrations.profit ? '315' : '45'}`}
                 />
               </div>
               <p className="text-muted mb-0 mr"><small>Registrations</small></p>
             </div>
-            <div className="w-50 py-3 pl-2">
+            <div className="w-50 py-3 ps-2">
               <div className="d-flex align-items-start h3">
                 <h6>{bounce.value}%</h6>
                 <i
-                  className={`la la-arrow-right ml-sm text-${bounce.profit ? 'success' : 'danger'}
+                  className={`la la-arrow-right ms-sm text-${bounce.profit ? 'success' : 'danger'}
                   rotate-${bounce.profit ? '315' : '45'}`}
                 />
               </div>

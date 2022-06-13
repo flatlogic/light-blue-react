@@ -35,7 +35,7 @@ const MessageTableHeader = (props) => {
         <UncontrolledButtonDropdown size="sm">
           <DropdownToggle
             caret color="subtle-blue"
-            className="dropdown-toggle-split mr-3 mb-2"
+            className="dropdown-toggle-split me-3 mb-2"
           >
             Select
         </DropdownToggle>
@@ -50,7 +50,7 @@ const MessageTableHeader = (props) => {
         <UncontrolledButtonDropdown size="sm">
           <DropdownToggle
             caret color="subtle-blue"
-            className="dropdown-toggle-split mr-xs mb-2"
+            className="dropdown-toggle-split me-xs mb-2"
           >
             Actions
         </DropdownToggle>

@@ -64,14 +64,14 @@ const Cards = () => (
         <Card className="mb-xlg border-0">
           <CardBody>
             <button className="btn-link fw-semi-bold text-success">Avg Rating</button>
-            <button className="btn-link fw-semi-bold text-muted ml-sm">All Time</button>
+            <button className="btn-link fw-semi-bold text-muted ms-sm">All Time</button>
             <hr />
             <div className="d-flex justify-content-between mb-lg">
               <div className="text-warning">
-                <i className="fa fa-star mr-xs" />
-                <i className="fa fa-star mr-xs" />
-                <i className="fa fa-star mr-xs" />
-                <i className="fa fa-star mr-xs" />
+                <i className="fa fa-star me-xs" />
+                <i className="fa fa-star me-xs" />
+                <i className="fa fa-star me-xs" />
+                <i className="fa fa-star me-xs" />
                 <i className="fa fa-star" />
               </div>
               <span className="text-muted"><small>342 REVIEWS</small></span>

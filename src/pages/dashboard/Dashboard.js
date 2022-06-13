@@ -168,7 +168,7 @@ class Dashboard extends React.Component {
               <Progress color="success" value="60" className="bg-subtle-blue progress-xs" />
               <p>
                 <small>
-                  <span className="circle bg-default text-white mr-2">
+                  <span className="circle bg-default text-white me-2">
                     <i className="fa fa-chevron-up" />
                   </span>
                 </small>
@@ -198,7 +198,7 @@ class Dashboard extends React.Component {
               </div>
               <Progress color="danger" value="60" className="bg-subtle-blue progress-xs" />
               <p>
-                <small><span className="circle bg-default text-white mr-2"><i className="fa fa-chevron-down" /></span></small>
+                <small><span className="circle bg-default text-white me-2"><i className="fa fa-chevron-down" /></span></small>
                 <span className="fw-semi-bold">&nbsp;8% lower</span>
                 &nbsp;than last month
               </p>
@@ -225,7 +225,7 @@ class Dashboard extends React.Component {
               </div>
               <Progress color="bg-primary" value="60" className="bg-subtle-blue progress-xs" />
               <p>
-                <small><span className="circle bg-default text-white mr-2"><i className="fa fa-plus" /></span></small>
+                <small><span className="circle bg-default text-white me-2"><i className="fa fa-plus" /></span></small>
                 <span className="fw-semi-bold">&nbsp;8 734 higher</span>
                 &nbsp;than last month
               </p>

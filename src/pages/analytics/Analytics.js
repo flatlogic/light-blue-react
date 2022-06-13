@@ -179,12 +179,12 @@ class Analytics extends Component {
                     title={<h5>App Perfomance</h5>}
                   >
                     <p className="text-muted d-flex flex-wrap">
-                      <small className="mr-lg d-flex align-items-center">
-                        <span className="circle bg-success text-success mr-xs" style={{ fontSize: '4px' }}>.</span>
+                      <small className="me-lg d-flex align-items-center">
+                        <span className="circle bg-success text-success me-xs" style={{ fontSize: '4px' }}>.</span>
                         This Period
                       </small>
-                      <small className="mr-lg d-flex align-items-center">
-                        <span className="circle bg-primary text-primary mr-xs" style={{ fontSize: '4px' }}>.</span>
+                      <small className="me-lg d-flex align-items-center">
+                        <span className="circle bg-primary text-primary me-xs" style={{ fontSize: '4px' }}>.</span>
                         Last Period
                       </small>
                     </p>

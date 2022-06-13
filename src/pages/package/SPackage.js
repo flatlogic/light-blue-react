@@ -27,7 +27,7 @@ class SPackage extends React.Component {
                 <h6>React JS Version</h6>
               } settings collapse close
             >
-              <img className={['pull-left mb-1 mr-3', s.image].join(' ')} src={reactLogo} width="80" alt="" />
+              <img className={['pull-left mb-1 me-3', s.image].join(' ')} src={reactLogo} width="80" alt="" />
               <h3>React JS Version</h3>
               <p className="text-muted">We spent another <span className="fw-semi-bold">500</span> man-hours
                 developing and designing
@@ -54,7 +54,7 @@ class SPackage extends React.Component {
                 <h6>Angular Version</h6>
               } settings collapse close
             >
-              <img className={['pull-left mb-1 mr-3', s.image].join(' ')} src={angularLogo} width="80" alt="" />
+              <img className={['pull-left mb-1 me-3', s.image].join(' ')} src={angularLogo} width="80" alt="" />
               <h3>Angular 2+ Version</h3>
               <p className="text-muted">We spent around <span className="fw-semi-bold">500</span> man-hours
                 developing and designing
@@ -85,7 +85,7 @@ class SPackage extends React.Component {
                 <h6>Pure HTML5 Version</h6>
               } settings collapse close
             >
-              <img className={['pull-left mb-1 mr-3', s.image].join(' ')} src={jsLogo} width="80" alt="" />
+              <img className={['pull-left mb-1 me-3', s.image].join(' ')} src={jsLogo} width="80" alt="" />
               <h3>HTML5 Version</h3>
               <p className="text-muted">During last 4 years we
                 invested more than <span className="fw-semi-bold">1000</span> man-hours
@@ -117,7 +117,7 @@ class SPackage extends React.Component {
                 <h6>VUE JS Version</h6>
               } settings collapse close
             >
-              <img className={['pull-left mb-1 mr-3', s.image].join(' ')} src={vueLogo} width="80" alt="" />
+              <img className={['pull-left mb-1 me-3', s.image].join(' ')} src={vueLogo} width="80" alt="" />
               <h3>VUE JS Version</h3>
               <p className="text-muted">We spent around <span className="fw-semi-bold">500</span> man-hours
                 developing and designing
