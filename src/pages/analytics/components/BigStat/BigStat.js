@@ -43,13 +43,13 @@ class BigStat extends Component {
           title={
             <div className="d-flex justify-content-between flex-wrap">
               <h4 className={cx('d-flex align-items-center pb-1', s.bigStatTitle)}>
-                <span className={`circle bg-${color} me-sm`} style={{ fontSize: '6px' }} />
+                <span className={`circle bg-${color} me-2`} style={{ fontSize: '6px' }} />
                   Statistic <span className="fw-normal ms-xs">{product}</span>
               </h4>
               <UncontrolledButtonDropdown>
                 <DropdownToggle
                   caret color="default"
-                  className="dropdown-toggle-split me-xs btn-sm"
+                  className="dropdown-toggle-split me-2 btn-sm"
                 >
                   {this.state.simpleSelectDropdownValue}&nbsp;&nbsp;
                 </DropdownToggle>
@@ -74,7 +74,7 @@ class BigStat extends Component {
               <div className="d-flex align-items-start h3">
                 <h6>+{registrations.value}</h6>
                 <i
-                  className={`la la-arrow-right ms-sm text-${registrations.profit ? 'success' : 'danger'}
+                  className={`la la-arrow-right ms-1 text-${registrations.profit ? 'success' : 'danger'}
                   rotate-${registrations.profit ? '315' : '45'}`}
                 />
               </div>

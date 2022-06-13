@@ -136,7 +136,7 @@ class Search extends React.Component {
                     <h4 className={s.searchResultItemHeading}>
                       <button className="btn-link">Try. Posted by Okendoken</button>
                       <small>
-                        <span className="badge badge-pill badge-danger float-right">
+                        <span className="badge rounded-pill badge-danger float-right">
                           <span className="fw-normal"> Best Deal!</span>
                         </span>
                       </small>

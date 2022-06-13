@@ -112,7 +112,7 @@ class Grid extends React.Component {
             >
               <div className="list-group list-group-lg">
               {this.state.gridData.shares.map(item => (
-                <button key={item.name} className={`list-group-item text-left ${item.extraClass}`}>
+                <button key={item.name} className={`list-group-item text-start ${item.extraClass}`}>
                   <span className="thumb-sm mr">
                     <img className="rounded-circle" src={item.img} alt="..." />
                   </span>
@@ -194,7 +194,7 @@ class Grid extends React.Component {
               updateWidgetData={this.updateWidgetData}
               widgetType="news"
               id="news-widget"
-              title={<div><h6> News <span className="badge badge-pill badge-success">17</span></h6>
+              title={<div><h6> News <span className="badge rounded-pill bg-success">17</span></h6>
                 <span className="text-muted">spinning refresh button & close prompt</span>
               </div>}
               customControls={true}

@@ -154,6 +154,9 @@
 
 .widget-table-overflow {
   margin: 0 (-$widget-padding-horizontal) (-$widget-padding-vertical);
+  tbody {
+    border-top: none!important;
+  }
 
   th:first-child,
   td:first-child {
@@ -215,7 +218,7 @@ table > thead > tr > th {
 
   & + .stat-item {
     padding-left: 1.25rem;
-    border-left: 1px solid;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .name {

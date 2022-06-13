@@ -156,9 +156,10 @@ legend {
   @include badge-variant($subtle-blue);
 }
 
+
 .badge {
   &.badge-pill {
-    padding: 0.4em 0.6em;
+    padding: 0.3em 0.6em;
     font-weight: $font-weight-semi-bold;
   }
 
@@ -388,7 +389,11 @@ small {
     color: #fff;
     outline: none;
     padding: 0;
-    position: static;
+    position: absolute;
+    right: 0;
+    background: transparent;
+    border: none;
+    margin-right: 0.5rem;
 
     &.alert-transparent {
       color: inherit;

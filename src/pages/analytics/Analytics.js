@@ -179,12 +179,12 @@ class Analytics extends Component {
                     title={<h5>App Perfomance</h5>}
                   >
                     <p className="text-muted d-flex flex-wrap">
-                      <small className="me-lg d-flex align-items-center">
-                        <span className="circle bg-success text-success me-xs" style={{ fontSize: '4px' }}>.</span>
+                      <small className="me-3 d-flex align-items-center">
+                        <span className="circle bg-success text-success me-1" style={{ fontSize: '4px' }}>.</span>
                         This Period
                       </small>
-                      <small className="me-lg d-flex align-items-center">
-                        <span className="circle bg-primary text-primary me-xs" style={{ fontSize: '4px' }}>.</span>
+                      <small className="me-3 d-flex align-items-center">
+                        <span className="circle bg-primary text-primary me-1" style={{ fontSize: '4px' }}>.</span>
                         Last Period
                       </small>
                     </p>
@@ -288,7 +288,7 @@ class Analytics extends Component {
                   className="widget"
                   bodyClass={cx(s.notifications, 'w-100 mt-lg')}
                   title={
-                    <h4>Notifications <span className="badge badge-pill badge-success fw-normal pull-right mt-xs">{mock.notifications.length}</span></h4>
+                    <h4>Notifications <span className="badge rounded-pill bg-success fw-normal pull-right mt-1">{mock.notifications.length}</span></h4>
                   }
                 >
                   {mock.notifications.map(({ id, icon, color, content }) => (

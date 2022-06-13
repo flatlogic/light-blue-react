@@ -92,7 +92,7 @@ class YearsMap extends React.Component {
       <div className={s.mapChart}>
         <div className={s.stats}>
           <h6>YEARLY <span className="fw-semi-bold">DISTRIBUTIONS</span></h6>
-          <span className="pull-left me-xs">
+          <span className="pull-left me-1">
             <small><span className="circle bg-success text-gray-dark">
               <i className="fa fa-plus" /></span></small>
           </span>

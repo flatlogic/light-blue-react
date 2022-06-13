@@ -63,7 +63,7 @@ class Validation extends React.Component {
                 </fieldset>
                 <fieldset>
                   <legend>
-                    <span className="badge badge-warning text-gray-dark me-xs">
+                    <span className="badge badge-warning text-gray-dark me-1">
                       HTML5 </span> input types supported
                   </legend>
                   <FormGroup row>

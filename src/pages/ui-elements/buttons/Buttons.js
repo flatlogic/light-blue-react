@@ -109,7 +109,7 @@ class Buttons extends React.Component {
                   Use any of the available button classes to quickly create a styled button.
                   Semantically distinguishable beauty.
                 </p>
-                <p className="text-left">
+                <p className="text-start">
                   <Button color="default" className="width-100 mb-3 me-3">Default</Button>
                   <Button color="primary" className="width-100 mb-3 me-3">Primary</Button>
                   <Button color="info" className="width-100 mb-3 me-3">Info</Button>

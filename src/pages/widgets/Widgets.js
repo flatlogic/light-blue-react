@@ -345,7 +345,7 @@ class Widgets extends React.Component {
                   <span className="fw-normal">Sunnyvale</span>, CA
                 </h4>
                 <div className="info text-right">
-                  <i className="fa fa-map-marker h1 m-0 me-xs" />
+                  <i className="fa fa-map-marker h1 m-0 me-1" />
                   <h6 className="m-0 mt-xs">FLORIDA, USA</h6>
                   <p className="fs-sm">9:41 am</p>
                 </div>

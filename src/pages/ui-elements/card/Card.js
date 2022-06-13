@@ -68,10 +68,10 @@ const Cards = () => (
             <hr />
             <div className="d-flex justify-content-between mb-lg">
               <div className="text-warning">
-                <i className="fa fa-star me-xs" />
-                <i className="fa fa-star me-xs" />
-                <i className="fa fa-star me-xs" />
-                <i className="fa fa-star me-xs" />
+                <i className="fa fa-star me-1" />
+                <i className="fa fa-star me-1" />
+                <i className="fa fa-star me-1" />
+                <i className="fa fa-star me-1" />
                 <i className="fa fa-star" />
               </div>
               <span className="text-muted"><small>342 REVIEWS</small></span>

@@ -213,7 +213,7 @@ class Static extends React.Component {
                 <div className="float-right">
                   <Button color="default" className="me-md" size="sm">Send to...</Button>
                   <UncontrolledButtonDropdown>
-                    <DropdownToggle color="inverse" className="me-xs" size="sm" caret>Clear</DropdownToggle>
+                    <DropdownToggle color="inverse" className="me-1" size="sm" caret>Clear</DropdownToggle>
                     <DropdownMenu>
                       <DropdownItem>Clear</DropdownItem>
                       <DropdownItem>Move ...</DropdownItem>

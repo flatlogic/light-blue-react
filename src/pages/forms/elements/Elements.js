@@ -645,7 +645,7 @@ class Elements extends React.Component {
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
                         caret color="default"
-                        className="dropdown-toggle-split me-xs"
+                        className="dropdown-toggle-split me-1"
                       >
                         {this.state.simpleSelectDropdownValue}&nbsp;
                       </DropdownToggle>

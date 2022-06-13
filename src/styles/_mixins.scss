@@ -92,8 +92,8 @@
 }
 
 @mixin badge-variant($bg) {
-  color: $bg;
-  background-color: transparent;
+  color: $text-color;
+  background-color: $bg;
   border: 1px solid $bg;
 
   &[href] {

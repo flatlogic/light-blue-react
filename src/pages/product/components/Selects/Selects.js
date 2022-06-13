@@ -27,7 +27,7 @@ class Selects extends Component {
         <UncontrolledButtonDropdown>
           <DropdownToggle
             caret color="custom-dark"
-            className="dropdown-toggle-split me-xs"
+            className="dropdown-toggle-split me-1"
           >
             {currentSize === 'Select size'
               ? currentSize
@@ -42,7 +42,7 @@ class Selects extends Component {
         <UncontrolledButtonDropdown>
           <DropdownToggle
             caret color="custom-dark"
-            className="dropdown-toggle-split me-xs"
+            className="dropdown-toggle-split me-1"
           >
             {currentQuantity}
           </DropdownToggle>

@@ -145,13 +145,13 @@ class Header extends React.Component {
           </NavLink>
         </div>
         <div className={`d-print-none ${s.root}`}>
-            <UncontrolledAlert className={`${s.alert} me-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
+            <UncontrolledAlert className={`alert me-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
                 Check out Light Blue 
                 <button 
-                  className="btn-link" 
+                  className="btn-link"
                   onClick={() => this.setState({ settingsOpen: true })}
                 >
-                  <SettingsIcon className={s.settingsIcon} />
+                  <SettingsIcon className={`${s.settingsIcon} btn-link`} />
                 </button> on the right!
             </UncontrolledAlert>
           <Collapse className={`${s.searchCollapse} ms-lg-0 me-md-3`} isOpen={this.state.searchOpen}>
@@ -183,7 +183,7 @@ class Header extends React.Component {
           <Nav className="ms-md-0">
             <Dropdown nav isOpen={this.state.notificationsOpen} toggle={this.toggleNotifications} id="basic-nav-dropdown" className={`${s.notificationsMenu}`} >
               <DropdownToggle nav caret style={{color: "#C1C3CF", padding: 0}}>
-              <span className={`${s.avatar} rounded-circle float-left`}>
+              <span className={`${s.avatar} rounded-circle float-start`}>
                 {avatar ? (
                   <img src={avatar} onError={e => e.target.src = adminDefault} alt="..." title={user && (user.firstName || user.email)} />
                 ) : user && user.role === 'admin' ? (

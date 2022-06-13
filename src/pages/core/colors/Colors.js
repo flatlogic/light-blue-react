@@ -67,7 +67,7 @@ const Colors = () => (
                   <th scope="row" className="fw-thin">{state}</th>
                   <td><span className={`circle bg-${state.toLowerCase()}`}>&nbsp;</span></td>
                   <td><code>*-{state.toLowerCase()}</code></td>
-                  <td>{usage.map(item => <code key={item} className="me-xs">{item}</code>)}</td>
+                  <td>{usage.map(item => <code key={item} className="me-1">{item}</code>)}</td>
                 </tr>,
               )}
             </tbody>
@@ -83,7 +83,7 @@ const Colors = () => (
         >
           <p>Convey meaning through color with a handful of color utility classes.
             Includes support for styling links with hover states, too. Use <code>text-*</code> class to fill text.</p>
-          <div className="widget-padding-md border rounded w-100 h-100 text-left">
+          <div className="widget-padding-md border rounded w-100 h-100 text-start">
             <h1 className="text-danger">h1. Heading</h1>
             <h2 className="text-warning">h2. Heading</h2>
             <h3 className="text-success">h3. Heading</h3>
