@@ -168,8 +168,8 @@ legend {
 }
 
 .table-no-border {
-  margin-left: -$table-cell-padding;
-  margin-right: -$table-cell-padding;
+  margin-left: -$table-cell-padding-x;
+  margin-right: -$table-cell-padding-x;
 
   > thead > tr > th,
   > thead > tr > td,

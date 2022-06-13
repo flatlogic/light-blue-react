@@ -75,3 +75,57 @@
     @content;
   }
 }
+
+@function theme-color($key: "primary") {
+  @return map-get($theme-colors, $key);
+}
+
+@mixin hover() {
+  &:hover { @content; }
+}
+
+@mixin hover-focus() {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin badge-variant($bg) {
+  color: $bg;
+  background-color: transparent;
+  border: 1px solid $bg;
+
+  &[href] {
+    @include hover-focus {
+      background-color: $bg;
+    }
+  }
+}
+
+@mixin bg-variant($parent, $color, $ignore-warning: false) {
+  #{$parent} {
+    background-color: $color !important;
+  }
+  a#{$parent},
+  button#{$parent} {
+    @include hover-focus() {
+      background-color: darken($color, 10%) !important;
+    }
+  }
+  @include deprecate("The `bg-variant` mixin", "v4.4.0", "v5", $ignore-warning);
+}
+
+@mixin text-emphasis-variant($parent, $color, $ignore-warning: false) {
+  #{$parent} {
+    color: $color !important;
+  }
+  @if $emphasized-link-hover-darken-percentage != 0 {
+    a#{$parent} {
+      @include hover-focus() {
+        color: darken($color, $emphasized-link-hover-darken-percentage) !important;
+      }
+    }
+  }
+  @include deprecate("`text-emphasis-variant()`", "v4.4.0", "v5", $ignore-warning);
+}

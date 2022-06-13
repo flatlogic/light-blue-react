@@ -215,7 +215,7 @@ table > thead > tr > th {
 
   & + .stat-item {
     padding-left: 1.25rem;
-    border-left: 1px solid $hr-border-color;
+    border-left: 1px solid;
   }
 
   .name {
