@@ -62,7 +62,7 @@ class Search extends React.Component {
           </ButtonGroup>
         </div>
         <Row className="mt-3 d-block">
-          <Col xl={3} sm={12} className="float-xl-right">
+          <Col xl={3} sm={12} className="float-xl-end">
             <h5>Results <span className="fw-semi-bold">Filtering</span></h5>
             <p className="text-white fs-mini">Listed content is categorized by the following groups:</p>
             <Nav className={`nav-pills flex-column nav-stacked ${s.searchResultCategories} mt text-white`}>

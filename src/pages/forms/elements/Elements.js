@@ -13,7 +13,7 @@ import {
   ButtonGroup,
   DropdownMenu,
   DropdownItem,
-  DropdownToggle,
+  DropdownToggle, InputGroupText,
 } from 'reactstrap';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
@@ -262,7 +262,9 @@ class Elements extends React.Component {
                       Prepended input</Label>
                     <Col md={7}>
                       <InputGroup>
-                        <Input addon addonType="prepend"><span className="input-group-text"><i className="fa fa-user" /></span></Input>
+                        <InputGroupText>
+                          <i className="fa fa-user" />
+                        </InputGroupText>
                         <Input className="input-transparent" id="prepended-input" type="test" bsSize="16" placeholder="Username" />
                       </InputGroup>
                     </Col>
@@ -273,7 +275,9 @@ class Elements extends React.Component {
                     </Label>
                     <Col md={7}>
                       <InputGroup>
-                        <Input addon addonType="prepend"><span className="input-group-text"><i className="fa fa-lock" /></span></Input>
+                        <InputGroupText>
+                          <i className="fa fa-lock" />
+                        </InputGroupText>
                         <Input
                           className="input-transparent"
                           id="password-field" type="password"
@@ -289,7 +293,7 @@ class Elements extends React.Component {
                     <Col md={7}>
                       <InputGroup>
                         <Input className="input-transparent" id="appended-input" bsSize="16" type="text" />
-                        <Input addon addonType="append">.00</Input>
+                        <InputGroupText>.00</InputGroupText>
                       </InputGroup>
                     </Col>
                   </FormGroup>
@@ -299,9 +303,9 @@ class Elements extends React.Component {
                     </Label>
                     <Col md={7}>
                       <InputGroup>
-                        <Input addon addonType="prepend">$</Input>
+                        <InputGroupText>$</InputGroupText>
                         <Input className="input-transparent" id="combined-input" bsSize="16" type="text" />
-                        <Input addon addonType="append">.00</Input>
+                        <InputGroupText>.00</InputGroupText>
                       </InputGroup>
                     </Col>
                   </FormGroup>
@@ -312,7 +316,7 @@ class Elements extends React.Component {
                     <Col md={7}>
                       <InputGroup className="input-group-transparent">
                         <Input className="input-transparent" id="transparent-input" type="text" />
-                        <Input addon addonType="append"><span className="input-group-text"><i className="fa fa-camera" /></span></Input>
+                        <InputGroupText><i className="fa fa-camera" /></InputGroupText>
                       </InputGroup>
                     </Col>
                   </FormGroup>
@@ -344,9 +348,7 @@ class Elements extends React.Component {
                         </Label>
                         <InputGroup>
                           <Input type="text" id="search-input1" />
-                          <Input addon addonType="append">
-                            <Button color="default">Search</Button>
-                          </Input>
+                          <Button color="default">Search</Button>
                         </InputGroup>
                       </FormGroup>
 
@@ -356,13 +358,9 @@ class Elements extends React.Component {
                         </Label>
                         <InputGroup>
                           <Input type="text" id="bar" />
-                          <Input addon addonType="append">
-                            <ButtonGroup>
-                              <Button color="danger"><i className="fa fa-pencil" /></Button>
-                              <Button color="warning"><i className="fa fa-plus" /></Button>
-                              <Button color="success"><i className="fa fa-refresh" /></Button>
-                            </ButtonGroup>
-                          </Input>
+                          <Button color="danger"><i className="fa fa-pencil" /></Button>
+                          <Button color="warning"><i className="fa fa-plus" /></Button>
+                          <Button color="success"><i className="fa fa-refresh" /></Button>
                         </InputGroup>
                       </FormGroup>
 
@@ -372,8 +370,7 @@ class Elements extends React.Component {
                         </Label>
                         <InputGroup>
                           <Input type="text" id="dropdown-appended" />
-                          <InputGroup addonType="append">
-                            <UncontrolledButtonDropdown>
+                          <UncontrolledButtonDropdown>
                               <DropdownToggle caret color="success">
                                 Action
                               </DropdownToggle>
@@ -385,7 +382,6 @@ class Elements extends React.Component {
                                 <DropdownItem>Separated link</DropdownItem>
                               </DropdownMenu>
                             </UncontrolledButtonDropdown>
-                          </InputGroup>
                         </InputGroup>
                       </FormGroup>
 
@@ -395,8 +391,7 @@ class Elements extends React.Component {
                         </Label>
                         <InputGroup>
                           <Input type="text" id="segmented-dropdown" />
-                          <InputGroup addonType="append">
-                            <UncontrolledButtonDropdown>
+                          <UncontrolledButtonDropdown>
                               <Button color="warning">Action</Button>
                               <DropdownToggle
                                 caret color="warning"
@@ -409,8 +404,7 @@ class Elements extends React.Component {
                                 <DropdownItem divider />
                                 <DropdownItem>Separated link</DropdownItem>
                               </DropdownMenu>
-                            </UncontrolledButtonDropdown>
-                          </InputGroup>
+                          </UncontrolledButtonDropdown>
                         </InputGroup>
                         <span className="help-block">Anything can be appended to the right</span>
                       </FormGroup>
@@ -421,8 +415,7 @@ class Elements extends React.Component {
                         </Label>
                         <InputGroup>
                           <Input type="text" id="type-dropdown-appended" />
-                          <InputGroup addonType="append">
-                            <UncontrolledButtonDropdown>
+                          <UncontrolledButtonDropdown>
                               <DropdownToggle
                                 caret color="primary"
                                 className="dropdown-toggle-split"
@@ -441,7 +434,6 @@ class Elements extends React.Component {
                                 </DropdownItem>
                               </DropdownMenu>
                             </UncontrolledButtonDropdown>
-                          </InputGroup>
                         </InputGroup>
                         <p className="help-block">
                           You can select some type of a field just right in the place.
@@ -519,28 +511,34 @@ class Elements extends React.Component {
                 </p>
                 <br />
                 <FormGroup>
+
                   <InputGroup>
-                    <InputGroup addonType="prepend" className="bg-transparent">
-                      <span className="input-group-text"><i className="fa fa-github-alt" /></span>
-                    </InputGroup>
-                    <Input type="text" placeholder="First Name" bsSize="16" />
+                    <InputGroupText>
+                      <i className="fa fa-github-alt" />
+                    </InputGroupText>
+                    <Input className="input-transparent" id="prepended-input" type="test" bsSize="16" placeholder="First Name" />
                   </InputGroup>
+
                 </FormGroup>
                 <FormGroup>
-                  <InputGroup size="lg">
-                    <InputGroup addonType="prepend">
-                      <span className="input-group-text"><i className="fa fa-bars" /></span>
-                    </InputGroup>
-                    <Input className="input-transparent" type="text" placeholder="Username" bsSize="16" />
+
+                  <InputGroup>
+                    <InputGroupText size="lg">
+                      <i className="fa fa-bars" />
+                    </InputGroupText>
+                    <Input className="input-transparent" id="prepended-input" type="text" bsSize="16" placeholder="Username" />
                   </InputGroup>
+
                 </FormGroup>
                 <FormGroup>
+
                   <InputGroup size="sm">
                     <Input type="text" placeholder="City" bsSize="16" />
-                    <InputGroup addonType="prepend">
-                      <span className="bg-danger text-white input-group-text"><i className="fa fa-code-fork" /></span>
-                    </InputGroup>
+                    <InputGroupText className={"bg-danger"}>
+                      <i className="fa fa-code-fork" />
+                    </InputGroupText>
                   </InputGroup>
+
                 </FormGroup>
               </Form>
             </Widget>
@@ -999,9 +997,9 @@ class Elements extends React.Component {
                           viewMode="days"
                           timeFormat={false}
                         />
-                        <InputGroup addonType="append">
-                          <span className="input-group-text"><i className="glyphicon glyphicon-th" /></span>
-                        </InputGroup>
+                        <InputGroupText addonType="append">
+                          <i className="glyphicon glyphicon-th" />
+                        </InputGroupText>
                       </div>
                     </Col>
                     <Col xs="6">
@@ -1011,9 +1009,9 @@ class Elements extends React.Component {
                           viewMode="time"
                           dateFormat={false}
                         />
-                        <InputGroup addonType="append">
-                          <span className="input-group-text"><i className="glyphicon glyphicon-time" /></span>
-                        </InputGroup>
+                        <InputGroupText>
+                          <i className="glyphicon glyphicon-time" />
+                        </InputGroupText>
                       </div>
                     </Col>
                   </Row>
@@ -1033,13 +1031,13 @@ class Elements extends React.Component {
                         type="text" onChange={this.changeColorInput} id="colorpickeri"
                         value={this.state.colorpickerInputValue}
                       />
-                      <InputGroup addonType="append">
-                        <span className="input-group-text"><ColorPicker
+                      <InputGroupText>
+                        <ColorPicker
                           animation="slide-up"
                           color={this.state.colorpickerValue}
                           onChange={this.changeColorValue}
-                        /></span>
-                      </InputGroup>
+                        />
+                      </InputGroupText>
                     </InputGroup>
                   </Label>
                 </FormGroup>
