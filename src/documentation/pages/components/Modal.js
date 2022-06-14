@@ -107,7 +107,7 @@ class Modals extends Component {
           <TabContent className="mb-xlg" activeTab={this.state.variatonModalsTabId}>
             <TabPane tabId="1">
               <h3>Variations</h3>
-              <Button className="mr-lg" onClick={() => this.toggle('scrollingLong')} size="lg" color="danger">Long modal</Button>
+              <Button className="me-4" onClick={() => this.toggle('scrollingLong')} size="lg" color="danger">Long modal</Button>
               <Button onClick={() => this.toggle('large')} size="lg" color="success">Large modal</Button>
             </TabPane>
             <TabPane tabId="2">

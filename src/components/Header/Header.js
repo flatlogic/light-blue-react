@@ -7,7 +7,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  InputGroupAddon,
   InputGroupText,
   InputGroup,
   Input,
@@ -145,7 +144,7 @@ class Header extends React.Component {
           </NavLink>
         </div>
         <div className={`d-print-none ${s.root}`}>
-            <UncontrolledAlert className={`alert me-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
+          <UncontrolledAlert className={`me-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
                 Check out Light Blue 
                 <button 
                   className="btn-link"
@@ -156,10 +155,11 @@ class Header extends React.Component {
             </UncontrolledAlert>
           <Collapse className={`${s.searchCollapse} ms-lg-0 me-md-3`} isOpen={this.state.searchOpen}>
             <InputGroup className={`${s.navbarForm} ${this.state.searchFocused ? s.navbarFormFocused : ''}`}>
-              <InputGroupAddon addonType="prepend" className={s.inputAddon}>
-                <InputGroupText><i className="fa fa-search" />
-                </InputGroupText>
-              </InputGroupAddon>
+
+              <InputGroupText className={s.inputAddon}>
+                <i className="fa fa-search" />
+              </InputGroupText>
+
               <Input
                 id="search-input-2" placeholder="Search..." className="input-transparent"
                 onFocus={() => this.setState({ searchFocused: true })}
@@ -167,17 +167,13 @@ class Header extends React.Component {
               />
             </InputGroup>
           </Collapse>
-          <Form className="d-md-down-none me-3 ms-3" inline>
-            <FormGroup>
-              <InputGroup className={`input-group-no-border ${s.searchForm}`} >
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText className={s.inputGroupText}>
-                    <SearchIcon className={s.headerIcon} />
-                  </InputGroupText>
-                </InputGroupAddon>
-                <Input id="search-input" className="input-transparent" placeholder="Search Dashboard" />
-              </InputGroup>
-            </FormGroup>
+          <Form className="d-md-down-none mx-3 my-auto" inline>
+            <InputGroup className={`input-group-no-border ${s.searchForm}`} >
+              <InputGroupText className={s.inputGroupText}>
+                <SearchIcon className={s.headerIcon} />
+              </InputGroupText>
+              <Input id="search-input" className="input-transparent" placeholder="Search Dashboard" />
+            </InputGroup>
           </Form>
 
           <Nav className="ms-md-0">

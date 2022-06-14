@@ -69,13 +69,13 @@ class Search extends React.Component {
               <NavItem>
                 <NavLink href="#">
                   Hot Ideas
-                  <Badge color="default" pill className="float-right">34</Badge>
+                  <Badge color="default" pill className="float-end">34</Badge>
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="#">
                   Latest Pictures
-                  <Badge color="default" pill className="float-right">9</Badge>
+                  <Badge color="default" pill className="float-end">9</Badge>
                 </NavLink>
               </NavItem>
               <NavItem>
@@ -87,7 +87,7 @@ class Search extends React.Component {
               <NavItem>
                 <NavLink href="#">
                   Globals
-                  <Badge color="default" pill className="float-right">18</Badge>
+                  <Badge color="default" pill className="float-end">18</Badge>
                 </NavLink>
               </NavItem>
             </Nav>
@@ -136,7 +136,7 @@ class Search extends React.Component {
                     <h4 className={s.searchResultItemHeading}>
                       <button className="btn-link">Try. Posted by Okendoken</button>
                       <small>
-                        <span className="badge rounded-pill badge-danger float-right">
+                        <span className="badge rounded-pill badge-danger float-end">
                           <span className="fw-normal"> Best Deal!</span>
                         </span>
                       </small>

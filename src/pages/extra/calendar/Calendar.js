@@ -219,7 +219,7 @@ class Calendar extends React.Component {
                 className="external-event draggable"
               >
                 <div className={s.customExternalEvent}>
-                  <i className="fa fa-circle fa-fw text-success ms-xs me-sm" />
+                  <i className="fa fa-circle fa-fw text-success ms-1 me-2" />
                   Make a tea
                 </div>
               </div>
@@ -228,7 +228,7 @@ class Calendar extends React.Component {
                 className="external-event draggable"
               >
                 <div className={s.customExternalEvent}>
-                  <i className="fa fa-circle fa-fw text-warning ms-xs me-sm" />
+                  <i className="fa fa-circle fa-fw text-warning ms-1 me-2" />
                   Open windows
                 </div>
               </div>
@@ -237,7 +237,7 @@ class Calendar extends React.Component {
                 className="external-event draggable"
               >
                 <div className={s.customExternalEvent}>
-                  <i className="fa fa-circle fa-fw text-primary ms-xs me-sm" />
+                  <i className="fa fa-circle fa-fw text-primary ms-1 me-2" />
                   Some stuff
                 </div>
               </div>
@@ -246,7 +246,7 @@ class Calendar extends React.Component {
                 className="external-event draggable"
               >
                 <div className={s.customExternalEvent}>
-                  <i className="fa fa-square fa-fw text-danger ms-xs me-sm" />
+                  <i className="fa fa-square fa-fw text-danger ms-1 me-2" />
                   Study UX engineering
                 </div>
               </div>
@@ -255,7 +255,7 @@ class Calendar extends React.Component {
                 className="external-event draggable"
               >
                 <div className={s.customExternalEvent}>
-                  <i className="fa fa-circle-o fa-fw text-gray-light ms-xs me-sm" />
+                  <i className="fa fa-circle-o fa-fw text-gray-light ms-1 me-2" />
                   Another stuff
                 </div>
               </div>
@@ -265,7 +265,7 @@ class Calendar extends React.Component {
             <Widget>
               <Row className="calendar-controls">
                 <Col md={3}>
-                  <ButtonGroup className="me-md mb-3">
+                  <ButtonGroup className="me-3 mb-3">
                     <Button color="default" onClick={this.prev}>
                       <i className="fa fa-angle-left" />
                     </Button>
@@ -277,7 +277,7 @@ class Calendar extends React.Component {
                     Today
                   </Button>
                 </Col>
-                <Col md={9} className="calendar-controls text-right">
+                <Col md={9} className="calendar-controls text-end">
                   <ButtonGroup className="mb-3">
                     <Button
                       color="default"

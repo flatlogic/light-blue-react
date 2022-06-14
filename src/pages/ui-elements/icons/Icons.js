@@ -43,8 +43,7 @@ class Icons extends React.Component {
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggle('2'); }}
             >
-              <span className="mr-xs">FA 4.7.0</span>
-              <Badge color="danger">new</Badge>
+              <span className="me-1">FA 4.7.0</span>
             </NavLink>
           </NavItem>
           <NavItem>
@@ -52,7 +51,7 @@ class Icons extends React.Component {
               className={classnames({ active: this.state.activeTab === '3' })}
               onClick={() => { this.toggle('3'); }}
             >
-              <span className="mr-xs">Web Application</span>
+              <span className="me-1">Web Application</span>
             </NavLink>
           </NavItem>
           <NavItem>
@@ -92,8 +91,7 @@ class Icons extends React.Component {
               className={classnames({ active: this.state.activeTab === '8' })}
               onClick={() => { this.toggle('8'); }}
             >
-              <span className="mr-xs">Flaticons</span>
-              <Badge color="danger">new</Badge>
+              <span className="me-1">Flaticons</span>
             </NavLink>
           </NavItem>
         </Nav>

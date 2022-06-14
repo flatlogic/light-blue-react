@@ -13,7 +13,7 @@ import YearsMap from './components/years-map/YearsMap';
 import FlotCharts from './components/flot-charts/FlotCharts';
 import NasdaqSparkline from './components/nasdaq-sparkline-widget/nasdaqSparkline';
 import Skycon from '../../components/Skycon/Skycon';
-import { Input, InputGroup, InputGroupAddon, Button } from 'reactstrap';
+import { Input, InputGroup, Button } from 'reactstrap';
 
 import s from './WidgetsMetro.module.scss';
 import './Widgets.scss';
@@ -242,7 +242,7 @@ class Widgets extends React.Component {
                 </ul>
                 <ul className="post-comments mb-0 mt-2">
                   <li className={s.borderTop}>
-                    <span className="thumb-xs avatar pull-left me-sm">
+                    <span className="thumb-xs avatar pull-left me-2">
                       <img className="rounded-circle" src={peopleA1} alt="..." />
                     </span>
                     <div className="comment-body">
@@ -253,13 +253,13 @@ class Widgets extends React.Component {
                     </div>
                   </li>
                   <li className={s.borderTop}>
-                    <span className="thumb-xs avatar pull-left me-sm">
+                    <span className="thumb-xs avatar pull-left me-2">
                       <img className="rounded-circle" src={avatar} alt="..." />
                     </span>
                     <div className="comment-body">
                       <InputGroup size="sm">
                         <Input className="form-control bg-custom-dark border-0" placeholder="Your comment" />
-                        <InputGroupAddon addonType="append"><Button color="subtle-blue">Send</Button></InputGroupAddon>
+                        <Input addon addonType="append"><Button color="subtle-blue">Send</Button></Input>
                       </InputGroup>
                     </div>
                   </li>
@@ -344,7 +344,7 @@ class Widgets extends React.Component {
                 <h4 className="title">
                   <span className="fw-normal">Sunnyvale</span>, CA
                 </h4>
-                <div className="info text-right">
+                <div className="info text-end">
                   <i className="fa fa-map-marker h1 m-0 me-1" />
                   <h6 className="m-0 mt-xs">FLORIDA, USA</h6>
                   <p className="fs-sm">9:41 am</p>
@@ -588,7 +588,7 @@ class Widgets extends React.Component {
               <footer className="bg-widget-transparent bt">
                   <InputGroup size="sm">
                       <Input className="form-control bg-custom-dark border-0" placeholder="Your message" />
-                      <InputGroupAddon addonType="append"><Button color="subtle-blue">Send</Button></InputGroupAddon>
+                      <Input addon addonType="append"><Button color="subtle-blue">Send</Button></Input>
                   </InputGroup>
               </footer>
             </Widget>

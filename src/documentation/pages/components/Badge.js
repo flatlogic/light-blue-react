@@ -102,31 +102,31 @@ class Badges extends Component {
             <TabPane tabId="1">
               <h4>Pill badges</h4>
               <p>
-                <Badge className="mr-xs" color="primary" pill>Primary</Badge>
-                <Badge className="mr-xs" color="info" pill>Info</Badge>
-                <Badge className="mr-xs" color="warning" pill>Warning</Badge>
-                <Badge className="mr-xs" color="success" pill>Success</Badge>
-                <Badge className="mr-xs" color="danger" pill>Danger</Badge>
-                <Badge className="mr-xs" color="secondary" pill>Secondary</Badge>
-                <Badge className="mr-xs" color="light" pill>Light</Badge>
-                <Badge className="mr-xs" color="dark" pill>Dark</Badge>
+                <Badge className="me-1" color="primary" pill>Primary</Badge>
+                <Badge className="me-1" color="info" pill>Info</Badge>
+                <Badge className="me-1" color="warning" pill>Warning</Badge>
+                <Badge className="me-1" color="success" pill>Success</Badge>
+                <Badge className="me-1" color="danger" pill>Danger</Badge>
+                <Badge className="me-1" color="secondary" pill>Secondary</Badge>
+                <Badge className="me-1" color="light" pill>Light</Badge>
+                <Badge className="me-1" color="dark" pill>Dark</Badge>
               </p>
               <h4>Badges with link</h4>
               <p>
-                <Badge className="mr-xs" href="#" color="primary">Primary</Badge>
-                <Badge className="mr-xs" href="#" color="info">Info</Badge>
-                <Badge className="mr-xs" href="#" color="warning">Warning</Badge>
-                <Badge className="mr-xs" href="#" color="success">Success</Badge>
-                <Badge className="mr-xs" href="#" color="danger">Danger</Badge>
-                <Badge className="mr-xs" href="#" color="secondary">Secondary</Badge>
-                <Badge className="mr-xs" href="#" color="light">Light</Badge>
-                <Badge className="mr-xs" href="#" color="dark">Dark</Badge>
+                <Badge className="me-1" href="#" color="primary">Primary</Badge>
+                <Badge className="me-1" href="#" color="info">Info</Badge>
+                <Badge className="me-1" href="#" color="warning">Warning</Badge>
+                <Badge className="me-1" href="#" color="success">Success</Badge>
+                <Badge className="me-1" href="#" color="danger">Danger</Badge>
+                <Badge className="me-1" href="#" color="secondary">Secondary</Badge>
+                <Badge className="me-1" href="#" color="light">Light</Badge>
+                <Badge className="me-1" href="#" color="dark">Dark</Badge>
               </p>
             </TabPane>
             <TabPane tabId="2">
               <SyntaxHighlighter language='javascript' style={tomorrow}>
-                {'<Badge className="mr-xs" color="primary" pill>Primary</Badge> \n' +
-                '<Badge className="mr-xs" href="#" color="primary">Primary</Badge>'}
+                {'<Badge className="me-1" color="primary" pill>Primary</Badge> \n' +
+                '<Badge className="me-1" href="#" color="primary">Primary</Badge>'}
               </SyntaxHighlighter>
             </TabPane>
           </TabContent>

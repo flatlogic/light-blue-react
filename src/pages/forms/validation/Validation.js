@@ -168,7 +168,7 @@ class Validation extends React.Component {
                 </fieldset>
 
                 <div className="form-action bg-transparent ps-0 pe-0">
-                  <Button type="submit" color="danger" className="btn-rounded float-right">Validate & Submit</Button>
+                  <Button type="submit" color="danger" className="btn-rounded float-end">Validate & Submit</Button>
                   <Button type="button" color="default" className="btn-rounded">Cancel</Button>
                 </div>
               </Formsy.Form>

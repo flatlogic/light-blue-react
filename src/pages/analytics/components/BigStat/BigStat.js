@@ -78,7 +78,7 @@ class BigStat extends Component {
                   rotate-${registrations.profit ? '315' : '45'}`}
                 />
               </div>
-              <p className="text-muted mb-0 mr"><small>Registrations</small></p>
+              <p className="text-muted mb-0 me-2"><small>Registrations</small></p>
             </div>
             <div className="w-50 py-3 ps-2">
               <div className="d-flex align-items-start h3">
@@ -88,7 +88,7 @@ class BigStat extends Component {
                   rotate-${bounce.profit ? '315' : '45'}`}
                 />
               </div>
-              <p className="text-muted mb-0 mr"><small>Bounce Rate</small></p>
+              <p className="text-muted mb-0 me-2"><small>Bounce Rate</small></p>
             </div>
           </div>
         </Widget>

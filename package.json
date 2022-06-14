@@ -128,7 +128,7 @@
     "react-toastify": "^6.2.0",
     "react-transition-group": "^4.4.1",
     "react-trend": "^1.2.5",
-    "reactstrap": "^8.9.0",
+    "reactstrap": "^9.1.1",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
     "rickshaw": "1.7.1",

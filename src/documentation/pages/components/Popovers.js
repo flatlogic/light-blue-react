@@ -88,16 +88,16 @@ class NavbarPage extends Component {
           </Nav>
           <TabContent className="mb-xlg" activeTab={this.state.defaultPopoversTabId}>
             <TabPane tabId="1">
-              <Button className="mr" id="popover-1" type="button" color="success" onClick={() => this.toggle(1)}>
+              <Button className="me-2" id="popover-1" type="button" color="success" onClick={() => this.toggle(1)}>
                 Bottom
               </Button>
-              <Button className="mr" id="popover-2" type="button" color="danger" onClick={() => this.toggle(2)}>
+              <Button className="me-2" id="popover-2" type="button" color="danger" onClick={() => this.toggle(2)}>
                 Right
               </Button>
-              <Button className="mr" id="popover-3" type="button" color="warning" onClick={() => this.toggle(3)}>
+              <Button className="me-2" id="popover-3" type="button" color="warning" onClick={() => this.toggle(3)}>
                 Top
               </Button>
-              <Button className="mr" id="popover-4" type="button" color="info" onClick={() => this.toggle(4)}>
+              <Button className="me-2" id="popover-4" type="button" color="info" onClick={() => this.toggle(4)}>
                 Left
               </Button>
               <Popover placement="bottom" isOpen={this.state.popovers[1]} target="popover-1" toggle={() => this.toggle(1)}>
@@ -152,16 +152,16 @@ class NavbarPage extends Component {
           </Nav>
           <TabContent className="mb-xlg" activeTab={this.state.defaultTooltipsTabId}>
             <TabPane tabId="1">
-              <Button className="mr" id="tooltip-1" type="button" color="success">
+              <Button className="me-2" id="tooltip-1" type="button" color="success">
                 Bottom
               </Button>
-              <Button className="mr" id="tooltip-2" type="button" color="danger">
+              <Button className="me-2" id="tooltip-2" type="button" color="danger">
                 Right
               </Button>
-              <Button className="mr" id="tooltip-3" type="button" color="warning">
+              <Button className="me-2" id="tooltip-3" type="button" color="warning">
                 Top
               </Button>
-              <Button className="mr" id="tooltip-4" type="button" color="info">
+              <Button className="me-2" id="tooltip-4" type="button" color="info">
                 Left
               </Button>
               <UncontrolledTooltip placement="bottom" target="tooltip-1">
@@ -178,7 +178,7 @@ class NavbarPage extends Component {
               </UncontrolledTooltip>
             </TabPane>
             <TabPane tabId="2">
-              <SyntaxHighlighter language='javascript' style={tomorrow}>{'<Button className="mr" id="tooltip" type="button" color="info">\n' +
+              <SyntaxHighlighter language='javascript' style={tomorrow}>{'<Button className="me-2" id="tooltip" type="button" color="info">\n' +
               '  Left\n' +
               '</Button>\n\n' +
               '<UncontrolledTooltip placement="left" target="tooltip">\n' +

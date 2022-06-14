@@ -104,7 +104,7 @@ class Notifications extends React.Component {
               { disabled: this.state.isLoad },
               s.btnNotificationsReload,
               "btn-xs",
-              "float-right",
+              "float-end",
               "py-0"
             )}
             onClick={() => this.loadNotifications()}

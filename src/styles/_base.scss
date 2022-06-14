@@ -179,6 +179,14 @@
   }
 }
 
+table > thead,tbody {
+  border: none!important;
+  tr > th, td {
+    border-bottom: 1px solid rgba(51,51,51,.35);
+  }
+
+}
+
 table > thead > tr > th {
   border-top: none !important;
   border-bottom-width: 1px !important;

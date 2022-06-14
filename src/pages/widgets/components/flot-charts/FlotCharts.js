@@ -155,11 +155,11 @@ class FlotCharts extends React.PureComponent {
                   </p>
                 </div>
               </div>
-              <div className="col-md-3 text-right m-t-1">
+              <div className="col-md-3 text-end m-t-1">
                 <h6 className="text-light mb-xs">Inqueries</h6>
                 <p className="fw-semi-bold">73 at 14am</p>
               </div>
-              <div className="col-md-4 text-right m-t-1">
+              <div className="col-md-4 text-end m-t-1">
                 <h6 className="text-light mb-xs">Last Updated</h6>
                 <p className="fw-semi-bold">23.06.2013</p>
               </div>

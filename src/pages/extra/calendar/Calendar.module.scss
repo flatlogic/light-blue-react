@@ -11,6 +11,9 @@
   }
 
   :global {
+    a {
+      text-decoration: none;
+    }
     .fc-grid th {
       text-transform: uppercase;
     }
@@ -30,7 +33,6 @@
     }
 
     .fc-event {
-      border: none;
       font-weight: $font-weight-normal;
       border: 1px solid $text-color;
       color: $text-color;
@@ -77,11 +79,7 @@
 }
 
 .customExternalEvent {
-//  margin: 10px 0;
-//  padding: 6px;
   font-size: $font-size-mini;
   cursor: pointer;
- // border-radius: $border-radius;
- // border: 1px solid #ccc;
   box-shadow: $widget-shadow;
 }

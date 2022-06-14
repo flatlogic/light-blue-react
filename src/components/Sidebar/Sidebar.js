@@ -442,19 +442,19 @@ class Sidebar extends React.Component {
         <ul className={s.sidebarLabels}>
           <li>
             <a href="#">
-              <i className="fa fa-circle text-success mr-2" />
+              <i className="fa fa-circle text-success me-2" />
               <span className={s.labelName}>My Recent</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <i className="fa fa-circle text-primary mr-2" />
+              <i className="fa fa-circle text-primary me-2" />
               <span className={s.labelName}>Starred</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <i className="fa fa-circle text-danger mr-2" />
+              <i className="fa fa-circle text-danger me-2" />
               <span className={s.labelName}>Background</span>
             </a>
           </li>

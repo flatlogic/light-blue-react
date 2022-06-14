@@ -45,7 +45,10 @@ class SPackage extends React.Component {
                 decide on development approaches that are the best for your project.
                 <a className="text-primary" href="https://webpack.js.org/">Webpack</a> Module Bundler and Yarn as a package
                 manager are under the hood.</p>
-              <button className="btn btn-transparent btn-lg btn-block disabled">(You are here)</button>
+              <div class={'d-grid'}>
+                <button className="btn btn-transparent btn-lg disabled">(You are here)</button>
+              </div>
+
             </Widget>
           </Col>
           <Col sm={12} lg={6}>
@@ -71,12 +74,14 @@ class SPackage extends React.Component {
                 uses <a className="text-primary" href="https://webpack.js.org/">Webpack</a> Module Bundler and NPM as a package manager,
                 so everything
                 works out of the box! <br /><br /></p>
-              <a
-                className="btn btn-default btn-lg btn-block"
-                href="https://flatlogic.com/templates/light-blue-angular/demo"
-              >
-                Go to Demo
-              </a>
+              <div class={'d-grid'}>
+                <a
+                  className="btn btn-default btn-lg"
+                  href="https://flatlogic.com/templates/light-blue-angular/demo"
+                >
+                  Go to Demo
+                </a>
+              </div>
             </Widget>
           </Col>
           <Col sm={12} lg={6}>
@@ -103,12 +108,14 @@ class SPackage extends React.Component {
                 value of &nbsp;<code>window.PJAX_ENABLED</code> global variable.</p>
               <p>Moreover, this version comes with three different color
                 schemes which you can easily switch based on your choice.</p>
-              <a
-                className="btn btn-default btn-lg btn-block"
-                href="https://flatlogic.com/templates/light-blue-html5/demo"
-              >
-                Go to Demo
-              </a>
+              <div class={'d-grid'}>
+                <a
+                  className="btn btn-default btn-lg"
+                  href="https://flatlogic.com/templates/light-blue-html5/demo"
+                >
+                  Go to Demo
+                </a>
+              </div>
             </Widget>
           </Col>
           <Col sm={12} lg={6}>
@@ -128,12 +135,14 @@ class SPackage extends React.Component {
                made incredibly easy. Creating Vue JS version is a main priority of Flatlogic for next 
                months, so seed version will ready really soon!
               </p>
-              <a
-                className="btn btn-default btn-lg btn-block"
-                href="https://flatlogic.com/templates/light-blue-vue-lite/demo"
-              >
-                Go to Demo
-              </a>
+              <div class={'d-grid'}>
+                <a
+                  className="btn btn-default btn-lg"
+                  href="https://flatlogic.com/templates/light-blue-vue-lite/demo"
+                >
+                  Go to Demo
+                </a>
+              </div>
             </Widget>
           </Col>
         </Row>

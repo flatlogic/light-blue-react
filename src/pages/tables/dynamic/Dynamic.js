@@ -156,7 +156,7 @@ class Dynamic extends React.Component {
               props => (
                 <div>
                   <h3>Input something at below input field:</h3>
-                  <Row className="mb-lg float-right">
+                  <Row className="mb-lg float-end">
                     <Col>
                       <SearchBar { ...props.searchProps } />
                     </Col>

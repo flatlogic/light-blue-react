@@ -116,7 +116,7 @@ class ImagesUploader extends Component {
             {this.value().map((item) => {
               return (
                 <div
-                  className="mr-2 mb-2 img-card"
+                  className="me-2 mb-2 img-card"
                   style={{ height: '100px' }}
                   key={item.id}
                 >

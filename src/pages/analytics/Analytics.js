@@ -136,7 +136,7 @@ class Analytics extends Component {
                       <div className="d-flex flex-wrap justify-content-between">
                           <div className={cx('mt')}>
                               <h6>+{visits.logins}</h6>
-                              <p className="text-muted mb-0 mr">
+                              <p className="text-muted mb-0 me-2">
                                   <small>Logins</small>
                               </p>
                           </div>
@@ -148,7 +148,7 @@ class Analytics extends Component {
                           </div>
                           <div className={cx('mt')}>
                               <h6>{visits.rate_pct}%</h6>
-                              <p className="text-muted mb-0 mr">
+                              <p className="text-muted mb-0 me-2">
                                   <small>Rate</small>
                               </p>
                           </div>
@@ -293,7 +293,7 @@ class Analytics extends Component {
                 >
                   {mock.notifications.map(({ id, icon, color, content }) => (
                     <div className="d-flex align-items-start" key={id}>
-                      <i className={`la la-${icon} mr text-${color}`} />
+                      <i className={`la la-${icon} me-2 text-${color}`} />
                       <p
                         className={cx({ 'mb-0': id === mock.notifications.length - 1 })}
                         dangerouslySetInnerHTML={{ __html: content }}

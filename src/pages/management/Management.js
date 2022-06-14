@@ -179,7 +179,7 @@ class Management extends React.Component {
                         fetchingData={this.props.isReceiving}
                 >
                     <Button color="success" onClick={() => this.createNewProduct()}>Create Product</Button>
-                    <BootstrapTable className="table-responsive" data={this.props.products} version="4" pagination options={options} search
+                    <BootstrapTable bordered={ false } className="table-responsive" data={this.props.products} version="4" pagination options={options} search
                                     tableContainerClass={`table-striped ${s.bootstrapTable}`}>
                         <TableHeaderColumn dataField="id" isKey={true} className="width-50"
                                            columnClassName="width-50">

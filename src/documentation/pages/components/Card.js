@@ -64,10 +64,10 @@ class Buttons extends Component {
                   <hr />
                   <div className="d-flex justify-content-between mb-lg">
                     <div className="text-warning">
-                      <i className="fa fa-star mr-xs" />
-                      <i className="fa fa-star mr-xs" />
-                      <i className="fa fa-star mr-xs" />
-                      <i className="fa fa-star mr-xs" />
+                      <i className="fa fa-star me-1" />
+                      <i className="fa fa-star me-1" />
+                      <i className="fa fa-star me-1" />
+                      <i className="fa fa-star me-1" />
                       <i className="fa fa-star" />
                     </div>
                     <span className="text-muted"><small>342 REVIEWS</small></span>
@@ -88,10 +88,10 @@ class Buttons extends Component {
               '    <hr />\n' +
               '    <div className="d-flex justify-content-between mb-lg">\n' +
               '      <div className="text-warning">\n' +
-              '        <i className="fa fa-star mr-xs" />\n' +
-              '        <i className="fa fa-star mr-xs" />\n' +
-              '        <i className="fa fa-star mr-xs" />\n' +
-              '        <i className="fa fa-star mr-xs" />\n' +
+              '        <i className="fa fa-star me-1" />\n' +
+              '        <i className="fa fa-star me-1" />\n' +
+              '        <i className="fa fa-star me-1" />\n' +
+              '        <i className="fa fa-star me-1" />\n' +
               '        <i className="fa fa-star" />\n' +
               '      </div>\n' +
               '      <span className="text-muted"><small>342 REVIEWS</small></span>\n' +

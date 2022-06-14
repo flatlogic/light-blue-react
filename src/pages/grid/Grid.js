@@ -113,7 +113,7 @@ class Grid extends React.Component {
               <div className="list-group list-group-lg">
               {this.state.gridData.shares.map(item => (
                 <button key={item.name} className={`list-group-item text-start ${item.extraClass}`}>
-                  <span className="thumb-sm mr">
+                  <span className="thumb-sm me-2">
                     <img className="rounded-circle" src={item.img} alt="..." />
                   </span>
                   <div>
@@ -158,7 +158,7 @@ class Grid extends React.Component {
                     <strong>autoload</strong> may be set to an integer value. If set, for example, to 2000 will refresh widget every 2 seconds.
                   </p>
                   <div className="clearfix">
-                    <div className="btn-toolbar float-right">
+                    <div className="btn-toolbar float-end">
                       <button type="button" className="btn btn-default">Cancel</button>
                       <button type="button" className="btn btn-success ms-3">&nbsp;Submit&nbsp;</button>
                     </div>

@@ -59,25 +59,25 @@ const Profile = () => (
             <Col md={7} xs={12}>
               <div className="stats-row mt-3">
                 <div className={[s.profileStat, 'stat-item'].join(' ')}>
-                  <p className={[s.profileStatValue, 'value text-right'].join(' ')}>251</p>
+                  <p className={[s.profileStatValue, 'value text-end'].join(' ')}>251</p>
                   <h6 className="name">Posts</h6>
                 </div>
                 <div className={[s.profileStat, 'stat-item'].join(' ')}>
-                  <p className={[s.profileStatValue, 'value text-right'].join(' ')}>9.38%</p>
+                  <p className={[s.profileStatValue, 'value text-end'].join(' ')}>9.38%</p>
                   <h6 className="name">Conversion</h6>
                 </div>
                 <div className={[s.profileStat, 'stat-item'].join(' ')}>
-                  <p className={[s.profileStatValue, 'value text-right'].join(' ')}>842</p>
+                  <p className={[s.profileStatValue, 'value text-end'].join(' ')}>842</p>
                   <h6 className="name">Followers</h6>
                 </div>
               </div>
               <p>
                {/* eslint-disable-next-line */}
-                <a href="#" className="badge badge-info rounded-0 mb-2 me-2">UI/UX</a>
+                <a href="#" className="badge bg-info rounded-0 mb-2 me-2 text-decoration-none">UI/UX</a>
                {/* eslint-disable-next-line */}
-                <a href="#" className="badge badge-primary rounded-0 me-2"> Web Design </a>
+                <a href="#" className="badge bg-primary rounded-0 me-2 text-decoration-none"> Web Design </a>
                {/* eslint-disable-next-line */}
-                <a href="#" className="badge badge-default rounded-0"> Mobile Apps </a>
+                <a href="#" className="badge bg-default rounded-0 text-decoration-none"> Mobile Apps </a>
               </p>
               <p className="lead mt-xlg">
                 My name is Adam Johns and here is my new Light Blue user profile page.
@@ -145,7 +145,7 @@ const Profile = () => (
               </div>
               <ul className="post-comments mt-sm">
                 <li className={s.borderTop}>
-                  <span className="thumb-xs avatar pull-left me-sm">
+                  <span className="thumb-xs avatar pull-left me-2">
                     <img className="rounded-circle" src={a1} alt="..." />
                   </span>
                   <div className="comment-body">
@@ -154,7 +154,7 @@ const Profile = () => (
                   </div>
                 </li>
                 <li className={s.borderTop}>
-                  <span className="thumb-xs avatar pull-left me-sm">
+                  <span className="thumb-xs avatar pull-left me-2">
                     <img className="rounded-circle" src={avatar} alt="..." />
                   </span>
                   <div className="comment-body">
