@@ -49,11 +49,11 @@ class Forgot extends React.Component {
                 }
                 <FormGroup className="mt">
                     <InputGroup className="input-group-no-border">
-                        <Input addon addonType="prepend">
-                            <InputGroupText>
-                                <i className="la la-user text-white"/>
-                            </InputGroupText>
-                        </Input>
+
+                        <InputGroupText>
+                            <i className="la la-user text-white"/>
+                        </InputGroupText>
+
                         <Input id="email" className="input-transparent ps-3" value={this.state.email} onChange={this.changeEmail} type="email"
                                 required name="email" placeholder="Email"/>
                     </InputGroup>

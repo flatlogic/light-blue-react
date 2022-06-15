@@ -259,7 +259,7 @@ class Widgets extends React.Component {
                     <div className="comment-body">
                       <InputGroup size="sm">
                         <Input className="form-control bg-custom-dark border-0" placeholder="Your comment" />
-                        <Input addon addonType="append"><Button color="subtle-blue">Send</Button></Input>
+                        <Input ><Button color="subtle-blue">Send</Button></Input>
                       </InputGroup>
                     </div>
                   </li>
@@ -588,7 +588,7 @@ class Widgets extends React.Component {
               <footer className="bg-widget-transparent bt">
                   <InputGroup size="sm">
                       <Input className="form-control bg-custom-dark border-0" placeholder="Your message" />
-                      <Input addon addonType="append"><Button color="subtle-blue">Send</Button></Input>
+                      <Input><Button color="subtle-blue">Send</Button></Input>
                   </InputGroup>
               </footer>
             </Widget>

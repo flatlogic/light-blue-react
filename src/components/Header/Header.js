@@ -19,8 +19,7 @@ import {
   Badge,
   ButtonGroup,
   Button,
-  Form,
-  FormGroup,
+  Form
 } from 'reactstrap';
 import Notifications from '../Notifications';
 import PowerIcon from "../Icons/HeaderIcons/PowerIcon";
@@ -190,7 +189,7 @@ class Header extends React.Component {
                 <span className={`small d-sm-down-none ${s.adminEmail}`}>{user ? (user.firstName || user.email) : "Philip Smith"}</span>
                 <Badge className={`d-sm-down-none ${s.badge}`} color="danger">9</Badge>
               </DropdownToggle>
-              <DropdownMenu right className={`${s.notificationsWrapper} py-0 animate__animated animate__faster animate__fadeInUp`}>
+              <DropdownMenu className={`${s.notificationsWrapper} py-0 animate__animated animate__faster animate__fadeInUp`}>
                 <Notifications />
               </DropdownMenu>
             </Dropdown>
@@ -203,7 +202,7 @@ class Header extends React.Component {
               <DropdownToggle nav className={`d-sm-down-none ${s.navItem} text-white`}>
                 <MessageIcon className={s.headerIcon} />
               </DropdownToggle>
-              <DropdownMenu right className={`${s.dropdownMenu} ${s.messages}`}>
+              <DropdownMenu className={`${s.dropdownMenu} ${s.messages}`}>
                 <DropdownItem>
                   <img className={s.image} src={sender1} alt="" />
                   <div className={s.details}>
@@ -262,7 +261,7 @@ class Header extends React.Component {
                 <BellIcon className={s.headerIcon} />
                 <span className={s.count}></span>
               </DropdownToggle>
-              <DropdownMenu right className={`${s.dropdownMenu} ${s.support}`}>
+              <DropdownMenu className={`${s.dropdownMenu} ${s.support}`}>
                 <DropdownItem>
                   <Badge color="danger"><i className="fa fa-bell-o" /></Badge>
                   <div className={s.details}>

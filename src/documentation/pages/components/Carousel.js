@@ -3,9 +3,9 @@ import { Row, Col, Breadcrumb, BreadcrumbItem, UncontrolledCarousel } from 'reac
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-import firstSlide from '../../../images/slides/1.jpg';
-import secondSlide from '../../../images/slides/2.jpg';
-import thirdSlide from '../../../images/slides/3.jpg';
+import firstSlide from '../../../images/slides/sl1.jpg';
+import secondSlide from '../../../images/slides/sl2.jpg';
+import thirdSlide from '../../../images/slides/sl3.jpg';
 
 const carouselItems = [
   { src: firstSlide, caption: '' },

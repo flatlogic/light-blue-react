@@ -85,11 +85,11 @@ class Reset extends React.Component {
                 }
                 <FormGroup>
                     <InputGroup className="input-group-no-border">
-                        <InputGroup addonType="prepend">
-                            <InputGroupText>
-                                <i className="la la-lock text-white"/>
-                            </InputGroupText>
-                        </InputGroup>
+
+                        <InputGroupText>
+                            <i className="la la-lock text-white"/>
+                        </InputGroupText>
+
                         <Input id="password" className="input-transparent ps-3" value={this.state.password}
                                 onChange={this.changePassword} type="password"
                                 required name="password" placeholder="Password"/>
@@ -97,11 +97,11 @@ class Reset extends React.Component {
                 </FormGroup>
                 <FormGroup>
                     <InputGroup className="input-group-no-border">
-                        <InputGroup addonType="prepend">
-                            <InputGroupText>
-                                <i className="la la-lock text-white"/>
-                            </InputGroupText>
-                        </InputGroup>
+
+                        <InputGroupText>
+                            <i className="la la-lock text-white"/>
+                        </InputGroupText>
+
                         <Input id="password" className="input-transparent ps-3" value={this.state.confirmPassword}
                                 onChange={this.changeConfirmPassword} onBlur={this.checkPassword} type="password"
                                 required name="confirmPassword" placeholder="Confirm Password"/>

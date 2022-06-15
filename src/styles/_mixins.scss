@@ -113,7 +113,6 @@
       background-color: darken($color, 10%) !important;
     }
   }
-  @include deprecate("The `bg-variant` mixin", "v4.4.0", "v5", $ignore-warning);
 }
 
 @mixin text-emphasis-variant($parent, $color, $ignore-warning: false) {
@@ -127,5 +126,4 @@
       }
     }
   }
-  @include deprecate("`text-emphasis-variant()`", "v4.4.0", "v5", $ignore-warning);
 }

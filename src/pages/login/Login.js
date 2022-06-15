@@ -107,11 +107,9 @@ class Login extends React.Component {
                             <FormGroup className="mt">
                                 <Label for="email">Email</Label>
                                 <InputGroup className="input-group-no-border">
-                                    <InputGroup addonType="prepend">
-                                        <InputGroupText>
-                                            <i className="la la-user text-white"/>
-                                        </InputGroupText>
-                                    </InputGroup>
+                                    <InputGroupText>
+                                        <i className="la la-user text-white"/>
+                                    </InputGroupText>
                                     <Input id="email" className="input-transparent ps-3" value={this.state.email} onChange={this.changeEmail} type="email"
                                            required name="email" placeholder="Email"/>
                                 </InputGroup>
@@ -119,11 +117,11 @@ class Login extends React.Component {
                             <FormGroup>
                                 <Label for="password">Password</Label>
                                 <InputGroup className="input-group-no-border">
-                                    <InputGroup addonType="prepend">
-                                        <InputGroupText>
-                                            <i className="la la-lock text-white"/>
-                                        </InputGroupText>
-                                    </InputGroup>
+
+                                    <InputGroupText>
+                                        <i className="la la-lock text-white"/>
+                                    </InputGroupText>
+
                                     <Input id="password" className="input-transparent ps-3" value={this.state.password}
                                            onChange={this.changePassword} type="password"
                                            required name="password" placeholder="Password"/>

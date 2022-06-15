@@ -10,7 +10,6 @@ import {
   UncontrolledTooltip,
   UncontrolledButtonDropdown,
   InputGroup,
-  ButtonGroup,
   DropdownMenu,
   DropdownItem,
   DropdownToggle, InputGroupText,
@@ -997,7 +996,7 @@ class Elements extends React.Component {
                           viewMode="days"
                           timeFormat={false}
                         />
-                        <InputGroupText addonType="append">
+                        <InputGroupText>
                           <i className="glyphicon glyphicon-th" />
                         </InputGroupText>
                       </div>
@@ -1264,11 +1263,11 @@ class Elements extends React.Component {
                           ))}
                         </div> : <span />}
                       </Label>
-                      {this.state.inputFiles.length === 0 ? <InputGroup addonType="append">
+                      {this.state.inputFiles.length === 0 ? <InputGroup>
                         <Button type="button" color="default" className="btn-file">
                           <Label for="fileupload1">Select file</Label>
                         </Button>
-                      </InputGroup> : <InputGroup addonType="append">
+                      </InputGroup> : <InputGroup >
                         <Button type="button" color="default">
                           <Label for="fileupload1">Change file</Label>
                         </Button>

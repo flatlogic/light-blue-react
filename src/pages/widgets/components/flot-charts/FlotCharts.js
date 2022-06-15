@@ -8,7 +8,8 @@ import {
 import HighchartsReact from 'highcharts-react-official'
 
 import Widget from '../../../../components/Widget';
-import s from './FlotCharts.module.scss';  
+import s from './FlotCharts.module.scss';
+import Highcharts from "highcharts";
 
 class FlotCharts extends React.PureComponent {
 
@@ -115,7 +116,7 @@ class FlotCharts extends React.PureComponent {
             </div>
           </div>
           <div className={`${s.chart}`}>
-            <HighchartsReact options={{...options, series: this.generateRandomData([{
+            <HighchartsReact highcharts={Highcharts} options={{...options, series: this.generateRandomData([{
                 name: 'Visitors', color: '#1870DC',
               }, {
                 name: 'Charts', color: '#58D777',
@@ -166,13 +167,15 @@ class FlotCharts extends React.PureComponent {
             </div>
           </div>
           <div className={`${s.chart}`}>
-            <HighchartsReact options={{
-              ...options,
-              series: this.generateRandomData([{
-                name: 'Controllers', color: '#58D777',
-              }, {
-                name: 'Scopes', color: '#F45722',
-              }])
+            <HighchartsReact
+              highcharts={Highcharts}
+              options={{
+                ...options,
+                series: this.generateRandomData([{
+                  name: 'Controllers', color: '#58D777',
+                }, {
+                  name: 'Scopes', color: '#F45722',
+                }])
             }} />
           </div>
         </Widget>
