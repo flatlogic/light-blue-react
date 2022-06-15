@@ -10,9 +10,9 @@ import secondSlide from '../../../images/slides/sl2.jpg';
 import thirdSlide from '../../../images/slides/sl3.jpg';
 
 const carouselItems = [
-  { src: firstSlide, caption: '' },
-  { src: secondSlide, caption: '' },
-  { src: thirdSlide, caption: '' },
+  { src: firstSlide, caption: 'Slide 1', key: 1, },
+  { src: secondSlide, caption: 'Slide 2', key: 2, },
+  { src: thirdSlide, caption: 'Slide 3', key: 3, },
 ];
 
 const Carousel = () => (
@@ -24,7 +24,7 @@ const Carousel = () => (
     </p>
     <Row>
       <Col>
-        <UncontrolledCarousel captionTex={null} items={carouselItems} />
+        <UncontrolledCarousel items={carouselItems} />
       </Col>
     </Row>
   </div>

@@ -515,7 +515,7 @@ class Elements extends React.Component {
                     <InputGroupText>
                       <i className="fa fa-github-alt" />
                     </InputGroupText>
-                    <Input className="input-transparent" id="prepended-input" type="test" bsSize="16" placeholder="First Name" />
+                    <Input className="input-transparent" id="prepended-input2" type="test" bsSize="16" placeholder="First Name" />
                   </InputGroup>
 
                 </FormGroup>
@@ -525,7 +525,7 @@ class Elements extends React.Component {
                     <InputGroupText size="lg">
                       <i className="fa fa-bars" />
                     </InputGroupText>
-                    <Input className="input-transparent" id="prepended-input" type="text" bsSize="16" placeholder="Username" />
+                    <Input className="input-transparent" id="prepended-input3" type="text" bsSize="16" placeholder="Username" />
                   </InputGroup>
 
                 </FormGroup>

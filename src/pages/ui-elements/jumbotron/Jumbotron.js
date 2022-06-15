@@ -7,7 +7,7 @@ import {
 } from 'reactstrap';
 
 const Jumb = () => (
-  <div class={'container-fluid'}>
+  <div className={'container-fluid'}>
     <div className="jumbotron overflow-auto">
       <Container fluid>
         <h1 className="display-3">Fluid jumbotron</h1>

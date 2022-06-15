@@ -206,7 +206,7 @@ class Buttons extends React.Component {
                   of a parent— by adding <code>d-grid</code> to <code>wrapper</code> parent.
                   Great for menu & social buttons.
                 </p>
-                <div class="d-grid">
+                <div className="d-grid">
                   <Button color="info" className="mb-3">Block Button</Button>
                   <Button color="default" className="mb-3">Show Menu &nbsp;&nbsp;&nbsp;<i
                     className="fa fa-bars"

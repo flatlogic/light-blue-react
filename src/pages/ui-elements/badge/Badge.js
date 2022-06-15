@@ -26,7 +26,7 @@ const Badges = () => (
           <h3>Example heading <Badge color="warning">Warning</Badge></h3>
           <h4>Example heading <Badge color="success">Success</Badge></h4>
           <h5>Example heading <Badge color="danger">Danger</Badge></h5>
-          <h6>Example heading <Badge color="secondary">Secondary</Badge></h6>
+          <h6>Example heading <Badge color="secondary" className={"text-dark"}>Secondary</Badge></h6>
           <p>Badges can be used as part of links or buttons to provide a counter.</p>
           <Button color="primary">Notifications <Badge color="danger">4</Badge></Button>
         </Widget>
@@ -45,8 +45,8 @@ const Badges = () => (
           <Badge className="me-2 mb-md" color="warning" pill>Warning</Badge>
           <Badge className="me-2 mb-md" color="success" pill>Success</Badge>
           <Badge className="me-2 mb-md" color="danger" pill>Danger</Badge>
-          <Badge className="me-2 mb-md" color="secondary" pill>Secondary</Badge>
-          <Badge className="me-2 mb-md" color="light" pill>Light</Badge>
+          <Badge className="me-2 mb-md text-dark" color="secondary" pill>Secondary</Badge>
+          <Badge className="me-2 mb-md text-dark" color="light" pill>Light</Badge>
           <Badge className="me-2 mb-md" color="dark" pill>Dark</Badge>
         </Widget>
         <Widget
@@ -62,8 +62,8 @@ const Badges = () => (
           <Badge className="me-2 mb-md text-decoration-none" href="#" color="warning">Warning</Badge>
           <Badge className="me-2 mb-md text-decoration-none" href="#" color="success">Success</Badge>
           <Badge className="me-2 mb-md text-decoration-none" href="#" color="danger">Danger</Badge>
-          <Badge className="me-2 mb-md text-decoration-none" href="#" color="secondary">Secondary</Badge>
-          <Badge className="me-2 mb-md text-decoration-none" href="#" color="light">Light</Badge>
+          <Badge className="me-2 mb-md text-decoration-none text-dark" href="#" color="secondary">Secondary</Badge>
+          <Badge className="me-2 mb-md text-decoration-none text-dark" href="#" color="light">Light</Badge>
           <Badge className="me-2 mb-md text-decoration-none" href="#" color="dark">Dark</Badge>
         </Widget>
       </Col>

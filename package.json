@@ -195,5 +195,8 @@
     "webpack-dev-server": "3.11.2",
     "webpack-manifest-plugin": "2.2.0",
     "workbox-webpack-plugin": "4.3.1"
+  },
+  "resolutions": {
+    "react-dom": "17.0.0"
   }
 }

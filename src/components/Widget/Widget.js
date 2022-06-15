@@ -289,7 +289,7 @@ class Widget extends React.Component {
               >
                 <i className="glyphicon glyphicon-cog" />
               </DropdownToggle>
-              <DropdownMenu className="bg-widget-transparent" right>
+              <DropdownMenu className="bg-widget-transparent">
                 <DropdownItem onClick={this.handleReload} title="Reload">
                   Reload &nbsp;&nbsp;
                   <span className="badge rounded-pill bg-success animate__animated animate__bounceIn">
