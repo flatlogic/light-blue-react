@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from "reactstrap";
 import Widget from "../../../../components/Widget";
+import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
 export default class RevenueChart extends PureComponent {
@@ -146,7 +147,7 @@ export default class RevenueChart extends PureComponent {
           </Row>
         }
       >
-       <HighchartsReact options={this.chartData()} />
+       <HighchartsReact highcharts={Highcharts} options={this.chartData()} />
       </Widget>
     );
   }

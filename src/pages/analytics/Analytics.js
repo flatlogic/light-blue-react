@@ -11,6 +11,7 @@ import TaskContainer from './components/TaskContainer/TaskContainer';
 import BigStat from './components/BigStat/BigStat';
 import TableContainer from './components/TableContainer/TableContainer';
 import Calendar from '../dashboard/components/calendar/Calendar';
+import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
 import mock from './mock';
@@ -165,7 +166,7 @@ class Analytics extends Component {
                     fetchingData={isReceiving}
                     title={<h5>Revenue Breakdown</h5>}
                   >
-                    <HighchartsReact options={this.donut()} />
+                    <HighchartsReact highcharts={Highcharts} options={this.donut()} />
                   </Widget>
                 </div>
               </Col>

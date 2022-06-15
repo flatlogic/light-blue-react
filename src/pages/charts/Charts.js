@@ -102,7 +102,7 @@ class Charts extends React.Component {
                 title={<h5>Highcharts <span className='fw-semi-bold'>Line Chart</span></h5>}
                 close collapse
               >
-                <HighchartsReact options={cd.highcharts.mixed}/>
+                <HighchartsReact highcharts={Highcharts} options={cd.highcharts.mixed}/>
                 <h5 className="mt">Interactive <span className="fw-semi-bold">Sparklines</span></h5>
                 <Row className="mt">
                   <Col md={6} xs={12}>
@@ -174,7 +174,7 @@ class Charts extends React.Component {
                     title={<h5>Highcharts <span className="fw-semi-bold">Live Chart</span></h5>}
                     close collapse
                   >
-                    <HighchartsReact options={ld} />
+                    <HighchartsReact highcharts={Highcharts} options={ld} />
                   </Widget>
                 </Col>
               </Row>
