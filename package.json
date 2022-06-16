@@ -108,6 +108,7 @@
     "react-dropzone": "^11.7.1",
     "react-google-maps": "^9.4.5",
     "react-images": "0.5.19",
+    "react-joyride": "^2.3.0",
     "react-maskedinput": "^4.0.1",
     "react-mde": "^11.5.0",
     "react-redux": "7.2.8",

@@ -54,8 +54,11 @@ import UserListPage from '../Users/list/UsersListPage';
 import UserViewPage from '../Users/view/UsersViewPage';
 import ChangePasswordFormPage from '../Users/changePassword/ChangePasswordFormPage';
 
+import { DashboardThemes, SidebarTypes } from '../../reducers/layout';
+
 import Header from '../Header';
 import Sidebar from '../Sidebar';
+import Helper from '../Helper';
 import BreadcrumbHistory from '../BreadcrumbHistory';
 import { openSidebar, closeSidebar } from '../../actions/navigation';
 import s from './Layout.module.scss';
@@ -71,6 +74,7 @@ class Layout extends React.Component {
   static defaultProps = {
     sidebarStatic: false,
     sidebarOpened: false,
+    dashboardTheme: DashboardThemes.DARK
   };
   constructor(props) {
     super(props);
@@ -100,6 +104,7 @@ class Layout extends React.Component {
       <div
         className={[
           s.root,
+          `dashboard-${(localStorage.getItem("sidebarType") === SidebarTypes.TRANSPARENT) ? "light" : localStorage.getItem("dashboardTheme")}`,
           'sidebar-' + this.props.sidebarPosition,
           'sidebar-' + this.props.sidebarVisibility,
             `dashboard-${this.props.dashboardTheme}`
@@ -108,7 +113,7 @@ class Layout extends React.Component {
         <div className={s.wrap}>
           <Header />
           {/* <Chat chatOpen={this.state.chatOpen} /> */}
-          {/* <Helper /> */}
+         <Helper />
           <Sidebar />
           <Hammer onSwipe={this.handleSwipe}>
             <main className={s.content}>
