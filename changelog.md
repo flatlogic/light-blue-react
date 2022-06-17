@@ -1,5 +1,10 @@
 # Changelog
 
+## [8.2.0] - 17.06.2022
+- Updated Bootstrap/Reactstrap
+- Add theme swicther
+- Updated dependencies
+
 ## [8.1.6] - 13.05.2021
 - Updated blocks position in Typography, Form Validations, LB Packages, 
 - Products Grid: Customize dropdowns in E-Commerce 
