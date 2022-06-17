@@ -6,10 +6,6 @@ import { connect } from 'react-redux';
 import Joyride, { STATUS } from 'react-joyride';
 import { DashboardThemes } from '../../reducers/layout';
 import {
-  changeTheme,
-  changeSidebarColor,
-  navbarTypeToggle,
-  sidebarTypeToggle,
   changeThemeColor
 } from '../../actions/layout';
 import CustomColorPicker from '../ColorPicker';
