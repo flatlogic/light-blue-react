@@ -1,10 +1,12 @@
 .auth-page {
   padding-top: 10vh;
   height: 100vh;
+  background: $main-gradient;
 }
 
 .widget-auth {
   max-width: 385px;
+  background: $widget-bg;
 
   h1,
   h2,
