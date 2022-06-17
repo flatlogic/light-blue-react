@@ -4,8 +4,14 @@ import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Joyride, { STATUS } from 'react-joyride';
-import { DashboardThemes, SidebarTypes, NavbarTypes } from '../../reducers/layout';
-import { changeTheme, changeSidebarColor, changeNavbarColor, navbarTypeToggle, sidebarTypeToggle } from '../../actions/layout';
+import { DashboardThemes } from '../../reducers/layout';
+import {
+  changeTheme,
+  changeSidebarColor,
+  navbarTypeToggle,
+  sidebarTypeToggle,
+  changeThemeColor
+} from '../../actions/layout';
 import CustomColorPicker from '../ColorPicker';
 import config from '../../config';
 
@@ -84,33 +90,14 @@ class Helper extends Component {
     });
   };
 
-  changeTheme = (state) => {
-    localStorage.setItem("dashboardTheme", state)
-    this.props.dispatch(changeTheme(state));
-    this.props.dispatch(changeSidebarColor(state))
-  };
-
-  navbarStateToggle = (state) => {
-    localStorage.setItem("navbarType", state)
-    this.props.dispatch(navbarTypeToggle(state))
-  }
-
-  sidebarStateToggle = (state) => {
-    localStorage.setItem("sidebarType", state)
-    this.props.dispatch(sidebarTypeToggle(state))
-  }
-
   updateColor = (value) => {
-    localStorage.setItem("navbarColor", value)
-    this.props.dispatch(changeNavbarColor(value))
+    localStorage.setItem("themeColor", value)
+    this.props.dispatch(changeThemeColor(value))
   }
 
   render() {
     const { isOpened } = this.state;
-    const navbarColor = localStorage.getItem("navbarColor")
-    const sidebarColor = localStorage.getItem("dashboardTheme")
-    const navbarType = localStorage.getItem("navbarType")
-    const sidebarType = localStorage.getItem("sidebarType")
+    const themeColor = localStorage.getItem("themeColor")
 
     return (
       <div className={cx(s.themeHelper, { [s.themeHelperOpened]: isOpened })}>
@@ -190,7 +177,7 @@ class Helper extends Component {
             <h5 className="mt-4 navbar-color-picker">Theme Color</h5>
             <CustomColorPicker 
               colors={config.app.colors}
-              activeColor={navbarColor}
+              activeColor={themeColor}
               updateColor={this.updateColor}
               customizationItem={"navbar"}
             />

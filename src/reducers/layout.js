@@ -1,7 +1,7 @@
 import { 
   CHANGE_THEME,
   CHANGE_SIDEBAR_COLOR,
-  CHANGE_NAVBAR_COLOR,
+  CHANGE_THEME_COLOR,
   NAVBAR_TYPE_TOGGLE,
   SIDEBAR_TYPE_TOGGLE
 } from '../actions/layout';
@@ -36,7 +36,7 @@ Object.freeze(LayoutComponents);
 const defaultState = {
   dashboardTheme: DashboardThemes.DARK,
   sidebarColor: DashboardThemes.DARK,
-  navbarColor:  config.app.colors.light,
+  themeColor:  config.app.colors.light,
   navbarType: NavbarTypes.STATIC,
   sidebarType: SidebarTypes.SOLID
 };
@@ -53,10 +53,10 @@ export default function layoutReducer(state = defaultState, action) {
         ...state,
         sidebarColor: action.payload
       };
-    case CHANGE_NAVBAR_COLOR:
+    case CHANGE_THEME_COLOR:
       return {
         ...state,
-        navbarColor: action.payload
+        themeColor: action.payload
       };
     case NAVBAR_TYPE_TOGGLE: 
       return {

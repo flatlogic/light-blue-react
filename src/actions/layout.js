@@ -1,6 +1,6 @@
 export const CHANGE_THEME = 'CHANGE_THEME';
 export const CHANGE_SIDEBAR_COLOR = 'CHANGE_SIDEBAR_COLOR';
-export const CHANGE_NAVBAR_COLOR = 'CHANGE_NAVBAR_COLOR';
+export const CHANGE_THEME_COLOR = 'CHANGE_THEME_COLOR';
 export const NAVBAR_TYPE_TOGGLE = 'NAVBAR_TYPE_TOGGLE';
 export const SIDEBAR_TYPE_TOGGLE = 'SIDEBAR_TYPE_TOGGLE';
 
@@ -18,9 +18,9 @@ export function changeSidebarColor(payload) {
   };
 }
 
-export function changeNavbarColor(payload) {
+export function changeThemeColor(payload) {
   return {
-    type: CHANGE_NAVBAR_COLOR,
+    type: CHANGE_THEME_COLOR,
     payload,
   };
 }

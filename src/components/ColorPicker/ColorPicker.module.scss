@@ -3,10 +3,11 @@
 .colorsList {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   .colorBox {
-    min-width: 25px;
-    height: 25px;
+    min-width: 30px;
+    height: 30px;
     border: 1px solid $border-color;
     border-radius: 0;
     cursor: pointer;
