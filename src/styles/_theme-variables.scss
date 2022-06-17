@@ -3,6 +3,50 @@
   --important-notification-color: #f55d5d;
   --badge-item: #ffffff;
   --update-notification-color: #FD5F00;
+
+  .theme-333964 {
+    --background: radial-gradient(farthest-side ellipse at 10% 0, #333867 20%, #17193B);
+    --widget-bg: rgba(0,0,0,.24);
+    --sidebar-list-color: rgba(18, 20, 43, 0.42);
+    --widget-shadow: rgba(4, 7, 30, 0.4);
+    --text-color: rgba(white,.9);
+  }
+
+  .theme-0A0417 {
+    --background: radial-gradient(farthest-side ellipse at 10% 0, #0A0417 20%, #0D1635);
+    --widget-bg: linear-gradient(135deg, #2B253C 0%, rgba(43, 37, 60, 0.64) 100%);
+    --sidebar-list-color: #2B253C;
+    --text-color: rgba(white,.9);
+  }
+
+  .theme-4A4657 {
+    --background: radial-gradient(farthest-side ellipse at 10% 0, #0A0417 20%, #0D1635);
+    --widget-bg: linear-gradient(135deg, #222231 0%, rgba(34, 33, 52, 0.78) 100%);
+    --sidebar-list-color: #222230;
+    --text-color: rgba(white,.9);
+  }
+
+  .theme-3A3847 {
+    --background: radial-gradient(farthest-side ellipse at 10% 0, #0A0417 20%, #0D1635);
+    --widget-bg: linear-gradient(135deg, #4B4E5F 0%, rgba(38, 40, 55, 0.87) 100%);
+    --sidebar-list-color: #24232F;
+    --text-color: rgba(white,.9);
+  }
+
+  .theme-3846AA {
+    --background: radial-gradient(farthest-side ellipse at 10% 0, #3846AA 20%, #0B0D2C);
+    --widget-bg: linear-gradient(135deg, rgba(101, 114, 207, 0.63) 0%, rgba(32, 38, 82, 0) 100%);
+    --sidebar-list-color: #25307E;
+    --text-color: rgba(white,.9);
+  }
+
+  .theme-3390C3 {
+    --background: linear-gradient(136.36deg, #3390C4 4.86%, #1D1252 94.85%);
+    --widget-bg: linear-gradient(172.98deg, rgba(255, 255, 255, 0.08) 1.49%, rgba(255, 255, 255, 0.0208) 99.64%);
+    --sidebar-list-color: rgba(41, 85, 142, 0.5);
+    --text-color: rgba(white,.9);
+  }
+
   .dashboard-light {
     --sidebar-item-active: #6C757D;
     --logo-color: #6C757D;
@@ -14,132 +58,15 @@
 
     --widget-shadow-color: 153, 187, 221;
 
-    --navbar-bg: #f9fbfd; // $body-bg
+    --navbar-bg: #f9fbfd;
     --navbar-shadow: none;
-  }
-
-  .dashboard-dark {
-    --logo-color: $white;
-
-    --sidebar-bg-color: #002B49;
-    --sidebar-color: #F6F6E9;
-    --sidebar-action-bg: #042338;
-    --sidebar-item-active: #F6F6E9;
-    --sidebar-nav-title-color: #dedede;
-
-    --widget-shadow-color: 115, 162, 208;
-
-    --navbar-bg: $white;
-    --navbar-shadow: 0 15px 20px -20px rgba(var(--widget-shadow-color), 0.1), 0 0 15px rgba(var(--widget-shadow-color), 0.06);
-  }
-
-  .dashboard-sea {
-    --logo-color: $white;
-    --sidebar-item-active: #F6F6E9;
-    --sidebar-bg-color: #004472;
-    --sidebar-color: #F6F6E9;
-    --sidebar-action-bg: #00395F;
-
-    --sidebar-nav-title-color: #dedede;
-
-    --widget-shadow-color: 115, 162, 208;
-
-    --navbar-bg: $white;
-    --navbar-shadow: 0 15px 20px -20px rgba(var(--widget-shadow-color), 0.1), 0 0 15px rgba(var(--widget-shadow-color), 0.06);
-  }
-
-  .dashboard-sky {
-    --logo-color: $white;
-    --sidebar-item-active: #004472;
-    --sidebar-bg-color: #E9EBEF;
-    --sidebar-color: #004472;
-    --sidebar-action-bg: #DBDEE4;
-
-    --sidebar-nav-title-color: #004472;
-
-    --widget-shadow-color: 115, 162, 208;
-
-    --navbar-bg: $white;
-    --navbar-shadow: 0 15px 20px -20px rgba(var(--widget-shadow-color), 0.1), 0 0 15px rgba(var(--widget-shadow-color), 0.06);
-  }
-
-  .dashboard-wave {
-    --logo-color: $white;
-    --sidebar-item-active: #004472;
-    --sidebar-bg-color: #D1E7F5;
-    --sidebar-color: #004472;
-    --sidebar-action-bg: #BEDDF2;
-
-    --sidebar-nav-title-color: #004472;
-
-    --widget-shadow-color: 115, 162, 208;
-
-    --navbar-bg: $white;
-    --navbar-shadow: 0 15px 20px -20px rgba(var(--widget-shadow-color), 0.1), 0 0 15px rgba(var(--widget-shadow-color), 0.06);
-  }
-
-  .dashboard-rain {
-    --logo-color: $white;
-    --sidebar-item-active: #004472;
-    --sidebar-bg-color: #CCDDE9;
-    --sidebar-color: #004472;
-    --sidebar-action-bg: #BACEDC;
-
-    --sidebar-nav-title-color: #004472;
-
-    --widget-shadow-color: 115, 162, 208;
-
-    --navbar-bg: $white;
-    --navbar-shadow: 0 15px 20px -20px rgba(var(--widget-shadow-color), 0.1), 0 0 15px rgba(var(--widget-shadow-color), 0.06);
-  }
-
-  .dashboard-middle {
-    --logo-color: $white;
-    --sidebar-item-active: #004472;
-    --sidebar-bg-color: #D7DFE6;
-    --sidebar-color: #004472;
-    --sidebar-action-bg: #BDC9D4;
-
-    --sidebar-nav-title-color: #004472;
-
-    --widget-shadow-color: 115, 162, 208;
-
-    --navbar-bg: $white;
-    --navbar-shadow: 0 15px 20px -20px rgba(var(--widget-shadow-color), 0.1), 0 0 15px rgba(var(--widget-shadow-color), 0.06);
-  }
-
-  .dashboard-black {
-    --logo-color: $white;
-    --sidebar-item-active: #F6F6E9;
-    --sidebar-bg-color: #13191D;
-    --sidebar-color: #F6F6E9;
-    --sidebar-action-bg: #080D0F;
-    --sidebar-nav-title-color: #F6F6E9;
-
-    --widget-shadow-color: 115, 162, 208;
-
-    --navbar-bg: $white;
-    --navbar-shadow: 0 15px 20px -20px rgba(var(--widget-shadow-color), 0.1), 0 0 15px rgba(var(--widget-shadow-color), 0.06);
-  }
-
-  .dashboard-salat {
-    --logo-color: $white;
-    --sidebar-item-active: #F6F6E9;
-    --important-notification-color: #fd5f00;
-    --sidebar-bg-color: #20AE8C;
-    --sidebar-color: #F6F6E9;
-    --sidebar-action-bg: #119475;
-    --update-notification-color: #004472;
-    --sidebar-nav-title-color: #dedede;
-
-    --widget-shadow-color: 115, 162, 208;
-
-    --navbar-bg: $white;
-    --navbar-shadow: 0 15px 20px -20px rgba(var(--widget-shadow-color), 0.1), 0 0 15px rgba(var(--widget-shadow-color), 0.06);
   }
 
   // dependable variables
   .light-blue-dashboard {
+    --widget-bg-color: var(--widget-bg);
+    --background-color: var(--background);
+    --sidebar-color: var(--sidebar-list-color);
     --badge-item-color: var(--badge-item);
     --important-notification: var(--important-notification-color);
     --update-notification: var(--update-notification-color);
@@ -147,6 +74,7 @@
     --chat-sidebar-bg-color: var(--sidebar-bg-color);
     --sidebar-progress-bg-color: var(--sidebar-action-bg);
     --sidebar-item-hover-bg-color: var(--sidebar-action-bg);
-    --widget-shadow: 0 23px 20px -20px rgba(var(--widget-shadow-color), 0.1), 0 0 15px rgba(var(--widget-shadow-color), 0.06);
+    --widget-shadow-color: var(--widget-shadow);
+    --main-text-color: var(--text-color)
   }
 }

@@ -11,7 +11,7 @@ import './ListGroups.scss';
 
 const SortableItem = SortableElement(({ value }) => <li className="list-group-item bg-widget-transparent">
   <i className="fa fa-sort" />
-  <button className="close flex-last ml-auto" data-dismiss="alert">&times;</button>
+  <button className="close flex-last mx-3" data-dismiss="alert">&times;</button>
   &nbsp;&nbsp;&nbsp; {value.id} &nbsp;&nbsp;&nbsp;
   {value.text}
 </li>);

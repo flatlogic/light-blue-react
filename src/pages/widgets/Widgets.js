@@ -13,7 +13,7 @@ import YearsMap from './components/years-map/YearsMap';
 import FlotCharts from './components/flot-charts/FlotCharts';
 import NasdaqSparkline from './components/nasdaq-sparkline-widget/nasdaqSparkline';
 import Skycon from '../../components/Skycon/Skycon';
-import { Input, InputGroup, InputGroupAddon, Button } from 'reactstrap';
+import { Input, InputGroup, Button } from 'reactstrap';
 
 import s from './WidgetsMetro.module.scss';
 import './Widgets.scss';
@@ -242,7 +242,7 @@ class Widgets extends React.Component {
                 </ul>
                 <ul className="post-comments mb-0 mt-2">
                   <li className={s.borderTop}>
-                    <span className="thumb-xs avatar pull-left mr-sm">
+                    <span className="thumb-xs avatar pull-left me-2">
                       <img className="rounded-circle" src={peopleA1} alt="..." />
                     </span>
                     <div className="comment-body">
@@ -253,13 +253,13 @@ class Widgets extends React.Component {
                     </div>
                   </li>
                   <li className={s.borderTop}>
-                    <span className="thumb-xs avatar pull-left mr-sm">
+                    <span className="thumb-xs avatar pull-left me-2">
                       <img className="rounded-circle" src={avatar} alt="..." />
                     </span>
                     <div className="comment-body">
                       <InputGroup size="sm">
                         <Input className="form-control bg-custom-dark border-0" placeholder="Your comment" />
-                        <InputGroupAddon addonType="append"><Button color="subtle-blue">Send</Button></InputGroupAddon>
+                        <Input ><Button color="subtle-blue">Send</Button></Input>
                       </InputGroup>
                     </div>
                   </li>
@@ -344,8 +344,8 @@ class Widgets extends React.Component {
                 <h4 className="title">
                   <span className="fw-normal">Sunnyvale</span>, CA
                 </h4>
-                <div className="info text-right">
-                  <i className="fa fa-map-marker h1 m-0 mr-xs" />
+                <div className="info text-end">
+                  <i className="fa fa-map-marker h1 m-0 me-1" />
                   <h6 className="m-0 mt-xs">FLORIDA, USA</h6>
                   <p className="fs-sm">9:41 am</p>
                 </div>
@@ -396,21 +396,21 @@ class Widgets extends React.Component {
                       <h6 className="text-white fw-normal m-t-1">FRIDAY</h6>
                     </div>
                     <div className="col-7">
-                      <p className="value0 text-danger mt-n-xs mr-n-xs">
+                      <p className="value0 text-danger mt-n-xs me-n-xs">
                         33&deg;
                       </p>
                       <p className="mt-n-sm m-b-0 fw-normal fs-sm text-muted">WINDY</p>
                       <div className="row mt-n-xs mb-xs">
                         <div className="col-6 p-0">
                           <Skycon icon="WIND" color="#999" width="20" height="20" />
-                          <div className="d-inline-block ml-1">
+                          <div className="d-inline-block ms-1">
                             <p className="value6">4</p>
                             <p className="fs-sm m-0 mt-n-xs text-muted fw-normal">MPS</p>
                           </div>
                         </div>
                         <div className="col-6 p-0">
                           <Skycon icon="RAIN" color="#999" width="20" height="20" />
-                          <div className="d-inline-block ml-1">
+                          <div className="d-inline-block ms-1">
                             <p className="value6">52</p>
                             <p className="fs-sm m-0 mt-n-xs text-muted fw-normal">MM</p>
                           </div>
@@ -424,7 +424,7 @@ class Widgets extends React.Component {
                 <Widget className="p-0 text-center">
                   <div className="row m-0">
                     <div className="col-7 bg-success btlr bblr">
-                      <p className="value0 text-white mt-sm mr-n-xs">
+                      <p className="value0 text-white mt-sm me-n-xs">
                         20&deg;
                       </p>
                       <p className="text-white fw-normal d-inline-block mb">SUNDAY</p>
@@ -588,7 +588,7 @@ class Widgets extends React.Component {
               <footer className="bg-widget-transparent bt">
                   <InputGroup size="sm">
                       <Input className="form-control bg-custom-dark border-0" placeholder="Your message" />
-                      <InputGroupAddon addonType="append"><Button color="subtle-blue">Send</Button></InputGroupAddon>
+                      <Input><Button color="subtle-blue">Send</Button></Input>
                   </InputGroup>
               </footer>
             </Widget>

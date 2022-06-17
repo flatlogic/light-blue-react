@@ -127,7 +127,7 @@ class TabsAccordion extends React.Component {
           <Col md="6" xs="12">
             <div className="clearfix">
 
-              <Nav tabs className="float-leftt">
+              <Nav tabs className="float-start">
                 <NavItem className={s.customNavItem}>
                   <NavLink
                     className={classnames({ active: this.state.activeFirstTab === 'tab11' })}
@@ -183,8 +183,8 @@ class TabsAccordion extends React.Component {
                 <p>The same thing is for startups and ideas. If you have an idea right away after
                   it appears in your mind you should go and make a first step to implement
                   it. </p>
-                <div className="float-right">
-                  <Button color="inverse" className="mr-md">Cancel</Button>
+                <div className="float-end">
+                  <Button color="inverse" className="me-3">Cancel</Button>
                   <Button color="primary">Some button</Button>
                 </div>
                 <div className="clearfix"/>
@@ -197,8 +197,8 @@ class TabsAccordion extends React.Component {
                   easy to understand if text is lore ipsum.`}</p>
                 <div className="clearfix">
                   <div className="btn-toolbar">
-                    <Button color="default" className="mr-md ml-0">&nbsp;&nbsp;Check&nbsp;&nbsp;</Button>
-                    <Button color="primary" className="mr-md ml-0">&nbsp;&nbsp;Dance?&nbsp;&nbsp;</Button>
+                    <Button color="default" className="me-3 ms-0">&nbsp;&nbsp;Check&nbsp;&nbsp;</Button>
+                    <Button color="primary" className="me-3 ms-0">&nbsp;&nbsp;Dance?&nbsp;&nbsp;</Button>
                   </div>
                 </div>
               </TabPane>
@@ -278,8 +278,8 @@ class TabsAccordion extends React.Component {
                       easy to understand if text is lore ipsum.`}</p>
                     <div className="clearfix">
                       <div className="btn-toolbar">
-                        <Button color="danger" className="mr-md ml-0">&nbsp;&nbsp;Check&nbsp;&nbsp;</Button>
-                        <Button color="default" className="mr-md ml-0">&nbsp;&nbsp;Dance?&nbsp;&nbsp;</Button>
+                        <Button color="danger" className="me-3 ms-0">&nbsp;&nbsp;Check&nbsp;&nbsp;</Button>
+                        <Button color="default" className="me-3 ms-0">&nbsp;&nbsp;Dance?&nbsp;&nbsp;</Button>
                       </div>
                     </div>
                   </TabPane>
@@ -350,8 +350,8 @@ class TabsAccordion extends React.Component {
                       easy to understand if text is lore ipsum.`}</p>
                     <div className="clearfix">
                       <div className="btn-toolbar">
-                        <Button color="danger" className="mr-md ml-0">&nbsp;&nbsp;Check&nbsp;&nbsp;</Button>
-                        <Button color="default" className="mr-md ml-0">&nbsp;&nbsp;Dance?&nbsp;&nbsp;</Button>
+                        <Button color="danger" className="me-3 ms-0">&nbsp;&nbsp;Check&nbsp;&nbsp;</Button>
+                        <Button color="default" className="me-3 ms-0">&nbsp;&nbsp;Dance?&nbsp;&nbsp;</Button>
                       </div>
                     </div>
                   </TabPane>
@@ -409,7 +409,7 @@ class TabsAccordion extends React.Component {
                 {/* eslint-disable-next-line */}
                   <a className="accordion-toggle" role="button">
                     {element.title}
-                    <i className="fa fa-angle-down float-right" />
+                    <i className="fa fa-angle-down float-end" />
                   </a>
                 </div>
               </div>

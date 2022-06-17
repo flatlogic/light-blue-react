@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Container, Alert, Button, FormGroup, InputGroup, InputGroupAddon, Input, InputGroupText } from 'reactstrap';
+import { Container, Alert, Button, FormGroup, InputGroup, Input, InputGroupText } from 'reactstrap';
 import Widget from '../../../components/Widget';
 import { sendPasswordResetEmail } from '../../../actions/auth';
 
@@ -49,12 +49,12 @@ class Forgot extends React.Component {
                 }
                 <FormGroup className="mt">
                     <InputGroup className="input-group-no-border">
-                        <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                                <i className="la la-user text-white"/>
-                            </InputGroupText>
-                        </InputGroupAddon>
-                        <Input id="email" className="input-transparent pl-3" value={this.state.email} onChange={this.changeEmail} type="email"
+
+                        <InputGroupText>
+                            <i className="la la-user text-white"/>
+                        </InputGroupText>
+
+                        <Input id="email" className="input-transparent ps-3" value={this.state.email} onChange={this.changeEmail} type="email"
                                 required name="email" placeholder="Email"/>
                     </InputGroup>
                 </FormGroup>

@@ -5,8 +5,8 @@ html {
 
 body {
   overflow-x: hidden;
-  color: $text-color;
-  background: $main-gradient;
+  color: var(--main-text-color);
+  background: var(--background-color);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -17,7 +17,9 @@ body,
 #app {
   height: 100%;
 }
-
+a {
+  text-decoration: none;
+}
 a,
 .dropdown-item,
 .btn {

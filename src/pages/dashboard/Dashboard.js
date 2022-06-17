@@ -168,7 +168,7 @@ class Dashboard extends React.Component {
               <Progress color="success" value="60" className="bg-subtle-blue progress-xs" />
               <p>
                 <small>
-                  <span className="circle bg-default text-white mr-2">
+                  <span className="circle bg-default text-white me-2">
                     <i className="fa fa-chevron-up" />
                   </span>
                 </small>
@@ -198,7 +198,7 @@ class Dashboard extends React.Component {
               </div>
               <Progress color="danger" value="60" className="bg-subtle-blue progress-xs" />
               <p>
-                <small><span className="circle bg-default text-white mr-2"><i className="fa fa-chevron-down" /></span></small>
+                <small><span className="circle bg-default text-white me-2"><i className="fa fa-chevron-down" /></span></small>
                 <span className="fw-semi-bold">&nbsp;8% lower</span>
                 &nbsp;than last month
               </p>
@@ -225,7 +225,7 @@ class Dashboard extends React.Component {
               </div>
               <Progress color="bg-primary" value="60" className="bg-subtle-blue progress-xs" />
               <p>
-                <small><span className="circle bg-default text-white mr-2"><i className="fa fa-plus" /></span></small>
+                <small><span className="circle bg-default text-white me-2"><i className="fa fa-plus" /></span></small>
                 <span className="fw-semi-bold">&nbsp;8 734 higher</span>
                 &nbsp;than last month
               </p>
@@ -237,13 +237,13 @@ class Dashboard extends React.Component {
         <Row>
           <Col lg={4} xs={12}>
             <Widget
-              title={<h6><span className="badge badge-danger">New</span> Messages</h6>}
+              title={<h6><span className="badge bg-danger">New</span> Messages</h6>}
               refresh close
             >
               <div className="widget-body undo_padding">
                 <div className="list-group list-group-lg">
-                  <button className="list-group-item text-left">
-                    <span className="thumb-sm float-left mr">
+                  <button className="list-group-item text-start">
+                    <span className="thumb-sm float-start me-3">
                       <img className="rounded-circle" src={peopleA2} alt="..." />
                       <i className="status status-bottom bg-success" />
                     </span>
@@ -252,8 +252,8 @@ class Dashboard extends React.Component {
                       <p className="help-block text-ellipsis m-0">Hey! What&apos;s up? So many times since we</p>
                     </div>
                   </button>
-                  <button className="list-group-item text-left">
-                    <span className="thumb-sm float-left mr">
+                  <button className="list-group-item text-start">
+                    <span className="thumb-sm float-start me-3">
                       <img className="rounded-circle" src={peopleA4} alt="..." />
                       <i className="status status-bottom bg-success" />
                     </span>
@@ -263,8 +263,8 @@ class Dashboard extends React.Component {
                         proceed</p>
                     </div>
                   </button>
-                  <button className="list-group-item text-left">
-                    <span className="thumb-sm float-left mr">
+                  <button className="list-group-item text-start">
+                    <span className="thumb-sm float-start me-3">
                       <img className="rounded-circle" src={peopleA1} alt="..." />
                       <i className="status status-bottom bg-primary" />
                     </span>
@@ -273,8 +273,8 @@ class Dashboard extends React.Component {
                       <p className="help-block text-ellipsis m-0">Check my latest email plz!</p>
                     </div>
                   </button>
-                  <button className="list-group-item text-left">
-                    <span className="thumb-sm float-left mr">
+                  <button className="list-group-item text-start">
+                    <span className="thumb-sm float-start me-3">
                       <img className="rounded-circle" src={peopleA5} alt="..." />
                       <i className="status status-bottom bg-danger" />
                     </span>
@@ -306,7 +306,7 @@ class Dashboard extends React.Component {
               </div>
               <div className={`widget-table-overflow ${s.table}`}>
                 <Table striped size="sm">
-                  <thead className="no-bd">
+                  <thead>
                     <tr>
                       <th>
                         <div className="checkbox abc-checkbox">
@@ -336,8 +336,8 @@ class Dashboard extends React.Component {
                           <Label for="checkbox212" />
                         </div>
                       </td>
-                      <td>HP Core i7</td>
-                      <td className="text-align-right fw-semi-bold">$346.1</td>
+                      <td className={"text-white"}>HP Core i7</td>
+                      <td className="text-align-right fw-semi-bold text-white">$346.1</td>
                     </tr>
                     <tr>
                       <td>
@@ -370,11 +370,11 @@ class Dashboard extends React.Component {
               <Calendar />
               <div className="list-group fs-mini">
                 <button className="list-group-item text-ellipsis">
-                  <span className="badge badge-pill badge-primary float-right">6:45</span>
+                  <span className="badge rounded-pill bg-primary float-end">6:45</span>
                   Weed out the flower bed
                 </button>
                 <button className="list-group-item text-ellipsis">
-                  <span className="badge badge-pill badge-success float-right">9:41</span>
+                  <span className="badge rounded-pill bg-success float-end">9:41</span>
                   Stop world water pollution
                 </button>
               </div>

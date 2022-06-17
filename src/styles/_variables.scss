@@ -20,7 +20,7 @@ $font-size-larger:        1.1rem;
 $font-size-mini:          0.9rem;
 $font-size-index:         0.7rem;
 
-$font-family-base: 'Open Sans', sans-serif;
+$font-family-base: 'Montserrat', sans-serif;
 
 // Color system
 //
@@ -40,6 +40,7 @@ $gray-light: $gray-100 !default;
 
 $bg-custom-dark: #040620;
 $main-background: #1B1E3F;
+
 $main-gradient: radial-gradient(farthest-side ellipse at 10% 0, #333867 20%, #17193B);
 
 $lime:       #8cbf26 !default;
@@ -226,7 +227,7 @@ $btn-default-border: $addition-bg !default;
 
 // Table
 $table-border-width: 1px;
-$table-accent-bg: $widget-bg-color !default;
+//$table-accent-bg: $widget-bg-color !default;
 $table-border-color: rgba(51,51,51,0.35) !default;
 
 // Pagination
@@ -266,3 +267,13 @@ $screen-lg-height: 670px !default;
 // Awesome Checkbox
 // ------------------------
 $awesome-checkbox-default-color: #eee !default;
+
+// Bootstrap 4 var
+$min-contrast-ratio: 2.5;
+$emphasized-link-hover-darken-percentage: 15% !default;
+
+
+//== Theme Helper
+//
+
+$helper-width: 300px;

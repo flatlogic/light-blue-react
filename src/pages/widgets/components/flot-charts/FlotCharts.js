@@ -8,7 +8,8 @@ import {
 import HighchartsReact from 'highcharts-react-official'
 
 import Widget from '../../../../components/Widget';
-import s from './FlotCharts.module.scss';  
+import s from './FlotCharts.module.scss';
+import Highcharts from "highcharts";
 
 class FlotCharts extends React.PureComponent {
 
@@ -115,7 +116,7 @@ class FlotCharts extends React.PureComponent {
             </div>
           </div>
           <div className={`${s.chart}`}>
-            <HighchartsReact options={{...options, series: this.generateRandomData([{
+            <HighchartsReact highcharts={Highcharts} options={{...options, series: this.generateRandomData([{
                 name: 'Visitors', color: '#1870DC',
               }, {
                 name: 'Charts', color: '#58D777',
@@ -155,24 +156,26 @@ class FlotCharts extends React.PureComponent {
                   </p>
                 </div>
               </div>
-              <div className="col-md-3 text-right m-t-1">
+              <div className="col-md-3 text-end m-t-1">
                 <h6 className="text-light mb-xs">Inqueries</h6>
                 <p className="fw-semi-bold">73 at 14am</p>
               </div>
-              <div className="col-md-4 text-right m-t-1">
+              <div className="col-md-4 text-end m-t-1">
                 <h6 className="text-light mb-xs">Last Updated</h6>
                 <p className="fw-semi-bold">23.06.2013</p>
               </div>
             </div>
           </div>
           <div className={`${s.chart}`}>
-            <HighchartsReact options={{
-              ...options,
-              series: this.generateRandomData([{
-                name: 'Controllers', color: '#58D777',
-              }, {
-                name: 'Scopes', color: '#F45722',
-              }])
+            <HighchartsReact
+              highcharts={Highcharts}
+              options={{
+                ...options,
+                series: this.generateRandomData([{
+                  name: 'Controllers', color: '#58D777',
+                }, {
+                  name: 'Scopes', color: '#F45722',
+                }])
             }} />
           </div>
         </Widget>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Container, Alert, Button, FormGroup, InputGroup, InputGroupAddon, Input, InputGroupText } from 'reactstrap';
+import { Container, Alert, Button, FormGroup, InputGroup, Input, InputGroupText } from 'reactstrap';
 import Widget from '../../../components/Widget';
 import { authError, resetPassword } from '../../../actions/auth';
 
@@ -85,24 +85,24 @@ class Reset extends React.Component {
                 }
                 <FormGroup>
                     <InputGroup className="input-group-no-border">
-                        <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                                <i className="la la-lock text-white"/>
-                            </InputGroupText>
-                        </InputGroupAddon>
-                        <Input id="password" className="input-transparent pl-3" value={this.state.password}
+
+                        <InputGroupText>
+                            <i className="la la-lock text-white"/>
+                        </InputGroupText>
+
+                        <Input id="password" className="input-transparent ps-3" value={this.state.password}
                                 onChange={this.changePassword} type="password"
                                 required name="password" placeholder="Password"/>
                     </InputGroup>
                 </FormGroup>
                 <FormGroup>
                     <InputGroup className="input-group-no-border">
-                        <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                                <i className="la la-lock text-white"/>
-                            </InputGroupText>
-                        </InputGroupAddon>
-                        <Input id="password" className="input-transparent pl-3" value={this.state.confirmPassword}
+
+                        <InputGroupText>
+                            <i className="la la-lock text-white"/>
+                        </InputGroupText>
+
+                        <Input id="password" className="input-transparent ps-3" value={this.state.confirmPassword}
                                 onChange={this.changeConfirmPassword} onBlur={this.checkPassword} type="password"
                                 required name="confirmPassword" placeholder="Confirm Password"/>
                     </InputGroup>

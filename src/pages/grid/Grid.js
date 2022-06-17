@@ -112,15 +112,15 @@ class Grid extends React.Component {
             >
               <div className="list-group list-group-lg">
               {this.state.gridData.shares.map(item => (
-                <button key={item.name} className={`list-group-item text-left ${item.extraClass}`}>
-                  <span className="thumb-sm mr">
+                <button key={item.name} className={`list-group-item text-start ${item.extraClass}`}>
+                  <span className="thumb-sm me-2">
                     <img className="rounded-circle" src={item.img} alt="..." />
                   </span>
                   <div>
                     <h6 className="m-0">{item.name}</h6>
                     <small className="text-muted">{item.comment}</small>
                   </div>
-                  <i className={`fa fa-circle ml-auto text-${item.type}`} />
+                  <i className={`fa fa-circle ms-auto text-${item.type}`} />
                 </button>                
               ))}
 
@@ -158,9 +158,9 @@ class Grid extends React.Component {
                     <strong>autoload</strong> may be set to an integer value. If set, for example, to 2000 will refresh widget every 2 seconds.
                   </p>
                   <div className="clearfix">
-                    <div className="btn-toolbar float-right">
+                    <div className="btn-toolbar float-end">
                       <button type="button" className="btn btn-default">Cancel</button>
-                      <button type="button" className="btn btn-success ml-3">&nbsp;Submit&nbsp;</button>
+                      <button type="button" className="btn btn-success ms-3">&nbsp;Submit&nbsp;</button>
                     </div>
                   </div>
                 </Form>
@@ -194,7 +194,7 @@ class Grid extends React.Component {
               updateWidgetData={this.updateWidgetData}
               widgetType="news"
               id="news-widget"
-              title={<div><h6> News <span className="badge badge-pill badge-success">17</span></h6>
+              title={<div><h6> News <span className="badge rounded-pill bg-success">17</span></h6>
                 <span className="text-muted">spinning refresh button & close prompt</span>
               </div>}
               customControls={true}

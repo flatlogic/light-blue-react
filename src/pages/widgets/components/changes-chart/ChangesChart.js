@@ -108,7 +108,7 @@ class ChangesChart extends React.Component {
               <p className="h4 m-0">18.7M</p>
               <p className="deemphasize">Shares Traded</p>
             </Col>
-            <Col xs={6} className="text-right">
+            <Col xs={6} className="text-end">
               <p className="h4 m-0">19.9B</p>
               <p className="deemphasize">Market Cap</p>
             </Col>
@@ -120,7 +120,7 @@ class ChangesChart extends React.Component {
               <p className="h3 m-0 text-success fw-semi-bold">+120.93</p>
               <p className="deemphasize">Yearly Change</p>
             </Col>
-            <Col xs={6} className="text-right">
+            <Col xs={6} className="text-end">
               <div
                 className="sparkline" ref={(r) => {
                   this.sparklineRef = r;

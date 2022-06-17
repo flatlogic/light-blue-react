@@ -113,12 +113,12 @@ class Register extends React.Component {
                             <FormGroup className="mt">
                                 <Label for="email">Email</Label>
                                 <InputGroup className="input-group-no-border">
-                                    <InputGroupAddon addonType="prepend">
-                                        <InputGroupText>
-                                            <i className="la la-user text-white"/>
-                                        </InputGroupText>
-                                    </InputGroupAddon>
-                                    <Input id="email" className="input-transparent pl-3" value={this.state.email}
+
+                                    <InputGroupText>
+                                        <i className="la la-user text-white"/>
+                                    </InputGroupText>
+
+                                    <Input id="email" className="input-transparent ps-3" value={this.state.email}
                                            onChange={this.changeEmail} type="email"
                                            required name="email" placeholder="Email"/>
                                 </InputGroup>
@@ -126,12 +126,12 @@ class Register extends React.Component {
                             <FormGroup>
                                 <Label for="password">Password</Label>
                                 <InputGroup className="input-group-no-border">
-                                    <InputGroupAddon addonType="prepend">
-                                        <InputGroupText>
-                                            <i className="la la-lock text-white"/>
-                                        </InputGroupText>
-                                    </InputGroupAddon>
-                                    <Input id="password" className="input-transparent pl-3" value={this.state.password}
+
+                                    <InputGroupText>
+                                        <i className="la la-lock text-white"/>
+                                    </InputGroupText>
+
+                                    <Input id="password" className="input-transparent ps-3" value={this.state.password}
                                            onChange={this.changePassword} type="password"
                                            required name="password" placeholder="Password"/>
                                 </InputGroup>
@@ -139,12 +139,10 @@ class Register extends React.Component {
                             <FormGroup>
                                 <Label for="confirmPassword">Confirm</Label>
                                 <InputGroup className="input-group-no-border">
-                                    <InputGroupAddon addonType="prepend">
-                                        <InputGroupText>
-                                            <i className="la la-lock text-white"/>
-                                        </InputGroupText>
-                                    </InputGroupAddon>
-                                    <Input id="confirmPassword" className="input-transparent pl-3" value={this.state.confirmPassword}
+                                    <InputGroupText>
+                                        <i className="la la-lock text-white"/>
+                                    </InputGroupText>
+                                    <Input id="confirmPassword" className="input-transparent ps-3" value={this.state.confirmPassword}
                                            onChange={this.changeConfirmPassword} onBlur={this.checkPassword} type="password"
                                            required name="confirmPassword" placeholder="Confirm"/>
                                 </InputGroup>

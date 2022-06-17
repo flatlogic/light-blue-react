@@ -36,7 +36,7 @@ class TooltipItem extends React.Component {
   render() {
     return (
       <span>
-        <Button className="mr-1" color="default" id={`Tooltip-${this.props.id}`}>
+        <Button className="me-1" color="default" id={`Tooltip-${this.props.id}`}>
           {this.props.item.text}
         </Button>
         <Tooltip

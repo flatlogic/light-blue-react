@@ -10,11 +10,9 @@ import {
   UncontrolledTooltip,
   UncontrolledButtonDropdown,
   InputGroup,
-  InputGroupAddon,
-  ButtonGroup,
   DropdownMenu,
   DropdownItem,
-  DropdownToggle,
+  DropdownToggle, InputGroupText,
 } from 'reactstrap';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
@@ -263,7 +261,9 @@ class Elements extends React.Component {
                       Prepended input</Label>
                     <Col md={7}>
                       <InputGroup>
-                        <InputGroupAddon addonType="prepend"><span className="input-group-text"><i className="fa fa-user" /></span></InputGroupAddon>
+                        <InputGroupText>
+                          <i className="fa fa-user" />
+                        </InputGroupText>
                         <Input className="input-transparent" id="prepended-input" type="test" bsSize="16" placeholder="Username" />
                       </InputGroup>
                     </Col>
@@ -274,7 +274,9 @@ class Elements extends React.Component {
                     </Label>
                     <Col md={7}>
                       <InputGroup>
-                        <InputGroupAddon addonType="prepend"><span className="input-group-text"><i className="fa fa-lock" /></span></InputGroupAddon>
+                        <InputGroupText>
+                          <i className="fa fa-lock" />
+                        </InputGroupText>
                         <Input
                           className="input-transparent"
                           id="password-field" type="password"
@@ -290,7 +292,7 @@ class Elements extends React.Component {
                     <Col md={7}>
                       <InputGroup>
                         <Input className="input-transparent" id="appended-input" bsSize="16" type="text" />
-                        <InputGroupAddon addonType="append">.00</InputGroupAddon>
+                        <InputGroupText>.00</InputGroupText>
                       </InputGroup>
                     </Col>
                   </FormGroup>
@@ -300,9 +302,9 @@ class Elements extends React.Component {
                     </Label>
                     <Col md={7}>
                       <InputGroup>
-                        <InputGroupAddon addonType="prepend">$</InputGroupAddon>
+                        <InputGroupText>$</InputGroupText>
                         <Input className="input-transparent" id="combined-input" bsSize="16" type="text" />
-                        <InputGroupAddon addonType="append">.00</InputGroupAddon>
+                        <InputGroupText>.00</InputGroupText>
                       </InputGroup>
                     </Col>
                   </FormGroup>
@@ -313,15 +315,15 @@ class Elements extends React.Component {
                     <Col md={7}>
                       <InputGroup className="input-group-transparent">
                         <Input className="input-transparent" id="transparent-input" type="text" />
-                        <InputGroupAddon addonType="append"><span className="input-group-text"><i className="fa fa-camera" /></span></InputGroupAddon>
+                        <InputGroupText><i className="fa fa-camera" /></InputGroupText>
                       </InputGroup>
                     </Col>
                   </FormGroup>
 
-                  <FormGroup row className="form-action bg-transparent pl-0">
+                  <FormGroup row className="form-action bg-transparent ps-0">
                     <Label md={4} />
                     <Col md={7}>
-                      <Button color="primary" type="submit" className="mr-md">Save Changes</Button>
+                      <Button color="primary" type="submit" className="me-4">Save Changes</Button>
                       <Button color="default">Cancel</Button>
                     </Col>
                   </FormGroup>
@@ -345,9 +347,7 @@ class Elements extends React.Component {
                         </Label>
                         <InputGroup>
                           <Input type="text" id="search-input1" />
-                          <InputGroupAddon addonType="append">
-                            <Button color="default">Search</Button>
-                          </InputGroupAddon>
+                          <Button color="default">Search</Button>
                         </InputGroup>
                       </FormGroup>
 
@@ -357,13 +357,9 @@ class Elements extends React.Component {
                         </Label>
                         <InputGroup>
                           <Input type="text" id="bar" />
-                          <InputGroupAddon addonType="append">
-                            <ButtonGroup>
-                              <Button color="danger"><i className="fa fa-pencil" /></Button>
-                              <Button color="warning"><i className="fa fa-plus" /></Button>
-                              <Button color="success"><i className="fa fa-refresh" /></Button>
-                            </ButtonGroup>
-                          </InputGroupAddon>
+                          <Button color="danger"><i className="fa fa-pencil" /></Button>
+                          <Button color="warning"><i className="fa fa-plus" /></Button>
+                          <Button color="success"><i className="fa fa-refresh" /></Button>
                         </InputGroup>
                       </FormGroup>
 
@@ -373,8 +369,7 @@ class Elements extends React.Component {
                         </Label>
                         <InputGroup>
                           <Input type="text" id="dropdown-appended" />
-                          <InputGroupAddon addonType="append">
-                            <UncontrolledButtonDropdown>
+                          <UncontrolledButtonDropdown>
                               <DropdownToggle caret color="success">
                                 Action
                               </DropdownToggle>
@@ -386,7 +381,6 @@ class Elements extends React.Component {
                                 <DropdownItem>Separated link</DropdownItem>
                               </DropdownMenu>
                             </UncontrolledButtonDropdown>
-                          </InputGroupAddon>
                         </InputGroup>
                       </FormGroup>
 
@@ -396,8 +390,7 @@ class Elements extends React.Component {
                         </Label>
                         <InputGroup>
                           <Input type="text" id="segmented-dropdown" />
-                          <InputGroupAddon addonType="append">
-                            <UncontrolledButtonDropdown>
+                          <UncontrolledButtonDropdown>
                               <Button color="warning">Action</Button>
                               <DropdownToggle
                                 caret color="warning"
@@ -410,8 +403,7 @@ class Elements extends React.Component {
                                 <DropdownItem divider />
                                 <DropdownItem>Separated link</DropdownItem>
                               </DropdownMenu>
-                            </UncontrolledButtonDropdown>
-                          </InputGroupAddon>
+                          </UncontrolledButtonDropdown>
                         </InputGroup>
                         <span className="help-block">Anything can be appended to the right</span>
                       </FormGroup>
@@ -422,8 +414,7 @@ class Elements extends React.Component {
                         </Label>
                         <InputGroup>
                           <Input type="text" id="type-dropdown-appended" />
-                          <InputGroupAddon addonType="append">
-                            <UncontrolledButtonDropdown>
+                          <UncontrolledButtonDropdown>
                               <DropdownToggle
                                 caret color="primary"
                                 className="dropdown-toggle-split"
@@ -442,7 +433,6 @@ class Elements extends React.Component {
                                 </DropdownItem>
                               </DropdownMenu>
                             </UncontrolledButtonDropdown>
-                          </InputGroupAddon>
                         </InputGroup>
                         <p className="help-block">
                           You can select some type of a field just right in the place.
@@ -464,8 +454,8 @@ class Elements extends React.Component {
                     </Col>
                   </Row>
 
-                  <FormGroup className="form-action bg-transparent pl-0">
-                    <Button color="primary" type="submit" className="mr-md">
+                  <FormGroup className="form-action bg-transparent ps-0">
+                    <Button color="primary" type="submit" className="me-4">
                       Save Changes
                     </Button>
                     <Button color="default">Cancel</Button>
@@ -520,28 +510,34 @@ class Elements extends React.Component {
                 </p>
                 <br />
                 <FormGroup>
+
                   <InputGroup>
-                    <InputGroupAddon addonType="prepend" className="bg-transparent">
-                      <span className="input-group-text"><i className="fa fa-github-alt" /></span>
-                    </InputGroupAddon>
-                    <Input type="text" placeholder="First Name" bsSize="16" />
+                    <InputGroupText>
+                      <i className="fa fa-github-alt" />
+                    </InputGroupText>
+                    <Input className="input-transparent" id="prepended-input2" type="test" bsSize="16" placeholder="First Name" />
                   </InputGroup>
+
                 </FormGroup>
                 <FormGroup>
-                  <InputGroup size="lg">
-                    <InputGroupAddon addonType="prepend">
-                      <span className="input-group-text"><i className="fa fa-bars" /></span>
-                    </InputGroupAddon>
-                    <Input className="input-transparent" type="text" placeholder="Username" bsSize="16" />
+
+                  <InputGroup>
+                    <InputGroupText size="lg">
+                      <i className="fa fa-bars" />
+                    </InputGroupText>
+                    <Input className="input-transparent" id="prepended-input3" type="text" bsSize="16" placeholder="Username" />
                   </InputGroup>
+
                 </FormGroup>
                 <FormGroup>
+
                   <InputGroup size="sm">
                     <Input type="text" placeholder="City" bsSize="16" />
-                    <InputGroupAddon addonType="prepend">
-                      <span className="bg-danger text-white input-group-text"><i className="fa fa-code-fork" /></span>
-                    </InputGroupAddon>
+                    <InputGroupText className={"bg-danger"}>
+                      <i className="fa fa-code-fork" />
+                    </InputGroupText>
                   </InputGroup>
+
                 </FormGroup>
               </Form>
             </Widget>
@@ -586,7 +582,7 @@ class Elements extends React.Component {
                       toolbarClassName={s.wysiwygToolbar}
                     />
                     <div className="text-md-right mt-xs">
-                      <Button color="danger" className="mr-md">Save</Button>
+                      <Button color="danger" className="me-4">Save</Button>
                       <Button color="default">Clear</Button>
                     </div>
                   </Col>
@@ -645,7 +641,7 @@ class Elements extends React.Component {
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
                         caret color="default"
-                        className="dropdown-toggle-split mr-xs"
+                        className="dropdown-toggle-split me-1"
                       >
                         {this.state.simpleSelectDropdownValue}&nbsp;
                       </DropdownToggle>
@@ -674,7 +670,7 @@ class Elements extends React.Component {
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
                         caret color="danger"
-                        className="dropdown-toggle-split mr-md"
+                        className="dropdown-toggle-split me-4"
                       >
                         {this.state.redSelectDropdownValue}&nbsp;
                       </DropdownToggle>
@@ -693,7 +689,7 @@ class Elements extends React.Component {
                     <UncontrolledButtonDropdown>
                       <DropdownToggle
                         caret color="warning"
-                        className="dropdown-toggle-split mr-md"
+                        className="dropdown-toggle-split me-4"
                       >
                         {this.state.orangeSelectDropdownValue}&nbsp;
                       </DropdownToggle>
@@ -748,7 +744,7 @@ class Elements extends React.Component {
                         caret color="default" size="lg"
                         className="dropdown-toggle-split"
                       >
-                        <span className="mr-5"> {this.state.bigSelectDropdownValue}</span>
+                        <span className="me-5"> {this.state.bigSelectDropdownValue}</span>
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem onClick={this.changeSelectDropdownBig}>
@@ -1000,9 +996,9 @@ class Elements extends React.Component {
                           viewMode="days"
                           timeFormat={false}
                         />
-                        <InputGroupAddon addonType="append">
-                          <span className="input-group-text"><i className="glyphicon glyphicon-th" /></span>
-                        </InputGroupAddon>
+                        <InputGroupText>
+                          <i className="glyphicon glyphicon-th" />
+                        </InputGroupText>
                       </div>
                     </Col>
                     <Col xs="6">
@@ -1012,9 +1008,9 @@ class Elements extends React.Component {
                           viewMode="time"
                           dateFormat={false}
                         />
-                        <InputGroupAddon addonType="append">
-                          <span className="input-group-text"><i className="glyphicon glyphicon-time" /></span>
-                        </InputGroupAddon>
+                        <InputGroupText>
+                          <i className="glyphicon glyphicon-time" />
+                        </InputGroupText>
                       </div>
                     </Col>
                   </Row>
@@ -1034,13 +1030,13 @@ class Elements extends React.Component {
                         type="text" onChange={this.changeColorInput} id="colorpickeri"
                         value={this.state.colorpickerInputValue}
                       />
-                      <InputGroupAddon addonType="append">
-                        <span className="input-group-text"><ColorPicker
+                      <InputGroupText>
+                        <ColorPicker
                           animation="slide-up"
                           color={this.state.colorpickerValue}
                           onChange={this.changeColorValue}
-                        /></span>
-                      </InputGroupAddon>
+                        />
+                      </InputGroupText>
                     </InputGroup>
                   </Label>
                 </FormGroup>
@@ -1267,11 +1263,11 @@ class Elements extends React.Component {
                           ))}
                         </div> : <span />}
                       </Label>
-                      {this.state.inputFiles.length === 0 ? <InputGroupAddon addonType="append">
+                      {this.state.inputFiles.length === 0 ? <InputGroup>
                         <Button type="button" color="default" className="btn-file">
                           <Label for="fileupload1">Select file</Label>
                         </Button>
-                      </InputGroupAddon> : <InputGroupAddon addonType="append">
+                      </InputGroup> : <InputGroup >
                         <Button type="button" color="default">
                           <Label for="fileupload1">Change file</Label>
                         </Button>
@@ -1281,7 +1277,7 @@ class Elements extends React.Component {
                         >
                           <Label>Remove file</Label>
                         </Button>
-                      </InputGroupAddon>}
+                      </InputGroup>}
 
                     </InputGroup>
                     <span className="help-block">Awesome file input plugin allows you to create a visually appealing

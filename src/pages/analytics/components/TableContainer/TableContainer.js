@@ -36,8 +36,8 @@ class TableContainer extends PureComponent {
           <tr className="text-white">
             {keys.map((key, index) => (
               index === 0
-              ? <th key={key} scope="col"><span className="pl-2">{key}</span></th>
-              : <th key={key} scope="col">{key}</th>
+              ? <th key={key} scope="col" className={"p-3"}><span className="ps-2">{key}</span></th>
+              : <th key={key} scope="col" className={"p-3"}>{key}</th>
             ))}
           </tr>
         </thead>
@@ -45,7 +45,7 @@ class TableContainer extends PureComponent {
           {
             data.map(({ name, email, product, price, date, city, status }) => (
               <tr key={name}>
-                <td className="pl-3">{name}</td>
+                <td className="p-3">{name}</td>
                 <td>{email}</td>
                 <td>{product}</td>
                 <td>{price}</td>

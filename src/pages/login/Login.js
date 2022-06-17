@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Container, Alert, Button, FormGroup, Label, InputGroup, InputGroupAddon, Input, InputGroupText } from 'reactstrap';
+import { Container, Alert, Button, FormGroup, Label, InputGroup, Input, InputGroupText } from 'reactstrap';
 import Widget from '../../components/Widget';
 import { loginUser, receiveToken } from '../../actions/auth';
 import jwt from "jsonwebtoken";
@@ -107,24 +107,22 @@ class Login extends React.Component {
                             <FormGroup className="mt">
                                 <Label for="email">Email</Label>
                                 <InputGroup className="input-group-no-border">
-                                    <InputGroupAddon addonType="prepend">
-                                        <InputGroupText>
-                                            <i className="la la-user text-white"/>
-                                        </InputGroupText>
-                                    </InputGroupAddon>
-                                    <Input id="email" className="input-transparent pl-3" value={this.state.email} onChange={this.changeEmail} type="email"
+                                    <InputGroupText>
+                                        <i className="la la-user text-white"/>
+                                    </InputGroupText>
+                                    <Input id="email" className="input-transparent ps-3" value={this.state.email} onChange={this.changeEmail} type="email"
                                            required name="email" placeholder="Email"/>
                                 </InputGroup>
                             </FormGroup>
                             <FormGroup>
                                 <Label for="password">Password</Label>
                                 <InputGroup className="input-group-no-border">
-                                    <InputGroupAddon addonType="prepend">
-                                        <InputGroupText>
-                                            <i className="la la-lock text-white"/>
-                                        </InputGroupText>
-                                    </InputGroupAddon>
-                                    <Input id="password" className="input-transparent pl-3" value={this.state.password}
+
+                                    <InputGroupText>
+                                        <i className="la la-lock text-white"/>
+                                    </InputGroupText>
+
+                                    <Input id="password" className="input-transparent ps-3" value={this.state.password}
                                            onChange={this.changePassword} type="password"
                                            required name="password" placeholder="Password"/>
                                 </InputGroup>

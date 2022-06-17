@@ -25,7 +25,7 @@ data-widgster-autoload="true"</code></pre>
     2000 will refresh widget every 2 seconds.
     </p>
     <div class="clearfix">
-        <div class="btn-toolbar float-right">
+        <div class="btn-toolbar float-end">
             <button type="submit" class="btn btn-transparent">Cancel</button>
             <button type="submit" class="btn btn-success animated wobble">&nbsp;Submit&nbsp;</button>
         </div>

@@ -154,6 +154,9 @@
 
 .widget-table-overflow {
   margin: 0 (-$widget-padding-horizontal) (-$widget-padding-vertical);
+  tbody {
+    border-top: none!important;
+  }
 
   th:first-child,
   td:first-child {
@@ -174,6 +177,14 @@
       border-bottom-right-radius: $widget-border-radius;
     }
   }
+}
+
+table > thead,tbody {
+  border: none!important;
+  tr > th, td {
+    border-bottom: 1px solid rgba(51,51,51,.35);
+  }
+
 }
 
 table > thead > tr > th {
@@ -215,7 +226,7 @@ table > thead > tr > th {
 
   & + .stat-item {
     padding-left: 1.25rem;
-    border-left: 1px solid $hr-border-color;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .name {

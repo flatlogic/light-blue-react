@@ -79,22 +79,22 @@ class Header extends React.Component {
 
             <Nav className={sd.docsNav}>
               <NavItem className="d-flex alight-items-center d-md-down-none">
-                <NavLink href="https://twitter.com/flatlogic" className="mr-1">
+                <NavLink href="https://twitter.com/flatlogic" className="me-1">
                   <img src={twitterLogo} alt="twitter" />
                 </NavLink>
-                <NavLink href="https://dribbble.com/flatlogic" className="mr-1">
+                <NavLink href="https://dribbble.com/flatlogic" className="me-1">
                   <img src={dribbleLogo} alt="dribble" />
                 </NavLink>
-                <NavLink href="https://dribbble.com/flatlogic" className="mr-1">
+                <NavLink href="https://dribbble.com/flatlogic" className="me-1">
                   <img src={facebookLogo} alt="facebook" />
                 </NavLink>
-                <NavLink href="https://instagram.com/flatlogiccom/" className="mr-1">
+                <NavLink href="https://instagram.com/flatlogiccom/" className="me-1">
                   <img src={instagramLogo} alt="instagram" />
                 </NavLink>
-                <NavLink href="https://www.linkedin.com/company/flatlogic/" className="mr-1">
+                <NavLink href="https://www.linkedin.com/company/flatlogic/" className="me-1">
                   <img src={linkedinLogo} alt="linkedin" />
                 </NavLink>
-                <NavLink href="https://github.com/flatlogic" className="mr-3">
+                <NavLink href="https://github.com/flatlogic" className="me-3">
                   <img src={githubLogo} alt="github" />
                 </NavLink>
               </NavItem>
@@ -104,7 +104,7 @@ class Header extends React.Component {
                     Live Preview
                   </Link>
                 </div>
-                <NavLink href="https://flatlogic.com/admin-dashboards/light-blue-react" target="_blank" className="mr-1">
+                <NavLink href="https://flatlogic.com/admin-dashboards/light-blue-react" target="_blank" className="me-1">
                   <button className="btn btn-warning text-gray fw-semi-bold">
                     Buy Now
                   </button>

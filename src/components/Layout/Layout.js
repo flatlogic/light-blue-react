@@ -54,8 +54,11 @@ import UserListPage from '../Users/list/UsersListPage';
 import UserViewPage from '../Users/view/UsersViewPage';
 import ChangePasswordFormPage from '../Users/changePassword/ChangePasswordFormPage';
 
+import { DashboardThemes, SidebarTypes } from '../../reducers/layout';
+
 import Header from '../Header';
 import Sidebar from '../Sidebar';
+import Helper from '../Helper';
 import BreadcrumbHistory from '../BreadcrumbHistory';
 import { openSidebar, closeSidebar } from '../../actions/navigation';
 import s from './Layout.module.scss';
@@ -65,12 +68,14 @@ class Layout extends React.Component {
   static propTypes = {
     sidebarStatic: PropTypes.bool,
     sidebarOpened: PropTypes.bool,
+    dashboardTheme: PropTypes.string,
     dispatch: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     sidebarStatic: false,
     sidebarOpened: false,
+    dashboardTheme: DashboardThemes.DARK
   };
   constructor(props) {
     super(props);
@@ -100,15 +105,17 @@ class Layout extends React.Component {
       <div
         className={[
           s.root,
+          `dashboard-${(localStorage.getItem("sidebarType") === SidebarTypes.TRANSPARENT) ? "light" : localStorage.getItem("dashboardTheme")}`,
+          `theme-${localStorage.getItem("themeColor") ? localStorage.getItem("themeColor").replace('#', '') : 'FFFFFF'}`,
+          'light-blue-dashboard',
           'sidebar-' + this.props.sidebarPosition,
           'sidebar-' + this.props.sidebarVisibility,
-            `dashboard-${this.props.dashboardTheme}`
+          `dashboard-${this.props.dashboardTheme}`
         ].join(' ')}
       >
         <div className={s.wrap}>
           <Header />
-          {/* <Chat chatOpen={this.state.chatOpen} /> */}
-          {/* <Helper /> */}
+          <Helper />
           <Sidebar />
           <Hammer onSwipe={this.handleSwipe}>
             <main className={s.content}>
@@ -202,7 +209,9 @@ function mapStateToProps(store) {
     sidebarOpened: store.navigation.sidebarOpened,
     sidebarPosition: store.navigation.sidebarPosition,
     sidebarVisibility: store.navigation.sidebarVisibility,
-    dashboardTheme: store.navigation.dashboardTheme
+    // dashboardTheme: store.navigation.dashboardTheme,
+    themeColor: store.layout.themeColor,
+    dashboardTheme: store.layout.dashboardTheme,
   };
 }
 

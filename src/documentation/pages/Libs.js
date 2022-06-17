@@ -78,16 +78,16 @@ export default class Libs extends Component {
             <h3>Font-awesome</h3>
             <p>The iconic SVG, font, and CSS toolkit</p>
             <h4>Examples</h4>
-            <i className="fa fa-arrow-left fa-2x mr"/>
-            <i className="fa fa-github fa-2x mr"/>
-            <i className="fa fa-bath fa-2x mr"/>
-            <i className="fa fa-grav fa-2x mr"/>
+            <i className="fa fa-arrow-left fa-2x me-2"/>
+            <i className="fa fa-github fa-2x me-2"/>
+            <i className="fa fa-bath fa-2x me-2"/>
+            <i className="fa fa-grav fa-2x me-2"/>
             <i className="fa fa-telegram fa-2x"/>
             <SyntaxHighlighter language='javascript'
-                               style={tomorrow}>{'<i className="fa fa-arrow-left fa-2x mr" />\n' +
-            '<i className="fa fa-github fa-2x mr" />\n' +
-            '<i className="fa fa-bath fa-2x mr" />\n' +
-            '<i className="fa fa-grav fa-2x mr" />\n' +
+                               style={tomorrow}>{'<i className="fa fa-arrow-left fa-2x me-2" />\n' +
+            '<i className="fa fa-github fa-2x me-2" />\n' +
+            '<i className="fa fa-bath fa-2x me-2" />\n' +
+            '<i className="fa fa-grav fa-2x me-2" />\n' +
             '<i className="fa fa-telegram fa-2x" />'}</SyntaxHighlighter>
             <p className="lead">Want to see examples? <Link to="/app/components/icons">Click</Link></p>
             <p>For more examples and documentation please refer to <a href="https://github.com/FortAwesome/Font-Awesome"
@@ -111,16 +111,16 @@ export default class Libs extends Component {
             <h3>Glyphicons-halflings</h3>
             <p>TIncludes over 250 glyphs in font format from the Glyphicon Halflings set</p>
             <h4>Examples</h4>
-            <i className="glyphicon glyphicon-asterisk mr"/>
-            <i className="glyphicon glyphicon-heart mr"/>
-            <i className="glyphicon glyphicon-home mr"/>
-            <i className="glyphicon glyphicon-refresh mr"/>
+            <i className="glyphicon glyphicon-asterisk me-2"/>
+            <i className="glyphicon glyphicon-heart me-2"/>
+            <i className="glyphicon glyphicon-home me-2"/>
+            <i className="glyphicon glyphicon-refresh me-2"/>
             <i className="glyphicon glyphicon-camera"/>
             <SyntaxHighlighter language='javascript'
-                               style={tomorrow}>{'<i className="glyphicon glyphicon-asterisk mr" />\n' +
-            '<i className="glyphicon glyphicon-heart mr" />\n' +
-            '<i className="glyphicon glyphicon-home mr" />\n' +
-            '<i className="glyphicon glyphicon-refresh mr" />\n' +
+                               style={tomorrow}>{'<i className="glyphicon glyphicon-asterisk me-2" />\n' +
+            '<i className="glyphicon glyphicon-heart me-2" />\n' +
+            '<i className="glyphicon glyphicon-home me-2" />\n' +
+            '<i className="glyphicon glyphicon-refresh me-2" />\n' +
             '<i className="glyphicon glyphicon-camera" />'}</SyntaxHighlighter>
             <p className="lead">Want to see examples? <Link to="/app/ui/icons">Click</Link></p>
             <p>For more examples and documentation please refer to <a
@@ -130,13 +130,13 @@ export default class Libs extends Component {
             <h3>Line-awesome</h3>
             <p>A single file that replaces Font Awesome with modern line icons.</p>
             <h4>Examples</h4>
-            <i className="la la-arrow-left la-2x mr"/>
-            <i className="la la-github la-2x mr"/>
-            <i className="la la-facebook la-2x mr"/>
+            <i className="la la-arrow-left la-2x me-2"/>
+            <i className="la la-github la-2x me-2"/>
+            <i className="la la-facebook la-2x me-2"/>
             <SyntaxHighlighter language='javascript'
-                               style={tomorrow}>{'<i className="la la-arrow-left la-2x mr" />\n' +
-            '<i className="la la-github la-2x mr" />\n' +
-            '<i className="la la-facebook la-2x mr" />'}</SyntaxHighlighter>
+                               style={tomorrow}>{'<i className="la la-arrow-left la-2x me-2" />\n' +
+            '<i className="la la-github la-2x me-2" />\n' +
+            '<i className="la la-facebook la-2x me-2" />'}</SyntaxHighlighter>
             <p className="lead">Want to see examples? <Link to="/app/ui/icons">Click</Link></p>
             <p>For more examples and documentation please refer to <a href="https://github.com/FortAwesome/Font-Awesome"
                                                                       target="_blank" rel="noopener noreferrer">Font Awesome</a></p>

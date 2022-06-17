@@ -18,7 +18,7 @@ function imageFormatter(cell, rows,_ , index) {
       ? cell[0].publicUrl
       : undefined;
   return (
-      <span className={`${s.avatar} rounded-circle`}>{imageUrl || rows.role === 'admin' ? <img src={imageUrl || defaultAminAvatar} onError={(e) => e.target.src = avatars[index+1]} alt="avatar" /> : <span className={`${s.avatar} rounded-circle thumb-sm float-left`}>{rows.email.charAt(0).toUpperCase()}</span>}</span>
+      <span className={`${s.avatar} rounded-circle`}>{imageUrl || rows.role === 'admin' ? <img src={imageUrl || defaultAminAvatar} onError={(e) => e.target.src = avatars[index+1]} alt="avatar" /> : <span className={`${s.avatar} rounded-circle thumb-sm float-start`}>{rows.email.charAt(0).toUpperCase()}</span>}</span>
   );
 };
 
@@ -40,7 +40,7 @@ function filesFormatter(cell) {
         { cell && cell.map((value) => {
           return (
             <div key={value.id}>
-              <i className="la la-link text-muted mr-2"></i>
+              <i className="la la-link text-muted me-2"></i>
               <a
                 href={value.publicUrl}
                 target="_blank"
