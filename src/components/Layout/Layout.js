@@ -106,7 +106,7 @@ class Layout extends React.Component {
         className={[
           s.root,
           `dashboard-${(localStorage.getItem("sidebarType") === SidebarTypes.TRANSPARENT) ? "light" : localStorage.getItem("dashboardTheme")}`,
-          `theme-${localStorage.getItem("themeColor") ? localStorage.getItem("themeColor").replace('#', '') : 'FFFFFF'}`,
+          `theme-${localStorage.getItem("themeColor") ? localStorage.getItem("themeColor").replace('#', '') : '333964'}`,
           'light-blue-dashboard',
           'sidebar-' + this.props.sidebarPosition,
           'sidebar-' + this.props.sidebarVisibility,
