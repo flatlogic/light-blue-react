@@ -1,5 +1,8 @@
 # Changelog
 
+## [8.2.1] - 01.07.2022
+- UI Adjust
+
 ## [8.2.0] - 17.06.2022
 - Updated Bootstrap/Reactstrap
 - Add theme swicther
