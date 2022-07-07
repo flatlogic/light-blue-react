@@ -16,7 +16,6 @@
 
   :global {
     .alert {
-      width: 275px;
       height: 30px;
       display: flex;
       align-items: center;
@@ -29,7 +28,7 @@
       padding: 5px 8px;
       color: rgba(255, 255, 255, 0.6);
       border-radius: 10px;
-
+      padding-right: 30px;
       @media (max-width: 1255px) {
         display: none !important;
       }

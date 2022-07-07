@@ -5,7 +5,7 @@ html {
 
 body {
   overflow-x: hidden;
-  color: var(--main-text-color);
+  color: $text-color;
   background: var(--background-color);
   background-attachment: fixed;
   background-size: cover;

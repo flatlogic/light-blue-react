@@ -4,50 +4,52 @@
   --badge-item: #ffffff;
   --update-notification-color: #FD5F00;
 
+
   .theme-333964 {
     --background: radial-gradient(farthest-side ellipse at 10% 0, #333867 20%, #17193B);
     --widget-bg: rgba(0,0,0,.24);
     --sidebar-list-color: rgba(18, 20, 43, 0.42);
     --widget-shadow: rgba(4, 7, 30, 0.4);
-    --text-color: rgba(white,.9);
+    --text-color: rgba(255,255,255,.9);
   }
 
   .theme-0A0417 {
     --background: radial-gradient(farthest-side ellipse at 10% 0, #0A0417 20%, #0D1635);
     --widget-bg: linear-gradient(135deg, #2B253C 0%, rgba(43, 37, 60, 0.64) 100%);
     --sidebar-list-color: #2B253C;
-    --text-color: rgba(white,.9);
+
   }
 
   .theme-4A4657 {
     --background: radial-gradient(farthest-side ellipse at 10% 0, #0A0417 20%, #0D1635);
     --widget-bg: linear-gradient(135deg, #222231 0%, rgba(34, 33, 52, 0.78) 100%);
     --sidebar-list-color: #222230;
-    --text-color: rgba(white,.9);
+
   }
 
   .theme-3A3847 {
     --background: radial-gradient(farthest-side ellipse at 10% 0, #0A0417 20%, #0D1635);
     --widget-bg: linear-gradient(135deg, #4B4E5F 0%, rgba(38, 40, 55, 0.87) 100%);
     --sidebar-list-color: #24232F;
-    --text-color: rgba(white,.9);
+
   }
 
   .theme-3846AA {
     --background: radial-gradient(farthest-side ellipse at 10% 0, #3846AA 20%, #0B0D2C);
     --widget-bg: linear-gradient(135deg, rgba(101, 114, 207, 0.63) 0%, rgba(32, 38, 82, 0) 100%);
     --sidebar-list-color: #25307E;
-    --text-color: rgba(white,.9);
+
   }
 
   .theme-3390C3 {
     --background: linear-gradient(136.36deg, #3390C4 4.86%, #1D1252 94.85%);
     --widget-bg: linear-gradient(172.98deg, rgba(255, 255, 255, 0.08) 1.49%, rgba(255, 255, 255, 0.0208) 99.64%);
     --sidebar-list-color: rgba(41, 85, 142, 0.5);
-    --text-color: rgba(white,.9);
+
   }
 
   .dashboard-light {
+    --text-color: rgba(255,255,255,.9);
     --sidebar-item-active: #6C757D;
     --logo-color: #6C757D;
     --sidebar-bg-color: #ffffff;
@@ -75,6 +77,6 @@
     --sidebar-progress-bg-color: var(--sidebar-action-bg);
     --sidebar-item-hover-bg-color: var(--sidebar-action-bg);
     --widget-shadow-color: var(--widget-shadow);
-    --main-text-color: var(--text-color)
+    --main-text-color-tut: var(--text-color)
   }
 }
