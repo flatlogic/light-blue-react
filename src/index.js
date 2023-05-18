@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { routerMiddleware } from 'connected-react-router';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux'
@@ -16,7 +16,7 @@ import { createHashHistory } from 'history';
 const history = createHashHistory();
 
 export function getHistory() {
-  return history;
+    return history;
 }
 
 axios.defaults.baseURL = config.baseURLApi;
@@ -28,21 +28,22 @@ if (token) {
 
 export const store = createStore(
     createRootReducer(history),
-        compose(
+    compose(
         applyMiddleware(
-        routerMiddleware(history),
-        ReduxThunk
+            routerMiddleware(history),
+            ReduxThunk
         ),
     )
 );
 
 store.dispatch(doInit());
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'))
+
+root.render(
     <Provider store={store}>
         <App />
     </Provider>,
-    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
