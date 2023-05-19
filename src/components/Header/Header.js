@@ -144,8 +144,8 @@ class Header extends React.Component {
         </div>
         <div className={`d-print-none ${s.root}`}>
           <UncontrolledAlert className={`me-3 d-lg-down-none animate__animated animate__bounceIn animate__delay-1s`}>
-                Check out Light Blue 
-                <button 
+                Check out Light Blue
+                <button
                   className="btn-link"
                   onClick={() => this.setState({ settingsOpen: true })}
                 >
@@ -166,7 +166,7 @@ class Header extends React.Component {
               />
             </InputGroup>
           </Collapse>
-          <Form className="d-md-down-none mx-3 my-auto" inline>
+          <Form className="d-md-down-none mx-3 my-auto">
             <InputGroup className={`input-group-no-border ${s.searchForm}`} >
               <InputGroupText className={s.inputGroupText}>
                 <SearchIcon className={s.headerIcon} />

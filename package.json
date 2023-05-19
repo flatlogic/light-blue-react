@@ -87,6 +87,7 @@
     "md5": "^2.3.0",
     "messenger": "https://github.com/HubSpot/messenger.git",
     "moment": "^2.29.4",
+    "node-sass": "^8.0.0",
     "nvd3": "1.8.6",
     "rc-color-picker": "^1.2.6",
     "rc-hammerjs": "0.6.10",
@@ -133,6 +134,7 @@
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.1",
     "rickshaw": "1.7.1",
+    "sass-loader": "^10",
     "showdown": "^1.9.1",
     "skycons": "^1.0.0",
     "sortablejs": "1.15.0",
@@ -179,7 +181,6 @@
     "lodash.assign": "^4.2.0",
     "lodash.clonedeep": "^4.5.0",
     "mini-css-extract-plugin": "0.12.0",
-    "node-sass": "^6.0.0",
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "pnp-webpack-plugin": "1.6.4",
     "postcss-flexbugs-fixes": "4.2.1",
@@ -188,7 +189,6 @@
     "postcss-safe-parser": "4.0.2",
     "redux-logger": "^3.0.6",
     "resolve": "1.20.0",
-    "sass-loader": "^10",
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "1.4.4",
     "url-loader": "1.1.2",
@@ -196,6 +196,9 @@
     "webpack-dev-server": "3.11.2",
     "webpack-manifest-plugin": "2.2.0",
     "workbox-webpack-plugin": "4.3.1"
+  },
+  "engines": {
+    "node": ">=16"
   },
   "resolutions": {
     "react-dom": "18.2.0"

@@ -3,6 +3,7 @@
 ## [8.2.2] - 18.05.2023
 - Update dependencies
 - Update react version
+- Corrected minor errors
 
 ## [8.2.1] - 01.07.2022
 - UI Adjust
