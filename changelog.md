@@ -1,5 +1,8 @@
 # Changelog
 
+## [8.2.2] - 21.12.2023
+- Update dependencies
+
 ## [8.2.2] - 18.05.2023
 - Update dependencies
 - Update react version
