@@ -41,7 +41,6 @@
     "font-awesome": "4.7.0",
     "formik": "1.5.8",
     "formsy-react": "0.19.5",
-    "glyphicons-halflings": "^1.9.1",
     "highcharts": "^10.3.3",
     "highcharts-react-official": "^3.2.0",
     "history": "^4.10.1",
@@ -104,7 +103,9 @@
     "sortablejs": "1.15.1",
     "styled-components": "^5.3.10",
     "uuid": "^8.3.2",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "react-bootstrap-icons": "^1.11.4",
+    "bootstrap-icons": "^1.11.3"
   },
   "engines": {
     "node": "^20.15"

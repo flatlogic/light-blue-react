@@ -3104,6 +3104,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==
 
+bootstrap-icons@^1.11.3:
+  version "1.11.3"
+  resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.11.3.tgz#03f9cb754ec005c52f9ee616e2e84a82cab3084b"
+  integrity sha512-+3lpHrCw/it2/7lBL15VR0HEumaBss0+f/Lb6ZvHISn1mlK83jjFpooTLsMWbIjJMDjDjOExMsTxnXSIT4k4ww==
+
 bootstrap@5.2.3:
   version "5.2.3"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.2.3.tgz#54739f4414de121b9785c5da3c87b37ff008322b"
@@ -6299,11 +6304,6 @@ globby@^6.1.0:
     object-assign "^4.0.1"
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
-
-glyphicons-halflings@^1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/glyphicons-halflings/-/glyphicons-halflings-1.9.1.tgz#18e72f20034240038a5e884383bb7945e2dd262a"
-  integrity sha512-VT6PTuDSjIfRYXLdDw4AB/lpGdewx+DZ5PeHnJr/kyOIOSSTH+wVrl01ZqH0JdeahBSi/A8DcE99jPyF1LRSNA==
 
 google-maps-infobox@^2.0.0:
   version "2.0.0"
@@ -10736,6 +10736,13 @@ react-autosize-textarea@^5.0.1:
     autosize "^4.0.2"
     line-height "^0.3.1"
     prop-types "^15.5.6"
+
+react-bootstrap-icons@^1.11.4:
+  version "1.11.4"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-icons/-/react-bootstrap-icons-1.11.4.tgz#f4d5a852af58b5e0523df7162758b77f6fef2eec"
+  integrity sha512-lnkOpNEZ/Zr7mNxvjA9efuarCPSgtOuGA55XiRj7ASJnBjb1wEAdtJOd2Aiv9t07r7FLI1IgyZPg9P6jqWD/IA==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-bootstrap-table-next@^3.3.5:
   version "3.3.5"

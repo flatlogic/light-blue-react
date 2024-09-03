@@ -4,6 +4,7 @@
   :global {
     .icon-list {
       margin-top: $spacer;
+      color: white;
     }
 
     .icon-list-item {
@@ -16,7 +17,7 @@
         text-decoration: none;
       }
 
-      .glyphicon,
+      .bi,
       .fa,
       .fi {
         width: 32px;
@@ -24,7 +25,7 @@
       }
 
       &:hover {
-        .glyphicon,
+        .bi,
         .fa,
         .fi {
           font-size: 28px;
@@ -36,7 +37,7 @@
           vertical-align: -5px;
         }
 
-        .glyphicon {
+        .bi {
           vertical-align: -6px;
         }
       }
