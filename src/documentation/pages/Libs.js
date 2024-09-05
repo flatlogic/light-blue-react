@@ -356,7 +356,6 @@ export default class Libs extends Component {
             'Font-Awesome',
             'Formsy-React',
             'Fullcalendar',
-            'Glyphicons-Halflings',
             'Line-Awesome',
             'React-Sparkline',
             'React-Toastify',
