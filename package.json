@@ -1,6 +1,6 @@
 {
   "name": "light-blue-react",
-  "version": "8.2.2",
+  "version": "8.3.0",
   "private": true,
   "scripts": {
     "build": "cross-env REACT_APP_BACKEND=true cross-env PUBLIC_URL='./' react-app-rewired --openssl-legacy-provider build",
@@ -36,6 +36,7 @@
     "buffer": "^6.0.3",
     "classnames": "^2.3.2",
     "connected-react-router": "6.9.3",
+    "cross-env": "7.0.3",
     "crypto-browserify": "^3.12.0",
     "draft-js": "^0.11.7",
     "echarts": "^4.9.0",
