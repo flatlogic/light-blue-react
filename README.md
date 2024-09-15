@@ -1,6 +1,6 @@
 # Light Blue React
 
-Our React version follows latest industry best practices and uses Redux as a state manager. This version is a great choice when you want to be in control of your own codebase and decide on development approaches that are the best for your project. Webpack Module Bundler and Yarn as a package manager are under the hood.
+Light Blue React version follows latest industry best practices and uses Redux as a state manager. This version is a great choice when you want to be in control of your own codebase and decide on development approaches that are the best for your project. Webpack Module Bundler and Yarn as a package manager are under the hood.
 
 Below you will find some information on how to perform common tasks.<br>
 
