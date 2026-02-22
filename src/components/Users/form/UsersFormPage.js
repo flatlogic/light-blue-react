@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import UsersForm from 'components/Users/form/UsersForm';
-import { push } from 'connected-react-router';
+import { push } from 'actions/navigation';
 import actions from '../../../actions/usersFormActions';
 import { connect } from 'react-redux';
 import { Alert } from 'reactstrap';
 import cx from 'classnames';
+import withRouter from '../../withRouter';
 
 import s from '../Users.module.scss';
 
@@ -14,6 +15,21 @@ class UsersFormPage extends Component {
     promoAlert: false,
   };
 
+  getCurrentUserId = () => {
+    const { currentUser } = this.props;
+
+    if (currentUser) {
+      return currentUser.id || (currentUser.user && currentUser.user.id) || currentUser.sub || null;
+    }
+
+    try {
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+      return (storedUser && (storedUser.id || (storedUser.user && storedUser.user.id) || storedUser.sub)) || null;
+    } catch (error) {
+      return null;
+    }
+  };
+
   componentDidMount() {
     const { dispatch, match } = this.props;
     if (this.isEditing()) {
@@ -21,9 +37,12 @@ class UsersFormPage extends Component {
     }
     else {
       if (this.isProfile()) {
-        const currentUser = JSON.parse(localStorage.getItem('user'));
-        const currentUserId = currentUser.user.id;
-        dispatch(actions.doFind(currentUserId));
+        const currentUserId = this.getCurrentUserId();
+        if (currentUserId) {
+          dispatch(actions.doFind(currentUserId));
+        } else {
+          dispatch(actions.doNew());
+        }
       }
       else {
         dispatch(actions.doNew());
@@ -55,11 +74,12 @@ class UsersFormPage extends Component {
 
   isProfile = () => {
     const { match } = this.props;
-    const currentUser = JSON.parse(localStorage.getItem('user'));
-    const currentUserId = currentUser.user.id;
+    const currentUserId = this.getCurrentUserId();
+
     if (match.params.id === currentUserId) {
-      return true
+      return true;
     }
+
     return match.url === '/app/edit_profile';
   };
 
@@ -103,4 +123,4 @@ function mapStateToProps(store) {
   };
 }
 
-export default connect(mapStateToProps)(UsersFormPage);
+export default withRouter(connect(mapStateToProps)(UsersFormPage));

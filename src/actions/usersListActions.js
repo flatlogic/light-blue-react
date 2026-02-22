@@ -1,11 +1,23 @@
 import Errors from 'components/FormItems/error/errors';
-import axios from 'axios';
 import config from '../config';
 import { mockUser } from '../actions/mock';
+import { deleteUser, listUsers } from '../services/usersService';
 
-async function list() {
-  const response = await axios.get(`/users`);
-  return response.data;
+function normalizeUsersPayload(response) {
+  if (Array.isArray(response)) {
+    return {
+      rows: response,
+      count: response.length,
+    };
+  }
+
+  const rows = Array.isArray(response && response.rows) ? response.rows : [];
+  const count = typeof (response && response.count) === 'number' ? response.count : rows.length;
+
+  return {
+    rows,
+    count,
+  };
 }
 
 const actions = {
@@ -26,14 +38,12 @@ const actions = {
           payload: { filter, keepPagination },
         });
 
-        const response = await list();
+        const response = await listUsers();
+        const payload = normalizeUsersPayload(response);
 
         dispatch({
           type: 'USERS_LIST_FETCH_SUCCESS',
-          payload: {
-            rows: response.rows,
-            count: response.count,
-          },
+          payload,
         });
       } catch (error) {
         Errors.handle(error);
@@ -56,19 +66,17 @@ const actions = {
           type: 'USERS_LIST_DELETE_STARTED',
         });
   
-        await axios.delete(`/users/${id}`)
+        await deleteUser(id);
   
         dispatch({
           type: 'USERS_LIST_DELETE_SUCCESS',
         });
   
-        const response = await list();
+        const response = await listUsers();
+        const payload = normalizeUsersPayload(response);
         dispatch({
           type: 'USERS_LIST_FETCH_SUCCESS',
-          payload: {
-            rows: response.rows,
-            count: response.count,
-          },
+          payload,
         });
   
       } catch (error) {

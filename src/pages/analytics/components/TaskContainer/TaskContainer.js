@@ -5,6 +5,13 @@ import { Button } from 'reactstrap';
 import Widget from '../../../../components/Widget';
 import Task from '../Task/Task';
 
+function buildTasks(data) {
+  return data.map((task) => ({
+    ...task,
+    complited: false,
+  }));
+}
+
 export default class TasksContainer extends Component {
   static propTypes = {
     data: PropTypes.arrayOf(
@@ -16,15 +23,12 @@ export default class TasksContainer extends Component {
     ).isRequired,
   }
 
-  componentWillMount() {
-    const tasks = this.props.data;
+  constructor(props) {
+    super(props);
 
-    tasks.map((task) => {
-      task.complited = false;
-      return task;
-    });
-
-    this.setState({ tasks });
+    this.state = {
+      tasks: buildTasks(props.data),
+    };
   }
 
   toggleTaskState = (index) => {

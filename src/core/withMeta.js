@@ -5,7 +5,7 @@ import { defaultMeta } from '../config';
 
 function withMeta(ComposedComponent) {
   class WithMeta extends Component {
-    componentWillMount() {
+    componentDidMount() {
       if (ComposedComponent.meta) {
         Object.keys(ComposedComponent.meta).forEach((metaKey) => {
           if (metaKey === 'title') {

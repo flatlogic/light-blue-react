@@ -1,10 +1,11 @@
-import axios from 'axios';
 import Errors from 'components/FormItems/error/errors';
-import { push } from 'connected-react-router';
+import { push } from 'actions/navigation';
 import { doInit } from 'actions/auth';
 import { toast } from 'react-toastify';
 import config from '../config';
 import { mockUser } from '../actions/mock';
+import { updatePassword } from '../services/authService';
+import { createUser, findUser, updateUser } from '../services/usersService';
 
 const actions = {
   doNew: () => {
@@ -19,29 +20,28 @@ const actions = {
         type: 'USERS_FORM_FIND_SUCCESS',
         payload: mockUser,
       });
-    } else {
-      try {
-        dispatch({
-          type: 'USERS_FORM_FIND_STARTED',
-        });
-  
-        axios.get(`/users/${id}`).then(res => {
-          const record = res.data;
-  
-          dispatch({
-            type: 'USERS_FORM_FIND_SUCCESS',
-            payload: record,
-          });
-        })
-      } catch (error) {
-        Errors.handle(error);
-  
-        dispatch({
-          type: 'USERS_FORM_FIND_ERROR',
-        });
-  
-        dispatch(push('/admin/users'));
-      }
+      return;
+    }
+
+    try {
+      dispatch({
+        type: 'USERS_FORM_FIND_STARTED',
+      });
+
+      const record = await findUser(id);
+
+      dispatch({
+        type: 'USERS_FORM_FIND_SUCCESS',
+        payload: record,
+      });
+    } catch (error) {
+      Errors.handle(error);
+
+      dispatch({
+        type: 'USERS_FORM_FIND_ERROR',
+      });
+
+      dispatch(push('/admin/users'));
     }
   },
 
@@ -51,14 +51,16 @@ const actions = {
         type: 'USERS_FORM_CREATE_STARTED',
       });
 
-      axios.post('/users', { data: values }).then(res => {
-        dispatch({
-          type: 'USERS_FORM_CREATE_SUCCESS',
-        });
+      if (config.isBackend) {
+        await createUser(values);
+      }
 
-        toast.success('User created');
-        dispatch(push('/admin/users'));
-      })
+      dispatch({
+        type: 'USERS_FORM_CREATE_SUCCESS',
+      });
+
+      toast.success('User created');
+      dispatch(push('/admin/users'));
     } catch (error) {
       Errors.handle(error);
 
@@ -68,16 +70,15 @@ const actions = {
     }
   },
 
-  doUpdate: (id, values, isProfile) => async (
-    dispatch,
-    getState,
-  ) => {
+  doUpdate: (id, values, isProfile) => async (dispatch) => {
     try {
       dispatch({
         type: 'USERS_FORM_UPDATE_STARTED',
       });
 
-      await axios.put(`/users/${id}`, {id, data: values});
+      if (config.isBackend) {
+        await updateUser(id, values);
+      }
 
       dispatch(doInit());
 
@@ -103,11 +104,18 @@ const actions = {
   doChangePassword: ({newPassword, currentPassword}) => async (dispatch) => {
     try {
       dispatch({
-        type: 'USERS_FORM_CREATE_STARTED',
+        type: 'USERS_FORM_UPDATE_STARTED',
       });
-      await axios.put('/auth/password-update', {newPassword, currentPassword})
+
+      if (config.isBackend) {
+        await updatePassword({newPassword, currentPassword});
+      }
+
       dispatch({
         type: 'USERS_PASSWORD_UPDATE_SUCCESS',
+      });
+      dispatch({
+        type: 'USERS_FORM_UPDATE_SUCCESS',
       });
 
       toast.success('Password has been updated');
@@ -117,7 +125,7 @@ const actions = {
       Errors.handle(error);
 
       dispatch({
-        type: 'USERS_FORM_CREATE_ERROR',
+        type: 'USERS_FORM_UPDATE_ERROR',
       });
     }
   },

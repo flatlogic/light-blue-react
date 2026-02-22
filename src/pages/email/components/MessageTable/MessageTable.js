@@ -19,12 +19,12 @@ class MessageTable extends Component {
     searchString: '',
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { filter } = this.props;
+  componentDidUpdate(prevProps) {
+    const { filter, openMessage } = this.props;
 
-    if (filter !== nextProps.filter) {
+    if (filter !== prevProps.filter) {
       this.chooseNone();
-      this.setState({ openedMessage: null });
+      openMessage(null);
     }
   }
 

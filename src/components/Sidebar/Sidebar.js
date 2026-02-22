@@ -3,10 +3,10 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Progress, Alert } from 'reactstrap';
-import { withRouter } from 'react-router-dom';
 import { dismissAlert } from '../../actions/alerts';
 import s from './Sidebar.module.scss';
 import LinksGroup from './LinksGroup';
+import withRouter from '../withRouter';
 
 import DashboardIcon from '../Icons/SidebarIcons/basil/Home';
 import UserIcon from '../Icons/SidebarIcons/basil/User';
@@ -47,19 +47,24 @@ class Sidebar extends React.Component {
     super(props);
 
     this.doLogout = this.doLogout.bind(this);
+    this.handleSidebarTransitionEnd = this.handleSidebarTransitionEnd.bind(this);
   }
 
   componentDidMount() {
-    this.element.addEventListener('transitionend', () => {
-      if (this.props.sidebarOpened) {
-        this.element.classList.add(s.sidebarOpen);
-      }
-    }, false);
+    if (!this.element) {
+      return;
+    }
+
+    this.element.addEventListener('transitionend', this.handleSidebarTransitionEnd, false);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.sidebarOpened !== this.props.sidebarOpened) {
-      if (nextProps.sidebarOpened) {
+  componentDidUpdate(prevProps) {
+    if (!this.element) {
+      return;
+    }
+
+    if (prevProps.sidebarOpened !== this.props.sidebarOpened) {
+      if (this.props.sidebarOpened) {
         this.element.style.height = `${this.element.scrollHeight}px`;
       } else {
         this.element.classList.remove(s.sidebarOpen);
@@ -67,6 +72,20 @@ class Sidebar extends React.Component {
           this.element.style.height = '';
         }, 0);
       }
+    }
+  }
+
+  componentWillUnmount() {
+    if (!this.element) {
+      return;
+    }
+
+    this.element.removeEventListener('transitionend', this.handleSidebarTransitionEnd, false);
+  }
+
+  handleSidebarTransitionEnd() {
+    if (this.props.sidebarOpened && this.element) {
+      this.element.classList.add(s.sidebarOpen);
     }
   }
 

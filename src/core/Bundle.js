@@ -21,13 +21,13 @@ class Bundle extends Component {
     mod: null,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.load(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.load !== this.props.load) {
-      this.load(nextProps);
+  componentDidUpdate(prevProps) {
+    if (prevProps.load !== this.props.load) {
+      this.load(this.props);
     }
   }
 

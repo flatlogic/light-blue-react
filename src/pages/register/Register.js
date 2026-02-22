@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter, Redirect, Link } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Container, Alert, Button, FormGroup, InputGroup, InputGroupAddon, InputGroupText, Input, Label } from 'reactstrap';
 import Widget from '../../components/Widget';
-import { registerUser, registerError } from '../../actions/register';
-import { loginUser } from '../../actions/auth';
+import { registerUser, authError as registerError, loginUser } from '../../actions/auth';
 import microsoft from '../../images/microsoft.png';
 import Login from '../login';
+import withRouter from '../../components/withRouter';
 
 class Register extends React.Component {
     static propTypes = {
@@ -68,11 +68,8 @@ class Register extends React.Component {
             this.checkPassword();
         } else {
             this.props.dispatch(registerUser({
-                creds: {
-                    email: this.state.email,
-                    password: this.state.password
-                },
-                history: this.props.history
+                email: this.state.email,
+                password: this.state.password
             }));
         }
     }
@@ -91,7 +88,7 @@ class Register extends React.Component {
         // cant access login page while logged in
         if (Login.isAuthenticated(localStorage.getItem('token'))) {
             return (
-                <Redirect to={from}/>
+                <Navigate to={from} replace />
             );
         }
 
@@ -153,7 +150,7 @@ class Register extends React.Component {
                                 <p className="widget-auth-info mt-4">
                                     Already have the account? Login now!
                                 </p>
-                                <Link className="d-block text-center mb-4" to="login">Enter the account</Link>
+                                <Link className="d-block text-center mb-4" to="/login">Enter the account</Link>
                                 <div className="social-buttons">
                                     <Button onClick={this.googleLogin} color="primary" className="social-button">
                                         <i className="social-icon social-google"/>
@@ -225,10 +222,9 @@ class Register extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        isFetching: state.register.isFetching,
-        errorMessage: state.register.errorMessage,
+        isFetching: state.auth.isFetching,
+        errorMessage: state.auth.errorMessage,
     };
 }
 
 export default withRouter(connect(mapStateToProps)(Register));
-

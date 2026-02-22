@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 
 const Skycons = require('skycons')(window || {});
 
@@ -34,30 +33,47 @@ class Skycon extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      skycons: new Skycons({ color: this.props.color }),
-    };
+    this.canvasRef = React.createRef();
+    this.skycons = new Skycons({ color: props.color });
   }
 
   componentDidMount() {
-    const { skycons } = this.state;
-    skycons.add(ReactDOM.findDOMNode(this), Skycons[this.props.icon]); // eslint-disable-line
+    if (!this.canvasRef.current) {
+      return;
+    }
+
+    this.skycons.add(this.canvasRef.current, Skycons[this.props.icon]);
 
     if (this.props.autoPlay) {
-      skycons.play();
+      this.skycons.play();
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.state.skycons.set(ReactDOM.findDOMNode(this), Skycons[nextProps.icon]); // eslint-disable-line
+  componentDidUpdate(prevProps) {
+    if (!this.canvasRef.current) {
+      return;
+    }
+
+    if (prevProps.icon !== this.props.icon) {
+      this.skycons.set(this.canvasRef.current, Skycons[this.props.icon]);
+    }
+  }
+
+  componentWillUnmount() {
+    if (!this.canvasRef.current) {
+      return;
+    }
+
+    this.skycons.remove(this.canvasRef.current);
+    this.skycons.pause();
   }
 
   play() {
-    this.state.skycons.play();
+    this.skycons.play();
   }
 
   pause() {
-    this.state.skycons.pause();
+    this.skycons.pause();
   }
 
   render() {
@@ -66,7 +82,7 @@ class Skycon extends React.Component {
     } = this.props;
 
     return (
-      <canvas width={this.props.width} height={this.props.height} {...restPops} />
+      <canvas ref={this.canvasRef} width={this.props.width} height={this.props.height} {...restPops} />
     );
   }
 }

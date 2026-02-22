@@ -1,31 +1,29 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import UsersView from 'components/Users/view/UsersView';
 import actions from 'actions/usersFormActions';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-class UsersPage extends Component {
-  componentDidMount() {
-    const { dispatch, match } = this.props;
-    dispatch(actions.doFind(match.params.id));
-  }
+function UsersPage() {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const loading = useSelector((store) => store.users.form.findLoading);
+  const record = useSelector((store) => store.users.form.record);
 
-  render() {
-    return (
-      <React.Fragment>
-          <UsersView
-            loading={this.props.loading}
-            record={this.props.record}
-          />
-      </React.Fragment>
-    );
-  }
+  useEffect(() => {
+    if (id) {
+      dispatch(actions.doFind(id));
+    }
+  }, [dispatch, id]);
+
+  return (
+    <React.Fragment>
+      <UsersView
+        loading={loading}
+        record={record}
+      />
+    </React.Fragment>
+  );
 }
 
-function mapStateToProps(store) {
-  return {
-    loading: store.users.form.loading,
-    record: store.users.form.record,
-  };
-}
-
-export default connect(mapStateToProps)(UsersPage);
+export default UsersPage;

@@ -1,5 +1,68 @@
 # Changelog
 
+## [Unreleased] - 2026-02-22
+- Phase 1 modernization baseline fixes:
+  - fixed dead fallback redirect in app shell (`/app/main/visits` -> `/app/main/dashboard`);
+  - hardened `AuthRoute` against missing `location.state`;
+  - normalized login/register/forgot links to absolute auth routes;
+  - replaced obsolete layout test with route-guard smoke tests;
+  - removed conflicting project-level `babel.config.js` to align with CRA toolchain.
+- Tooling baseline updates:
+  - added explicit `ajv@^8.18.0` dev dependency to fix webpack/schema-utils `ajv` resolution during build;
+  - documented working install path (`npm install --legacy-peer-deps`) in README.
+- Phase 2 modernization updates:
+  - migrated build/dev/preview workflow to Vite + SWC (`vite.config.js`, root `index.html`);
+  - removed CRA/rewired build overrides (`config-overrides.js`, `public/index.html`, `react-app-rewired`, `react-scripts`);
+  - migrated test runner to Vitest and retained route-guard smoke coverage;
+  - migrated runtime env handling to Vite-compatible app env bridge (`VITE_BACKEND` + `__APP_ENV__`);
+  - kept build output compatibility (`build/`) and added Node memory guard for large production bundle builds;
+  - standardized lockfile strategy to npm (`package-lock.json`).
+- Dependency refresh batch 1:
+  - low-risk update: `bootstrap` upgraded within major (`5.2.3` -> `5.3.8`);
+  - major update block A: `axios` (`0.27.2` -> `1.13.5`), `jsonwebtoken` (`8.5.1` -> `9.0.3`), `cross-env` (`7.0.3` -> `10.1.0`);
+  - adjusted SCSS override to keep build compatibility with Bootstrap 5.3 variable changes.
+- Dependency refresh batch 2:
+  - updated `react-slick` (`0.30.3` -> `0.31.0`), `showdown` (`1.9.1` -> `2.1.0`), and `uuid` (`8.3.2` -> `13.0.0`);
+  - fixed `redux-thunk` import usage for v3 named export (`ReduxThunk` -> `thunk`) to restore production build compatibility.
+- Dependency refresh batch 3:
+  - updated form/data libs: `formik` (`1.5.8` -> `2.4.9`), `yup` (`0.32.11` -> `1.7.1`), `react-toastify` (`6.2.0` -> `11.0.5`), `react-select` (`3.2.0` -> `5.10.2`), `filesize` (`6.4.0` -> `11.0.13`);
+  - updated utility libs: `formsy-react` (`0.19.5` -> `2.3.2`) and `styled-components` (`5.3.11` -> `6.3.11`).
+- Dependency refresh batch 4:
+  - updated UI/demo libs: `react-dropzone` (`11.7.1` -> `15.0.0`), `react-autosize-textarea` (`5.0.1` -> `7.1.0`), `react-syntax-highlighter` (`13.5.3` -> `16.1.0`), `react-animate-height` (`2.1.2` -> `3.2.3`), `rc-slider` (`9.7.5` -> `11.1.9`), `react-bootstrap-table-next` (`3.3.5` -> `4.0.3`), `react-bootstrap-table2-toolkit` (`1.4.2` -> `2.1.3`);
+  - migrated removed `rc-slider` tooltip helper API usage to v11-compatible slider usage in documentation/forms pages.
+- Dependency refresh batch 5:
+  - updated chart libs: `highcharts` (`10.3.3` -> `12.5.0`), `apexcharts` (`3.54.1` -> `5.6.0`), `react-apexcharts` (`1.9.0` -> `2.0.1`);
+  - updated calendar stack to `@fullcalendar/*` `6.1.20` and adapted calendar config for v6 (`initialView`, list view target `listWeek`, removed deprecated plugin CSS imports).
+- Dependency refresh batch 6:
+  - removed React-16/17-locked dependencies: `connected-react-router`, `react-bootstrap-table-next`, `react-bootstrap-table2-toolkit`, `react-bootstrap-table2-paginator`, `react-google-maps`, `react-images`, `react-maskedinput`, `react-mde`, `react-shuffle`, `react-sortable-hoc`, `react-sortable-tree`, `react-table`;
+  - replaced dependency-driven implementations with local/runtime-safe equivalents:
+    - custom navigation action boundary + shared history singleton (no `connected-react-router`);
+    - native/Reactstrap tables in users/management/dynamic pages (search + pagination preserved);
+    - iframe-based map component for maps/timeline pages;
+    - modal-based gallery image viewer;
+    - local masked input and auto-resize textarea components;
+    - local markdown editor (write/preview with Showdown);
+    - native drag-and-drop sortable list implementation for list groups demo;
+  - removed stale third-party CSS imports tied to deleted packages.
+- Dependency refresh batch 7:
+  - migrated router runtime to `react-router-dom` v7 (`Routes`/`Route`/`Navigate`) across app shell, main layout, and documentation layout;
+  - removed deprecated router dependencies: `react-router`, `history`, `react-router-hash-link`;
+  - replaced route guard implementation (`AdminRoute`, `UserRoute`, `AuthRoute`) with v7-compatible wrapper components and refreshed route smoke tests;
+  - introduced local `withRouter` bridge (`src/components/withRouter.js`) to keep class-component routes working during phased hooks migration;
+  - replaced hash-link usage in docs scrollspy with `react-router-dom` `Link`.
+- Phase 4 state modernization:
+  - moved auth/users side effects to reusable service layer (`src/services/authService.js`, `src/services/usersService.js`);
+  - migrated users auth-domain thunks to `async/await` with safer shared error-message handling;
+  - consolidated registration state ownership in `auth` reducer and removed duplicated legacy `register` reducer/actions;
+  - cleaned users state compatibility fields (`findLoading`/`loading`, list modal/delete metadata) and removed stale empty `dashboard` reducer.
+- Phase 5 progress:
+  - removed deprecated lifecycle methods from source components (`componentWillMount`, `componentWillReceiveProps`);
+  - migrated users route-level pages (`UsersListPage`, `UsersViewPage`, `ChangePasswordFormPage`) from class components to hooks-based functional components;
+  - migrated auth route-level pages (`Register`, `Forgot`, `Reset`, `Verify`) from class components to hooks-based functional components.
+- Runtime/tooling compatibility:
+  - aligned Node engine range to `^20.19.0 || >=22.12.0` to support current Node 22 environments and Vite 7 requirements.
+  - `npm install` succeeds without `--legacy-peer-deps` on the migrated dependency graph.
+
 ## [8.3.1] - 26.11.2024
 - Update dependencies
 
