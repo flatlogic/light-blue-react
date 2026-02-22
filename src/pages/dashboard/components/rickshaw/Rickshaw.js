@@ -1,58 +1,33 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Rickshaw from 'rickshaw';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-class RickshawGraph extends React.Component {
+const RickshawGraph = ({ height }) => {
+  const sidebarVisibility = useSelector((store) => store.navigation.sidebarVisibility);
+  const rickshawChartRef = useRef(null);
+  const graphRef = useRef(null);
+  const intervalRef = useRef(null);
 
-  static propTypes = {
-    height: PropTypes.number,
-  };
-
-  static defaultProps = {
-    height: 100,
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      graph: null,
-    };
-    this.initRickshaw = this.initRickshaw.bind(this);
-    this.onResizeRickshaw = this.onResizeRickshaw.bind(this);
-  }
-
-  componentDidMount() {
-    this.initRickshaw();
-    window.addEventListener('resize', this.onResizeRickshaw);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.sidebarVisibility !== prevProps.sidebarVisibility) {
-      this.onResizeRickshaw()
+  const onResizeRickshaw = () => {
+    if (!graphRef.current) {
+      return;
     }
-  }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onResizeRickshaw);
-  }
+    graphRef.current.configure({ height });
+    graphRef.current.render();
+  };
 
-  onResizeRickshaw() {
-    this.state.graph.configure({ height: this.props.height });
-    this.state.graph.render();
-  }
-
-  initRickshaw() {
+  useEffect(() => {
     const seriesData = [[], []];
     const random = new Rickshaw.Fixtures.RandomData(30);
     for (let i = 0; i < 30; i += 1) {
       random.addData(seriesData);
     }
 
-    // eslint-disable-next-line
-    this.state.graph = new Rickshaw.Graph({
-      element: this.rickshawChart,
-      height: this.props.height,
+    graphRef.current = new Rickshaw.Graph({
+      element: rickshawChartRef.current,
+      height,
       series: [
         {
           color: '#2477ff',
@@ -67,36 +42,45 @@ class RickshawGraph extends React.Component {
     });
 
     const hoverDetail = new Rickshaw.Graph.HoverDetail({
-      graph: this.state.graph,
-      xFormatter: x => new Date(x * 1000).toString(),
+      graph: graphRef.current,
+      xFormatter: (x) => new Date(x * 1000).toString(),
     });
 
     hoverDetail.show();
 
-    setInterval(() => {
+    intervalRef.current = setInterval(() => {
       random.removeData(seriesData);
       random.addData(seriesData);
-      this.state.graph.update();
+      graphRef.current.update();
     }, 1000);
 
-    this.state.graph.render();
-  }
+    graphRef.current.render();
 
-  render() {
-    return (
-      <div
-        ref={(r) => {
-          this.rickshawChart = r;
-        }}
-      />
-    );
-  }
-}
+    window.addEventListener('resize', onResizeRickshaw);
 
-function mapStateToProps(store) {
-  return {
-    sidebarVisibility: store.navigation.sidebarVisibility,
-  };
-}
+    return () => {
+      window.removeEventListener('resize', onResizeRickshaw);
+      clearInterval(intervalRef.current);
+    };
+  }, [height]);
 
-export default connect(mapStateToProps)(RickshawGraph);
+  useEffect(() => {
+    onResizeRickshaw();
+  }, [sidebarVisibility, height]);
+
+  return (
+    <div
+      ref={rickshawChartRef}
+    />
+  );
+};
+
+RickshawGraph.propTypes = {
+  height: PropTypes.number,
+};
+
+RickshawGraph.defaultProps = {
+  height: 100,
+};
+
+export default RickshawGraph;

@@ -1,10 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router';
-import { HashRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  HashRouter,
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { ConnectedRouter } from 'connected-react-router';
-import { getHistory } from '../index';
 import { AdminRoute, UserRoute, AuthRoute } from './RouteComponents';
 
 /* eslint-disable */
@@ -22,44 +24,88 @@ import Forgot from '../pages/auth/forgot';
 
 const CloseButton = ({closeToast}) => <i onClick={closeToast} className="la la-close notifications-close"/>
 
-class App extends React.PureComponent {
-  render() {
-    return (
-        <div>
-            <ToastContainer
-                autoClose={5000}
-                hideProgressBar
-                closeButton={<CloseButton/>}
-            />
-            <ConnectedRouter history={getHistory()}>
-                <HashRouter>
-                    <Switch>
-                      <Route path="/" exact render={() => <Redirect to="/app/main"/>}/>
-                      <Route path="/app" exact render={() => <Redirect to="/app/main"/>}/>
-                      <UserRoute path="/app" dispatch={this.props.dispatch} component={LayoutComponent}/>
-                      <AdminRoute path="/admin" currentUser={this.props.currentUser} dispatch={this.props.dispatch}
-                              component={LayoutComponent}/>
-                      <Route path="/documentation" exact
-                            render={() => <Redirect to="/documentation/getting-started/overview"/>}/>
-                        <Route path="/documentation" component={DocumentationLayoutComponent}/>
-                        <AuthRoute path="/register" exact component={Register}/>
-                        <AuthRoute path="/login" exact component={Login}/>
-                        <AuthRoute path="/verify-email" exact component={Verify}/>
-                        <AuthRoute path="/password-reset" exact component={Reset}/>
-                        <AuthRoute path="/forgot" exact component={Forgot}/>
-                        <Route path="/error" exact component={ErrorPage}/>
-                        <Redirect from="*" to="/app/main/visits"/>
-                    </Switch>
-                </HashRouter>
-            </ConnectedRouter>
-        </div>
-    );
-  }
-}
+const App = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector((store) => store.auth.currentUser);
 
-const mapStateToProps = store => ({
-    currentUser: store.auth.currentUser,
-    loadingInit: store.auth.loadingInit,
-  });
+  return (
+    <div>
+      <ToastContainer
+        autoClose={5000}
+        hideProgressBar
+        closeButton={<CloseButton />}
+      />
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/app/main" replace />} />
+          <Route path="/app" element={<Navigate to="/app/main" replace />} />
+          <Route
+            path="/app/*"
+            element={(
+              <UserRoute dispatch={dispatch}>
+                <LayoutComponent />
+              </UserRoute>
+            )}
+          />
+          <Route
+            path="/admin/*"
+            element={(
+              <AdminRoute currentUser={currentUser}>
+                <LayoutComponent />
+              </AdminRoute>
+            )}
+          />
+          <Route
+            path="/documentation"
+            element={<Navigate to="/documentation/getting-started/overview" replace />}
+          />
+          <Route path="/documentation/*" element={<DocumentationLayoutComponent />} />
+          <Route
+            path="/register"
+            element={(
+              <AuthRoute>
+                <Register />
+              </AuthRoute>
+            )}
+          />
+          <Route
+            path="/login"
+            element={(
+              <AuthRoute>
+                <Login />
+              </AuthRoute>
+            )}
+          />
+          <Route
+            path="/verify-email"
+            element={(
+              <AuthRoute>
+                <Verify />
+              </AuthRoute>
+            )}
+          />
+          <Route
+            path="/password-reset"
+            element={(
+              <AuthRoute>
+                <Reset />
+              </AuthRoute>
+            )}
+          />
+          <Route
+            path="/forgot"
+            element={(
+              <AuthRoute>
+                <Forgot />
+              </AuthRoute>
+            )}
+          />
+          <Route path="/error" element={<ErrorPage />} />
+          <Route path="*" element={<Navigate to="/app/main/dashboard" replace />} />
+        </Routes>
+      </HashRouter>
+    </div>
+  );
+};
 
-export default connect(mapStateToProps)(App);
+export default App;

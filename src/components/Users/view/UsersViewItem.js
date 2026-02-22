@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import selectors from 'crud/modules/users/usersSelectors';
 
-class UsersViewItem extends Component {
-  valueAsArray = () => {
-    const { value } = this.props;
+const UsersViewItem = ({ label, value }) => {
+  const hasPermissionToRead = useSelector((state) => selectors.selectPermissionToRead(state));
 
+  const valueAsArray = () => {
     if (!value) {
       return [];
     }
@@ -19,8 +19,8 @@ class UsersViewItem extends Component {
     return [value];
   };
 
-  displayableRecord = (record) => {
-    if (this.props.hasPermissionToRead) {
+  const displayableRecord = (record) => {
+    if (hasPermissionToRead) {
       return (
         <div key={record.id}>
           <Link className="btn btn-link" to={`/users/${record.id}`}>
@@ -37,34 +37,24 @@ class UsersViewItem extends Component {
     );
   };
 
-  render() {
-    if (!this.valueAsArray().length) {
-      return null;
-    }
-
-    return (
-      <div className="form-group">
-        <label className="col-form-label">
-          {this.props.label}
-        </label>
-        <br />
-        {this.valueAsArray().map((value) =>
-          this.displayableRecord(value),
-        )}
-      </div>
-    );
+  if (!valueAsArray().length) {
+    return null;
   }
-}
+
+  return (
+    <div className="form-group">
+      <label className="col-form-label">
+        {label}
+      </label>
+      <br />
+      {valueAsArray().map((item) => displayableRecord(item))}
+    </div>
+  );
+};
 
 UsersViewItem.propTypes = {
   label: PropTypes.string,
   value: PropTypes.any,
 };
 
-const select = (state) => ({
-  hasPermissionToRead: selectors.selectPermissionToRead(
-    state,
-  ),
-});
-
-export default connect(select)(UsersViewItem);
+export default UsersViewItem;

@@ -55,6 +55,15 @@
   - upgraded chart/sortable stack: `echarts` (`4.9.0` -> `6.0.0`), `echarts-for-react` (`2.0.16` -> `3.0.6`), `react-sortablejs` (`1.5.1` -> `6.1.4`);
   - removed obsolete CRA-era dependencies no longer used under Vite: `react-app-polyfill`, `react-dev-utils`, `sass-loader`;
   - migrated ECharts imports to modular `echarts/core` registration compatible with ECharts 6.
+- Phase 5 legacy cleanup batch:
+  - migrated app shell entry and docs shell from `class`/`connect`/`withRouter` to hooks (`App`, `DocumentationLayout`, `DocumentationHeader`, `DocumentationSidebar`);
+  - completed migration away from `react-redux` `connect(...)` HOC to hooks across app-level screens/components;
+  - converted all header/sidebar icon components to functional React components;
+  - migrated ecommerce pages/components (`Products`, `Product`, `ProductCard`) to hooks and removed router HOC usage;
+  - migrated ecommerce management flows (`Management`, `ProductEdit`) to hooks and `useNavigate`/`useLocation` adapter for existing product thunks;
+  - migrated legacy auth pages (`/pages/login`, `/pages/register`) and users form page to hooks-based implementation;
+  - migrated users view and rickshaw-based widgets/charts (`UsersViewItem`, `ChangesChart`, `RealtimeTraffic`, dashboard `Rickshaw`) away from `connect` classes;
+  - replaced sidebar `LinksGroup` HOC routing dependency with native `useLocation` hook and removed obsolete local `withRouter` bridge.
 - Phase 4 state modernization:
   - moved auth/users side effects to reusable service layer (`src/services/authService.js`, `src/services/usersService.js`);
   - migrated users auth-domain thunks to `async/await` with safer shared error-message handling;

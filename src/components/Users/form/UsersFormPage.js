@@ -1,23 +1,26 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useParams } from 'react-router-dom';
+import { Alert } from 'reactstrap';
+import cx from 'classnames';
+
 import UsersForm from 'components/Users/form/UsersForm';
 import { push } from 'actions/navigation';
 import actions from '../../../actions/usersFormActions';
-import { connect } from 'react-redux';
-import { Alert } from 'reactstrap';
-import cx from 'classnames';
-import withRouter from '../../withRouter';
-
 import s from '../Users.module.scss';
 
-class UsersFormPage extends Component {
-  state = {
-    dispatched: false,
-    promoAlert: false,
-  };
+const UsersFormPage = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const { id } = useParams();
+  const [dispatched, setDispatched] = useState(false);
+  const [promoAlert, setPromoAlert] = useState(false);
+  const findLoading = useSelector((store) => store.users.form.findLoading);
+  const saveLoading = useSelector((store) => store.users.form.saveLoading);
+  const record = useSelector((store) => store.users.form.record);
+  const currentUser = useSelector((store) => store.auth.currentUser);
 
-  getCurrentUserId = () => {
-    const { currentUser } = this.props;
-
+  const getCurrentUserId = () => {
     if (currentUser) {
       return currentUser.id || (currentUser.user && currentUser.user.id) || currentUser.sub || null;
     }
@@ -30,97 +33,64 @@ class UsersFormPage extends Component {
     }
   };
 
-  componentDidMount() {
-    const { dispatch, match } = this.props;
-    if (this.isEditing()) {
-      dispatch(actions.doFind(match.params.id));
-    }
-    else {
-      if (this.isProfile()) {
-        const currentUserId = this.getCurrentUserId();
-        if (currentUserId) {
-          dispatch(actions.doFind(currentUserId));
-        } else {
-          dispatch(actions.doNew());
-        }
-      }
-      else {
+  const currentUserId = getCurrentUserId();
+  const isEditing = Boolean(id);
+  const isProfile = (id && id === String(currentUserId)) || location.pathname === '/app/edit_profile';
+
+  useEffect(() => {
+    if (isEditing) {
+      dispatch(actions.doFind(id));
+    } else if (isProfile) {
+      if (currentUserId) {
+        dispatch(actions.doFind(currentUserId));
+      } else {
         dispatch(actions.doNew());
       }
+    } else {
+      dispatch(actions.doNew());
     }
-    this.setState({ dispatched: true });
-    setTimeout(() => {
-      this.showPromoAlert();
+
+    setDispatched(true);
+    const timeoutId = setTimeout(() => {
+      setPromoAlert(true);
     }, 100);
-  }
 
-  showPromoAlert() {
-    this.setState({promoAlert: true});
-  }
+    return () => clearTimeout(timeoutId);
+  }, [dispatch, id, isEditing, isProfile, currentUserId]);
 
-  doSubmit = (id, data) => {
-    const { dispatch } = this.props;
-    if (this.isEditing() || this.isProfile()) {
-      dispatch(actions.doUpdate(id, data, this.isProfile()));
+  const doSubmit = (recordId, data) => {
+    if (isEditing || isProfile) {
+      dispatch(actions.doUpdate(recordId, data, isProfile));
     } else {
       dispatch(actions.doCreate(data));
     }
   };
 
-  isEditing = () => {
-    const { match } = this.props;
-    return !!match.params.id;
-  };
+  return (
+    <React.Fragment>
+      <div className="page-top-line">
+        <h2 className="page-title">User - <span className="fw-semi-bold">Password</span></h2>
+        <Alert
+          color="success"
+          className={cx(s.promoAlert, {[s.showAlert]: promoAlert})}
+        >
+          This page is only available in <a className="text-white font-weight-bold" rel="noreferrer noopener" href="https://flatlogic.com/templates/light-blue-react-node-js" target="_blank">Light Blue React with Node.js/.NET</a> integration!
+        </Alert>
+      </div>
+      {dispatched && (
+        <UsersForm
+          saveLoading={saveLoading}
+          findLoading={findLoading}
+          currentUser={currentUser}
+          record={(isEditing || isProfile) ? record : {}}
+          isEditing={isEditing}
+          isProfile={isProfile}
+          onSubmit={doSubmit}
+          onCancel={() => dispatch(push('/admin/users'))}
+        />
+      )}
+    </React.Fragment>
+  );
+};
 
-  isProfile = () => {
-    const { match } = this.props;
-    const currentUserId = this.getCurrentUserId();
-
-    if (match.params.id === currentUserId) {
-      return true;
-    }
-
-    return match.url === '/app/edit_profile';
-  };
-
-  render() {
-    return (
-      <React.Fragment>
-          <div className="page-top-line">
-            <h2 className="page-title">User - <span className="fw-semi-bold">Password</span></h2>
-            <Alert
-              color="success"
-              className={cx(s.promoAlert, {[s.showAlert]: this.state.promoAlert})}
-            >
-              This page is only available in <a className="text-white font-weight-bold" rel="noreferrer noopener" href="https://flatlogic.com/templates/light-blue-react-node-js" target="_blank">Light Blue React with Node.js/.NET</a> integration!
-            </Alert>
-          </div>
-          {this.state.dispatched && (
-            <UsersForm
-              saveLoading={this.props.saveLoading}
-              findLoading={this.props.findLoading}
-              currentUser={this.props.currentUser}
-              record={
-                (this.isEditing() || this.isProfile()) ? this.props.record : {}
-              }
-              isEditing={this.isEditing()}
-              isProfile={this.isProfile()}
-              onSubmit={this.doSubmit}
-              onCancel={() => this.props.dispatch(push('/admin/users'))}
-            />
-          )}
-      </React.Fragment>
-    );
-  }
-}
-
-function mapStateToProps(store) {
-  return {
-    findLoading: store.users.form.findLoading,
-    saveLoading: store.users.form.saveLoading,
-    record: store.users.form.record,
-    currentUser: store.auth.currentUser,
-  };
-}
-
-export default withRouter(connect(mapStateToProps)(UsersFormPage));
+export default UsersFormPage;

@@ -1,157 +1,177 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink, matchPath, useLocation } from 'react-router-dom';
 import { Collapse, Badge } from 'reactstrap';
-import { Route } from 'react-router';
 import classnames from 'classnames';
 
 import s from './LinksGroup.module.scss';
 
-class LinksGroup extends Component {
-  static propTypes = {
-    header: PropTypes.node.isRequired,
-    link: PropTypes.string.isRequired,
-    childrenLinks: PropTypes.array,
-    iconName: PropTypes.object,
-    className: PropTypes.string,
-    badge: PropTypes.string,
-    label: PropTypes.string,
-    activeItem: PropTypes.string,
-    isHeader: PropTypes.bool,
-    index: PropTypes.string,
-    deep: PropTypes.number,
-    onActiveSidebarItemChange: PropTypes.func,
-    labelColor: PropTypes.string,
-    exact: PropTypes.bool, 
-    action: PropTypes.func, 
-    CustomClickEvent: PropTypes.func
+const LinksGroup = (props) => {
+  const location = useLocation();
+  const [headerLinkWasClicked, setHeaderLinkWasClicked] = useState(true);
+
+  const togglePanelCollapse = (link, event) => {
+    props.onActiveSidebarItemChange(link);
+    setHeaderLinkWasClicked((prevState) => (
+      !prevState || (props.activeItem && !props.activeItem.includes(props.index))
+    ));
+    event.preventDefault();
   };
 
-  static defaultProps = {
-    link: '',
-    childrenLinks: null,
-      header: '',
-    className: '',
-    isHeader: false,
-    deep: 0,
-    activeItem: '',
-    label: '',
-    exact: true
-  };
-
-  constructor(props) {
-    super(props);
-    this.togglePanelCollapse = this.togglePanelCollapse.bind(this);
-
-    this.state = {
-      headerLinkWasClicked: true,
-    };
-  }
-
-  togglePanelCollapse(link, e) {
-    this.props.onActiveSidebarItemChange(link);
-    this.setState({
-      headerLinkWasClicked: !this.state.headerLinkWasClicked ||
-        (this.props.activeItem && !this.props.activeItem.includes(this.props.index)),
-    });
-    e.preventDefault();
-  }
-
-  render() {
-    const isOpen = this.props.activeItem &&
-      this.props.activeItem.includes(this.props.index) &&
-      this.state.headerLinkWasClicked;
-
-    const {exact} = this.props.exact;
-
-    if (!this.props.childrenLinks) {
-      if (this.props.isHeader) {
-        return (
-          <li className={[s.headerLink, this.props.className].join(' ')}>
-            <NavLink
-              to={this.props.link}
-              activeClassName={s.headerLinkActive}
-              exact={exact}
-              target={this.props.target}
-            >
-              <span className={s.icon}>
-                {this.props.iconName}
-              </span>
-              {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'}`}>{this.props.label}</sup>}
-              {this.props.badge && <Badge className={s.badge} color="danger" pill>9</Badge>}
-            </NavLink>
-          </li>
-        );
-      }
+  const renderSingleLink = (exact) => {
+    if (props.isHeader) {
       return (
-        <li>
+        <li className={[s.headerLink, props.className].join(' ')}>
           <NavLink
-            to={this.props.link}
-            activeClassName={s.headerLinkActive}
-            style={{ paddingLeft: `${40 + (10 * (this.props.deep - 1))}px` }}
-            onClick={(e) => {
-              // able to go to link is not available(for Demo)
-              if (this.props.link.includes('menu')) {
-                e.preventDefault();
-              }
-            }}
-            exact={exact}
+            to={props.link}
+            className={({ isActive }) => classnames({ [s.headerLinkActive]: isActive })}
+            end={exact}
+            target={props.target}
           >
-            {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'}`}>{this.props.label}</sup>}
+            <span className={s.icon}>
+              {props.iconName}
+            </span>
+            {props.header}
+            {' '}
+            {props.label && (
+              <sup className={`${s.headerLabel} text-${props.labelColor || 'warning'}`}>
+                {props.label}
+              </sup>
+            )}
+            {props.badge && <Badge className={s.badge} color="danger" pill>9</Badge>}
           </NavLink>
         </li>
       );
     }
-    /* eslint-disable */
-    return (
-      <Route
-        path={this.props.link}
-        children={(params) => {
-          const { match } = params;
-          return (
-            <li className={classnames({ [s.headerLink]: this.props.isHeader }, this.props.className)}>
-              <a className={classnames(s.accordionToggle, { [s.headerLinkActive]: match }, { [s.collapsed]: isOpen }, "d-flex")}
-                style={{ paddingLeft: `${this.props.deep == 0 ? 10 : 35 + 10 * (this.props.deep - 1)}px` }}
-                onClick={(e) => this.togglePanelCollapse(this.props.link, e)}
-                href="#"
-              >
-                {this.props.isHeader ?
-                  <span className={s.icon}>
-                    {this.props.iconName}
-                  </span> : null
-                }
-                {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'} ms-1`}>{this.props.label}</sup>}
-                <b className={['fa fa-angle-right', s.caret].join(' ')} />
-              </a>
-              {/* eslint-enable */}
-              <Collapse className={s.panel} isOpen={isOpen}>
-                <ul>
-                  {this.props.childrenLinks &&
-                    this.props.childrenLinks.map((child, ind) =>
-                    <div 
-                    key={ind}
-                    onClick={ child.action ? this.props.action : null }>
-                      <LinksGroup
-                        doLogout={this.props.doLogout}
-                        onActiveSidebarItemChange={this.props.onActiveSidebarItemChange}
-                        activeItem={this.props.activeItem}
-                        header={child.header}
-                        link={child.link}
-                        index={child.index}
-                        childrenLinks={child.childrenLinks}
-                        deep={this.props.deep + 1}
-                        // eslint-disable-line
-                      />
-                    </div>,
-                    )}
-                </ul>
-              </Collapse>
-            </li>
-          );
-        }}
-      />
-    );
-  }
-}
 
-export default withRouter(LinksGroup);
+    return (
+      <li>
+        <NavLink
+          to={props.link}
+          className={({ isActive }) => classnames({ [s.headerLinkActive]: isActive })}
+          style={{ paddingLeft: `${40 + (10 * (props.deep - 1))}px` }}
+          onClick={(event) => {
+            if (props.link.includes('menu')) {
+              event.preventDefault();
+            }
+          }}
+          end={exact}
+        >
+          {props.header}
+          {' '}
+          {props.label && (
+            <sup className={`${s.headerLabel} text-${props.labelColor || 'warning'}`}>
+              {props.label}
+            </sup>
+          )}
+        </NavLink>
+      </li>
+    );
+  };
+
+  const isOpen = props.activeItem
+    && props.activeItem.includes(props.index)
+    && headerLinkWasClicked;
+  const exact = props.exact !== false;
+
+  if (!props.childrenLinks) {
+    return renderSingleLink(exact);
+  }
+
+  const linkMatch = matchPath(
+    { path: props.link, end: false },
+    location.pathname,
+  );
+
+  return (
+    <li className={classnames({ [s.headerLink]: props.isHeader }, props.className)}>
+      <a
+        className={classnames(
+          s.accordionToggle,
+          { [s.headerLinkActive]: !!linkMatch },
+          { [s.collapsed]: isOpen },
+          'd-flex',
+        )}
+        style={{ paddingLeft: `${props.deep === 0 ? 10 : 35 + 10 * (props.deep - 1)}px` }}
+        onClick={(event) => togglePanelCollapse(props.link, event)}
+        href="#"
+      >
+        {props.isHeader ? (
+          <span className={s.icon}>
+            {props.iconName}
+          </span>
+        ) : null}
+        {props.header}
+        {' '}
+        {props.label && (
+          <sup className={`${s.headerLabel} text-${props.labelColor || 'warning'} ms-1`}>
+            {props.label}
+          </sup>
+        )}
+        <b className={['fa fa-angle-right', s.caret].join(' ')} />
+      </a>
+      <Collapse className={s.panel} isOpen={isOpen}>
+        <ul>
+          {props.childrenLinks.map((child, index) => (
+            <div
+              key={index.toString()}
+              onClick={child.action ? props.action : null}
+            >
+              <LinksGroup
+                doLogout={props.doLogout}
+                onActiveSidebarItemChange={props.onActiveSidebarItemChange}
+                activeItem={props.activeItem}
+                header={child.header}
+                link={child.link}
+                index={child.index}
+                childrenLinks={child.childrenLinks}
+                deep={props.deep + 1}
+              />
+            </div>
+          ))}
+        </ul>
+      </Collapse>
+    </li>
+  );
+};
+
+LinksGroup.propTypes = {
+  header: PropTypes.node.isRequired,
+  link: PropTypes.string.isRequired,
+  childrenLinks: PropTypes.array,
+  iconName: PropTypes.object,
+  className: PropTypes.string,
+  badge: PropTypes.string,
+  label: PropTypes.string,
+  activeItem: PropTypes.string,
+  isHeader: PropTypes.bool,
+  index: PropTypes.string,
+  deep: PropTypes.number,
+  onActiveSidebarItemChange: PropTypes.func,
+  labelColor: PropTypes.string,
+  exact: PropTypes.bool,
+  action: PropTypes.func,
+  CustomClickEvent: PropTypes.func,
+  target: PropTypes.string,
+};
+
+LinksGroup.defaultProps = {
+  link: '',
+  childrenLinks: null,
+  header: '',
+  className: '',
+  isHeader: false,
+  deep: 0,
+  activeItem: '',
+  label: '',
+  exact: true,
+  target: undefined,
+  badge: undefined,
+  labelColor: undefined,
+  onActiveSidebarItemChange: () => {},
+  action: undefined,
+  CustomClickEvent: undefined,
+  index: undefined,
+};
+
+export default LinksGroup;

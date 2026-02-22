@@ -1,21 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
-import {
-    BootstrapTable,
-    TableHeaderColumn,
-} from 'react-bootstrap-table';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Popover, PopoverBody, PopoverHeader, Alert } from 'reactstrap';
 
 import {
-    Button,
-    ButtonToolbar,
-    Dropdown,
-    DropdownItem,
-    DropdownMenu,
-    DropdownToggle
+  Button,
+  ButtonToolbar,
+  Input,
 } from "reactstrap";
 
 import Widget from '../../components/Widget';
@@ -26,204 +17,247 @@ import { getProductsRequest, deleteProductRequest } from '../../actions/products
 import Loader from '../../components/Loader';
 import cx from 'classnames';
 
-class Management extends React.Component {
-    static propTypes = {
-        products: PropTypes.array,
-        dispatch: PropTypes.func.isRequired,
-    };
+const Management = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const products = useSelector((state) => state.products.data);
+  const isReceiving = useSelector((state) => state.products.isReceiving);
+  const isDeleting = useSelector((state) => state.products.isDeleting);
+  const idToDelete = useSelector((state) => state.products.idToDelete);
+  const [popovers, setPopovers] = useState({});
+  const [promoAlert, setPromoAlert] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
-    static defaultProps = {
-        products: []
-    };
+  useEffect(() => {
+    dispatch(getProductsRequest());
+    const timeoutId = setTimeout(() => {
+      setPromoAlert(true);
+    }, 100);
 
-    state = {
-        popovers: {},
-        promoAlert: false,
-    };
+    return () => clearTimeout(timeoutId);
+  }, [dispatch]);
 
-    constructor() {
-        super();
-        this.apiFormatter = this.apiFormatter.bind(this);
-    }
+  const imageFormatter = (cell) => (
+    <img src={cell} alt="..." className={s.image} title="image"/>
+  );
 
-    componentDidMount() {
-        this.props.dispatch(getProductsRequest());
-        setTimeout(() => {
-            this.showPromoAlert();
-        }, 100);
-    }
+  const ratingFormatter = (cell) => (
+    <Rating rating={parseFloat(cell)}/>
+  );
 
-    showPromoAlert() {
-        this.setState({promoAlert: true});
-    }
+  const priceFormatter = (cell) => (
+    <span className="text-success">{cell}</span>
+  );
 
-    imageFormatter(cell) {
-        return (
-            <img src={cell} alt="..." className={s.image} title="image"/>
-        )
-    }
+  const titleFormatter = (cell, row) => (
+    cell ? (
+      <Link className="text-primary" to={`/app/ecommerce/product/${row.id}`}>
+        {cell[0].toUpperCase() + cell.slice(1)}
+      </Link>
+    ) : ""
+  );
 
-    ratingFormatter(cell) {
-        return (
-            <Rating rating={parseFloat(cell)}/>
-        )
-    }
+  const deleteProduct = (id) => {
+    dispatch(deleteProductRequest({
+      id,
+      history: {
+        push: navigate,
+        location,
+      }
+    }));
+  };
 
-    priceFormatter = (cell) => {
-        return (
-            <span className="text-success">{cell}</span>
-        )
-    }
+  const togglePopover = (id) => {
+    setPopovers((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
 
-    titleFormatter(cell, row) {
-        return cell ? (
-            <Link className="text-primary" to={'/app/ecommerce/product/' + row.id}>
-               {cell[0].toUpperCase() + cell.slice(1)}
-            </Link>
-        ) : ""
-    }
-
-    deleteProduct(id) {
-        this.props.dispatch(deleteProductRequest({
-            id,
-            history: this.props.history
-        }))
-    }
-
-    togglePopover(id) {
-        let newState = {...this.state};
-        if (!this.state.popovers[id]) {
-            newState.popovers[id] = true;
-        } else {
-            newState.popovers[id] = !newState.popovers[id];
+  const apiFormatter = (row) => (
+    <ButtonToolbar>
+      <Button color="primary" size="xs" onClick={() => navigate(`/app/ecommerce/management/${row.id}`)}>
+        <span className="d-none d-md-inline-block">Edit</span>
+        <span className="d-md-none"><i className='la la-edit'/></span>
+      </Button>
+      <Button id={`popoverDelete_${row.id}`} color="danger" size="xs">
+        {isDeleting && idToDelete === row.id ? <Loader size={14}/> :
+          <span>
+            <span className="d-none d-md-inline-block">Delete</span>
+            <span className="d-md-none"><i className='la la-remove'/></span>
+          </span>
         }
-        this.setState(newState);
+      </Button>
+      <Popover className="popover-danger" target={`popoverDelete_${row.id}`} placement="top" isOpen={popovers[row.id]}
+               toggle={() => {togglePopover(row.id)}}
+      >
+        <PopoverHeader className="px-5">Are you sure?</PopoverHeader>
+        <PopoverBody className="px-5 d-flex justify-content-center">
+          <ButtonToolbar>
+            <Button color="success" size="xs" onClick={() => {deleteProduct(row.id)}}>
+              Yes
+            </Button>
+            <Button color="danger" size="xs" onClick={() => {togglePopover(row.id)}}>
+              No
+            </Button>
+          </ButtonToolbar>
+        </PopoverBody>
+      </Popover>
+    </ButtonToolbar>
+  );
+
+  const createNewProduct = () => {
+    navigate('/app/ecommerce/management/create');
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+    setPage(1);
+  };
+
+  const handlePageSizeChange = (event) => {
+    setPageSize(Number(event.target.value));
+    setPage(1);
+  };
+
+  const handlePageChange = (nextPage) => {
+    setPage(nextPage);
+  };
+
+  const getFilteredProducts = (items) => {
+    const normalizedQuery = searchQuery.trim().toLowerCase();
+
+    if (!normalizedQuery) {
+      return items;
     }
 
-    apiFormatter(cell, row) {
-        return (
-            <ButtonToolbar>
-                <Button color="primary" size="xs" onClick={()=> this.props.history.push('/app/ecommerce/management/' + row.id)}>
-                    <span className="d-none d-md-inline-block">Edit</span>
-                    <span className="d-md-none"><i className='la la-edit'/></span>
-                </Button>
-                <Button id={'popoverDelete_' + row.id} color="danger" size="xs">
-                    {this.props.isDeleting && this.props.idToDelete === row.id ? <Loader size={14}/> :
-                        <span>
-                            <span className="d-none d-md-inline-block">Delete</span>
-                            <span className="d-md-none"><i className='la la-remove'/></span>
-                        </span>
-                    }
-                </Button>
-                <Popover className="popover-danger" target={'popoverDelete_' + row.id} placement="top" isOpen={this.state.popovers[row.id]}
-                         toggle={()=>{this.togglePopover(row.id)}}
-                >
-                    <PopoverHeader className="px-5">Are you sure?</PopoverHeader>
-                    <PopoverBody className="px-5 d-flex justify-content-center">
-                        <ButtonToolbar>
-                            <Button color="success" size="xs" onClick={() => {this.deleteProduct(row.id)}}>
-                                Yes
-                            </Button>
-                            <Button color="danger" size="xs" onClick={() => {this.togglePopover(row.id)}}>
-                                No
-                            </Button>
-                        </ButtonToolbar>
-                    </PopoverBody>
-                </Popover>
-            </ButtonToolbar>
-        )
-    }
+    return items.filter((product) => {
+      const searchableParts = [
+        product.id,
+        product.title,
+        product.subtitle,
+        product.price,
+      ];
 
-    renderSizePerPageDropDown = (props) => {
-        const limits = [];
-        props.sizePerPageList.forEach((limit) => {
-            limits.push(<DropdownItem key={limit}
-                                      onClick={() => props.changeSizePerPage(limit)}>{limit}</DropdownItem>);
-        });
+      return searchableParts.some((part) =>
+        String(part || '')
+          .toLowerCase()
+          .includes(normalizedQuery),
+      );
+    });
+  };
 
-        return (
-            <Dropdown isOpen={props.open} toggle={props.toggleDropDown}>
-                <DropdownToggle color="subtle-blue" caret>
-                    {props.currSizePerPage}
-                </DropdownToggle>
-                <DropdownMenu>
-                    {limits}
-                </DropdownMenu>
-            </Dropdown>
-        );
-    };
+  const showDesktopColumns = window.innerWidth >= 768;
+  const filteredProducts = getFilteredProducts(products);
+  const totalRows = filteredProducts.length;
+  const totalPages = Math.max(1, Math.ceil(totalRows / pageSize));
+  const currentPage = Math.min(page, totalPages);
+  const pageStart = (currentPage - 1) * pageSize;
+  const visibleProducts = filteredProducts.slice(pageStart, pageStart + pageSize);
+  const pageStartNumber = totalRows ? pageStart + 1 : 0;
+  const pageEndNumber = totalRows ? pageStart + visibleProducts.length : 0;
 
-    createNewProduct() {
-        this.props.history.push('/app/ecommerce/management/create');
-    }
+  return (
+    <div>
+      <div className="page-top-line">
+        <h2 className="page-title">Product - <span className="fw-semi-bold">Management</span></h2>
+        <Alert
+          color="success"
+          className={cx(s.promoAlert, {[s.showAlert]: promoAlert})}
+        >
+          This page is only available in <a className="text-white font-weight-bold" rel="noreferrer noopener" href="https://flatlogic.com/templates/light-blue-react-node-js" target="_blank">Light Blue React with NodeJS/.NET</a> integration!
+        </Alert>
+      </div>
+      <Widget title="List of Products" collapse close className="overflow-auto"
+              fetchingData={isReceiving}
+      >
+        <Button color="success" onClick={() => createNewProduct()}>Create Product</Button>
+        <div className="d-flex justify-content-end my-lg">
+          <Input
+            type="search"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            placeholder="Search products"
+            className="w-auto"
+          />
+        </div>
+        <div className="table-responsive">
+          <table className={`table table-striped mb-0 ${s.bootstrapTable}`}>
+            <thead>
+            <tr>
+              <th className="width-50"><span className="fs-sm">ID</span></th>
+              <th><span className="fs-sm">Image</span></th>
+              <th><span className="fs-sm">Title</span></th>
+              {showDesktopColumns && (
+                <th><span className="fs-sm">Subtitle</span></th>
+              )}
+              {showDesktopColumns && (
+                <th><span className="fs-sm">Price($)</span></th>
+              )}
+              {showDesktopColumns && (
+                <th><span className="fs-sm">Rating</span></th>
+              )}
+              <th><span className="fs-sm">Api</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            {!visibleProducts.length && (
+              <tr>
+                <td colSpan={showDesktopColumns ? 7 : 4} className="text-center text-muted py-lg">
+                  No products found
+                </td>
+              </tr>
+            )}
+            {visibleProducts.map((row) => (
+              <tr key={row.id}>
+                <td className="width-50">{row.id}</td>
+                <td>{imageFormatter(row.img)}</td>
+                <td>{titleFormatter(row.title, row)}</td>
+                {showDesktopColumns && <td>{row.subtitle}</td>}
+                {showDesktopColumns && <td>{priceFormatter(row.price)}</td>}
+                {showDesktopColumns && <td>{ratingFormatter(row.rating)}</td>}
+                <td>{apiFormatter(row)}</td>
+              </tr>
+            ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="d-flex flex-wrap justify-content-between align-items-center mt-md gap-2">
+          <small className="text-muted">
+            Showing {pageStartNumber}-{pageEndNumber} of {totalRows}
+          </small>
+          <div className="d-flex align-items-center gap-2">
+            <Input type="select" value={pageSize} onChange={handlePageSizeChange} className={s.pageSizeSelect}>
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+            </Input>
+            <Button
+              color="default"
+              size="sm"
+              disabled={currentPage <= 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+            >
+              Prev
+            </Button>
+            <span className="px-2">{currentPage} / {totalPages}</span>
+            <Button
+              color="default"
+              size="sm"
+              disabled={currentPage >= totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            >
+              Next
+            </Button>
+          </div>
+        </div>
+      </Widget>
+    </div>
 
-    render() {
-        const options = {
-            sizePerPage: 10,
-            paginationSize: 3,
-            sizePerPageDropDown: this.renderSizePerPageDropDown,
-        };
+  );
+};
 
-        return (
-            <div>
-                <div className="page-top-line">
-                    <h2 className="page-title">Product - <span className="fw-semi-bold">Management</span></h2>
-                    <Alert
-                        color="success"
-                        className={cx(s.promoAlert, {[s.showAlert]: this.state.promoAlert})}
-                    >
-                        This page is only available in <a className="text-white font-weight-bold" rel="noreferrer noopener" href="https://flatlogic.com/templates/light-blue-react-node-js" target="_blank">Light Blue React with NodeJS/.NET</a> integration!
-                    </Alert>
-                </div>
-                <Widget title="List of Products" collapse close className="overflow-auto"
-                        fetchingData={this.props.isReceiving}
-                >
-                    <Button color="success" onClick={() => this.createNewProduct()}>Create Product</Button>
-                    <BootstrapTable bordered={ false } className="table-responsive" data={this.props.products} version="4" pagination options={options} search
-                                    tableContainerClass={`table-striped ${s.bootstrapTable}`}>
-                        <TableHeaderColumn dataField="id" isKey={true} className="width-50"
-                                           columnClassName="width-50">
-                            <span className="fs-sm">ID</span>
-                        </TableHeaderColumn>
-                        <TableHeaderColumn dataField="img" dataFormat={this.imageFormatter}>
-                            <span className="fs-sm">Image</span>
-                        </TableHeaderColumn>
-                        <TableHeaderColumn dataField="title" dataFormat={this.titleFormatter}>
-                            <span className="fs-sm">Title</span>
-                        </TableHeaderColumn>
-                        {window.innerWidth >= 768 && (
-                            <TableHeaderColumn dataField="subtitle">
-                                <span className="fs-sm">Subtitle</span>
-                            </TableHeaderColumn>
-                        )}
-                        {window.innerWidth >= 768 && (
-                            <TableHeaderColumn dataField="price" dataFormat={this.priceFormatter}>
-                                <span className="fs-sm">Price($)</span>
-                            </TableHeaderColumn>
-                        )}
-                        {window.innerWidth >= 768 && (
-                            <TableHeaderColumn dataField="rating" dataFormat={this.ratingFormatter}>
-                                <span className="fs-sm">Rating</span>
-                            </TableHeaderColumn>
-                        )}
-                        <TableHeaderColumn dataFormat={this.apiFormatter}>
-                            <span className="fs-sm">Api</span>
-                        </TableHeaderColumn>
-                    </BootstrapTable>
-                </Widget>
-            </div>
-
-        );
-    }
-}
-
-function mapStateToProps(state) {
-    return {
-        products: state.products.data,
-        isReceiving: state.products.isReceiving,
-        isDeleting: state.products.isDeleting,
-        idToDelete: state.products.idToDelete,
-    };
-}
-
-export default withRouter(connect(mapStateToProps)(Management));
+export default Management;

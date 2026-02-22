@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Col } from 'reactstrap';
 import classnames from 'classnames';
-import { Switch, Route, withRouter } from 'react-router';
+import { Route, Routes } from 'react-router-dom';
 import Hammer from 'rc-hammerjs';
 
 import Header from './DocumentationHeader';
@@ -29,105 +28,72 @@ import Tabs from './pages/components/Tabs';
 import Libs from './pages/Libs';
 import Pages from './pages/Pages';
 
-class Layout extends React.Component {
-  static propTypes = {
-    sidebarStatic: PropTypes.bool,
-    sidebarOpened: PropTypes.bool,
-    dispatch: PropTypes.func.isRequired,
-  };
+const Layout = () => {
+  const dispatch = useDispatch();
+  const sidebarOpened = useSelector((store) => store.navigation.sidebarOpened);
+  const [width] = React.useState(window.innerWidth);
 
-  static defaultProps = {
-    sidebarStatic: false,
-    sidebarOpened: false,
-  };
-
-  constructor(props) {
-    super(props);
-    this.handleSwipe = this.handleSwipe.bind(this);
-
-    this.state = {
-      chatOpen: false,
-      width: window.innerWidth,
-    };
-
-  }
-
-  handleResize() {
-    this.setState({
-      width: window.innerWidth,
-    })
-
-    if(window.innerWidth < 768 && this.props.sidebarOpened) {
-      this.props.dispatch(closeSidebar());
-    }
-  }
-
-  handleSwipe(e) {
+  const handleSwipe = (e) => {
     if ('ontouchstart' in window) {
-      if (e.direction === 4 && !this.state.chatOpen) {
-        this.props.dispatch(openSidebar());
+      if (e.direction === 4) {
+        dispatch(openSidebar());
         return;
       }
 
-      if (e.direction === 2 && this.props.sidebarOpened) {
-        this.props.dispatch(closeSidebar());
+      if (e.direction === 2 && sidebarOpened) {
+        dispatch(closeSidebar());
         return;
       }
     }
-  }
-
-  render() {
-    return (
-      <div
-        className={[
-          s.root,
-          sd.root,
-          this.state.width > 768 && s.sidebarStatic,
-          this.state.width < 768 && !this.props.sidebarOpened ? s.sidebarClose : '',
-        ].join(' ')}
-      >
-        <Header />
-        <div>
-          <Hammer onSwipe={this.handleSwipe}>
-            <main className={classnames(s.content, sd.content, 'documentationPage')}>
-              <div className="container">
-                <div className="row">
-                  <Sidebar width={this.state.width} />
-                  <Col xl={10} md={9}>
-                    <Switch>
-                      <Route path="/documentation/getting-started/overview" exact component={Overview} />
-                      <Route path="/documentation/getting-started/licences" exact component={Licences} />
-                      <Route path="/documentation/getting-started/quick-start" exact component={QuickStart} />
-                      <Route path="/documentation/components/alerts" exact component={Alerts} />
-                      <Route path="/documentation/components/badge" exact component={Badge} />
-                      <Route path="/documentation/components/buttons" exact component={Buttons} />
-                      <Route path="/documentation/components/card" exact component={Card} />
-                      <Route path="/documentation/components/carousel" exact component={Carousel} />
-                      <Route path="/documentation/components/modal" exact component={Modal} />
-                      <Route path="/documentation/components/nav" exact component={Nav} />
-                      <Route path="/documentation/components/navbar" exact component={Navbar} />
-                      <Route path="/documentation/components/popovers" exact component={Popovers} />
-                      <Route path="/documentation/components/tabs-accordion" exact component={Tabs} />
-                      <Route path="/documentation/components/progress" exact component={Progress} />
-                      <Route path="/documentation/libs" exact component={Libs} />
-                      <Route path="/documentation/pages" exact component={Pages} />
-                    </Switch>
-                  </Col>
-                </div>
-              </div>
-            </main>
-          </Hammer>
-        </div>
-      </div>
-    );
-  }
-}
-
-function mapStateToProps(store) {
-  return {
-    sidebarOpened: store.navigation.sidebarOpened,
-    sidebarStatic: store.navigation.sidebarStatic,
   };
-}
 
-export default withRouter(connect(mapStateToProps)(Layout));
+  return (
+    <div
+      className={[
+        s.root,
+        sd.root,
+        width > 768 && s.sidebarStatic,
+        width < 768 && !sidebarOpened ? s.sidebarClose : '',
+      ].join(' ')}
+    >
+      <Header />
+      <div>
+        <Hammer onSwipe={handleSwipe}>
+          <main className={classnames(s.content, sd.content, 'documentationPage')}>
+            <div className="container">
+              <div className="row">
+                <Sidebar width={width} />
+                <Col xl={10} md={9}>
+                  <Routes>
+                    <Route path="/documentation/getting-started/overview" element={<Overview />} />
+                    <Route path="/documentation/getting-started/licences" element={<Licences />} />
+                    <Route path="/documentation/getting-started/quick-start" element={<QuickStart />} />
+                    <Route path="/documentation/components/alerts" element={<Alerts />} />
+                    <Route path="/documentation/components/badge" element={<Badge />} />
+                    <Route path="/documentation/components/buttons" element={<Buttons />} />
+                    <Route path="/documentation/components/card" element={<Card />} />
+                    <Route path="/documentation/components/carousel" element={<Carousel />} />
+                    <Route path="/documentation/components/modal" element={<Modal />} />
+                    <Route path="/documentation/components/nav" element={<Nav />} />
+                    <Route path="/documentation/components/navbar" element={<Navbar />} />
+                    <Route path="/documentation/components/popovers" element={<Popovers />} />
+                    <Route path="/documentation/components/tabs-accordion" element={<Tabs />} />
+                    <Route path="/documentation/components/progress" element={<Progress />} />
+                    <Route path="/documentation/libs" element={<Libs />} />
+                    <Route path="/documentation/pages" element={<Pages />} />
+                    <Route
+                      path="*"
+                      element={<Overview />}
+                    />
+                  </Routes>
+                </Col>
+              </div>
+            </div>
+          </main>
+        </Hammer>
+      </div>
+    </div>
+  );
+};
+
+export default Layout;

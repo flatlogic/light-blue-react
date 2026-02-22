@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import FilterElement from './components/FilterElement/FilterElement';
 import ProductCard from './components/ProductCard/ProductCard';
@@ -7,8 +7,6 @@ import MobileModal from './components/MobileModal/MobileModal';
 
 import s from './Products.module.scss';
 import { getProductsRequest } from '../../actions/products';
-import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
 
 const filtersData = [{
   title: 'Filter',
@@ -44,81 +42,64 @@ const filtersData = [{
   data: ['Favourite', 'Price', 'Popular'],
 }];
 
-class ProductList extends Component {
-  static propTypes = {
-    products: PropTypes.array,
-    dispatch: PropTypes.func.isRequired,
+const ProductList = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.data);
+  const [isModalActive, setIsModalActive] = useState(false);
+  const [modalId, setModalId] = useState(null);
+
+  useEffect(() => {
+    dispatch(getProductsRequest());
+  }, [dispatch]);
+
+  const openModal = (id) => {
+    setIsModalActive(true);
+    setModalId(id);
   };
 
-  static defaultProps = {
-    products: []
+  const closeModal = () => {
+    setIsModalActive(false);
+    setModalId(null);
   };
 
-  state = {
-    isModalActive: false,
-    modalId: null,
-  };
-
-  openModal(id) {
-    this.setState({ isModalActive: true, modalId: id });
-  }
-
-  closeModal = () => {
-    this.setState({ isModalActive: false, modalId: null });
-  };
-
-  componentDidMount() {
-      this.props.dispatch(getProductsRequest());
-  }
-
-  render() {
-    const products = this.props.products;
-    const { isModalActive, modalId } = this.state;
-    return (
-      <div>
-        {!isModalActive &&
-          <div>
-            {/* eslint-disable */}
-            <h1 className="page-title">E-commerce - <span className="fw-semi-bold">Product Grid</span></h1>
-            {/* eslint-enable */}
-            <div className={s.productsListFilters}>
-              {filtersData.map(item =>
-                (typeof item.data[0] === 'string'
-                  ? <FilterElement color="subtle-blue" defaultLable={item.title} options={item.data} key={item.id} />
-                  : item.data.map(i =>
-                    <FilterElement color="subtle-blue" defaultLable={i.label} options={i.options} key={i.id} />)),
-              )}
-            </div>
-            <div className={s.mobileFilterButtons}>
-              <button
-                className="btn btn-transparent btn-lg text-white"
-                onClick={() => this.openModal(1)}
-              >
-                Sort <i className="fa fa-2x fa-angle-down" />
-              </button>
-              <button
-                className="btn btn-transparent btn-lg text-white"
-                onClick={() => this.openModal(0)}
-              >
-                Filter <i className="fa fa-2x fa-angle-down" />
-              </button>
-            </div>
-            <div className={s.productsListElements}>
-              {products.map(item => <ProductCard key={item.id} {...item} />)}
-            </div>
+  return (
+    <div>
+      {!isModalActive &&
+        <div>
+          {/* eslint-disable */}
+          <h1 className="page-title">E-commerce - <span className="fw-semi-bold">Product Grid</span></h1>
+          {/* eslint-enable */}
+          <div className={s.productsListFilters}>
+            {filtersData.map((item) =>
+              (typeof item.data[0] === 'string'
+                ? <FilterElement color="subtle-blue" defaultLable={item.title} options={item.data} key={item.id} />
+                : item.data.map((i) =>
+                  <FilterElement color="subtle-blue" defaultLable={i.label} options={i.options} key={i.id} />)),
+            )}
           </div>
-        }
-        <MobileModal active={isModalActive && modalId === 0} data={filtersData[0]} close={this.closeModal} />
-        <MobileModal active={isModalActive && modalId === 1} data={filtersData[1]} close={this.closeModal} />
-      </div >
-    );
-  }
-}
+          <div className={s.mobileFilterButtons}>
+            <button
+              className="btn btn-transparent btn-lg text-white"
+              onClick={() => openModal(1)}
+            >
+              Sort <i className="fa fa-2x fa-angle-down" />
+            </button>
+            <button
+              className="btn btn-transparent btn-lg text-white"
+              onClick={() => openModal(0)}
+            >
+              Filter <i className="fa fa-2x fa-angle-down" />
+            </button>
+          </div>
+          <div className={s.productsListElements}>
+            {products.map((item) => <ProductCard key={item.id} {...item} />)}
+          </div>
+        </div>
+      }
+      <MobileModal active={isModalActive && modalId === 0} data={filtersData[0]} close={closeModal} />
+      <MobileModal active={isModalActive && modalId === 1} data={filtersData[1]} close={closeModal} />
+    </div >
+  );
+};
 
-function mapStateToProps(state) {
-    return {
-        products: state.products.data,
-    };
-}
-
-export default withRouter(connect(mapStateToProps)(ProductList));
+export default ProductList;

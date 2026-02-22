@@ -1,230 +1,163 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Navigate, Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { Container, Alert, Button, FormGroup, InputGroup, InputGroupAddon, InputGroupText, Input, Label } from 'reactstrap';
+import React, { useState } from 'react';
+import { Navigate, Link, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Container, Alert, Button, FormGroup, InputGroup, InputGroupText, Input, Label } from 'reactstrap';
 import Widget from '../../components/Widget';
 import { registerUser, authError as registerError, loginUser } from '../../actions/auth';
 import microsoft from '../../images/microsoft.png';
-import withRouter from '../../components/withRouter';
 import { isAuthenticated } from '../../core/auth';
 
-class Register extends React.Component {
-    static propTypes = {
-        dispatch: PropTypes.func.isRequired,
-    };
+const Register = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const isFetching = useSelector((state) => state.auth.isFetching);
+  const errorMessage = useSelector((state) => state.auth.errorMessage);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-    constructor(props) {
-        super(props);
+  const isPasswordValid = () => password && password === confirmPassword;
 
-        this.state = {
-            email: '',
-            password: '',
-            confirmPassword: ''
-        };
-
-        this.doRegister = this.doRegister.bind(this);
-        this.googleLogin = this.googleLogin.bind(this);
-        this.microsoftLogin = this.microsoftLogin.bind(this);
-        this.changeEmail = this.changeEmail.bind(this);
-        this.changePassword = this.changePassword.bind(this);
-        this.changeConfirmPassword = this.changeConfirmPassword.bind(this);
-        this.checkPassword = this.checkPassword.bind(this);
-        this.isPasswordValid = this.isPasswordValid.bind(this);
+  const checkPassword = () => {
+    if (!isPasswordValid()) {
+      if (!password) {
+        dispatch(registerError("Password field is empty"));
+      } else {
+        dispatch(registerError("Passwords are not equal"));
+      }
+      setTimeout(() => {
+        dispatch(registerError());
+      }, 3 * 1000);
     }
+  };
 
-    changeEmail(event) {
-        this.setState({email: event.target.value});
+  const doRegister = (event) => {
+    event.preventDefault();
+    if (!isPasswordValid()) {
+      checkPassword();
+    } else {
+      dispatch(registerUser({
+        email,
+        password
+      }));
     }
+  };
 
-    changePassword(event) {
-        this.setState({password: event.target.value});
-    }
+  const googleLogin = () => {
+    dispatch(loginUser({ social: "google" }));
+  };
 
-    changeConfirmPassword(event) {
-        this.setState({confirmPassword: event.target.value});
-    }
+  const microsoftLogin = () => {
+    dispatch(loginUser({ social: "microsoft" }));
+  };
 
-    checkPassword() {
-        if (!this.isPasswordValid()) {
-            if (!this.state.password) {
-                this.props.dispatch(registerError("Password field is empty"));
-            } else {
-                this.props.dispatch(registerError("Passwords are not equal"));
+  const { from } = location.state || { from: { pathname: '/app' } };
+
+  if (isAuthenticated()) {
+    return (
+      <Navigate to={from} replace />
+    );
+  }
+
+  return (
+    <div className="auth-page">
+      <Container>
+        <Widget className="widget-auth mx-auto" title={<h3 className="mt-0">Login to your Web App</h3>}>
+          <p className="widget-auth-info">
+            Please fill all fields below.
+          </p>
+          <form onSubmit={doRegister}>
+            {
+              errorMessage && (
+                <Alert className="alert-sm widget-middle-overflow rounded-0" color="danger">
+                  {errorMessage}
+                </Alert>
+              )
             }
-            setTimeout(() => {
-                this.props.dispatch(registerError());
-            }, 3 * 1000)
-        }
-    }
+            <FormGroup className="mt">
+              <Label for="email">Email</Label>
+              <InputGroup className="input-group-no-border">
+                <InputGroupText>
+                  <i className="la la-user text-white"/>
+                </InputGroupText>
 
-    isPasswordValid() {
-       return this.state.password && this.state.password === this.state.confirmPassword;
-    }
+                <Input
+                  id="email"
+                  className="input-transparent ps-3"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  type="email"
+                  required
+                  name="email"
+                  placeholder="Email"
+                />
+              </InputGroup>
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Password</Label>
+              <InputGroup className="input-group-no-border">
+                <InputGroupText>
+                  <i className="la la-lock text-white"/>
+                </InputGroupText>
 
-    doRegister(e) {
-        e.preventDefault();
-        if (!this.isPasswordValid()) {
-            this.checkPassword();
-        } else {
-            this.props.dispatch(registerUser({
-                email: this.state.email,
-                password: this.state.password
-            }));
-        }
-    }
-
-    googleLogin() {
-        this.props.dispatch(loginUser({social: "google"}));
-    }
-
-    microsoftLogin() {
-        this.props.dispatch(loginUser({social: "microsoft"}));
-    }
-
-    render() {
-        const {from} = this.props.location.state || {from: {pathname: '/app'}}; // eslint-disable-line
-
-        // cant access login page while logged in
-        if (isAuthenticated(localStorage.getItem('token'))) {
-            return (
-                <Navigate to={from} replace />
-            );
-        }
-
-        return (
-            <div className="auth-page">
-                <Container>
-                    <Widget className="widget-auth mx-auto" title={<h3 className="mt-0">Login to your Web App</h3>}>
-                        <p className="widget-auth-info">
-                            Please fill all fields below.
-                        </p>
-                        <form onSubmit={this.doRegister}>
-                            {
-                                this.props.errorMessage && (
-                                    <Alert className="alert-sm widget-middle-overflow rounded-0" color="danger">
-                                        {this.props.errorMessage}
-                                    </Alert>
-                                )
-                            }
-                            <FormGroup className="mt">
-                                <Label for="email">Email</Label>
-                                <InputGroup className="input-group-no-border">
-
-                                    <InputGroupText>
-                                        <i className="la la-user text-white"/>
-                                    </InputGroupText>
-
-                                    <Input id="email" className="input-transparent ps-3" value={this.state.email}
-                                           onChange={this.changeEmail} type="email"
-                                           required name="email" placeholder="Email"/>
-                                </InputGroup>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="password">Password</Label>
-                                <InputGroup className="input-group-no-border">
-
-                                    <InputGroupText>
-                                        <i className="la la-lock text-white"/>
-                                    </InputGroupText>
-
-                                    <Input id="password" className="input-transparent ps-3" value={this.state.password}
-                                           onChange={this.changePassword} type="password"
-                                           required name="password" placeholder="Password"/>
-                                </InputGroup>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="confirmPassword">Confirm</Label>
-                                <InputGroup className="input-group-no-border">
-                                    <InputGroupText>
-                                        <i className="la la-lock text-white"/>
-                                    </InputGroupText>
-                                    <Input id="confirmPassword" className="input-transparent ps-3" value={this.state.confirmPassword}
-                                           onChange={this.changeConfirmPassword} onBlur={this.checkPassword} type="password"
-                                           required name="confirmPassword" placeholder="Confirm"/>
-                                </InputGroup>
-                            </FormGroup>
-                            <div className="bg-widget-transparent auth-widget-footer">
-                                <Button type="submit" color="danger" className="auth-btn"
-                                        size="sm">{this.props.isFetching ? 'Loading...' : 'Register'}</Button>
-                                <p className="widget-auth-info mt-4">
-                                    Already have the account? Login now!
-                                </p>
-                                <Link className="d-block text-center mb-4" to="/login">Enter the account</Link>
-                                <div className="social-buttons">
-                                    <Button onClick={this.googleLogin} color="primary" className="social-button">
-                                        <i className="social-icon social-google"/>
-                                        <p className="social-text">GOOGLE</p>
-                                    </Button>
-                                    <Button onClick={this.microsoftLogin} color="success" className="social-button">
-                                        <i className="social-icon social-microsoft"
-                                           style={{backgroundImage: `url(${microsoft})`}}/>
-                                        <p className="social-text">MICROSOFT</p>
-                                    </Button>
-                                </div>
-                            </div>
-                        </form>
-                    </Widget>
-                    {/*<Widget className="widget-auth mx-auto" title={<h3 className="mt-0">Create an account</h3>}>*/}
-                        {/*<p className="widget-auth-info">*/}
-                            {/*Please fill all fields below*/}
-                        {/*</p>*/}
-                        {/*<form className="mt" onSubmit={this.doRegister}>*/}
-                            {/*{*/}
-                                {/*this.props.errorMessage && (*/}
-                                    {/*<Alert className="alert-sm" color="danger">*/}
-                                        {/*{this.props.errorMessage}*/}
-                                    {/*</Alert>*/}
-                                {/*)*/}
-                            {/*}*/}
-                            {/*<div className="form-group">*/}
-                                {/*<input className="form-control no-border" value={this.state.email}*/}
-                                       {/*onChange={this.changeEmail} type="text" required name="email"*/}
-                                       {/*placeholder="Email"/>*/}
-                            {/*</div>*/}
-                            {/*<div className="form-group">*/}
-                                {/*<input className="form-control no-border" value={this.state.password}*/}
-                                       {/*onChange={this.changePassword} type="password" required name="password"*/}
-                                       {/*placeholder="Password"/>*/}
-                            {/*</div>*/}
-                            {/*<div className="form-group">*/}
-                                {/*<input className="form-control no-border" value={this.state.confirmPassword}*/}
-                                       {/*onChange={this.changeConfirmPassword} onBlur={this.checkPassword} type="password" required name="confirmPassword"*/}
-                                       {/*placeholder="Confirm"/>*/}
-                            {/*</div>*/}
-                            {/*<Button type="submit" color="inverse" className="auth-btn mb-3" size="sm">{this.props.isFetching ? 'Loading...' : 'Register'}</Button>*/}
-                            {/*<p className="widget-auth-info">or sign up with</p>*/}
-                            {/*<div className="social-buttons">*/}
-                                {/*<Button onClick={this.googleLogin} color="primary" className="social-button mb-2">*/}
-                                    {/*<i className="social-icon social-google"/>*/}
-                                    {/*<p className="social-text">GOOGLE</p>*/}
-                                {/*</Button>*/}
-                                {/*<Button onClick={this.microsoftLogin} color="success" className="social-button">*/}
-                                    {/*<i className="social-icon social-microsoft"*/}
-                                       {/*style={{backgroundImage: `url(${microsoft})`}}/>*/}
-                                    {/*<p className="social-text">MICROSOFT</p>*/}
-                                {/*</Button>*/}
-                            {/*</div>*/}
-                        {/*</form>*/}
-                        {/*<p className="widget-auth-info">*/}
-                            {/*Already have the account? Login now!*/}
-                        {/*</p>*/}
-                        {/*<Link className="d-block text-center" to="login">Enter the account</Link>*/}
-                    {/*</Widget>*/}
-                </Container>
-                <footer className="auth-footer">
-                    2020 &copy; Sing App - React Admin Dashboard Template.
-                </footer>
+                <Input
+                  id="password"
+                  className="input-transparent ps-3"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  type="password"
+                  required
+                  name="password"
+                  placeholder="Password"
+                />
+              </InputGroup>
+            </FormGroup>
+            <FormGroup>
+              <Label for="confirmPassword">Confirm</Label>
+              <InputGroup className="input-group-no-border">
+                <InputGroupText>
+                  <i className="la la-lock text-white"/>
+                </InputGroupText>
+                <Input
+                  id="confirmPassword"
+                  className="input-transparent ps-3"
+                  value={confirmPassword}
+                  onChange={(event) => setConfirmPassword(event.target.value)}
+                  onBlur={checkPassword}
+                  type="password"
+                  required
+                  name="confirmPassword"
+                  placeholder="Confirm"
+                />
+              </InputGroup>
+            </FormGroup>
+            <div className="bg-widget-transparent auth-widget-footer">
+              <Button type="submit" color="danger" className="auth-btn"
+                      size="sm">{isFetching ? 'Loading...' : 'Register'}</Button>
+              <p className="widget-auth-info mt-4">
+                Already have the account? Login now!
+              </p>
+              <Link className="d-block text-center mb-4" to="/login">Enter the account</Link>
+              <div className="social-buttons">
+                <Button onClick={googleLogin} color="primary" className="social-button">
+                  <i className="social-icon social-google"/>
+                  <p className="social-text">GOOGLE</p>
+                </Button>
+                <Button onClick={microsoftLogin} color="success" className="social-button">
+                  <i className="social-icon social-microsoft"
+                     style={{backgroundImage: `url(${microsoft})`}}/>
+                  <p className="social-text">MICROSOFT</p>
+                </Button>
+              </div>
             </div>
-        );
-    }
-}
+          </form>
+        </Widget>
+      </Container>
+      <footer className="auth-footer">
+        2020 &copy; Sing App - React Admin Dashboard Template.
+      </footer>
+    </div>
+  );
+};
 
-function mapStateToProps(state) {
-    return {
-        isFetching: state.auth.isFetching,
-        errorMessage: state.auth.errorMessage,
-    };
-}
-
-export default withRouter(connect(mapStateToProps)(Register));
+export default Register;
