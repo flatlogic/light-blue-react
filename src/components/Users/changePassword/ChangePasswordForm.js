@@ -17,6 +17,11 @@ const UsersForm = (props) => {
     newPassword: { type: 'string', label: 'New Password' },
     confirmNewPassword: { type: 'string', label: 'Confirm new Password' },
   };
+  const initialValues = {
+    currentPassword: '',
+    newPassword: '',
+    confirmNewPassword: '',
+  };
 
   const renderForm = () => {
     const { saveLoading } = props;
@@ -25,6 +30,7 @@ const UsersForm = (props) => {
       <Widget title={<h4>{title()}</h4>} collapse close>
         <Formik
           onSubmit={handleSubmit}
+          initialValues={initialValues}
           render={(form) => {
             return (
               <form onSubmit={form.handleSubmit}>

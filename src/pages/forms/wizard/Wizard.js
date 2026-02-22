@@ -34,7 +34,7 @@ const StepsComponents = {
           validations={{ isAlphanumeric: true }}
           trigger="change"
           required
-          validationError={{ isAlphanumeric: 'Username can contain any letters or numbers, without spaces' }}
+          validationErrors={{ isAlphanumeric: 'Username can contain any letters or numbers, without spaces' }}
         />
         <p className="help-block">Username can contain any letters or numbers, without spaces</p>
       </FormGroup>
@@ -46,7 +46,7 @@ const StepsComponents = {
           name="email"
           validations={{ isEmail: true }}
           required
-          validationError={{ isEmail: 'Please provide your E-mail' }}
+          validationErrors={{ isEmail: 'Please provide your E-mail' }}
         />
         <p className="help-block">Please provide your E-mail</p>
       </FormGroup>
@@ -58,7 +58,7 @@ const StepsComponents = {
           name="address"
           validations={{ isAlpha: true }}
           required
-          validationError={{ isAlpha: 'Please provide your address' }}
+          validationErrors={{ isAlpha: 'Please provide your address' }}
         />
         <p className="help-block">Please provide your address</p>
       </FormGroup>
@@ -217,13 +217,13 @@ const Wizard = () => {
               <Progress value={progress} color="success" className="progress-xs" />
               <div className="tab-content">
                 <div className={s.stepBody}>
-                  <Formsy.Form>
+                  <Formsy>
                     {currentStep === 1 && <StepsComponents.Step1 />}
                     {currentStep === 2 && <StepsComponents.Step2 />}
                     {currentStep === 3 && <StepsComponents.Step3 isDatePickerOpen={isDatePickerOpen} />}
                     {currentStep === 4 &&
                     <StepsComponents.Step4 isDatePickerOpen={isDatePickerOpen} />}
-                  </Formsy.Form>
+                  </Formsy>
                 </div>
 
                 <div className="description">

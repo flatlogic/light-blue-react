@@ -1,11 +1,11 @@
 import axios from 'axios';
-import jwt from 'jsonwebtoken';
 import { toast } from 'react-toastify';
 
 import config from '../config';
 import { push } from 'actions/navigation';
 import Errors from '../components/FormItems/error/errors';
 import { mockUser } from './mock';
+import { decodeJwt } from '../core/jwt';
 import {
   fetchCurrentUser,
   requestPasswordReset,
@@ -94,7 +94,7 @@ export function logoutUser() {
 export function receiveToken(token) {
   return (dispatch) => {
     const user = config.isBackend
-      ? jwt.decode(token)
+      ? decodeJwt(token)
       : {
           email: config.auth.email,
           user: {

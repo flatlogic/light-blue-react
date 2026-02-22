@@ -25,6 +25,30 @@
 
 .table {
   :global(.table.table-sm) {
+    --bs-table-bg: transparent;
+    --bs-table-color: #fff;
+    --bs-table-border-color: rgba(255, 255, 255, 0.14);
+    --bs-table-striped-color: #fff;
+    --bs-table-striped-bg: rgba(199, 208, 255, 0.08);
+    margin-bottom: 0;
+
+    th,
+    td {
+      background-color: transparent;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    tbody tr:nth-of-type(odd) > * {
+      background-color: rgba(199, 208, 255, 0.08);
+    }
+
+    tbody tr:nth-of-type(even) > * {
+      background-color: transparent;
+    }
+  }
+
+  :global(.table.table-sm.table-striped) {
     td {
       font-size: 1rem;
       vertical-align: middle;

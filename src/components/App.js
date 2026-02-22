@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  HashRouter,
+  BrowserRouter,
   Navigate,
   Route,
   Routes,
@@ -35,7 +35,7 @@ const App = () => {
         hideProgressBar
         closeButton={<CloseButton />}
       />
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/app/main" replace />} />
           <Route path="/app" element={<Navigate to="/app/main" replace />} />
@@ -103,7 +103,7 @@ const App = () => {
           <Route path="/error" element={<ErrorPage />} />
           <Route path="*" element={<Navigate to="/app/main/dashboard" replace />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 };

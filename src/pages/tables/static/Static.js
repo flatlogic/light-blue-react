@@ -16,6 +16,11 @@ import {
 import { Sparklines, SparklinesBars } from 'react-sparklines';
 
 import Widget from '../../../components/Widget';
+import tableImage1 from '../../../images/tables/1.png';
+import tableImage2 from '../../../images/tables/2.png';
+import tableImage3 from '../../../images/tables/3.png';
+import tableImage4 from '../../../images/tables/4.png';
+import tableImage5 from '../../../images/tables/5.png';
 import s from './Static.module.scss';
 
 const Static = () => {
@@ -23,7 +28,7 @@ const Static = () => {
       tableStyles: [
         {
           id: 1,
-          picture: require('../../../images/tables/1.png'), // eslint-disable-line global-require
+          picture: tableImage1,
           description: 'Palo Alto',
           info: {
             type: 'JPEG',
@@ -38,7 +43,7 @@ const Static = () => {
         },
         {
           id: 2,
-          picture: require('../../../images/tables/2.png'), // eslint-disable-line global-require
+          picture: tableImage2,
           description: 'The Sky',
           info: {
             type: 'PSD',
@@ -53,7 +58,7 @@ const Static = () => {
         },
         {
           id: 3,
-          picture: require('../../../images/tables/3.png'), // eslint-disable-line global-require
+          picture: tableImage3,
           description: 'Down the road',
           label: {
             colorClass: 'danger',
@@ -72,7 +77,7 @@ const Static = () => {
         },
         {
           id: 4,
-          picture: require('../../../images/tables/4.png'), // eslint-disable-line global-require
+          picture: tableImage4,
           description: 'The Edge',
           info: {
             type: 'PNG',
@@ -87,7 +92,7 @@ const Static = () => {
         },
         {
           id: 5,
-          picture: require('../../../images/tables/5.png'), // eslint-disable-line global-require
+          picture: tableImage5,
           description: 'Fortress',
           info: {
             type: 'JPEG',

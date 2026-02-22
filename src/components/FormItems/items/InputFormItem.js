@@ -17,7 +17,8 @@ export const InputFormItemNotFast = (props) => {
     errorMessage,
     required,
   } = props;
-  const { label } = props.schema[name];
+  const schemaField = props.schema ? props.schema[name] : undefined;
+  const label = schemaField ? schemaField.label : '';
 
   const sizeLabelClassName =
     {
@@ -50,7 +51,7 @@ export const InputFormItemNotFast = (props) => {
           form.setFieldValue(name, event.target.value);
           form.setFieldTouched(name);
         }}
-        value={form.values[name] || ''}
+        value={(form.values && form.values[name]) || ''}
         placeholder={placeholder || undefined}
         autoFocus={autoFocus || undefined}
         autoComplete={autoComplete || undefined}

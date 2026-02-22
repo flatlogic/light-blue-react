@@ -10,64 +10,74 @@ import s from './am4chartMap.module.scss';
 
 const Am4chartMap = () => {
   const mapRef = useRef(null);
+  const mapContainerRef = useRef(null);
 
   useEffect(() => {
-    const map = am4core.create('map', am4maps.MapChart);
-    mapRef.current = map;
-    map.geodata = am4geodata_usaHigh;
-    map.percentHeight = 90;
-    map.dy = 10;
-    map.projection = new am4maps.projections.AlbersUsa();
-    const polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
-    polygonSeries.useGeodata = true;
-    map.homeZoomLevel = 1.2;
-    map.zoomControl = new am4maps.ZoomControl();
-    map.zoomControl.layout = 'horizontal';
-    map.zoomControl.align = 'left';
-    map.zoomControl.valign = 'bottom';
-    map.zoomControl.dy = -10;
-    map.zoomControl.contentHeight = 20;
-    map.zoomControl.minusButton.background.fill = am4core.color('#C7D0FF');
-    map.zoomControl.minusButton.background.stroke = am4core.color('#6979C9');
-    map.zoomControl.minusButton.label.fontWeight = 600;
-    map.zoomControl.minusButton.label.fontSize = 22;
-    map.zoomControl.minusButton.scale = 0.75;
-    map.zoomControl.minusButton.label.scale = 0.75;
-    map.zoomControl.plusButton.background.fill = am4core.color('#C7D0FF');
-    map.zoomControl.plusButton.background.stroke = am4core.color('#6979C9');
-    map.zoomControl.plusButton.label.fontWeight = 600;
-    map.zoomControl.plusButton.label.fontSize = 22;
-    map.zoomControl.plusButton.label.align = 'center';
-    map.zoomControl.plusButton.scale = 0.75;
-    map.zoomControl.plusButton.label.scale = 0.75;
-    map.zoomControl.plusButton.dx = 5;
-    const plusButtonHoverState = map.zoomControl.plusButton.background.states.create('hover');
-    plusButtonHoverState.properties.fill = am4core.color('#354D84');
-    const minusButtonHoverState = map.zoomControl.minusButton.background.states.create('hover');
-    minusButtonHoverState.properties.fill = am4core.color('#354D84');
-    const polygonTemplate = polygonSeries.mapPolygons.template;
-    polygonTemplate.tooltipText = '{name}';
-    polygonTemplate.fill = am4core.color('#474D84');
-    polygonTemplate.stroke = am4core.color('#6979C9');
-    const hs = polygonTemplate.states.create('hover');
-    hs.properties.fill = am4core.color('#354D84');
-    const citySeries = map.series.push(new am4maps.MapImageSeries());
-    citySeries.data = cities;
-    citySeries.dataFields.value = 'size';
-    const city = citySeries.mapImages.template;
-    city.nonScaling = true;
-    city.propertyFields.latitude = 'latitude';
-    city.propertyFields.longitude = 'longitude';
-    const circle = city.createChild(am4core.Circle);
-    circle.fill = am4core.color('#C7D0FF');
-    circle.strokeWidth = 0;
-    const circleHoverState = circle.states.create('hover');
-    circleHoverState.properties.strokeWidth = 1;
-    circle.tooltipText = '{tooltip}';
-    circle.propertyFields.radius = 'size';
+    if (!mapContainerRef.current) {
+      return undefined;
+    }
+
+    try {
+      const map = am4core.create(mapContainerRef.current, am4maps.MapChart);
+      mapRef.current = map;
+      map.geodata = am4geodata_usaHigh;
+      map.percentHeight = 90;
+      map.dy = 10;
+      map.projection = new am4maps.projections.AlbersUsa();
+      const polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
+      polygonSeries.useGeodata = true;
+      map.homeZoomLevel = 1.2;
+      map.zoomControl = new am4maps.ZoomControl();
+      map.zoomControl.layout = 'horizontal';
+      map.zoomControl.align = 'left';
+      map.zoomControl.valign = 'bottom';
+      map.zoomControl.dy = -10;
+      map.zoomControl.contentHeight = 20;
+      map.zoomControl.minusButton.background.fill = am4core.color('#C7D0FF');
+      map.zoomControl.minusButton.background.stroke = am4core.color('#6979C9');
+      map.zoomControl.minusButton.label.fontWeight = 600;
+      map.zoomControl.minusButton.label.fontSize = 22;
+      map.zoomControl.minusButton.scale = 0.75;
+      map.zoomControl.minusButton.label.scale = 0.75;
+      map.zoomControl.plusButton.background.fill = am4core.color('#C7D0FF');
+      map.zoomControl.plusButton.background.stroke = am4core.color('#6979C9');
+      map.zoomControl.plusButton.label.fontWeight = 600;
+      map.zoomControl.plusButton.label.fontSize = 22;
+      map.zoomControl.plusButton.label.align = 'center';
+      map.zoomControl.plusButton.scale = 0.75;
+      map.zoomControl.plusButton.label.scale = 0.75;
+      map.zoomControl.plusButton.dx = 5;
+      const plusButtonHoverState = map.zoomControl.plusButton.background.states.create('hover');
+      plusButtonHoverState.properties.fill = am4core.color('#354D84');
+      const minusButtonHoverState = map.zoomControl.minusButton.background.states.create('hover');
+      minusButtonHoverState.properties.fill = am4core.color('#354D84');
+      const polygonTemplate = polygonSeries.mapPolygons.template;
+      polygonTemplate.tooltipText = '{name}';
+      polygonTemplate.fill = am4core.color('#474D84');
+      polygonTemplate.stroke = am4core.color('#6979C9');
+      const hs = polygonTemplate.states.create('hover');
+      hs.properties.fill = am4core.color('#354D84');
+      const citySeries = map.series.push(new am4maps.MapImageSeries());
+      citySeries.data = cities;
+      citySeries.dataFields.value = 'size';
+      const city = citySeries.mapImages.template;
+      city.nonScaling = true;
+      city.propertyFields.latitude = 'latitude';
+      city.propertyFields.longitude = 'longitude';
+      const circle = city.createChild(am4core.Circle);
+      circle.fill = am4core.color('#C7D0FF');
+      circle.strokeWidth = 0;
+      const circleHoverState = circle.states.create('hover');
+      circleHoverState.properties.strokeWidth = 1;
+      circle.tooltipText = '{tooltip}';
+      circle.propertyFields.radius = 'size';
+    } catch {
+      mapRef.current = null;
+    }
 
     return () => {
-      map.dispose();
+      mapRef.current?.dispose();
+      mapRef.current = null;
     };
   }, []);
 
@@ -87,7 +97,7 @@ const Am4chartMap = () => {
           <i className="fa fa-map-marker" />
         </p>
       </div>
-      <div className={s.map} id="map">
+      <div className={s.map} ref={mapContainerRef}>
         <span>Alternative content for the map</span>
       </div>
     </div>

@@ -1,6 +1,5 @@
-import jwt from 'jsonwebtoken';
-
 import config from '../config';
+import { decodeJwt } from './jwt';
 
 export function isAuthenticated(token = localStorage.getItem('token')) {
   if (!config.isBackend && token) {
@@ -11,7 +10,7 @@ export function isAuthenticated(token = localStorage.getItem('token')) {
     return false;
   }
 
-  const payload = jwt.decode(token);
+  const payload = decodeJwt(token);
   if (!payload || !payload.exp) {
     return false;
   }

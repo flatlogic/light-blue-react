@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import createSkycons from 'skycons';
 
-const Skycons = require('skycons')(window || {});
+const Skycons = createSkycons(typeof window !== 'undefined' ? window : {});
 
 const Skycon = ({
   color,

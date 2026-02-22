@@ -25,9 +25,10 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
    ```
 2. **Install dependencies**  
    ```bash
-   npm install
+   npm install --force
    ```
    This repository is maintained with npm lockfile (`package-lock.json`).
+   Peer override is currently required because several legacy demo dependencies still declare React 18 peer ranges.
 3. **Run the app**  
    ```bash
    npm run dev
@@ -61,7 +62,7 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 - Easily customizable styling & themes
 - Over 30 Unique Pages
 - Fully Responsive
-- React 18
+- React 19
 - React Router 7
 - Bootstrap 5
 - Developer-Oriented Dashboard
@@ -70,7 +71,7 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 ---
 
 ## 🛠 Built With
-- React 18
+- React 19
 - Bootstrap 5
 - Node.js
 - Vite 7 + SWC

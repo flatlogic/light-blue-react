@@ -76,8 +76,8 @@ export default {
           {value: 135, name: 'Video ad'},
           {value: 1548, name: 'Search engine'}
         ],
-        itemStyle: {
-          emphasis: {
+        emphasis: {
+          itemStyle: {
             shadowBlur: 10,
             shadowOffsetX: 0,
             shadowColor: 'rgba(0, 0, 0, 0.5)'

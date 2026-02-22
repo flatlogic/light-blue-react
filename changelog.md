@@ -9,7 +9,7 @@
   - removed conflicting project-level `babel.config.js` to align with CRA toolchain.
 - Tooling baseline updates:
   - added explicit `ajv@^8.18.0` dev dependency to fix webpack/schema-utils `ajv` resolution during build;
-  - documented working install path (`npm install --legacy-peer-deps`) in README.
+  - documented working install path (`npm install --force`) in README.
 - Phase 2 modernization updates:
   - migrated build/dev/preview workflow to Vite + SWC (`vite.config.js`, root `index.html`);
   - removed CRA/rewired build overrides (`config-overrides.js`, `public/index.html`, `react-app-rewired`, `react-scripts`);
@@ -77,9 +77,13 @@
 - Phase 6 quality hardening:
   - introduced repository lint gate with ESLint flat config and `npm run lint` command;
   - added GitHub Actions CI workflow (`.github/workflows/ci.yml`) for `npm ci`, `npm run lint`, `npm run build`, and `npm test`.
+- Dependency cleanup and release docs:
+  - removed unused direct dependencies from runtime manifest: `buffer`, `https-browserify`, `jsonwebtoken`, `md5`, `rc-hammerjs`;
+  - removed `yarn.lock` to keep npm as the single package manager lock source;
+  - added migration and release docs (`docs/migration-notes.md`, `docs/adr/0001-routing-and-runtime-baseline.md`, `docs/release-checklist.md`, `docs/rollback-recovery.md`).
 - Runtime/tooling compatibility:
   - aligned Node engine range to `^20.19.0 || >=22.12.0` to support current Node 22 environments and Vite 7 requirements.
-  - `npm install` succeeds without `--legacy-peer-deps` on the migrated dependency graph.
+  - React 19 is active; some legacy demo dependencies still declare React 18 peer ranges, so install currently uses npm peer override behavior (`npm install --force`) until those packages are replaced.
 
 ## [8.3.1] - 26.11.2024
 - Update dependencies

@@ -24,7 +24,7 @@ const Validation = () => (
               <small> No JS needed to tune-up</small>
               </h5>} close collapse
             >
-              <Formsy.Form>
+              <Formsy>
                 <fieldset>
                   <legend>
                     By default validation is started only after at least 3 characters have been input.
@@ -50,7 +50,7 @@ const Validation = () => (
                         name="basic-change"
                         trigger="change"
                         validations={{ minLength: 10 }}
-                        validationError={{
+                        validationErrors={{
                           minLength: 'This value is too short. It should have 10 characters or more.',
                         }}
                         required
@@ -73,7 +73,7 @@ const Validation = () => (
                         trigger="change"
                         required
                         validations={{ isEmail: true }}
-                        validationError={{ isEmail: 'This value should be a valid email.' }}
+                        validationErrors={{ isEmail: 'This value should be a valid email.' }}
                       />
                       <span className="help-block">
                         This one is triggered even when 1 character has been input
@@ -90,7 +90,7 @@ const Validation = () => (
                         name="number"
                         required
                         validations="isNumeric"
-                        validationError={{ isNumeric: 'This value should be a valid number.' }}
+                        validationErrors={{ isNumeric: 'This value should be a valid number.' }}
                       />
                     </Col>
                   </FormGroup>
@@ -104,7 +104,7 @@ const Validation = () => (
                         trigger="change"
                         required
                         validations="isRange:[10,100]"
-                        validationError={{ isRange: 'This value should be between 10 and 100.' }}
+                        validationErrors={{ isRange: 'This value should be between 10 and 100.' }}
                       />
                     </Col>
                   </FormGroup>
@@ -124,7 +124,7 @@ const Validation = () => (
                         trigger="change"
                         className="mb-xs"
                         validations={{ minLength: 6 }}
-                        validationError={{
+                        validationErrors={{
                           minLength: 'This value is too short. It should have 6 characters or more.',
                         }}
                         required
@@ -136,7 +136,7 @@ const Validation = () => (
                         trigger="change"
                         className="mb-sm"
                         validations={{ equalsField: 'password', minLength: 6 }}
-                        validationError={{
+                        validationErrors={{
                           equalsField: 'This value should be the same.',
                           minLength: 'This value is too short. It should have 6 characters or more.',
 
@@ -155,7 +155,7 @@ const Validation = () => (
                         name="website"
                         trigger="change"
                         validations="isUrl"
-                        validationError={{
+                        validationErrors={{
                           isUrl: 'This value should be a valid url.',
                         }}
                         required
@@ -168,7 +168,7 @@ const Validation = () => (
                   <Button type="submit" color="danger" className="btn-rounded float-end">Validate & Submit</Button>
                   <Button type="button" color="default" className="btn-rounded">Cancel</Button>
                 </div>
-              </Formsy.Form>
+              </Formsy>
             </Widget>
           </Col>
           <Col lg={{size: 6, offset: 0}} xs={{size: 12, offset: 0}}>

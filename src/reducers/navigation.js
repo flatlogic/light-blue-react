@@ -3,9 +3,7 @@ import { CHANGE_SIDEBAR_VISIBILITY, CHANGE_SIDEBAR_POSITION, OPEN_SIDEBAR, CLOSE
 
 const initialState = {
   sidebarOpened: false,
-  activeItem: window.location.hash
-    ? window.location.hash.replace(/^#/, '')
-    : window.location.pathname,
+  activeItem: window.location.pathname,
   sidebarPosition: 'left',
   sidebarVisibility: 'show',
   dashboardTheme: 'default'

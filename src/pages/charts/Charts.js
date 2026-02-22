@@ -24,11 +24,8 @@ import { CanvasRenderer } from 'echarts/renderers';
 
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official'
-import exporting from 'highcharts/modules/exporting';
-import exportData from 'highcharts/modules/export-data';
-
-exporting(Highcharts);
-exportData(Highcharts);
+import 'highcharts/modules/exporting';
+import 'highcharts/modules/export-data';
 
 echarts.use([
   LineChart,

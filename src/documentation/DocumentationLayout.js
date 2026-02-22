@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Col } from 'reactstrap';
 import classnames from 'classnames';
 import { Route, Routes } from 'react-router-dom';
-import Hammer from 'rc-hammerjs';
+import SwipeArea from '../components/SwipeArea';
 
 import Header from './DocumentationHeader';
 import Sidebar from './DocumentationSidebar';
@@ -58,7 +58,7 @@ const Layout = () => {
     >
       <Header />
       <div>
-        <Hammer onSwipe={handleSwipe}>
+        <SwipeArea onSwipe={handleSwipe}>
           <main className={classnames(s.content, sd.content, 'documentationPage')}>
             <div className="container">
               <div className="row">
@@ -90,7 +90,7 @@ const Layout = () => {
               </div>
             </div>
           </main>
-        </Hammer>
+        </SwipeArea>
       </div>
     </div>
   );

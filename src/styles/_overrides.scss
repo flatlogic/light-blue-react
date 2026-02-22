@@ -1084,9 +1084,27 @@ ul.messenger.messenger-spinner-active .messenger-spinner .messenger-spinner {
 }
 
 .widget table {
+  --bs-table-color: #{$white};
+  --bs-table-bg: transparent;
+  --bs-table-border-color: rgba(255, 255, 255, 0.14);
+  --bs-table-striped-color: #{$white};
+  --bs-table-striped-bg: rgba(199, 208, 255, 0.08);
+  --bs-table-hover-color: #{$white};
+  --bs-table-hover-bg: rgba(199, 208, 255, 0.12);
+  --bs-table-active-color: #{$white};
+  --bs-table-active-bg: rgba(199, 208, 255, 0.16);
   color: $white;
 }
 .react-bs-table table {
+  --bs-table-color: #{$white};
+  --bs-table-bg: transparent;
+  --bs-table-border-color: rgba(255, 255, 255, 0.14);
+  --bs-table-striped-color: #{$white};
+  --bs-table-striped-bg: rgba(199, 208, 255, 0.08);
+  --bs-table-hover-color: #{$white};
+  --bs-table-hover-bg: rgba(199, 208, 255, 0.12);
+  --bs-table-active-color: #{$white};
+  --bs-table-active-bg: rgba(199, 208, 255, 0.16);
   color: $white;
 }
 

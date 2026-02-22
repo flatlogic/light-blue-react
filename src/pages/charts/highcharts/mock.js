@@ -4,24 +4,24 @@ import sunburstData from './sunburstData';
 
 import config from '../config';
 const colors = config.chartColors;
+const hasTouchSupport = typeof document !== 'undefined' && 'ontouchstart' in document;
 
 let wordCloudText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum erat ac justo sollicitudin, quis lacinia ligula fringilla. Pellentesque hendrerit, nisi vitae posuere condimentum, lectus urna accumsan libero, rutrum commodo mi lacus pretium erat. Phasellus pretium ultrices mi sed semper.';
-let wordCloudLines = wordCloudText.split(/[,. ]+/g),
-  wordCloudData = Highcharts.reduce(wordCloudLines, function (arr, word) {
-    var obj = Highcharts.find(arr, function (obj) {
-      return obj.name === word;
+let wordCloudLines = wordCloudText.split(/[,. ]+/g);
+let wordCloudData = wordCloudLines.reduce((arr, word) => {
+  const found = arr.find((item) => item.name === word);
+
+  if (found) {
+    found.weight += 1;
+  } else {
+    arr.push({
+      name: word,
+      weight: 1,
     });
-    if (obj) {
-      obj.weight += 1;
-    } else {
-      obj = {
-        name: word,
-        weight: 1
-      };
-      arr.push(obj);
-    }
-    return arr;
-  }, []);
+  }
+
+  return arr;
+}, []);
 
 function generateVectorData() {
   var data = [],
@@ -65,7 +65,7 @@ export default {
       enabled: false
     },
     subtitle: {
-      text: document.ontouchstart === undefined ?
+      text: !hasTouchSupport ?
         'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in',
       style: {
         color: colors.textColor
@@ -109,7 +109,7 @@ export default {
           },
           stops: [
             [0, colors.blue],
-            [1, Highcharts.Color(colors.blue).setOpacity(0).get('rgba')]
+            [1, Highcharts.color(colors.blue).setOpacity(0).get('rgba')]
           ]
         },
         marker: {
@@ -290,7 +290,7 @@ export default {
       }
     },
     subtitle: {
-      text: 'Source <href="https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)">Wikipedia</a>',
+      text: 'Source <a href="https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)">Wikipedia</a>',
       style: {
         color: colors.textColor
       }

@@ -1,6 +1,4 @@
 import { toast } from 'react-toastify';
-import { push } from 'actions/navigation';
-import { store } from '../../../store';
 
 /* global __APP_ENV__ */
 
@@ -31,6 +29,18 @@ function selectErrorCode(error) {
   return 500;
 }
 
+function navigate(path) {
+  if (!path) {
+    return;
+  }
+
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  if (window.location.pathname !== normalizedPath) {
+    window.history.pushState({}, '', normalizedPath);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  }
+}
+
 export default class Errors {
   static handle(error) {
     if (runtimeNodeEnv !== 'test') {
@@ -39,7 +49,7 @@ export default class Errors {
     }
 
     if (selectErrorCode(error) === 403) {
-      store.dispatch(push('/403'));
+      navigate('/403');
       return;
     }
 
@@ -48,7 +58,7 @@ export default class Errors {
       return;
     }
 
-    store.dispatch(push('/500'));
+    navigate('/500');
   }
 
   static errorCode(error) {

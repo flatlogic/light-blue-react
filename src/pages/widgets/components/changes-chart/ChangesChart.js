@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import Rickshaw from 'rickshaw';
 import {
   Row, Col,
 } from 'reactstrap';
 import { useSelector } from 'react-redux';
 
 import Sparklines from '../../../../components/Sparklines';
+import loadRickshaw from 'core/loadRickshaw';
 import s from './ChangesChart.module.scss';
 
 const ChangesChart = () => {
@@ -32,46 +32,63 @@ const ChangesChart = () => {
   };
 
   useEffect(() => {
-    const seriesData = [[], []];
-    const random = new Rickshaw.Fixtures.RandomData(32);
-    for (let i = 0; i < 32; i += 1) {
-      random.addData(seriesData);
-    }
+    let isDisposed = false;
 
-    graphRef.current = new Rickshaw.Graph({
-      element: chartRef.current,
-      height: '100',
-      renderer: 'multi',
-      series: [{
-        name: 'pop',
-        data: seriesData.shift().map((d) => ({ x: d.x, y: d.y })),
-        color: '#33B252',
-        renderer: 'bar',
-        gapSize: 2,
-        min: 'auto',
-        strokeWidth: 3,
-      }, {
-        name: 'humidity',
-        data: seriesData.shift()
-          .map((d) => ({ x: d.x, y: ((d.y * (Math.random() * 0.5)) + 30.1) })),
-        renderer: 'line',
-        color: '#fff',
-        gapSize: 2,
-        min: 'auto',
-        strokeWidth: 3,
-      }],
-    });
+    const initGraph = async () => {
+      try {
+        const Rickshaw = await loadRickshaw();
 
-    const hoverDetail = new Rickshaw.Graph.HoverDetail({
-      graph: graphRef.current,
-      xFormatter: (x) => new Date(x * 1000).toString(),
-    });
+        if (!Rickshaw || isDisposed || !chartRef.current) {
+          return;
+        }
 
-    hoverDetail.show();
-    graphRef.current.render();
+        const seriesData = [[], []];
+        const random = new Rickshaw.Fixtures.RandomData(32);
+        for (let i = 0; i < 32; i += 1) {
+          random.addData(seriesData);
+        }
+
+        graphRef.current = new Rickshaw.Graph({
+          element: chartRef.current,
+          height: '100',
+          renderer: 'multi',
+          series: [{
+            name: 'pop',
+            data: seriesData.shift().map((d) => ({ x: d.x, y: d.y })),
+            color: '#33B252',
+            renderer: 'bar',
+            gapSize: 2,
+            min: 'auto',
+            strokeWidth: 3,
+          }, {
+            name: 'humidity',
+            data: seriesData.shift()
+              .map((d) => ({ x: d.x, y: ((d.y * (Math.random() * 0.5)) + 30.1) })),
+            renderer: 'line',
+            color: '#fff',
+            gapSize: 2,
+            min: 'auto',
+            strokeWidth: 3,
+          }],
+        });
+
+        const hoverDetail = new Rickshaw.Graph.HoverDetail({
+          graph: graphRef.current,
+          xFormatter: (x) => new Date(x * 1000).toString(),
+        });
+
+        hoverDetail.show();
+        graphRef.current.render();
+      } catch {
+        return;
+      }
+    };
+
+    initGraph();
 
     window.addEventListener('resize', onResizeRickshaw);
     return () => {
+      isDisposed = true;
       window.removeEventListener('resize', onResizeRickshaw);
     };
   }, []);

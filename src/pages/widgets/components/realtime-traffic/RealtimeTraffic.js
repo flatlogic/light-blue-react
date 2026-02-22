@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import {
   Progress,
 } from 'reactstrap';
-import Rickshaw from 'rickshaw';
 import { useSelector } from 'react-redux';
+import loadRickshaw from 'core/loadRickshaw';
 
 const RealtimeTraffic = () => {
   const sidebarVisibility = useSelector((store) => store.navigation.sidebarVisibility);
@@ -21,47 +21,64 @@ const RealtimeTraffic = () => {
   };
 
   useEffect(() => {
-    const seriesData = [[], []];
-    const random = new Rickshaw.Fixtures.RandomData(30);
+    let isDisposed = false;
 
-    for (let i = 0; i < 30; i += 1) {
-      random.addData(seriesData);
-    }
-    graphRef.current = new Rickshaw.Graph({
-      element: rickshawChartRef.current,
-      height: 130,
-      realtime: true,
-      series: [
-        {
-          color: '#58D777',
-          data: seriesData[0],
-          name: 'Uploads',
-        }, {
-          color: '#1870DC',
-          data: seriesData[1],
-          name: 'Downloads',
-        },
-      ],
-    });
+    const initGraph = async () => {
+      try {
+        const Rickshaw = await loadRickshaw();
 
-    const hoverDetail = new Rickshaw.Graph.HoverDetail({
-      graph: graphRef.current,
-      xFormatter: (x) => new Date(x * 1000).toString(),
-    });
+        if (!Rickshaw || isDisposed || !rickshawChartRef.current) {
+          return;
+        }
 
-    hoverDetail.show();
+        const seriesData = [[], []];
+        const random = new Rickshaw.Fixtures.RandomData(30);
 
-    intervalRef.current = setInterval(() => {
-      random.removeData(seriesData);
-      random.addData(seriesData);
-      graphRef.current.update();
-    }, 1000);
+        for (let i = 0; i < 30; i += 1) {
+          random.addData(seriesData);
+        }
+        graphRef.current = new Rickshaw.Graph({
+          element: rickshawChartRef.current,
+          height: 130,
+          realtime: true,
+          series: [
+            {
+              color: '#58D777',
+              data: seriesData[0],
+              name: 'Uploads',
+            }, {
+              color: '#1870DC',
+              data: seriesData[1],
+              name: 'Downloads',
+            },
+          ],
+        });
 
-    graphRef.current.render();
+        const hoverDetail = new Rickshaw.Graph.HoverDetail({
+          graph: graphRef.current,
+          xFormatter: (x) => new Date(x * 1000).toString(),
+        });
+
+        hoverDetail.show();
+
+        intervalRef.current = setInterval(() => {
+          random.removeData(seriesData);
+          random.addData(seriesData);
+          graphRef.current.update();
+        }, 1000);
+
+        graphRef.current.render();
+      } catch {
+        return;
+      }
+    };
+
+    initGraph();
 
     window.addEventListener('resize', onResizeRickshaw);
 
     return () => {
+      isDisposed = true;
       window.removeEventListener('resize', onResizeRickshaw);
       clearInterval(intervalRef.current);
     };

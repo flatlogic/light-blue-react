@@ -45,8 +45,9 @@ export function push(path) {
 
     const normalizedPath = path.startsWith('/') ? path : `/${path}`;
 
-    if (window.location.hash !== `#${normalizedPath}`) {
-      window.location.hash = normalizedPath;
+    if (window.location.pathname !== normalizedPath) {
+      window.history.pushState({}, '', normalizedPath);
+      window.dispatchEvent(new PopStateEvent('popstate'));
     }
   };
 }

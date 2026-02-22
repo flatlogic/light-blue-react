@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, Navigate, Route, Routes } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import Hammer from 'rc-hammerjs';
+import SwipeArea from '../SwipeArea';
 
 import Profile from '../../pages/profile';
 import UIButtons from '../../pages/ui-elements/buttons';
@@ -71,6 +70,7 @@ function Layout() {
   const sidebarVisibility = useSelector((store) => store.navigation.sidebarVisibility);
   const dashboardTheme = useSelector((store) => store.layout.dashboardTheme);
   const [chatOpen, setChatOpen] = useState(false);
+  const isAdminSection = location.pathname.startsWith('/admin');
 
   const handleSwipe = (e) => {
     if ('ontouchstart' in window) {
@@ -104,88 +104,80 @@ function Layout() {
         <Header />
         <Helper />
         <Sidebar />
-        <Hammer onSwipe={handleSwipe}>
+        <SwipeArea onSwipe={handleSwipe}>
           <main className={s.content}>
             <BreadcrumbHistory url={location.pathname} />
-            <TransitionGroup>
-              <CSSTransition
-                key={location.pathname}
-                classNames="fade"
-                timeout={200}
-              >
-                <Routes>
-                  <Route path="/app/main" element={<Navigate to="/app/main/dashboard" replace />} />
-                  <Route path="/app/main/dashboard" element={<Dashboard />} />
-                  <Route path="/app/main/widgets" element={<Widgets />} />
-                  <Route path="/app/main/analytics" element={<DashboardAnalytics />} />
-                  <Route path="/app/edit_profile" element={<UserFormPage />} />
-                  <Route path="/app/password" element={<ChangePasswordFormPage />} />
-                  <Route path="/admin" element={<Navigate to="/admin/users" replace />} />
-                  <Route path="/admin/users" element={<UserListPage />} />
-                  <Route path="/admin/users/new" element={<UserFormPage />} />
-                  <Route path="/admin/users/:id/edit" element={<UserFormPage />} />
-                  <Route path="/admin/users/:id" element={<UserViewPage />} />
-                  <Route path="/app/ecommerce" element={<Navigate to="/app/ecommerce/management" replace />} />
-                  <Route path="/app/ecommerce/management" element={<Management />} />
-                  <Route path="/app/ecommerce/management/:id" element={<ProductEdit />} />
-                  <Route path="/app/ecommerce/management/create" element={<ProductEdit />} />
-                  <Route path="/app/ecommerce/products" element={<Products />} />
-                  <Route path="/app/ecommerce/product" element={<Product />} />
-                  <Route path="/app/ecommerce/product/:id" element={<Product />} />
-                  <Route path="/app/profile" element={<Profile />} />
-                  <Route path="/app/inbox" element={<Email />} />
-                  <Route path="/app/ui" element={<Navigate to="/app/ui/alerts" replace />} />
-                  <Route path="/app/ui/buttons" element={<UIButtons />} />
-                  <Route path="/app/ui/icons" element={<UIIcons />} />
-                  <Route path="/app/ui/tabs-accordion" element={<UITabsAccordion />} />
-                  <Route path="/app/ui/notifications" element={<UINotifications />} />
-                  <Route path="/app/ui/list-groups" element={<UIListGroups />} />
-                  <Route path="/app/ui/alerts" element={<UIAlerts />} />
-                  <Route path="/app/ui/badge" element={<UIBadge />} />
-                  <Route path="/app/ui/card" element={<UICard />} />
-                  <Route path="/app/ui/carousel" element={<UICarousel />} />
-                  <Route path="/app/ui/jumbotron" element={<UIJumbotron />} />
-                  <Route path="/app/ui/modal" element={<UIModal />} />
-                  <Route path="/app/ui/popovers" element={<UIPopovers />} />
-                  <Route path="/app/ui/progress" element={<UIProgress />} />
-                  <Route path="/app/ui/navbar" element={<UINavbar />} />
-                  <Route path="/app/ui/nav" element={<UINav />} />
-                  <Route path="/app/grid" element={<Grid />} />
-                  <Route path="/app/package" element={<Package />} />
-                  <Route path="/app/forms" element={<Navigate to="/app/forms/elements" replace />} />
-                  <Route path="/app/forms/elements" element={<FormsElements />} />
-                  <Route path="/app/forms/validation" element={<FormsValidation />} />
-                  <Route path="/app/forms/wizard" element={<FormsWizard />} />
-                  <Route path="/app/charts" element={<Navigate to="/app/charts/overview" replace />} />
-                  <Route path="/app/charts/overview" element={<Charts />} />
-                  <Route path="/app/charts/apex" element={<ApexCharts />} />
-                  <Route path="/app/charts/echarts" element={<Echarts />} />
-                  <Route path="/app/charts/highcharts" element={<HighCharts />} />
-                  <Route path="/app/tables" element={<Navigate to="/app/tables/static" replace />} />
-                  <Route path="/app/tables/static" element={<TablesStatic />} />
-                  <Route path="/app/tables/dynamic" element={<TablesDynamic />} />
-                  <Route path="/app/extra" element={<Navigate to="/app/extra/calendar" replace />} />
-                  <Route path="/app/extra/calendar" element={<ExtraCalendar />} />
-                  <Route path="/app/extra/invoice" element={<ExtraInvoice />} />
-                  <Route path="/app/extra/search" element={<ExtraSearch />} />
-                  <Route path="/app/extra/timeline" element={<ExtraTimeline />} />
-                  <Route path="/app/extra/gallery" element={<ExtraGallery />} />
-                  <Route path="/app/maps" element={<Navigate to="/app/maps/google" replace />} />
-                  <Route path="/app/maps/google" element={<MapsGoogle />} />
-                  <Route path="/app/maps/vector" element={<MapsVector />} />
-                  <Route path="/app/core" element={<Navigate to="/app/core/typography" replace />} />
-                  <Route path="/app/core/typography" element={<CoreTypography />} />
-                  <Route path="/app/core/colors" element={<CoreColors />} />
-                  <Route path="/app/core/grid" element={<CoreGrid />} />
-                  <Route path="*" element={<Navigate to="/app/main/dashboard" replace />} />
-                </Routes>
-              </CSSTransition>
-            </TransitionGroup>
+            <Routes>
+              <Route index element={<Navigate to={isAdminSection ? '/admin/users' : '/app/main/dashboard'} replace />} />
+              <Route path="main" element={<Navigate to="/app/main/dashboard" replace />} />
+              <Route path="main/dashboard" element={<Dashboard />} />
+              <Route path="main/widgets" element={<Widgets />} />
+              <Route path="main/analytics" element={<DashboardAnalytics />} />
+              <Route path="edit_profile" element={<UserFormPage />} />
+              <Route path="password" element={<ChangePasswordFormPage />} />
+              <Route path="users" element={<UserListPage />} />
+              <Route path="users/new" element={<UserFormPage />} />
+              <Route path="users/:id/edit" element={<UserFormPage />} />
+              <Route path="users/:id" element={<UserViewPage />} />
+              <Route path="ecommerce" element={<Navigate to="/app/ecommerce/management" replace />} />
+              <Route path="ecommerce/management" element={<Management />} />
+              <Route path="ecommerce/management/:id" element={<ProductEdit />} />
+              <Route path="ecommerce/management/create" element={<ProductEdit />} />
+              <Route path="ecommerce/products" element={<Products />} />
+              <Route path="ecommerce/product" element={<Product />} />
+              <Route path="ecommerce/product/:id" element={<Product />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="inbox" element={<Email />} />
+              <Route path="ui" element={<Navigate to="/app/ui/alerts" replace />} />
+              <Route path="ui/buttons" element={<UIButtons />} />
+              <Route path="ui/icons" element={<UIIcons />} />
+              <Route path="ui/tabs-accordion" element={<UITabsAccordion />} />
+              <Route path="ui/notifications" element={<UINotifications />} />
+              <Route path="ui/list-groups" element={<UIListGroups />} />
+              <Route path="ui/alerts" element={<UIAlerts />} />
+              <Route path="ui/badge" element={<UIBadge />} />
+              <Route path="ui/card" element={<UICard />} />
+              <Route path="ui/carousel" element={<UICarousel />} />
+              <Route path="ui/jumbotron" element={<UIJumbotron />} />
+              <Route path="ui/modal" element={<UIModal />} />
+              <Route path="ui/popovers" element={<UIPopovers />} />
+              <Route path="ui/progress" element={<UIProgress />} />
+              <Route path="ui/navbar" element={<UINavbar />} />
+              <Route path="ui/nav" element={<UINav />} />
+              <Route path="grid" element={<Grid />} />
+              <Route path="package" element={<Package />} />
+              <Route path="forms" element={<Navigate to="/app/forms/elements" replace />} />
+              <Route path="forms/elements" element={<FormsElements />} />
+              <Route path="forms/validation" element={<FormsValidation />} />
+              <Route path="forms/wizard" element={<FormsWizard />} />
+              <Route path="charts" element={<Navigate to="/app/charts/overview" replace />} />
+              <Route path="charts/overview" element={<Charts />} />
+              <Route path="charts/apex" element={<ApexCharts />} />
+              <Route path="charts/echarts" element={<Echarts />} />
+              <Route path="charts/highcharts" element={<HighCharts />} />
+              <Route path="tables" element={<Navigate to="/app/tables/static" replace />} />
+              <Route path="tables/static" element={<TablesStatic />} />
+              <Route path="tables/dynamic" element={<TablesDynamic />} />
+              <Route path="extra" element={<Navigate to="/app/extra/calendar" replace />} />
+              <Route path="extra/calendar" element={<ExtraCalendar />} />
+              <Route path="extra/invoice" element={<ExtraInvoice />} />
+              <Route path="extra/search" element={<ExtraSearch />} />
+              <Route path="extra/timeline" element={<ExtraTimeline />} />
+              <Route path="extra/gallery" element={<ExtraGallery />} />
+              <Route path="maps" element={<Navigate to="/app/maps/google" replace />} />
+              <Route path="maps/google" element={<MapsGoogle />} />
+              <Route path="maps/vector" element={<MapsVector />} />
+              <Route path="core" element={<Navigate to="/app/core/typography" replace />} />
+              <Route path="core/typography" element={<CoreTypography />} />
+              <Route path="core/colors" element={<CoreColors />} />
+              <Route path="core/grid" element={<CoreGrid />} />
+              <Route path="*" element={<Navigate to={isAdminSection ? '/admin/users' : '/app/main/dashboard'} replace />} />
+            </Routes>
             <footer className={s.contentFooter}>
               Light Blue React Dashboard - React admin template made by <a href="https://flatlogic.com" >Flatlogic</a>
             </footer>
           </main>
-        </Hammer>
+        </SwipeArea>
       </div>
     </div>
   );

@@ -64,7 +64,7 @@ const Typography = () => (
         >
           <p>
             For example, here are two grid layouts that apply to every device and viewport,
-            from xs to xl. Add any number of unit-less classes for each breakpoint you
+            from xs to xxl. Add any number of unit-less classes for each breakpoint you
             need and every column will be the same width.
           </p>
           <div className="p-3">
@@ -133,6 +133,10 @@ const Typography = () => (
                   Extra large<br />
                   <small>≥1200px</small>
                 </th>
+                <th className="text-center">
+                  Extra extra large<br />
+                  <small>≥1400px</small>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -143,6 +147,7 @@ const Typography = () => (
                 <td>720px</td>
                 <td>960px</td>
                 <td>1140px</td>
+                <td>1320px</td>
               </tr>
               <tr>
                 <th className="text-nowrap" scope="row">Component property</th>
@@ -151,22 +156,23 @@ const Typography = () => (
                 <td><code>{'<Col md={}>'}</code></td>
                 <td><code>{'<Col lg={}>'}</code></td>
                 <td><code>{'<Col xl={}>'}</code></td>
+                <td><code>{'<Col xxl={}>'}</code></td>
               </tr>
               <tr>
                 <th className="text-nowrap" scope="row"># of columns</th>
-                <td colSpan="5">12</td>
+                <td colSpan="6">12</td>
               </tr>
               <tr>
                 <th className="text-nowrap" scope="row">Gutter width</th>
-                <td colSpan="5">30px (15px on each side of a column)</td>
+                <td colSpan="6">1.5rem (0.75rem on each side of a column)</td>
               </tr>
               <tr>
                 <th className="text-nowrap" scope="row">Nestable</th>
-                <td colSpan="5">Yes</td>
+                <td colSpan="6">Yes</td>
               </tr>
               <tr>
                 <th className="text-nowrap" scope="row">Column ordering</th>
-                <td colSpan="5">Yes</td>
+                <td colSpan="6">Yes</td>
               </tr>
             </tbody>
           </Table>
