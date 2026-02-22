@@ -8,10 +8,8 @@ import {
 
 import s from './ListGroup.module.scss'; // eslint-disable-line
 
-class ProgressDemo extends React.Component {
-  render() {
-    return (
-      <ListGroup className={[s.listGroup, 'thin-scroll'].join(' ')}>
+const ProgressDemo = () => (
+  <ListGroup className={[s.listGroup, 'thin-scroll'].join(' ')}>
         <ListGroupItem className={s.listGroupItem}>
           <span className="text-muted float-end">60%</span>
           <h6 className="m-0 mb-1">
@@ -62,9 +60,7 @@ class ProgressDemo extends React.Component {
           <Progress className={['progress-xs', 'm-0'].join(' ')} color="primary" value="100" />
           <span className="help-block">last update: April 22, 2014 2:36 pm</span>
         </ListGroupItem>
-      </ListGroup>
-    );
-  }
-}
+  </ListGroup>
+);
 
 export default ProgressDemo;

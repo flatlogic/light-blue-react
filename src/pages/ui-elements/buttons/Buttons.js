@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Row,
   Col,
@@ -13,86 +13,87 @@ import {
 
 import Widget from '../../../components/Widget';
 
-class Buttons extends React.Component {
-  constructor(props) {
-    super(props);
+const Buttons = () => {
+  const [state, setState] = useState({
+    dropdownOpenOne: false,
+    dropdownOpenTwo: false,
+    dropdownOpenThree: false,
+    dropdownOpenFour: false,
+    cSelectedOne: [2],
+    cSelectedTwo: [1, 3],
+    rSelectedTwo: 2,
+    rSelectedOne: null,
+  });
 
-    this.toggleOne = this.toggleOne.bind(this);
-    this.toggleTwo = this.toggleTwo.bind(this);
-    this.toggleThree = this.toggleThree.bind(this);
-    this.toggleFour = this.toggleFour.bind(this);
+  const onRadioBtnClickOne = (rSelectedOne) => {
+    setState((prevState) => ({
+      ...prevState,
+      rSelectedOne,
+    }));
+  };
 
-    this.onRadioBtnClickOne = this.onRadioBtnClickOne.bind(this);
-    this.onRadioBtnClickTwo = this.onRadioBtnClickTwo.bind(this);
-    this.onCheckboxBtnClickOne = this.onCheckboxBtnClickOne.bind(this);
-    this.onCheckboxBtnClickTwo = this.onCheckboxBtnClickTwo.bind(this);
+  const onRadioBtnClickTwo = (rSelectedTwo) => {
+    setState((prevState) => ({
+      ...prevState,
+      rSelectedTwo,
+    }));
+  };
 
-    this.state = {
-      dropdownOpenOne: false,
-      dropdownOpenTwo: false,
-      dropdownOpenThree: false,
-      dropdownOpenFour: false,
-      cSelectedOne: [2],
-      cSelectedTwo: [1, 3],
-      rSelectedTwo: 2,
-      rSelectedOne: null,
-    };
-  }
+  const onCheckboxBtnClickOne = (selected) => {
+    setState((prevState) => {
+      const cSelectedOne = prevState.cSelectedOne.includes(selected)
+        ? prevState.cSelectedOne.filter((item) => item !== selected)
+        : [...prevState.cSelectedOne, selected];
 
-  onRadioBtnClickOne(rSelectedOne) {
-    this.setState({ rSelectedOne });
-  }
-
-  onRadioBtnClickTwo(rSelectedTwo) {
-    this.setState({ rSelectedTwo });
-  }
-
-  onCheckboxBtnClickOne(selected) {
-    const index = this.state.cSelectedOne.indexOf(selected);
-    if (index < 0) {
-      this.state.cSelectedOne.push(selected);
-    } else {
-      this.state.cSelectedOne.splice(index, 1);
-    }
-    this.setState({ cSelectedOne: [...this.state.cSelectedOne] });
-  }
-
-  onCheckboxBtnClickTwo(selected) {
-    const index = this.state.cSelectedTwo.indexOf(selected);
-    if (index < 0) {
-      this.state.cSelectedTwo.push(selected);
-    } else {
-      this.state.cSelectedTwo.splice(index, 1);
-    }
-    this.setState({ cSelectedTwo: [...this.state.cSelectedTwo] });
-  }
-
-  toggleOne() {
-    this.setState({
-      dropdownOpenOne: !this.state.dropdownOpenOne,
+      return {
+        ...prevState,
+        cSelectedOne,
+      };
     });
-  }
+  };
 
-  toggleTwo() {
-    this.setState({
-      dropdownOpenTwo: !this.state.dropdownOpenTwo,
+  const onCheckboxBtnClickTwo = (selected) => {
+    setState((prevState) => {
+      const cSelectedTwo = prevState.cSelectedTwo.includes(selected)
+        ? prevState.cSelectedTwo.filter((item) => item !== selected)
+        : [...prevState.cSelectedTwo, selected];
+
+      return {
+        ...prevState,
+        cSelectedTwo,
+      };
     });
-  }
+  };
 
-  toggleThree() {
-    this.setState({
-      dropdownOpenThree: !this.state.dropdownOpenThree,
-    });
-  }
+  const toggleOne = () => {
+    setState((prevState) => ({
+      ...prevState,
+      dropdownOpenOne: !prevState.dropdownOpenOne,
+    }));
+  };
 
-  toggleFour() {
-    this.setState({
-      dropdownOpenFour: !this.state.dropdownOpenFour,
-    });
-  }
+  const toggleTwo = () => {
+    setState((prevState) => ({
+      ...prevState,
+      dropdownOpenTwo: !prevState.dropdownOpenTwo,
+    }));
+  };
 
-  render() {
-    return (
+  const toggleThree = () => {
+    setState((prevState) => ({
+      ...prevState,
+      dropdownOpenThree: !prevState.dropdownOpenThree,
+    }));
+  };
+
+  const toggleFour = () => {
+    setState((prevState) => ({
+      ...prevState,
+      dropdownOpenFour: !prevState.dropdownOpenFour,
+    }));
+  };
+
+  return (
       <div>
 
         <h1 className="page-title">Buttons - <span className="fw-semi-bold">Styles </span></h1>
@@ -298,7 +299,7 @@ class Buttons extends React.Component {
 
                 <div className="mb-3">
                   <ButtonDropdown
-                    isOpen={this.state.dropdownOpenOne} toggle={this.toggleOne}
+                    isOpen={state.dropdownOpenOne} toggle={toggleOne}
                     className="me-3"
                   >
                     <DropdownToggle caret color="danger">
@@ -313,7 +314,7 @@ class Buttons extends React.Component {
                     </DropdownMenu>
                   </ButtonDropdown>
 
-                  <ButtonDropdown isOpen={this.state.dropdownOpenTwo} toggle={this.toggleTwo}>
+                  <ButtonDropdown isOpen={state.dropdownOpenTwo} toggle={toggleTwo}>
                     <DropdownToggle size="sm" caret color="gray">
                       &nbsp; One &nbsp;
                     </DropdownToggle>
@@ -328,7 +329,7 @@ class Buttons extends React.Component {
                 </div>
                 <div className="mb-xs">
                   <ButtonDropdown
-                    isOpen={this.state.dropdownOpenThree} toggle={this.toggleThree}
+                    isOpen={state.dropdownOpenThree} toggle={toggleThree}
                     className="me-3"
                   >
                     <Button id="dropdownThree" color="primary">Primary</Button>
@@ -341,7 +342,7 @@ class Buttons extends React.Component {
                       <DropdownItem>Separated link</DropdownItem>
                     </DropdownMenu>
                   </ButtonDropdown>
-                  <ButtonDropdown isOpen={this.state.dropdownOpenFour} toggle={this.toggleFour}>
+                  <ButtonDropdown isOpen={state.dropdownOpenFour} toggle={toggleFour}>
                     <Button size="sm" id="dropdownFour" color="gray">Gray</Button>
                     <DropdownToggle size="sm" caret color="gray" className="dropdown-toggle-split" />
                     <DropdownMenu>
@@ -379,32 +380,32 @@ class Buttons extends React.Component {
                   <div className="mb-3">
                     <ButtonGroup>
                       <Button
-                        color="default" onClick={() => this.onCheckboxBtnClickOne(1)}
-                        active={this.state.cSelectedOne.includes(1)}
+                        color="default" onClick={() => onCheckboxBtnClickOne(1)}
+                        active={state.cSelectedOne.includes(1)}
                       >Left way</Button>
                       <Button
-                        color="default" onClick={() => this.onCheckboxBtnClickOne(2)}
-                        active={this.state.cSelectedOne.includes(2)}
+                        color="default" onClick={() => onCheckboxBtnClickOne(2)}
+                        active={state.cSelectedOne.includes(2)}
                       >Middle way</Button>
                       <Button
-                        color="default" onClick={() => this.onCheckboxBtnClickOne(3)}
-                        active={this.state.cSelectedOne.includes(3)}
+                        color="default" onClick={() => onCheckboxBtnClickOne(3)}
+                        active={state.cSelectedOne.includes(3)}
                       >Right way</Button>
                     </ButtonGroup>
                   </div>
                   <div className="mb-xs">
                     <ButtonGroup>
                       <Button
-                        size="sm" color="default" onClick={() => this.onCheckboxBtnClickTwo(1)}
-                        active={this.state.cSelectedTwo.includes(1)}
+                        size="sm" color="default" onClick={() => onCheckboxBtnClickTwo(1)}
+                        active={state.cSelectedTwo.includes(1)}
                       >Left way</Button>
                       <Button
-                        size="sm" color="default" onClick={() => this.onCheckboxBtnClickTwo(2)}
-                        active={this.state.cSelectedTwo.includes(2)}
+                        size="sm" color="default" onClick={() => onCheckboxBtnClickTwo(2)}
+                        active={state.cSelectedTwo.includes(2)}
                       >Middle way</Button>
                       <Button
-                        size="sm" color="default" onClick={() => this.onCheckboxBtnClickTwo(3)}
-                        active={this.state.cSelectedTwo.includes(3)}
+                        size="sm" color="default" onClick={() => onCheckboxBtnClickTwo(3)}
+                        active={state.cSelectedTwo.includes(3)}
                       >Right way</Button>
                     </ButtonGroup>
                   </div>
@@ -423,32 +424,32 @@ class Buttons extends React.Component {
                   <div className="mb-3">
                     <ButtonGroup>
                       <Button
-                        color="default" onClick={() => this.onRadioBtnClickOne(1)}
-                        active={this.state.rSelectedOne === 1}
+                        color="default" onClick={() => onRadioBtnClickOne(1)}
+                        active={state.rSelectedOne === 1}
                       >Left way</Button>
                       <Button
-                        color="default" onClick={() => this.onRadioBtnClickOne(2)}
-                        active={this.state.rSelectedOne === 2}
+                        color="default" onClick={() => onRadioBtnClickOne(2)}
+                        active={state.rSelectedOne === 2}
                       >Middle way</Button>
                       <Button
-                        color="default" onClick={() => this.onRadioBtnClickOne(3)}
-                        active={this.state.rSelectedOne === 3}
+                        color="default" onClick={() => onRadioBtnClickOne(3)}
+                        active={state.rSelectedOne === 3}
                       >Right way</Button>
                     </ButtonGroup>
                   </div>
                   <div className="mb-xs">
                     <ButtonGroup>
                       <Button
-                        size="sm" color="default" onClick={() => this.onRadioBtnClickTwo(1)}
-                        active={this.state.rSelectedTwo === 1}
+                        size="sm" color="default" onClick={() => onRadioBtnClickTwo(1)}
+                        active={state.rSelectedTwo === 1}
                       >Left way</Button>
                       <Button
-                        size="sm" color="default" onClick={() => this.onRadioBtnClickTwo(2)}
-                        active={this.state.rSelectedTwo === 2}
+                        size="sm" color="default" onClick={() => onRadioBtnClickTwo(2)}
+                        active={state.rSelectedTwo === 2}
                       >Middle way</Button>
                       <Button
-                        size="sm" color="default" onClick={() => this.onRadioBtnClickTwo(3)}
-                        active={this.state.rSelectedTwo === 3}
+                        size="sm" color="default" onClick={() => onRadioBtnClickTwo(3)}
+                        active={state.rSelectedTwo === 3}
                       >Right way</Button>
                     </ButtonGroup>
                   </div>
@@ -499,9 +500,7 @@ class Buttons extends React.Component {
         </Row>
 
       </div>
-    );
-  }
-
-}
+  );
+};
 
 export default Buttons;

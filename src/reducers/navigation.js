@@ -1,37 +1,38 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { CHANGE_SIDEBAR_VISIBILITY, CHANGE_SIDEBAR_POSITION, OPEN_SIDEBAR, CLOSE_SIDEBAR, CHANGE_ACTIVE_SIDEBAR_ITEM } from '../actions/navigation';
 
 const initialState = {
   sidebarOpened: false,
-  activeItem: window.location.pathname,
+  activeItem: window.location.hash
+    ? window.location.hash.replace(/^#/, '')
+    : window.location.pathname,
   sidebarPosition: 'left',
   sidebarVisibility: 'show',
   dashboardTheme: 'default'
 };
 
-export default function runtime(state = initialState, action) {
-  switch (action.type) {
-    case OPEN_SIDEBAR:
-      return Object.assign({}, state, {
-        sidebarOpened: true,
+const navigationSlice = createSlice({
+  name: 'navigation',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(OPEN_SIDEBAR, (state) => {
+        state.sidebarOpened = true;
+      })
+      .addCase(CLOSE_SIDEBAR, (state) => {
+        state.sidebarOpened = false;
+      })
+      .addCase(CHANGE_SIDEBAR_POSITION, (state, action) => {
+        state.sidebarPosition = action.payload;
+      })
+      .addCase(CHANGE_SIDEBAR_VISIBILITY, (state, action) => {
+        state.sidebarVisibility = action.payload;
+      })
+      .addCase(CHANGE_ACTIVE_SIDEBAR_ITEM, (state, action) => {
+        state.activeItem = action.activeItem;
       });
-    case CLOSE_SIDEBAR:
-      return Object.assign({}, state, {
-        sidebarOpened: false,
-      });
-    case CHANGE_SIDEBAR_POSITION:
-      return Object.assign({}, state, {
-        sidebarPosition: action.payload,
-      });
-    case CHANGE_SIDEBAR_VISIBILITY:
-      return Object.assign({}, state, {
-        sidebarVisibility: action.payload,
-      });
-    case CHANGE_ACTIVE_SIDEBAR_ITEM:
-      return {
-        ...state,
-        activeItem: action.activeItem,
-      };
-    default:
-      return state;
-  }
-}
+  },
+});
+
+export default navigationSlice.reducer;

@@ -1,33 +1,34 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Breadcrumb, BreadcrumbItem, Collapse, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import classnames from 'classnames';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-class Buttons extends Component {
-  state = {
+const Buttons = () => {
+  const [state, setState] = useState({
     defaultTabsTabId: '1',
     accordion: [false, false, false],
+  });
+
+  const changeTab = (field, id) => {
+    setState((prevState) => ({
+      ...prevState,
+      [field]: id,
+    }));
   };
 
-  changeTab(field, id) {
-    this.setState({
-      [field]: id,
-    })
-  }
-
-  toggleAccordion(id) {
-    const arr = [];
-    arr.length = this.state.accordion.length;
-    arr.fill(false);
-    arr[id] = !this.state.accordion[id];
-    this.setState({
-      accordion: arr,
+  const toggleAccordion = (id) => {
+    setState((prevState) => {
+      const arr = Array(prevState.accordion.length).fill(false);
+      arr[id] = !prevState.accordion[id];
+      return {
+        ...prevState,
+        accordion: arr,
+      };
     });
-  }
+  };
 
-  render() {
-    return (
+  return (
       <Row>
         <Col md={10}>
           <Breadcrumb>
@@ -48,9 +49,9 @@ class Buttons extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultTabsTabId === '1' })}
+                className={classnames({ active: state.defaultTabsTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('defaultTabsTabId', '1');
+                  changeTab('defaultTabsTabId', '1');
                 }}
               >
                 Tab 1
@@ -58,16 +59,16 @@ class Buttons extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultTabsTabId === '2' })}
+                className={classnames({ active: state.defaultTabsTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('defaultTabsTabId', '2');
+                  changeTab('defaultTabsTabId', '2');
                 }}
               >
                 Tab 2
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.defaultTabsTabId}>
+          <TabContent className="mb-xlg" activeTab={state.defaultTabsTabId}>
             <TabPane tabId="1">
               First tab content
             </TabPane>
@@ -95,18 +96,18 @@ class Buttons extends Component {
             { /* eslint-disable */ }
             <div
               className="card-header panel-header bg-light" role="button"
-              onClick={() => { this.toggleAccordion(0); }}
+              onClick={() => { toggleAccordion(0); }}
             >
               { /* eslint-enable */ }
               <div className="mb-0">
                 {/* eslint-disable-next-line */}
                 <a className="accordion-toggle" role="button">
                   Collapsible Group Item
-                  <i className={`fa fa-angle-down ${this.state.accordion[0] ? 'expanded' : ''}`} />
+                  <i className={`fa fa-angle-down ${state.accordion[0] ? 'expanded' : ''}`} />
                 </a>
               </div>
             </div>
-            <Collapse className="panel-body" isOpen={this.state.accordion[0]}>
+            <Collapse className="panel-body" isOpen={state.accordion[0]}>
               <p>Get base styles and flexible support for collapsible components like accordions and navigation.
                 Using the collapse plugin, we built a simple accordion by extending the panel component.
               </p>
@@ -116,18 +117,18 @@ class Buttons extends Component {
             { /* eslint-disable */ }
             <div
               className="card-header panel-header bg-light" role="button"
-              onClick={() => { this.toggleAccordion(1); }}
+              onClick={() => { toggleAccordion(1); }}
             >
               { /* eslint-enable */ }
               <div className="mb-0">
                 {/* eslint-disable-next-line */}
                 <a className="accordion-toggle" role="button">
                   Normal Text Insertion
-                  <i className={`fa fa-angle-down ${this.state.accordion[1] ? 'expanded' : ''}`} />
+                  <i className={`fa fa-angle-down ${state.accordion[1] ? 'expanded' : ''}`} />
                 </a>
               </div>
             </div>
-            <Collapse className="panel-body" isOpen={this.state.accordion[1]}>
+            <Collapse className="panel-body" isOpen={state.accordion[1]}>
               <p>Why don't use Lore Ipsum? I think if some one says don't use lore ipsum it's very controversial point. I think the opposite actually.
               </p>
             </Collapse>
@@ -136,18 +137,18 @@ class Buttons extends Component {
             { /* eslint-disable */ }
             <div
               className="card-header panel-header bg-light" role="button"
-              onClick={() => { this.toggleAccordion(2); }}
+              onClick={() => { toggleAccordion(2); }}
             >
               { /* eslint-enable */ }
               <div className="mb-0">
                 {/* eslint-disable-next-line */}
                 <a className="accordion-toggle" role="button">
                   Random from the Web
-                  <i className={`fa fa-angle-down ${this.state.accordion[2] ? 'expanded' : ''}`} />
+                  <i className={`fa fa-angle-down ${state.accordion[2] ? 'expanded' : ''}`} />
                 </a>
               </div>
             </div>
-            <Collapse className="panel-body" isOpen={this.state.accordion[2]}>
+            <Collapse className="panel-body" isOpen={state.accordion[2]}>
               <p><span className="fw-semi-bold">Light Blue</span> - is a next generation admin template based
                 on the latest Metro design. There are few reasons we want to tell you, why we have created it:
                 We didn't like the darkness of most of admin templates, so we created this light one.
@@ -179,8 +180,7 @@ class Buttons extends Component {
           For more examples please refer to <a href="https://reactstrap.github.io/components/collapse/" target="_blank" rel="noopener noreferrer">Reactstrap Collapse</a>
         </Col>
       </Row>
-    );
-  }
-}
+  );
+};
 
 export default Buttons;

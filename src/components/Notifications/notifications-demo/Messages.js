@@ -12,10 +12,8 @@ import avatar from '../../../images/avatar.png';
 
 import s from './ListGroup.module.scss'; // eslint-disable-line
 
-class MessagesDemo extends React.Component {
-  render() {
-    return (
-      <ListGroup className={[s.listGroup, 'thin-scroll'].join(' ')}>
+const MessagesDemo = () => (
+  <ListGroup className={[s.listGroup, 'thin-scroll'].join(' ')}>
         <ListGroupItem className={[s.listGroupItem].join(' ')}>
           <span className={[s.notificationIcon, 'thumb-sm'].join(' ')}>
             <img className="rounded-circle" src={a2} alt="..." />
@@ -70,9 +68,7 @@ class MessagesDemo extends React.Component {
           <h6 className="m-0 mb-1">Freda Edison</h6>
           <p className="deemphasize text-ellipsis m-0">Hey what&apos;s up? Me and Monica going for a lunch somewhere. Wanna join?</p>
         </ListGroupItem>
-      </ListGroup>
-    );
-  }
-}
+  </ListGroup>
+);
 
 export default MessagesDemo;

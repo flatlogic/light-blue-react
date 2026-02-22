@@ -3,22 +3,20 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './Loader.module.scss';
 
-class Loader extends React.Component {
-    static propTypes = {
-        size: PropTypes.number.isRequired
-    };
+const Loader = ({ className, size }) => (
+  <div className={cx(s.root, className)}>
+    <i className="la la-spinner la-spin" style={{ fontSize: size }} />
+  </div>
+);
 
-    static defaultProps = {
-        size: 21
-    };
+Loader.propTypes = {
+  className: PropTypes.string,
+  size: PropTypes.number.isRequired,
+};
 
-    render() {
-        return (
-            <div className={cx(s.root, this.props.className)}>
-                <i className="la la-spinner la-spin" style={{fontSize: this.props.size}}/>
-            </div>
-        );
-    }
-}
+Loader.defaultProps = {
+  className: '',
+  size: 21,
+};
 
 export default Loader;

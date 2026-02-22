@@ -1,3 +1,4 @@
+import { createSlice } from '@reduxjs/toolkit';
 import {
   RECEIVED_PRODUCTS,
   RECEIVED_PRODUCT,
@@ -19,57 +20,55 @@ const defaultState = {
     idToDelete: null
 };
 
-export default function productsReducer(state = defaultState, action) {
-    switch (action.type) {
-        case RECEIVED_PRODUCTS:
-            return Object.assign({}, state, {
-                data: action.payload,
-                isReceiving: false,
-            });
-        case RECEIVED_PRODUCT:
-            return Object.assign({}, state, {
-                data: [...state.data, action.payload],
-                isReceiving: false,
-            });
-        case UPDATED_PRODUCT:
-            let index = state.data.findIndex(p => p.id === action.payload.id);
-            return Object.assign({}, state, {
-                data: state.data.map((p, i) => {
-                    if (i === index) {
-                      return Object.assign({}, p, action.payload);
-                    }
-                    return p;
-                }),
-                isUpdating: false,
-            });
-        case DELETED_PRODUCT:
-            let indexToDelete = state.data.findIndex(p => p.id === action.payload.id);
-            let data = [...state.data];
-            data.splice(indexToDelete, 1);
-            return Object.assign({}, state, {
-                data: [...data],
-                isDeleting: false,
-                idToDelete: null
-            });
-        case RECEIVING_PRODUCTS:
-        case RECEIVING_PRODUCT:
-            return Object.assign({}, state, {
-                isReceiving: true
-            });
-        case UPDATING_PRODUCT:
-            return Object.assign({}, state, {
-                isUpdating: true
-            });
-        case DELETING_PRODUCT:
-            return Object.assign({}, state, {
-                isDeleting: true,
-                idToDelete: action.payload.id
-            });
-        case RECEIVED_IMAGES:
-            return Object.assign({}, state, {
-                images: action.payload,
-            });
-        default:
-            return state;
-    }
-}
+const productsSlice = createSlice({
+  name: 'products',
+  initialState: defaultState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(RECEIVED_PRODUCTS, (state, action) => {
+        state.data = action.payload;
+        state.isReceiving = false;
+      })
+      .addCase(RECEIVED_PRODUCT, (state, action) => {
+        state.data.push(action.payload);
+        state.isReceiving = false;
+      })
+      .addCase(UPDATED_PRODUCT, (state, action) => {
+        const index = state.data.findIndex((product) => product.id === action.payload.id);
+        if (index >= 0) {
+          state.data[index] = {
+            ...state.data[index],
+            ...action.payload,
+          };
+        }
+        state.isUpdating = false;
+      })
+      .addCase(DELETED_PRODUCT, (state, action) => {
+        const indexToDelete = state.data.findIndex((product) => product.id === action.payload.id);
+        if (indexToDelete >= 0) {
+          state.data.splice(indexToDelete, 1);
+        }
+        state.isDeleting = false;
+        state.idToDelete = null;
+      })
+      .addCase(RECEIVING_PRODUCTS, (state) => {
+        state.isReceiving = true;
+      })
+      .addCase(RECEIVING_PRODUCT, (state) => {
+        state.isReceiving = true;
+      })
+      .addCase(UPDATING_PRODUCT, (state) => {
+        state.isUpdating = true;
+      })
+      .addCase(DELETING_PRODUCT, (state, action) => {
+        state.isDeleting = true;
+        state.idToDelete = action.payload.id;
+      })
+      .addCase(RECEIVED_IMAGES, (state, action) => {
+        state.images = action.payload;
+      });
+  },
+});
+
+export default productsSlice.reducer;

@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Breadcrumb, BreadcrumbItem, Button, Card, CardBody, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import classnames from 'classnames';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-class Buttons extends Component {
-  state = {
+const Buttons = () => {
+  const [tabs, setTabs] = useState({
     defaultCardTabId: '1',
+  });
+
+  const changeTab = (field, id) => {
+    setTabs((prevState) => ({
+      ...prevState,
+      [field]: id,
+    }));
   };
 
-  changeTab(field, id) {
-    this.setState({
-      [field]: id,
-    })
-  }
-
-  render() {
-    return (
+  return (
       <Row>
         <Col md={10}>
           <Breadcrumb>
@@ -36,9 +36,9 @@ class Buttons extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultCardTabId === '1' })}
+                className={classnames({ active: tabs.defaultCardTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('defaultCardTabId', '1');
+                  changeTab('defaultCardTabId', '1');
                 }}
               >
                 Example
@@ -46,16 +46,16 @@ class Buttons extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultCardTabId === '2' })}
+                className={classnames({ active: tabs.defaultCardTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('defaultCardTabId', '2');
+                  changeTab('defaultCardTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.defaultCardTabId}>
+          <TabContent className="mb-xlg" activeTab={tabs.defaultCardTabId}>
             <TabPane tabId="1">
               <Card className="border-0">
                 <CardBody>
@@ -108,8 +108,7 @@ class Buttons extends Component {
           For more examples please refer to <a href="https://reactstrap.github.io/components/card/" target="_blank" rel="noopener noreferrer">Reactstrap Card</a>
         </Col>
       </Row>
-    );
-  }
-}
+  );
+};
 
 export default Buttons;

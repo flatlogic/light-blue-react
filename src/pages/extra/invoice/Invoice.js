@@ -12,15 +12,13 @@ import s from './Invoice.module.scss';
 import Widget from '../../../components/Widget';
 import iLogo from '../../../images/flatlogic-logo.jpg';
 
-class Stats extends React.Component {
-
-  printInvoice() {
+const Stats = () => {
+  const printInvoice = () => {
     window.print();
-  }
+  };
 
-  render() {
-    return (
-      <Row>
+  return (
+    <Row>
         <Col lg={12}>
           <Row className={s.root}>
             <Col xs={12}>
@@ -162,7 +160,7 @@ class Stats extends React.Component {
                       <span className="fw-semi-bold">Bob Smith</span>
                     </p>
                     <ButtonToolbar className="mt-lg justify-content-end d-print-none">
-                      <Button onClick={this.printInvoice} color="inverse" className="me-2">
+                      <Button onClick={printInvoice} color="inverse" className="me-2">
                         <i className="fa fa-print" />
                         &nbsp;&nbsp;
                         Print
@@ -181,9 +179,8 @@ class Stats extends React.Component {
             </Col>
           </Row>
         </Col>
-      </Row>);
-  }
-
-}
+      </Row>
+  );
+};
 
 export default Stats;

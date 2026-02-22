@@ -25,22 +25,33 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
    ```
 2. **Install dependencies**  
    ```bash
-   yarn install  # Or npm install
+   npm install
    ```
+   This repository is maintained with npm lockfile (`package-lock.json`).
 3. **Run the app**  
    ```bash
-   yarn start
+   npm run dev
    ```
    Navigate to http://localhost:3000/.
 
 4. **Backend Support**  
    ```bash
-   yarn start:backend
+   npm run start:backend
    ```
 
 5. **Build for production**  
    ```bash
-   yarn build
+   npm run build
+   ```
+
+6. **Preview production build locally**  
+   ```bash
+   npm run preview
+   ```
+
+7. **Run tests**  
+   ```bash
+   npm test
    ```
 
 ---
@@ -50,21 +61,24 @@ Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web
 - Easily customizable styling & themes
 - Over 30 Unique Pages
 - Fully Responsive
-- React 17
+- React 18
+- React Router 7
 - Bootstrap 5
-- Server-Side Rendering for SEO
 - Developer-Oriented Dashboard
 - Fully Documented Codebase
 
 ---
 
 ## 🛠 Built With
-- React 17
+- React 18
 - Bootstrap 5
 - Node.js
-- Webpack
+- Vite 7 + SWC
+- Vitest
 - SASS
 - JavaScript (ES6)
+
+Node engine target in `package.json`: `^20.19.0 || >=22.12.0`.
 
 ---
 
@@ -114,4 +128,3 @@ This template is free to use. Modify it, break it, make it your own. Just don’
 
 > **Questions or feedback?**  
 > Join our [Flatlogic Community Discord](https://discord.gg/flatlogic-community) or visit our [support forum](https://flatlogic.com/forum). We might even reply!
-

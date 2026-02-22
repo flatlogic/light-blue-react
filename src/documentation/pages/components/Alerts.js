@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Breadcrumb, BreadcrumbItem, Alert, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import classnames from 'classnames';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-class Overview extends Component {
-  state = {
+const Overview = () => {
+  const [state, setState] = useState({
     defaultAlertsTabId: '1',
     transparentAlertsTabId: '1',
     alertsOne: [{
@@ -50,32 +50,34 @@ class Overview extends Component {
       msg: '<span class="fw-semi-bold">Danger:</span> Change this and that and try again. <a class="btn btn-default btn-xs float-end me-2" href="#">Ignore</a> <a class="btn btn-danger btn-xs float-end me-1" href="#">Take this action</a>',
       visible: true,
     }]
+  });
+
+  const changeTab = (field, id) => {
+    setState((prevState) => ({
+      ...prevState,
+      [field]: id,
+    }));
   };
 
-  changeTab(field, id) {
-    this.setState({
-      [field]: id,
-    })
-  }
+  const closeAlertOne = (alert) => {
+    setState((prevState) => ({
+      ...prevState,
+      alertsOne: prevState.alertsOne.map((item, index) => (
+        index === alert ? { ...item, visible: false } : item
+      )),
+    }));
+  };
 
-  closeAlertOne = (alert) => {
-    const alerts = this.state.alertsOne;
-    alerts[alert].visible = false;
-    this.setState({
-      alerts
-    })
-  }
+  const closeAlertTwo = (alert) => {
+    setState((prevState) => ({
+      ...prevState,
+      alertsTwo: prevState.alertsTwo.map((item, index) => (
+        index === alert ? { ...item, visible: false } : item
+      )),
+    }));
+  };
 
-  closeAlertTwo = (alert) => {
-    const alerts = this.state.alertsTwo;
-    alerts[alert].visible = false;
-    this.setState({
-      alerts
-    })
-  }
-
-  render() {
-    return (
+  return (
       <Row>
         <Col md={10}>
           <Breadcrumb>
@@ -94,9 +96,9 @@ class Overview extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultAlertsTabId === '1' })}
+                className={classnames({ active: state.defaultAlertsTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('defaultAlertsTabId', '1');
+                  changeTab('defaultAlertsTabId', '1');
                 }}
               >
                 Example
@@ -104,20 +106,20 @@ class Overview extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultAlertsTabId === '2' })}
+                className={classnames({ active: state.defaultAlertsTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('defaultAlertsTabId', '2');
+                  changeTab('defaultAlertsTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.defaultAlertsTabId}>
+          <TabContent className="mb-xlg" activeTab={state.defaultAlertsTabId}>
             <TabPane tabId="1">
               <p>Alerts are available for any length of text, as well as an optional dismiss button.</p>
-              {this.state.alertsOne.map((alert, index) => <Alert
-                key={alert.id} isOpen={alert.visible} toggle={() => this.closeAlertOne(index)}
+              {state.alertsOne.map((alert, index) => <Alert
+                key={alert.id} isOpen={alert.visible} toggle={() => closeAlertOne(index)}
                 color={alert.type}
               >
                 <span dangerouslySetInnerHTML={{__html: alert.msg}}/>
@@ -136,9 +138,9 @@ class Overview extends Component {
           <Nav tabs className="bg-transparent">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.transparentAlertsTabId === '1' })}
+                className={classnames({ active: state.transparentAlertsTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('transparentAlertsTabId', '1');
+                  changeTab('transparentAlertsTabId', '1');
                 }}
               >
                 Example
@@ -146,21 +148,21 @@ class Overview extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.transparentAlertsTabId === '2' })}
+                className={classnames({ active: state.transparentAlertsTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('transparentAlertsTabId', '2');
+                  changeTab('transparentAlertsTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.transparentAlertsTabId}>
+          <TabContent className="mb-xlg" activeTab={state.transparentAlertsTabId}>
             <TabPane tabId="1">
               <p>Alerts are available for any length of text, as well as an optional dismiss button.</p>
-              {this.state.alertsTwo.map((alert, index) => <Alert
+              {state.alertsTwo.map((alert, index) => <Alert
                 className="alert-transparent"
-                key={alert.id} isOpen={alert.visible} toggle={() => this.closeAlertTwo(index)}
+                key={alert.id} isOpen={alert.visible} toggle={() => closeAlertTwo(index)}
                 color={alert.type}
               >
                 <span dangerouslySetInnerHTML={{__html: alert.msg}}/>
@@ -180,8 +182,7 @@ class Overview extends Component {
           For more examples please refer to <a href="https://reactstrap.github.io/components/alerts/" target="_blank" rel="noopener noreferrer">Reactstrap Alerts</a>
         </Col>
       </Row>
-    );
-  }
-}
+  );
+};
 
 export default Overview;

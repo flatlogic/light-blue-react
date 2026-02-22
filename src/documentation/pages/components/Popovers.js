@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
   Row,
   Col,
@@ -19,8 +19,8 @@ import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import classnames from 'classnames';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-class NavbarPage extends Component {
-  state = {
+const NavbarPage = () => {
+  const [state, setState] = useState({
     defaultPopoversTabId: '1',
     defaultTooltipsTabId: '1',
     popovers: {
@@ -29,25 +29,26 @@ class NavbarPage extends Component {
       3: false,
       4: false,
     }
+  });
+
+  const changeTab = (field, id) => {
+    setState((prevState) => ({
+      ...prevState,
+      [field]: id,
+    }));
   };
 
-  changeTab(field, id) {
-    this.setState({
-      [field]: id,
-    })
-  }
-
-  toggle(id) {
-    this.setState(prevState => ({
+  const toggle = (id) => {
+    setState((prevState) => ({
+      ...prevState,
       popovers: {
         ...prevState.popovers,
         [id]: !prevState.popovers[id],
       },
-    }))
-  }
+    }));
+  };
 
-  render() {
-    return (
+  return (
       <Row>
         <Col md={10}>
           <Breadcrumb>
@@ -67,9 +68,9 @@ class NavbarPage extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultPopoversTabId === '1' })}
+                className={classnames({ active: state.defaultPopoversTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('defaultPopoversTabId', '1');
+                  changeTab('defaultPopoversTabId', '1');
                 }}
               >
                 Example
@@ -77,42 +78,42 @@ class NavbarPage extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultPopoversTabId === '2' })}
+                className={classnames({ active: state.defaultPopoversTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('defaultPopoversTabId', '2');
+                  changeTab('defaultPopoversTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.defaultPopoversTabId}>
+          <TabContent className="mb-xlg" activeTab={state.defaultPopoversTabId}>
             <TabPane tabId="1">
-              <Button className="me-2" id="popover-1" type="button" color="success" onClick={() => this.toggle(1)}>
+              <Button className="me-2" id="popover-1" type="button" color="success" onClick={() => toggle(1)}>
                 Bottom
               </Button>
-              <Button className="me-2" id="popover-2" type="button" color="danger" onClick={() => this.toggle(2)}>
+              <Button className="me-2" id="popover-2" type="button" color="danger" onClick={() => toggle(2)}>
                 Right
               </Button>
-              <Button className="me-2" id="popover-3" type="button" color="warning" onClick={() => this.toggle(3)}>
+              <Button className="me-2" id="popover-3" type="button" color="warning" onClick={() => toggle(3)}>
                 Top
               </Button>
-              <Button className="me-2" id="popover-4" type="button" color="info" onClick={() => this.toggle(4)}>
+              <Button className="me-2" id="popover-4" type="button" color="info" onClick={() => toggle(4)}>
                 Left
               </Button>
-              <Popover placement="bottom" isOpen={this.state.popovers[1]} target="popover-1" toggle={() => this.toggle(1)}>
+              <Popover placement="bottom" isOpen={state.popovers[1]} target="popover-1" toggle={() => toggle(1)}>
                 <PopoverHeader>Popover Title</PopoverHeader>
                 <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
               </Popover>
-              <Popover placement="right" isOpen={this.state.popovers[2]} target="popover-2" toggle={() => this.toggle(2)}>
+              <Popover placement="right" isOpen={state.popovers[2]} target="popover-2" toggle={() => toggle(2)}>
                 <PopoverHeader>Popover Title</PopoverHeader>
                 <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
               </Popover>
-              <Popover placement="top" isOpen={this.state.popovers[3]} target="popover-3" toggle={() => this.toggle(3)}>
+              <Popover placement="top" isOpen={state.popovers[3]} target="popover-3" toggle={() => toggle(3)}>
                 <PopoverHeader>Popover Title</PopoverHeader>
                 <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
               </Popover>
-              <Popover placement="left" isOpen={this.state.popovers[4]} target="popover-4" toggle={() => this.toggle(4)}>
+              <Popover placement="left" isOpen={state.popovers[4]} target="popover-4" toggle={() => toggle(4)}>
                 <PopoverHeader>Popover Title</PopoverHeader>
                 <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
               </Popover>
@@ -131,9 +132,9 @@ class NavbarPage extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultTooltipsTabId === '1' })}
+                className={classnames({ active: state.defaultTooltipsTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('defaultTooltipsTabId', '1');
+                  changeTab('defaultTooltipsTabId', '1');
                 }}
               >
                 Example
@@ -141,16 +142,16 @@ class NavbarPage extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultTooltipsTabId === '2' })}
+                className={classnames({ active: state.defaultTooltipsTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('defaultTooltipsTabId', '2');
+                  changeTab('defaultTooltipsTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.defaultTooltipsTabId}>
+          <TabContent className="mb-xlg" activeTab={state.defaultTooltipsTabId}>
             <TabPane tabId="1">
               <Button className="me-2" id="tooltip-1" type="button" color="success">
                 Bottom
@@ -190,8 +191,7 @@ class NavbarPage extends Component {
           &nbsp;and <a href="https://reactstrap.github.io/components/tooltips/" target="_blank" rel="noopener noreferrer">Reactstrap Tooltips</a>
         </Col>
       </Row>
-    );
-  }
-}
+  );
+};
 
 export default NavbarPage;

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React from 'react';
+import { useState } from 'react';
 import {
   Row,
   Col,
@@ -19,15 +20,8 @@ import classnames from 'classnames';
 
 import s from './TabsAccordion.module.scss'
 
-class TabsAccordion extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.toggleFirstTabs = this.toggleFirstTabs.bind(this);
-    this.toggleSecondTabs = this.toggleSecondTabs.bind(this);
-    this.toggleThirdTabs = this.toggleThirdTabs.bind(this);
-    this.toggleAccordionFirst = this.toggleAccordionFirst.bind(this);
-    this.state = {
+const TabsAccordion = () => {
+  const [state, setComponentState] = useState({
       activeFirstTab: 'tab11',
       activeSecondTab: 'tab22',
       activeThirdTab: 'tab31',
@@ -68,56 +62,69 @@ class TabsAccordion extends React.Component {
         title: 'Check It',
         body: ' Why don\'t use Lore Ipsum? I think if some one says don\'t use lore ipsum it\'s very controversial point. I think the opposite actually.',
       }],
-    };
-  }
+  });
 
-  toggleFirstTabs(tab) {
-    if (this.state.activeFirstTab !== tab) {
-      this.setState({
+  const setState = (value) => {
+    if (typeof value === 'function') {
+      setComponentState((prevState) => ({
+        ...prevState,
+        ...value(prevState),
+      }));
+      return;
+    }
+
+    setComponentState((prevState) => ({
+      ...prevState,
+      ...value,
+    }));
+  };
+
+  const toggleFirstTabs = (tab) => {
+    if (state.activeFirstTab !== tab) {
+      setState({
         activeFirstTab: tab,
       });
     }
-  }
+  };
 
-  toggleSecondTabs(tab) {
-    if (this.state.activeSecondTab !== tab) {
-      this.setState({
+  const toggleSecondTabs = (tab) => {
+    if (state.activeSecondTab !== tab) {
+      setState({
         activeSecondTab: tab,
       });
     }
-  }
+  };
 
-  toggleThirdTabs(tab) {
-    if (this.state.activeThirdTab !== tab) {
-      this.setState({
+  const toggleThirdTabs = (tab) => {
+    if (state.activeThirdTab !== tab) {
+      setState({
         activeThirdTab: tab,
       });
     }
-  }
+  };
 
-  toggleAccordionFirst(id) {
+  const toggleAccordionFirst = (id) => {
     const arr = [];
-    arr.length = this.state.accordionFirst.length;
+    arr.length = state.accordionFirst.length;
     arr.fill(false);
-    arr[id] = !this.state.accordionFirst[id];
-    this.setState({
+    arr[id] = !state.accordionFirst[id];
+    setState({
       accordionFirst: arr,
     });
-  }
+  };
 
-  toggleAccordionSecond(id) {
+  const toggleAccordionSecond = (id) => {
     const arr = [];
-    arr.length = this.state.accordionSecond.length;
+    arr.length = state.accordionSecond.length;
     arr.fill(false);
-    arr[id] = !this.state.accordionSecond[id];
-    this.setState({
+    arr[id] = !state.accordionSecond[id];
+    setState({
       accordionSecond: arr,
     });
-  }
+  };
 
-  render() {
-    return (
-      <div>
+  return (
+    <div>
         <h1 className="page-title">Tabs & Accordion - <span
           className="fw-semi-bold"
         >Components</span></h1>
@@ -130,16 +137,16 @@ class TabsAccordion extends React.Component {
               <Nav tabs className="float-start">
                 <NavItem className={s.customNavItem}>
                   <NavLink
-                    className={classnames({ active: this.state.activeFirstTab === 'tab11' })}
-                    onClick={() => { this.toggleFirstTabs('tab11'); }}
+                    className={classnames({ active: state.activeFirstTab === 'tab11' })}
+                    onClick={() => { toggleFirstTabs('tab11'); }}
                   >
                     <span>Basic</span>
                   </NavLink>
                 </NavItem>
                 <NavItem className={s.customNavItem}>
                   <NavLink
-                    className={classnames({ active: this.state.activeFirstTab === 'tab12' })}
-                    onClick={() => { this.toggleFirstTabs('tab12'); }}
+                    className={classnames({ active: state.activeFirstTab === 'tab12' })}
+                    onClick={() => { toggleFirstTabs('tab12'); }}
                   >
                     <span>Assumtion</span>
                   </NavLink>
@@ -147,18 +154,18 @@ class TabsAccordion extends React.Component {
                 <UncontrolledDropdown className={`${s.customNavItem} nav-item`}>
                   <DropdownToggle nav caret
                     className={classnames({
-                      active: this.state.activeFirstTab === 'tab13' ||
-                      this.state.activeFirstTab === 'tab14'
+                      active: state.activeFirstTab === 'tab13' ||
+                      state.activeFirstTab === 'tab14'
                     }, s.tabsDropDown)}>
                     Dropdown
                   </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem onClick={() => {
-                      this.toggleFirstTabs('tab13');
+                      toggleFirstTabs('tab13');
                     }}>@fat
                     </DropdownItem>
                     <DropdownItem onClick={() => {
-                      this.toggleFirstTabs('tab14');
+                      toggleFirstTabs('tab14');
                     }}>@mdo
                     </DropdownItem>
                   </DropdownMenu>
@@ -167,7 +174,7 @@ class TabsAccordion extends React.Component {
             </div>
             {/* tab content */}
 
-            <TabContent className='mb-lg' activeTab={this.state.activeFirstTab}>
+            <TabContent className='mb-lg' activeTab={state.activeFirstTab}>
               <TabPane tabId="tab11">
                 <h3>Tabs-enabled widget</h3>
                 <p>You will never know exactly how something will go until you try it.</p>
@@ -230,31 +237,31 @@ class TabsAccordion extends React.Component {
                 <Nav tabs>
                   <NavItem className={s.customNavItem}>
                     <NavLink
-                      className={classnames({ active: this.state.activeSecondTab === 'tab21' })}
-                      onClick={() => { this.toggleSecondTabs('tab21'); }}
+                      className={classnames({ active: state.activeSecondTab === 'tab21' })}
+                      onClick={() => { toggleSecondTabs('tab21'); }}
                     >
                       <span>Basic</span>
                     </NavLink>
                   </NavItem>
                   <NavItem className={s.customNavItem}>
                     <NavLink
-                      className={classnames({ active: this.state.activeSecondTab === 'tab22' })}
-                      onClick={() => { this.toggleSecondTabs('tab22'); }}
+                      className={classnames({ active: state.activeSecondTab === 'tab22' })}
+                      onClick={() => { toggleSecondTabs('tab22'); }}
                     >
                       <span>Assumtion</span>
                     </NavLink>
                   </NavItem>
                   <NavItem className={s.customNavItem}>
                     <NavLink
-                      className={classnames({ active: this.state.activeSecondTab === 'tab23' })}
-                      onClick={() => { this.toggleSecondTabs('tab23'); }}
+                      className={classnames({ active: state.activeSecondTab === 'tab23' })}
+                      onClick={() => { toggleSecondTabs('tab23'); }}
                     >
                       <span>Works</span>
                     </NavLink>
                   </NavItem>
                 </Nav>
 
-                <TabContent className='mb-lg' activeTab={this.state.activeSecondTab}>
+                <TabContent className='mb-lg' activeTab={state.activeSecondTab}>
                   <TabPane tabId="tab21">
                     <p>
                       I had an idea named Great Work. It was a service aimed to help people find
@@ -302,31 +309,31 @@ class TabsAccordion extends React.Component {
                 <Nav tabs>
                   <NavItem className={s.customNavItem}>
                     <NavLink
-                      className={classnames({ active: this.state.activeThirdTab === 'tab31' })}
-                      onClick={() => { this.toggleThirdTabs('tab31'); }}
+                      className={classnames({ active: state.activeThirdTab === 'tab31' })}
+                      onClick={() => { toggleThirdTabs('tab31'); }}
                     >
                       <span>Basic</span>
                     </NavLink>
                   </NavItem>
                   <NavItem className={s.customNavItem}>
                     <NavLink
-                      className={classnames({ active: this.state.activeThirdTab === 'tab32' })}
-                      onClick={() => { this.toggleThirdTabs('tab32'); }}
+                      className={classnames({ active: state.activeThirdTab === 'tab32' })}
+                      onClick={() => { toggleThirdTabs('tab32'); }}
                     >
                       <span>Assumtion</span>
                     </NavLink>
                   </NavItem>
                   <NavItem className={s.customNavItem}>
                     <NavLink
-                      className={classnames({ active: this.state.activeThirdTab === 'tab33' })}
-                      onClick={() => { this.toggleThirdTabs('tab33'); }}
+                      className={classnames({ active: state.activeThirdTab === 'tab33' })}
+                      onClick={() => { toggleThirdTabs('tab33'); }}
                     >
                       <span>Works</span>
                     </NavLink>
                   </NavItem>
                 </Nav>
 
-                <TabContent className='mb-lg' activeTab={this.state.activeThirdTab}>
+                <TabContent className='mb-lg' activeTab={state.activeThirdTab}>
                   <TabPane tabId="tab31">
                     <p>
                       I had an idea named Great Work. It was a service aimed to help people find
@@ -375,34 +382,34 @@ class TabsAccordion extends React.Component {
         <Row className="mt-xs">
           <Col md="6" xs="12" className='mb-lg'>
 
-            {this.state.accordionFirstContent.map((element, index) => (
+            {state.accordionFirstContent.map((element, index) => (
               <div className="card panel mb-xs" key={`accord-one-${index.toString()}`}>
                 { /* eslint-disable */ }
                 <div
                   className="card-header panel-header" role="button"
-                  onClick={() => { this.toggleAccordionFirst(index); }}
+                  onClick={() => { toggleAccordionFirst(index); }}
                 >
                   { /* eslint-enable */ }
                   <div className="mb-0">
                    {/* eslint-disable-next-line */}
                     <a className="accordion-toggle" role="button">
                       {element.title}
-                      <i className={`fa fa-angle-down ${this.state.accordionFirst[index] ? 'expanded' : ''}`} />
+                      <i className={`fa fa-angle-down ${state.accordionFirst[index] ? 'expanded' : ''}`} />
                     </a>
                   </div>
                 </div>
-                <Collapse className="panel-body" isOpen={this.state.accordionFirst[index]}>
+                <Collapse className="panel-body" isOpen={state.accordionFirst[index]}>
                   <div className="card-body" dangerouslySetInnerHTML={{ __html: element.body }} />
                 </Collapse>
               </div>))}
           </Col>
 
           <Col md="6" xs="12" className='mb-lg'>
-            {this.state.accordionSecondContent.map((element, index) => (<div className="card panel mb-xs" key={`accord-one-${index.toString()}`}>
+            {state.accordionSecondContent.map((element, index) => (<div className="card panel mb-xs" key={`accord-one-${index.toString()}`}>
               { /* eslint-disable */ }
               <div
                 className="card-header panel-header" role="button"
-                onClick={() => { this.toggleAccordionSecond(index); }}
+                onClick={() => { toggleAccordionSecond(index); }}
               >
                 { /* eslint-enable */ }
                 <div className="mb-0">
@@ -413,16 +420,15 @@ class TabsAccordion extends React.Component {
                   </a>
                 </div>
               </div>
-              <Collapse className="panel-body" isOpen={this.state.accordionSecond[index]}>
+              <Collapse className="panel-body" isOpen={state.accordionSecond[index]}>
                 <div className="card-body" dangerouslySetInnerHTML={{ __html: element.body }} />
               </Collapse>
             </div>))}
           </Col>
         </Row>
 
-      </div>);
-  }
-
-}
+      </div>
+  );
+};
 
 export default TabsAccordion;

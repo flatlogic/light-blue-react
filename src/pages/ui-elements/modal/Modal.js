@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Row,
   Col,
@@ -12,24 +12,24 @@ import {
 
 import Widget from '../../../components/Widget';
 
-class ModalExample extends React.Component {
-  state = {
+const ModalExample = () => {
+  const [state, setState] = useState({
     demo: false,
     verticallyCentered: false,
     large: false,
     small: false,
     launch: false,
-  }
+  });
 
-  toggle(id) {
-    this.setState(prevState => ({
+  const toggle = (id) => {
+    setState((prevState) => ({
+      ...prevState,
       [id]: !prevState[id],
     }));
-  }
+  };
 
-  render() {
-    const { demo, scrollingLong, large, small, launch } = this.state;
-    return (
+  const { demo, scrollingLong, large, small, launch } = state;
+  return (
       <div>
         <h1 className="page-title">Modal - <span className="fw-semi-bold">Examples</span></h1>
         <Row>
@@ -43,8 +43,8 @@ class ModalExample extends React.Component {
                 Toggle a working modal demo by clicking the button below. It
                 will slide down and fade in from the top of the page.
               </p>
-              <Button className="me-3" color="primary" onClick={() => this.toggle('demo')}>Demo</Button>
-              <Button color="primary" onClick={() => this.toggle('scrollingLong')}>Scrolling long content</Button>
+              <Button className="me-3" color="primary" onClick={() => toggle('demo')}>Demo</Button>
+              <Button color="primary" onClick={() => toggle('scrollingLong')}>Scrolling long content</Button>
             </Widget>
             <Widget
               title={<h5>Optional <span className="fw-semi-bold">Sizes</span></h5>}
@@ -55,8 +55,8 @@ class ModalExample extends React.Component {
               classes to be placed on a .modal-dialog. These sizes kick in at certain
               breakpoints to avoid horizontal scrollbars on narrower viewports.
               </p>
-              <Button className="me-3" color="primary" onClick={() => this.toggle('large')}>Large modal</Button>
-              <Button color="primary" onClick={() => this.toggle('small')}>Small modal</Button>
+              <Button className="me-3" color="primary" onClick={() => toggle('large')}>Large modal</Button>
+              <Button color="primary" onClick={() => toggle('small')}>Small modal</Button>
             </Widget>
           </Col>
           <Col xs={12} md={6}>
@@ -70,7 +70,7 @@ class ModalExample extends React.Component {
                 the <code>&lt;ModalBody&gt;</code>. Then, use the normal grid system classes as you would anywhere else.
               </p>
               <div className="bg-custom-dark p-3">
-                <Button color="primary" onClick={() => this.toggle('launch')}>Launch</Button>
+                <Button color="primary" onClick={() => toggle('launch')}>Launch</Button>
                 <pre className="bg-custom-dark border-0 w-100 h-100">
                   <code className="text-danger">{'<Container fluid>\n'}</code>
                   <code className="text-success">{'  <Row>\n'}</code>
@@ -102,19 +102,19 @@ class ModalExample extends React.Component {
         </Row>
 
         {/* Modals */}
-        <Modal isOpen={demo} toggle={() => this.toggle('demo')}>
-          <ModalHeader toggle={() => this.toggle('demo')}>Modal title</ModalHeader>
+        <Modal isOpen={demo} toggle={() => toggle('demo')}>
+          <ModalHeader toggle={() => toggle('demo')}>Modal title</ModalHeader>
           <ModalBody>
             ...
           </ModalBody>
           <ModalFooter>
-            <Button color="dark" onClick={() => this.toggle('demo')}>Close</Button>
+            <Button color="dark" onClick={() => toggle('demo')}>Close</Button>
             <Button color="primary">Save changes</Button>
           </ModalFooter>
         </Modal>
 
-        <Modal isOpen={scrollingLong} toggle={() => this.toggle('scrollingLong')}>
-          <ModalHeader toggle={() => this.toggle('scrollingLong')}>Long content</ModalHeader>
+        <Modal isOpen={scrollingLong} toggle={() => toggle('scrollingLong')}>
+          <ModalHeader toggle={() => toggle('scrollingLong')}>Long content</ModalHeader>
           <ModalBody>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -168,39 +168,39 @@ class ModalExample extends React.Component {
             </p>
           </ModalBody>
           <ModalFooter>
-            <Button color="dark" onClick={() => this.toggle('scrollingLong')}>Close</Button>
+            <Button color="dark" onClick={() => toggle('scrollingLong')}>Close</Button>
             <Button color="primary">Save changes</Button>
           </ModalFooter>
         </Modal>
 
-        <Modal size="lg" isOpen={large} toggle={() => this.toggle('large')}>
-          <ModalHeader toggle={() => this.toggle('large')}>Large modal</ModalHeader>
-          <ModalBody>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. In, illum harum?
-            Quidem, quisquam, natus repellat debitis veniam quia facilis magni tempora
-            cupiditate odio vitae? Eligendi nisi consequuntur vero tenetur nemo!
-          </ModalBody>
-          <ModalFooter>
-            <Button color="dark" onClick={() => this.toggle('large')}>Close</Button>
-            <Button color="primary">Save changes</Button>
-          </ModalFooter>
-        </Modal>
-
-        <Modal size="sm" isOpen={small} toggle={() => this.toggle('small')}>
-          <ModalHeader toggle={() => this.toggle('small')}>Small modal</ModalHeader>
+        <Modal size="lg" isOpen={large} toggle={() => toggle('large')}>
+          <ModalHeader toggle={() => toggle('large')}>Large modal</ModalHeader>
           <ModalBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. In, illum harum?
             Quidem, quisquam, natus repellat debitis veniam quia facilis magni tempora
             cupiditate odio vitae? Eligendi nisi consequuntur vero tenetur nemo!
           </ModalBody>
           <ModalFooter>
-            <Button color="dark" onClick={() => this.toggle('small')}>Close</Button>
+            <Button color="dark" onClick={() => toggle('large')}>Close</Button>
             <Button color="primary">Save changes</Button>
           </ModalFooter>
         </Modal>
 
-        <Modal isOpen={launch} toggle={() => this.toggle('launch')}>
-          <ModalHeader toggle={() => this.toggle('launch')}>Small modal</ModalHeader>
+        <Modal size="sm" isOpen={small} toggle={() => toggle('small')}>
+          <ModalHeader toggle={() => toggle('small')}>Small modal</ModalHeader>
+          <ModalBody>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In, illum harum?
+            Quidem, quisquam, natus repellat debitis veniam quia facilis magni tempora
+            cupiditate odio vitae? Eligendi nisi consequuntur vero tenetur nemo!
+          </ModalBody>
+          <ModalFooter>
+            <Button color="dark" onClick={() => toggle('small')}>Close</Button>
+            <Button color="primary">Save changes</Button>
+          </ModalFooter>
+        </Modal>
+
+        <Modal isOpen={launch} toggle={() => toggle('launch')}>
+          <ModalHeader toggle={() => toggle('launch')}>Small modal</ModalHeader>
           <ModalBody>
             <Container fluid>
               <Row>
@@ -217,14 +217,13 @@ class ModalExample extends React.Component {
             </Container>
           </ModalBody>
           <ModalFooter>
-            <Button color="dark" onClick={() => this.toggle('launch')}>Close</Button>
+            <Button color="dark" onClick={() => toggle('launch')}>Close</Button>
             <Button color="primary">Save changes</Button>
           </ModalFooter>
         </Modal>
       </div>
-    );
-  }
-}
+  );
+};
 
 
 export default ModalExample;

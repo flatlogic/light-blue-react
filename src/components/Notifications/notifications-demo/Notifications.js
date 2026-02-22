@@ -10,10 +10,8 @@ import s from './ListGroup.module.scss';
 import a3 from '../../../images/people/a3.jpg';
 import a5 from '../../../images/people/a5.jpg';
 
-class NotificationsDemo extends React.Component {
-  render() {
-    return (
-      <ListGroup className={[s.listGroup, 'thin-scroll'].join(' ')}>
+const NotificationsDemo = () => (
+  <ListGroup className={[s.listGroup, 'thin-scroll'].join(' ')}>
         <ListGroupItem className={s.listGroupItem}>
           <span className={[s.notificationIcon, 'thumb-sm'].join(' ')}>
             <img className="rounded-circle" src={a3} alt="..." />
@@ -106,9 +104,7 @@ class NotificationsDemo extends React.Component {
             </time>
           </p>
         </ListGroupItem>
-      </ListGroup>
-    );
-  }
-}
+  </ListGroup>
+);
 
 export default NotificationsDemo;

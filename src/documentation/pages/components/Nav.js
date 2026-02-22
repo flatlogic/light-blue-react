@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Breadcrumb, BreadcrumbItem, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import classnames from 'classnames';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-class NavPage extends Component {
-  state = {
+const NavPage = () => {
+  const [tabs, setTabs] = useState({
     defaultNavTabId: '1',
     verticalNavTabId: '1',
     pillsNavTabId: '1',
+  });
+
+  const changeTab = (field, id) => {
+    setTabs((prevState) => ({
+      ...prevState,
+      [field]: id,
+    }));
   };
 
-  changeTab(field, id) {
-    this.setState({
-      [field]: id,
-    })
-  }
-
-  render() {
-    return (
+  return (
       <Row>
         <Col md={10}>
           <Breadcrumb>
@@ -38,9 +38,9 @@ class NavPage extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultNavTabId === '1' })}
+                className={classnames({ active: tabs.defaultNavTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('defaultNavTabId', '1');
+                  changeTab('defaultNavTabId', '1');
                 }}
               >
                 Example
@@ -48,16 +48,16 @@ class NavPage extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultNavTabId === '2' })}
+                className={classnames({ active: tabs.defaultNavTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('defaultNavTabId', '2');
+                  changeTab('defaultNavTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.defaultNavTabId}>
+          <TabContent className="mb-xlg" activeTab={tabs.defaultNavTabId}>
             <TabPane tabId="1">
               <Nav>
                 <NavItem>
@@ -94,9 +94,9 @@ class NavPage extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.verticalNavTabId === '1' })}
+                className={classnames({ active: tabs.verticalNavTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('verticalNavTabId', '1');
+                  changeTab('verticalNavTabId', '1');
                 }}
               >
                 Example
@@ -104,16 +104,16 @@ class NavPage extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.verticalNavTabId === '2' })}
+                className={classnames({ active: tabs.verticalNavTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('verticalNavTabId', '2');
+                  changeTab('verticalNavTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.verticalNavTabId}>
+          <TabContent className="mb-xlg" activeTab={tabs.verticalNavTabId}>
             <TabPane tabId="1">
               <Nav vertical>
                 <NavItem>
@@ -150,9 +150,9 @@ class NavPage extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.pillsNavTabId === '1' })}
+                className={classnames({ active: tabs.pillsNavTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('pillsNavTabId', '1');
+                  changeTab('pillsNavTabId', '1');
                 }}
               >
                 Example
@@ -160,16 +160,16 @@ class NavPage extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.pillsNavTabId === '2' })}
+                className={classnames({ active: tabs.pillsNavTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('pillsNavTabId', '2');
+                  changeTab('pillsNavTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.pillsNavTabId}>
+          <TabContent className="mb-xlg" activeTab={tabs.pillsNavTabId}>
             <TabPane tabId="1">
               <Nav pills>
                 <NavItem>
@@ -206,8 +206,7 @@ class NavPage extends Component {
           For more examples please refer to <a href="https://reactstrap.github.io/components/card/" target="_blank" rel="noopener noreferrer">Reactstrap Card</a>
         </Col>
       </Row>
-    );
-  }
-}
+  );
+};
 
 export default NavPage;

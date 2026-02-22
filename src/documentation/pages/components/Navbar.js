@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
   Row,
   Col,
@@ -22,21 +22,21 @@ import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import classnames from 'classnames';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-class NavbarPage extends Component {
-  state = {
+const NavbarPage = () => {
+  const [tabs, setTabs] = useState({
     defaultNavTabId: '1',
     verticalNavTabId: '1',
     pillsNavTabId: '1',
+  });
+
+  const changeTab = (field, id) => {
+    setTabs((prevState) => ({
+      ...prevState,
+      [field]: id,
+    }));
   };
 
-  changeTab(field, id) {
-    this.setState({
-      [field]: id,
-    })
-  }
-
-  render() {
-    return (
+  return (
       <Row>
         <Col md={10}>
           <Breadcrumb>
@@ -69,9 +69,9 @@ class NavbarPage extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultNavTabId === '1' })}
+                className={classnames({ active: tabs.defaultNavTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('defaultNavTabId', '1');
+                  changeTab('defaultNavTabId', '1');
                 }}
               >
                 Example
@@ -79,16 +79,16 @@ class NavbarPage extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultNavTabId === '2' })}
+                className={classnames({ active: tabs.defaultNavTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('defaultNavTabId', '2');
+                  changeTab('defaultNavTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.defaultNavTabId}>
+          <TabContent className="mb-xlg" activeTab={tabs.defaultNavTabId}>
             <TabPane tabId="1">
               <Navbar color="light" light expand="md">
                 <NavbarBrand href="/">Sing</NavbarBrand>
@@ -159,8 +159,7 @@ class NavbarPage extends Component {
           For more examples please refer to <a href="https://reactstrap.github.io/components/card/" target="_blank" rel="noopener noreferrer">Reactstrap Card</a>
         </Col>
       </Row>
-    );
-  }
-}
+  );
+};
 
 export default NavbarPage;

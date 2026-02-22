@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Row, Col, Breadcrumb, BreadcrumbItem, UncontrolledCarousel } from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -13,9 +13,7 @@ const carouselItems = [
   { src: thirdSlide, caption: '' },
 ];
 
-class Buttons extends Component {
-  render() {
-    return (
+const Buttons = () => (
       <Row>
         <Col md={10}>
           <Breadcrumb>
@@ -44,7 +42,5 @@ class Buttons extends Component {
         </Col>
       </Row>
     );
-  }
-}
 
 export default Buttons;

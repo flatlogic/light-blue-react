@@ -11,11 +11,8 @@ import angularLogo from '../../images/angularjs-logo.svg';
 import jsLogo from '../../images/js-logo.svg';
 import vueLogo from '../../images/vue-logo.svg';
 
-class SPackage extends React.Component {
-
-  render() {
-    return (
-      <div>
+const SPackage = () => (
+  <div>
         <h2 className="page-title">Light Blue - <span className="fw-semi-bold">Package</span>&nbsp;
           <small>More than 2000 man-hours already invested!</small>
         </h2>
@@ -147,8 +144,6 @@ class SPackage extends React.Component {
           </Col>
         </Row>
       </div>
-    );
-  }
-}
+);
 
 export default SPackage;

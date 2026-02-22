@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Breadcrumb, BreadcrumbItem, Button, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import classnames from 'classnames';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-class Buttons extends Component {
-  state = {
+const Buttons = () => {
+  const [tabs, setTabs] = useState({
     defaultButtonTabId: '1',
     outlineButtonsTabId: '1',
     buttonsSizeTabId: '1'
+  });
+
+  const changeTab = (field, id) => {
+    setTabs((prevState) => ({
+      ...prevState,
+      [field]: id,
+    }));
   };
 
-  changeTab(field, id) {
-    this.setState({
-      [field]: id,
-    })
-  }
-
-  render() {
-    return (
+  return (
       <Row>
         <Col md={10}>
           <Breadcrumb>
@@ -38,9 +38,9 @@ class Buttons extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultButtonTabId === '1' })}
+                className={classnames({ active: tabs.defaultButtonTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('defaultButtonTabId', '1');
+                  changeTab('defaultButtonTabId', '1');
                 }}
               >
                 Example
@@ -48,16 +48,16 @@ class Buttons extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultButtonTabId === '2' })}
+                className={classnames({ active: tabs.defaultButtonTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('defaultButtonTabId', '2');
+                  changeTab('defaultButtonTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.defaultButtonTabId}>
+          <TabContent className="mb-xlg" activeTab={tabs.defaultButtonTabId}>
             <TabPane tabId="1">
               <Button color="default" className="width-100 mb-xs me-1">Default</Button>
               <Button color="primary" className="width-100 mb-xs me-1">Primary</Button>
@@ -82,9 +82,9 @@ class Buttons extends Component {
           <Nav tabs className="bg-transparent">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.outlineButtonsTabId === '1' })}
+                className={classnames({ active: tabs.outlineButtonsTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('outlineButtonsTabId', '1');
+                  changeTab('outlineButtonsTabId', '1');
                 }}
               >
                 Example
@@ -92,16 +92,16 @@ class Buttons extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.outlineButtonsTabId === '2' })}
+                className={classnames({ active: tabs.outlineButtonsTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('outlineButtonsTabId', '2');
+                  changeTab('outlineButtonsTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.outlineButtonsTabId}>
+          <TabContent className="mb-xlg" activeTab={tabs.outlineButtonsTabId}>
             <TabPane tabId="1">
               <Button outline color="default" className="width-100 mb-xs me-1">Default</Button>
               <Button outline color="primary" className="width-100 mb-xs me-1">Primary</Button>
@@ -128,9 +128,9 @@ class Buttons extends Component {
           <Nav tabs className="bg-transparent">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.buttonsSizeTabId === '1' })}
+                className={classnames({ active: tabs.buttonsSizeTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('buttonsSizeTabId', '1');
+                  changeTab('buttonsSizeTabId', '1');
                 }}
               >
                 Example
@@ -138,16 +138,16 @@ class Buttons extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.buttonsSizeTabId === '2' })}
+                className={classnames({ active: tabs.buttonsSizeTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('buttonsSizeTabId', '2');
+                  changeTab('buttonsSizeTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.buttonsSizeTabId}>
+          <TabContent className="mb-xlg" activeTab={tabs.buttonsSizeTabId}>
             <TabPane tabId="1">
               <p className="fs-mini text-muted">
                 Fancy larger or smaller buttons?
@@ -173,8 +173,7 @@ class Buttons extends Component {
           For more examples please refer to <a href="https://reactstrap.github.io/components/buttons/" target="_blank" rel="noopener noreferrer">Reactstrap Buttons</a>
         </Col>
       </Row>
-    );
-  }
-}
+  );
+};
 
 export default Buttons;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
   Row,
   Col,
@@ -11,28 +11,30 @@ import {
 
 import Widget from '../../../components/Widget';
 
-class PopoverExamples extends Component {
-  state = {
+const PopoverExamples = () => {
+  const [state, setState] = useState({
     tooltips: [false, false, false, false, false, false],
     popovers: [false, false, false, false, false, false],
     tooltipOpen: false,
-  }
+  });
 
-  toggle(id, field) {
-    const newState = [...this.state[field]];
-    newState.fill(false);
+  const toggle = (id, field) => {
+    setState((prevState) => {
+      const newFieldState = [...prevState[field]];
+      newFieldState.fill(false);
 
-    if (!this.state[field][id]) {
-      newState[id] = true;
-    }
+      if (!prevState[field][id]) {
+        newFieldState[id] = true;
+      }
 
-    this.setState({
-      [field]: newState,
+      return {
+        ...prevState,
+        [field]: newFieldState,
+      };
     });
-  }
+  };
 
-  render() {
-    return (
+  return (
       <div>
         <h1 className="page-title">Popovers & Tooltips</h1>
         <Row>
@@ -44,11 +46,11 @@ class PopoverExamples extends Component {
             >
               <Button
                 id="p-1" className="me-3 mb-md" size="lg" color="danger"
-                onClick={() => this.toggle(0, 'popovers')}
+                onClick={() => toggle(0, 'popovers')}
               >Click to toggle popover</Button>
               <Button className="mb-md"
                 id="p-2" color="danger" disabled
-                onClick={() => this.toggle(1, 'popovers')}
+                onClick={() => toggle(1, 'popovers')}
               >Disabled button</Button>
             </Widget>
             <Widget
@@ -57,19 +59,19 @@ class PopoverExamples extends Component {
             >
               <Button
                 id="p-3" className="me-3 mb-md" color="info"
-                onClick={() => this.toggle(2, 'popovers')}
+                onClick={() => toggle(2, 'popovers')}
               >Popover on top</Button>
               <Button
                 id="p-4" className="me-3 mb-md" color="warning"
-                onClick={() => this.toggle(3, 'popovers')}
+                onClick={() => toggle(3, 'popovers')}
               >Popover on right</Button>
               <Button
                 id="p-5" className="me-3 mb-md" color="inverse"
-                onClick={() => this.toggle(4, 'popovers')}
+                onClick={() => toggle(4, 'popovers')}
               >Popover on bottom</Button>
               <Button
                 id="p-6" className="me-3 mb-md" color="default"
-                onClick={() => this.toggle(5, 'popovers')}
+                onClick={() => toggle(5, 'popovers')}
               >Popover on left</Button>
             </Widget>
           </Col>
@@ -96,42 +98,42 @@ class PopoverExamples extends Component {
 
         {/* Popovers & Tooltips */}
 
-        <Popover placement="top" isOpen={this.state.popovers[0]} target="p-1" toggle={() => this.toggle(0, 'popovers')}>
+        <Popover placement="top" isOpen={state.popovers[0]} target="p-1" toggle={() => toggle(0, 'popovers')}>
           <PopoverHeader>Popover Title</PopoverHeader>
           <PopoverBody>
             Sed posuere consectetur est at lobortis. Aenean eu leo quam.
             Pellentesque ornare sem lacinia quam venenatis vestibulum.
           </PopoverBody>
         </Popover>
-        <Popover placement="top" isOpen={this.state.popovers[1]} target="p-2" toggle={() => this.toggle(1, 'popovers')}>
+        <Popover placement="top" isOpen={state.popovers[1]} target="p-2" toggle={() => toggle(1, 'popovers')}>
           <PopoverHeader>Popover Title</PopoverHeader>
           <PopoverBody>
             Sed posuere consectetur est at lobortis. Aenean eu leo quam.
             Pellentesque ornare sem lacinia quam venenatis vestibulum.
           </PopoverBody>
         </Popover>
-        <Popover placement="top" isOpen={this.state.popovers[2]} target="p-3" toggle={() => this.toggle(2, 'popovers')}>
+        <Popover placement="top" isOpen={state.popovers[2]} target="p-3" toggle={() => toggle(2, 'popovers')}>
           <PopoverHeader>Popover Title</PopoverHeader>
           <PopoverBody>
             Sed posuere consectetur est at lobortis. Aenean eu leo quam.
             Pellentesque ornare sem lacinia quam venenatis vestibulum.
           </PopoverBody>
         </Popover>
-        <Popover placement="right" isOpen={this.state.popovers[3]} target="p-4" toggle={() => this.toggle(3, 'popovers')}>
+        <Popover placement="right" isOpen={state.popovers[3]} target="p-4" toggle={() => toggle(3, 'popovers')}>
           <PopoverHeader>Popover Title</PopoverHeader>
           <PopoverBody>
             Sed posuere consectetur est at lobortis. Aenean eu leo quam.
             Pellentesque ornare sem lacinia quam venenatis vestibulum.
           </PopoverBody>
         </Popover>
-        <Popover placement="bottom" isOpen={this.state.popovers[4]} target="p-5" toggle={() => this.toggle(4, 'popovers')}>
+        <Popover placement="bottom" isOpen={state.popovers[4]} target="p-5" toggle={() => toggle(4, 'popovers')}>
           <PopoverHeader>Popover Title</PopoverHeader>
           <PopoverBody>
             Sed posuere consectetur est at lobortis. Aenean eu leo quam.
             Pellentesque ornare sem lacinia quam venenatis vestibulum.
           </PopoverBody>
         </Popover>
-        <Popover placement="left" isOpen={this.state.popovers[5]} target="p-6" toggle={() => this.toggle(5, 'popovers')}>
+        <Popover placement="left" isOpen={state.popovers[5]} target="p-6" toggle={() => toggle(5, 'popovers')}>
           <PopoverHeader>Popover Title</PopoverHeader>
           <PopoverBody>
             Sed posuere consectetur est at lobortis. Aenean eu leo quam.
@@ -139,27 +141,26 @@ class PopoverExamples extends Component {
           </PopoverBody>
         </Popover>
 
-        <Tooltip placement="top" isOpen={this.state.tooltips[0]} toggle={() => this.toggle(0, 'tooltips')} target="t-1">
+        <Tooltip placement="top" isOpen={state.tooltips[0]} toggle={() => toggle(0, 'tooltips')} target="t-1">
           Hello world!
         </Tooltip>
-        <Tooltip placement="top" isOpen={this.state.tooltips[1]} toggle={() => this.toggle(1, 'tooltips')} target="t-2">
+        <Tooltip placement="top" isOpen={state.tooltips[1]} toggle={() => toggle(1, 'tooltips')} target="t-2">
           Hello world!
         </Tooltip>
-        <Tooltip placement="top" isOpen={this.state.tooltips[2]} toggle={() => this.toggle(2, 'tooltips')} target="t-3">
+        <Tooltip placement="top" isOpen={state.tooltips[2]} toggle={() => toggle(2, 'tooltips')} target="t-3">
           Top
         </Tooltip>
-        <Tooltip placement="right" isOpen={this.state.tooltips[3]} toggle={() => this.toggle(3, 'tooltips')} target="t-4">
+        <Tooltip placement="right" isOpen={state.tooltips[3]} toggle={() => toggle(3, 'tooltips')} target="t-4">
           Right
         </Tooltip>
-        <Tooltip placement="bottom" isOpen={this.state.tooltips[4]} toggle={() => this.toggle(4, 'tooltips')} target="t-5">
+        <Tooltip placement="bottom" isOpen={state.tooltips[4]} toggle={() => toggle(4, 'tooltips')} target="t-5">
           Bottom
         </Tooltip>
-        <Tooltip placement="left" isOpen={this.state.tooltips[5]} toggle={() => this.toggle(5, 'tooltips')} target="t-6">
+        <Tooltip placement="left" isOpen={state.tooltips[5]} toggle={() => toggle(5, 'tooltips')} target="t-6">
           Left
         </Tooltip>
       </div>
-    );
-  }
-}
+  );
+};
 
 export default PopoverExamples;

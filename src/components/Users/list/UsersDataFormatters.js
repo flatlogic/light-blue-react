@@ -12,13 +12,16 @@ import avatar6 from '../../../images/chat/chat6.png';
 
 const avatars = [avatar1, avatar3, avatar4, avatar5, avatar6];
 
-function imageFormatter(cell, rows,_ , index) {
+function imageFormatter(cell, rows, rowIndex) {
   const imageUrl =
     cell && cell.length
       ? cell[0].publicUrl
       : undefined;
+
+  const avatarFallback = avatars[rowIndex % avatars.length];
+
   return (
-      <span className={`${s.avatar} rounded-circle`}>{imageUrl || rows.role === 'admin' ? <img src={imageUrl || defaultAminAvatar} onError={(e) => e.target.src = avatars[index+1]} alt="avatar" /> : <span className={`${s.avatar} rounded-circle thumb-sm float-start`}>{rows.email.charAt(0).toUpperCase()}</span>}</span>
+      <span className={`${s.avatar} rounded-circle`}>{imageUrl || rows.role === 'admin' ? <img src={imageUrl || defaultAminAvatar} onError={(e) => e.target.src = avatarFallback} alt="avatar" /> : <span className={`${s.avatar} rounded-circle thumb-sm float-start`}>{rows.email.charAt(0).toUpperCase()}</span>}</span>
   );
 };
 

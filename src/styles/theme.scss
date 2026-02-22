@@ -8,8 +8,8 @@
 @import "theme-variables";
 @import '../../node_modules/bootstrap/scss/bootstrap';
 @import '../fonts/flaticon/flaticon';
-@import '~font-awesome/css/font-awesome';
-@import '~font-awesome/scss/font-awesome';
+@import 'font-awesome/css/font-awesome';
+@import 'font-awesome/scss/font-awesome';
 @import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
 @import '../../node_modules/line-awesome/dist/line-awesome/css/line-awesome.css';
@@ -19,9 +19,6 @@
 @import '../../node_modules/messenger/build/css/messenger-theme-air.css';
 @import '../../node_modules/nvd3/build/nv.d3.css';
 @import '../../node_modules/rickshaw/rickshaw.css';
-@import '../../node_modules/react-table/react-table.css';
-@import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
-@import '../../node_modules/react-sortable-tree/style.css';
 @import '../../node_modules/react-toastify/dist/ReactToastify.css';
 @import '../../node_modules/react-tagsinput/react-tagsinput.css';
 
@@ -31,4 +28,3 @@
 @import 'overrides';
 @import 'general';
 @import 'utils';
-

@@ -1,3 +1,4 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { RECEIVED_DATA_SUCCESS, RECEIVING_DATA } from '../actions/analytics';
 
 const defaultState = {
@@ -9,23 +10,31 @@ const defaultState = {
     isReceiving: false
 };
 
-export default function analyticsReducer(state = defaultState, action) {
-    switch (action.type) {
-        case RECEIVED_DATA_SUCCESS:
-            const { visits, performance, server, revenue, mainChart } = action.payload;
-            return Object.assign({}, state, {
-                visits,
-                performance,
-                server,
-                revenue,
-                mainChart,
-                isReceiving: false
-            });
-        case RECEIVING_DATA:
-            return Object.assign({}, state, {
-                isReceiving: true
-            });
-        default:
-            return state;
-    }
-}
+const analyticsSlice = createSlice({
+  name: 'analytics',
+  initialState: defaultState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(RECEIVED_DATA_SUCCESS, (state, action) => {
+        const {
+          visits,
+          performance,
+          server,
+          revenue,
+          mainChart,
+        } = action.payload;
+        state.visits = visits;
+        state.performance = performance;
+        state.server = server;
+        state.revenue = revenue;
+        state.mainChart = mainChart;
+        state.isReceiving = false;
+      })
+      .addCase(RECEIVING_DATA, (state) => {
+        state.isReceiving = true;
+      });
+  },
+});
+
+export default analyticsSlice.reducer;

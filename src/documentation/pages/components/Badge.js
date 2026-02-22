@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Breadcrumb, BreadcrumbItem, Badge, Button, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import classnames from 'classnames';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-class Badges extends Component {
-  state = {
+const Badges = () => {
+  const [tabs, setTabs] = useState({
     defaultBadgesTabId: '1',
     pillsBadgesTabId: '1',
+  });
+
+  const changeTab = (field, id) => {
+    setTabs((prevState) => ({
+      ...prevState,
+      [field]: id,
+    }));
   };
 
-  changeTab(field, id) {
-    this.setState({
-      [field]: id,
-    })
-  }
-
-  render() {
-    return (
+  return (
       <Row>
         <Col md={10}>
           <Breadcrumb>
@@ -36,9 +36,9 @@ class Badges extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultBadgesTabId === '1' })}
+                className={classnames({ active: tabs.defaultBadgesTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('defaultBadgesTabId', '1');
+                  changeTab('defaultBadgesTabId', '1');
                 }}
               >
                 Example
@@ -46,16 +46,16 @@ class Badges extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultBadgesTabId === '2' })}
+                className={classnames({ active: tabs.defaultBadgesTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('defaultBadgesTabId', '2');
+                  changeTab('defaultBadgesTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.defaultBadgesTabId}>
+          <TabContent className="mb-xlg" activeTab={tabs.defaultBadgesTabId}>
             <TabPane tabId="1">
               <h1>Example heading <Badge color="primary">Primary</Badge></h1>
               <h2>Example heading <Badge color="info">Info</Badge></h2>
@@ -79,9 +79,9 @@ class Badges extends Component {
           <Nav tabs className="bg-transparent">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.pillsBadgesTabId === '1' })}
+                className={classnames({ active: tabs.pillsBadgesTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('pillsBadgesTabId', '1');
+                  changeTab('pillsBadgesTabId', '1');
                 }}
               >
                 Example
@@ -89,16 +89,16 @@ class Badges extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.pillsBadgesTabId === '2' })}
+                className={classnames({ active: tabs.pillsBadgesTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('pillsBadgesTabId', '2');
+                  changeTab('pillsBadgesTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.pillsBadgesTabId}>
+          <TabContent className="mb-xlg" activeTab={tabs.pillsBadgesTabId}>
             <TabPane tabId="1">
               <h4>Pill badges</h4>
               <p>
@@ -133,8 +133,7 @@ class Badges extends Component {
           For more examples please refer to <a href="https://reactstrap.github.io/components/badge/" target="_blank" rel="noopener noreferrer">Reactstrap Badge</a>
         </Col>
       </Row>
-    );
-  }
-}
+  );
+};
 
 export default Badges;

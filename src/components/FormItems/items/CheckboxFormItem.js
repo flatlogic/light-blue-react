@@ -1,75 +1,73 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import FormErrors from 'components/FormItems/formErrors';
 import { FastField } from 'formik';
 
-export class CheckboxFormItemNotFast extends Component {
-  render() {
-    const {
-      name,
-      form,
-      hint,
-      size,
-      inputProps,
-      errorMessage,
-      required,
-    } = this.props;
+export const CheckboxFormItemNotFast = (props) => {
+  const {
+    name,
+    form,
+    hint,
+    size,
+    inputProps,
+    errorMessage,
+    required,
+  } = props;
 
-    const { label } = this.props.schema[name];
+  const { label } = props.schema[name];
 
-    const sizeLabelClassName =
-      {
-        small: 'col-form-label-sm',
-        large: 'col-form-label-lg',
-      }[size] || '';
+  const sizeLabelClassName =
+    {
+      small: 'col-form-label-sm',
+      large: 'col-form-label-lg',
+    }[size] || '';
 
-    return (
-      <div className="form-group">
-        {!!label && (
-          <label
-            className={`col-form-label ${
-              required ? 'required' : null
-            } ${sizeLabelClassName}`}
-            htmlFor={name}
-          >
-            {label}
-          </label>
-        )}
+  return (
+    <div className="form-group">
+      {!!label && (
+        <label
+          className={`col-form-label ${
+            required ? 'required' : null
+          } ${sizeLabelClassName}`}
+          htmlFor={name}
+        >
+          {label}
+        </label>
+      )}
 
-        <div>
-          <input
-            type="checkbox"
-            id={name}
-            name={name}
-            onChange={(event) => {
-              form.setFieldValue(
-                name,
-                !!event.target.checked,
-              );
-              form.setFieldTouched(name);
-            }}
-            checked={!!form.values[name]}
-            {...inputProps}
-          />
-        </div>
+      <div>
+        <input
+          type="checkbox"
+          id={name}
+          name={name}
+          onChange={(event) => {
+            form.setFieldValue(
+              name,
+              !!event.target.checked,
+            );
+            form.setFieldTouched(name);
+          }}
+          checked={!!form.values[name]}
+          {...inputProps}
+        />
+      </div>
 
-        <div className="invalid-feedback">
-          {FormErrors.displayableError(
-            form,
-            name,
-            errorMessage,
-          )}
-        </div>
-
-        {!!hint && (
-          <small className="form-text text-muted">
-            {hint}
-          </small>
+      <div className="invalid-feedback">
+        {FormErrors.displayableError(
+          form,
+          name,
+          errorMessage,
         )}
       </div>
-    );
-  }
-}
+
+      {!!hint && (
+        <small className="form-text text-muted">
+          {hint}
+        </small>
+      )}
+    </div>
+  );
+};
 
 CheckboxFormItemNotFast.defaultProps = {};
 
@@ -83,20 +81,16 @@ CheckboxFormItemNotFast.propTypes = {
   inputProps: PropTypes.object,
 };
 
-class CheckboxFormItem extends Component {
-  render() {
-    return (
-      <FastField
-        name={this.props.name}
-        render={({ form }) => (
-          <CheckboxFormItemNotFast
-            {...this.props}
-            form={form}
-          />
-        )}
+const CheckboxFormItem = (props) => (
+  <FastField
+    name={props.name}
+    render={({ form }) => (
+      <CheckboxFormItemNotFast
+        {...props}
+        form={form}
       />
-    );
-  }
-}
+    )}
+  />
+);
 
 export default CheckboxFormItem;

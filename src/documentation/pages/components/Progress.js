@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Breadcrumb, BreadcrumbItem, Progress, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import classnames from 'classnames';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-class Buttons extends Component {
-  state = {
+const Buttons = () => {
+  const [tabs, setTabs] = useState({
     defaultProgressTabId: '1',
+  });
+
+  const changeTab = (field, id) => {
+    setTabs((prevState) => ({
+      ...prevState,
+      [field]: id,
+    }));
   };
 
-  changeTab(field, id) {
-    this.setState({
-      [field]: id,
-    })
-  }
-
-  render() {
-    return (
+  return (
       <Row>
         <Col md={10}>
           <Breadcrumb>
@@ -36,9 +36,9 @@ class Buttons extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultProgressTabId === '1' })}
+                className={classnames({ active: tabs.defaultProgressTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('defaultProgressTabId', '1');
+                  changeTab('defaultProgressTabId', '1');
                 }}
               >
                 Example
@@ -46,16 +46,16 @@ class Buttons extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultProgressTabId === '2' })}
+                className={classnames({ active: tabs.defaultProgressTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('defaultProgressTabId', '2');
+                  changeTab('defaultProgressTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.defaultProgressTabId}>
+          <TabContent className="mb-xlg" activeTab={tabs.defaultProgressTabId}>
             <TabPane tabId="1">
               <div className="text-center">0%</div>
               <Progress />
@@ -100,8 +100,7 @@ class Buttons extends Component {
           For more examples please refer to <a href="https://reactstrap.github.io/components/progress/" target="_blank" rel="noopener noreferrer">Reactstrap Progress</a>
         </Col>
       </Row>
-    );
-  }
-}
+  );
+};
 
 export default Buttons;

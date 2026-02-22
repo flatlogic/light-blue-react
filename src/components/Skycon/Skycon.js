@@ -1,90 +1,71 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 const Skycons = require('skycons')(window || {});
 
-class Skycon extends React.Component {
-  static propTypes = {
-    color: PropTypes.string.isRequired,
-    autoPlay: PropTypes.bool,
-    icon: PropTypes.oneOf([  // eslint-disable-line
-      'CLEAR_DAY',
-      'CLEAR_NIGHT',
-      'PARTLY_CLOUDY_DAY',
-      'PARTLY_CLOUDY_NIGHT',
-      'CLOUDY',
-      'RAIN',
-      'SLEET',
-      'SNOW',
-      'WIND',
-      'FOG',
-    ]),
-    width: PropTypes.string.isRequired,
-    height: PropTypes.string.isRequired,
-  };
+const Skycon = ({
+  color,
+  autoPlay,
+  icon,
+  width,
+  height,
+  ...restProps
+}) => {
+  const canvasRef = useRef(null);
+  const skyconsRef = useRef(null);
 
-  static defaultProps = {
-    color: null,
-    autoPlay: true,
-    width: '100%',
-    height: '100%',
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.canvasRef = React.createRef();
-    this.skycons = new Skycons({ color: props.color });
-  }
-
-  componentDidMount() {
-    if (!this.canvasRef.current) {
-      return;
+  useEffect(() => {
+    if (!canvasRef.current) {
+      return undefined;
     }
 
-    this.skycons.add(this.canvasRef.current, Skycons[this.props.icon]);
+    const skycons = new Skycons({ color });
+    skyconsRef.current = skycons;
+    skycons.add(canvasRef.current, Skycons[icon]);
 
-    if (this.props.autoPlay) {
-      this.skycons.play();
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    if (!this.canvasRef.current) {
-      return;
+    if (autoPlay) {
+      skycons.play();
+    } else {
+      skycons.pause();
     }
 
-    if (prevProps.icon !== this.props.icon) {
-      this.skycons.set(this.canvasRef.current, Skycons[this.props.icon]);
-    }
-  }
+    return () => {
+      if (canvasRef.current) {
+        skycons.remove(canvasRef.current);
+      }
+      skycons.pause();
+    };
+  }, [autoPlay, color, icon]);
 
-  componentWillUnmount() {
-    if (!this.canvasRef.current) {
-      return;
-    }
+  return (
+    <canvas ref={canvasRef} width={width} height={height} {...restProps} />
+  );
+};
 
-    this.skycons.remove(this.canvasRef.current);
-    this.skycons.pause();
-  }
+Skycon.propTypes = {
+  color: PropTypes.string.isRequired,
+  autoPlay: PropTypes.bool,
+  icon: PropTypes.oneOf([  // eslint-disable-line
+    'CLEAR_DAY',
+    'CLEAR_NIGHT',
+    'PARTLY_CLOUDY_DAY',
+    'PARTLY_CLOUDY_NIGHT',
+    'CLOUDY',
+    'RAIN',
+    'SLEET',
+    'SNOW',
+    'WIND',
+    'FOG',
+  ]),
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
+};
 
-  play() {
-    this.skycons.play();
-  }
-
-  pause() {
-    this.skycons.pause();
-  }
-
-  render() {
-    const {
-      ...restPops
-    } = this.props;
-
-    return (
-      <canvas ref={this.canvasRef} width={this.props.width} height={this.props.height} {...restPops} />
-    );
-  }
-}
+Skycon.defaultProps = {
+  color: null,
+  autoPlay: true,
+  width: '100%',
+  height: '100%',
+};
 
 export default Skycon;

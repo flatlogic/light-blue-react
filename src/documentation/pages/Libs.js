@@ -1,15 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Row, Col, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import {Sparklines, SparklinesBars} from "react-sparklines";
-import ColorPiker from 'rc-color-picker';
-import TextareaAutosize from 'react-autosize-textarea';
+import TextareaAutosize from 'components/AutoResizeTextarea';
 import DateTime from 'react-datetime';
-import Slider, { createSliderWithTooltip } from 'rc-slider';
+import Slider from 'rc-slider';
 import Select from 'react-select';
 import { Editor } from 'react-draft-wysiwyg';
-import MaskedInput from 'react-maskedinput'
+import MaskedInput from 'components/MaskedInputField';
 import Scrollspy from './ScrollSpyComponent';
 import { Link } from 'react-router-dom';
 
@@ -17,25 +16,7 @@ import Widget from '../../components/Widget/Widget';
 import s from '../../pages/forms/elements/Elements.module.scss';
 import Skycon from "../../components/Skycon/Skycon";
 
-const SliderWithTooltip = createSliderWithTooltip(Slider);
-
-export default class Libs extends Component {
-  state = {
-    mde: '',
-  };
-
-  onMdeChange(value) {
-    this.setState({
-      mde: value,
-    })
-  };
-
-  valueFormatter = (v) => {
-    return `${v}`;
-  }
-
-  render() {
-    return (
+const Libs = () => (
       <Row className={s.root}>
         <Col md={10}>
           <Breadcrumb>
@@ -60,14 +41,12 @@ export default class Libs extends Component {
             <h3>RC-Slider Slider UI component for React</h3>
             <p>Supports IE9, IE9+, Chrome, Firefox & Safari</p>
             <h4>Example</h4>
-            <SliderWithTooltip 
+            <Slider 
               style={{width: '210px'}}
-              tipFormatter={this.valueFormatter}
               className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderBlue}`}
               defaultValue={20}
             />
-            <SyntaxHighlighter language='javascript' style={tomorrow}>{'<SliderWithTooltip\n' +
-            '  tipFormatter={this.valueFormatter}\n' +
+            <SyntaxHighlighter language='javascript' style={tomorrow}>{'<Slider\n' +
             '  className="sliderCustomization horizontalSlider sliderBlue"\n' +
             '  defaultValue={20}\n' +
             '/>'}</SyntaxHighlighter>
@@ -171,9 +150,9 @@ export default class Libs extends Component {
           <Widget id="Rc-color-picker">
             <h3>Rc-color-picker</h3>
             <p>Color piker component for React</p>
-            <ColorPiker/>
+            <input type="color" defaultValue="#ff0000" />
             <SyntaxHighlighter language='javascript'
-                               style={tomorrow}>{'<ColorPiker />'}</SyntaxHighlighter>
+                               style={tomorrow}>{'<input type="color" defaultValue="#ff0000" />'}</SyntaxHighlighter>
             <p>For more examples and documentation please refer to <a
               href="https://github.com/react-component/color-picker" target="_blank" rel="noopener noreferrer">Color Picker</a></p>
           </Widget>
@@ -184,14 +163,12 @@ export default class Libs extends Component {
                                                                       target="_blank" rel="noopener noreferrer">HammerJS</a></p>
           </Widget>
           <Widget id="React-Autosize-Textarea">
-            <h3>react-autosize-textarea</h3>
-            <p>A light replacement for built-in <code>&lt;textarea /></code> component which automatically adjusts its
-              height to match the content.</p>
+            <h3>Auto-resize Textarea</h3>
+            <p>A local replacement for built-in <code>&lt;textarea /&gt;</code> that automatically adjusts its height.</p>
             <TextareaAutosize placeholder="Try to type"/>
             <SyntaxHighlighter language='javascript'
                                style={tomorrow}>{'<TextareaAutosize placeholder="Try to type"/>'}</SyntaxHighlighter>
-            <p>For more examples and documentation please refer to <a
-              href="https://github.com/buildo/react-autosize-textarea" target="_blank" rel="noopener noreferrer">Textarea</a></p>
+            <p className="text-muted">This project uses a local `AutoResizeTextarea` component for compatibility with React 18.</p>
           </Widget>
           <Widget id="React-Datetime">
             <h3>React-datetime</h3>
@@ -219,30 +196,26 @@ export default class Libs extends Component {
               href="https://github.com/jpuri/react-draft-wysiwyg" target="_blank" rel="noopener noreferrer">React Wysiwyg</a></p>
           </Widget>
           <Widget id="React-Google-Maps">
-            <h3>React-google-maps</h3>
-            <p>React.js Google Maps integration component</p>
+            <h3>Google Maps</h3>
+            <p>Google Maps integration using the local iframe-based map component.</p>
             <p className="lead">Want to see examples? <Link to="/app/maps/google">Click</Link></p>
             <p>For more examples and documentation please refer to <a
-              href="https://github.com/tomchentw/react-google-maps" target="_blank" rel="noopener noreferrer">Google Maps</a></p>
+              href="https://developers.google.com/maps/documentation/embed" target="_blank" rel="noopener noreferrer">Google Maps Embed</a></p>
           </Widget>
           <Widget id="React-Maskedinput">
-            <h3>React-maskedinput</h3>
-            <p>A React component for <code>&lt;input></code> masking, built on top of inputmask-core.</p>
+            <h3>Masked Input</h3>
+            <p>Input masking powered by the local `MaskedInputField` component.</p>
             <div style={{width: '200px'}}>
               <MaskedInput mask="1111 1111 1111 1111" name="card" size="20" className="form-control"/>
             </div>
             <SyntaxHighlighter language='javascript'
                                style={tomorrow}>{'<MaskedInput mask="1111 1111 1111 1111" name="card" size="20" className="form-control"/>'}</SyntaxHighlighter>
-            <p>For more examples and documentation please refer to <a href="https://github.com/insin/react-maskedinput"
-                                                                      target="_blank" rel="noopener noreferrer">Masked Input</a></p>
+            <p className="text-muted">Mask tokens use <code>1</code> as a digit placeholder (for example: <code>(111) 111-1111</code>).</p>
           </Widget>
           <Widget id="React-MDE">
-            <h3>React-mde</h3>
-            <p>A simple yet powerful and extensible Markdown Editor editor for React. React-mde is built on top of
-              Draft.js.</p>
-
-            <p>For more examples and documentation please refer to <a href="https://github.com/andrerpena/react-mde"
-                                                                      target="_blank" rel="noopener noreferrer">ReactMDE</a></p>
+            <h3>Markdown Editor</h3>
+            <p>Markdown editing and preview powered by a local editor implementation and Showdown.</p>
+            <p className="lead">Want to see examples? <Link to="/app/forms/elements">Click</Link></p>
           </Widget>
           <Widget id="React-Select">
             <h3>React-select</h3>
@@ -255,34 +228,33 @@ export default class Libs extends Component {
             <p>For more examples and documentation please refer to <a href="https://react-select.com/home" target="_blank" rel="noopener noreferrer">React Select</a></p>
           </Widget>
           <Widget id="React-Shuffle">
-            <h3>React-shuffle</h3>
-            <p>Animated shuffling of child components on change.</p>
+            <h3>Gallery Grid</h3>
+            <p>Grid filtering and ordering implemented with native React list rendering.</p>
             <p className="lead">Want to see examples? <Link to="/app/extra/gallery">Click</Link></p>
-            <p>For more examples and documentation please refer to <a
-              href="https://github.com/FormidableLabs/react-shuffle" target="_blank" rel="noopener noreferrer">Shuffle</a></p>
+            <p className="text-muted">No external shuffle dependency is required for this implementation.</p>
           </Widget>
           <Widget id="React-Slick">
             <h3>React-slick</h3>
             <p>React carousel component</p>
             <p className="lead">Want to see examples? <Link to="/app/ecommerce/product">Click</Link></p>
             <p>For more examples and documentation please refer to <a
-              href="https://github.com/FormidableLabs/react-shuffle" target="_blank" rel="noopener noreferrer">React Slick</a></p>
+              href="https://github.com/akiran/react-slick" target="_blank" rel="noopener noreferrer">React Slick</a></p>
           </Widget>
           <Widget id="React-Sortable">
-            <h3>React-sortable</h3>
-            <p>A components to turn any list into an animated, touch-friendly, sortable list.</p>
+            <h3>Sortable Lists</h3>
+            <p>List sorting is implemented with native drag-and-drop in the demo page.</p>
             <p className="lead">Want to see examples? <Link to="/app/ui/list-groups">Click</Link></p>
             <p>For more examples and documentation please refer to <a
-              href="https://github.com/clauderic/react-sortable-hoc" target="_blank" rel="noopener noreferrer">React Sortable</a></p>
+              href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank" rel="noopener noreferrer">HTML Drag and Drop API</a></p>
           </Widget>
           <Widget id="Reactstrap">
             <h3>Reactstrap</h3>
-            <p>React wrapper for Bootstrap 4</p>
+            <p>React wrapper components for Bootstrap.</p>
             <Button color="success">Bootstrap Button</Button>
             <SyntaxHighlighter language='javascript'
                                style={tomorrow}>{' <Button color="success">Bootstrap Button</Button>'}</SyntaxHighlighter>
             <p>For more examples and documentation please refer to <a
-              href="https://github.com/clauderic/react-sortable-hoc" target="_blank" rel="noopener noreferrer">Reactstrap</a></p>
+              href="https://github.com/reactstrap/reactstrap" target="_blank" rel="noopener noreferrer">Reactstrap</a></p>
           </Widget>
           <Widget id="Rickshaw">
             <h3>rickshaw</h3>
@@ -378,6 +350,6 @@ export default class Libs extends Component {
           ]} />
         </Col>
       </Row>
-    )
-  }
-}
+    );
+
+export default Libs;

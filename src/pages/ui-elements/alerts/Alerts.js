@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import cx from 'classnames';
 import {
   Row,
@@ -8,43 +8,47 @@ import {
 
 import Widget from '../../../components/Widget';
 
-class Alerts extends Component {
-  state = {
-    alerts: [{
-      id: 'al-1',
-      type: 'success',
-      msg: '<span class="fw-semi-bold">Success:</span> You successfully read this important alert message.',
-      visible: [true, true, true],
-    }, {
-      id: 'al-2',
-      type: 'info',
-      msg: '<span class="fw-semi-bold">Info:</span> This alert needs your attention, but it\'s not super important.',
-      visible: [true, true, true],
-    }, {
-      id: 'al-3',
-      type: 'warning',
-      msg: '<span class="fw-semi-bold"><strong>Warning:</strong></span> Best check yo self, you\'re not looking too good.',
-      visible: [true, true, true],
-    }, {
-      id: 'al-4',
-      type: 'danger',
-      msg: '<span class="fw-semi-bold">Danger:</span> Change this and that and try again. <a class="btn btn-default btn-xs float-end me-3" href="#">Ignore</a> <a class="btn btn-danger btn-xs float-end me-1" href="#">Take this action</a>',
-      visible: [true, true, true],
-    }],
-  }
+const initialAlerts = [{
+  id: 'al-1',
+  type: 'success',
+  msg: '<span class="fw-semi-bold">Success:</span> You successfully read this important alert message.',
+  visible: [true, true, true],
+}, {
+  id: 'al-2',
+  type: 'info',
+  msg: '<span class="fw-semi-bold">Info:</span> This alert needs your attention, but it\'s not super important.',
+  visible: [true, true, true],
+}, {
+  id: 'al-3',
+  type: 'warning',
+  msg: '<span class="fw-semi-bold"><strong>Warning:</strong></span> Best check yo self, you\'re not looking too good.',
+  visible: [true, true, true],
+}, {
+  id: 'al-4',
+  type: 'danger',
+  msg: '<span class="fw-semi-bold">Danger:</span> Change this and that and try again. <a class="btn btn-default btn-xs float-end me-3" href="#">Ignore</a> <a class="btn btn-danger btn-xs float-end me-1" href="#">Take this action</a>',
+  visible: [true, true, true],
+}];
 
-  closeAlert(index, alertGroup) {
-    const newAlerts = [...this.state.alerts];
-    newAlerts[index].visible[alertGroup] = false;
+const Alerts = () => {
+  const [alerts, setAlerts] = useState(initialAlerts);
 
-    this.setState({ alerts: newAlerts });
-  }
+  const closeAlert = (index, alertGroup) => {
+    setAlerts((prevAlerts) => prevAlerts.map((alert, currentIndex) => {
+      if (currentIndex !== index) {
+        return alert;
+      }
+      const visible = [...alert.visible];
+      visible[alertGroup] = false;
+      return {
+        ...alert,
+        visible,
+      };
+    }));
+  };
 
-  render() {
-    const { alerts } = this.state;
-
-    return (
-      <div>
+  return (
+    <div>
         <h1 className="page-title">Alerts</h1>
         <Row>
           <Col xs={12} lg={6}>
@@ -54,7 +58,7 @@ class Alerts extends Component {
             >
               <p>Alerts are available for any length of text, as well as an optional dismiss button.</p>
               {alerts.map((alert, index) => <Alert
-                key={alert.id} isOpen={alert.visible[0]} toggle={() => this.closeAlert(index, 0)}
+                key={alert.id} isOpen={alert.visible[0]} toggle={() => closeAlert(index, 0)}
                 color={alert.type}
               >
                 <span dangerouslySetInnerHTML={{ __html: alert.msg }} />
@@ -69,7 +73,7 @@ class Alerts extends Component {
               <p>Transparent  alerts are available by adding <code>.alert-transparent</code> class.</p>
               {alerts.map((alert, index) => <Alert
                 className="alert-transparent"
-                key={alert.id} isOpen={alert.visible[1]} toggle={() => this.closeAlert(index, 1)}
+                key={alert.id} isOpen={alert.visible[1]} toggle={() => closeAlert(index, 1)}
                 color={alert.type}
               >
                 <span dangerouslySetInnerHTML={{ __html: alert.msg }} />
@@ -84,7 +88,7 @@ class Alerts extends Component {
               <p>Rounded alerts are available by adding <code>.alert-rounded</code> class.</p>
               {alerts.map((alert, index) => <Alert
                 className={cx('alert-rounded', { 'alert-transparent': index % 2 !== 1 })}
-                key={alert.id} isOpen={alert.visible[2]} toggle={() => this.closeAlert(index, 2)}
+                key={alert.id} isOpen={alert.visible[2]} toggle={() => closeAlert(index, 2)}
                 color={alert.type}
               >
                 <span dangerouslySetInnerHTML={{ __html: alert.msg }} />
@@ -121,8 +125,7 @@ class Alerts extends Component {
           </Col>
         </Row>
       </div>
-    );
-  }
-}
+  );
+};
 
 export default Alerts;

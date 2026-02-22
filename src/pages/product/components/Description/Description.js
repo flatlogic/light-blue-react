@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { Col, Row, Collapse } from 'reactstrap';
@@ -6,23 +6,18 @@ import { Col, Row, Collapse } from 'reactstrap';
 import s from './Description.module.scss';
 import Rating from '../Rating/Rating';
 
-class Description extends Component {
-  state = {
-    accordion: [false, false, false],
+const Description = ({ data }) => {
+  const [accordion, setAccordion] = useState([false, false, false, false, false]);
+
+  const toggleAccordion = (id) => {
+    setAccordion((prevAccordion) => {
+      const newAccordion = [...prevAccordion];
+      newAccordion[id] = !newAccordion[id];
+      return newAccordion;
+    });
   };
 
-  toggleAccordion(id) {
-    const { accordion } = this.state;
-    const newAccordion = [...accordion];
-
-    newAccordion[id] = !newAccordion[id];
-
-    this.setState({ accordion: newAccordion });
-  }
-
-  render() {
-    const { data } = this.props;
-    return (
+  return (
       <div>
         <div className={s.productDescription}>
             <div className={cx(s.productDescriptionInfo, s.productDescriptionBlock)}>
@@ -69,15 +64,15 @@ class Description extends Component {
         <Row className={cx(s.productDescription, s.productDescriptionMobile)}>
           <Col xs="12">
               <div className={cx("card panel", s.card)}>
-                  <div className='card-header panel-header panel-first' role="button" onClick={() => {this.toggleAccordion(0);}}>
+                  <div className='card-header panel-header panel-first' role="button" onClick={() => {toggleAccordion(0);}}>
                       <div className="mb-0">
                           <button className="accordion-toggle">
                               PRODUCT DESCRIPTION
-                              <i className={`fa fa-angle-down fa-2x ${this.state.accordion[0] ? 'expanded' : ''}`}/>
+                              <i className={`fa fa-angle-down fa-2x ${accordion[0] ? 'expanded' : ''}`}/>
                           </button>
                       </div>
                   </div>
-                  <Collapse className="panel-body" isOpen={this.state.accordion[0]}>
+                  <Collapse className="panel-body" isOpen={accordion[0]}>
                       <div className="card-body">
                           <p className="dot-before">{data.description_1}</p>
                           <p className="dot-before">{data.description_2}</p>
@@ -86,16 +81,16 @@ class Description extends Component {
               </div>
               <div className={cx("card panel", s.card)}>
                   <div className='card-header panel-header' role="button" onClick={() => {
-                      this.toggleAccordion(1);
+                      toggleAccordion(1);
                   }}>
                       <div className="mb-0">
                           <button className="accordion-toggle">
                               PRODUCT CODE
-                              <i className={`fa fa-angle-down fa-2x ${this.state.accordion[1] ? 'expanded' : ''}`}/>
+                              <i className={`fa fa-angle-down fa-2x ${accordion[1] ? 'expanded' : ''}`}/>
                           </button>
                       </div>
                   </div>
-                  <Collapse className="panel-body" isOpen={this.state.accordion[1]}>
+                  <Collapse className="panel-body" isOpen={accordion[1]}>
                       <div className="card-body">
                           {data.code}
                       </div>
@@ -103,16 +98,16 @@ class Description extends Component {
               </div>
               <div className={cx("card panel", s.card)}>
                   <div className='card-header panel-header' role="button" onClick={() => {
-                      this.toggleAccordion(2);
+                      toggleAccordion(2);
                   }}>
                       <div className="mb-0">
                           <button className="accordion-toggle">
                               SHARE
-                              <i className={`fa fa-angle-down fa-2x ${this.state.accordion[2] ? 'expanded' : ''}`}/>
+                              <i className={`fa fa-angle-down fa-2x ${accordion[2] ? 'expanded' : ''}`}/>
                           </button>
                       </div>
                   </div>
-                  <Collapse className="panel-body" isOpen={this.state.accordion[2]}>
+                  <Collapse className="panel-body" isOpen={accordion[2]}>
                       <div className="card-body">
                           {/* eslint-disable */}
                           Share photo with a tag <a className="text-primary" href="#">#{data.hashtag}</a>
@@ -127,16 +122,16 @@ class Description extends Component {
               </div>
               <div className={cx("card panel", s.card)}>
                   <div className='card-header panel-header' role="button" onClick={() => {
-                      this.toggleAccordion(3);
+                      toggleAccordion(3);
                   }}>
                       <div className="mb-0">
                           <button className="accordion-toggle">
                               TECHNOLOGY
-                              <i className={`fa fa-angle-down fa-2x ${this.state.accordion[3] ? 'expanded' : ''}`}/>
+                              <i className={`fa fa-angle-down fa-2x ${accordion[3] ? 'expanded' : ''}`}/>
                           </button>
                       </div>
                   </div>
-                  <Collapse className="panel-body" isOpen={this.state.accordion[3]}>
+                  <Collapse className="panel-body" isOpen={accordion[3]}>
                       <div className="card-body">
                           <ul>
                               {data.technology.map(t => (
@@ -148,16 +143,16 @@ class Description extends Component {
               </div>
               <div className={cx("card panel", s.card)}>
                   <div className='card-header panel-header' role="button" onClick={() => {
-                      this.toggleAccordion(4);
+                      toggleAccordion(4);
                   }}>
                       <div className="mb-0">
                           <button className="accordion-toggle">
                               RATING & REVIEWS
-                              <i className={`fa fa-angle-down fa-2x ${this.state.accordion[4] ? 'expanded' : ''}`}/>
+                              <i className={`fa fa-angle-down fa-2x ${accordion[4] ? 'expanded' : ''}`}/>
                           </button>
                       </div>
                   </div>
-                  <Collapse className="panel-body" isOpen={this.state.accordion[4]}>
+                  <Collapse className="panel-body" isOpen={accordion[4]}>
                       <div className="card-body">
                           <div className={s.reviews}>
                               <Rating rating={data.rating}/>
@@ -172,9 +167,8 @@ class Description extends Component {
           </Col>
         </Row>
       </div>
-    );
-  }
-}
+  );
+};
 
 Description.propTypes = {
   data: PropTypes.any.isRequired,

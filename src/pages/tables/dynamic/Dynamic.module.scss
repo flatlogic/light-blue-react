@@ -14,6 +14,14 @@
   transform: rotate(180deg);
 }
 
+.legacyTableWrapper {
+  overflow-x: auto;
+}
+
+.pageSizeSelect {
+  width: 86px;
+}
+
 :global {
   .ReactTable .rt-thead.-filters input, .ReactTable .rt-thead.-filters select {
     background: $bg-custom-dark;

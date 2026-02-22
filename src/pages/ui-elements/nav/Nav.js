@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
   Row,
   Col,
@@ -13,19 +13,14 @@ import {
 
 import Widget from '../../../components/Widget';
 
-class NavExamples extends Component {
-  state = {
-    isDropdownOpened: false,
+const NavExamples = () => {
+  const [isDropdownOpened, setIsDropdownOpened] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpened((prevState) => !prevState);
   };
 
-  toggleDropdown = () => {
-    this.setState(prevState => ({
-      isDropdownOpened: !prevState.isDropdownOpened,
-    }));
-  }
-
-  render() {
-    return (
+  return (
       <div>
         <Row>
           <Col xs={12} md={6}>
@@ -86,7 +81,7 @@ class NavExamples extends Component {
                 <NavItem>
                   <NavLink href="#">Link</NavLink>
                 </NavItem>
-                <Dropdown isOpen={this.state.isDropdownOpened} toggle={this.toggleDropdown}>
+                <Dropdown isOpen={isDropdownOpened} toggle={toggleDropdown}>
                   <DropdownToggle nav caret>
                     Dropdown
                   </DropdownToggle>
@@ -181,8 +176,7 @@ class NavExamples extends Component {
           </Col>
         </Row>
       </div>
-    );
-  }
-}
+  );
+};
 
 export default NavExamples;

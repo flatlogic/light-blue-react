@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Row, Col, Button,
 } from 'reactstrap';
@@ -9,67 +9,63 @@ import { v4 as uuid } from 'uuid'
 import Widget from '../../../components/Widget';
 import s from './Notifications.module.scss';
 
-class Notifications extends React.Component {
-  
-  state = {
-    options: {
-      position: "top-right",
-      autoClose: 5000,
-      closeOnClick: false,
-      pauseOnHover: false,
-      draggable: true
-    }
-  }
+const Notifications = () => {
+  const [options, setOptions] = useState({
+    position: 'top-right',
+    autoClose: 5000,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: true,
+  });
 
-  componentDidMount() {
+  useEffect(() => {
     toast.success('Thanks for checking out Messenger!', {
-      position: "bottom-right",
+      position: 'bottom-right',
       autoClose: 5000,
       closeOnClick: true,
       pauseOnHover: false,
       draggable: true
     });
-  }
+  }, []);
 
-  addSuccessNotification = () => toast.success('Showing success message was successful!', this.state.options);
+  const addSuccessNotification = () => {
+    toast.success('Showing success message was successful!', options);
+  };
 
-  toggleLocation = (location) => {
-    this.setState(prevState => ({
-      options: {
-        ...prevState.options,
-        position: location
-      }
+  const toggleLocation = (location) => {
+    setOptions((prevOptions) => ({
+      ...prevOptions,
+      position: location,
     }));
-  }
+  };
  
-  addInfoNotification = () => {
+  const addInfoNotification = () => {
     let id = uuid();
     toast.info( 
     <div>
       Launching thermonuclear war...
-      <Button onClick={() => this.launchNotification(id)} outline color="info" size="xs" className="width-100 mb-xs me-1 mt-1">Cancel launch</Button>
+      <Button onClick={() => launchNotification(id)} outline color="info" size="xs" className="width-100 mb-xs me-1 mt-1">Cancel launch</Button>
     </div>, 
-    {...this.state.options,toastId: id},
+    {...options, toastId: id},
     );
-  }
+  };
  
-  launchNotification = (id) => toast.update(id, { ...this.state.options, render: "Thermonuclear war averted", type: toast.TYPE.SUCCESS });
+  const launchNotification = (id) => toast.update(id, { ...options, render: 'Thermonuclear war averted', type: toast.TYPE.SUCCESS });
  
-  addErrorNotification = () => {
+  const addErrorNotification = () => {
     let id = uuid();
     toast.error(
     <div>
       Error destroying alien planet <br/>
-      <Button onClick={() => this.retryNotification(id)} outline color="default" size="xs" className="width-100 mb-xs mr-xs mt-1">Retry</Button>
+      <Button onClick={() => retryNotification(id)} outline color="default" size="xs" className="width-100 mb-xs mr-xs mt-1">Retry</Button>
     </div>, 
-    {...this.state.options,toastId: id}
+    {...options, toastId: id}
     );
-  } 
+  };
 
-  retryNotification = (id) =>  toast.update(id, {...this.state.options, render: 'Alien planet destroyed!', type: toast.TYPE.SUCCESS });
+  const retryNotification = (id) =>  toast.update(id, {...options, render: 'Alien planet destroyed!', type: toast.TYPE.SUCCESS });
   
-  render() {
-    return (
+  return (
       <div className={s.root}>
         <h1 className="page-title">Messages - <span className="fw-semi-bold">Notifications</span>
         </h1>
@@ -84,32 +80,32 @@ class Notifications extends React.Component {
               <div className="location-selector">
                 <div
                   className="bit top left" onClick={() => {
-                    this.toggleLocation('top-left');
+                    toggleLocation('top-left');
                   }}
                 />
                 <div
                   className="bit top right" onClick={() => {
-                    this.toggleLocation('top-right');
+                    toggleLocation('top-right');
                   }}
                 />
                 <div
                   className="bit top" onClick={() => {
-                    this.toggleLocation('top-center');
+                    toggleLocation('top-center');
                   }}
                 />
                 <div
                   className="bit bottom left" onClick={() => {
-                    this.toggleLocation('bottom-left');
+                    toggleLocation('bottom-left');
                   }}
                 />
                 <div
                   className="bit bottom right" onClick={() => {
-                    this.toggleLocation('bottom-right');
+                    toggleLocation('bottom-right');
                   }}
                 />
                 <div
                   className="bit bottom" onClick={() => {
-                    this.toggleLocation('bottom-center');
+                    toggleLocation('bottom-center');
                   }}
                 />
               </div>
@@ -119,12 +115,12 @@ class Notifications extends React.Component {
               <h5 className="m-t-1">Notification Types</h5>
               <p>Different types of notifications for lost of use cases. Custom classes are also
                 supported.</p>
-              <p><Button color="info" id="show-info-message" onClick={this.addInfoNotification}>Info
+              <p><Button color="info" id="show-info-message" onClick={addInfoNotification}>Info
                 Message</Button></p>
-              <p><Button color="danger" id="show-error-message" onClick={this.addErrorNotification}>Error
+              <p><Button color="danger" id="show-error-message" onClick={addErrorNotification}>Error
                 + Retry Message</Button></p>
               <p><Button
-                color="success" id="show-success-message" onClick={this.addSuccessNotification}
+                color="success" id="show-success-message" onClick={addSuccessNotification}
               >Success
                 Message</Button></p>
             </Col>
@@ -143,8 +139,7 @@ class Notifications extends React.Component {
           </Row>
         </Widget>
       </div>
-    );
-  }
-}
+  );
+};
 
 export default Notifications;

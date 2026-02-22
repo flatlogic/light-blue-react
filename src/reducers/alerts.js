@@ -1,3 +1,4 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { DISMISS_ALERT } from '../actions/alerts';
 
 const defaultState = {
@@ -19,22 +20,18 @@ const defaultState = {
   ],
 };
 
-export default function alertsReducer(state = defaultState, action) {
-  let index;
-  switch (action.type) {
-    case DISMISS_ALERT:
-      state.alertsList.forEach((alert, alertIndex) => {
-        if (alert.id === action.id) {
-          index = alertIndex;
-        }
-      });
-      return Object.assign({}, state, {
-        alertsList: [
-          ...state.alertsList.slice(0, index),
-          ...state.alertsList.slice(index + 1),
-        ],
-      });
-    default:
-      return state;
-  }
-}
+const alertsSlice = createSlice({
+  name: 'alerts',
+  initialState: defaultState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(DISMISS_ALERT, (state, action) => {
+      const index = state.alertsList.findIndex((alert) => alert.id === action.id);
+      if (index >= 0) {
+        state.alertsList.splice(index, 1);
+      }
+    });
+  },
+});
+
+export default alertsSlice.reducer;

@@ -1,8 +1,13 @@
 import { toast } from 'react-toastify';
-import { push } from 'connected-react-router';
-import { store } from '../../../index';
+import { push } from 'actions/navigation';
+import { store } from '../../../store';
+
+/* global __APP_ENV__ */
 
 const DEFAULT_ERROR_MESSAGE = 'Error';
+const appEnv = typeof __APP_ENV__ !== 'undefined' ? __APP_ENV__ : {};
+const runtimeNodeEnv =
+  appEnv.NODE_ENV || (typeof process !== 'undefined' && process.env ? process.env.NODE_ENV : undefined);
 
 function selectErrorMessage(error) {
   if (error && error.response && error.response.data) {
@@ -28,7 +33,7 @@ function selectErrorCode(error) {
 
 export default class Errors {
   static handle(error) {
-    if (process.env.NODE_ENV !== 'test') {
+    if (runtimeNodeEnv !== 'test') {
       console.error(selectErrorMessage(error));
       console.error(error);
     }

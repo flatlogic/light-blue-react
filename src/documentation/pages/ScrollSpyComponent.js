@@ -1,5 +1,5 @@
 import React from "react";
-import { HashLink as Link } from 'react-router-hash-link';
+import { Link } from 'react-router-dom';
 import Scrollspy from "react-scrollspy";
 
 import s from '../styles.module.scss';
@@ -21,7 +21,11 @@ export default (props) => (
       offset={-170}
     >
       {props.ids.map((id) => (
-        <li key="id" className="mb-xs"><Link to={`/documentation/${props.prefix}#${id}`} className={s.scrollSpy}>{id.split('-').join(' ')}</Link></li>
+        <li key={id} className="mb-xs">
+          <Link to={`/documentation/${props.prefix}#${id}`} className={s.scrollSpy}>
+            {id.split('-').join(' ')}
+          </Link>
+        </li>
       ))}
     </Scrollspy>
   </div>

@@ -91,11 +91,13 @@
   }
 
   &.no-border {
+    $no-border-bg: if(type-of($input-bg) == 'color', darken($input-bg, 5%), $input-bg);
+    $no-border-bg-focus: if(type-of($input-bg) == 'color', darken($input-bg, 7%), $input-bg);
     border: none;
-    background-color: darken($input-bg, 5%);
+    background-color: $no-border-bg;
 
     &:focus {
-      background-color: darken($input-bg, 7%);
+      background-color: $no-border-bg-focus;
     }
   }
 }

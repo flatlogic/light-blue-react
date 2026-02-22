@@ -11,10 +11,8 @@ import a3 from '../../../images/people/a3.jpg';
 import a5 from '../../../images/people/a5.jpg';
 import a6 from '../../../images/people/a6.jpg';
 
-class NewNotificationsDemo extends React.Component {
-  render() {
-    return (
-      <ListGroup className={[s.listGroup, 'thin-scroll'].join(' ')}>
+const NewNotificationsDemo = () => (
+  <ListGroup className={[s.listGroup, 'thin-scroll'].join(' ')}>
         <ListGroupItem className={`${s.listGroupItem} bg-attention`}>
           <span className={[s.notificationIcon, 'thumb-sm'].join(' ')}>
             <i className="fa fa-check text-success fa-lg" />
@@ -132,9 +130,7 @@ class NewNotificationsDemo extends React.Component {
             </time>
           </p>
         </ListGroupItem>
-      </ListGroup>
-    );
-  }
-}
+  </ListGroup>
+);
 
 export default NewNotificationsDemo;

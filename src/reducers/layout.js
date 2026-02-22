@@ -1,3 +1,4 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { 
   CHANGE_THEME,
   CHANGE_SIDEBAR_COLOR,
@@ -41,34 +42,28 @@ const defaultState = {
   sidebarType: SidebarTypes.SOLID
 };
 
-export default function layoutReducer(state = defaultState, action) {
-  switch (action.type) {
-    case CHANGE_THEME:
-      return {
-        ...state,
-        dashboardTheme: action.payload
-      };
-    case CHANGE_SIDEBAR_COLOR:
-      return {
-        ...state,
-        sidebarColor: action.payload
-      };
-    case CHANGE_THEME_COLOR:
-      return {
-        ...state,
-        themeColor: action.payload
-      };
-    case NAVBAR_TYPE_TOGGLE: 
-      return {
-        ...state,
-        navbarType: action.payload,
-      }
-    case SIDEBAR_TYPE_TOGGLE:
-      return {
-        ...state,
-        sidebarType: action.payload
-      }
-    default:
-      return state;
-  }
-}
+const layoutSlice = createSlice({
+  name: 'layout',
+  initialState: defaultState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(CHANGE_THEME, (state, action) => {
+        state.dashboardTheme = action.payload;
+      })
+      .addCase(CHANGE_SIDEBAR_COLOR, (state, action) => {
+        state.sidebarColor = action.payload;
+      })
+      .addCase(CHANGE_THEME_COLOR, (state, action) => {
+        state.themeColor = action.payload;
+      })
+      .addCase(NAVBAR_TYPE_TOGGLE, (state, action) => {
+        state.navbarType = action.payload;
+      })
+      .addCase(SIDEBAR_TYPE_TOGGLE, (state, action) => {
+        state.sidebarType = action.payload;
+      });
+  },
+});
+
+export default layoutSlice.reducer;

@@ -1,63 +1,61 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 import ImagesUploader from 'components/FormItems/uploaders/ImagesUploader';
 import FormErrors from 'components/FormItems/formErrors';
 import { FastField } from 'formik';
 
-class ImagesFormItemNotFast extends Component {
-  render() {
-    const {
-      name,
-      form,
-      hint,
-      path,
-      fileProps,
-      max,
-      inputProps,
-      required,
-    } = this.props;
+const ImagesFormItemNotFast = (props) => {
+  const {
+    name,
+    form,
+    hint,
+    path,
+    fileProps,
+    max,
+    inputProps,
+    required,
+  } = props;
 
-    const { label } = this.props.schema[name];
+  const { label } = props.schema[name];
 
-    return (
-      <div className="form-group">
-        {!!label && (
-          <label
-            className={`col-form-label ${
-              required ? 'required' : null
-            }`}
-            htmlFor={name}
-          >
-            {label}
-          </label>
-        )}
+  return (
+    <div className="form-group">
+      {!!label && (
+        <label
+          className={`col-form-label ${
+            required ? 'required' : null
+          }`}
+          htmlFor={name}
+        >
+          {label}
+        </label>
+      )}
 
-        <br />
+      <br />
 
-        <ImagesUploader
-          path={path}
-          schema={fileProps}
-          value={form.values[name]}
-          onChange={(value) => {
-            form.setFieldValue(name, value);
-            form.setFieldTouched(name);
-          }}
-          max={max}
-          {...inputProps}
-        />
+      <ImagesUploader
+        path={path}
+        schema={fileProps}
+        value={form.values[name]}
+        onChange={(value) => {
+          form.setFieldValue(name, value);
+          form.setFieldTouched(name);
+        }}
+        max={max}
+        {...inputProps}
+      />
 
-        <div className="invalid-feedback">
-          {FormErrors.displayableError(form, name)}
-        </div>
-        {!!hint && (
-          <small className="form-text text-muted">
-            {hint}
-          </small>
-        )}
+      <div className="invalid-feedback">
+        {FormErrors.displayableError(form, name)}
       </div>
-    );
-  }
-}
+      {!!hint && (
+        <small className="form-text text-muted">
+          {hint}
+        </small>
+      )}
+    </div>
+  );
+};
 
 ImagesFormItemNotFast.defaultProps = {
   max: undefined,
@@ -74,20 +72,16 @@ ImagesFormItemNotFast.propTypes = {
   inputProps: PropTypes.object,
 };
 
-class ImagesFormItem extends Component {
-  render() {
-    return (
-      <FastField
-        name={this.props.name}
-        render={({ form }) => (
-          <ImagesFormItemNotFast
-            {...this.props}
-            form={form}
-          />
-        )}
+const ImagesFormItem = (props) => (
+  <FastField
+    name={props.name}
+    render={({ form }) => (
+      <ImagesFormItemNotFast
+        {...props}
+        form={form}
       />
-    );
-  }
-}
+    )}
+  />
+);
 
 export default ImagesFormItem;

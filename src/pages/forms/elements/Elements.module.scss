@@ -4,14 +4,42 @@
   @import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg';
   //@import '../../../../node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox';
   @import '../../../../node_modules/react-datetime/css/react-datetime';
-  @import '../../../../node_modules/rc-color-picker/dist/rc-color-picker';
   @import '../../../../node_modules/jasny-bootstrap/dist/css/jasny-bootstrap';
-  @import '../../../../node_modules/react-mde/lib/styles/scss/react-mde-all';
 }
 
 .autogrow {
   overflow: hidden;
   resize: none;
+}
+
+.markdownEditor {
+  border: 1px solid $subtle-blue;
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+
+.markdownToolbar {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: $subtle-blue;
+}
+
+.markdownTextarea {
+  min-height: 240px;
+  resize: vertical;
+  border: 0;
+  border-radius: 0;
+  background: $bg-custom-dark;
+  color: $gray;
+}
+
+.markdownPreview {
+  min-height: 240px;
+  padding: 1rem;
+  border-top: 1px solid $subtle-blue;
+  background: $bg-custom-dark;
+  color: $gray;
 }
 
 .wysiwygWrapper {
@@ -412,11 +440,6 @@
       background: rgba($subtle-blue,.6);
     }
   } 
-  .mde-text textarea {
-    background: $bg-custom-dark;
-    width: 100%;
-    color: $gray;
-  }
   .rc-slider-handle {
     background: $subtle-blue !important;
   }
@@ -425,20 +448,6 @@
   }
   .rdw-editor-main {
     height: auto!important;
-  }
-  .mde-text {
-    color: $white;
-  }
-  .mde-preview, .mde-text, .react-mde .grip {
-    background-color: $bg-custom-dark;
-    border-color: $subtle-blue;
-  }
-  .mde-header {
-    background: $subtle-blue;
-    border-color: $subtle-blue;
-  }
-  .react-mde {
-    border-color: $subtle-blue;
   }
 }
 

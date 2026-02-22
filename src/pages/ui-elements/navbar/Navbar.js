@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
   Row,
   Col,
@@ -13,22 +13,22 @@ import {
 
 import Widget from '../../../components/Widget';
 
-class NavbarExamples extends Component {
-  state = {
-    navs: [false, false, false, false],
-  }
+const NavbarExamples = () => {
+  const [navs, setNavs] = useState([false, false, false, false]);
 
-  toggle(id) {
-    const newState = Array(4).fill(false);
+  const toggle = (id) => {
+    setNavs((prevNavs) => {
+      const newState = Array(4).fill(false);
 
-    if (!this.state.navs[id]) {
-      newState[id] = true;
-    }
+      if (!prevNavs[id]) {
+        newState[id] = true;
+      }
 
-    this.setState({ navs: newState });
-  }
-  render() {
-    return (
+      return newState;
+    });
+  };
+
+  return (
       <div>
         <Row>
           <Col xs={12} lg={6}>
@@ -50,8 +50,8 @@ class NavbarExamples extends Component {
               </ul>
               <Navbar className="pa-2 mt-lg" color="default" dark expand="md">
                 <NavbarBrand href="/">Navbar</NavbarBrand>
-                <NavbarToggler className="ms-auto" onClick={() => this.toggle(0)} />
-                <Collapse isOpen={this.state.navs[0]} navbar>
+                <NavbarToggler className="ms-auto" onClick={() => toggle(0)} />
+                <Collapse isOpen={navs[0]} navbar>
                   <Nav className="ms-auto" navbar>
                     <NavItem>
                       <NavLink className="text-white">Home</NavLink>
@@ -81,8 +81,8 @@ class NavbarExamples extends Component {
                 colors. Then, customize with <code>.bg-*</code> utilities.</p>
               <Navbar className="pa-2 mt-lg" color="inverse" dark expand="md">
                 <NavbarBrand href="/" className="text-white">Navbar</NavbarBrand>
-                <NavbarToggler className="ms-auto" onClick={() => this.toggle(1)} />
-                <Collapse isOpen={this.state.navs[1]} navbar>
+                <NavbarToggler className="ms-auto" onClick={() => toggle(1)} />
+                <Collapse isOpen={navs[1]} navbar>
                   <Nav className="ms-auto" navbar>
                     <NavItem>
                       <NavLink className="text-white">Home</NavLink>
@@ -101,8 +101,8 @@ class NavbarExamples extends Component {
               </Navbar>
               <Navbar className="pa-2 mt-lg" color="primary" dark expand="md">
                 <NavbarBrand href="/">Navbar</NavbarBrand>
-                <NavbarToggler className="ms-auto" onClick={() => this.toggle(2)} />
-                <Collapse isOpen={this.state.navs[2]} navbar>
+                <NavbarToggler className="ms-auto" onClick={() => toggle(2)} />
+                <Collapse isOpen={navs[2]} navbar>
                   <Nav className="ms-auto" navbar>
                     <NavItem>
                       <NavLink className="text-white">Home</NavLink>
@@ -121,8 +121,8 @@ class NavbarExamples extends Component {
               </Navbar>
               <Navbar className="pa-2 mt-lg" color="success" dark expand="md">
                 <NavbarBrand href="/">Navbar</NavbarBrand>
-                <NavbarToggler className="ms-auto" onClick={() => this.toggle(3)} />
-                <Collapse isOpen={this.state.navs[3]} navbar>
+                <NavbarToggler className="ms-auto" onClick={() => toggle(3)} />
+                <Collapse isOpen={navs[3]} navbar>
                   <Nav className="ms-auto" navbar>
                     <NavItem>
                       <NavLink className="text-white">Home</NavLink>
@@ -143,8 +143,7 @@ class NavbarExamples extends Component {
           </Col>
         </Row>
       </div>
-    );
-  }
-}
+  );
+};
 
 export default NavbarExamples;

@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import FileUploader from 'components/FormItems/uploaders/UploadService';
 import Errors from 'components/FormItems/error/errors';
 import ImagesUploaderWrapper from 'components/FormItems/style/ImagesUploaderWrapper';
 
-class ImagesUploader extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-    };
-    this.input = React.createRef();
-  }
+const ImagesUploader = (props) => {
+  const [loading, setLoading] = useState(false);
+  const [, setPreviewImage] = useState({
+    imageSrc: null,
+    imageAlt: null,
+  });
+  const input = useRef(null);
 
-  value = () => {
-    const { value } = this.props;
+  const value = () => {
+    const { value } = props;
 
     if (!value) {
       return [];
@@ -23,8 +22,8 @@ class ImagesUploader extends Component {
     return Array.isArray(value) ? value : [value];
   };
 
-  fileList = () => {
-    return this.value().map((item) => ({
+  const fileList = () => {
+    return value().map((item) => ({
       uid: item.id || undefined,
       name: item.name,
       status: 'done',
@@ -32,13 +31,13 @@ class ImagesUploader extends Component {
     }));
   };
 
-  handleRemove = (id) => {
-    this.props.onChange(
-      this.value().filter((item) => item.id !== id),
+  const handleRemove = (id) => {
+    props.onChange(
+      value().filter((item) => item.id !== id),
     );
   };
 
-  handleChange = async (event) => {
+  const handleChange = async (event) => {
     try {
       const files = event.target.files;
 
@@ -48,121 +47,111 @@ class ImagesUploader extends Component {
 
       let file = files[0];
 
-      FileUploader.validate(file, this.props.schema);
+      FileUploader.validate(file, props.schema);
 
-      this.setState({ loading: true });
+      setLoading(true);
 
       file = await FileUploader.upload(
-        this.props.path,
+        props.path,
         file,
-        this.props.schema,
+        props.schema,
       );
 
-      this.input.current.value = '';
+      input.current.value = '';
 
-      this.setState({ loading: false });
-      this.props.onChange([...this.value(), file]);
+      setLoading(false);
+      props.onChange([...value(), file]);
     } catch (error) {
-      this.input.current.value = '';
+      input.current.value = '';
       console.log('error', error);
-      this.setState({ loading: false });
+      setLoading(false);
       Errors.showMessage(error);
     }
   };
 
-  doPreviewImage = (image) => {
-    this.setState({
+  const doPreviewImage = (image) => {
+    setPreviewImage({
       imageSrc: image.publicUrl,
       imageAlt: image.name,
     });
   };
 
-  doCloseImageModal = () => {
-    this.setState({
-      imageSrc: null,
-      imageAlt: null,
-    });
-  };
+  const { max, readonly } = props;
 
-  render() {
-    const { max, readonly } = this.props;
-    const { loading } = this.state;
+  const uploadButton = (
+    <label
+      className="btn btn-outline-secondary px-4 mb-2"
+      style={{ cursor: 'pointer' }}
+    >
+      {'Upload an image'}
+      <input
+        style={{ display: 'none' }}
+        disabled={loading || readonly}
+        accept="image/*"
+        type="file"
+        onChange={handleChange}
+        ref={input}
+      />
+    </label>
+  );
 
-    const uploadButton = (
-      <label
-        className="btn btn-outline-secondary px-4 mb-2"
-        style={{ cursor: 'pointer' }}
-      >
-        {'Upload an image'}
-        <input
-          style={{ display: 'none' }}
-          disabled={loading || readonly}
-          accept="image/*"
-          type="file"
-          onChange={this.handleChange}
-          ref={this.input}
-        />
-      </label>
-    );
+  return (
+    <ImagesUploaderWrapper>
+      {readonly || (max && fileList().length >= max)
+        ? null
+        : uploadButton}
 
-    return (
-      <ImagesUploaderWrapper>
-        {readonly || (max && this.fileList().length >= max)
-          ? null
-          : uploadButton}
+      {value() && value().length ? (
+        <div className="d-flex flex-row flex-wrap">
+          {value().map((item) => {
+            return (
+              <div
+                className="me-2 mb-2 img-card"
+                style={{ height: '100px' }}
+                key={item.id}
+              >
+                <img
+                  alt={item.name}
+                  src={item.publicUrl}
+                  className="img-thumbnail"
+                  style={{
+                    width: '100px',
+                    height: '100px',
+                    objectFit: 'cover',
+                  }}
+                />
 
-        {this.value() && this.value().length ? (
-          <div className="d-flex flex-row flex-wrap">
-            {this.value().map((item) => {
-              return (
-                <div
-                  className="me-2 mb-2 img-card"
-                  style={{ height: '100px' }}
-                  key={item.id}
-                >
-                  <img
-                    alt={item.name}
-                    src={item.publicUrl}
-                    className="img-thumbnail"
-                    style={{
-                      width: '100px',
-                      height: '100px',
-                      objectFit: 'cover',
-                    }}
-                  />
+                <div className="img-buttons rounded-bottom">
+                  <button
+                    type="button"
+                    className="btn btn-link"
+                    onClick={() =>
+                      doPreviewImage(item)
+                    }
+                  >
+                    <i className="la la-search"></i>
+                  </button>
 
-                  <div className="img-buttons rounded-bottom">
+                  {!readonly && (
                     <button
                       type="button"
-                      className="btn btn-link"
+                      className="btn btn-link ms-2"
                       onClick={() =>
-                        this.doPreviewImage(item)
+                        handleRemove(item.id)
                       }
                     >
-                      <i className="la la-search"></i>
+                      <i className="la la-times"></i>
                     </button>
-
-                    {!readonly && (
-                      <button
-                        type="button"
-                        className="btn btn-link ms-2"
-                        onClick={() =>
-                          this.handleRemove(item.id)
-                        }
-                      >
-                        <i className="la la-times"></i>
-                      </button>
-                    )}
-                  </div>
+                  )}
                 </div>
-              );
-            })}
-          </div>
-        ) : null}
-      </ImagesUploaderWrapper>
-    );
-  }
-}
+              </div>
+            );
+          })}
+        </div>
+      ) : null}
+    </ImagesUploaderWrapper>
+  );
+};
 
 ImagesUploader.propTypes = {
   readonly: PropTypes.bool,

@@ -1,32 +1,33 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, ModalFooter, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
 import classnames from 'classnames';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-class Modals extends Component {
-  state = {
+const Modals = () => {
+  const [state, setState] = useState({
     defaultModalTabId: '1',
     variatonModalsTabId: '1',
     demo: false,
     scrollingLong: false,
     large: false,
-  };
+  });
 
-  toggle(id) {
-    this.setState(prevState => ({
+  const toggle = (id) => {
+    setState((prevState) => ({
+      ...prevState,
       [id]: !prevState[id],
     }));
-  }
+  };
 
-  changeTab(field, id) {
-    this.setState({
+  const changeTab = (field, id) => {
+    setState((prevState) => ({
+      ...prevState,
       [field]: id,
-    })
-  }
+    }));
+  };
 
-  render() {
-    return (
+  return (
       <Row>
         <Col md={10}>
           <Breadcrumb>
@@ -46,9 +47,9 @@ class Modals extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultModalTabId === '1' })}
+                className={classnames({ active: state.defaultModalTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('defaultModalTabId', '1');
+                  changeTab('defaultModalTabId', '1');
                 }}
               >
                 Example
@@ -56,18 +57,18 @@ class Modals extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.defaultModalTabId === '2' })}
+                className={classnames({ active: state.defaultModalTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('defaultModalTabId', '2');
+                  changeTab('defaultModalTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.defaultModalTabId}>
+          <TabContent className="mb-xlg" activeTab={state.defaultModalTabId}>
             <TabPane tabId="1">
-              <Button onClick={() => this.toggle('demo')} size="lg" color="primary">Default modal</Button>
+              <Button onClick={() => toggle('demo')} size="lg" color="primary">Default modal</Button>
             </TabPane>
             <TabPane tabId="2">
               <SyntaxHighlighter language='javascript' style={tomorrow}>{'<Modal isOpen={} toggle={}>\n' +
@@ -85,9 +86,9 @@ class Modals extends Component {
           <Nav tabs className="bg-transparent mt">
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.variatonModalsTabId === '1' })}
+                className={classnames({ active: state.variatonModalsTabId === '1' })}
                 onClick={() => {
-                  this.changeTab('variatonModalsTabId', '1');
+                  changeTab('variatonModalsTabId', '1');
                 }}
               >
                 Example
@@ -95,20 +96,20 @@ class Modals extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.variatonModalsTabId === '2' })}
+                className={classnames({ active: state.variatonModalsTabId === '2' })}
                 onClick={() => {
-                  this.changeTab('variatonModalsTabId', '2');
+                  changeTab('variatonModalsTabId', '2');
                 }}
               >
                 Code
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent className="mb-xlg" activeTab={this.state.variatonModalsTabId}>
+          <TabContent className="mb-xlg" activeTab={state.variatonModalsTabId}>
             <TabPane tabId="1">
               <h3>Variations</h3>
-              <Button className="me-4" onClick={() => this.toggle('scrollingLong')} size="lg" color="danger">Long modal</Button>
-              <Button onClick={() => this.toggle('large')} size="lg" color="success">Large modal</Button>
+              <Button className="me-4" onClick={() => toggle('scrollingLong')} size="lg" color="danger">Long modal</Button>
+              <Button onClick={() => toggle('large')} size="lg" color="success">Large modal</Button>
             </TabPane>
             <TabPane tabId="2">
               <SyntaxHighlighter language='javascript' style={tomorrow}>{'<Modal isOpen={} toggle={}>\n' +
@@ -135,19 +136,19 @@ class Modals extends Component {
           </TabContent>
           For more examples please refer to <a href="https://reactstrap.github.io/components/modal/" target="_blank" rel="noopener noreferrer">Reactstrap Modal</a>
         </Col>
-        <Modal isOpen={this.state.demo} toggle={() => this.toggle('demo')}>
-          <ModalHeader toggle={() => this.toggle('demo')}>Modal title</ModalHeader>
+        <Modal isOpen={state.demo} toggle={() => toggle('demo')}>
+          <ModalHeader toggle={() => toggle('demo')}>Modal title</ModalHeader>
           <ModalBody className="bg-white">
             ...
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={() => this.toggle('demo')}>Close</Button>
+            <Button color="secondary" onClick={() => toggle('demo')}>Close</Button>
             <Button color="primary">Save changes</Button>
           </ModalFooter>
         </Modal>
 
-        <Modal isOpen={this.state.scrollingLong} toggle={() => this.toggle('scrollingLong')}>
-          <ModalHeader toggle={() => this.toggle('scrollingLong')}>Long content</ModalHeader>
+        <Modal isOpen={state.scrollingLong} toggle={() => toggle('scrollingLong')}>
+          <ModalHeader toggle={() => toggle('scrollingLong')}>Long content</ModalHeader>
           <ModalBody className="bg-white">
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -201,26 +202,25 @@ class Modals extends Component {
             </p>
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={() => this.toggle('scrollingLong')}>Close</Button>
+            <Button color="secondary" onClick={() => toggle('scrollingLong')}>Close</Button>
             <Button color="primary">Save changes</Button>
           </ModalFooter>
         </Modal>
 
-        <Modal size="lg" isOpen={this.state.large} toggle={() => this.toggle('large')}>
-          <ModalHeader toggle={() => this.toggle('large')}>Large modal</ModalHeader>
+        <Modal size="lg" isOpen={state.large} toggle={() => toggle('large')}>
+          <ModalHeader toggle={() => toggle('large')}>Large modal</ModalHeader>
           <ModalBody className="bg-white">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. In, illum harum?
             Quidem, quisquam, natus repellat debitis veniam quia facilis magni tempora
             cupiditate odio vitae? Eligendi nisi consequuntur vero tenetur nemo!
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={() => this.toggle('large')}>Close</Button>
+            <Button color="secondary" onClick={() => toggle('large')}>Close</Button>
             <Button color="primary">Save changes</Button>
           </ModalFooter>
         </Modal>
       </Row>
-    );
-  }
-}
+  );
+};
 
 export default Modals;
