@@ -50,6 +50,11 @@
   - replaced route guard implementation (`AdminRoute`, `UserRoute`, `AuthRoute`) with v7-compatible wrapper components and refreshed route smoke tests;
   - introduced local `withRouter` bridge (`src/components/withRouter.js`) to keep class-component routes working during phased hooks migration;
   - replaced hash-link usage in docs scrollspy with `react-router-dom` `Link`.
+- Dependency refresh batch 8:
+  - upgraded framework/tooling stack: `react`/`react-dom` (`18.3.1` -> `19.2.4`), `eslint` (`9.39.x` -> `10.0.1`);
+  - upgraded chart/sortable stack: `echarts` (`4.9.0` -> `6.0.0`), `echarts-for-react` (`2.0.16` -> `3.0.6`), `react-sortablejs` (`1.5.1` -> `6.1.4`);
+  - removed obsolete CRA-era dependencies no longer used under Vite: `react-app-polyfill`, `react-dev-utils`, `sass-loader`;
+  - migrated ECharts imports to modular `echarts/core` registration compatible with ECharts 6.
 - Phase 4 state modernization:
   - moved auth/users side effects to reusable service layer (`src/services/authService.js`, `src/services/usersService.js`);
   - migrated users auth-domain thunks to `async/await` with safer shared error-message handling;
