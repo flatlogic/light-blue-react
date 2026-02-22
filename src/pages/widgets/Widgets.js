@@ -27,11 +27,8 @@ import avatar from '../../images/avatar.png';
 import img18 from '../../images/pictures/18.jpg';
 import img17 from '../../images/pictures/17.jpg';
 
-class Widgets extends React.Component {
-
-  render() {
-
-    let settings = {
+const Widgets = () => {
+  const settings = {
       dots: false,
       infinite: true,
       vertical: true,
@@ -44,7 +41,8 @@ class Widgets extends React.Component {
       draggable: false,
     };
 
-    return (
+
+  return (
       <div className="root">
         <Row>
           <Col xl={3} lg={4} md={6} xs={12}>
@@ -727,8 +725,6 @@ class Widgets extends React.Component {
         </Row>
       </div>
     );
-  }
-}
-
+};
 
 export default Widgets;

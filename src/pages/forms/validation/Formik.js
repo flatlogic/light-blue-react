@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import React, { Component } from 'react';
+import React from 'react';
 import Loader from 'components/Loader';
 import InputFormItem from 'components/FormItems/items/InputFormItem';
 import SwitchFormItem from 'components/FormItems/items/SwitchFormItem';
@@ -9,33 +9,23 @@ import usersFields from 'components/Users/usersFields';
 import IniValues from 'components/FormItems/iniValues';
 import FormValidations from 'components/FormItems/formValidations';
 
-class UsersForm extends Component {
-  iniValues = () => {
-    return IniValues(usersFields, this.props.record || {});
-  }
+const passwordSchema = {
+  currentPassword: { type: 'string', label: 'Current Password' },
+  newPassword: { type: 'string', label: 'New Password' },
+  confirmNewPassword: { type: 'string', label: 'Confirm new Password' },
+};
 
-  formValidations = () => {
-    return FormValidations(usersFields, this.props.record || {});
-  }
+const UsersForm = (props) => {
+  const { isEditing, findLoading, record, saveLoading } = props;
+  const iniValues = () => IniValues(usersFields, record || {});
+  const formValidations = () => FormValidations(usersFields, record || {});
+  const handleSubmit = () => null;
 
-  handleSubmit = () => {
-    return null;
-  };
-
-  passwordSchema = {
-    currentPassword: { type: 'string', label: 'Current Password' },
-    newPassword: { type: 'string', label: 'New Password' },
-    confirmNewPassword: { type: 'string', label: 'Confirm new Password' },
-  };
-
-  renderForm() {
-    const { saveLoading } = this.props;
-
-    return (
+  const renderForm = () => (
       <Formik
-        onSubmit={this.handleSubmit}
-        initialValues={this.iniValues()}
-        validationSchema={this.formValidations()}
+        onSubmit={handleSubmit}
+        initialValues={iniValues()}
+        validationSchema={formValidations()}
         render={(form) => {
           return (
             <form onSubmit={form.handleSubmit}>
@@ -63,18 +53,18 @@ class UsersForm extends Component {
               <InputFormItem
                 name={'currentPassword'}
                 password
-                schema={this.passwordSchema}
+                schema={passwordSchema}
               />
 
               <InputFormItem
                 name={'newPassword'}
-                schema={this.passwordSchema}
+                schema={passwordSchema}
                 password
               />
 
               <InputFormItem
                 name={'confirmNewPassword'}
-                schema={this.passwordSchema}
+                schema={passwordSchema}
                 password
               />
 
@@ -124,22 +114,17 @@ class UsersForm extends Component {
           );
         }}
       />
-    );
+  );
+
+  if (findLoading) {
+    return <Loader />;
   }
 
-  render() {
-    const { isEditing, findLoading, record } = this.props;
-
-    if (findLoading) {
-      return <Loader />;
-    }
-
-    if (isEditing && !record) {
-      return <Loader />;
-    }
-
-    return this.renderForm();
+  if (isEditing && !record) {
+    return <Loader />;
   }
-}
+
+  return renderForm();
+};
 
 export default UsersForm;

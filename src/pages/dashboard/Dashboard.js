@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Row,
   Col,
@@ -14,7 +14,7 @@ import Calendar from './components/calendar/Calendar';
 import Map from './components/am4chartMap/am4chartMap';
 import Rickshaw from './components/rickshaw/Rickshaw';
 
-import AnimateNumber from 'react-animated-number';
+import AnimateNumber from '../../components/AnimatedNumber';
 
 import s from './Dashboard.module.scss';
 
@@ -23,26 +23,18 @@ import peopleA2 from '../../images/people/a2.jpg';
 import peopleA5 from '../../images/people/a5.jpg';
 import peopleA4 from '../../images/people/a4.jpg';
 
-class Dashboard extends React.Component {
+const Dashboard = () => {
+  const [checkedArr, setCheckedArr] = useState([false, false, false]);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      graph: null,
-      checkedArr: [false, false, false],
-    };
-    this.checkTable = this.checkTable.bind(this);
-  }
-
-  checkTable(id) {
+  const checkTable = (id) => {
     let arr = [];
     if (id === 0) {
-      const val = !this.state.checkedArr[0];
-      for (let i = 0; i < this.state.checkedArr.length; i += 1) {
+      const val = !checkedArr[0];
+      for (let i = 0; i < checkedArr.length; i += 1) {
         arr[i] = val;
       }
     } else {
-      arr = this.state.checkedArr;
+      arr = [...checkedArr];
       arr[id] = !arr[id];
     }
     if (arr[0]) {
@@ -56,14 +48,11 @@ class Dashboard extends React.Component {
         arr[0] = !arr[0];
       }
     }
-    this.setState({
-      checkedArr: arr,
-    });
-  }
+    setCheckedArr(arr);
+  };
 
-  render() {
-    return (
-      <div className={s.root}>
+  return (
+    <div className={s.root}>
         <h1 className="page-title">Dashboard &nbsp;
           <small>
             <small>The Lucky One</small>
@@ -312,8 +301,8 @@ class Dashboard extends React.Component {
                         <div className="checkbox abc-checkbox">
                           <Input
                             className="mt-0"
-                            id="checkbox210" type="checkbox" onClick={() => this.checkTable(0)}
-                            checked={this.state.checkedArr[0]}
+                            id="checkbox210" type="checkbox" onClick={() => checkTable(0)}
+                            checked={checkedArr[0]}
                             readOnly
                           />{' '}
                           <Label for="checkbox210" />
@@ -329,8 +318,8 @@ class Dashboard extends React.Component {
                         <div className="checkbox abc-checkbox">
                           <Input
                             className="mt-0"
-                            id="checkbox212" type="checkbox" onClick={() => this.checkTable(1)}
-                            checked={this.state.checkedArr[1]}
+                            id="checkbox212" type="checkbox" onClick={() => checkTable(1)}
+                            checked={checkedArr[1]}
                             readOnly
                           />{' '}
                           <Label for="checkbox212" />
@@ -344,8 +333,8 @@ class Dashboard extends React.Component {
                         <div className="checkbox abc-checkbox">
                           <Input
                             className="mt-0"
-                            id="checkbox214" onClick={() => this.checkTable(2)} type="checkbox"
-                            checked={this.state.checkedArr[2]}
+                            id="checkbox214" onClick={() => checkTable(2)} type="checkbox"
+                            checked={checkedArr[2]}
                             readOnly
                           />{' '}
                           <Label for="checkbox214" />
@@ -383,9 +372,8 @@ class Dashboard extends React.Component {
 
         </Row>
 
-      </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Dashboard;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import cx from 'classnames';
 import { Alert } from 'reactstrap';
 
@@ -7,88 +7,80 @@ import MessageTable from './components/MessageTable/MessageTable';
 
 import s from './Email.module.scss';
 
-class Email extends Component {
-  state = {
-    isNotificationOpen: true,
-    filter: null,
-    openedMessage: null,
-    compose: false,
-    composeData: null,
-    alertAfter: false,
-  }
+const Email = () => {
+  const [isNotificationOpen, setIsNotificationOpen] = useState(true);
+  const [filter, setFilter] = useState(null);
+  const [openedMessage, setOpenedMessage] = useState(null);
+  const [compose, setCompose] = useState(false);
+  const [composeData, setComposeData] = useState(null);
+  const [alertAfter, setAlertAfter] = useState(false);
 
-  componentDidMount() {
-    setTimeout(() => { this.fixAlert(); }, 0);
-  }
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setAlertAfter(true);
+    }, 0);
 
-  fixAlert() {
-    this.setState({ alertAfter: true });
-  }
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
-  filter = (filter) => {
-    this.setState({ filter, compose: false, composeData: null });
-  }
+  const onFilter = (nextFilter) => {
+    setFilter(nextFilter);
+    setCompose(false);
+    setComposeData(null);
+  };
 
-  closeNotification() {
-    this.setState({ isNotificationOpen: false });
-  }
+  const closeNotification = () => {
+    setIsNotificationOpen(false);
+  };
 
-  openMessage = (id) => {
-    this.setState(pvState => ({
-      openedMessage: id,
-      compose: id === null ? false : pvState.compose,
-      composeData: id === null ? null : pvState.composeData,
-    }));
-  }
+  const openMessage = (id) => {
+    setOpenedMessage(id);
+    if (id === null) {
+      setCompose(false);
+      setComposeData(null);
+    }
+  };
 
-  changeCompose = (compose, data) => {
-    this.setState({ compose });
+  const changeCompose = (nextCompose, data) => {
+    setCompose(nextCompose);
 
     if (data) {
-      this.setState({ composeData: data });
+      setComposeData(data);
     }
-  }
+  };
 
-  render() {
-    const {
-      isNotificationOpen,
-      filter,
-      openedMessage,
-      alertAfter,
-      compose,
-      composeData,
-    } = this.state;
-    return (
-      <div>
-        <div className={s.pageTopLine}>
-          <h1 className="page-title">Email - <span className="fw-semi-bold">Inbox</span></h1>
-          <Alert
-            isOpen={isNotificationOpen}
-            color="warning"
-            toggle={() => this.closeNotification()}
-            className={cx(s.alert, { [s.alertAfter]: alertAfter })}
-          >
-            Hey! This is a <span className="fw-semi-bold">real app</span> with CRUD and Search functions. Have fun!
-          </Alert>
-        </div>
-        <div className={s.view}>
-          <Filters
-            filter={this.filter}
-            openMessage={this.openMessage}
-            compose={this.changeCompose}
-          />
-          <MessageTable
-            filter={filter}
-            openedMessage={openedMessage}
-            openMessage={this.openMessage}
-            compose={compose}
-            changeCompose={this.changeCompose}
-            composeData={composeData}
-          />
-        </div>
+  return (
+    <div>
+      <div className={s.pageTopLine}>
+        <h1 className="page-title">Email - <span className="fw-semi-bold">Inbox</span></h1>
+        <Alert
+          isOpen={isNotificationOpen}
+          color="warning"
+          toggle={closeNotification}
+          className={cx(s.alert, { [s.alertAfter]: alertAfter })}
+        >
+          Hey! This is a <span className="fw-semi-bold">real app</span> with CRUD and Search functions. Have fun!
+        </Alert>
       </div>
-    );
-  }
-}
+      <div className={s.view}>
+        <Filters
+          filter={onFilter}
+          openMessage={openMessage}
+          compose={changeCompose}
+        />
+        <MessageTable
+          filter={filter}
+          openedMessage={openedMessage}
+          openMessage={openMessage}
+          compose={compose}
+          changeCompose={changeCompose}
+          composeData={composeData}
+        />
+      </div>
+    </div>
+  );
+};
 
 export default Email;

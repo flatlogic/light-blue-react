@@ -11,12 +11,9 @@ import Widget from '../../../../components/Widget';
 import s from './FlotCharts.module.scss';
 import Highcharts from "highcharts";
 
-class FlotCharts extends React.PureComponent {
-
-  generateRandomData = (labels) => {
-    function random() {
-      return (Math.floor(Math.random() * 30)) + 10;
-    }
+const FlotCharts = () => {
+  const generateRandomData = (labels) => {
+    const random = () => (Math.floor(Math.random() * 30)) + 10;
 
     const data = [];
     let maxValueIndex = 5;
@@ -34,10 +31,9 @@ class FlotCharts extends React.PureComponent {
       });
     }
     return data;
-  }
+  };
 
-  render() {
-    const options = {
+  const options = {
       credits: {
         enabled: false
       },
@@ -79,8 +75,10 @@ class FlotCharts extends React.PureComponent {
         minPadding: 0,
         maxPadding: 0
       }
-    };  
-    return (<Row>
+    };
+
+  return (
+    <Row>
       <Col lg={6} xs={12}>
         <Widget
           title={<Row>
@@ -116,7 +114,7 @@ class FlotCharts extends React.PureComponent {
             </div>
           </div>
           <div className={`${s.chart}`}>
-            <HighchartsReact highcharts={Highcharts} options={{...options, series: this.generateRandomData([{
+            <HighchartsReact highcharts={Highcharts} options={{...options, series: generateRandomData([{
                 name: 'Visitors', color: '#1870DC',
               }, {
                 name: 'Charts', color: '#58D777',
@@ -171,7 +169,7 @@ class FlotCharts extends React.PureComponent {
               highcharts={Highcharts}
               options={{
                 ...options,
-                series: this.generateRandomData([{
+                series: generateRandomData([{
                   name: 'Controllers', color: '#58D777',
                 }, {
                   name: 'Scopes', color: '#F45722',
@@ -181,8 +179,7 @@ class FlotCharts extends React.PureComponent {
         </Widget>
       </Col>
     </Row>
-    );
-  }
-}
+  );
+};
 
 export default FlotCharts;

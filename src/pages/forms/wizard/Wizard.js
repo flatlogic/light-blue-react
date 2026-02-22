@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   Row,
   Col,
@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 import Formsy from 'formsy-react';
 
-import MaskedInput from 'react-maskedinput';
+import MaskedInput from 'components/MaskedInputField';
 import Datetime from 'react-datetime';
 import { select2CountriesData, select2ShipmentData, cardTypesData } from './data';
 
@@ -144,50 +144,31 @@ const StepsComponents = {
 
 };
 
-class Wizard extends React.Component {
-  constructor(prop) {
-    super(prop);
-    this.state = {
-      currentStep: 1,
-      progress: 25,
-      isDatePickerOpen: false,
-    };
-    this.nextStep = this.nextStep.bind(this);
-    this.previousStep = this.previousStep.bind(this);
-  }
+const Wizard = () => {
+  const [currentStep, setCurrentStep] = useState(1);
+  const [isDatePickerOpen] = useState(false);
+  const progress = useMemo(() => (100 / count) * currentStep, [currentStep]);
 
-  nextStep() {
-    let currentStep = this.state.currentStep;
-    if (currentStep >= count) {
-      currentStep = count;
-    } else {
-      currentStep += 1;
-    }
-
-    this.setState({
-      currentStep,
-      progress: (100 / count) * currentStep,
+  const nextStep = () => {
+    setCurrentStep((prevStep) => {
+      if (prevStep >= count) {
+        return count;
+      }
+      return prevStep + 1;
     });
-  }
+  };
 
-  previousStep() {
-    let currentStep = this.state.currentStep;
-    if (currentStep <= 1) {
-      currentStep = 1;
-    } else {
-      currentStep -= 1;
-    }
-
-    this.setState({
-      currentStep,
-      progress: (100 / count) * currentStep,
+  const previousStep = () => {
+    setCurrentStep((prevStep) => {
+      if (prevStep <= 1) {
+        return 1;
+      }
+      return prevStep - 1;
     });
-  }
+  };
 
-  render() {
-    const currentStep = this.state.currentStep;
-    return (
-      <div className={s.root}>
+  return (
+    <div className={s.root}>
         <h1 className="page-title">Form - <span className="fw-semi-bold">Wizard</span>
         </h1>
         <Row>
@@ -233,22 +214,22 @@ class Wizard extends React.Component {
                   </NavLink>
                 </NavItem>
               </Nav>
-              <Progress value={this.state.progress} color="success" className="progress-xs" />
+              <Progress value={progress} color="success" className="progress-xs" />
               <div className="tab-content">
                 <div className={s.stepBody}>
                   <Formsy.Form>
                     {currentStep === 1 && <StepsComponents.Step1 />}
                     {currentStep === 2 && <StepsComponents.Step2 />}
-                    {currentStep === 3 && <StepsComponents.Step3 />}
+                    {currentStep === 3 && <StepsComponents.Step3 isDatePickerOpen={isDatePickerOpen} />}
                     {currentStep === 4 &&
-                    <StepsComponents.Step4 isDatePickerOpen={this.state.isDatePickerOpen} />}
+                    <StepsComponents.Step4 isDatePickerOpen={isDatePickerOpen} />}
                   </Formsy.Form>
                 </div>
 
                 <div className="description">
                   <ul className="pager wizard">
                     <li className="previous">
-                      <Button hidden={currentStep === 1} color="primary" onClick={this.previousStep}><i
+                      <Button hidden={currentStep === 1} color="primary" onClick={previousStep}><i
                         className="fa fa-caret-left"
                       />
                         &nbsp;Previous</Button>
@@ -269,7 +250,7 @@ class Wizard extends React.Component {
                     } */}
                     {currentStep < count &&
                     <li className="next">
-                      <Button color="primary" onClick={this.nextStep}>Next <i className="fa fa-caret-right" /></Button>
+                      <Button color="primary" onClick={nextStep}>Next <i className="fa fa-caret-right" /></Button>
                     </li>
                     }
                     {currentStep === count &&
@@ -284,8 +265,7 @@ class Wizard extends React.Component {
           </Col>
         </Row>
       </div>
-    );
-  }
-}
+  );
+};
 
 export default Wizard;

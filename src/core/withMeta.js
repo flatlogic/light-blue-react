@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import { updateMeta } from '../DOMUtils';
 import { defaultMeta } from '../config';
 
 function withMeta(ComposedComponent) {
-  class WithMeta extends Component {
-    componentDidMount() {
+  const WithMeta = (props) => {
+    useEffect(() => {
       if (ComposedComponent.meta) {
         Object.keys(ComposedComponent.meta).forEach((metaKey) => {
           if (metaKey === 'title') {
@@ -15,24 +15,24 @@ function withMeta(ComposedComponent) {
           updateMeta(metaKey, ComposedComponent.meta[metaKey]);
         });
       }
-    }
 
-    componentWillUnmount() {
-      Object.keys(defaultMeta).forEach((metaKey) => {
-        if (metaKey === 'title') {
-          document.title = defaultMeta[metaKey];
-          return;
-        }
-        updateMeta(metaKey, defaultMeta[metaKey]);
-      });
-    }
+      return () => {
+        Object.keys(defaultMeta).forEach((metaKey) => {
+          if (metaKey === 'title') {
+            document.title = defaultMeta[metaKey];
+            return;
+          }
+          updateMeta(metaKey, defaultMeta[metaKey]);
+        });
+      };
+    }, []);
 
-    render() {
-      return <ComposedComponent {...this.props} />;
-    }
-  }
+    return <ComposedComponent {...props} />;
+  };
 
+  WithMeta.displayName = `WithMeta(${ComposedComponent.displayName || ComposedComponent.name || 'Component'})`;
   WithMeta.ComposedComponent = ComposedComponent;
+
   return hoistStatics(WithMeta, ComposedComponent);
 }
 

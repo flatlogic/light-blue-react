@@ -12,10 +12,7 @@ import InputValidation from '../../../components/InputValidation';
 import Widget from '../../../components/Widget';
 import Formik from './Formik';
 
-class Validation extends React.Component {
-
-  render() {
-    return (
+const Validation = () => (
       <div>
         <h1 className="page-title">Form - <span className="fw-semi-bold">Validation</span>
         </h1>
@@ -181,8 +178,6 @@ class Validation extends React.Component {
           </Col>
         </Row>
       </div>
-    );
-  }
-}
+);
 
 export default Validation;

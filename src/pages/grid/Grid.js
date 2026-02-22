@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Row,
   Col,
@@ -17,25 +17,19 @@ import mock from './mock';
 
 const tooltipPlacement = 'bottom';
 
-class Grid extends React.Component {
+const Grid = () => {
+  const [gridData, setGridData] = useState(mock.mainData);
+  const updatedData = mock.updatedData;
 
-  state = {
-    gridData: mock.mainData,
-    updatedData: mock.updatedData,
-  }
+  const updateWidgetData = (widget) => {
+    setGridData((prevGridData) => ({
+      ...prevGridData,
+      [widget]: updatedData[widget],
+    }));
+  };
 
-  updateWidgetData = (widget) => {
-    this.setState({
-      gridData: Object.assign({}, this.state.gridData, {
-        [widget]: this.state.updatedData[widget]
-      })
-    })
-  }
-
-  render() {
-
-    return (
-      <div>
+  return (
+    <div>
         <h1 className="page-title">Grid - <span className="fw-semi-bold">Options</span></h1>
     
         <Row> 
@@ -82,14 +76,14 @@ class Grid extends React.Component {
               ghostClass: 'widget-placeholder-react'
             }}>
             <Widget
-              updateWidgetData={this.updateWidgetData}
+              updateWidgetData={updateWidgetData}
               widgetType="default"
               title={<h6>Default <span className="fw-semi-bold">Widget</span></h6>}
               refresh collapse fullscreen close
               showTooltip tooltipPlacement={tooltipPlacement}
             >
               <div>
-              {this.state.gridData.default.map(item => (
+              {gridData.default.map(item => (
                   
                     <p key={item.value}>{item.value}</p>
                   
@@ -98,7 +92,7 @@ class Grid extends React.Component {
             </Widget>
 
             <Widget
-              updateWidgetData={this.updateWidgetData}
+              updateWidgetData={updateWidgetData}
               widgetType="shares"
               prompt={true}
               className="shares-widget"
@@ -111,7 +105,7 @@ class Grid extends React.Component {
               close="Close" refresh="Reload"
             >
               <div className="list-group list-group-lg">
-              {this.state.gridData.shares.map(item => (
+              {gridData.shares.map(item => (
                 <button key={item.name} className={`list-group-item text-start ${item.extraClass}`}>
                   <span className="thumb-sm me-2">
                     <img className="rounded-circle" src={item.img} alt="..." />
@@ -153,7 +147,7 @@ class Grid extends React.Component {
                   <p>
                     To make a widget automatically load it's content you just need to set <strong>autoload</strong> attribute and provide an api to update the widget content.
                   </p>
-                  <pre className="bg-custom-dark border-0"><code>&lt;Widget updateWidgetData={"{this.updateWidgetData}"} /&gt;</code></pre>
+                  <pre className="bg-custom-dark border-0"><code>&lt;Widget updateWidgetData={"{updateWidgetData}"} /&gt;</code></pre>
                   <p>
                     <strong>autoload</strong> may be set to an integer value. If set, for example, to 2000 will refresh widget every 2 seconds.
                   </p>
@@ -191,7 +185,7 @@ class Grid extends React.Component {
               filter: ".locked"
             }}>
             <Widget
-              updateWidgetData={this.updateWidgetData}
+              updateWidgetData={updateWidgetData}
               widgetType="news"
               id="news-widget"
               title={<div><h6> News <span className="badge rounded-pill bg-success">17</span></h6>
@@ -206,7 +200,7 @@ class Grid extends React.Component {
               bodyClass={"pt-3 px-2 py-0"}
             >
               <ul className={'news-list stretchable'}>
-                {this.state.gridData.news.map(item => (
+                {gridData.news.map(item => (
                   <li className={item.extraClass} key={item.title}>
                     <span className={`icon text-white bg-${item.background}`}>
                       <i className={`fa fa-${item.icon}`}></i>
@@ -253,10 +247,8 @@ class Grid extends React.Component {
           </Col>  
         </Row>
 
-      </div> 
-    );
-  }
-}
+      </div>
+  );
+};
 
 export default Grid;
-

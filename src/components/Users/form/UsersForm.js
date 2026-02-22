@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import React, { Component } from 'react';
+import React from 'react';
 import Loader from 'components/Loader';
 import InputFormItem from 'components/FormItems/items/InputFormItem';
 import SwitchFormItem from 'components/FormItems/items/SwitchFormItem';
@@ -11,39 +11,35 @@ import PreparedValues from 'components/FormItems/preparedValues';
 import FormValidations from 'components/FormItems/formValidations';
 import Widget from 'components/Widget';
 
-class UsersForm extends Component {
-  iniValues = () => {
-    return IniValues(usersFields, this.props.record || {});
-  }
+const UsersForm = (props) => {
+  const iniValues = () => IniValues(usersFields, props.record || {});
 
-  formValidations = () => {
-    return FormValidations(usersFields, this.props.record || {});
-  }
+  const formValidations = () => FormValidations(usersFields, props.record || {});
 
-  handleSubmit = (values) => {
+  const handleSubmit = (values) => {
     const { id, ...data } = PreparedValues(usersFields, values || {});
-    this.props.onSubmit(id, data);
+    props.onSubmit(id, data);
   };
 
-  title = () => {
-    if(this.props.isProfile) {
+  const title = () => {
+    if (props.isProfile) {
       return 'Edit My Profile';
     }
 
-    return this.props.isEditing
+    return props.isEditing
       ? 'Edit User'
       : 'Add User';
   };
 
-  renderForm() {
-    const { saveLoading } = this.props;
+  const renderForm = () => {
+    const { saveLoading } = props;
 
     return (
-      <Widget title={<h4>{this.title()}</h4>} collapse close>
+      <Widget title={<h4>{title()}</h4>} collapse close>
         <Formik
-          onSubmit={this.handleSubmit}
-          initialValues={this.iniValues()}
-          validationSchema={this.formValidations()}
+          onSubmit={handleSubmit}
+          initialValues={iniValues()}
+          validationSchema={formValidations()}
           render={(form) => {
             return (
               <form onSubmit={form.handleSubmit}>
@@ -68,9 +64,9 @@ class UsersForm extends Component {
                   schema={usersFields}
                 />
 
-                { this.props.currentUser && this.props.currentUser.role === 'admin' && !this.props.isProfile &&
+                { props.currentUser && props.currentUser.role === 'admin' && !props.isProfile &&
                   <>
-                    {this.props.isProfile ? null : (
+                    {props.isProfile ? null : (
                       <>
                         <SwitchFormItem
                           name={'disabled'}
@@ -119,7 +115,7 @@ class UsersForm extends Component {
                       className="btn btn-light"
                       type="button"
                       disabled={saveLoading}
-                      onClick={() => this.props.onCancel()}
+                      onClick={() => props.onCancel()}
                     >
                       Cancel
                     </button>
@@ -130,21 +126,19 @@ class UsersForm extends Component {
         />
       </Widget>
     );
+  };
+
+  const { isEditing, findLoading, record } = props;
+
+  if (findLoading) {
+    return <Loader />;
   }
 
-  render() {
-    const { isEditing, findLoading, record } = this.props;
-
-    if (findLoading) {
-      return <Loader />;
-    }
-
-    if (isEditing && !record) {
-      return <Loader />;
-    }
-
-    return this.renderForm();
+  if (isEditing && !record) {
+    return <Loader />;
   }
-}
+
+  return renderForm();
+};
 
 export default UsersForm;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
   Row, Col
@@ -42,46 +42,41 @@ echarts.use([
 ]);
 
 
-class Charts extends React.Component {
-
-  state = {
-    cd: chartData,
-    ld: liveChart,
-    initEchartsOptions: {
-      renderer: 'canvas'
-    },
-    sparklineData: {
-      series: [{data: [1,7,3,5,7,8]}],
-      options1: {
-        colors: ['#2477ff'],
-        plotOptions: {
-          bar: {
-            columnWidth: '50%'
-          }
-        }
+const Charts = () => {
+  const cd = chartData;
+  const ld = liveChart;
+  const initEchartsOptions = {
+    renderer: 'canvas',
+  };
+  const sparklineData = {
+    series: [{ data: [1, 7, 3, 5, 7, 8] }],
+    options1: {
+      colors: ['#2477ff'],
+      plotOptions: {
+        bar: {
+          columnWidth: '50%',
+        },
       },
-      options2: {
-        colors: ['#db2a34'],
-        plotOptions: {
-          bar: {
-            columnWidth: '50%'
-          }
-        }
-      }
-    }
-  }
+    },
+    options2: {
+      colors: ['#db2a34'],
+      plotOptions: {
+        bar: {
+          columnWidth: '50%',
+        },
+      },
+    },
+  };
 
-  componentWillUnmount() {
+  useEffect(() => () => {
     clearInterval(liveChartInterval);
-  }
+  }, []);
 
-  render() {
-    const { cd, ld, initEchartsOptions, sparklineData } = this.state
-    return (
-      <div className={s.root}>
-        <h1 className="page-title">Visual - <span className="fw-semi-bold">Charts</span></h1>
-        <div>
-          <Row>
+  return (
+    <div className={s.root}>
+      <h1 className="page-title">Visual - <span className="fw-semi-bold">Charts</span></h1>
+      <div>
+        <Row>
             <Col lg={7} xs={12}>
               <Widget
                 title={<h5>Apex <span className='fw-semi-bold'>Column Chart</span></h5>}
@@ -204,12 +199,10 @@ class Charts extends React.Component {
                 />
               </Widget>
             </Col>
-          </Row>
-        </div>
+        </Row>
       </div>
-    );
-  }
-
-}
+    </div>
+  );
+};
 
 export default Charts;

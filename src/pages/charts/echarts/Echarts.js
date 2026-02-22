@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
   Row,
   Col,
@@ -39,21 +39,14 @@ echarts.use([
   CanvasRenderer,
 ]);
 
-class Echarts extends PureComponent {
-  
-  state = {
-    ed: echartsData,
-    initOptions: {
-      renderer: 'canvas'
-    }
-  }
+const Echarts = () => {
+  const ed = echartsData;
+  const initOptions = {
+    renderer: 'canvas'
+  };
 
-  render() {
-
-    const { ed, initOptions } = this.state;
-
-    return (
-      <div>
+  return (
+    <div>
         <h1 className="page-title">Visual - <span className="fw-semi-bold">Echarts</span></h1>
         <p>For more information please read full <a href="https://ecomfe.github.io/vue-echarts/">documentation</a></p>
         <Row>
@@ -130,9 +123,8 @@ class Echarts extends PureComponent {
           </Widget>
           </Col>
         </Row>
-      </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Echarts;

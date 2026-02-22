@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   TabContent, TabPane, Nav, NavItem, NavLink, Row, Col,
 } from 'reactstrap';
@@ -12,25 +12,16 @@ export const Icon = ({ iconName, ...props }) => {
   return <BootstrapIcon {...props} />
 }
 
-class Icons extends React.Component {
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      activeTab: '1',
-    };
-  }
+const Icons = () => {
+  const [activeTab, setActiveTab] = useState('1');
 
-  toggle(tab) {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab,
-      });
+  const toggle = (tab) => {
+    if (activeTab !== tab) {
+      setActiveTab(tab);
     }
-  }
+  };
 
-  render() {
-    return (
+  return (
       <section className={`${s.root} mb-4`}>
         <h1 className="page-title">UI - <span className="fw-semi-bold">Icons</span></h1>
 
@@ -38,64 +29,64 @@ class Icons extends React.Component {
         <Nav className="bg-transparent" tabs>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === '1' })}
-              onClick={() => { this.toggle('1'); }}
+              className={classnames({ active: activeTab === '1' })}
+              onClick={() => { toggle('1'); }}
             >
               <span>Bootstrap Icons</span>
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === '2' })}
-              onClick={() => { this.toggle('2'); }}
+              className={classnames({ active: activeTab === '2' })}
+              onClick={() => { toggle('2'); }}
             >
               <span className="me-1">FA 4.7.0</span>
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === '3' })}
-              onClick={() => { this.toggle('3'); }}
+              className={classnames({ active: activeTab === '3' })}
+              onClick={() => { toggle('3'); }}
             >
               <span className="me-1">Web Application</span>
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === '4' })}
-              onClick={() => { this.toggle('4'); }}
+              className={classnames({ active: activeTab === '4' })}
+              onClick={() => { toggle('4'); }}
             >
               <span>Spinner</span>
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === '5' })}
-              onClick={() => { this.toggle('5'); }}
+              className={classnames({ active: activeTab === '5' })}
+              onClick={() => { toggle('5'); }}
             >
               <span>Text Editor</span>
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === '6' })}
-              onClick={() => { this.toggle('6'); }}
+              className={classnames({ active: activeTab === '6' })}
+              onClick={() => { toggle('6'); }}
             >
               <span>Brand</span>
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === '7' })}
-              onClick={() => { this.toggle('7'); }}
+              className={classnames({ active: activeTab === '7' })}
+              onClick={() => { toggle('7'); }}
             >
               <span>Other</span>
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === '8' })}
-              onClick={() => { this.toggle('8'); }}
+              className={classnames({ active: activeTab === '8' })}
+              onClick={() => { toggle('8'); }}
             >
               <span className="me-1">Flaticons</span>
             </NavLink>
@@ -104,7 +95,7 @@ class Icons extends React.Component {
 
         {/* tab content */}
 
-        <TabContent activeTab={this.state.activeTab}>
+        <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
             <div>
               <h4 className='text-light'>
@@ -3941,7 +3932,6 @@ class Icons extends React.Component {
         </TabContent>
       </section>
     );
-  }
-}
+};
 
 export default Icons;

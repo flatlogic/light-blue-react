@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { 
   Col, 
   Row,
@@ -8,21 +8,14 @@ import './ApexChart.module.scss';
 import Widget from '../../../components/Widget';
 import chartsData from './mock';
 
-class ApexCharts extends Component {
+const ApexCharts = () => {
+  const cd = chartsData;
 
-  state = {
-    cd: chartsData
-  }
- 
-  render() {
-
-    const { cd } = this.state;
-
-    return (
-      <div>
-        <h1 className="page-title">Visual - <span className="fw-semi-bold">Apex Charts</span></h1>
-        <p>For more information please read full <a href="https://apexcharts.com/docs/vue-charts/">documentation</a></p>
-        <Row>
+  return (
+    <div>
+      <h1 className="page-title">Visual - <span className="fw-semi-bold">Apex Charts</span></h1>
+      <p>For more information please read full <a href="https://apexcharts.com/docs/vue-charts/">documentation</a></p>
+      <Row>
           <Col xl={6} lg={6} xs={12}>
             <Widget
               title={<h5>Apex <span className="fw-semi-bold">Line Chart</span></h5>}
@@ -148,10 +141,9 @@ class ApexCharts extends Component {
             />
           </Widget>
           </Col>
-        </Row>
-      </div>
-    );
-  }
-}
+      </Row>
+    </div>
+  );
+};
 
 export default ApexCharts;

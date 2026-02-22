@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
   Row,
   Col,
@@ -25,18 +25,11 @@ sunburst(Highcharts);
 vector(Highcharts);
 wordcloud(Highcharts);
 
-class HighCharts extends PureComponent {
+const HighCharts = () => {
+  const cd = chartsData;
 
-  state = {
-    cd: chartsData
-  }
-
-  render() {
-
-    const { cd } = this.state;
-
-    return (
-      <div>
+  return (
+    <div>
         <h1 className="page-title">Visual - <span className="fw-semi-bold">Highcharts</span></h1>
         <p>For more information please read full <a href="https://github.com/highcharts/highcharts-vue">documentation</a></p>
         <Row>
@@ -93,9 +86,8 @@ class HighCharts extends PureComponent {
             </Widget>
           </Col>
         </Row>
-      </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default HighCharts;

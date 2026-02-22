@@ -23,10 +23,7 @@ import i2 from '../../../images/search/s5.jpg';
 import i3 from '../../../images/search/s3.jpg';
 import i4 from '../../../images/search/s13.jpg';
 
-class Search extends React.Component {
-
-  render() {
-    return (
+const Search = () => (
       <div className={s.root}>
         <h1 className="page-title">Matching - <span className="fw-semi-bold">Results</span></h1>
         <div className="btn-toolbar justify-content-between col-md-12 col-xl-9 ps-0 pe-3">
@@ -248,9 +245,7 @@ class Search extends React.Component {
             </div>
           </Col>
         </Row>
-      </div>);
-  }
-
-}
+      </div>
+);
 
 export default Search;

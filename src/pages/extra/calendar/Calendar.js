@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Row,
   Col,
@@ -22,17 +22,17 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin, { Draggable } from "@fullcalendar/interaction";
 
-import "@fullcalendar/daygrid/main.css";
-import "@fullcalendar/timegrid/main.css";
+const Calendar = () => {
+  const fullCalendarRef = useRef(null);
+  const externalEventsRef = useRef(null);
 
-class Calendar extends React.Component {
-  constructor(props) {
-    super(props);
+  const [state, setComponentState] = useState(() => {
     const date = new Date();
     const d = date.getDate();
     const m = date.getMonth();
     const y = date.getFullYear();
-    this.state = {
+
+    return {
       event: {},
       modal: false,
       modalEvent: false,
@@ -125,28 +125,72 @@ class Calendar extends React.Component {
       ],
       dragOptions: { zIndex: 999, revert: true, revertDuration: 0 },
     };
-  }
+  });
 
-  componentDidMount() {
-    new Draggable(this.externalEvents, {
+  const setState = (value) => {
+    if (typeof value === "function") {
+      setComponentState((prevState) => ({
+        ...prevState,
+        ...value(prevState),
+      }));
+      return;
+    }
+
+    setComponentState((prevState) => ({
+      ...prevState,
+      ...value,
+    }));
+  };
+
+  const getCalendarApi = () => {
+    return fullCalendarRef.current && fullCalendarRef.current.getApi();
+  };
+
+  useEffect(() => {
+    if (!externalEventsRef.current) {
+      return undefined;
+    }
+
+    const draggable = new Draggable(externalEventsRef.current, {
       itemSelector: ".external-event",
     });
-  }
 
-  drop = (info) => {
+    return () => {
+      if (typeof draggable.destroy === "function") {
+        draggable.destroy();
+      }
+    };
+  }, []);
+
+  const drop = (info) => {
     info.draggedEl.parentNode.removeChild(info.draggedEl);
   };
 
-  handleChange = (e) => {
-    this.setState({ event: { ...this.state.event, title: e.target.value } });
+  const handleChange = (e) => {
+    setState({ event: { ...state.event, title: e.target.value } });
   };
-  createEvent = () => {
-    this.fullCalendar.getApi().addEvent(this.state.event);
-    this.fullCalendar.getApi().unselect();
-    this.toggleModal();
+
+  const toggleModal = () => {
+    setState({ modal: !state.modal });
   };
-  select = ({ start, end, allDay }) => {
-    this.setState({
+
+  const toggleModalEvent = () => {
+    setState({ modalEvent: !state.modalEvent });
+  };
+
+  const createEvent = () => {
+    const api = getCalendarApi();
+    if (!api) {
+      return;
+    }
+
+    api.addEvent(state.event);
+    api.unselect();
+    toggleModal();
+  };
+
+  const select = ({ start, end, allDay }) => {
+    setState({
       event: {
         start,
         end,
@@ -156,241 +200,250 @@ class Calendar extends React.Component {
         editable: true,
       },
     });
-    this.toggleModal();
+    toggleModal();
   };
-  eventClick = (e) => {
-    this.setState({ event: e.event });
-    this.toggleModalEvent();
+
+  const eventClick = (e) => {
+    setState({ event: e.event });
+    toggleModalEvent();
   };
-  prev = () => {
-    this.fullCalendar.getApi().prev();
+
+  const prev = () => {
+    const api = getCalendarApi();
+    if (api) {
+      api.prev();
+    }
   };
-  next = () => {
-    this.fullCalendar.getApi().next();
+
+  const next = () => {
+    const api = getCalendarApi();
+    if (api) {
+      api.next();
+    }
   };
-  today = () => {
-    this.fullCalendar.getApi().today();
+
+  const today = () => {
+    const api = getCalendarApi();
+    if (api) {
+      api.today();
+    }
   };
-  changeView = (view) => {
-    this.setState({ calendarView: view });
-    this.fullCalendar.getApi().changeView(view);
+
+  const changeView = (view) => {
+    setState({ calendarView: view });
+    const api = getCalendarApi();
+    if (api) {
+      api.changeView(view);
+    }
   };
-  getFormattedDate = (date) => {
+
+  const getFormattedDate = (date) => {
     return moment(date).format("YYYY-MM-DD");
   };
-  toggleModal = () => {
-    this.setState({ modal: !this.state.modal });
-  };
-  toggleModalEvent = () => {
-    this.setState({ modalEvent: !this.state.modalEvent });
-  };
 
-  render() {
-    const {
-      event,
-      currentMonth,
-      currentDay,
-      calendarOptions,
-      modal,
-      modalEvent,
-    } = this.state;
-    return (
-      <div className={s.root}>
-        <Row>
-          <Col lg={4} xs={12} md={6}>
-            <h1 className="page-title">
-              {currentMonth} -{" "}
-              <span className="fw-semi-bold">{currentDay}</span>
-            </h1>
-            <h3>
-              Draggable <span className="fw-semi-bold">Events</span>
-            </h3>
-            <p>
-              Just drap and drop events from there directly into the calendar.
-            </p>
+  const {
+    event,
+    currentMonth,
+    currentDay,
+    calendarOptions,
+    modal,
+    modalEvent,
+    calendarView,
+    calendarPlugins,
+  } = state;
+
+  return (
+    <div className={s.root}>
+      <Row>
+        <Col lg={4} xs={12} md={6}>
+          <h1 className="page-title">
+            {currentMonth} -{" "}
+            <span className="fw-semi-bold">{currentDay}</span>
+          </h1>
+          <h3>
+            Draggable <span className="fw-semi-bold">Events</span>
+          </h3>
+          <p>
+            Just drap and drop events from there directly into the calendar.
+          </p>
+          <div
+            ref={externalEventsRef}
+            className="calendar-external-events mb-lg"
+          >
             <div
-              ref={(node) => {
-                this.externalEvents = node;
-              }}
-              className="calendar-external-events mb-lg"
+              data-event='{ "classNames": ["bg-success", "text-white"], "title": "Make a tea" }'
+              className="external-event draggable"
             >
-              <div
-                data-event='{ "classNames": ["bg-success", "text-white"], "title": "Make a tea" }'
-                className="external-event draggable"
-              >
-                <div className={s.customExternalEvent}>
-                  <i className="fa fa-circle fa-fw text-success ms-1 me-2" />
-                  Make a tea
-                </div>
-              </div>
-              <div
-                data-event='{ "classNames": ["bg-warning", "text-white"], "title": "Open windows" }'
-                className="external-event draggable"
-              >
-                <div className={s.customExternalEvent}>
-                  <i className="fa fa-circle fa-fw text-warning ms-1 me-2" />
-                  Open windows
-                </div>
-              </div>
-              <div
-                data-event='{ "classNames": ["bg-primary", "text-white"], "title": "Some stuff" }'
-                className="external-event draggable"
-              >
-                <div className={s.customExternalEvent}>
-                  <i className="fa fa-circle fa-fw text-primary ms-1 me-2" />
-                  Some stuff
-                </div>
-              </div>
-              <div
-                data-event='{ "classNames": ["bg-danger", "text-white"], "title": "Study UX engineering" }'
-                className="external-event draggable"
-              >
-                <div className={s.customExternalEvent}>
-                  <i className="fa fa-square fa-fw text-danger ms-1 me-2" />
-                  Study UX engineering
-                </div>
-              </div>
-              <div
-                data-event='{ "classNames": ["bg-gray", "text-white"], "title": "Another stuff" }'
-                className="external-event draggable"
-              >
-                <div className={s.customExternalEvent}>
-                  <i className="fa fa-circle-o fa-fw text-gray-light ms-1 me-2" />
-                  Another stuff
-                </div>
+              <div className={s.customExternalEvent}>
+                <i className="fa fa-circle fa-fw text-success ms-1 me-2" />
+                Make a tea
               </div>
             </div>
-          </Col>
-          <Col md={6} lg={8} xs={12}>
-            <Widget>
-              <Row className="calendar-controls">
-                <Col md={3}>
-                  <ButtonGroup className="me-3 mb-3">
-                    <Button color="default" onClick={this.prev}>
-                      <i className="fa fa-angle-left" />
-                    </Button>
-                    <Button color="default" onClick={this.next}>
-                      <i className="fa fa-angle-right" />
-                    </Button>
-                  </ButtonGroup>
-                  <Button className="mb-3" color="default" onClick={this.today}>
-                    Today
+            <div
+              data-event='{ "classNames": ["bg-warning", "text-white"], "title": "Open windows" }'
+              className="external-event draggable"
+            >
+              <div className={s.customExternalEvent}>
+                <i className="fa fa-circle fa-fw text-warning ms-1 me-2" />
+                Open windows
+              </div>
+            </div>
+            <div
+              data-event='{ "classNames": ["bg-primary", "text-white"], "title": "Some stuff" }'
+              className="external-event draggable"
+            >
+              <div className={s.customExternalEvent}>
+                <i className="fa fa-circle fa-fw text-primary ms-1 me-2" />
+                Some stuff
+              </div>
+            </div>
+            <div
+              data-event='{ "classNames": ["bg-danger", "text-white"], "title": "Study UX engineering" }'
+              className="external-event draggable"
+            >
+              <div className={s.customExternalEvent}>
+                <i className="fa fa-square fa-fw text-danger ms-1 me-2" />
+                Study UX engineering
+              </div>
+            </div>
+            <div
+              data-event='{ "classNames": ["bg-gray", "text-white"], "title": "Another stuff" }'
+              className="external-event draggable"
+            >
+              <div className={s.customExternalEvent}>
+                <i className="fa fa-circle-o fa-fw text-gray-light ms-1 me-2" />
+                Another stuff
+              </div>
+            </div>
+          </div>
+        </Col>
+        <Col md={6} lg={8} xs={12}>
+          <Widget>
+            <Row className="calendar-controls">
+              <Col md={3}>
+                <ButtonGroup className="me-3 mb-3">
+                  <Button color="default" onClick={prev}>
+                    <i className="fa fa-angle-left" />
                   </Button>
-                </Col>
-                <Col md={9} className="calendar-controls text-end">
-                  <ButtonGroup className="mb-3">
-                    <Button
-                      color="default"
-                      onClick={() => this.changeView("dayGridMonth")}
-                      active={this.state.calendarView === "dayGridMonth"}
-                    >
-                      Month
-                    </Button>
-                    <Button
-                      color="default"
-                      onClick={() => this.changeView("timeGridWeek")}
-                      active={this.state.calendarView === "timeGridWeek"}
-                    >
-                      Week
-                    </Button>
-                    <Button
-                      color="default"
-                      onClick={() => this.changeView("timeGridDay")}
-                      active={this.state.calendarView === "timeGridDay"}
-                    >
-                      Day
-                    </Button>
-                    <Button
-                      color="default"
-                      onClick={() => this.changeView("list")}
-                      active={this.state.calendarView === "list"}
-                    >
-                      List
-                    </Button>
-                  </ButtonGroup>
-                </Col>
-              </Row>
+                  <Button color="default" onClick={next}>
+                    <i className="fa fa-angle-right" />
+                  </Button>
+                </ButtonGroup>
+                <Button className="mb-3" color="default" onClick={today}>
+                  Today
+                </Button>
+              </Col>
+              <Col md={9} className="calendar-controls text-end">
+                <ButtonGroup className="mb-3">
+                  <Button
+                    color="default"
+                    onClick={() => changeView("dayGridMonth")}
+                    active={calendarView === "dayGridMonth"}
+                  >
+                    Month
+                  </Button>
+                  <Button
+                    color="default"
+                    onClick={() => changeView("timeGridWeek")}
+                    active={calendarView === "timeGridWeek"}
+                  >
+                    Week
+                  </Button>
+                  <Button
+                    color="default"
+                    onClick={() => changeView("timeGridDay")}
+                    active={calendarView === "timeGridDay"}
+                  >
+                    Day
+                  </Button>
+                  <Button
+                    color="default"
+                    onClick={() => changeView("listWeek")}
+                    active={calendarView === "listWeek"}
+                  >
+                    List
+                  </Button>
+                </ButtonGroup>
+              </Col>
+            </Row>
 
-              <FullCalendar
-                ref={(node) => {
-                  this.fullCalendar = node;
-                }}
-                defaultView="dayGridMonth"
-                plugins={this.state.calendarPlugins}
-                select={this.select}
-                eventClick={this.eventClick}
-                drop={this.drop}
-                {...calendarOptions}
-              />
-            </Widget>
-          </Col>
-        </Row>
-
-        <Modal isOpen={modal} toggle={this.toggleModal} id="news-close-modal">
-          <ModalHeader toggle={this.toggleModal} id="news-close-modal-label">
-            Create New Event
-          </ModalHeader>
-          <ModalBody>
-            Just enter event name to create a new one
-            <Input
-              onChange={this.handleChange}
-              className={`${s.calendarModalInput} border-0`}
-              value={event.title}
-              type="text"
-              name="title"
-              placeholder="Title"
+            <FullCalendar
+              ref={fullCalendarRef}
+              initialView="dayGridMonth"
+              plugins={calendarPlugins}
+              select={select}
+              eventClick={eventClick}
+              drop={drop}
+              {...calendarOptions}
             />
-          </ModalBody>
-          <ModalFooter>
-            <Button
-              color="default"
-              onClick={this.toggleModal}
-              data-dismiss="modal"
-            >
-              Close
-            </Button>{" "}
-            <Button
-              color="success"
-              onClick={this.createEvent}
-              id="news-widget-remove"
-              className="ms-3"
-            >
-              Create
-            </Button>
-          </ModalFooter>
-        </Modal>
+          </Widget>
+        </Col>
+      </Row>
 
-        <Modal
-          isOpen={modalEvent}
-          toggle={this.toggleModalEvent}
-          id="news-close-modal"
-        >
-          <ModalHeader
-            toggle={this.toggleModalEvent}
-            id="news-close-modal-label"
+      <Modal isOpen={modal} toggle={toggleModal} id="news-close-modal">
+        <ModalHeader toggle={toggleModal} id="news-close-modal-label">
+          Create New Event
+        </ModalHeader>
+        <ModalBody>
+          Just enter event name to create a new one
+          <Input
+            onChange={handleChange}
+            className={`${s.calendarModalInput} border-0`}
+            value={event.title}
+            type="text"
+            name="title"
+            placeholder="Title"
+          />
+        </ModalBody>
+        <ModalFooter>
+          <Button
+            color="default"
+            onClick={toggleModal}
+            data-dismiss="modal"
           >
-            {event.title}
-          </ModalHeader>
-          <ModalBody>
-            <p className="text-muted">
-              <i className="la la-calendar"></i>
-              {this.getFormattedDate(event.start)}
-            </p>
-            <p>{event.extendedProps && event.extendedProps.description}</p>
-          </ModalBody>
-          <ModalFooter>
-            <Button
-              color="default"
-              onClick={this.toggleModalEvent}
-              data-dismiss="modal"
-            >
-              OK
-            </Button>
-          </ModalFooter>
-        </Modal>
-      </div>
-    );
-  }
-}
+            Close
+          </Button>{" "}
+          <Button
+            color="success"
+            onClick={createEvent}
+            id="news-widget-remove"
+            className="ms-3"
+          >
+            Create
+          </Button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal
+        isOpen={modalEvent}
+        toggle={toggleModalEvent}
+        id="news-close-modal"
+      >
+        <ModalHeader
+          toggle={toggleModalEvent}
+          id="news-close-modal-label"
+        >
+          {event.title}
+        </ModalHeader>
+        <ModalBody>
+          <p className="text-muted">
+            <i className="la la-calendar"></i>
+            {getFormattedDate(event.start)}
+          </p>
+          <p>{event.extendedProps && event.extendedProps.description}</p>
+        </ModalBody>
+        <ModalFooter>
+          <Button
+            color="default"
+            onClick={toggleModalEvent}
+            data-dismiss="modal"
+          >
+            OK
+          </Button>
+        </ModalFooter>
+      </Modal>
+    </div>
+  );
+};
 
 export default Calendar;

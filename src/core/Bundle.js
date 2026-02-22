@@ -1,51 +1,31 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-class Bundle extends Component {
-  static propTypes = {
-    load: PropTypes.func.isRequired,
-    children: PropTypes.func.isRequired,
-  };
+const Bundle = ({ load, children }) => {
+  const [mod, setMod] = useState(null);
 
-  static generateBundle = loadModule => () => (
-    /* eslint-disable */
-    <Bundle load={loadModule}>
-      {Mod => Mod ? <Mod /> : <div style={{ textAlign: 'center', paddingTop: '35vh' }}>Loading</div>}
-    </Bundle>
-    /* eslint-enable */
-    );
-
-
-  state = {
-    // short for "module" but that's a keyword in js, so "mod"
-    mod: null,
-  };
-
-  componentDidMount() {
-    this.load(this.props);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.load !== this.props.load) {
-      this.load(this.props);
-    }
-  }
-
-  load(props) {
-    this.setState({
-      mod: null,
+  useEffect(() => {
+    setMod(null);
+    load((nextMod) => {
+      // handle both es imports and cjs
+      setMod(nextMod.default ? nextMod.default : nextMod);
     });
-    props.load((mod) => {
-      this.setState({
-        // handle both es imports and cjs
-        mod: mod.default ? mod.default : mod,
-      });
-    });
-  }
+  }, [load]);
 
-  render() {
-    return this.props.children(this.state.mod);
-  }
-}
+  return children(mod);
+};
+
+Bundle.propTypes = {
+  load: PropTypes.func.isRequired,
+  children: PropTypes.func.isRequired,
+};
+
+Bundle.generateBundle = loadModule => () => (
+  /* eslint-disable */
+  <Bundle load={loadModule}>
+    {Mod => Mod ? <Mod /> : <div style={{ textAlign: 'center', paddingTop: '35vh' }}>Loading</div>}
+  </Bundle>
+  /* eslint-enable */
+  );
 
 export default Bundle;

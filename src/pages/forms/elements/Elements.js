@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Row,
   Col,
@@ -17,11 +17,10 @@ import {
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
 import Datetime from 'react-datetime';
-import ColorPicker from 'rc-color-picker';
-import MaskedInput from 'react-maskedinput';
-import Slider, { Range, createSliderWithTooltip } from 'rc-slider';
+import MaskedInput from 'components/MaskedInputField';
+import Slider from 'rc-slider';
 import Dropzone from 'react-dropzone';
-import TextareaAutosize from 'react-autosize-textarea';
+import TextareaAutosize from 'components/AutoResizeTextarea';
 import Select from 'react-select';
 
 import MarkdownEditorComp from './Markdown';
@@ -32,16 +31,10 @@ import s from './Elements.module.scss';
 import 'rc-slider/assets/index.css';
 import imageUpload from '../../../images/image-upload.svg';
 
-const SliderWithTooltip = createSliderWithTooltip(Slider);
-const RangeTooltip = createSliderWithTooltip(Range);
 
 
-class Elements extends React.Component {
-
-  constructor(props) {
-    super(props);
-    
-    this.state = {
+const Elements = () => {
+  const [state, setComponentState] = useState({
       dropDownValue: 'Another type',
       simpleSelectDropdownValue: 'Option one',
       greenSelectDropdownValue: 'Hichi',
@@ -90,102 +83,118 @@ class Elements extends React.Component {
       dropFiles: [],
       inputFiles: [],
       imageFiles: [],
-    };
-  }
+  });
 
-  onEditorStateChange = (editorState) => {
-    this.setState({
+  const setState = (value) => {
+    if (typeof value === 'function') {
+      setComponentState((prevState) => ({
+        ...prevState,
+        ...value(prevState),
+      }));
+      return;
+    }
+
+    setComponentState((prevState) => ({
+      ...prevState,
+      ...value,
+    }));
+  };
+
+  const onEditorStateChange = (editorState) => {
+    setState({
       editorState,
     });
   }
 
-  onDrop = (files) => {
-    this.setState({
+  const onDrop = (files) => {
+    setState({
       dropFiles: files,
     });
   }
 
-  onChangeInputFiles = (e) => {
+  const onChangeInputFiles = (e) => {
     const files = [];
     let i = 0;
     for (i; i < e.target.files.length; i += 1) {
       files.push(e.target.files[i]);
     }
-    this.setState({
+    setState({
       inputFiles: files,
     });
   }
 
-  onChangeInputImage = (e) => {
+  const onChangeInputImage = (e) => {
     const files = [];
     const reader = new FileReader();
     files.push(e.target.files[0]);
     reader.onloadend = () => {
       files[0].preview = reader.result;
       files[0].toUpload = true;
-      this.setState({
+      setState({
         imageFiles: files,
       });
     };
     reader.readAsDataURL(e.target.files[0]);
   }
 
-  changeValueDropdown = (e) => {
-    this.setState({ dropDownValue: e.currentTarget.textContent });
+  const changeValueDropdown = (e) => {
+    setState({ dropDownValue: e.currentTarget.textContent });
   }
 
-  changeSelectDropdownGreen = (e) => {
-    this.setState({ greenSelectDropdownValue: e.currentTarget.textContent });
+  const changeSelectDropdownGreen = (e) => {
+    setState({ greenSelectDropdownValue: e.currentTarget.textContent });
   }
 
-  changeSelectDropdownOrange = (e) => {
-    this.setState({ orangeSelectDropdownValue: e.currentTarget.textContent });
+  const changeSelectDropdownOrange = (e) => {
+    setState({ orangeSelectDropdownValue: e.currentTarget.textContent });
   }
 
-  changeSelectDropdownRed = (e) => {
-    this.setState({ redSelectDropdownValue: e.currentTarget.textContent });
+  const changeSelectDropdownRed = (e) => {
+    setState({ redSelectDropdownValue: e.currentTarget.textContent });
   }
 
-  changeSelectDropdownBig = (e) => {
-    this.setState({ bigSelectDropdownValue: e.currentTarget.textContent });
+  const changeSelectDropdownBig = (e) => {
+    setState({ bigSelectDropdownValue: e.currentTarget.textContent });
   }
 
-  changeSelectDropdownSimple = (e) => {
-    this.setState({ simpleSelectDropdownValue: e.currentTarget.textContent });
+  const changeSelectDropdownSimple = (e) => {
+    setState({ simpleSelectDropdownValue: e.currentTarget.textContent });
   }
 
-  changeColorValue = (colors) => {
-    this.setState({
-      colorpickerValue: colors.color,
-      colorpickerInputValue: colors.color,
+  const changeColorValue = (valueOrEvent) => {
+    const color = valueOrEvent && valueOrEvent.target
+      ? valueOrEvent.target.value
+      : valueOrEvent.color;
+
+    setState({
+      colorpickerValue: color,
+      colorpickerInputValue: color,
     });
   }
 
-  changeColorInput = (e) => {
+  const changeColorInput = (e) => {
     if (e.target.value.length > 3 && e.target.value.length < 8) {
-      this.setState({
+      setState({
         colorpickerInputValue: e.target.value,
         colorpickerValue: e.target.value,
       });
     }
     if (e.target.value.length <= 3) {
-      this.setState({
+      setState({
         colorpickerInputValue: e.target.value,
       });
     }
   }
 
-  removeInputFiles = () => {
-    this.setState({
+  const removeInputFiles = () => {
+    setState({
       inputFiles: [],
     });
   }
 
-  valueFormatter = (v) => {
+  const valueFormatter = (v) => {
     return `${v}`;
   }
-
-  render() {
 
     return (
       <div className={s.root}>
@@ -419,16 +428,16 @@ class Elements extends React.Component {
                                 caret color="primary"
                                 className="dropdown-toggle-split"
                               >
-                                {this.state.dropDownValue}&nbsp;
+                                {state.dropDownValue}&nbsp;
                               </DropdownToggle>
                               <DropdownMenu>
-                                <DropdownItem onClick={this.changeValueDropdown}>
+                                <DropdownItem onClick={changeValueDropdown}>
                                   Another type
                                 </DropdownItem>
-                                <DropdownItem onClick={this.changeValueDropdown}>
+                                <DropdownItem onClick={changeValueDropdown}>
                                   Type one
                                 </DropdownItem>
-                                <DropdownItem onClick={this.changeValueDropdown}>
+                                <DropdownItem onClick={changeValueDropdown}>
                                   Next type
                                 </DropdownItem>
                               </DropdownMenu>
@@ -616,8 +625,8 @@ class Elements extends React.Component {
                     <Select 
                       classNamePrefix="react-select"
                       className="selectCustomization"
-                      options={this.state.selectDefaultData}
-                      defaultValue={this.state.selectDefaultData[1]}
+                      options={state.selectDefaultData}
+                      defaultValue={state.selectDefaultData[1]}
                     />
                   </Col>
                 </FormGroup>
@@ -627,7 +636,7 @@ class Elements extends React.Component {
                     <Select 
                       classNamePrefix="react-select"
                       className="selectCustomization"
-                      options={this.state.selectGroupData}
+                      options={state.selectGroupData}
                     />
                   </Col>
                 </FormGroup>
@@ -643,16 +652,16 @@ class Elements extends React.Component {
                         caret color="default"
                         className="dropdown-toggle-split me-1"
                       >
-                        {this.state.simpleSelectDropdownValue}&nbsp;
+                        {state.simpleSelectDropdownValue}&nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem onClick={this.changeSelectDropdownSimple}>
+                        <DropdownItem onClick={changeSelectDropdownSimple}>
                           Option One
                         </DropdownItem>
-                        <DropdownItem onClick={this.changeSelectDropdownSimple}>
+                        <DropdownItem onClick={changeSelectDropdownSimple}>
                           Option Two
                         </DropdownItem>
-                        <DropdownItem onClick={this.changeSelectDropdownSimple}>
+                        <DropdownItem onClick={changeSelectDropdownSimple}>
                           Option Three
                         </DropdownItem>
                       </DropdownMenu>
@@ -672,16 +681,16 @@ class Elements extends React.Component {
                         caret color="danger"
                         className="dropdown-toggle-split me-4"
                       >
-                        {this.state.redSelectDropdownValue}&nbsp;
+                        {state.redSelectDropdownValue}&nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem onClick={this.changeSelectDropdownRed}>
+                        <DropdownItem onClick={changeSelectDropdownRed}>
                           Ichi
                         </DropdownItem>
-                        <DropdownItem onClick={this.changeSelectDropdownRed}>
+                        <DropdownItem onClick={changeSelectDropdownRed}>
                           Ni
                         </DropdownItem>
-                        <DropdownItem onClick={this.changeSelectDropdownRed}>
+                        <DropdownItem onClick={changeSelectDropdownRed}>
                           San
                         </DropdownItem>
                       </DropdownMenu>
@@ -691,16 +700,16 @@ class Elements extends React.Component {
                         caret color="warning"
                         className="dropdown-toggle-split me-4"
                       >
-                        {this.state.orangeSelectDropdownValue}&nbsp;
+                        {state.orangeSelectDropdownValue}&nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem onClick={this.changeSelectDropdownOrange}>
+                        <DropdownItem onClick={changeSelectDropdownOrange}>
                           Shi
                         </DropdownItem>
-                        <DropdownItem onClick={this.changeSelectDropdownOrange}>
+                        <DropdownItem onClick={changeSelectDropdownOrange}>
                           Go
                         </DropdownItem>
-                        <DropdownItem onClick={this.changeSelectDropdownOrange}>
+                        <DropdownItem onClick={changeSelectDropdownOrange}>
                           Roku
                         </DropdownItem>
                       </DropdownMenu>
@@ -710,19 +719,19 @@ class Elements extends React.Component {
                         caret color="success"
                         className="dropdown-toggle-split"
                       >
-                        {this.state.greenSelectDropdownValue}&nbsp;
+                        {state.greenSelectDropdownValue}&nbsp;
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem onClick={this.changeSelectDropdownGreen}>
+                        <DropdownItem onClick={changeSelectDropdownGreen}>
                           Hichi
                         </DropdownItem>
-                        <DropdownItem onClick={this.changeSelectDropdownGreen}>
+                        <DropdownItem onClick={changeSelectDropdownGreen}>
                           Hachi
                         </DropdownItem>
-                        <DropdownItem onClick={this.changeSelectDropdownGreen}>
+                        <DropdownItem onClick={changeSelectDropdownGreen}>
                           Ku
                         </DropdownItem>
-                        <DropdownItem onClick={this.changeSelectDropdownGreen}>
+                        <DropdownItem onClick={changeSelectDropdownGreen}>
                           Ju
                         </DropdownItem>
                       </DropdownMenu>
@@ -744,16 +753,16 @@ class Elements extends React.Component {
                         caret color="default" size="lg"
                         className="dropdown-toggle-split"
                       >
-                        <span className="me-5"> {this.state.bigSelectDropdownValue}</span>
+                        <span className="me-5"> {state.bigSelectDropdownValue}</span>
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem onClick={this.changeSelectDropdownBig}>
+                        <DropdownItem onClick={changeSelectDropdownBig}>
                           Fourth Item
                         </DropdownItem>
-                        <DropdownItem onClick={this.changeSelectDropdownBig}>
+                        <DropdownItem onClick={changeSelectDropdownBig}>
                           Fifth Item
                         </DropdownItem>
-                        <DropdownItem onClick={this.changeSelectDropdownBig}>
+                        <DropdownItem onClick={changeSelectDropdownBig}>
                           Sixth Item
                         </DropdownItem>
                       </DropdownMenu>
@@ -1027,14 +1036,14 @@ class Elements extends React.Component {
                     </span>
                     <InputGroup id="colorpicker">
                       <Input
-                        type="text" onChange={this.changeColorInput} id="colorpickeri"
-                        value={this.state.colorpickerInputValue}
+                        type="text" onChange={changeColorInput} id="colorpickeri"
+                        value={state.colorpickerInputValue}
                       />
                       <InputGroupText>
-                        <ColorPicker
-                          animation="slide-up"
-                          color={this.state.colorpickerValue}
-                          onChange={this.changeColorValue}
+                        <Input
+                          type="color"
+                          value={state.colorpickerValue}
+                          onChange={changeColorValue}
                         />
                       </InputGroupText>
                     </InputGroup>
@@ -1109,37 +1118,27 @@ class Elements extends React.Component {
                     <Row>
                       <Col lg={10} md={8}>
                         <div className="mb-sm">
-                          <SliderWithTooltip  
-                            tipFormatter={this.valueFormatter}
-                            className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderBlue}`}
+                          <Slider  className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderBlue}`}
                             defaultValue={20}
                           />
                           </div>
                           <div className="slider-danger mb-sm">
-                            <SliderWithTooltip  
-                              tipFormatter={this.valueFormatter}
-                              className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderRed}`}
+                            <Slider  className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderRed}`}
                               defaultValue={60}
                             />
                           </div>
                           <div className="slider-warning mb-sm">
-                            <SliderWithTooltip  
-                              tipFormatter={this.valueFormatter}
-                              className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderYellow}`}
+                            <Slider  className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderYellow}`}
                               defaultValue={80}
                             />
                           </div>
                           <div className="slider-success mb-sm">
-                          <SliderWithTooltip  
-                            tipFormatter={this.valueFormatter}
-                            className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderGreen}`}
+                          <Slider  className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderGreen}`}
                             defaultValue={20}
                           />
                         </div>
                         <div className="slider-inverse mb-sm">
-                          <SliderWithTooltip  
-                            tipFormatter={this.valueFormatter}
-                            className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderInfo}`} 
+                          <Slider  className={`${s.sliderCustomization} ${s.horizontalSlider} ${s.sliderInfo}`} 
                             defaultValue={40}
                           />
                         </div>
@@ -1158,45 +1157,35 @@ class Elements extends React.Component {
                   <Row>
                     <Col lg={10}>
                       <span>
-                        <SliderWithTooltip  
-                          tipFormatter={this.valueFormatter} 
-                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
+                        <Slider  className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
                           vertical
                           defaultValue={50}
                         />
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span>
-                        <SliderWithTooltip  
-                          tipFormatter={this.valueFormatter} 
-                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
+                        <Slider  className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
                           vertical
                           defaultValue={70}
                         />
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span>
-                        <SliderWithTooltip  
-                          tipFormatter={this.valueFormatter} 
-                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
+                        <Slider  className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
                           vertical
                           defaultValue={20}
                         />
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span>
-                        <SliderWithTooltip  
-                          tipFormatter={this.valueFormatter} 
-                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
+                        <Slider  className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
                           vertical
                           defaultValue={30}
                         />
                       </span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span>
-                        <SliderWithTooltip  
-                          tipFormatter={this.valueFormatter} 
-                          className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
+                        <Slider  className={`${s.sliderCustomization} ${s.verticalSlider} ${s.sliderBlue}`}
                           vertical
                           defaultValue={40}
                         />
@@ -1213,7 +1202,8 @@ class Elements extends React.Component {
                   <Row>
                     <Col md={10}>
                       <span className="slider-warning">
-                        <RangeTooltip 
+                        <Slider 
+                          range
                           allowCross={false}
                           className={`${s.sliderCustomization} ${s.rangeSlider} ${s.sliderYellow}`}
                           defaultValue={[20, 70]} 
@@ -1252,18 +1242,18 @@ class Elements extends React.Component {
                   <Col md="8">
                     <InputGroup className="fileinput fileinput-new">
                       <input
-                        onChange={this.onChangeInputFiles}
+                        onChange={onChangeInputFiles}
                         id="fileupload1"
                         type="file" name="file" className="display-none"
                       />
                       <Label for="fileupload1" className="form-control">
-                        {this.state.inputFiles.length > 0 ? <div>
-                          {this.state.inputFiles.map((file, idx) => (
+                        {state.inputFiles.length > 0 ? <div>
+                          {state.inputFiles.map((file, idx) => (
                             <span key={`select-id-${idx.toString()}`} >{file.name}</span>
                           ))}
                         </div> : <span />}
                       </Label>
-                      {this.state.inputFiles.length === 0 ? <InputGroup>
+                      {state.inputFiles.length === 0 ? <InputGroup>
                         <Button type="button" color="default" className="btn-file">
                           <Label for="fileupload1">Select file</Label>
                         </Button>
@@ -1273,7 +1263,7 @@ class Elements extends React.Component {
                         </Button>
                         <Button
                           type="reset" color="default"
-                          onClick={this.removeInputFiles}
+                          onClick={removeInputFiles}
                         >
                           <Label>Remove file</Label>
                         </Button>
@@ -1291,14 +1281,14 @@ class Elements extends React.Component {
                   </Label>
                   <Col md="8">
                     <input
-                      accept="image/*" onChange={this.onChangeInputImage}
+                      accept="image/*" onChange={onChangeInputImage}
                       id="fileupload2"
                       type="file" name="file" className="display-none"
                     />
                     <div className="fileinput fileinput-new fileinput-fix">
                       <div className="fileinput-new thumbnail">
-                        {this.state.imageFiles.length > 0 ? <div>
-                          {this.state.imageFiles.map((file, idx) => (
+                        {state.imageFiles.length > 0 ? <div>
+                          {state.imageFiles.map((file, idx) => (
                             <img alt="..." src={file.preview} key={`img-id-${idx.toString()}`} />))}
                         </div> : <img
                           alt="..."
@@ -1340,7 +1330,6 @@ class Elements extends React.Component {
         </Row>
       </div> 
     );
-  }
-}
+};
 
 export default Elements;

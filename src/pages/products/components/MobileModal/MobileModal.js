@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -9,76 +9,74 @@ import backImg from '../../../../images/back.svg';
 
 import s from './MobileModal.module.scss';
 
-class MobileModal extends Component {
-  state = {
-    data: this.props.data,
-    isPages: typeof this.props.data.data[0] !== 'string',
-    isPageOpened: false,
-    activePageId: 0,
-    activeOptions: {},
-  }
+const MobileModal = ({ active, close, data: modalData }) => {
+  const [isPageOpened, setIsPageOpened] = useState(false);
+  const [activePageId, setActivePageId] = useState(0);
+  const [activeOptions, setActiveOptions] = useState({});
+  const isPages = typeof modalData.data[0] !== 'string';
 
-  toggleOptionActive(field, value) {
+  const toggleOptionActive = (field, value) => {
     const newActiveOption = {
-      ...this.state.activeOptions,
+      ...activeOptions,
       [field]: value,
     };
 
-    this.setState({ activeOptions: newActiveOption });
-  }
+    setActiveOptions(newActiveOption);
+  };
 
-  handleBackClick = () => {
-    this.setState({ activePageId: null, isPageOpened: false });
-  }
+  const handleBackClick = () => {
+    setActivePageId(null);
+    setIsPageOpened(false);
+  };
 
-  handleCloseClick = () => {
-    this.setState({ activePageId: null, isPageOpened: false });
+  const handleCloseClick = () => {
+    setActivePageId(null);
+    setIsPageOpened(false);
 
-    this.props.close();
-  }
+    close();
+  };
 
-  openPage(index) {
-    this.setState({ activePageId: index, isPageOpened: true });
-  }
+  const openPage = (index) => {
+    setActivePageId(index);
+    setIsPageOpened(true);
+  };
 
-  render() {
-    const { active } = this.props;
-    const { activePageId, isPages, isPageOpened, data: { data, title }, activeOptions } = this.state;
-    const openedPage = isPageOpened && data[activePageId];
-    const renderedTitle = openedPage ? openedPage.label : title;
-    return (
-      <div className={cx(s.mobileModal, { [s.mobileModalActive]: active })}>
-        <div className={s.mobileModalTitle}>
-          <button onClick={openedPage ? this.handleBackClick : this.handleCloseClick}>
-            <img className={cx({ back: openedPage })} src={openedPage ? backImg : closeImg} alt="close" />
-          </button>
-          <h5>{renderedTitle}</h5>
-        </div>
-        <ul className={s.mobileModalBody}>
-          {/* eslint-disable */}
-          {isPages
-            ? !isPageOpened
-              ? data.map(({ label, id }, index) => <li onClick={() => this.openPage(index)} key={id}>{label}</li>)
-              : openedPage.options.map((option, index) => <ModalMenuOption
-                active={activeOptions[renderedTitle] === index}
-                onClick={() => this.toggleOptionActive(renderedTitle, index)}
-                key={index}
-              >
-                {option}
-              </ModalMenuOption>)
-            : data.map((option, index) => <ModalMenuOption
+  const { data, title } = modalData;
+  const openedPage = isPageOpened && data[activePageId];
+  const renderedTitle = openedPage ? openedPage.label : title;
+
+  return (
+    <div className={cx(s.mobileModal, { [s.mobileModalActive]: active })}>
+      <div className={s.mobileModalTitle}>
+        <button onClick={openedPage ? handleBackClick : handleCloseClick}>
+          <img className={cx({ back: openedPage })} src={openedPage ? backImg : closeImg} alt="close" />
+        </button>
+        <h5>{renderedTitle}</h5>
+      </div>
+      <ul className={s.mobileModalBody}>
+        {/* eslint-disable */}
+        {isPages
+          ? !isPageOpened
+            ? data.map(({ label, id }, index) => <li onClick={() => openPage(index)} key={id}>{label}</li>)
+            : openedPage.options.map((option, index) => <ModalMenuOption
               active={activeOptions[renderedTitle] === index}
-              onClick={() => this.toggleOptionActive(renderedTitle, index)}
+              onClick={() => toggleOptionActive(renderedTitle, index)}
               key={index}
             >
               {option}
-            </ModalMenuOption>)}
-          {/* eslint-enable */}
-        </ul>
-      </div >
-    );
-  }
-}
+            </ModalMenuOption>)
+          : data.map((option, index) => <ModalMenuOption
+            active={activeOptions[renderedTitle] === index}
+            onClick={() => toggleOptionActive(renderedTitle, index)}
+            key={index}
+          >
+            {option}
+          </ModalMenuOption>)}
+        {/* eslint-enable */}
+      </ul>
+    </div >
+  );
+};
 
 MobileModal.propTypes = {
   active: PropTypes.bool,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Row,
   Col,
@@ -18,12 +18,8 @@ import { Sparklines, SparklinesBars } from 'react-sparklines';
 import Widget from '../../../components/Widget';
 import s from './Static.module.scss';
 
-class Static extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
+const Static = () => {
+  const [state, setComponentState] = useState({
       tableStyles: [
         {
           id: 1,
@@ -108,39 +104,48 @@ class Static extends React.Component {
       checkboxes1: [false, true, false, false],
       checkboxes2: [false, false, false, false, false, false],
       checkboxes3: [false, false, false, false, false, false],
-    };
+  });
 
-    this.checkAll = this.checkAll.bind(this);
-  }
+  const setState = (value) => {
+    if (typeof value === 'function') {
+      setComponentState((prevState) => ({
+        ...prevState,
+        ...value(prevState),
+      }));
+      return;
+    }
 
-  parseDate(date) {
-    this.dateSet = date.toDateString().split(' ');
+    setComponentState((prevState) => ({
+      ...prevState,
+      ...value,
+    }));
+  };
 
-    return `${date.toLocaleString('en-us', { month: 'long' })} ${this.dateSet[2]}, ${this.dateSet[3]}`;
-  }
+  const parseDate = (date) => {
+    const dateSet = date.toDateString().split(' ');
+    return `${date.toLocaleString('en-us', { month: 'long' })} ${dateSet[2]}, ${dateSet[3]}`;
+  };
 
-  checkAll(ev, checkbox) {
-    const checkboxArr = (new Array(this.state[checkbox].length)).fill(ev.target.checked);
-    this.setState({
+  const checkAll = (ev, checkbox) => {
+    const checkboxArr = (new Array(state[checkbox].length)).fill(ev.target.checked);
+    setState({
       [checkbox]: checkboxArr,
     });
-  }
+  };
 
-  changeCheck(ev, checkbox, id) {
-    //eslint-disable-next-line
-    this.state[checkbox][id] = ev.target.checked;
+  const changeCheck = (ev, checkbox, id) => {
+    const nextCheckboxes = [...state[checkbox]];
+    nextCheckboxes[id] = ev.target.checked;
     if (!ev.target.checked) {
-      //eslint-disable-next-line
-      this.state[checkbox][0] = false;
+      nextCheckboxes[0] = false;
     }
-    this.setState({
-      [checkbox]: this.state[checkbox],
+    setState({
+      [checkbox]: nextCheckboxes,
     });
-  }
+  };
 
-  render() {
-    return (
-      <div className={s.root}>
+  return (
+    <div className={s.root}>
         <h2 className="page-title">Tables - <span className="fw-semi-bold">Static</span></h2>
         <Row>
           <Col>
@@ -164,7 +169,7 @@ class Static extends React.Component {
                 </thead>
                 <tbody>
                   {
-                  this.state.tableStyles.map(row =>
+                  state.tableStyles.map(row =>
                     <tr key={row.id}>
                       <td>{row.id}</td>
                       <td>
@@ -193,7 +198,7 @@ class Static extends React.Component {
                         </p>
                       </td>
                       <td className="text-muted">
-                        {this.parseDate(row.date)}
+                        {parseDate(row.date)}
                       </td>
                       <td className="text-muted">
                         {row.size}
@@ -243,8 +248,8 @@ class Static extends React.Component {
                       <th>
                         <div className="abc-checkbox">
                           <Input
-                            id="checkbox1" type="checkbox" checked={this.state.checkboxes1[0]}
-                            onChange={event => this.checkAll(event, 'checkboxes1')}
+                            id="checkbox1" type="checkbox" checked={state.checkboxes1[0]}
+                            onChange={event => checkAll(event, 'checkboxes1')}
                           />
                           <Label for="checkbox1" />
                         </div>
@@ -259,8 +264,8 @@ class Static extends React.Component {
                       <td>
                         <div className="abc-checkbox">
                           <Input
-                            id="checkbox2" type="checkbox" checked={this.state.checkboxes1[1]}
-                            onChange={event => this.changeCheck(event, 'checkboxes1', 1)}
+                            id="checkbox2" type="checkbox" checked={state.checkboxes1[1]}
+                            onChange={event => changeCheck(event, 'checkboxes1', 1)}
                           />
                           <Label for="checkbox2" />
                         </div>
@@ -273,8 +278,8 @@ class Static extends React.Component {
                       <td>
                         <div className="abc-checkbox">
                           <Input
-                            id="checkbox3" type="checkbox" checked={this.state.checkboxes1[2]}
-                            onChange={event => this.changeCheck(event, 'checkboxes1', 2)}
+                            id="checkbox3" type="checkbox" checked={state.checkboxes1[2]}
+                            onChange={event => changeCheck(event, 'checkboxes1', 2)}
                           />
                           <Label for="checkbox3" />
                         </div>
@@ -287,8 +292,8 @@ class Static extends React.Component {
                       <td>
                         <div className="abc-checkbox">
                           <Input
-                            id="checkbox4" type="checkbox" checked={this.state.checkboxes1[3]}
-                            onChange={event => this.changeCheck(event, 'checkboxes1', 3)}
+                            id="checkbox4" type="checkbox" checked={state.checkboxes1[3]}
+                            onChange={event => changeCheck(event, 'checkboxes1', 3)}
                           />
                           <Label for="checkbox4" />
                         </div>
@@ -364,8 +369,8 @@ class Static extends React.Component {
                     <th>
                       <div className="abc-checkbox">
                         <Input
-                          id="checkbox10" type="checkbox" checked={this.state.checkboxes2[0]}
-                          onChange={event => this.checkAll(event, 'checkboxes2')}
+                          id="checkbox10" type="checkbox" checked={state.checkboxes2[0]}
+                          onChange={event => checkAll(event, 'checkboxes2')}
                         />
                         <Label for="checkbox10" />
                       </div>
@@ -380,8 +385,8 @@ class Static extends React.Component {
                     <td>
                       <div className="abc-checkbox">
                         <Input
-                          id="checkbox11" type="checkbox" checked={this.state.checkboxes2[1]}
-                          onChange={event => this.changeCheck(event, 'checkboxes2', 1)}
+                          id="checkbox11" type="checkbox" checked={state.checkboxes2[1]}
+                          onChange={event => changeCheck(event, 'checkboxes2', 1)}
                         />
                         <Label for="checkbox11" />
                       </div>
@@ -398,8 +403,8 @@ class Static extends React.Component {
                     <td>
                       <div className="abc-checkbox">
                         <Input
-                          id="checkbox12" type="checkbox" checked={this.state.checkboxes2[2]}
-                          onChange={event => this.changeCheck(event, 'checkboxes2', 2)}
+                          id="checkbox12" type="checkbox" checked={state.checkboxes2[2]}
+                          onChange={event => changeCheck(event, 'checkboxes2', 2)}
                         />
                         <Label for="checkbox12" />
                       </div>
@@ -416,8 +421,8 @@ class Static extends React.Component {
                     <td>
                       <div className="abc-checkbox">
                         <Input
-                          id="checkbox13" type="checkbox" checked={this.state.checkboxes2[3]}
-                          onChange={event => this.changeCheck(event, 'checkboxes2', 3)}
+                          id="checkbox13" type="checkbox" checked={state.checkboxes2[3]}
+                          onChange={event => changeCheck(event, 'checkboxes2', 3)}
                         />
                         <Label for="checkbox13" />
                       </div>
@@ -434,8 +439,8 @@ class Static extends React.Component {
                     <td>
                       <div className="abc-checkbox">
                         <Input
-                          id="checkbox14" type="checkbox" checked={this.state.checkboxes2[4]}
-                          onChange={event => this.changeCheck(event, 'checkboxes2', 4)}
+                          id="checkbox14" type="checkbox" checked={state.checkboxes2[4]}
+                          onChange={event => changeCheck(event, 'checkboxes2', 4)}
                         />
                         <Label for="checkbox14" />
                       </div>
@@ -452,8 +457,8 @@ class Static extends React.Component {
                     <td>
                       <div className="abc-checkbox">
                         <Input
-                          id="checkbox15" type="checkbox" checked={this.state.checkboxes2[5]}
-                          onChange={event => this.changeCheck(event, 'checkboxes2', 5)}
+                          id="checkbox15" type="checkbox" checked={state.checkboxes2[5]}
+                          onChange={event => changeCheck(event, 'checkboxes2', 5)}
                         />
                         <Label for="checkbox15" />
                       </div>
@@ -486,8 +491,8 @@ class Static extends React.Component {
                       <th>
                         <div className="abc-checkbox">
                           <Input
-                            id="checkbox20" type="checkbox" checked={this.state.checkboxes3[0]}
-                            onChange={event => this.checkAll(event, 'checkboxes3')}
+                            id="checkbox20" type="checkbox" checked={state.checkboxes3[0]}
+                            onChange={event => checkAll(event, 'checkboxes3')}
                           />
                           <Label for="checkbox20" />
                         </div>
@@ -502,8 +507,8 @@ class Static extends React.Component {
                       <td>
                         <div className="abc-checkbox">
                           <Input
-                            id="checkbox21" type="checkbox" checked={this.state.checkboxes3[1]}
-                            onChange={event => this.changeCheck(event, 'checkboxes3', 1)}
+                            id="checkbox21" type="checkbox" checked={state.checkboxes3[1]}
+                            onChange={event => changeCheck(event, 'checkboxes3', 1)}
                           />
                           <Label for="checkbox21" />
                         </div>
@@ -520,8 +525,8 @@ class Static extends React.Component {
                       <td>
                         <div className="abc-checkbox">
                           <Input
-                            id="checkbox22" type="checkbox" checked={this.state.checkboxes3[2]}
-                            onChange={event => this.changeCheck(event, 'checkboxes3', 2)}
+                            id="checkbox22" type="checkbox" checked={state.checkboxes3[2]}
+                            onChange={event => changeCheck(event, 'checkboxes3', 2)}
                           />
                           <Label for="checkbox22" />
                         </div>
@@ -538,8 +543,8 @@ class Static extends React.Component {
                       <td>
                         <div className="abc-checkbox">
                           <Input
-                            id="checkbox23" type="checkbox" checked={this.state.checkboxes3[3]}
-                            onChange={event => this.changeCheck(event, 'checkboxes3', 3)}
+                            id="checkbox23" type="checkbox" checked={state.checkboxes3[3]}
+                            onChange={event => changeCheck(event, 'checkboxes3', 3)}
                           />
                           <Label for="checkbox23" />
                         </div>
@@ -556,8 +561,8 @@ class Static extends React.Component {
                       <td>
                         <div className="abc-checkbox">
                           <Input
-                            id="checkbox24" type="checkbox" checked={this.state.checkboxes3[4]}
-                            onChange={event => this.changeCheck(event, 'checkboxes3', 4)}
+                            id="checkbox24" type="checkbox" checked={state.checkboxes3[4]}
+                            onChange={event => changeCheck(event, 'checkboxes3', 4)}
                           />
                           <Label for="checkbox24" />
                         </div>
@@ -574,8 +579,8 @@ class Static extends React.Component {
                       <td>
                         <div className="abc-checkbox">
                           <Input
-                            id="checkbox25" type="checkbox" checked={this.state.checkboxes3[5]}
-                            onChange={event => this.changeCheck(event, 'checkboxes3', 5)}
+                            id="checkbox25" type="checkbox" checked={state.checkboxes3[5]}
+                            onChange={event => changeCheck(event, 'checkboxes3', 5)}
                           />
                           <Label for="checkbox25" />
                         </div>
@@ -595,9 +600,7 @@ class Static extends React.Component {
           </Col>
         </Row>
       </div>
-    );
-  }
-
-}
+  );
+};
 
 export default Static;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Table, Input, FormGroup, Label } from 'reactstrap';
@@ -12,44 +12,40 @@ import Message from '../Message/Message';
 import mock from '../../mock';
 import s from './MessageTable.module.scss';
 
-class MessageTable extends Component {
-  state = {
-    messages: mock,
-    checkedIds: [],
-    searchString: '',
-  }
+const MessageTable = ({
+  filter,
+  openedMessage,
+  openMessage,
+  compose,
+  composeData,
+  changeCompose,
+}) => {
+  const [messages, setMessages] = useState(mock);
+  const [checkedIds, setCheckedIds] = useState([]);
+  const [searchString, setSearchString] = useState('');
+  const prevFilterRef = useRef(filter);
 
-  componentDidUpdate(prevProps) {
-    const { filter, openMessage } = this.props;
+  const chooseNone = () => {
+    setCheckedIds([]);
+  };
 
-    if (filter !== prevProps.filter) {
-      this.chooseNone();
+  useEffect(() => {
+    if (filter !== prevFilterRef.current) {
+      chooseNone();
       openMessage(null);
+      prevFilterRef.current = filter;
     }
-  }
+  }, [filter, openMessage]);
 
-  chooseAll = () => {
-    const { messages } = this.state;
-    const { filter } = this.props;
-    const newCheckedIds = [];
+  const chooseAll = () => {
+    const data = filter
+      ? messages.filter((message) => message[filter])
+      : messages;
 
-    if (filter) {
-      messages
-        .filter(message => message[filter])
-        .forEach(message => newCheckedIds.push(message.id));
-    } else {
-      messages.forEach(message => newCheckedIds.push(message.id));
-    }
+    setCheckedIds(data.map((message) => message.id));
+  };
 
-    this.setState({ checkedIds: newCheckedIds });
-  }
-
-  chooseNone = () => {
-    this.setState({ checkedIds: [] });
-  }
-
-  chooseRead = () => {
-    const { messages } = this.state;
+  const chooseRead = () => {
     const newCheckedIds = [];
 
     messages.forEach((message) => {
@@ -58,13 +54,10 @@ class MessageTable extends Component {
       }
     });
 
-    this.setState({
-      checkedIds: newCheckedIds,
-    });
-  }
+    setCheckedIds(newCheckedIds);
+  };
 
-  chooseUnread = () => {
-    const { messages } = this.state;
+  const chooseUnread = () => {
     const newCheckedIds = [];
 
     messages.forEach((message) => {
@@ -73,204 +66,192 @@ class MessageTable extends Component {
       }
     });
 
-    this.setState({
-      checkedIds: newCheckedIds,
-    });
-  }
+    setCheckedIds(newCheckedIds);
+  };
 
-  choose(id) {
-    const { checkedIds } = this.state;
-    const indexOfId = checkedIds.indexOf(id);
+  const choose = (id) => {
+    setCheckedIds((prevCheckedIds) => {
+      const indexOfId = prevCheckedIds.indexOf(id);
 
-    if (indexOfId === -1) {
-      this.setState({ checkedIds: [...checkedIds, id] });
-    } else {
-      const newCheckedIds = [...checkedIds];
+      if (indexOfId === -1) {
+        return [...prevCheckedIds, id];
+      }
+
+      const newCheckedIds = [...prevCheckedIds];
       newCheckedIds.splice(indexOfId, 1);
-      this.setState({ checkedIds: newCheckedIds });
-    }
-  }
+      return newCheckedIds;
+    });
+  };
 
-  markUnread = () => {
-    const { messages, checkedIds } = this.state;
-    const newMessages = [...messages];
-
-    newMessages.map((message) => {
+  const markUnread = () => {
+    setMessages((prevMessages) => prevMessages.map((message) => {
       if (checkedIds.indexOf(message.id) !== -1) {
-        message.unreaded = true;
+        return {
+          ...message,
+          unreaded: true,
+        };
       }
       return message;
-    });
+    }));
+  };
 
-    this.setState({ messages: newMessages });
-  }
-
-  markRead = () => {
-    const { messages, checkedIds } = this.state;
-    const newMessages = [...messages];
-
-    newMessages.map((message) => {
+  const markRead = () => {
+    setMessages((prevMessages) => prevMessages.map((message) => {
       if (checkedIds.indexOf(message.id) !== -1) {
-        message.unreaded = false;
+        return {
+          ...message,
+          unreaded: false,
+        };
       }
       return message;
-    });
+    }));
+  };
 
-    this.setState({ messages: newMessages });
-  }
+  const deleteItems = () => {
+    setMessages((prevMessages) => prevMessages
+      .map((message) => {
+        if (checkedIds.indexOf(message.id) !== -1) {
+          return {
+            ...message,
+            deleted: true,
+          };
+        }
+        return message;
+      })
+      .filter((message) => !message.deleted));
 
-  delete = () => {
-    const { messages, checkedIds } = this.state;
-    const newMessages = [...messages];
+    setCheckedIds([]);
+  };
 
-    newMessages.map((message) => {
-      if (checkedIds.indexOf(message.id) !== -1) {
-        message.deleted = true;
-      }
-      return message;
-    });
-
-    this.setState({
-      messages: newMessages.filter(message => !message.deleted),
-      checkedIds: [],
-    });
-  }
-
-  starItem(id) {
-    const { messages } = this.state;
-    const isAlreadyStarred = messages.find(m => m.id === id).starred;
-    const newMessages = [...messages];
-
-    newMessages.map((message) => {
+  const starItem = (id) => {
+    setMessages((prevMessages) => prevMessages.map((message) => {
       if (message.id === id) {
-        message.starred = !isAlreadyStarred;
+        return {
+          ...message,
+          starred: !message.starred,
+        };
       }
+
       return message;
-    });
+    }));
+  };
 
-    this.setState({ messages: newMessages });
-  }
-
-  handleOpenMessage(id) {
-    const newMessages = [...this.state.messages];
-
-    newMessages.map((message) => {
+  const handleOpenMessage = (id) => {
+    setMessages((prevMessages) => prevMessages.map((message) => {
       if (message.id === id) {
-        message.unreaded = false;
+        return {
+          ...message,
+          unreaded: false,
+        };
       }
 
       return message;
-    });
+    }));
 
-    this.setState({ messages: newMessages });
+    openMessage(id);
+  };
 
-    this.props.openMessage(id);
-  }
+  const search = (value) => {
+    setSearchString(value.toLowerCase());
+  };
 
-  search = (value) => {
-    this.setState({ searchString: value.toLowerCase() });
-  }
-
-  _searchable(m) {
-    const { searchString } = this.state;
-
+  const isSearchable = (message) => {
     if (searchString) {
-      return (m.content.toLowerCase().indexOf(searchString) !== -1 ||
-        m.from.toLowerCase().indexOf(searchString) !== -1 ||
-        m.theme.toLowerCase().indexOf(searchString) !== -1);
+      return (
+        message.content.toLowerCase().indexOf(searchString) !== -1 ||
+        message.from.toLowerCase().indexOf(searchString) !== -1 ||
+        message.theme.toLowerCase().indexOf(searchString) !== -1
+      );
     }
 
     return true;
-  }
+  };
 
-  render() {
-    const { messages, checkedIds } = this.state;
-    const { filter, openedMessage, openMessage, compose, composeData, changeCompose } = this.props;
-    const filteredMessages = messages.filter(message => message[filter]);
-    const dataToDisplay = filter ? filteredMessages : messages;
-    return (
-      <div className={s.messages}>
-        {openedMessage === null && !compose
-          ? <Pagination />
-          : <button className={cx('btn btn-default', s.backButton)} onClick={() => openMessage(null)}>
-            <i className="fa fa-angle-left fa-lg" />
-          </button>
-        }
-        {/* eslint-disable */}
-        {openedMessage === null && !compose
-          ? <Widget>
-            <MessageTableHeader
-              all={this.chooseAll}
-              none={this.chooseNone}
-              read={this.chooseRead}
-              unread={this.chooseUnread}
-              markRead={this.markRead}
-              markUnread={this.markUnread}
-              deleteItems={this.delete}
-              search={this.search}
-            />
-            <Table hover>
-              <thead>
-                <tr>
-                  <th>
-                    <FormGroup className="checkbox abc-checkbox" check>
-                      <Input
-                        id="checkbox-main"
-                        type="checkbox"
-                        onChange={dataToDisplay.length !== checkedIds.length ? this.chooseAll : this.chooseNone}
-                        checked={dataToDisplay.length !== 0 && checkedIds.length === dataToDisplay.length}
-                      />{' '}
-                      <Label for="checkbox-main" check />
-                    </FormGroup>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {dataToDisplay
-                  .filter((m) => this._searchable(m))
-                  .map(message =>
-                    (<tr
-                      key={message.id}
-                      className={cx({ [s.unreadedMessage]: message.unreaded })}
-                    >
-                      <td className={s.messageCheckbox} >
-                        <FormGroup className="checkbox abc-checkbox" check>
-                          <Input
-                            id={`checkbox${message.id}`}
-                            type="checkbox"
-                            checked={checkedIds.indexOf(message.id) !== -1}
-                            onChange={() => this.choose(message.id)}
-                          />{' '}
-                          <Label for={`checkbox${message.id}`} check />
-                        </FormGroup>
-                      </td>
-                      <td
-                        className={s.messageStar}
-                        onClick={() => this.starItem(message.id)}>{message.starred
-                          ? <span className={s.messageStarred}><i className="fa fa-star text-success" /></span>
-                          : <span><i className="fa fa-star-o" /></span>}
-                      </td>
-                      <td
-                        className={s.messageFrom}
-                        onClick={() => this.handleOpenMessage(message.id)}
-                      >{message.from}</td>
-                      <td onClick={() => this.handleOpenMessage(message.id)}>{message.theme}</td>
-                      <td className={s.messageClip}>{message.attachments && <i className="fa fa-paperclip" />}</td>
-                      <td className={s.messageDate}>{message.date}</td>
-                    </tr>),
+  const filteredMessages = messages.filter((message) => message[filter]);
+  const dataToDisplay = filter ? filteredMessages : messages;
+
+  return (
+    <div className={s.messages}>
+      {openedMessage === null && !compose
+        ? <Pagination />
+        : <button className={cx('btn btn-default', s.backButton)} onClick={() => openMessage(null)}>
+          <i className="fa fa-angle-left fa-lg" />
+        </button>
+      }
+      {/* eslint-disable */}
+      {openedMessage === null && !compose
+        ? <Widget>
+          <MessageTableHeader
+            all={chooseAll}
+            none={chooseNone}
+            read={chooseRead}
+            unread={chooseUnread}
+            markRead={markRead}
+            markUnread={markUnread}
+            deleteItems={deleteItems}
+            search={search}
+          />
+          <Table hover>
+            <thead>
+              <tr>
+                <th>
+                  <FormGroup className="checkbox abc-checkbox" check>
+                    <Input
+                      id="checkbox-main"
+                      type="checkbox"
+                      onChange={dataToDisplay.length !== checkedIds.length ? chooseAll : chooseNone}
+                      checked={dataToDisplay.length !== 0 && checkedIds.length === dataToDisplay.length}
+                    />{' '}
+                    <Label for="checkbox-main" check />
+                  </FormGroup>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {dataToDisplay
+                .filter((message) => isSearchable(message))
+                .map((message) =>
+                  (<tr
+                    key={message.id}
+                    className={cx({ [s.unreadedMessage]: message.unreaded })}
+                  >
+                    <td className={s.messageCheckbox} >
+                      <FormGroup className="checkbox abc-checkbox" check>
+                        <Input
+                          id={`checkbox${message.id}`}
+                          type="checkbox"
+                          checked={checkedIds.indexOf(message.id) !== -1}
+                          onChange={() => choose(message.id)}
+                        />{' '}
+                        <Label for={`checkbox${message.id}`} check />
+                      </FormGroup>
+                    </td>
+                    <td
+                      className={s.messageStar}
+                      onClick={() => starItem(message.id)}>{message.starred
+                        ? <span className={s.messageStarred}><i className="fa fa-star text-success" /></span>
+                        : <span><i className="fa fa-star-o" /></span>}
+                    </td>
+                    <td
+                      className={s.messageFrom}
+                      onClick={() => handleOpenMessage(message.id)}
+                    >{message.from}</td>
+                    <td onClick={() => handleOpenMessage(message.id)}>{message.theme}</td>
+                    <td className={s.messageClip}>{message.attachments && <i className="fa fa-paperclip" />}</td>
+                    <td className={s.messageDate}>{message.date}</td>
+                  </tr>),
                 )}
-              </tbody>
-            </Table>
-          </Widget>
-          : compose
-            ? <Compose data={composeData} />
-            : <Message message={messages[openedMessage]} compose={changeCompose} />
-        }
-        {/* eslint-enable */}
-      </div>
-    );
-  }
-}
+            </tbody>
+          </Table>
+        </Widget>
+        : compose
+          ? <Compose data={composeData} />
+          : <Message message={messages[openedMessage]} compose={changeCompose} />
+      }
+      {/* eslint-enable */}
+    </div>
+  );
+};
 
 MessageTable.propTypes = {
   filter: PropTypes.string,

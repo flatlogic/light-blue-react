@@ -1,18 +1,14 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import Sparklines from '../../../../components/Sparklines'
 
-export default class LineChart extends PureComponent {
+const LineChart = ({ data, height, width, options }) => (
+  <Sparklines 
+    data={data} 
+    height={height}
+    width={width}
+    type={"line"}
+    options={options} 
+  />
+);
 
-  render() {
-    const { data, height, width, options } = this.props;
-    return (
-      <Sparklines 
-        data={data} 
-        height={height}
-        width={width}
-        type={"line"}
-        options={options} 
-      />
-    );
-  }
-}
+export default LineChart;

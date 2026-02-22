@@ -1,32 +1,30 @@
 import { Formik } from 'formik';
-import React, { Component } from 'react';
+import React from 'react';
 import Loader from 'components/Loader';
 import InputFormItem from '../../../components/FormItems/items/InputFormItem';
 import Widget from 'components/Widget';
 
-class UsersForm extends Component {
-  handleSubmit = (values) => {
+const UsersForm = (props) => {
+  const handleSubmit = (values) => {
     const { ...data } = values || {};
-    this.props.onSubmit(data);
+    props.onSubmit(data);
   };
 
-  title = () => {
-    return 'Change Password';
-  };
+  const title = () => 'Change Password';
 
-  passwordSchema = {
+  const passwordSchema = {
     currentPassword: { type: 'string', label: 'Current Password' },
     newPassword: { type: 'string', label: 'New Password' },
     confirmNewPassword: { type: 'string', label: 'Confirm new Password' },
   };
 
-  renderForm() {
-    const { saveLoading } = this.props;
+  const renderForm = () => {
+    const { saveLoading } = props;
 
     return (
-      <Widget title={<h4>{this.title()}</h4>} collapse close>
+      <Widget title={<h4>{title()}</h4>} collapse close>
         <Formik
-          onSubmit={this.handleSubmit}
+          onSubmit={handleSubmit}
           render={(form) => {
             return (
               <form onSubmit={form.handleSubmit}>
@@ -34,18 +32,18 @@ class UsersForm extends Component {
                 <InputFormItem
                   name={'currentPassword'}
                   password
-                  schema={this.passwordSchema}
+                  schema={passwordSchema}
                 />
 
                 <InputFormItem
                   name={'newPassword'}
-                  schema={this.passwordSchema}
+                  schema={passwordSchema}
                   password
                 />
 
                 <InputFormItem
                   name={'confirmNewPassword'}
-                  schema={this.passwordSchema}
+                  schema={passwordSchema}
                   password
                 />
 
@@ -64,7 +62,7 @@ class UsersForm extends Component {
                     className="btn btn-light"
                     type="button"
                     disabled={saveLoading}
-                    onClick={() => this.props.onCancel()}
+                    onClick={() => props.onCancel()}
                   >
                     {' '}
                     Cancel
@@ -76,21 +74,19 @@ class UsersForm extends Component {
         />
       </Widget>
     );
+  };
+
+  const { isEditing, findLoading, record } = props;
+
+  if (findLoading) {
+    return <Loader />;
   }
 
-  render() {
-    const { isEditing, findLoading, record } = this.props;
-
-    if (findLoading) {
-      return <Loader />;
-    }
-
-    if (isEditing && !record) {
-      return <Loader />;
-    }
-
-    return this.renderForm();
+  if (isEditing && !record) {
+    return <Loader />;
   }
-}
+
+  return renderForm();
+};
 
 export default UsersForm;

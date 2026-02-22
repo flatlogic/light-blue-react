@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   Button,
   ButtonGroup,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
 } from 'reactstrap';
 
-import Lightbox from 'react-images';
 import s from './Gallery.module.scss';
 
 import pic1 from '../../../images/pictures/1.jpg';
@@ -127,129 +130,86 @@ const items = [
   },
 ];
 
-class Gallery extends React.Component {
-  constructor() {
-    super();
+const Gallery = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
+  const [children, setChildren] = useState(items);
+  const [activeGroup, setActiveGroup] = useState('all');
+  const [order, setOrder] = useState('asc');
 
-    this.state = {
-      currentImage: 0,
-      lightboxIsOpen: false,
-      children: items,
-      activeGroup: 'all',
-      order: 'asc',
-      theme: {
-        arrow: {
-          ':focus': {
-            outline: 0,
-          },
-        },
-        close: {
-          ':focus': {
-            outline: 0,
-          },
-        },
-      },
-    };
+  const currentItem = useMemo(() => children[currentImage], [children, currentImage]);
 
-    this.closeLightbox = this.closeLightbox.bind(this);
-    this.gotoNext = this.gotoNext.bind(this);
-    this.gotoPrevious = this.gotoPrevious.bind(this);
-    this.gotoImage = this.gotoImage.bind(this);
-    this.handleClickImage = this.handleClickImage.bind(this);
-    this.openLightbox = this.openLightbox.bind(this);
-  }
-
-  openLightbox(index, event) {
+  const openLightbox = (index, event) => {
     event.preventDefault();
-    this.setState({
-      currentImage: index,
-      lightboxIsOpen: true,
-    });
-  }
+    setCurrentImage(index);
+    setLightboxIsOpen(true);
+  };
 
-  gotoPrevious() {
-    this.setState({
-      currentImage: this.state.currentImage - 1,
-    });
-  }
+  const gotoPrevious = () => {
+    setCurrentImage((prevImage) => Math.max(prevImage - 1, 0));
+  };
 
-  gotoImage(index) {
-    this.setState({
-      currentImage: index,
-    });
-  }
+  const gotoNext = () => {
+    setCurrentImage((prevImage) => Math.min(prevImage + 1, children.length - 1));
+  };
 
-  gotoNext() {
-    this.setState({
-      currentImage: this.state.currentImage + 1,
-    });
-  }
+  const closeLightbox = () => {
+    setCurrentImage(0);
+    setLightboxIsOpen(false);
+  };
 
-  closeLightbox() {
-    this.setState({
-      currentImage: 0,
-      lightboxIsOpen: false,
-    });
-  }
+  const filterChildren = (type) => {
+    setChildren(type === 'all' ? items : items.filter((child) => {
+      const group = child.groups.find((itemGroup) => itemGroup === type);
+      return !!group;
+    }));
+    setActiveGroup(type);
+    setCurrentImage(0);
+  };
 
-  handleClickImage() {
-    if (this.state.currentImage === this.state.children.length - 1) return;
-
-    this.gotoNext();
-  }
-
-  filterChildren(type) {
-    this.setState({
-      children: type === 'all' ? items : items.filter((child) => {
-        const group = child.groups.find(item => item === type);
-        return !!group;
-      }),
-      activeGroup: type,
-    });
-  }
-
-  orderChildren(order) {
-    const children = this.state.children.sort((a, b) => {
+  const orderChildren = (sortOrder) => {
+    const sortedChildren = [...children].sort((a, b) => {
       const nameA = a.name.toLowerCase();
       const nameB = b.name.toLowerCase();
 
       if (nameA < nameB) {
-        return order === 'asc' ? -1 : 1;
+        return sortOrder === 'asc' ? -1 : 1;
       }
 
       if (nameA > nameB) {
-        return order === 'asc' ? 1 : -1;
+        return sortOrder === 'asc' ? 1 : -1;
       }
       return 0;
     });
 
-    this.setState({ children, order });
-  }
+    setChildren(sortedChildren);
+    setOrder(sortOrder);
+    setCurrentImage((prevImage) => Math.min(prevImage, sortedChildren.length - 1));
+  };
 
-  render() {
-    return (
-      <div className={s.root}>
+  return (
+    <div className={s.root}>
         <h1 className="page-title">Media - <span className="fw-semi-bold">Images</span>
         </h1>
 
         <div className={s.galleryControls}>
           <ButtonGroup id="shuffle-buttons">
-            <Button color="default" onClick={() => this.filterChildren('all')} active={this.state.activeGroup === 'all'}>All</Button>
-            <Button color="default" onClick={() => this.filterChildren('nature')} active={this.state.activeGroup === 'nature'}>Nature</Button>
-            <Button color="default" onClick={() => this.filterChildren('people')} active={this.state.activeGroup === 'people'}>People</Button>
-            <Button color="default" onClick={() => this.filterChildren('space')} active={this.state.activeGroup === 'space'}>Space</Button>
+            <Button color="default" onClick={() => filterChildren('all')} active={activeGroup === 'all'}>All</Button>
+            <Button color="default" onClick={() => filterChildren('nature')} active={activeGroup === 'nature'}>Nature</Button>
+            <Button color="default" onClick={() => filterChildren('people')} active={activeGroup === 'people'}>People</Button>
+            <Button color="default" onClick={() => filterChildren('space')} active={activeGroup === 'space'}>Space</Button>
           </ButtonGroup>
           <ButtonGroup id="order-buttons">
-            <Button color="default" onClick={() => this.orderChildren('asc')} active={this.state.order === 'asc'}><i className="fa fa-sort-numeric-asc" /></Button>
-            <Button color="default" onClick={() => this.orderChildren('desc')} active={this.state.order === 'desc'}><i className="fa fa-sort-numeric-desc" /></Button>
+            <Button color="default" onClick={() => orderChildren('asc')} active={order === 'asc'}><i className="fa fa-sort-numeric-asc" /></Button>
+            <Button color="default" onClick={() => orderChildren('desc')} active={order === 'desc'}><i className="fa fa-sort-numeric-desc" /></Button>
           </ButtonGroup>
         </div>
         <div className={s.gallery}>
-          {this.state.children.map((item, index) => {
+          {children.map((item, index) => {
             const key = item.name + index;
             return (
               <div key={key} className={`${s.picture} card`}>
-                <a href={item.src} onClick={e => this.openLightbox(index, e)}><img className="figure-img" src={item.src} alt="..." /></a>
+                <a href={item.src} onClick={e => openLightbox(index, e)}><img className="figure-img" src={item.src} alt="..." /></a>
                 <div className={s.description}>
                   <h6 className="mt-0 mb-xs">{item.name}</h6>
                   <ul className="post-links">
@@ -262,22 +222,41 @@ class Gallery extends React.Component {
             );
           })}
         </div>
-        <Lightbox
-          currentImage={this.state.currentImage}
-          images={this.state.children}
-          isOpen={this.state.lightboxIsOpen}
-          onClickPrev={this.gotoPrevious}
-          onClickNext={this.gotoNext}
-          onClose={this.closeLightbox}
-          onClickImage={this.handleClickImage}
-          onClickThumbnail={this.gotoImage}
-          backdropClosesModal
-          enableKeyboardInput
-          theme={this.state.theme}
-        />
-      </div>);
-  }
-
-}
+        <Modal isOpen={lightboxIsOpen} toggle={closeLightbox} centered size="xl">
+          <ModalHeader toggle={closeLightbox}>
+            {currentItem ? currentItem.name : 'Image'}
+          </ModalHeader>
+          <ModalBody className="d-flex justify-content-center">
+            {currentItem && (
+              <img
+                className="img-fluid"
+                src={currentItem.src}
+                alt={currentItem.name}
+              />
+            )}
+          </ModalBody>
+          <ModalFooter className="justify-content-between">
+            <Button
+              color="default"
+              onClick={gotoPrevious}
+              disabled={currentImage <= 0}
+            >
+              Previous
+            </Button>
+            <span className="text-muted">
+              {children.length ? currentImage + 1 : 0} / {children.length}
+            </span>
+            <Button
+              color="default"
+              onClick={gotoNext}
+              disabled={currentImage >= children.length - 1}
+            >
+              Next
+            </Button>
+          </ModalFooter>
+        </Modal>
+      </div>
+  );
+};
 
 export default Gallery;
