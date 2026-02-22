@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-
 export const OPEN_SIDEBAR = 'OPEN_SIDEBAR';
 export const CLOSE_SIDEBAR = 'CLOSE_SIDEBAR';
 export const CHANGE_ACTIVE_SIDEBAR_ITEM = 'CHANGE_ACTIVE_SIDEBAR_ITEM';
@@ -36,5 +34,19 @@ export function changeSidebarVisibility(nextVisibility) {
   return {
     type: CHANGE_SIDEBAR_VISIBILITY,
     payload: nextVisibility,
+  };
+}
+
+export function push(path) {
+  return () => {
+    if (!path) {
+      return;
+    }
+
+    const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+
+    if (window.location.hash !== `#${normalizedPath}`) {
+      window.location.hash = normalizedPath;
+    }
   };
 }

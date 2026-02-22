@@ -58,7 +58,11 @@
 - Phase 5 progress:
   - removed deprecated lifecycle methods from source components (`componentWillMount`, `componentWillReceiveProps`);
   - migrated users route-level pages (`UsersListPage`, `UsersViewPage`, `ChangePasswordFormPage`) from class components to hooks-based functional components;
-  - migrated auth route-level pages (`Register`, `Forgot`, `Reset`, `Verify`) from class components to hooks-based functional components.
+  - migrated auth route-level pages (`Login`, `Register`, `Forgot`, `Reset`, `Verify`) from class components to hooks-based functional components;
+  - migrated app shell components (`Layout`, `Header`, `Sidebar`) from class components to hooks-based functional components.
+- Phase 6 quality hardening:
+  - introduced repository lint gate with ESLint flat config and `npm run lint` command;
+  - added GitHub Actions CI workflow (`.github/workflows/ci.yml`) for `npm ci`, `npm run lint`, `npm run build`, and `npm test`.
 - Runtime/tooling compatibility:
   - aligned Node engine range to `^20.19.0 || >=22.12.0` to support current Node 22 environments and Vite 7 requirements.
   - `npm install` succeeds without `--legacy-peer-deps` on the migrated dependency graph.

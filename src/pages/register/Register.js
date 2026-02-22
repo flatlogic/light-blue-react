@@ -6,8 +6,8 @@ import { Container, Alert, Button, FormGroup, InputGroup, InputGroupAddon, Input
 import Widget from '../../components/Widget';
 import { registerUser, authError as registerError, loginUser } from '../../actions/auth';
 import microsoft from '../../images/microsoft.png';
-import Login from '../login';
 import withRouter from '../../components/withRouter';
+import { isAuthenticated } from '../../core/auth';
 
 class Register extends React.Component {
     static propTypes = {
@@ -86,7 +86,7 @@ class Register extends React.Component {
         const {from} = this.props.location.state || {from: {pathname: '/app'}}; // eslint-disable-line
 
         // cant access login page while logged in
-        if (Login.isAuthenticated(localStorage.getItem('token'))) {
+        if (isAuthenticated(localStorage.getItem('token'))) {
             return (
                 <Navigate to={from} replace />
             );

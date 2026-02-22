@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Switch, Route, withRouter, Redirect } from 'react-router';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, Navigate, Route, Routes } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Hammer from 'rc-hammerjs';
 
@@ -64,155 +63,132 @@ import { openSidebar, closeSidebar } from '../../actions/navigation';
 import s from './Layout.module.scss';
 import ProductEdit from '../../pages/management/components/productEdit';
 
-class Layout extends React.Component {
-  static propTypes = {
-    sidebarStatic: PropTypes.bool,
-    sidebarOpened: PropTypes.bool,
-    dashboardTheme: PropTypes.string,
-    dispatch: PropTypes.func.isRequired,
-  };
+function Layout() {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const sidebarOpened = useSelector((store) => store.navigation.sidebarOpened);
+  const sidebarPosition = useSelector((store) => store.navigation.sidebarPosition);
+  const sidebarVisibility = useSelector((store) => store.navigation.sidebarVisibility);
+  const dashboardTheme = useSelector((store) => store.layout.dashboardTheme);
+  const [chatOpen, setChatOpen] = useState(false);
 
-  static defaultProps = {
-    sidebarStatic: false,
-    sidebarOpened: false,
-    dashboardTheme: DashboardThemes.DARK
-  };
-  constructor(props) {
-    super(props);
-
-    this.handleSwipe = this.handleSwipe.bind(this);
-  }
-
-
-  handleSwipe(e) {
+  const handleSwipe = (e) => {
     if ('ontouchstart' in window) {
-      if (e.direction === 4 && !this.state.chatOpen) {
-        this.props.dispatch(openSidebar());
+      if (e.direction === 4 && !chatOpen) {
+        dispatch(openSidebar());
         return;
       }
 
-      if (e.direction === 2 && this.props.sidebarOpened) {
-        this.props.dispatch(closeSidebar());
+      if (e.direction === 2 && sidebarOpened) {
+        dispatch(closeSidebar());
         return;
       }
 
-      this.setState({ chatOpen: e.direction === 2 });
+      setChatOpen(e.direction === 2);
     }
-  }
-
-  render() {
-    return (
-      <div
-        className={[
-          s.root,
-          `dashboard-${(localStorage.getItem("sidebarType") === SidebarTypes.TRANSPARENT) ? "light" : localStorage.getItem("dashboardTheme")}`,
-          `theme-${localStorage.getItem("themeColor") ? localStorage.getItem("themeColor").replace('#', '') : '333964'}`,
-          'light-blue-dashboard',
-          'sidebar-' + this.props.sidebarPosition,
-          'sidebar-' + this.props.sidebarVisibility,
-          `dashboard-${this.props.dashboardTheme}`
-        ].join(' ')}
-      >
-        <div className={s.wrap}>
-          <Header />
-          <Helper />
-          <Sidebar />
-          <Hammer onSwipe={this.handleSwipe}>
-            <main className={s.content}>
-              <BreadcrumbHistory url={this.props.location.pathname} />
-              <TransitionGroup>
-                <CSSTransition
-                  key={this.props.location.key}
-                  classNames="fade"
-                  timeout={200}
-                >
-                  <Switch>
-                    <Route path="/app/main" exact render={() => <Redirect to="/app/main/dashboard" />} />
-                    <Route path="/app/main/dashboard" exact component={Dashboard} />
-                    <Route path="/app/main/widgets" exact component={Widgets} />
-                    <Route path="/app/main/analytics" exact component={DashboardAnalytics} />
-                    <Route path="/app/edit_profile" exact component={UserFormPage} />
-                    <Route path="/app/password" exact component={ChangePasswordFormPage} />
-                    <Route path="/admin" exact render={() => <Redirect to="/admin/users" />} />
-                    <Route path="/admin/users" exact component={UserListPage} />
-                    <Route path="/admin/users/new" exact component={UserFormPage} />
-                    <Route path="/admin/users/:id/edit" exact component={UserFormPage} />
-                    <Route path="/admin/users/:id" exact component={UserViewPage} />
-                    <Route path="/app/ecommerce" exact render={() => <Redirect to="/app/ecommerce/management" />} />
-                    <Route path="/app/ecommerce/management" exact component={Management} />
-                    <Route path="/app/ecommerce/management/:id" exact component={ProductEdit} />
-                    <Route path="/app/ecommerce/management/create" exact component={ProductEdit} />
-                    <Route path="/app/ecommerce/products" exact component={Products} />
-                    <Route path="/app/ecommerce/product" exact component={Product} />
-                    <Route path="/app/ecommerce/product/:id" exact component={Product} />
-                    <Route path="/app/profile" exact component={Profile} />
-                    <Route path="/app/inbox" exact component={Email} />
-                    <Route path="/app/ui" exact render={() => <Redirect to="/app/ui/components" />} />
-                    <Route path="/app/ui/buttons" exact component={UIButtons} />
-                    <Route path="/app/ui/icons" exact component={UIIcons} />
-                    <Route path="/app/ui/tabs-accordion" exact component={UITabsAccordion} />
-                    <Route path="/app/ui/notifications" exact component={UINotifications} />
-                    <Route path="/app/ui/list-groups" exact component={UIListGroups} />
-                    <Route path="/app/ui/alerts" exact component={UIAlerts} />
-                    <Route path="/app/ui/badge" exact component={UIBadge} />
-                    <Route path="/app/ui/card" exact component={UICard} />
-                    <Route path="/app/ui/carousel" exact component={UICarousel} />
-                    <Route path="/app/ui/jumbotron" exact component={UIJumbotron} />
-                    <Route path="/app/ui/modal" exact component={UIModal} />
-                    <Route path="/app/ui/popovers" exact component={UIPopovers} />
-                    <Route path="/app/ui/progress" exact component={UIProgress} />
-                    <Route path="/app/ui/navbar" exact component={UINavbar} />
-                    <Route path="/app/ui/nav" exact component={UINav} />
-                    <Route path="/app/grid" exact component={Grid} />
-                    <Route path="/app/package" exact component={Package} />
-                    <Route path="/app/forms" exact render={() => <Redirect to="/app/forms/elements" />} />
-                    <Route path="/app/forms/elements" exact component={FormsElements} />
-                    <Route path="/app/forms/validation" exact component={FormsValidation} />
-                    <Route path="/app/forms/wizard" exact component={FormsWizard} />
-                    <Route path="/app/charts/" exact render={() => <Redirect to="/app/charts/overview" />} />
-                    <Route path="/app/charts/overview" exact component={Charts} />
-                    <Route path="/app/charts/apex" exact component={ApexCharts} />
-                    <Route path="/app/charts/echarts" exact component={Echarts} />
-                    <Route path="/app/charts/highcharts" exact component={HighCharts} />
-                    <Route path="/app/tables" exact render={() => <Redirect to="/app/tables/static" />} />
-                    <Route path="/app/tables/static" exact component={TablesStatic} />
-                    <Route path="/app/tables/dynamic" exact component={TablesDynamic} />
-                    <Route path="/app/extra" exact render={() => <Redirect to="/app/extra/calendar" />} />
-                    <Route path="/app/extra/calendar" exact component={ExtraCalendar} />
-                    <Route path="/app/extra/invoice" exact component={ExtraInvoice} />
-                    <Route path="/app/extra/search" exact component={ExtraSearch} />
-                    <Route path="/app/extra/timeline" exact component={ExtraTimeline} />
-                    <Route path="/app/extra/gallery" exact component={ExtraGallery} />
-                    <Route path="/app/maps" exact render={() => <Redirect to="/app/maps/google" />} />
-                    <Route path="/app/maps/google" exact component={MapsGoogle} />
-                    <Route path="/app/maps/vector" exact component={MapsVector} />
-                    <Route path="/app/core" exact render={() => <Redirect to="/app/core/typography" />} />
-                    <Route path="/app/core/typography" exact component={CoreTypography} />
-                    <Route path="/app/core/colors" exact component={CoreColors} />
-                    <Route path="/app/core/grid" exact component={CoreGrid} />
-                  </Switch>
-                </CSSTransition>
-              </TransitionGroup>
-              <footer className={s.contentFooter}>
-                Light Blue React Dashboard - React admin template made by <a href="https://flatlogic.com" >Flatlogic</a>
-              </footer>
-            </main>
-          </Hammer>
-        </div>
-      </div>
-    );
-  }
-}
-
-function mapStateToProps(store) {
-  return {
-    sidebarOpened: store.navigation.sidebarOpened,
-    sidebarPosition: store.navigation.sidebarPosition,
-    sidebarVisibility: store.navigation.sidebarVisibility,
-    // dashboardTheme: store.navigation.dashboardTheme,
-    themeColor: store.layout.themeColor,
-    dashboardTheme: store.layout.dashboardTheme,
   };
+
+  return (
+    <div
+      className={[
+        s.root,
+        `dashboard-${(localStorage.getItem('sidebarType') === SidebarTypes.TRANSPARENT) ? 'light' : localStorage.getItem('dashboardTheme')}`,
+        `theme-${localStorage.getItem('themeColor') ? localStorage.getItem('themeColor').replace('#', '') : '333964'}`,
+        'light-blue-dashboard',
+        `sidebar-${sidebarPosition}`,
+        `sidebar-${sidebarVisibility}`,
+        `dashboard-${dashboardTheme || DashboardThemes.DARK}`,
+      ].join(' ')}
+    >
+      <div className={s.wrap}>
+        <Header />
+        <Helper />
+        <Sidebar />
+        <Hammer onSwipe={handleSwipe}>
+          <main className={s.content}>
+            <BreadcrumbHistory url={location.pathname} />
+            <TransitionGroup>
+              <CSSTransition
+                key={location.pathname}
+                classNames="fade"
+                timeout={200}
+              >
+                <Routes>
+                  <Route path="/app/main" element={<Navigate to="/app/main/dashboard" replace />} />
+                  <Route path="/app/main/dashboard" element={<Dashboard />} />
+                  <Route path="/app/main/widgets" element={<Widgets />} />
+                  <Route path="/app/main/analytics" element={<DashboardAnalytics />} />
+                  <Route path="/app/edit_profile" element={<UserFormPage />} />
+                  <Route path="/app/password" element={<ChangePasswordFormPage />} />
+                  <Route path="/admin" element={<Navigate to="/admin/users" replace />} />
+                  <Route path="/admin/users" element={<UserListPage />} />
+                  <Route path="/admin/users/new" element={<UserFormPage />} />
+                  <Route path="/admin/users/:id/edit" element={<UserFormPage />} />
+                  <Route path="/admin/users/:id" element={<UserViewPage />} />
+                  <Route path="/app/ecommerce" element={<Navigate to="/app/ecommerce/management" replace />} />
+                  <Route path="/app/ecommerce/management" element={<Management />} />
+                  <Route path="/app/ecommerce/management/:id" element={<ProductEdit />} />
+                  <Route path="/app/ecommerce/management/create" element={<ProductEdit />} />
+                  <Route path="/app/ecommerce/products" element={<Products />} />
+                  <Route path="/app/ecommerce/product" element={<Product />} />
+                  <Route path="/app/ecommerce/product/:id" element={<Product />} />
+                  <Route path="/app/profile" element={<Profile />} />
+                  <Route path="/app/inbox" element={<Email />} />
+                  <Route path="/app/ui" element={<Navigate to="/app/ui/alerts" replace />} />
+                  <Route path="/app/ui/buttons" element={<UIButtons />} />
+                  <Route path="/app/ui/icons" element={<UIIcons />} />
+                  <Route path="/app/ui/tabs-accordion" element={<UITabsAccordion />} />
+                  <Route path="/app/ui/notifications" element={<UINotifications />} />
+                  <Route path="/app/ui/list-groups" element={<UIListGroups />} />
+                  <Route path="/app/ui/alerts" element={<UIAlerts />} />
+                  <Route path="/app/ui/badge" element={<UIBadge />} />
+                  <Route path="/app/ui/card" element={<UICard />} />
+                  <Route path="/app/ui/carousel" element={<UICarousel />} />
+                  <Route path="/app/ui/jumbotron" element={<UIJumbotron />} />
+                  <Route path="/app/ui/modal" element={<UIModal />} />
+                  <Route path="/app/ui/popovers" element={<UIPopovers />} />
+                  <Route path="/app/ui/progress" element={<UIProgress />} />
+                  <Route path="/app/ui/navbar" element={<UINavbar />} />
+                  <Route path="/app/ui/nav" element={<UINav />} />
+                  <Route path="/app/grid" element={<Grid />} />
+                  <Route path="/app/package" element={<Package />} />
+                  <Route path="/app/forms" element={<Navigate to="/app/forms/elements" replace />} />
+                  <Route path="/app/forms/elements" element={<FormsElements />} />
+                  <Route path="/app/forms/validation" element={<FormsValidation />} />
+                  <Route path="/app/forms/wizard" element={<FormsWizard />} />
+                  <Route path="/app/charts" element={<Navigate to="/app/charts/overview" replace />} />
+                  <Route path="/app/charts/overview" element={<Charts />} />
+                  <Route path="/app/charts/apex" element={<ApexCharts />} />
+                  <Route path="/app/charts/echarts" element={<Echarts />} />
+                  <Route path="/app/charts/highcharts" element={<HighCharts />} />
+                  <Route path="/app/tables" element={<Navigate to="/app/tables/static" replace />} />
+                  <Route path="/app/tables/static" element={<TablesStatic />} />
+                  <Route path="/app/tables/dynamic" element={<TablesDynamic />} />
+                  <Route path="/app/extra" element={<Navigate to="/app/extra/calendar" replace />} />
+                  <Route path="/app/extra/calendar" element={<ExtraCalendar />} />
+                  <Route path="/app/extra/invoice" element={<ExtraInvoice />} />
+                  <Route path="/app/extra/search" element={<ExtraSearch />} />
+                  <Route path="/app/extra/timeline" element={<ExtraTimeline />} />
+                  <Route path="/app/extra/gallery" element={<ExtraGallery />} />
+                  <Route path="/app/maps" element={<Navigate to="/app/maps/google" replace />} />
+                  <Route path="/app/maps/google" element={<MapsGoogle />} />
+                  <Route path="/app/maps/vector" element={<MapsVector />} />
+                  <Route path="/app/core" element={<Navigate to="/app/core/typography" replace />} />
+                  <Route path="/app/core/typography" element={<CoreTypography />} />
+                  <Route path="/app/core/colors" element={<CoreColors />} />
+                  <Route path="/app/core/grid" element={<CoreGrid />} />
+                  <Route path="*" element={<Navigate to="/app/main/dashboard" replace />} />
+                </Routes>
+              </CSSTransition>
+            </TransitionGroup>
+            <footer className={s.contentFooter}>
+              Light Blue React Dashboard - React admin template made by <a href="https://flatlogic.com" >Flatlogic</a>
+            </footer>
+          </main>
+        </Hammer>
+      </div>
+    </div>
+  );
 }
 
-export default withRouter(connect(mapStateToProps)(Layout));
+export default Layout;

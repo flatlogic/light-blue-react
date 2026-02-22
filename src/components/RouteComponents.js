@@ -1,39 +1,36 @@
-import Login from '../pages/auth/login';
-import { logoutUser } from '../actions/auth';
-import { Redirect, Route } from 'react-router';
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 
-export const AdminRoute = ({currentUser, dispatch, component, ...rest}) => {
-  if (!currentUser || currentUser.role !== 'admin' || !Login.isAuthenticated(localStorage.getItem('token'))) {
-    return (<Redirect to="/app/main"/>)
-  } else if (currentUser && currentUser.role === 'admin') {
-    return (
-      <Route {...rest} render={props => (React.createElement(component, props))}/>
-    );
+import { logoutUser } from '../actions/auth';
+import { isAuthenticated } from '../core/auth';
+
+export function AdminRoute({ currentUser, children }) {
+  if (
+    !currentUser
+    || currentUser.role !== 'admin'
+    || !isAuthenticated(localStorage.getItem('token'))
+  ) {
+    return <Navigate to="/app/main" replace />;
   }
-};
 
-export const UserRoute = ({dispatch, component, ...rest}) => {
-  if (!Login.isAuthenticated()) {
+  return children;
+}
+
+export function UserRoute({ dispatch, children }) {
+  if (!isAuthenticated()) {
     dispatch(logoutUser());
-    return (<Redirect to="/login"/>)
-  } else {
-    return ( // eslint-disable-line
-      <Route {...rest} render={props => (React.createElement(component, props))}/>
-    );
+    return <Navigate to="/login" replace />;
   }
-};
 
-export const AuthRoute = ({dispatch, component, ...rest}) => {
-  const {from} = rest.location.state || {from: {pathname: '/app'}};
+  return children;
+}
 
-  if (Login.isAuthenticated()) {
-    return (
-      <Redirect to={from}/>
-    );
-  } else {
-    return (
-      <Route {...rest} render={props => (React.createElement(component, props))}/>
-    );
+export function AuthRoute({ children, from }) {
+  const target = from || { pathname: '/app' };
+
+  if (isAuthenticated()) {
+    return <Navigate to={target} replace />;
   }
-};
+
+  return children;
+}
