@@ -57,6 +57,7 @@
     "react": "^19.2.4",
     "react-animate-height": "^3.2.3",
     "react-apexcharts": "^2.0.1",
+    "react-bootstrap": "^2.10.10",
     "react-bootstrap-icons": "^1.11.4",
     "react-datetime": "^3.2.0",
     "react-dom": "^19.2.4",

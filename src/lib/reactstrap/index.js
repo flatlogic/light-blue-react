@@ -5,28 +5,40 @@ import React, {
   useContext,
   useEffect,
   useLayoutEffect,
-  useMemo,
   useRef,
   useState,
 } from 'react';
 import { createPortal } from 'react-dom';
 import classNames from 'classnames';
-
-const BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+import {
+  Alert as RBAlert,
+  Badge as RBBadge,
+  Button as RBButton,
+  ButtonGroup as RBButtonGroup,
+  ButtonToolbar as RBButtonToolbar,
+  Card as RBCard,
+  CardBody as RBCardBody,
+  CardImg as RBCardImg,
+  CardText as RBCardText,
+  CardTitle as RBCardTitle,
+  Carousel as RBCarousel,
+  Col as RBCol,
+  Collapse as RBCollapse,
+  Container as RBContainer,
+  InputGroup as RBInputGroup,
+  ListGroup as RBListGroup,
+  ListGroupItem as RBListGroupItem,
+  Nav as RBNav,
+  NavItem as RBNavItem,
+  NavLink as RBNavLink,
+  Navbar as RBNavbar,
+  NavbarBrand as RBNavbarBrand,
+  NavbarToggle as RBNavbarToggle,
+  Row as RBRow,
+  Table as RBTable,
+} from 'react-bootstrap';
 
 const noop = () => {};
-
-const isNumberLike = (value) => {
-  if (typeof value === 'number') {
-    return true;
-  }
-
-  if (typeof value !== 'string') {
-    return false;
-  }
-
-  return /^\d+(\.\d+)?$/.test(value.trim());
-};
 
 const asArray = (value) => (Array.isArray(value) ? value : [value]);
 
@@ -54,8 +66,20 @@ const resolveTarget = (target) => {
 
 const colorClass = (prefix, color) => (color ? `${prefix}-${color}` : null);
 
+const normalizeVariant = (color, fallback = 'secondary') => {
+  if (!color) {
+    return fallback;
+  }
+
+  if (color === 'default') {
+    return 'secondary';
+  }
+
+  return color;
+};
+
 const buttonColorClass = ({ color, outline }) => {
-  const resolvedColor = color || 'secondary';
+  const resolvedColor = normalizeVariant(color);
   return outline ? `btn-outline-${resolvedColor}` : `btn-${resolvedColor}`;
 };
 
@@ -98,8 +122,10 @@ export const Container = ({ fluid, className, tag, ...rest }) => {
   const Tag = resolveTag(tag, 'div');
 
   return (
-    <Tag
-      className={classNames(className, fluid ? (typeof fluid === 'string' ? `container-${fluid}` : 'container-fluid') : 'container')}
+    <RBContainer
+      as={Tag}
+      fluid={fluid}
+      className={className}
       {...rest}
     />
   );
@@ -107,79 +133,18 @@ export const Container = ({ fluid, className, tag, ...rest }) => {
 
 export const Row = ({ className, noGutters, tag, ...rest }) => {
   const Tag = resolveTag(tag, 'div');
-  return <Tag className={classNames(className, 'row', noGutters && 'g-0')} {...rest} />;
-};
-
-const buildColClasses = (props) => {
-  const classes = [];
-
-  BREAKPOINTS.forEach((bp) => {
-    const value = props[bp];
-
-    if (value == null) {
-      return;
-    }
-
-    const prefix = bp === 'xs' ? 'col' : `col-${bp}`;
-
-    if (value === true || value === '') {
-      classes.push(prefix);
-      return;
-    }
-
-    if (isNumberLike(value)) {
-      classes.push(`${prefix}-${value}`);
-      return;
-    }
-
-    if (typeof value === 'object') {
-      const size = value.size;
-      const offset = value.offset;
-      const order = value.order;
-
-      if (size === true || size === '') {
-        classes.push(prefix);
-      } else if (size != null) {
-        classes.push(`${prefix}-${size}`);
-      }
-
-      if (offset != null) {
-        classes.push(bp === 'xs' ? `offset-${offset}` : `offset-${bp}-${offset}`);
-      }
-
-      if (order != null) {
-        classes.push(bp === 'xs' ? `order-${order}` : `order-${bp}-${order}`);
-      }
-    }
-  });
-
-  return classes;
+  return <RBRow as={Tag} className={classNames(className, noGutters && 'g-0')} {...rest} />;
 };
 
 export const Col = ({ className, tag, widths, ...rest }) => {
   const Tag = resolveTag(tag, 'div');
-  const colClasses = buildColClasses(rest);
-
-  if (widths) {
-    asArray(widths).forEach((width) => {
-      colClasses.push(`col-${width}`);
-    });
-  }
-
-  const {
-    xs,
-    sm,
-    md,
-    lg,
-    xl,
-    xxl,
-    ...htmlProps
-  } = rest;
+  const widthClasses = widths ? asArray(widths).map((width) => `col-${width}`) : [];
 
   return (
-    <Tag
-      className={classNames(className, colClasses.length > 0 ? colClasses : 'col')}
-      {...htmlProps}
+    <RBCol
+      as={Tag}
+      className={classNames(className, widthClasses)}
+      {...rest}
     />
   );
 };
@@ -197,45 +162,43 @@ export const Button = forwardRef(({
   children,
   ...rest
 }, ref) => {
-  const Tag = resolveTag(tag, 'button');
-  const buttonType = Tag === 'button' ? (type || 'button') : type;
+  const Tag = tag;
+  const buttonType = !Tag || Tag === 'button' ? (type || 'button') : type;
 
   return (
-    <Tag
+    <RBButton
       ref={ref}
+      as={Tag}
       type={buttonType}
-      className={classNames(
-        className,
-        'btn',
-        buttonColorClass({ color, outline }),
-        size && `btn-${size}`,
-        block && 'd-block w-100',
-        active && 'active',
-      )}
+      variant={outline ? `outline-${normalizeVariant(color)}` : normalizeVariant(color)}
+      size={size}
+      active={active}
+      className={classNames(className, block && 'd-block w-100')}
       disabled={disabled}
       {...rest}
     >
       {children}
-    </Tag>
+    </RBButton>
   );
 });
 
 Button.displayName = 'Button';
 
 export const ButtonGroup = ({ className, vertical, size, children, ...rest }) => (
-  <div
-    className={classNames(className, vertical ? 'btn-group-vertical' : 'btn-group', size && `btn-group-${size}`)}
-    role="group"
+  <RBButtonGroup
+    vertical={vertical}
+    size={size}
+    className={className}
     {...rest}
   >
     {children}
-  </div>
+  </RBButtonGroup>
 );
 
 export const ButtonToolbar = ({ className, children, ...rest }) => (
-  <div className={classNames(className, 'btn-toolbar')} role="toolbar" {...rest}>
+  <RBButtonToolbar className={className} {...rest}>
     {children}
-  </div>
+  </RBButtonToolbar>
 );
 
 export const Form = ({ className, inline, tag, children, ...rest }) => {
@@ -364,17 +327,17 @@ export const Input = forwardRef(({
 Input.displayName = 'Input';
 
 export const InputGroup = ({ className, size, children, ...rest }) => (
-  <div className={classNames(className, 'input-group', size && `input-group-${size}`)} {...rest}>
+  <RBInputGroup className={className} size={size} {...rest}>
     {children}
-  </div>
+  </RBInputGroup>
 );
 
 export const InputGroupText = ({ className, tag, children, ...rest }) => {
   const Tag = resolveTag(tag, 'span');
   return (
-    <Tag className={classNames(className, 'input-group-text')} {...rest}>
+    <RBInputGroup.Text as={Tag} className={className} {...rest}>
       {children}
-    </Tag>
+    </RBInputGroup.Text>
   );
 };
 
@@ -384,12 +347,16 @@ export const Alert = ({ className, color, isOpen = true, fade, toggle, children,
   }
 
   return (
-    <div className={classNames(className, 'alert', colorClass('alert', color || 'warning'), fade !== false && 'fade show')} role="alert" {...rest}>
-      {toggle ? (
-        <button type="button" className="btn-close" aria-label="Close" onClick={toggle} />
-      ) : null}
+    <RBAlert
+      className={className}
+      variant={normalizeVariant(color, 'warning')}
+      dismissible={Boolean(toggle)}
+      onClose={toggle}
+      transition={fade === false ? false : undefined}
+      {...rest}
+    >
       {children}
-    </div>
+    </RBAlert>
   );
 };
 
@@ -414,12 +381,15 @@ export const Badge = ({ className, color, pill, tag, children, ...rest }) => {
   const Tag = resolveTag(tag, 'span');
 
   return (
-    <Tag
-      className={classNames(className, 'badge', colorClass('text-bg', color || 'secondary'), pill && 'rounded-pill')}
+    <RBBadge
+      as={Tag}
+      className={className}
+      bg={normalizeVariant(color)}
+      pill={pill}
       {...rest}
     >
       {children}
-    </Tag>
+    </RBBadge>
   );
 };
 
@@ -456,31 +426,30 @@ export const TabPane = ({ className, tabId, tag, children, ...rest }) => {
 export const Nav = ({ className, tabs, pills, vertical, horizontal, justified, fill, navbar, children, tag, ...rest }) => {
   const Tag = resolveTag(tag, 'ul');
   return (
-    <Tag
+    <RBNav
+      as={Tag}
+      variant={tabs ? 'tabs' : (pills ? 'pills' : undefined)}
+      fill={fill}
+      justify={justified}
+      navbar={navbar}
       className={classNames(
         className,
-        'nav',
-        tabs && 'nav-tabs',
-        pills && 'nav-pills',
         vertical && (typeof vertical === 'string' ? `flex-${vertical}-column` : 'flex-column'),
         horizontal === false && 'flex-column',
-        justified && 'nav-justified',
-        fill && 'nav-fill',
-        navbar && 'navbar-nav',
       )}
       {...rest}
     >
       {children}
-    </Tag>
+    </RBNav>
   );
 };
 
 export const NavItem = ({ className, tag, children, ...rest }) => {
   const Tag = resolveTag(tag, 'li');
   return (
-    <Tag className={classNames(className, 'nav-item')} {...rest}>
+    <RBNavItem as={Tag} className={className} {...rest}>
       {children}
-    </Tag>
+    </RBNavItem>
   );
 };
 
@@ -488,63 +457,61 @@ export const NavLink = ({ className, active, disabled, tag, children, ...rest })
   const Tag = resolveTag(tag, 'a');
 
   return (
-    <Tag
-      className={classNames(className, 'nav-link', active && 'active', disabled && 'disabled')}
-      aria-disabled={disabled || undefined}
+    <RBNavLink
+      as={Tag}
+      className={className}
+      active={active}
+      disabled={disabled}
       {...rest}
     >
       {children}
-    </Tag>
+    </RBNavLink>
   );
 };
 
 export const Navbar = ({ className, color, dark, light, expand, fixed, sticky, tag, children, ...rest }) => {
   const Tag = resolveTag(tag, 'nav');
-  const expandClass = expand
-    ? (expand === true ? 'navbar-expand' : `navbar-expand-${expand}`)
-    : null;
 
   return (
-    <Tag
-      className={classNames(
-        className,
-        'navbar',
-        expandClass,
-        dark && 'navbar-dark',
-        light && 'navbar-light',
-        color && `bg-${color}`,
-        fixed && `fixed-${fixed}`,
-        sticky && `sticky-${sticky}`,
-      )}
+    <RBNavbar
+      as={Tag}
+      className={className}
+      expand={expand}
+      fixed={fixed}
+      sticky={sticky}
+      bg={color}
+      variant={dark ? 'dark' : (light ? 'light' : undefined)}
       {...rest}
     >
       {children}
-    </Tag>
+    </RBNavbar>
   );
 };
 
 export const NavbarBrand = ({ className, tag, children, ...rest }) => {
-  const Tag = resolveTag(tag, 'a');
+  const Tag = tag;
   return (
-    <Tag className={classNames(className, 'navbar-brand')} {...rest}>
+    <RBNavbarBrand as={Tag} className={className} {...rest}>
       {children}
-    </Tag>
+    </RBNavbarBrand>
   );
 };
 
 export const NavbarToggler = ({ className, children, ...rest }) => (
-  <button type="button" className={classNames(className, 'navbar-toggler')} {...rest}>
+  <RBNavbarToggle className={className} {...rest}>
     {children || <span className="navbar-toggler-icon" />}
-  </button>
+  </RBNavbarToggle>
 );
 
 export const Collapse = ({ className, isOpen, navbar, horizontal, children, ...rest }) => (
-  <div
-    className={classNames(className, 'collapse', isOpen && 'show', navbar && 'navbar-collapse', horizontal && 'collapse-horizontal')}
-    {...rest}
-  >
-    {children}
-  </div>
+  <RBCollapse in={Boolean(isOpen)} dimension={horizontal ? 'width' : 'height'}>
+    <div
+      className={classNames(className, navbar && 'navbar-collapse', horizontal && 'collapse-horizontal')}
+      {...rest}
+    >
+      {children}
+    </div>
+  </RBCollapse>
 );
 
 const DropdownContext = createContext(null);
@@ -744,32 +711,20 @@ export const DropdownItem = ({
 };
 
 export const Table = ({ className, bordered, borderless, striped, dark, hover, responsive, size, children, ...rest }) => {
-  const table = (
-    <table
-      className={classNames(
-        className,
-        'table',
-        bordered && 'table-bordered',
-        borderless && 'table-borderless',
-        striped && 'table-striped',
-        dark && 'table-dark',
-        hover && 'table-hover',
-        size && `table-${size}`,
-      )}
+  return (
+    <RBTable
+      className={className}
+      bordered={bordered}
+      borderless={borderless}
+      striped={striped}
+      variant={dark ? 'dark' : undefined}
+      hover={hover}
+      responsive={responsive}
+      size={size}
       {...rest}
     >
       {children}
-    </table>
-  );
-
-  if (!responsive) {
-    return table;
-  }
-
-  return (
-    <div className={classNames(responsive === true ? 'table-responsive' : `table-responsive-${responsive}`)}>
-      {table}
-    </div>
+    </RBTable>
   );
 };
 
@@ -821,71 +776,65 @@ export const Progress = ({
 export const Card = ({ className, body, color, inverse, outline, tag, children, ...rest }) => {
   const Tag = resolveTag(tag, 'div');
   return (
-    <Tag
-      className={classNames(
-        className,
-        'card',
-        body && 'card-body',
-        color && (outline ? `border-${color}` : colorClass('bg', color)),
-        inverse && 'text-white',
-      )}
+    <RBCard
+      as={Tag}
+      className={className}
+      body={body}
+      bg={color && !outline ? normalizeVariant(color) : undefined}
+      border={outline ? normalizeVariant(color) : undefined}
+      text={inverse ? 'white' : undefined}
       {...rest}
     >
       {children}
-    </Tag>
+    </RBCard>
   );
 };
 
 export const CardBody = ({ className, tag, children, ...rest }) => {
   const Tag = resolveTag(tag, 'div');
   return (
-    <Tag className={classNames(className, 'card-body')} {...rest}>
+    <RBCardBody as={Tag} className={className} {...rest}>
       {children}
-    </Tag>
+    </RBCardBody>
   );
 };
 
 export const CardTitle = ({ className, tag, children, ...rest }) => {
   const Tag = resolveTag(tag, 'h5');
   return (
-    <Tag className={classNames(className, 'card-title')} {...rest}>
+    <RBCardTitle as={Tag} className={className} {...rest}>
       {children}
-    </Tag>
+    </RBCardTitle>
   );
 };
 
 export const CardText = ({ className, tag, children, ...rest }) => {
   const Tag = resolveTag(tag, 'p');
   return (
-    <Tag className={classNames(className, 'card-text')} {...rest}>
+    <RBCardText as={Tag} className={className} {...rest}>
       {children}
-    </Tag>
+    </RBCardText>
   );
 };
 
 export const CardImg = ({ className, top, bottom, ...rest }) => (
-  <img
-    className={classNames(className, top && 'card-img-top', bottom && 'card-img-bottom', !top && !bottom && 'card-img')}
-    {...rest}
-  />
+  <RBCardImg className={className} variant={top ? 'top' : (bottom ? 'bottom' : undefined)} {...rest} />
 );
 
 export const ListGroup = ({ className, flush, horizontal, numbered, children, tag, ...rest }) => {
   const Tag = resolveTag(tag, numbered ? 'ol' : 'ul');
 
   return (
-    <Tag
-      className={classNames(
-        className,
-        'list-group',
-        flush && 'list-group-flush',
-        horizontal && (typeof horizontal === 'string' ? `list-group-horizontal-${horizontal}` : 'list-group-horizontal'),
-        numbered && 'list-group-numbered',
-      )}
+    <RBListGroup
+      as={Tag}
+      className={className}
+      flush={flush}
+      horizontal={horizontal}
+      numbered={numbered}
       {...rest}
     >
       {children}
-    </Tag>
+    </RBListGroup>
   );
 };
 
@@ -893,20 +842,18 @@ export const ListGroupItem = ({ className, active, disabled, color, action, tag,
   const Tag = resolveTag(tag, action ? 'button' : 'li');
 
   return (
-    <Tag
+    <RBListGroupItem
+      as={Tag}
+      action={action}
+      active={active}
+      disabled={disabled}
+      variant={color ? normalizeVariant(color) : undefined}
+      className={className}
       type={Tag === 'button' ? 'button' : undefined}
-      className={classNames(
-        className,
-        'list-group-item',
-        action && 'list-group-item-action',
-        active && 'active',
-        disabled && 'disabled',
-        color && `list-group-item-${color}`,
-      )}
       {...rest}
     >
       {children}
-    </Tag>
+    </RBListGroupItem>
   );
 };
 
@@ -1226,73 +1173,28 @@ export const PopoverBody = ({ className, tag, children, ...rest }) => {
 };
 
 export const UncontrolledCarousel = ({ className, items = [], indicators = true, controls = true, autoPlay = true, interval = 5000 }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const itemCount = items.length;
-
-  useEffect(() => {
-    if (!autoPlay || itemCount < 2) {
-      return undefined;
-    }
-
-    const timer = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % itemCount);
-    }, interval);
-
-    return () => {
-      window.clearInterval(timer);
-    };
-  }, [autoPlay, itemCount, interval]);
-
-  if (itemCount === 0) {
+  if (items.length === 0) {
     return null;
   }
 
-  const goTo = (index) => {
-    setActiveIndex((index + itemCount) % itemCount);
-  };
-
   return (
-    <div className={classNames(className, 'carousel slide')}>
-      {indicators ? (
-        <div className="carousel-indicators">
-          {items.map((item, index) => (
-            <button
-              key={item.key || item.src || index}
-              type="button"
-              className={classNames(index === activeIndex && 'active')}
-              aria-current={index === activeIndex || undefined}
-              aria-label={`Slide ${index + 1}`}
-              onClick={() => goTo(index)}
-            />
-          ))}
-        </div>
-      ) : null}
-      <div className="carousel-inner">
-        {items.map((item, index) => (
-          <div key={item.key || item.src || index} className={classNames('carousel-item', index === activeIndex && 'active')}>
-            <img className="d-block w-100" src={item.src} alt={item.altText || item.caption || `Slide ${index + 1}`} />
-            {(item.header || item.caption) ? (
-              <div className="carousel-caption d-none d-md-block">
-                {item.header ? <h5>{item.header}</h5> : null}
-                {item.caption ? <p>{item.caption}</p> : null}
-              </div>
-            ) : null}
-          </div>
-        ))}
-      </div>
-      {controls ? (
-        <>
-          <button className="carousel-control-prev" type="button" onClick={() => goTo(activeIndex - 1)}>
-            <span className="carousel-control-prev-icon" aria-hidden="true" />
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" onClick={() => goTo(activeIndex + 1)}>
-            <span className="carousel-control-next-icon" aria-hidden="true" />
-            <span className="visually-hidden">Next</span>
-          </button>
-        </>
-      ) : null}
-    </div>
+    <RBCarousel
+      className={className}
+      indicators={indicators}
+      controls={controls}
+      interval={autoPlay ? interval : null}
+    >
+      {items.map((item, index) => (
+        <RBCarousel.Item key={item.key || item.src || index}>
+          <img className="d-block w-100" src={item.src} alt={item.altText || item.caption || `Slide ${index + 1}`} />
+          {(item.header || item.caption) ? (
+            <RBCarousel.Caption>
+              {item.header ? <h5>{item.header}</h5> : null}
+              {item.caption ? <p>{item.caption}</p> : null}
+            </RBCarousel.Caption>
+          ) : null}
+        </RBCarousel.Item>
+      ))}
+    </RBCarousel>
   );
 };
