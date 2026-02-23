@@ -1,7 +1,6 @@
 import path from 'node:path';
 import { defineConfig, loadEnv, transformWithEsbuild } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 const SRC_DIR = path.resolve(__dirname, 'src');
 const SRC_ALIAS_DIRS = [
@@ -82,14 +81,6 @@ export default defineConfig(({ mode }) => {
       transformJsAsJsx(),
       react({
         include: /\.[jt]sx?$/,
-      }),
-      nodePolyfills({
-        globals: {
-          Buffer: true,
-          global: true,
-          process: true,
-        },
-        protocolImports: true,
       }),
     ],
     resolve: {

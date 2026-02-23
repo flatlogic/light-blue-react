@@ -1,5 +1,6 @@
 import dayjs from 'core/date';
-import { isString } from 'lodash';
+
+const isStringValue = (value) => typeof value === 'string' || value instanceof String;
 
 const IniValues = (fields, record={}) => {
 	const iniArray = {};
@@ -53,7 +54,7 @@ const IniValues = (fields, record={}) => {
 				break;
 
 			case 'enum':
-			    if (!value || isString(value)) {
+			    if (!value || isStringValue(value)) {
 			      showValue = value;
 			    } 
 			    else {

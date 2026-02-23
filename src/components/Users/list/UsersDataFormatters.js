@@ -1,6 +1,5 @@
 import dayjs from 'core/date';
 import React from 'react';
-import { truncate } from 'lodash';
 
 import s from '../Users.module.scss';
 import avatar1 from '../../../images/chat/chat1.png';
@@ -11,6 +10,16 @@ import avatar5 from '../../../images/chat/chat5.png';
 import avatar6 from '../../../images/chat/chat6.png';
 
 const avatars = [avatar1, avatar3, avatar4, avatar5, avatar6];
+
+const truncateText = (value, maxLength = 30) => {
+  if (!value) {
+    return value;
+  }
+
+  return value.length > maxLength
+    ? `${value.slice(0, maxLength - 3)}...`
+    : value;
+};
 
 function imageFormatter(cell, rows, rowIndex) {
   const imageUrl =
@@ -50,7 +59,7 @@ function filesFormatter(cell) {
                 rel="noopener noreferrer"
                 download
               >
-                {truncate(value.name)}
+                {truncateText(value.name)}
               </a>
             </div>
           );
