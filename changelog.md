@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+## [8.3.3] - 2026-02-23
+- Dependency and runtime cleanup:
+  - removed Vite Node polyfill plugin and legacy browserify/polyfill packages (`assert`, `crypto-browserify`, `os-browserify`, `process`, `stream-browserify`, `stream-http`, `url`, `vm-browserify`);
+  - removed direct `lodash` usage from app code paths and replaced it with local utility helpers in form/user formatters;
+  - pinned transitive `lodash` to a safe version via npm override (`^4.17.23`).
+- Lockfile update:
+  - added `yarn.lock` for Yarn install parity while keeping npm lockfile in place.
+
 ## [8.3.2] - 2026-02-23
 - Phase 1 modernization baseline fixes:
   - fixed dead fallback redirect in app shell (`/app/main/visits` -> `/app/main/dashboard`);
