@@ -95,6 +95,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: [
         { find: /^~(.*)$/, replacement: '$1' },
+        { find: 'reactstrap', replacement: path.resolve(SRC_DIR, 'lib/reactstrap/index.js') },
         ...createSourceAliases(),
       ],
     },
