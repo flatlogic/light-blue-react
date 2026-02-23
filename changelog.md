@@ -1,6 +1,8 @@
 # Changelog
 
-## [Unreleased] - 2026-02-22
+## [Unreleased]
+
+## [8.3.2] - 2026-02-23
 - Phase 1 modernization baseline fixes:
   - fixed dead fallback redirect in app shell (`/app/main/visits` -> `/app/main/dashboard`);
   - hardened `AuthRoute` against missing `location.state`;
