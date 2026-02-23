@@ -31,9 +31,9 @@ const UsersForm = (props) => {
         <Formik
           onSubmit={handleSubmit}
           initialValues={initialValues}
-          render={(form) => {
-            return (
-              <form onSubmit={form.handleSubmit}>
+        >
+          {(form) => (
+            <form onSubmit={form.handleSubmit}>
 
                 <InputFormItem
                   name={'currentPassword'}
@@ -74,10 +74,9 @@ const UsersForm = (props) => {
                     Cancel
                   </button>
                 </div>
-              </form>
-            );
-          }}
-        />
+            </form>
+          )}
+        </Formik>
       </Widget>
     );
   };

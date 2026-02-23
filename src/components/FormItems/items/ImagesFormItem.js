@@ -73,15 +73,14 @@ ImagesFormItemNotFast.propTypes = {
 };
 
 const ImagesFormItem = (props) => (
-  <FastField
-    name={props.name}
-    render={({ form }) => (
+  <FastField name={props.name}>
+    {({ form }) => (
       <ImagesFormItemNotFast
         {...props}
         form={form}
       />
     )}
-  />
+  </FastField>
 );
 
 export default ImagesFormItem;

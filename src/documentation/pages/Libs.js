@@ -7,7 +7,7 @@ import TextareaAutosize from 'components/AutoResizeTextarea';
 import DateTime from 'react-datetime';
 import Slider from 'rc-slider';
 import Select from 'react-select';
-import { Editor } from 'react-draft-wysiwyg';
+import RichTextEditor from 'components/RichTextEditor/RichTextEditor';
 import MaskedInput from 'components/MaskedInputField';
 import Scrollspy from './ScrollSpyComponent';
 import { Link } from 'react-router-dom';
@@ -73,11 +73,10 @@ const Libs = () => (
                                                                       target="_blank" rel="noopener noreferrer">Font Awesome</a></p>
           </Widget>
           <Widget id="Formsy-React">
-            <h3>Formsy-react</h3>
-            <p>A form input builder and validator for React JS</p>
+            <h3>Validation Inputs</h3>
+            <p>Form validation inputs are powered by local React 19-compatible validation components.</p>
             <p className="lead">Want to see examples? <Link to="/app/forms/wizard">Click</Link></p>
-            <p>For more examples and documentation please refer to <a href="https://github.com/formsy/formsy-react"
-                                                                      target="_blank" rel="noopener noreferrer">Formcy React</a></p>
+            <p className="text-muted">Legacy Formsy dependency has been removed from this project.</p>
           </Widget>
           <Widget id="Fullcalendar">
             <h3>Fullcalendar</h3>
@@ -189,11 +188,10 @@ const Libs = () => (
               href="https://github.com/react-dropzone/react-dropzone" target="_blank" rel="noopener noreferrer">React Dropzone</a></p>
           </Widget>
           <Widget id="React-Draft-Wysiwyg">
-            <h3>React-draft-wysiwyg</h3>
-            <p>A Wysiwyg editor built using ReactJS and DraftJS libraries</p>
-            <Editor/>
-            <p>For more examples and documentation please refer to <a
-              href="https://github.com/jpuri/react-draft-wysiwyg" target="_blank" rel="noopener noreferrer">React Wysiwyg</a></p>
+            <h3>Rich Text Editor</h3>
+            <p>A local WYSIWYG editor implementation compatible with modern React runtime.</p>
+            <RichTextEditor/>
+            <p className="text-muted">Editor controls support basic rich text formatting and links.</p>
           </Widget>
           <Widget id="React-Google-Maps">
             <h3>Google Maps</h3>
@@ -303,8 +301,8 @@ const Libs = () => (
                 A Declarative Framework for Rapid Construction of Web-based Visualization
               </li>
               <li className="lead">
-                <a className="fw-semi-bold" href="https://github.com/olahol/react-tagsinput" rel="noopener noreferrer" target="_blank"> react-tagsinput</a>.
-                Highly customizable React component for inputing tags.
+                <span className="fw-semi-bold"> Local TagsInput component</span>.
+                React 19 compatible tags input used in product forms with the same visual style as before.
               </li>
               <li className="lead">
                 <a className="fw-semi-bold" href="https://github.com/tannerlinsley/react-table" rel="noopener noreferrer" target="_blank"> react-table</a>.

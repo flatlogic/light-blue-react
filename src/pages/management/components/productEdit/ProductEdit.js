@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import TagsInput from 'react-tagsinput'
+import TagsInput from '../../../../components/TagsInput/TagsInput';
 import {
   Input,
   Label,

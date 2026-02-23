@@ -14,8 +14,7 @@ import {
   DropdownItem,
   DropdownToggle, InputGroupText,
 } from 'reactstrap';
-import { Editor } from 'react-draft-wysiwyg';
-import { EditorState } from 'draft-js';
+import RichTextEditor from 'components/RichTextEditor/RichTextEditor';
 import Datetime from 'react-datetime';
 import MaskedInput from 'components/MaskedInputField';
 import Slider from 'rc-slider';
@@ -41,7 +40,7 @@ const Elements = () => {
       orangeSelectDropdownValue: 'Shi',
       redSelectDropdownValue: 'Ichi',
       bigSelectDropdownValue: 'Fourth Item',
-      editorState: EditorState.createEmpty(),
+      editorState: '',
       selectGroupData: [
         {
           label: 'NFC EAST',
@@ -104,7 +103,7 @@ const Elements = () => {
     setState({
       editorState,
     });
-  }
+  };
 
   const onDrop = (files) => {
     setState({
@@ -585,10 +584,12 @@ const Elements = () => {
                     </span>
                   </Label>
                   <Col md={9}>
-                    <Editor
+                    <RichTextEditor
                       wrapperClassName={s.wysiwygWrapper}
                       editorClassName={s.wysiwygEditor}
                       toolbarClassName={s.wysiwygToolbar}
+                      value={state.editorState}
+                      onChange={onEditorStateChange}
                     />
                     <div className="text-md-right mt-xs">
                       <Button color="danger" className="me-4">Save</Button>

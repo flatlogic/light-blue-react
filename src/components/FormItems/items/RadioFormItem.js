@@ -90,15 +90,14 @@ RadioFormItemNotFast.propTypes = {
 };
 
 const RadioFormItem = (props) => (
-  <FastField
-    name={props.name}
-    render={({ form }) => (
+  <FastField name={props.name}>
+    {({ form }) => (
       <RadioFormItemNotFast
         {...props}
         form={form}
       />
     )}
-  />
+  </FastField>
 );
 
 export default RadioFormItem;

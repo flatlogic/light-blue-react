@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Editor } from 'react-draft-wysiwyg';
+import RichTextEditor from 'components/RichTextEditor/RichTextEditor';
 import { Input, Button } from 'reactstrap';
 
 import Widget from '../../../../components/Widget';
@@ -13,7 +13,7 @@ const Compose = ({ data }) => (
       <h4>Compose <span className="fw-semi-bold">New</span></h4>
       <Input type="text" placeholder="To" defaultValue={data && data.from} />
       <Input type="text" placeholder="Subject" defaultValue={data && data.theme} />
-      <Editor
+      <RichTextEditor
         wrapperClassName={s.wysiwygWrapper}
         editorClassName={s.wysiwygEditor}
         toolbarClassName={s.wysiwygToolbar}

@@ -290,7 +290,7 @@ export default {
       }
     },
     subtitle: {
-      text: 'Source <a href="https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)">Wikipedia</a>',
+      text: 'Source: Wikipedia (United Nations)',
       style: {
         color: colors.textColor
       }

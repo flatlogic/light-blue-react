@@ -88,15 +88,14 @@ SwitchFormItemNotFast.propTypes = {
 };
 
 const SwitchFormItem = (props) => (
-  <FastField
-    name={props.name}
-    render={({ form }) => (
+  <FastField name={props.name}>
+    {({ form }) => (
       <SwitchFormItemNotFast
         {...props}
         form={form}
       />
     )}
-  />
+  </FastField>
 );
 
 export default SwitchFormItem;

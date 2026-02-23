@@ -26,9 +26,9 @@ const UsersForm = (props) => {
         onSubmit={handleSubmit}
         initialValues={iniValues()}
         validationSchema={formValidations()}
-        render={(form) => {
-          return (
-            <form onSubmit={form.handleSubmit}>
+      >
+        {(form) => (
+          <form onSubmit={form.handleSubmit}>
 
               <InputFormItem
                 name={'firstName'}
@@ -110,10 +110,9 @@ const UsersForm = (props) => {
                   Reset
                 </button>{' '}{' '}
               </div>
-            </form>
-          );
-        }}
-      />
+          </form>
+        )}
+      </Formik>
   );
 
   if (findLoading) {

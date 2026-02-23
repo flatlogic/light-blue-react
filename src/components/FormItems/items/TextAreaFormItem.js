@@ -98,15 +98,14 @@ TextAreaFormItemNotFast.propTypes = {
 };
 
 const TextAreaFormItem = (props) => (
-  <FastField
-    name={props.name}
-    render={({ form }) => (
+  <FastField name={props.name}>
+    {({ form }) => (
       <TextAreaFormItemNotFast
         {...props}
         form={form}
       />
     )}
-  />
+  </FastField>
 );
 
 export default TextAreaFormItem;

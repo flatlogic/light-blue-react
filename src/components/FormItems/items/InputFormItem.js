@@ -97,15 +97,14 @@ InputFormItemNotFast.propTypes = {
 };
 
 const InputFormItem = (props) => (
-  <FastField
-    name={props.name}
-    render={({ form }) => (
+  <FastField name={props.name}>
+    {({ form }) => (
       <InputFormItemNotFast
         {...props}
         form={form}
       />
     )}
-  />
+  </FastField>
 );
 
 export default InputFormItem;
