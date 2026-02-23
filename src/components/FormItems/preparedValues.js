@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'core/date';
 
 const PreparedValues = (fields, record={}) => {
 	const preparedArray = {};
@@ -9,7 +9,7 @@ const PreparedValues = (fields, record={}) => {
 		switch(type) {
 			case 'date':
 			    preparedValue = value
-			      ? moment(value, 'YYYY-MM-DD').toDate()
+			      ? dayjs(value, 'YYYY-MM-DD').toDate()
 			      : null;
 				break;
 

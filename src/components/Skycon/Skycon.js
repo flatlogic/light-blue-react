@@ -1,10 +1,36 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import createSkycons from 'skycons';
+import cx from 'classnames';
+import s from './Skycon.module.scss';
 
-const Skycons = createSkycons(typeof window !== 'undefined' ? window : {});
+const ICON_MAP = {
+  CLEAR_DAY: 'bi-sun-fill',
+  CLEAR_NIGHT: 'bi-moon-stars-fill',
+  PARTLY_CLOUDY_DAY: 'bi-cloud-sun-fill',
+  PARTLY_CLOUDY_NIGHT: 'bi-cloud-moon-fill',
+  CLOUDY: 'bi-cloud-fill',
+  RAIN: 'bi-cloud-rain-heavy-fill',
+  SLEET: 'bi-cloud-sleet-fill',
+  SNOW: 'bi-cloud-snow-fill',
+  WIND: 'bi-wind',
+  FOG: 'bi-cloud-fog2-fill',
+};
+
+const parseSize = (size) => {
+  const numericSize = Number(size);
+  if (Number.isFinite(numericSize) && numericSize > 0) {
+    return `${numericSize}px`;
+  }
+
+  if (typeof size === 'string' && size.trim()) {
+    return size;
+  }
+
+  return '24px';
+};
 
 const Skycon = ({
+  className,
   color,
   autoPlay,
   icon,
@@ -12,39 +38,30 @@ const Skycon = ({
   height,
   ...restProps
 }) => {
-  const canvasRef = useRef(null);
-  const skyconsRef = useRef(null);
+  const iconClassName = ICON_MAP[icon] || ICON_MAP.CLEAR_DAY;
+  const widthPx = parseSize(width);
+  const heightPx = parseSize(height);
+  const fontSize = Number.parseInt(widthPx, 10) <= Number.parseInt(heightPx, 10) ? widthPx : heightPx;
 
-  useEffect(() => {
-    if (!canvasRef.current) {
-      return undefined;
-    }
-
-    const skycons = new Skycons({ color });
-    skyconsRef.current = skycons;
-    skycons.add(canvasRef.current, Skycons[icon]);
-
-    if (autoPlay) {
-      skycons.play();
-    } else {
-      skycons.pause();
-    }
-
-    return () => {
-      if (canvasRef.current) {
-        skycons.remove(canvasRef.current);
-      }
-      skycons.pause();
-    };
-  }, [autoPlay, color, icon]);
-
-  return (
-    <canvas ref={canvasRef} width={width} height={height} {...restProps} />
-  );
+  return (<span
+    className={cx(
+      'bi',
+      iconClassName,
+      s.icon,
+      {
+        [s.animated]: autoPlay && icon !== 'WIND',
+        [s.wind]: autoPlay && icon === 'WIND',
+      },
+      className,
+    )}
+    style={{ color, width: widthPx, height: heightPx, fontSize }}
+    {...restProps}
+  />);
 };
 
 Skycon.propTypes = {
-  color: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  color: PropTypes.string,
   autoPlay: PropTypes.bool,
   icon: PropTypes.oneOf([  // eslint-disable-line
     'CLEAR_DAY',
@@ -63,6 +80,7 @@ Skycon.propTypes = {
 };
 
 Skycon.defaultProps = {
+  className: '',
   color: null,
   autoPlay: true,
   width: '100%',

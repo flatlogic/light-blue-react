@@ -15,7 +15,6 @@ import {
   DropdownToggle, InputGroupText,
 } from 'reactstrap';
 import RichTextEditor from 'components/RichTextEditor/RichTextEditor';
-import Datetime from 'react-datetime';
 import MaskedInput from 'components/MaskedInputField';
 import Slider from 'rc-slider';
 import Dropzone from 'react-dropzone';
@@ -77,8 +76,6 @@ const Elements = () => {
       ],
       colorpickerValue: '#ff0000',
       colorpickerInputValue: '#ff0000',
-      isDatePickerOpen: false,
-      isTimePickerOpen: false,
       dropFiles: [],
       inputFiles: [],
       imageFiles: [],
@@ -1000,27 +997,29 @@ const Elements = () => {
                   <Label for="datetimepicker">Time-enabled</Label>
                   <Row>
                     <Col xs="6">
-                      <div className="datepicker" style={{display: 'flex'}}>
-                        <Datetime
-                          id="datepicker"
-                          viewMode="days"
-                          timeFormat={false}
-                        />
+                      <div className="datepicker">
+                        <InputGroup>
+                          <Input
+                            id="datepicker"
+                            type="date"
+                          />
                         <InputGroupText>
                           <i className="glyphicon glyphicon-th" />
                         </InputGroupText>
+                        </InputGroup>
                       </div>
                     </Col>
                     <Col xs="6">
-                      <div className="datepicker" style={{display: 'flex'}}>
-                        <Datetime
-                          id="timepicker"
-                          viewMode="time"
-                          dateFormat={false}
-                        />
+                      <div className="datepicker">
+                        <InputGroup>
+                          <Input
+                            id="timepicker"
+                            type="time"
+                          />
                         <InputGroupText>
                           <i className="glyphicon glyphicon-time" />
                         </InputGroupText>
+                        </InputGroup>
                       </div>
                     </Col>
                   </Row>

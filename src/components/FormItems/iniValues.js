@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'core/date';
 import { isString } from 'lodash';
 
 const IniValues = (fields, record={}) => {
@@ -14,7 +14,7 @@ const IniValues = (fields, record={}) => {
 
 			case 'date':
 			    showValue = value
-			      ? moment(value, 'YYYY-MM-DD').toDate()
+			      ? dayjs(value, 'YYYY-MM-DD').toDate()
 			      : null;
 				  break;
 
@@ -24,13 +24,13 @@ const IniValues = (fields, record={}) => {
 			    }
 			    else {
 				    showValue = value.map((item) =>
-				      item ? moment(item, 'YYYY-MM-DD').toDate() : null
+				      item ? dayjs(item, 'YYYY-MM-DD').toDate() : null
 				    );
 				}
 				break;
 
 			case 'datetime':
-			    showValue =  value ? moment(value).toDate() : null;
+			    showValue =  value ? dayjs(value).toDate() : null;
 				break;
 
 			case 'datetimeRange':
@@ -39,7 +39,7 @@ const IniValues = (fields, record={}) => {
 			    }
 
 			    else { showValue = value.map((item) =>
-			      	item ? moment(item).toDate() : null
+			      	item ? dayjs(item).toDate() : null
 			      );
 			    }
 			    break;

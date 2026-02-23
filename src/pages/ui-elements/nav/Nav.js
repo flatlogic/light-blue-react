@@ -51,7 +51,7 @@ const NavExamples = () => {
                 <pre className="bg-custom-dark border-0 w-100 h-100">
                   <code className="text-danger">{'<Nav>\n'}</code>
                   <code className="text-info">{'  <NavItem>\n'}</code>
-                  <code className="text-warning">{'    <NavLink href="#">\n'}</code>
+                  <code className="text-warning">{'    <NavLink href="#" active>\n'}</code>
                   <code>{'      Link\n'}</code>
                   <code className="text-warning">{'    </NavLink>\n'}</code>
                   <code className="text-info">{'  </NavItem>\n'}</code>

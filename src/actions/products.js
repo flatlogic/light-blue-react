@@ -13,6 +13,25 @@ export const DELETED_PRODUCT = 'DELETED_PRODUCT';
 export const DELETING_PRODUCT = 'DELETING_PRODUCT';
 export const RECEIVED_IMAGES = 'RECEIVED_IMAGES';
 
+const toSerializable = (value) => {
+  if (value instanceof Date) {
+    return value.toISOString();
+  }
+
+  if (Array.isArray(value)) {
+    return value.map(toSerializable);
+  }
+
+  if (value && typeof value === 'object') {
+    return Object.entries(value).reduce((acc, [key, nestedValue]) => ({
+      ...acc,
+      [key]: toSerializable(nestedValue),
+    }), {});
+  }
+
+  return value;
+};
+
 export function getProductsRequest() {
     return (dispatch) => {
         // We check if app runs with backend mode
@@ -113,7 +132,7 @@ export function receiveProductImages(payload) {
 export function receiveProducts(payload) {
     return {
         type: RECEIVED_PRODUCTS,
-        payload
+        payload: toSerializable(payload),
     }
 }
 
@@ -126,7 +145,7 @@ export function receivingProducts() {
 export function receiveProduct(payload) {
     return {
         type: RECEIVED_PRODUCT,
-        payload
+        payload: toSerializable(payload),
     }
 }
 
@@ -139,7 +158,7 @@ export function receivingProduct() {
 export function updateProduct(payload) {
     return {
         type: UPDATED_PRODUCT,
-        payload
+        payload: toSerializable(payload),
     }
 }
 
@@ -162,5 +181,4 @@ export function deletingProduct(payload) {
         payload
     }
 }
-
 

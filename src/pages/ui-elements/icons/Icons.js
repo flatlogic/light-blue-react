@@ -105,6 +105,7 @@ const Icons = () => {
                 {Object.keys(icons).map((key) => {
                   return (
                     <Col
+                      key={key}
                       md={4}
                       lg={3}
                       xs={12}

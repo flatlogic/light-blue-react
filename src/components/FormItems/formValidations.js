@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'core/date';
 import * as yup from 'yup';
 
 const formValidations = (fields, record={}) => {
@@ -26,7 +26,7 @@ const formValidations = (fields, record={}) => {
 			          if (!value) {
 			            return true;
 			          }
-			          return moment(value, 'YYYY-MM-DD').isValid();
+			          return dayjs(value, 'YYYY-MM-DD', true).isValid();
 			        }
 			      );
 				break;

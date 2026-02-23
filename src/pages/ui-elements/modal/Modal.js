@@ -81,7 +81,7 @@ const ModalExample = () => {
                   <code>{'      .col-md-4 .ms-auto\n'}</code>
                   <code className="text-info">{'    </Col>\n'}</code>
                   <code className="text-success">{'  </Row>\n'}</code>
-                  <code className="text-success">{'  <Row>\n'}</code>
+                  <code className="text-success">{'  <Row className="mt-sm">\n'}</code>
                   <code className="text-info">{'    <Col md={3} className="ms-auto">\n'}</code>
                   <code>{'      .col-md-3 .ms-auto\n'}</code>
                   <code className="text-info">{'    </Col>\n'}</code>
@@ -89,7 +89,7 @@ const ModalExample = () => {
                   <code>{'      .col-md-4 .ms-auto\n'}</code>
                   <code className="text-info">{'    </Col>\n'}</code>
                   <code className="text-success">{'  </Row>\n'}</code>
-                  <code className="text-success">{'  <Row>\n'}</code>
+                  <code className="text-success">{'  <Row className="mt-sm">\n'}</code>
                   <code className="text-info">{'    <Col md={6} className="ms-auto">\n'}</code>
                   <code>{'      .col-md-6 .ms-auto\n'}</code>
                   <code className="text-info">{'    </Col>\n'}</code>
@@ -200,7 +200,7 @@ const ModalExample = () => {
         </Modal>
 
         <Modal isOpen={launch} toggle={() => toggle('launch')}>
-          <ModalHeader toggle={() => toggle('launch')}>Small modal</ModalHeader>
+          <ModalHeader toggle={() => toggle('launch')}>Modal with grid</ModalHeader>
           <ModalBody>
             <Container fluid>
               <Row>

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col } from 'reactstrap';
 import classnames from 'classnames';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import SwipeArea from '../components/SwipeArea';
 
 import Header from './DocumentationHeader';
@@ -65,25 +65,28 @@ const Layout = () => {
                 <Sidebar width={width} />
                 <Col xl={10} md={9}>
                   <Routes>
-                    <Route path="/documentation/getting-started/overview" element={<Overview />} />
-                    <Route path="/documentation/getting-started/licences" element={<Licences />} />
-                    <Route path="/documentation/getting-started/quick-start" element={<QuickStart />} />
-                    <Route path="/documentation/components/alerts" element={<Alerts />} />
-                    <Route path="/documentation/components/badge" element={<Badge />} />
-                    <Route path="/documentation/components/buttons" element={<Buttons />} />
-                    <Route path="/documentation/components/card" element={<Card />} />
-                    <Route path="/documentation/components/carousel" element={<Carousel />} />
-                    <Route path="/documentation/components/modal" element={<Modal />} />
-                    <Route path="/documentation/components/nav" element={<Nav />} />
-                    <Route path="/documentation/components/navbar" element={<Navbar />} />
-                    <Route path="/documentation/components/popovers" element={<Popovers />} />
-                    <Route path="/documentation/components/tabs-accordion" element={<Tabs />} />
-                    <Route path="/documentation/components/progress" element={<Progress />} />
-                    <Route path="/documentation/libs" element={<Libs />} />
-                    <Route path="/documentation/pages" element={<Pages />} />
+                    <Route index element={<Navigate to="getting-started/overview" replace />} />
+                    <Route path="getting-started" element={<Navigate to="overview" replace />} />
+                    <Route path="getting-started/overview" element={<Overview />} />
+                    <Route path="getting-started/licences" element={<Licences />} />
+                    <Route path="getting-started/quick-start" element={<QuickStart />} />
+                    <Route path="components" element={<Navigate to="alerts" replace />} />
+                    <Route path="components/alerts" element={<Alerts />} />
+                    <Route path="components/badge" element={<Badge />} />
+                    <Route path="components/buttons" element={<Buttons />} />
+                    <Route path="components/card" element={<Card />} />
+                    <Route path="components/carousel" element={<Carousel />} />
+                    <Route path="components/modal" element={<Modal />} />
+                    <Route path="components/nav" element={<Nav />} />
+                    <Route path="components/navbar" element={<Navbar />} />
+                    <Route path="components/popovers" element={<Popovers />} />
+                    <Route path="components/tabs-accordion" element={<Tabs />} />
+                    <Route path="components/progress" element={<Progress />} />
+                    <Route path="libs" element={<Libs />} />
+                    <Route path="pages" element={<Pages />} />
                     <Route
                       path="*"
-                      element={<Overview />}
+                      element={<Navigate to="getting-started/overview" replace />}
                     />
                   </Routes>
                 </Col>

@@ -44,8 +44,7 @@ const Week = ({ previousCurrentNextView, selectedMonthEvents, selected, currentM
         selected={selected}
       />
     );
-    date = date.clone();
-    date.add(1, 'd');
+    date = date.clone().add(1, 'd');
   }
 
   return (

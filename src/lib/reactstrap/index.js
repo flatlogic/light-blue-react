@@ -71,10 +71,6 @@ const normalizeVariant = (color, fallback = 'secondary') => {
     return fallback;
   }
 
-  if (color === 'default') {
-    return 'secondary';
-  }
-
   return color;
 };
 
@@ -227,8 +223,18 @@ export const FormGroup = ({ className, row, check, switch: formSwitch, tag, chil
   );
 };
 
-export const Label = ({ className, check, size, tag, children, ...rest }) => {
+export const Label = ({
+  className,
+  check,
+  size,
+  tag,
+  children,
+  for: legacyFor,
+  htmlFor,
+  ...rest
+}) => {
   const Tag = resolveTag(tag, 'label');
+  const resolvedHtmlFor = htmlFor ?? legacyFor;
 
   return (
     <Tag
@@ -237,6 +243,7 @@ export const Label = ({ className, check, size, tag, children, ...rest }) => {
         check ? 'form-check-label' : 'form-label',
         size && `col-form-label-${size}`,
       )}
+      htmlFor={resolvedHtmlFor}
       {...rest}
     >
       {children}

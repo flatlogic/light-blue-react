@@ -22,21 +22,25 @@ const Pages = () => (
       <Widget id="Auth">
         <h3>Auth</h3>
         <p>Auth is a built-in module for an admin template dashboard. It contains all actions and handlers for any token authorization for your application.</p>
-        <p>All logic is in <code>src/actions/user.js</code> and <code>src/reducers/user.js</code>. We have already preconfigured <a href="https://github.com/flatlogic/nodejs-backend" rel="noopener noreferrer" target="_blank">Node.js backend</a>
+        <p>All logic is in <code>src/actions/auth.js</code> and <code>src/reducers/auth.js</code>. We have already preconfigured <a href="https://github.com/flatlogic/nodejs-backend" rel="noopener noreferrer" target="_blank">Node.js backend</a>
             <span className="small text-muted"> (Only in full stack version)</span> under the hood. <code>Creds</code> variable contains user email and password entered in the login form. It does request to our backend server and gets token and saves it in <code>localStorage</code>.</p>
         <p><b>Important note.</b> Credentials validation must be on the server side.</p>
-        <p>Another important part of authentication is <code>PrivateRoute</code> component. That’s how it looks like.</p>
-        <SyntaxHighlighter language='javascript' style={tomorrow}>{'const PrivateRoute = ({ dispatch, component, ...rest }) => {\n' +
-        '    if (!Login.isAuthenticated(localStorage.getItem(\'token\'))) {\n' +
-        '        dispatch(logoutUser());\n' +
-        '        return (<Redirect to=\'/login\'/>)\n' +
-        '    } else {\n' +
-        '        return (\n' +
-        '            <Route {...rest} render={props => (React.createElement(component, props))}/>\n' +
-        '        );\n' +
-        '    }\n' +
-        '};'}</SyntaxHighlighter>
-        <p>We are getting <code>token</code> from local storage, that must be saved in local storage after successful loginUser function completion. Depends on the result of this action, <code>PrivateRoute</code> returns page (react component) or redirect to the login page. If you don’t need login functionality in your app, you can use <code>Route</code> instead of <code>PrivateRoute</code>.</p>
+        <p>Another important part of authentication is route guards in <code>src/components/RouteComponents.js</code>. They are built with <code>Navigate</code> from React Router and protect private/admin pages.</p>
+        <SyntaxHighlighter language='javascript' style={tomorrow}>{'export function UserRoute({ dispatch, children }) {\n' +
+        '  if (!isAuthenticated()) {\n' +
+        '    dispatch(logoutUser());\n' +
+        '    return <Navigate to=\"/login\" replace />;\n' +
+        '  }\n\n' +
+        '  return children;\n' +
+        '}\n\n' +
+        'export function AuthRoute({ children, from }) {\n' +
+        '  const target = from || { pathname: \"/app\" };\n\n' +
+        '  if (isAuthenticated()) {\n' +
+        '    return <Navigate to={target} replace />;\n' +
+        '  }\n\n' +
+        '  return children;\n' +
+        '}'}</SyntaxHighlighter>
+        <p>Token is stored in <code>localStorage</code> after successful login. <code>UserRoute</code> blocks unauthorized access to private pages, <code>AuthRoute</code> prevents opening auth pages when already logged in, and <code>AdminRoute</code> additionally validates admin role.</p>
       </Widget>
       <Widget id="Inbox">
         <h3>Inbox</h3>
@@ -52,14 +56,13 @@ const Pages = () => (
       </Widget>
       <Widget id="Dashboards">
         <h3>Dashboards</h3>
-        <p>The main screen of any application built on the top of the admin dashboard template. That is more informative pages of all application. There are 2 types of dashboards: analytics and visits.</p>
-        <p>Analytics one. There you can find a lot of chart and statistics, calendar, todo manager, table with any data you need, notifications block.</p>
-        <p>Main chart made with D3.js library, most powerful charts library. Other components are just a plain markup with state</p>
-        <p>Visits dashboard page can be used for real-time displaying users & traffic data. It is a big vector map made with mapael in the center of this dashboard, that can display any region of the world with any data you want on hover action.</p>
+        <p>The main screens of the admin template. There are 2 dashboard views in the current app: main dashboard and analytics.</p>
+        <p>Analytics dashboard includes charts, statistics, calendar, todo manager and data tables.</p>
+        <p>Main chart is based on D3.js; other blocks are reusable widgets you can place on any page.</p>
         <p>All of this component can be used on any page of the application.</p>
         <p>
-          <Link className="btn btn-primary me-2" to="/app/main/analytics">Analytics</Link>
-          <Link className="btn btn-primary" to="/app/main/visits">Visits</Link>
+          <Link className="btn btn-primary me-2" to="/app/main/dashboard">Dashboard</Link>
+          <Link className="btn btn-primary" to="/app/main/analytics">Analytics</Link>
         </p>
       </Widget>
       <Widget id="E-Commerce">

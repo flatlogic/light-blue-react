@@ -1,17 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useMemo } from 'react';
 import {
   Row, Col,
 } from 'reactstrap';
-import { useSelector } from 'react-redux';
+import Chart from 'react-apexcharts';
 
 import Sparklines from '../../../../components/Sparklines';
-import loadRickshaw from 'core/loadRickshaw';
 import s from './ChangesChart.module.scss';
 
 const ChangesChart = () => {
-  const sidebarVisibility = useSelector((store) => store.navigation.sidebarVisibility);
-  const chartRef = useRef(null);
-  const graphRef = useRef(null);
   const sparklineData = [{data: [3, 6, 2, 4, 5, 8, 6, 8]}];
   const sparklineOptions = {
     colors: ["#64bd63"],
@@ -22,88 +18,76 @@ const ChangesChart = () => {
     }
   };
 
-  const onResizeRickshaw = () => {
-    if (!graphRef.current) {
-      return;
-    }
-
-    graphRef.current.configure({ height: 100 });
-    graphRef.current.render();
-  };
-
-  useEffect(() => {
-    let isDisposed = false;
-
-    const initGraph = async () => {
-      try {
-        const Rickshaw = await loadRickshaw();
-
-        if (!Rickshaw || isDisposed || !chartRef.current) {
-          return;
-        }
-
-        const seriesData = [[], []];
-        const random = new Rickshaw.Fixtures.RandomData(32);
-        for (let i = 0; i < 32; i += 1) {
-          random.addData(seriesData);
-        }
-
-        graphRef.current = new Rickshaw.Graph({
-          element: chartRef.current,
-          height: '100',
-          renderer: 'multi',
-          series: [{
-            name: 'pop',
-            data: seriesData.shift().map((d) => ({ x: d.x, y: d.y })),
-            color: '#33B252',
-            renderer: 'bar',
-            gapSize: 2,
-            min: 'auto',
-            strokeWidth: 3,
-          }, {
-            name: 'humidity',
-            data: seriesData.shift()
-              .map((d) => ({ x: d.x, y: ((d.y * (Math.random() * 0.5)) + 30.1) })),
-            renderer: 'line',
-            color: '#fff',
-            gapSize: 2,
-            min: 'auto',
-            strokeWidth: 3,
-          }],
-        });
-
-        const hoverDetail = new Rickshaw.Graph.HoverDetail({
-          graph: graphRef.current,
-          xFormatter: (x) => new Date(x * 1000).toString(),
-        });
-
-        hoverDetail.show();
-        graphRef.current.render();
-      } catch {
-        return;
-      }
-    };
-
-    initGraph();
-
-    window.addEventListener('resize', onResizeRickshaw);
-    return () => {
-      isDisposed = true;
-      window.removeEventListener('resize', onResizeRickshaw);
-    };
+  const chartSeries = useMemo(() => {
+    const base = Array.from({ length: 32 }, () => Math.round(Math.random() * 40) + 8);
+    return [
+      {
+        name: 'pop',
+        type: 'column',
+        data: base,
+      },
+      {
+        name: 'humidity',
+        type: 'line',
+        data: base.map((value) => Number(((value * (Math.random() * 0.5)) + 30.1).toFixed(2))),
+      },
+    ];
   }, []);
 
-  useEffect(() => {
-    onResizeRickshaw();
-  }, [sidebarVisibility]);
+  const chartOptions = useMemo(() => ({
+    chart: {
+      toolbar: {
+        show: false,
+      },
+      animations: {
+        enabled: false,
+      },
+      sparkline: {
+        enabled: true,
+      },
+    },
+    plotOptions: {
+      bar: {
+        columnWidth: '55%',
+      },
+    },
+    stroke: {
+      width: [0, 3],
+      curve: 'smooth',
+    },
+    colors: ['#33B252', '#ffffff'],
+    xaxis: {
+      labels: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+    },
+    yaxis: {
+      show: false,
+    },
+    grid: {
+      show: false,
+    },
+    tooltip: {
+      theme: 'dark',
+    },
+  }), []);
 
   return (
     <div className={s.changesChart}>
       <div className={`${s.chart} bg-success btlr btrr`}>
         <p className={s.chartValue}><i className="fa fa-caret-up" /> 352.79</p>
         <p className={s.chartValueChange}>+2.04 (1.69%)</p>
-        <div
-          ref={chartRef}
+        <Chart
+          options={chartOptions}
+          series={chartSeries}
+          type="line"
+          height={100}
         />
       </div>
       <h4 className={s.chartTitle}><span className="fw-normal">Salt Lake City</span>, Utah</h4>

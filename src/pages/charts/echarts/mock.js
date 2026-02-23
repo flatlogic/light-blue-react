@@ -151,7 +151,8 @@ export default {
       left: '3%',
       right: '4%',
       bottom: '3%',
-      containLabel: true
+      outerBoundsMode: 'same',
+      outerBoundsContain: 'axisLabel'
     },
     toolbox: {
       feature: {
@@ -230,7 +231,8 @@ export default {
       left: 2,
       bottom: 10,
       right: 10,
-      containLabel: true
+      outerBoundsMode: 'same',
+      outerBoundsContain: 'axisLabel'
     },
     xAxis: {
       type: 'category',

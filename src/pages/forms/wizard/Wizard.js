@@ -6,6 +6,7 @@ import {
   Form,
   FormGroup,
   Label,
+  Input,
   Nav,
   NavLink,
   NavItem,
@@ -13,7 +14,6 @@ import {
 } from 'reactstrap';
 
 import MaskedInput from 'components/MaskedInputField';
-import Datetime from 'react-datetime';
 import { select2CountriesData, select2ShipmentData, cardTypesData } from './data';
 
 import Select from 'react-select';
@@ -120,7 +120,7 @@ const StepsComponents = {
       </fieldset>
     );
   },
-  Step3: function Step3({ isDatePickerOpen, values, onValueChange }) {
+  Step3: function Step3({ values, onValueChange }) {
     return (
       <fieldset>
         <FormGroup>
@@ -155,13 +155,13 @@ const StepsComponents = {
         </FormGroup>
         <FormGroup>
           <Label for="expiration-data">Expiration Date</Label>
-          <div className="datepicker">
-            <Datetime
-              id="datepicker"
-              open={isDatePickerOpen}
-              viewMode="days"
-            />
-          </div>
+          <Input
+            id="expiration-data"
+            name="expirationDate"
+            type="date"
+            value={values.expirationDate}
+            onChange={(event) => onValueChange('expirationDate', event.target.value)}
+          />
         </FormGroup>
       </fieldset>
     );
@@ -179,7 +179,6 @@ const StepsComponents = {
 
 const Wizard = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [isDatePickerOpen] = useState(false);
   const [values, setValues] = useState({
     username: '',
     email: '',
@@ -187,6 +186,7 @@ const Wizard = () => {
     'dest-address': '',
     name: '',
     credit: '',
+    expirationDate: '',
   });
   const progress = useMemo(() => (100 / count) * currentStep, [currentStep]);
 
@@ -272,13 +272,11 @@ const Wizard = () => {
                   {currentStep === 2 && <StepsComponents.Step2 values={values} onValueChange={handleValueChange} />}
                   {currentStep === 3 && (
                     <StepsComponents.Step3
-                      isDatePickerOpen={isDatePickerOpen}
                       values={values}
                       onValueChange={handleValueChange}
                     />
                   )}
-                  {currentStep === 4 &&
-                    <StepsComponents.Step4 isDatePickerOpen={isDatePickerOpen} />}
+                  {currentStep === 4 && <StepsComponents.Step4 />}
                 </Form>
               </div>
 

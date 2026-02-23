@@ -2,37 +2,37 @@ import React, { useState } from 'react';
 import DayNames from './DayNames';
 import { v4 as uuid } from 'uuid';
 import Week from './Week';
-import moment from 'moment/moment';
+import dayjs from 'core/date';
 import s from './Calendar.module.scss';
 
 const Calendar = () => {
-  const [selectedMonth, setSelectedMonth] = useState(moment());
-  const [selectedDay] = useState(moment().startOf('day'));
+  const [selectedMonth, setSelectedMonth] = useState(dayjs());
+  const [selectedDay] = useState(dayjs().startOf('day'));
   const [selectedMonthEvents] = useState([
     {
       title: 'The flower bed',
       info: 'Contents here',
       itemStyle: '#2477ff',
-      date: moment(`${moment().year()}-${moment().month() + 1}-02`, 'YYYYMMDD'),
+      date: dayjs(`${dayjs().year()}-${dayjs().month() + 1}-02`),
     },
     {
       title: 'Stop world water pollution',
       info: 'Have a kick off meeting with .inc company',
       itemStyle: '#e49400',
-      date: moment(`${moment().year()}-${moment().month() + 1}-05`, 'YYYYMMDD'),
+      date: dayjs(`${dayjs().year()}-${dayjs().month() + 1}-05`),
     },
     {
       title: 'Light Blue 2.2 release',
       info: 'Some contents here',
       itemStyle: '#2d8515',
-      date: moment(`${moment().year()}-${moment().month() + 1}-18`, 'YYYYMMDD'),
+      date: dayjs(`${dayjs().year()}-${dayjs().month() + 1}-18`),
     },
     {
       title: 'A link',
       info: '',
       itemStyle: '#f45722',
       link: 'http://www.flatlogic.com',
-      date: moment(`${moment().year()}-${moment().month() + 1}-29`, 'YYYYMMDD'),
+      date: dayjs(`${dayjs().year()}-${dayjs().month() + 1}-29`),
     },
   ]);
 
@@ -56,11 +56,11 @@ const Calendar = () => {
 
     const weeks = [];
     let done = false;
-    const previousCurrentNextView = currentMonthView
+    let previousCurrentNextView = currentMonthView
       .clone()
       .startOf('month')
       .subtract(1, 'd')
-      .day('Sunday');
+      .day(0);
     let count = 0;
     let monthIndex = previousCurrentNextView.month();
 
@@ -74,7 +74,7 @@ const Calendar = () => {
           selected={currentSelectedDay}
         />
       );
-      previousCurrentNextView.add(1, 'w');
+      previousCurrentNextView = previousCurrentNextView.add(1, 'w');
       done = count++ > 2 && monthIndex !== previousCurrentNextView.month();
       monthIndex = previousCurrentNextView.month();
     }

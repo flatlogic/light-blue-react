@@ -60,7 +60,7 @@ const Helper = () => {
             <span className="text-white">Purchase</span>
           </Button>
           <Button
-            href="https://demo.flatlogic.com/light-blue-react/#/documentation/getting-started/overview"
+            href="https://demo.flatlogic.com/light-blue-react/documentation/getting-started/overview"
             target="_blank"
             className="btn-rounded-f btn-block fs-mini text-white mt-4"
             color="primary"

@@ -86,6 +86,10 @@
 
 
 .widget {
+  // Bootstrap 5 uses --bs-secondary-color for .text-muted.
+  // Widgets are dark, so enforce a light muted tone inside widget scope.
+  --bs-secondary-color: #{$text-muted};
+  --bs-secondary-color-rgb: #{red($text-muted)}, #{green($text-muted)}, #{blue($text-muted)};
   color: $content-color;
   display: block;
   position: relative;
@@ -139,6 +143,11 @@
 
   &:global.bg-transparent {
     box-shadow: none;
+  }
+
+  :global(.text-muted),
+  :global(.text-body-secondary) {
+    color: var(--bs-secondary-color) !important;
   }
 }
 .widget {

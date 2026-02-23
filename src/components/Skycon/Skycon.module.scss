@@ -1,0 +1,35 @@
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.animated {
+  animation: skycon-float 2.8s ease-in-out infinite;
+}
+
+.wind {
+  animation: skycon-spin 1.8s linear infinite;
+}
+
+@keyframes skycon-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes skycon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

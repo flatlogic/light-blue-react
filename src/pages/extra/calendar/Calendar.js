@@ -11,7 +11,7 @@ import {
   Input,
 } from "reactstrap";
 
-import moment from "moment/moment";
+import dayjs from "core/date";
 
 import s from "./Calendar.module.scss";
 import Widget from "../../../components/Widget";
@@ -37,8 +37,8 @@ const Calendar = () => {
       modal: false,
       modalEvent: false,
       calendarView: "dayGridMonth",
-      currentMonth: moment().format("MMM YYYY"),
-      currentDay: moment().format("dddd"),
+      currentMonth: dayjs().format("MMM YYYY"),
+      currentDay: dayjs().format("dddd"),
       calendarOptions: {
         headerToolbar: {
           left: "",
@@ -238,7 +238,7 @@ const Calendar = () => {
   };
 
   const getFormattedDate = (date) => {
-    return moment(date).format("YYYY-MM-DD");
+    return dayjs(date).format("YYYY-MM-DD");
   };
 
   const {

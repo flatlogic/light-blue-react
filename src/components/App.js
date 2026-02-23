@@ -22,7 +22,16 @@ import Register from '../pages/auth/register';
 import Reset from '../pages/auth/reset';
 import Forgot from '../pages/auth/forgot';
 
-const CloseButton = ({closeToast}) => <i onClick={closeToast} className="la la-close notifications-close"/>
+const CloseButton = ({ closeToast }) => (
+  <button
+    type="button"
+    onClick={closeToast}
+    className="Toastify__close-button notifications-close"
+    aria-label="Close notification"
+  >
+    <i className="la la-close" />
+  </button>
+);
 
 const App = () => {
   const dispatch = useDispatch();

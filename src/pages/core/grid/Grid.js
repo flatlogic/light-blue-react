@@ -87,7 +87,7 @@ const Typography = () => (
               <code>{'      1 of 2\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
               <code className="text-info">{'    <Col>\n'}</code>
-              <code>{'      1 of 2\n'}</code>
+              <code>{'      2 of 2\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
               <code className="text-success">{'  </Row>\n'}</code>
               <code className="text-danger">{'</Container>'}</code>
@@ -224,7 +224,7 @@ const Typography = () => (
       </Col>
       <Col xs={12} md={6}>
         <Widget
-          title={<h5>Vertical <span className="fw-semi-bold">Alignment</span></h5>}
+          title={<h5>Horizontal <span className="fw-semi-bold">Alignment</span></h5>}
           close collapse
         >
           <p>Use flexbox alignment utilities to vertically and horizontally align columns.</p>
@@ -273,29 +273,29 @@ const Typography = () => (
             <pre className="bg-custom-dark border-0 w-100 h-100">
               <code className="text-danger">{'<Container>\n'}</code>
               <code className="text-success">{'  <Row className="justify-content-end">\n'}</code>
-              <code className="text-info">{'    <Col>\n'}</code>
+              <code className="text-info">{'    <Col xs={3}>\n'}</code>
               <code>{'      1\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
-              <code className="text-info">{'    <Col>\n'}</code>
+              <code className="text-info">{'    <Col xs={3}>\n'}</code>
               <code>{'      2\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
               <code className="text-success">{'  </Row>\n'}</code>
               <code className="text-success">{'  <Row className="justify-content-around">\n'}</code>
-              <code className="text-info">{'    <Col>\n'}</code>
+              <code className="text-info">{'    <Col xs={3}>\n'}</code>
               <code>{'      1\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
-              <code className="text-info">{'    <Col>\n'}</code>
+              <code className="text-info">{'    <Col xs={3}>\n'}</code>
               <code>{'      2\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
               <code className="text-success">{'  </Row>\n'}</code>
               <code className="text-success">{'  <Row className="justify-content-between">\n'}</code>
-              <code className="text-info">{'    <Col>\n'}</code>
+              <code className="text-info">{'    <Col xs={3}>\n'}</code>
               <code>{'      1\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
-              <code className="text-info">{'    <Col>\n'}</code>
+              <code className="text-info">{'    <Col xs={3}>\n'}</code>
               <code>{'      2\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
-              <code className="text-info">{'    <Col>\n'}</code>
+              <code className="text-info">{'    <Col xs={3}>\n'}</code>
               <code>{'      3\n'}</code>
               <code className="text-info">{'    </Col>\n'}</code>
               <code className="text-success">{'  </Row>\n'}</code>

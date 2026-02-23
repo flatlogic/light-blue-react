@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'core/date';
 import React from 'react';
 import { truncate } from 'lodash';
 
@@ -33,7 +33,7 @@ function booleanFormatter(cell) {
 
 function dateTimeFormatter(cell) {
     return cell
-      ? moment(cell).format('YYYY-MM-DD HH:mm')
+      ? dayjs(cell).format('YYYY-MM-DD HH:mm')
       : null;
 };
 

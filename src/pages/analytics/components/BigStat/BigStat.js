@@ -28,7 +28,7 @@ const BigStat = ({ product, total, registrations, bounce, color }) => {
           <div className="d-flex justify-content-between flex-wrap">
             <h4 className={cx('d-flex align-items-center pb-1', s.bigStatTitle)}>
               <span className={`circle bg-${color} me-2`} style={{ fontSize: '6px' }} />
-                Statistic <span className="fw-normal ms-xs">{product}</span>
+                Statistic <span className={s.bigStatProduct}>{product}</span>
             </h4>
             <UncontrolledButtonDropdown>
               <DropdownToggle

@@ -1,9 +1,5 @@
 @import '../../../styles/app';
 
-:global {
-  @import '../../../../node_modules/react-datetime/css/react-datetime';
-}
-
 .root {
   :global {
     .tab-content {
@@ -35,19 +31,6 @@
         }
       }
 
-      #datepicker .input-group {
-        width: 100%;
-        display: flex !important;
-
-        .form-control {
-          border-bottom-right-radius: 0.25rem;
-          border-top-right-radius: 0.25rem;
-        }
-
-        .input-group-addon {
-          display: none;
-        }
-      }
     }
   }
 

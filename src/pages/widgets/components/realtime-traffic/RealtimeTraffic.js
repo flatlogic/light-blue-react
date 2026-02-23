@@ -1,92 +1,74 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Progress,
 } from 'reactstrap';
-import { useSelector } from 'react-redux';
-import loadRickshaw from 'core/loadRickshaw';
+import Chart from 'react-apexcharts';
+
+const POINTS_COUNT = 30;
+
+const generatePoints = () =>
+  Array.from({ length: POINTS_COUNT }, () => Math.round(Math.random() * 60) + 25);
 
 const RealtimeTraffic = () => {
-  const sidebarVisibility = useSelector((store) => store.navigation.sidebarVisibility);
-  const graphRef = useRef(null);
-  const rickshawChartRef = useRef(null);
-  const intervalRef = useRef(null);
+  const [series, setSeries] = useState([
+    { name: 'Uploads', data: generatePoints() },
+    { name: 'Downloads', data: generatePoints() },
+  ]);
 
-  const onResizeRickshaw = () => {
-    if (!graphRef.current) {
-      return;
-    }
-
-    graphRef.current.configure({ height: 130 });
-    graphRef.current.render();
-  };
+  const options = useMemo(() => ({
+    chart: {
+      animations: {
+        enabled: false,
+      },
+      sparkline: {
+        enabled: true,
+      },
+      toolbar: {
+        show: false,
+      },
+    },
+    stroke: {
+      width: 2.5,
+      curve: 'smooth',
+    },
+    colors: ['#58D777', '#1870DC'],
+    legend: {
+      show: false,
+    },
+    xaxis: {
+      labels: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+    },
+    yaxis: {
+      show: false,
+    },
+    grid: {
+      show: false,
+    },
+    tooltip: {
+      theme: 'dark',
+    },
+  }), []);
 
   useEffect(() => {
-    let isDisposed = false;
-
-    const initGraph = async () => {
-      try {
-        const Rickshaw = await loadRickshaw();
-
-        if (!Rickshaw || isDisposed || !rickshawChartRef.current) {
-          return;
-        }
-
-        const seriesData = [[], []];
-        const random = new Rickshaw.Fixtures.RandomData(30);
-
-        for (let i = 0; i < 30; i += 1) {
-          random.addData(seriesData);
-        }
-        graphRef.current = new Rickshaw.Graph({
-          element: rickshawChartRef.current,
-          height: 130,
-          realtime: true,
-          series: [
-            {
-              color: '#58D777',
-              data: seriesData[0],
-              name: 'Uploads',
-            }, {
-              color: '#1870DC',
-              data: seriesData[1],
-              name: 'Downloads',
-            },
-          ],
-        });
-
-        const hoverDetail = new Rickshaw.Graph.HoverDetail({
-          graph: graphRef.current,
-          xFormatter: (x) => new Date(x * 1000).toString(),
-        });
-
-        hoverDetail.show();
-
-        intervalRef.current = setInterval(() => {
-          random.removeData(seriesData);
-          random.addData(seriesData);
-          graphRef.current.update();
-        }, 1000);
-
-        graphRef.current.render();
-      } catch {
-        return;
-      }
-    };
-
-    initGraph();
-
-    window.addEventListener('resize', onResizeRickshaw);
+    const intervalId = setInterval(() => {
+      setSeries((prev) => prev.map((entry) => ({
+        ...entry,
+        data: [...entry.data.slice(1), Math.round(Math.random() * 60) + 25],
+      })));
+    }, 1000);
 
     return () => {
-      isDisposed = true;
-      window.removeEventListener('resize', onResizeRickshaw);
-      clearInterval(intervalRef.current);
+      clearInterval(intervalId);
     };
   }, []);
-
-  useEffect(() => {
-    onResizeRickshaw();
-  }, [sidebarVisibility]);
 
   return (
     <div>
@@ -109,9 +91,14 @@ const RealtimeTraffic = () => {
       </button>
       <p className="value4">2h 56m</p>
       <br />
-      <div
-        ref={rickshawChartRef} className="text-gray-dark chart-overflow-bottom" style={{ height: '130px' }}
-      />
+      <div className="text-gray-dark chart-overflow-bottom">
+        <Chart
+          options={options}
+          series={series}
+          type="line"
+          height={130}
+        />
+      </div>
     </div>
   );
 };

@@ -1,48 +1,43 @@
 @import '../../styles/app';
 
 .errorPage {
-  padding-top: 5%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .errorContainer {
-  width: 365px;
   text-align: center;
 }
 
 .errorBtn {
-  padding-left: 35px;
-  padding-right: 35px;
+  min-width: 135px;
 }
 
 .errorCode {
-  margin: 20px;
-  font-size: 80px;
-  font-weight: $font-weight-normal;
+  margin: 0 0 12px;
+  font-size: 84px;
+  font-weight: $font-weight-semi-bold;
   color: $text-color;
+  line-height: 1;
 
   @include media-breakpoint-up(md) {
-    font-size: 180px;
+    font-size: 130px;
   }
 }
 
 .errorInfo {
-  font-size: 20px;
-  color: $content-color;
+  margin-bottom: 0.5rem;
+  font-size: 18px;
+  color: $text-color;
 }
 
 .errorHelp {
-  color: $content-color;
+  color: $text-muted;
   font-size: 14px;
+  margin-bottom: 1rem;
 }
 
-.pageFooter {
-  position: absolute;
-  bottom: 30px;
-  left: 0;
-  right: 0;
-  width: 100%;
-  font-size: $font-size-mini;
-  color: $text-muted;
-  text-align: center;
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
 }
