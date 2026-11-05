@@ -1,19 +1,15 @@
 import * as React from "react";
 import { Button } from "reactstrap";
-import * as Showdown from "showdown";
+import MarkdownIt from "markdown-it";
+import taskLists from "markdown-it-task-lists";
 import s from "./Elements.module.scss";
 
-const converter = new Showdown.Converter({
-  tables: true,
-  simplifiedAutoLink: true,
-  strikethrough: true,
-  tasklists: true
-});
+export const markdown = new MarkdownIt({ html: false, linkify: true }).use(taskLists);
 
 export default function MarkdownEditorComp() {
   const [value, setValue] = React.useState("**Hello world!!!**");
   const [selectedTab, setSelectedTab] = React.useState("write");
-  const previewHtml = React.useMemo(() => converter.makeHtml(value), [value]);
+  const previewHtml = React.useMemo(() => markdown.render(value), [value]);
 
   return (
     <div className={s.markdownEditor}>

@@ -44,7 +44,7 @@ const App = () => {
         hideProgressBar
         closeButton={<CloseButton />}
       />
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/" element={<Navigate to="/app/main" replace />} />
           <Route path="/app" element={<Navigate to="/app/main" replace />} />

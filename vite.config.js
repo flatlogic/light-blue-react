@@ -46,11 +46,11 @@ function transformJsAsJsx() {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const publicUrl = env.PUBLIC_URL || './';
+  const publicUrl = env.PUBLIC_URL || '/';
   const backendFlag = env.VITE_BACKEND || '';
 
   return {
-    base: './',
+    base: publicUrl,
     build: {
       outDir: 'build',
     },
